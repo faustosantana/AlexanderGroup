@@ -1,0 +1,42 @@
+; Plantilla de configuración de Odoo 19 — Alexander Group
+; Copiar como `odoo.conf` y completar. El archivo real `odoo.conf` está en
+; `.gitignore` y NUNCA debe subirse al repositorio.
+; TODOS los valores sensibles son placeholders. No incluir credenciales reales.
+
+[options]
+; --- Administración ---
+; Reemplazar por un secreto fuerte gestionado fuera de Git.
+admin_passwd = CHANGEME_ADMIN_PASSWD
+
+; --- Base de datos ---
+db_host = CHANGEME_DB_HOST
+db_port = 5432
+db_user = CHANGEME_DB_USER
+db_password = CHANGEME_DB_PASSWORD
+; Recomendado en multiempresa: fijar/filtrar la base de datos.
+; dbfilter = ^alexander_.*$
+db_maxconn = 64
+list_db = False
+
+; --- Rutas de addons ---
+; Orden sugerido: terceros, compartidos, específicos del proyecto.
+addons_path = /mnt/extra-addons/third_party,/mnt/extra-addons/shared,/mnt/extra-addons/alexander
+data_dir = /var/lib/odoo
+
+; --- Servidor HTTP ---
+http_enable = True
+http_port = 8069
+; proxy_mode = True cuando se sirva detrás de Nginx (ver deployment/nginx).
+proxy_mode = True
+
+; --- Workers / rendimiento (ajustar según servidor definitivo) ---
+workers = 0
+max_cron_threads = 1
+limit_time_cpu = 600
+limit_time_real = 1200
+limit_memory_soft = 671088640
+limit_memory_hard = 805306368
+
+; --- Logs ---
+log_level = info
+logfile = None

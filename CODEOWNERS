@@ -1,0 +1,12 @@
+# CODEOWNERS — Alexander Group (Odoo 19)
+# Responsables de revisión por defecto. Ver documentación de GitHub sobre CODEOWNERS.
+# En esta fase todos apuntan al mismo propietario; se refinará al crecer el equipo.
+
+# Responsable global
+*                 @faustosantana
+
+# Áreas específicas
+/addons/          @faustosantana
+/deployment/      @faustosantana
+/docs/            @faustosantana
+/config/          @faustosantana
