@@ -1,0 +1,38 @@
+LICENCIA DE SOFTWARE PROPIETARIO
+================================
+
+Proyecto: Alexander Group — Odoo 19 Multiempresa
+Titular:  Justech SRL
+
+Copyright (c) 2026 Justech SRL. Todos los derechos reservados.
+
+1. TITULARIDAD
+   Este repositorio contiene software propietario de Justech SRL, destinado
+   exclusivamente al proyecto Alexander Group. El código, la documentación y las
+   plantillas aquí incluidas son confidenciales y de uso restringido.
+
+2. RESTRICCIONES
+   - No está permitida la distribución, publicación, sublicencia ni cesión no
+     autorizada, total o parcial, de este software.
+   - No está permitido su uso fuera del alcance del proyecto Alexander Group sin
+     autorización expresa y por escrito de Justech SRL.
+   - No se incorporará código con licencia incompatible con esta licencia
+     propietaria.
+
+3. MÓDULOS DE TERCEROS
+   Los módulos externos incorporados bajo `addons/third_party/` conservan su
+   licencia original. Nada en esta licencia altera, reemplaza ni limita los
+   términos de las licencias de dichos módulos de terceros. Cada módulo de
+   terceros debe documentar su fuente, versión y licencia (ver el README de esa
+   carpeta).
+
+4. ODOO ENTERPRISE
+   Las licencias de Odoo Enterprise deben respetarse en todo momento. Ningún
+   componente de este repositorio pretende otorgar derechos sobre Odoo Enterprise
+   ni evadir sus términos de licenciamiento.
+
+5. AUSENCIA DE GARANTÍA
+   El software se entrega "tal cual", sin garantía de ningún tipo, expresa o
+   implícita. Justech SRL no será responsable por daños derivados de su uso.
+
+Para consultas sobre licenciamiento o autorizaciones, contactar a Justech SRL.

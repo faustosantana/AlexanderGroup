@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alexander-group-odoo"
+version = "0.0.0"
+description = "Base del repositorio Odoo 19 multiempresa para Alexander Group (Justech SRL). Fase 0."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [{ name = "Justech SRL" }]
+
+# Dependencias de desarrollo/tooling de la Fase 0 (no runtime de Odoo).
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pre-commit>=3.5",
+    "black>=24.0",
+]
+
+[tool.setuptools]
+# Fase 0: aún no hay paquetes Python empaquetables (sin módulos Odoo funcionales).
+py-modules = []
+
+[tool.black]
+line-length = 88
+target-version = ["py310", "py311", "py312"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-ra"

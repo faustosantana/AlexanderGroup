@@ -1,0 +1,33 @@
+# Configuración de pre-commit — https://pre-commit.com
+# Solo herramientas comunes y seguras. No despliega ni se conecta a servidores.
+minimum_pre_commit_version: "3.0.0"
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+
+  - repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+      - id: black
+        language_version: python3
+
+  # Validación básica del repositorio (script local, sin dependencias externas).
+  - repo: local
+    hooks:
+      - id: validate-repository
+        name: Validación de seguridad del repositorio
+        entry: python tools/validate_repository.py
+        language: system
+        pass_filenames: false

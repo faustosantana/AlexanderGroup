@@ -1,0 +1,47 @@
+# === Variables de entorno / secretos ===
+.env
+.env.*
+!.env.example
+
+# === Logs y volcados ===
+*.log
+*.sql
+*.dump
+*.backup
+*.zip
+*.tar
+*.tar.gz
+
+# === Datos de Odoo (nunca en Git) ===
+filestore/
+data/
+backups/
+sessions/
+
+# === Python ===
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+*.egg-info/
+
+# === Editores / IDE / SO ===
+.vscode/
+.idea/
+.DS_Store
+
+# === Configuración real de Odoo y certificados ===
+odoo.conf
+*.pem
+*.key
+*.crt
+*.pfx
+*.p12
+
+# === Frontend / build ===
+node_modules/
+dist/
+build/

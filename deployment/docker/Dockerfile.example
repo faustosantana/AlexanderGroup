@@ -1,0 +1,33 @@
+# Dockerfile de EJEMPLO — Alexander Group (Odoo 19)
+# ------------------------------------------------------------------------------
+# NO APROBADO PARA PRODUCCIÓN. Archivo de referencia únicamente.
+# - Confirmar la etiqueta/version exacta de la imagen de Odoo 19.
+# - Confirmar si se usará Community o Enterprise (Enterprise requiere licencia
+#   y acceso al código; NO se incluye aquí).
+# - No construir esta imagen todavía.
+# ------------------------------------------------------------------------------
+
+# TODO(Fase 3): fijar una versión exacta y verificada de la imagen base.
+FROM odoo:19
+
+# Ejecutar como root solo para preparar directorios; Odoo corre como 'odoo'.
+USER root
+
+# Rutas de addons montadas o copiadas (ver docker-compose.example.yml).
+# En despliegues reales se recomienda montar como volumen en vez de COPY.
+# COPY ../../addons /mnt/extra-addons
+
+# Configuración: se monta odoo.conf desde config/ (no se copian secretos).
+# COPY ../../config/odoo.conf /etc/odoo/odoo.conf
+
+# Dependencias adicionales del sistema o Python (si algún addon las requiere):
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     <paquetes> && rm -rf /var/lib/apt/lists/*
+# RUN pip3 install --no-cache-dir <dependencias-python>
+
+USER odoo
+
+EXPOSE 8069 8072
+
+# El entrypoint estándar de la imagen de Odoo gestiona el arranque.
+# CMD ["odoo"]

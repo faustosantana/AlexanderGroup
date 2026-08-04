@@ -1,0 +1,72 @@
+# docker-compose de EJEMPLO — Alexander Group (Odoo 19)
+# ==============================================================================
+# ⚠️  NO APROBADO PARA PRODUCCIÓN — SOLO REFERENCIA.
+#
+# Antes de usar este archivo es OBLIGATORIO:
+#   - Completar variables (ver config/env.example -> .env).
+#   - Definir la estrategia de backups (docs/09_BACKUP_AND_ROLLBACK.md).
+#   - Validar la versión EXACTA de Odoo 19.
+#   - Confirmar si se usa Odoo Enterprise (licencia).
+#   - Confirmar el servidor definitivo (IP/dominio/SSL).
+#
+# NO descargar imágenes ni levantar contenedores en Fase 0.
+# ==============================================================================
+
+services:
+  db:
+    # TODO(Fase 3): fijar versión exacta y soportada de PostgreSQL.
+    image: postgres:16
+    container_name: alexander_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - alexander_net
+    restart: unless-stopped
+
+  odoo:
+    # TODO(Fase 3): usar imagen construida desde Dockerfile.example o tag oficial fijo.
+    image: odoo:19
+    container_name: alexander_odoo
+    depends_on:
+      - db
+    environment:
+      HOST: ${ODOO_DB_HOST}
+      USER: ${ODOO_DB_USER}
+      PASSWORD: ${ODOO_DB_PASSWORD}
+    ports:
+      - "8069:8069"   # HTTP
+      - "8072:8072"   # longpolling / websocket
+    volumes:
+      # Addons del proyecto (solo lectura recomendada).
+      - ../../addons/third_party:/mnt/extra-addons/third_party:ro
+      - ../../addons/shared:/mnt/extra-addons/shared:ro
+      - ../../addons/alexander:/mnt/extra-addons/alexander:ro
+      # Configuración (copiar odoo.conf.example -> odoo.conf, NO commitear el real).
+      - ../../config/odoo.conf:/etc/odoo/odoo.conf:ro
+      # Datos persistentes de Odoo (filestore, sesiones). NUNCA en Git.
+      - odoo_data:/var/lib/odoo
+    networks:
+      - alexander_net
+    restart: unless-stopped
+
+  # Proxy inverso (opcional en dev; recomendado en prod). Ver deployment/nginx.
+  # nginx:
+  #   image: nginx:stable
+  #   depends_on: [odoo]
+  #   ports: ["80:80", "443:443"]
+  #   volumes:
+  #     - ../nginx/odoo.conf:/etc/nginx/conf.d/default.conf:ro
+  #   networks: [alexander_net]
+  #   restart: unless-stopped
+
+volumes:
+  db_data:
+  odoo_data:
+
+networks:
+  alexander_net:
+    driver: bridge

@@ -1,0 +1,67 @@
+# Nginx (proxy inverso) de EJEMPLO para Odoo 19 — Alexander Group
+# ------------------------------------------------------------------------------
+# NO APROBADO PARA PRODUCCIÓN. Placeholders únicamente.
+# - Reemplazar CHANGEME_DOMINIO por el dominio real (aún no definido).
+# - Configurar certificados TLS reales (NUNCA commitear .pem/.key/.crt).
+# - Confirmar puertos y nombres de servicio según docker-compose.
+# ------------------------------------------------------------------------------
+
+upstream odoo {
+    server odoo:8069;
+}
+
+upstream odoochat {
+    server odoo:8072;
+}
+
+# Redirección HTTP -> HTTPS (habilitar cuando exista certificado).
+server {
+    listen 80;
+    server_name CHANGEME_DOMINIO;
+
+    # return 301 https://$host$request_uri;
+
+    location / {
+        proxy_pass http://odoo;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+    }
+
+    location /websocket {
+        proxy_pass http://odoochat;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+# Bloque HTTPS de referencia (habilitar con certificados reales, fuera de Git).
+# server {
+#     listen 443 ssl http2;
+#     server_name CHANGEME_DOMINIO;
+#
+#     ssl_certificate     /etc/nginx/ssl/CHANGEME.crt;   # NO commitear
+#     ssl_certificate_key /etc/nginx/ssl/CHANGEME.key;   # NO commitear
+#
+#     client_max_body_size 100M;
+#
+#     location / {
+#         proxy_pass http://odoo;
+#         proxy_set_header Host $host;
+#         proxy_set_header X-Forwarded-Proto https;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#     }
+#
+#     location /websocket {
+#         proxy_pass http://odoochat;
+#         proxy_set_header Upgrade $http_upgrade;
+#         proxy_set_header Connection "upgrade";
+#     }
+# }
