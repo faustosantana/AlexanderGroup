@@ -18,9 +18,12 @@
 | HARDCODE_SCAN | **PASS** (`custom-addons` vacío) |
 | DORALEX_PROD_BACKUP | **PASS** (verificado, SHA256) |
 | DORALEX_DEV_BACKUP | **PASS** (`dev_20260827_163526`) |
-| JUSTGROUP_AUDIT | **PARTIAL** (versión confirmada; inventario de módulos pendiente) |
-| CUSTOM_MODULE_MIGRATION | **PARTIAL** (0 módulos custom copiados) |
+| JUSTGROUP_AUDIT | **PARTIAL** (versión/edición confirmadas; inventario de módulos pendiente) |
+| MODULE_CLASSIFICATION | **PASS** (estándar/Enterprise/custom conocidos clasificados) |
+| CUSTOM_MODULE_MIGRATION | **PARTIAL** (0 módulos custom copiados — falta código fuente) |
 | ENTERPRISE_STATUS | Justgroup=Enterprise `19.0+e-20260324`; Doralex=Community → `BLOCKED_BY_ENTERPRISE_SOURCE` |
+| ENTERPRISE_DECISION | **DONE** (ver `ENTERPRISE_DECISION.md`) |
+| DORALEX_6_COMPANIES_READY | **YES** (capacidad validada 6/6, sin crear empresas reales) |
 | READY_FOR_STANDARD_DATA_LOAD | **YES** |
 | READY_FOR_FULL_DORALEX_DATA_LOAD | **PENDING_JUSTGROUP_MODULE_AUDIT** |
 

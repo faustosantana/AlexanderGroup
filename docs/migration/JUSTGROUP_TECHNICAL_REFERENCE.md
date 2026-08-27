@@ -20,6 +20,11 @@ sin modificar nada), vía el endpoint público JSON-RPC `common.version` de
 
 `ODOO_MAJOR=19`, `ODOO_BUILD=19.0+e-20260324`, Edición=**Enterprise**.
 
+Otros datos read-only (sin login): DB manager **deshabilitado** (`/web/database/list`
+→ Access Denied, buena práctica), módulo **Website** instalado (login "Soporte
+Justech"), reverse proxy `openresty`. Evidencia:
+[`evidence/justgroup_readonly_audit.txt`](evidence/justgroup_readonly_audit.txt).
+
 ### Lo que falta (requiere credenciales que NO existen en el entorno)
 
 El **inventario de módulos** (`ir.module.module`), modelos/campos custom, cron,
