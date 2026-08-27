@@ -1,0 +1,57 @@
+# Reverse proxy (Nginx de host) — DEV
+# Dominio: dev.doralexgroup.cloud -> Odoo Dev (127.0.0.1:8169, websocket 127.0.0.1:8172)
+# ------------------------------------------------------------------------------
+# ESTADO: PENDING_DNS. No emitir certificados ni activar 443 hasta que
+# dev.doralexgroup.cloud resuelva a 2.25.121.111. Ver DNS_AND_SSL.md.
+# ------------------------------------------------------------------------------
+
+upstream doralex_dev_odoo {
+    server 127.0.0.1:8169;
+}
+upstream doralex_dev_odoo_chat {
+    server 127.0.0.1:8172;
+}
+
+server {
+    listen 80;
+    server_name dev.doralexgroup.cloud;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+# HTTPS (activar SOLO cuando exista certificado válido).
+# server {
+#     listen 443 ssl http2;
+#     server_name dev.doralexgroup.cloud;
+#
+#     ssl_certificate     /etc/letsencrypt/live/dev.doralexgroup.cloud/fullchain.pem;
+#     ssl_certificate_key /etc/letsencrypt/live/dev.doralexgroup.cloud/privkey.pem;
+#     ssl_protocols TLSv1.2 TLSv1.3;
+#
+#     client_max_body_size 200M;
+#     proxy_read_timeout 720s;
+#
+#     location /websocket {
+#         proxy_pass http://doralex_dev_odoo_chat;
+#         proxy_set_header Upgrade $http_upgrade;
+#         proxy_set_header Connection "upgrade";
+#         proxy_set_header Host $host;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header X-Forwarded-Proto $scheme;
+#     }
+#
+#     location / {
+#         proxy_pass http://doralex_dev_odoo;
+#         proxy_set_header Host $host;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header X-Forwarded-Proto $scheme;
+#         proxy_redirect off;
+#     }
+# }

@@ -1,0 +1,81 @@
+# Doralex / Alexander Group — Odoo 19 · ENTORNO: DEV
+# ==============================================================================
+# Stack AISLADO de Desarrollo. Debe vivir en el servidor bajo:
+#   /opt/doralex/dev/
+#
+# AISLAMIENTO TOTAL respecto a Produccion (nombres, red, volúmenes y puertos
+# DISTINTOS). NUNCA montar volúmenes de Produccion aquí.
+#   - red Docker propia:         doralex_dev_net
+#   - volumen PostgreSQL propio:  doralex_dev_db_data
+#   - volumen filestore propio:   doralex_dev_odoo_data
+#   - password de DB propio (desde .env, no versionado)
+#   - puerto Odoo publicado SOLO a loopback: 127.0.0.1:${ODOO_HTTP_PORT}
+# ==============================================================================
+name: doralex-dev
+
+services:
+  db:
+    image: postgres:16
+    container_name: doralex-dev-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?define POSTGRES_DB en .env}
+      POSTGRES_USER: ${POSTGRES_USER:?define POSTGRES_USER en .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - internal
+    # Sin `ports:` -> PostgreSQL nunca queda expuesto públicamente.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  odoo:
+    image: ${ODOO_IMAGE:-odoo:19}
+    container_name: doralex-dev-odoo
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    environment:
+      HOST: db
+      PORT: 5432
+      USER: ${POSTGRES_USER:?define POSTGRES_USER en .env}
+      PASSWORD: ${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env}
+    volumes:
+      - odoo_data:/var/lib/odoo
+      - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
+      # --- addons_path FINAL (enterprise-ready desde el inicio) ---
+      # Enterprise compartido (misma revisión), vacío hasta la licencia.
+      - ${ENTERPRISE_SRC:-../enterprise}:/mnt/enterprise:ro
+      # Custom addons de Dev (aquí se prueba primero antes de Produccion).
+      - ${CUSTOM_ADDONS_SRC:-./custom-addons}:/mnt/custom-addons:ro
+      - ./logs:/var/log/odoo
+    ports:
+      # Puertos DISTINTOS a Produccion, solo loopback.
+      - "127.0.0.1:${ODOO_HTTP_PORT:-8169}:8069"
+      - "127.0.0.1:${ODOO_LONGPOLLING_PORT:-8172}:8072"
+    networks:
+      - internal
+    healthcheck:
+      # python3 siempre está en la imagen de Odoo (curl puede no estarlo).
+      test: ["CMD", "python3", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8069/web/health', timeout=5).getcode()==200 else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+volumes:
+  db_data:
+    name: doralex_dev_db_data
+  odoo_data:
+    name: doralex_dev_odoo_data
+
+networks:
+  internal:
+    name: doralex_dev_net
+    driver: bridge

@@ -1,0 +1,45 @@
+; Doralex PRODUCCION — odoo.conf (PLANTILLA)
+; Este archivo se RENDERIZA a `config/odoo.conf` (gitignored) mediante
+; scripts/render_config.sh, que sustituye ${VARIABLES} desde `.env`.
+; NUNCA commitear el odoo.conf renderizado (contiene el master password).
+
+[options]
+; Master password (desde .env: ODOO_ADMIN_PASSWD).
+admin_passwd = ${ODOO_ADMIN_PASSWD}
+
+; La conexión a la base de datos se pasa por variables de entorno del contenedor
+; (HOST/USER/PASSWORD/PORT en docker-compose.yml), no se fija aquí.
+
+; Aislamiento de la base productiva.
+dbfilter = ${ODOO_DBFILTER}
+list_db = False
+
+; --- addons_path FINAL (enterprise-ready) ---
+; El core de Odoo 19 se carga automáticamente desde la imagen; aquí se declaran
+; Enterprise (licencia, dir compartido) y los custom addons versionados.
+; NO cambiar esta ruta cuando llegue Enterprise: el dir ya existe (vacío).
+addons_path = /mnt/enterprise,/mnt/custom-addons
+; Módulos base cargados en todo el servidor.
+server_wide_modules = base,web
+
+data_dir = /var/lib/odoo
+
+; Detrás de reverse proxy con TLS.
+proxy_mode = True
+http_enable = True
+http_port = 8069
+; Websocket / longpolling (gevent) para bus/notificaciones en tiempo real.
+gevent_port = 8072
+
+; Rendimiento (ajustar tras auditoría del servidor; enterprise-ready).
+workers = 4
+max_cron_threads = 2
+limit_time_cpu = 600
+limit_time_real = 1200
+limit_request = 8192
+limit_memory_soft = 2147483648
+limit_memory_hard = 2684354560
+
+; Logging (docker logs + archivo persistente en /var/log/odoo).
+log_level = info
+logfile = /var/log/odoo/odoo.log

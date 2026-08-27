@@ -41,6 +41,12 @@ odoo.conf
 *.pfx
 *.p12
 
+# === Doralex: artefactos de servidor que NO se versionan ===
+# Addons Enterprise (licencia): se montan en el servidor, nunca en Git.
+deployment/doralex/*/enterprise/
+# Backups locales de .env dentro de directorios de respaldo.
+env.backup
+
 # === Frontend / build ===
 node_modules/
 dist/
