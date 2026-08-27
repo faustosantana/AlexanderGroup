@@ -26,5 +26,8 @@ umask 077
 # a sustituir (así no toca otros ${...} del archivo).
 # shellcheck disable=SC2016
 envsubst '${ODOO_ADMIN_PASSWD} ${ODOO_DBFILTER}' < "$TEMPLATE" > "$TARGET"
-chmod 600 "$TARGET"
-log "Renderizado ${TARGET} (permisos 600). No lo commitees."
+# El contenedor de Odoo lee /etc/odoo/odoo.conf como uid 101; se le da propiedad
+# y permisos 640 para que pueda leerlo (sin quedar world-readable).
+chown "${ODOO_UID:-101}:${ODOO_GID:-101}" "$TARGET" 2>/dev/null || true
+chmod 640 "$TARGET"
+log "Renderizado ${TARGET} (permisos 640, uid ${ODOO_UID:-101}). No lo commitees."

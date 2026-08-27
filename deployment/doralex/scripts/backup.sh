@@ -33,9 +33,9 @@ log "Backup ${ENV_NAME} -> ${DEST}"
 log "Volcando base de datos ${POSTGRES_DB}..."
 docker exec "$DB_CT" pg_dump -U "$POSTGRES_USER" -Fc "$POSTGRES_DB" > "${DEST}/db.dump"
 
-# 2) Filestore de Odoo.
+# 2) Filestore de Odoo (mkdir -p asegura un tar válido aunque aún esté vacío).
 log "Copiando filestore..."
-docker exec "$ODOO_CT" sh -c 'cd /var/lib/odoo && tar czf - filestore 2>/dev/null || true' \
+docker exec "$ODOO_CT" sh -c 'cd /var/lib/odoo && mkdir -p filestore && tar czf - filestore' \
   > "${DEST}/filestore.tar.gz"
 
 # 3) Config renderizada (odoo.conf) y addons custom.

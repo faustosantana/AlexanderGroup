@@ -95,3 +95,10 @@ conflicto directo: **Traefik ya ocupa `:80/:443`** y existe el stack `odoo-aeju`
 
 `REQUIRED`: indicar qué hacer con `odoo-aeju`/Traefik antes de instalar o desplegar.
 No se modificará nada hasta tu decisión.
+
+## Resolución (2026-08-27)
+
+Decisión del usuario: **eliminar** el Odoo 18 preinstalado (opción 1). Ejecutado
+con backup de seguridad previo y verificación de que estaba vacío. Detalle en
+[`PREEXISTING_ODOO18_BACKUP.md`](PREEXISTING_ODOO18_BACKUP.md) y estado final en
+[`DEPLOYMENT_STATE.md`](DEPLOYMENT_STATE.md). Odoo 19 desplegado (Prod + Dev).
