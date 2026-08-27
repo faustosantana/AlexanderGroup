@@ -85,7 +85,7 @@ section "Certificados (Let's Encrypt)"
 code "$(run ls -1 /etc/letsencrypt/live 2>/dev/null || echo 'Sin /etc/letsencrypt/live')"
 
 section "Usuarios (con shell de login)"
-code "$(run getent passwd | awk -F: '$7 ~ /(bash|sh|zsh)$/ {print $1\" -> \"$7}')"
+code "$(run getent passwd | awk -F: '$7 ~ /(bash|sh|zsh)$/ {print $1 " -> " $7}')"
 
 section "Timezone / Locale"
 code "$(run timedatectl 2>/dev/null; echo '--- locale ---'; run locale)"
@@ -97,6 +97,8 @@ section "Espacio disponible (resumen)"
 code "$(run df -h --output=source,fstype,size,used,avail,pcent,target 2>/dev/null || run df -h)"
 
 section "Snapshots / Provider (si aplica)"
-code "$(run ls -1 /var/lib/snapshots 2>/dev/null; run cloud-init query -a 2>/dev/null | head -40; echo '(revisar panel del proveedor manualmente)')"
+# NOTA: no se vuelca la config de cloud-init porque puede contener hashes de
+# credenciales. Revisar snapshots en el panel del proveedor manualmente.
+code "$(run ls -1 /var/lib/snapshots 2>/dev/null; echo '(revisar snapshots en el panel del proveedor manualmente)')"
 
 printf '\n---\n_Fin de la auditoría (solo lectura)._\n'

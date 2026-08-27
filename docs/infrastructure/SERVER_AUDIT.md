@@ -1,76 +1,97 @@
 # Auditoría del servidor — Doralex / Alexander Group
 
-> **ESTADO: PENDING_CREDENTIALS.** Este documento es una **plantilla**. Se completa
-> ejecutando `deployment/doralex/scripts/audit_server.sh` (solo lectura) en el
-> servidor, una vez que el Cloud Agent tenga acceso por llave.
-> **No se ha accedido al servidor.** Nada aquí está inventado.
+> **ESTADO: COMPLETADA (solo lectura) — 2026-08-27.** Ejecutada con
+> `deployment/doralex/scripts/audit_server.sh` vía `ssh doralex-server`.
+> **No se modificó nada.** Resultados curados (sin secretos).
 
 - Servidor: `2.25.121.111`
-- Usuario SSH: `root`
-- Regla: **auditar primero, sin instalar nada.** No modificar infraestructura
-  antes de terminar la auditoría.
+- Acceso: por **llave SSH** (root y `doralexadmin` con sudo NOPASSWD). PASS.
 
-## Conectividad (verificada, sin login)
+## ⚠️ Hallazgo crítico: existe una instalación previa
 
-Desde el Cloud Agent se probó el alcance de red al servidor (una sola vez, sin
-autenticar):
+El servidor **NO está limpio**. Hay un stack Odoo en ejecución (Docker):
 
-- TCP `2.25.121.111:22` **accesible**; handshake SSH completado (host key ED25519).
-- Métodos de autenticación ofrecidos: **`publickey,password`**.
-- Resultado sin credenciales: `Permission denied (publickey,password)` — esperado.
+| Contenedor | Imagen | Estado | Puertos |
+| ---------- | ------ | ------ | ------- |
+| `odoo-aeju-odoo-1` | **`odoo:18`** | Up ~51 min | `0.0.0.0:32768->8069`, `8071-8072` |
+| `odoo-aeju-db-1` | `postgres:17-alpine` | Up (healthy) | `5432/tcp` (interno) |
+| `traefik-traefik-1` | `traefik:latest` | Up ~51 min | escucha host `:80` y `:443` |
 
-Conclusión: **la conectividad no es el bloqueo; faltan credenciales.** Para
-habilitar el acceso por llave del Cloud Agent, ver "Acceso" abajo.
+- Volúmenes: `odoo-aeju_db`, `odoo-aeju_odoo-addons`, `odoo-aeju_odoo-data`,
+  `traefik-letsencrypt`, `traefik_traefik-letsencrypt`.
+- Red: `odoo-aeju_default`. Reverse proxy actual: **Traefik** (no Nginx).
+- **Odoo 18**, no 19. Parece una instalación previa (posible plantilla del
+  proveedor / prueba). **No se toca** hasta tu decisión.
 
-## Acceso (cómo desbloquear la auditoría)
+> Regla aplicada: "comprobar que no existe una instalación previa que podamos
+> destruir" → **existe**. Me detengo antes de instalar/desplegar nada.
 
-1. En tu máquina local: `bash deployment/doralex/scripts/setup_ssh_local.sh`
-   (crea la llave dedicada, la instala en `root@2.25.121.111` pidiendo la
-   contraseña **una sola vez**, y configura los alias SSH).
-2. Agrega la **llave privada** (`~/.ssh/doralex_ed25519`) como **Secret** de Cursor
-   con nombre `DORALEX_SSH_PRIVATE_KEY` (no se imprime ni se versiona).
-3. En el Cloud Agent: `bash deployment/doralex/scripts/cloud_ssh_bootstrap.sh`
-   habilita `ssh doralex-server`, y entonces se ejecuta la auditoría.
+## Recursos
 
-## Cómo generar este informe
+| Recurso | Valor |
+| ------- | ----- |
+| Hostname | `Doralexgroup` |
+| OS | Ubuntu 24.04.4 LTS |
+| Kernel | 6.8.0-138-generic (x86_64, KVM/QEMU) |
+| CPU | 2 vCPU — AMD EPYC 9354P |
+| RAM | 7.8 GiB (≈7.2 GiB disponible) |
+| Swap | **0 B** (no configurado) |
+| Disco | `/dev/sda1` ext4 96 GB (4.6 GB usado, **92 GB libres**) |
+| Timezone | **`Etc/UTC`** (se requiere `America/Santo_Domingo`, Fase 6) |
+| Locale | `C.UTF-8` / `en_US.UTF-8` |
+| NTP | activo (reloj sincronizado) |
 
-```bash
-# En el servidor (tras autorizar SSH):
-bash /opt/doralex/scripts/audit_server.sh > SERVER_AUDIT_$(date +%Y%m%d_%H%M%S).md
-# Pegar el resultado bajo "Resultados" y commitear (sin secretos).
-```
+## Software presente
 
-## Ítems a auditar (checklist)
+| Componente | Estado |
+| ---------- | ------ |
+| Docker | **29.7.2** (instalado) |
+| Docker Compose | **v5.5.0** (plugin) |
+| PostgreSQL host | no (va en contenedor) |
+| Nginx host | no |
+| Traefik | **sí (contenedor)**, ocupa `:80` y `:443` |
+| ufw | **inactivo** |
+| fail2ban | no detectado |
 
-- [ ] hostname
-- [ ] OS y versión
-- [ ] CPU
-- [ ] RAM
-- [ ] disco
-- [ ] mounts
-- [ ] swap
-- [ ] red
-- [ ] puertos abiertos
-- [ ] firewall
-- [ ] servicios activos
-- [ ] Docker instalado (sí/no)
-- [ ] Docker Compose (sí/no)
-- [ ] PostgreSQL existente (sí/no)
-- [ ] Nginx/Traefik existente (sí/no)
-- [ ] certificados existentes
-- [ ] usuarios
-- [ ] timezone
-- [ ] locale
-- [ ] SSH config
-- [ ] espacio disponible
-- [ ] backups / snapshot del proveedor (si aplica)
+## Red / puertos en escucha (host)
 
-## Resultados
+| Puerto | Servicio | Exposición |
+| ------ | -------- | ---------- |
+| `22/tcp` | sshd | pública |
+| `80/tcp` | traefik | pública |
+| `443/tcp` | traefik | pública |
+| `32768/tcp` | docker-proxy → odoo `8069` | **pública (0.0.0.0)** |
+| `53` | systemd-resolved | loopback |
 
-_Pendiente de ejecución (PENDING_SSH)._
+- IP: `2.25.121.111/24` (eth0) + IPv6 `2a02:4780:95:ec6::1/48`.
+- Firewall de host: **ufw inactivo**; solo reglas de Docker (nft/iptables).
+  `5432` no está publicado al exterior (bien).
 
-## Hallazgos y decisiones
+## SSH (config efectiva)
 
-_Pendiente._ Registrar conflictos de puertos, software preexistente, riesgos de
-seguridad y decisiones derivadas (p. ej. reutilizar o no un PostgreSQL/Nginx ya
-instalado).
+`Port 22`, `PermitRootLogin yes`, `PasswordAuthentication yes`,
+`PubkeyAuthentication yes`. Pendiente de hardening (tras confirmar acceso por
+llave varias veces).
+
+## Seguridad — observaciones
+
+- Un Odoo 18 previo queda **expuesto públicamente** en `:32768`.
+- `PasswordAuthentication yes` y `PermitRootLogin yes` (endurecer luego).
+- `ufw` inactivo (definir 22/80/443 y cerrar el resto).
+- Se detectó un **hash** de contraseña root en la config de cloud-init durante la
+  auditoría; **no** se versiona (se removió del volcado del script por privacidad).
+
+## Decisión requerida (antes de continuar)
+
+El plan Doralex usa Nginx en `:80/:443` y Odoo en `127.0.0.1:8069/8169`. Hay un
+conflicto directo: **Traefik ya ocupa `:80/:443`** y existe el stack `odoo-aeju`
+(Odoo 18). Opciones:
+
+1. **Retirar** el stack previo (`odoo-aeju` + su Traefik) si es desechable, y
+   desplegar Doralex limpio (Nginx + Odoo 19). — requiere tu confirmación explícita.
+2. **Conservarlo** e integrar Doralex detrás del **Traefik existente** (adaptar la
+   arquitectura de reverse proxy a Traefik en vez de Nginx).
+3. **Coexistir** temporalmente en puertos alternos hasta migrar.
+
+`REQUIRED`: indicar qué hacer con `odoo-aeju`/Traefik antes de instalar o desplegar.
+No se modificará nada hasta tu decisión.
