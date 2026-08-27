@@ -66,11 +66,21 @@ copiarlos (company_id fijo, refs Justech, emails/URLs/RNC hardcodeados). Sobre
 [`evidence/hardcode_scan.txt`](evidence/hardcode_scan.txt)). Aún no hay módulos
 custom porque falta acceso a Justgroup (ver `JUSTGROUP_MODULE_INVENTORY.md`).
 
-## Resultado
+## Resultado (estado corregido)
 
 `MODULE_BASELINE_PASS = YES` para el **baseline estándar** en DEV.
-Los módulos custom reutilizables de Justgroup quedan **pendientes de acceso**
-(`JUSTGROUP_ACCESS_REQUIRED`) — no bloquean el baseline estándar.
+
+Distinción de estados (importante):
+
+- `READY_FOR_STANDARD_DATA_LOAD = YES` — el baseline estándar validado puede
+  recibir datos base.
+- `READY_FOR_FULL_DORALEX_DATA_LOAD = PENDING_JUSTGROUP_MODULE_AUDIT` — la
+  preparación completa depende aún de la auditoría real y eventual
+  migración/adaptación de los módulos útiles de Justgroup.
+
+Mientras `JUSTGROUP_AUDIT = PARTIAL` y `CUSTOM_MODULE_MIGRATION = PARTIAL`, **no**
+se marca `READY_FOR_DORALEX_DATA_LOAD = YES`. Estos módulos custom **no bloquean**
+la carga de datos estándar, pero sí la preparación completa.
 
 ## DEV como Golden Environment (validación funcional)
 
