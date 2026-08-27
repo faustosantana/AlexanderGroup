@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_purchase_sale_margin_root"
+              name="Costos y Márgenes"
+              sequence="60"
+              action="action_purchase_sale_margin_board"
+              web_icon="justech_purchase_sale_margin_control,static/description/icon.png"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"/>
+
+    <menuitem id="menu_purchase_sale_margin_board"
+              name="Resumen financiero"
+              parent="menu_purchase_sale_margin_root"
+              action="action_purchase_sale_margin_board"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="5"/>
+
+    <menuitem id="menu_purchase_sale_work_inbox"
+              name="Pendientes"
+              parent="menu_purchase_sale_margin_root"
+              action="action_purchase_sale_work_inbox"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="10"/>
+
+    <menuitem id="menu_purchase_sale_unrelated_docs"
+              name="Compras y ventas sin relacionar"
+              parent="menu_purchase_sale_work_inbox"
+              action="action_purchase_sale_unrelated_docs"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="10"/>
+
+    <menuitem id="menu_purchase_sale_margin_transaction_pending_validation"
+              name="Revisión de Compras"
+              parent="menu_purchase_sale_work_inbox"
+              action="action_purchase_sale_margin_transaction_pending_validation"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"
+              sequence="20"/>
+
+    <menuitem id="menu_purchase_sale_margin_transaction_pending_approval"
+              name="Aprobación de Finanzas"
+              parent="menu_purchase_sale_work_inbox"
+              action="action_purchase_sale_margin_transaction_pending_approval"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"
+              sequence="30"/>
+
+    <menuitem id="menu_purchase_sale_margin_transaction_purchases_without_sale"
+              name="Compras sin Venta"
+              parent="menu_purchase_sale_work_inbox"
+              action="action_purchase_sale_margin_transaction_purchases_without_sale"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="40"/>
+
+    <menuitem id="menu_purchase_sale_margin_transaction_sales_without_cost"
+              name="Ventas sin Costos"
+              parent="menu_purchase_sale_work_inbox"
+              action="action_purchase_sale_margin_transaction_sales_without_cost"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="50"/>
+
+    <menuitem id="menu_purchase_sale_margin_transaction_admin_expenses"
+              name="Gastos Administrativos"
+              parent="menu_purchase_sale_work_inbox"
+              action="action_purchase_sale_margin_transaction_admin_expenses"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"
+              sequence="60"/>
+
+    <menuitem id="menu_purchase_sale_margin_transaction"
+              name="Operaciones"
+              parent="menu_purchase_sale_margin_root"
+              action="action_purchase_sale_margin_transaction"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="20"/>
+
+    <menuitem id="menu_purchase_sale_margins"
+              name="Márgenes"
+              parent="menu_purchase_sale_margin_root"
+              action="action_purchase_sale_margins"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="25"/>
+
+    <menuitem id="menu_purchase_sale_payable_auxiliary_root"
+              name="Cuentas por Pagar"
+              parent="menu_purchase_sale_margin_root"
+              action="action_purchase_sale_payable_auxiliary"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="30"/>
+
+    <menuitem id="menu_purchase_sale_margin_reports"
+              name="Reportes"
+              parent="menu_purchase_sale_margin_root"
+              sequence="40"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"/>
+
+    <menuitem id="menu_purchase_sale_margin_historical_reports"
+              name="Reportes históricos"
+              parent="menu_purchase_sale_margin_reports"
+              action="action_purchase_sale_margin_report_wizard"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="20"/>
+
+    <menuitem id="menu_purchase_sale_cost_vs_sale_report"
+              name="Detalle de Costos vs Ventas"
+              parent="menu_purchase_sale_margin_reports"
+              action="action_purchase_sale_cost_vs_sale_report"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="10"/>
+
+    <menuitem id="menu_purchase_sale_payable_auxiliary_report"
+              name="Cuentas por Pagar"
+              parent="menu_purchase_sale_margin_reports"
+              action="action_purchase_sale_payable_auxiliary_report"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"
+              sequence="15"/>
+
+    <menuitem id="menu_purchase_sale_margin_snapshot"
+              name="Fotos de margen (histórico)"
+              parent="menu_purchase_sale_margin_reports"
+              action="action_purchase_sale_margin_snapshot"
+              groups="justech_purchase_sale_margin_control.group_margin_readonly"
+              sequence="20"/>
+
+    <menuitem id="menu_purchase_sale_margin_tools"
+              name="Herramientas"
+              parent="menu_purchase_sale_margin_root"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"
+              sequence="45"/>
+
+    <menuitem id="menu_purchase_sale_relate_documents_wizard"
+              name="Relacionar documentos"
+              parent="menu_purchase_sale_margin_tools"
+              action="action_purchase_sale_relate_documents_wizard"
+              sequence="5"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"/>
+
+    <menuitem id="menu_purchase_sale_create_transaction_wizard"
+              name="Crear operación manual"
+              parent="menu_purchase_sale_margin_tools"
+              action="action_purchase_sale_create_transaction_wizard"
+              sequence="10"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"/>
+
+    <menuitem id="menu_purchase_sale_register_cost_wizard"
+              name="Registrar costo"
+              parent="menu_purchase_sale_margin_tools"
+              action="action_purchase_sale_register_cost_wizard"
+              sequence="20"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"/>
+
+    <menuitem id="menu_purchase_sale_register_sale_wizard"
+              name="Registrar venta"
+              parent="menu_purchase_sale_margin_tools"
+              action="action_purchase_sale_register_sale_wizard"
+              sequence="25"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"/>
+
+    <menuitem id="menu_purchase_sale_allocate_wizard"
+              name="Asignar costo a venta"
+              parent="menu_purchase_sale_margin_tools"
+              action="action_purchase_sale_allocate_wizard"
+              sequence="30"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"/>
+
+    <menuitem id="menu_purchase_sale_prorate_wizard"
+              name="Prorratear costo adicional"
+              parent="menu_purchase_sale_margin_tools"
+              action="action_purchase_sale_prorate_wizard"
+              sequence="40"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"/>
+
+    <menuitem id="menu_purchase_sale_add_purchase_wizard"
+              name="Agregar órdenes de compra"
+              parent="menu_purchase_sale_margin_tools"
+              action="action_purchase_sale_add_purchase_wizard"
+              sequence="50"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"/>
+
+    <menuitem id="menu_purchase_sale_relate_sale_wizard"
+              name="Relacionar ventas (CxP)"
+              parent="menu_purchase_sale_margin_tools"
+              action="action_purchase_sale_relate_sale_wizard"
+              sequence="55"
+              groups="justech_purchase_sale_margin_control.group_margin_finance"/>
+
+    <menuitem id="menu_purchase_sale_margin_config"
+              name="Configuración"
+              parent="menu_purchase_sale_margin_root"
+              groups="justech_purchase_sale_margin_control.group_margin_admin"
+              sequence="50"/>
+
+    <menuitem id="menu_purchase_sale_reconciliation_rule"
+              name="Reglas de conciliación"
+              parent="menu_purchase_sale_margin_config"
+              action="action_purchase_sale_reconciliation_rule"
+              groups="justech_purchase_sale_margin_control.group_margin_admin"
+              sequence="10"/>
+
+    <menuitem id="menu_purchase_sale_cost_link"
+              name="Enlaces costo-venta (auditoría)"
+              parent="menu_purchase_sale_margin_config"
+              action="action_purchase_sale_cost_link"
+              groups="justech_purchase_sale_margin_control.group_margin_admin"
+              sequence="20"/>
+
+    <menuitem id="menu_purchase_sale_cost_allocation"
+              name="Asignaciones (auditoría)"
+              parent="menu_purchase_sale_margin_config"
+              action="action_purchase_sale_cost_allocation"
+              groups="justech_purchase_sale_margin_control.group_margin_admin"
+              sequence="30"/>
+
+    <menuitem id="menu_purchase_sale_backfill_wizard"
+              name="Cargar histórico 2026"
+              parent="menu_purchase_sale_margin_config"
+              action="action_purchase_sale_backfill_wizard"
+              groups="justech_purchase_sale_margin_control.group_margin_admin"
+              sequence="100"/>
+
+    <menuitem id="menu_purchase_sale_margin_uat_wizard"
+              name="Generar UAT Sprint 6"
+              parent="menu_purchase_sale_margin_config"
+              action="action_purchase_sale_margin_uat_wizard"
+              groups="justech_purchase_sale_margin_control.group_margin_admin"
+              sequence="200"/>
+
+    <menuitem id="menu_purchase_sale_margin_uat_cleanup_wizard"
+              name="Limpiar UAT Sprint 6"
+              parent="menu_purchase_sale_margin_config"
+              action="action_purchase_sale_margin_uat_cleanup_wizard"
+              groups="justech_purchase_sale_margin_control.group_margin_admin"
+              sequence="210"/>
+
+</odoo>

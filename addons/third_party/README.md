@@ -32,4 +32,8 @@ Cada módulo incorporado aquí debe registrar, como mínimo, la siguiente ficha:
 
 ## justgroup_prod_source/
 
-Snapshot code-only from Justgroup PROD (2026-08-27). See `justgroup_prod_source/README.md` and `docs/migration/JUSTGROUP_MODULE_CLASSIFICATION.md`.
+**Deprecated.** Use regenerable vendor snapshot:
+
+`addons/vendor/odoo-custom-addons/` ← `tools/sync_odoo_custom_addons_vendor.sh`
+
+Canonical SoT: `faustosantana/odoo-custom-addons`.

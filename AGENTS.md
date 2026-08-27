@@ -15,6 +15,11 @@ aclaraciones **duraderas y no evidentes**.
 
 ## Cursor Cloud specific instructions
 
+- **Canonical Justgroup addons**: private repo `faustosantana/odoo-custom-addons`.
+  Cloud App tokens for this repo **cannot** read that sibling. Consume only
+  `addons/vendor/odoo-custom-addons/` (generated Wave A/B). Do **not** edit
+  vendored trees; regenerate via `tools/sync_odoo_custom_addons_vendor.sh` on a
+  machine with access to both repos. See `docs/migration/CANONICAL_ADDONS_SOURCE.md`.
 - **Servicios/aplicaciones de esta fase**: no hay servidor Odoo. La "aplicación"
   ejecutable son las herramientas de calidad: validadores + pruebas + formato.
 - **Comandos** (definidos en `Makefile`, `pyproject.toml` y `tools/`):

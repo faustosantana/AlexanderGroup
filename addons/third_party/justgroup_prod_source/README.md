@@ -1,13 +1,8 @@
-# Deprecated local copy
+# Deprecated path
 
-**Do not maintain modules here.**
+Custom Justgroup modules are **not** maintained here.
 
-Canonical source of truth:
+Canonical: `faustosantana/odoo-custom-addons`  
+Vendored for Cloud/Doralex DEV: `addons/vendor/odoo-custom-addons/`
 
-https://github.com/faustosantana/odoo-custom-addons
-
-Tags: `odoo19-baseline`, `justgroup-2026-08`
-
-Consume via clone / submodule / subtree — see that repo’s `docs/DEPLOYMENT.md`.
-
-Previous one-off extract (24 modules) was superseded on 2026-08-27.
+Regenerate with `tools/sync_odoo_custom_addons_vendor.sh`.

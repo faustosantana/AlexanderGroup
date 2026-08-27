@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menús legacy del Centro Fiscal bajo Configuración: se mantienen inactivos.
+         El Centro Fiscal operativo vive en Contabilidad → Auditoría Fiscal
+         (justech_l10n_do_reports). -->
+    <record id="menu_justech_fiscal_admin_root" model="ir.ui.menu">
+        <field name="name">Centro Fiscal (legacy)</field>
+        <field name="sequence">99</field>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="menu_justech_fiscal_admin_center" model="ir.ui.menu">
+        <field name="name">Centro de Administración Fiscal (legacy)</field>
+        <field name="parent_id" ref="menu_justech_fiscal_admin_root"/>
+        <field name="sequence">10</field>
+        <field name="active" eval="False"/>
+    </record>
+</odoo>

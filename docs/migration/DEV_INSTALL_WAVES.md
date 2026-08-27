@@ -1,74 +1,80 @@
-# Doralex DEV — Instalación por olas (WAVE A/B/C) de módulos migrados
+# Doralex DEV — Instalación por olas (WAVE A/B/C)
 
-> Fecha: 2026-08-27. Fuente: `addons/third_party/justgroup_prod_source/` (24 módulos,
-> code-only, migrados por el agente local desde Justgroup). Target: **Doralex DEV**.
-> PROD **no** tocado. Sin `-u all`. Sin datos de Justech.
+> Actualizado: 2026-08-27. Fuente: **vendored snapshot**
+> `addons/vendor/odoo-custom-addons/` regenerado desde
+> `faustosantana/odoo-custom-addons` (SoT). Target: **Doralex DEV** only.
+> PROD **no** tocado. Sin `-u all`. Sin datos reales de Justech/Doralex.
 
-## Pre-check (FASE 2)
+## Delivery (Cloud Agent)
 
-- **Secrets scan**: `validate_repository.py` → **0 secretos reales**. Los 107
-  "hallazgos" del heurístico eran definiciones de campo (`fields.Char`), generadores
-  seguros (`secrets.token_urlsafe`), lecturas `os.environ`/`context.get` y fixtures
-  de test. Se excluyó el código vendorizado (`addons/third_party/`) del heurístico
-  de palabra-clave (se mantiene la detección de bloques de clave privada). Verificado
-  a mano: sin literales de credencial.
-- **Higiene** (`scan_module_hygiene.py`): hallazgos benignos (nombres de modelo
-  `justech.*`, website del autor en manifest, VAT de test). Sin hardcodes de
-  credencial.
-- **Bug corregido en `.gitignore`**: la regla `data/` (para filestore runtime)
-  excluía los `data/` de los módulos Odoo. Corregido a `/data/` (root). Esto NO
-  recupera los archivos ya perdidos en el commit `e42a08c` (nunca se commitearon);
-  requiere que el agente local **re-commitee** los `data/` ahora que la regla está
-  arreglada.
-- **Limpieza**: 234 archivos AppleDouble `._*` (basura de tar en macOS) eliminados.
+Cursor Cloud no puede leer el repo privado canónico. Consume únicamente:
 
-## Olas de instalación
+```
+addons/vendor/odoo-custom-addons/
+```
 
-### WAVE A — Community-safe (instaladas en DEV)
+Regenerar (máquina local con acceso a ambos repos):
 
-| Módulo | Estado |
-| ------ | ------ |
-| `justech_core` | installed |
-| `bi_convert_purchase_from_sales` | installed |
-| `multi_invoice_manual_payment_prod` | installed |
-| `justech_accounting_recovery` | installed |
-| `justech_quotation_client_dedup` | installed |
-| `justech_sale_purchase_trace` | installed |
+```bash
+bash tools/sync_odoo_custom_addons_vendor.sh
+```
 
-Post-install: `dev /web/health` = 200 (healthy estable), **0 runtime errors**,
-golden env **9/9**, 6-company **6/6** (evidencia en `evidence/`).
+Provenance: `ORIGIN_REF.json` + `WAVES.json`.
 
-### WAVE B — Requiere adaptación (bloqueadas: migración incompleta)
+## WAVE A — Community-safe (código listo para DEV)
 
-`justech_l10n_do_base`, `justech_l10n_do_ncf`, `justech_fiscal_admin`,
-`justech_vendor_bill_po_control`, `justech_l10n_do_adel_freeze`, más varias de
-Wave A tail (`justech_report_identity_guard`, `justech_sale_terms_guard`,
-`justech_purchase_sale_margin_control`, `justech_approval_flow`, `justech_warranty`,
-`justech_global_audit_log`, `l10n_do_accounting`) **no** instalables **todavía**:
-les faltan archivos `data/*.xml`/`.csv` en el repo (excluidos por el bug `.gitignore`).
+| Módulo |
+|--------|
+| `bi_convert_purchase_from_sales` |
+| `justech_approval_flow` |
+| `justech_core` |
+| `justech_global_audit_log` |
+| `justech_purchase_sale_margin_control` |
+| `justech_quotation_client_dedup` |
+| `justech_report_identity_guard` |
+| `justech_sale_purchase_trace` |
+| `justech_sale_terms_guard` |
+| `justech_warranty` |
+| `l10n_do_accounting` |
+| `multi_invoice_manual_payment_prod` |
 
-### WAVE C — Enterprise-blocked (no instalar)
+`WAVE_A_READY = YES` (código completo en vendor; instalación dirigida en DEV pendiente de operador).
+
+## WAVE B — Requiere adaptación fiscal/config (código vendorizado)
+
+| Módulo | Nota |
+|--------|------|
+| `justech_accounting_recovery` | Adaptar a compañías Doralex |
+| `justech_admin_center` | Plataforma admin; adaptar secretos vía env |
+| `justech_fiscal_admin` | Fiscal DO — adaptar |
+| `justech_l10n_do_adel_freeze` | Freeze fiscal |
+| `justech_l10n_do_base` | Base l10n DO |
+| `justech_l10n_do_ncf` | NCF |
+| `justech_modules` | Catálogo módulos Justech |
+| `justech_vendor_bill_po_control` | Vendor bill ↔ PO |
+
+`WAVE_B_READY = PARTIAL` (código presente; no instalar en masa sin adaptar compañías/fiscal).
+
+## WAVE C — Enterprise-blocked (solo en canónico)
 
 `justech_l10n_do_payments_withholding`, `justech_l10n_do_reports`,
-`justech_l10n_do_treasury` → dependen de `account_accountant`/`accountant`
-(**Enterprise**). Doralex es Community → `BLOCKED_BY_ENTERPRISE_SOURCE`.
+`justech_l10n_do_treasury`, payroll suite (`justech_l10n_do_hr_payroll*`),
+`studio_hotfix`.
 
-### NOT_APPLICABLE / HOLD
+`ENTERPRISE_BLOCKED = 11` — no vendorizados en AlexanderGroup.
 
-`justech_modules`, `justech_admin_center` (plataforma interna Justech de
-licencias/admin), `justech_security_ux` (dep `justech_ecf_core` ausente + Enterprise).
+## NOT_APPLICABLE
 
-## Blocker real restante (accionable por el agente LOCAL)
+DGCP / ECF / managed_services / mail policy / recurring_fee / `justech_security_ux`
+(depende ECF). Permanecen en canónico; no Wave A/B.
 
-15 de 24 módulos tienen sus `data/` **ausentes en el repo** por el bug de
-`.gitignore` (ya corregido). Para completar Wave B se necesita **re-commit desde el
-agente local** (que tiene el código en disco / acceso a Justgroup): con la regla ya
-arreglada, `git add addons/third_party/justgroup_prod_source/**/data/**` + push.
-Luego, desde Doralex, se instalan dirigidos en DEV. **No** se pueden reconstruir
-esos `data/` aquí sin inventarlos (contienen tipos de documento fiscal, secuencias,
-crons, catálogos).
+## addons_path (DEV)
 
-## Reglas respetadas
+```
+/mnt/enterprise,/mnt/custom-addons,/mnt/vendor/custom/justech,/mnt/vendor/third_party
+```
 
-Sin `-u all`; instalación dirigida por módulo con rollback; PROD intacto; sin datos
-de Justech; sin reconstruir Enterprise; sin copiar el árbol Enterprise de Justgroup.
+## Reglas
+
+Sin `-u all`; instalación dirigida; Justgroup PROD y Doralex PROD intactos;
+sin carga de datos reales todavía → `READY_FOR_FULL_DORALEX_DATA_LOAD = NO`.

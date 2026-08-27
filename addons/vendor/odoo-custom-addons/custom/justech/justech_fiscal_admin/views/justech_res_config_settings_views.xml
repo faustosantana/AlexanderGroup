@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Retirar app Settings "Fiscal Justech" — administración solo en Administración Justech -->
+    <record id="res_config_settings_view_form_fiscal_admin" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.fiscal.admin</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Fiscal Justech" string="Fiscal Justech" name="justech_fiscal_settings"
+                     invisible="1"
+                     groups="base.group_system">
+                    <block title="Centro de Administración Fiscal" name="justech_fiscal_admin_block">
+                        <setting string="Centro Fiscal Justech"
+                                 help="Use Administración Justech para gobernar el stack fiscal.">
+                            <p class="text-muted mb-0">
+                                Esta sección se administrará desde Ajustes → Administración Justech.
+                            </p>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

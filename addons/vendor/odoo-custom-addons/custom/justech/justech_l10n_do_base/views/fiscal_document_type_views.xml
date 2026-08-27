@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_do_fiscal_document_type_tree" model="ir.ui.view">
+        <field name="name">justech.do.fiscal.document.type.list</field>
+        <field name="model">justech.do.fiscal.document.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="prefix"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="is_sale_document"/>
+                <field name="is_purchase_document"/>
+                <field name="requires_vat"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_justech_do_fiscal_document_type_form" model="ir.ui.view">
+        <field name="name">justech.do.fiscal.document.type.form</field>
+        <field name="model">justech.do.fiscal.document.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="prefix"/>
+                            <field name="code"/>
+                            <field name="series"/>
+                        </group>
+                        <group>
+                            <field name="move_type"/>
+                            <field name="requires_vat"/>
+                            <field name="auto_assign_on_post"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group string="Classification">
+                        <field name="is_sale_document"/>
+                        <field name="is_purchase_document"/>
+                        <field name="is_credit_note"/>
+                        <field name="is_debit_note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

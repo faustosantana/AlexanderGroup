@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="paperformat_cost_vs_sale_landscape" model="report.paperformat">
+        <field name="name">Costos vs Ventas A4 Horizontal</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">28</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">8</field>
+        <field name="margin_right">8</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">22</field>
+        <field name="dpi">96</field>
+    </record>
+
+    <record id="view_purchase_sale_cost_vs_sale_report_form" model="ir.ui.view">
+        <field name="name">purchase.sale.cost.vs.sale.report.form</field>
+        <field name="model">purchase.sale.cost.vs.sale.report</field>
+        <field name="arch" type="xml">
+            <form string="Detalle de Costos vs Ventas" class="jm_cost_vs_sale_wizard">
+                <div class="jm_report_wizard_root">
+                    <div class="jm_report_section jm_report_section_main">
+                        <div class="jm_report_col">
+                            <div class="jm_report_section_title">Período</div>
+                            <div class="jm_report_field">
+                                <label for="date_from" string="Desde"/>
+                                <field name="date_from" nolabel="1"/>
+                            </div>
+                            <div class="jm_report_field">
+                                <label for="date_to" string="Hasta"/>
+                                <field name="date_to" nolabel="1"/>
+                            </div>
+                            <div class="jm_report_field">
+                                <label for="date_basis" string="Fecha basada en"/>
+                                <field name="date_basis" nolabel="1"/>
+                            </div>
+                            <div class="jm_report_field" groups="base.group_multi_company">
+                                <label for="company_id" string="Compañía principal"/>
+                                <field name="company_id" nolabel="1"/>
+                            </div>
+                            <div class="jm_report_field jm_report_field_tags" groups="base.group_multi_company">
+                                <label for="company_ids" string="Compañías"/>
+                                <field name="company_ids" nolabel="1" widget="many2many_tags" options="{'no_create': True}"/>
+                            </div>
+                        </div>
+                        <div class="jm_report_col">
+                            <div class="jm_report_section_title">Filtros</div>
+                            <div class="jm_report_field">
+                                <label for="vendor_id" string="Proveedor"/>
+                                <field name="vendor_id" nolabel="1" options="{'no_create': True}"/>
+                            </div>
+                            <div class="jm_report_field">
+                                <label for="customer_id" string="Cliente"/>
+                                <field name="customer_id" nolabel="1" options="{'no_create': True}"/>
+                            </div>
+                            <div class="jm_report_field">
+                                <label for="vendor_payment_state" string="Estado pago proveedor"/>
+                                <field name="vendor_payment_state" nolabel="1"/>
+                            </div>
+                            <div class="jm_report_field">
+                                <label for="customer_payment_state" string="Estado cobro cliente"/>
+                                <field name="customer_payment_state" nolabel="1"/>
+                            </div>
+                            <div class="jm_report_field">
+                                <label for="vendor_doc_type" string="Documentos proveedor"/>
+                                <field name="vendor_doc_type" nolabel="1"/>
+                            </div>
+                            <div class="jm_report_field jm_report_field_narrow">
+                                <label for="relation_filter" string="Estado de relación"/>
+                                <field name="relation_filter" nolabel="1"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="jm_report_section">
+                        <div class="jm_report_section_title_row">
+                            <div class="jm_report_section_title">Operaciones a mostrar</div>
+                            <div class="jm_report_ops_toolbar">
+                                <button name="action_select_all_operation_types" type="object"
+                                        string="Seleccionar todas" class="btn btn-sm btn-secondary"/>
+                                <button name="action_clear_operation_types" type="object"
+                                        string="Limpiar" class="btn btn-sm btn-secondary"/>
+                            </div>
+                        </div>
+                        <div class="text-muted jm_report_all_hint"
+                             invisible="not (show_complete and show_sales_without_cost and show_costs_without_sale and show_incomplete)">
+                            ✓ Todas las operaciones
+                        </div>
+                        <!-- Backend flag kept invisible; driven by toolbar / four cards -->
+                        <field name="show_all_operations" invisible="1"/>
+                        <div class="jm_report_filter_grid">
+                            <div class="jm_report_filter_card" data-jm-op-card="show_complete">
+                                <field name="show_complete" nolabel="1"/>
+                                <div class="jm_report_filter_card_text">
+                                    <span class="jm_report_filter_card_title">Operaciones completas</span>
+                                    <span class="jm_report_filter_card_desc">Venta + costo atribuible</span>
+                                </div>
+                            </div>
+                            <div class="jm_report_filter_card" data-jm-op-card="show_sales_without_cost">
+                                <field name="show_sales_without_cost" nolabel="1"/>
+                                <div class="jm_report_filter_card_text">
+                                    <span class="jm_report_filter_card_title">Ventas sin costos</span>
+                                    <span class="jm_report_filter_card_desc">Venta sin costo asociado</span>
+                                </div>
+                            </div>
+                            <div class="jm_report_filter_card" data-jm-op-card="show_costs_without_sale">
+                                <field name="show_costs_without_sale" nolabel="1"/>
+                                <div class="jm_report_filter_card_text">
+                                    <span class="jm_report_filter_card_title">Costos sin venta</span>
+                                    <span class="jm_report_filter_card_desc">Costo sin venta asociada</span>
+                                </div>
+                            </div>
+                            <div class="jm_report_filter_card" data-jm-op-card="show_incomplete">
+                                <field name="show_incomplete" nolabel="1"/>
+                                <div class="jm_report_filter_card_text">
+                                    <span class="jm_report_filter_card_title">Operaciones incompletas</span>
+                                    <span class="jm_report_filter_card_desc">Requieren revisión</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="jm_report_section">
+                        <div class="jm_report_section_title">Opciones</div>
+                        <div class="jm_report_options_grid">
+                            <div class="jm_report_field">
+                                <label for="report_layout" string="Tipo de reporte"/>
+                                <field name="report_layout" nolabel="1"/>
+                            </div>
+                            <div class="jm_report_field">
+                                <label for="finance_view" string="Vista financiera"/>
+                                <field name="finance_view" nolabel="1"/>
+                            </div>
+                            <div class="jm_report_field">
+                                <label for="sort_by" string="Ordenar por"/>
+                                <field name="sort_by" nolabel="1"/>
+                            </div>
+                            <div class="jm_report_field jm_report_field_check">
+                                <div class="jm_report_check_row">
+                                    <field name="show_fiscal_detail" nolabel="1"/>
+                                    <label for="show_fiscal_detail" string="Mostrar detalle fiscal"/>
+                                </div>
+                            </div>
+                            <div class="jm_report_field jm_report_field_check"
+                                 groups="justech_purchase_sale_margin_control.group_margin_admin">
+                                <div class="jm_report_check_row">
+                                    <field name="only_uat" nolabel="1"/>
+                                    <label for="only_uat" string="Solo fixtures UAT"/>
+                                </div>
+                            </div>
+                            <field name="export_format" invisible="1"/>
+                        </div>
+                    </div>
+
+                    <div invisible="not export_filename" class="jm_report_export_name">
+                        <field name="export_filename" readonly="1"/>
+                    </div>
+                </div>
+                <footer class="jm_report_wizard_footer">
+                    <button name="action_preview" type="object" string="Previsualizar" class="btn-primary"/>
+                    <button name="action_download_pdf" type="object" string="Descargar PDF" class="btn-secondary"/>
+                    <button name="action_download_xlsx" type="object" string="Descargar Excel" class="btn-secondary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_cost_vs_sale_report" model="ir.actions.act_window">
+        <field name="name">Detalle de Costos vs Ventas</field>
+        <field name="res_model">purchase.sale.cost.vs.sale.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <template id="report_cost_vs_sale_pdf_document">
+        <t t-call="web.basic_layout">
+            <t t-set="company" t-value="doc.company_id or company"/>
+            <t t-set="companies" t-value="doc.company_ids or doc.company_id"/>
+            <t t-set="layout" t-value="doc.report_layout or 'compact'"/>
+            <t t-set="fiscal" t-value="doc.show_fiscal_detail"/>
+
+            <!-- HTML preview only: larger type for on-screen readability (PDF keeps compact sizes) -->
+            <t t-if="report_type == 'html'">
+                <style type="text/css">
+                    .header { font-size: 12px !important; line-height: 1.35 !important; }
+                    .header div { font-size: 12px !important; }
+                    .jm-body,
+                    .jm-excel-table { font-size: 12px !important; line-height: 1.35 !important; }
+                    .jm-excel-table th { font-size: 13px !important; }
+                    .jm-excel-table td { font-size: 12px !important; }
+                    .footer { font-size: 11px !important; }
+                </style>
+            </t>
+
+            <div class="header" style="width:100%; font-size:7px; color:#172B4D; line-height:1.2; padding-top:2px; padding-bottom:3px; box-sizing:border-box;">
+                <table style="width:100%; border-collapse:collapse; table-layout:fixed; border:none;">
+                    <tr>
+                        <td style="width:28%; vertical-align:middle; padding:0; border:none; background:transparent;">
+                            <t t-if="company.logo">
+                                <img t-att-src="image_data_uri(company.logo)" style="max-height:32px; max-width:110px; height:auto; width:auto; object-fit:contain; display:block; margin:0 0 2px 0; border:none;"/>
+                            </t>
+                            <div style="font-weight:bold; font-size:9.5px; color:#123F63; line-height:1.15; border:none;">
+                                <t t-esc="company.name"/>
+                            </div>
+                        </td>
+                        <td style="width:44%; vertical-align:middle; text-align:center; padding:0 6px; border:none; background:transparent;">
+                            <div style="font-size:13px; font-weight:bold; color:#123F63; line-height:1.15; border:none;">
+                                DETALLE DE COSTOS VS VENTAS
+                                <t t-if="layout == 'summary'"> — RESUMEN</t>
+                                <t t-elif="layout == 'detailed'"> — DETALLADO</t>
+                            </div>
+                        </td>
+                        <td style="width:28%; vertical-align:middle; text-align:right; padding:0; border:none; background:transparent; color:#172B4D;">
+                            <div style="font-size:9px; font-weight:bold; white-space:nowrap; border:none;">
+                                <t t-esc="doc._format_report_date(doc.date_from)"/> – <t t-esc="doc._format_report_date(doc.date_to)"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <t t-set="flines" t-value="doc._filter_header_lines()"/>
+                <div style="font-size:7.2px; color:#4A5568; margin-top:3px; line-height:1.3; border:none;">
+                    <div style="font-weight:700; color:#123F63;">Operaciones: <t t-esc="doc._report_scope_label()"/></div>
+                    <div><t t-esc="flines[1]"/></div>
+                    <div style="font-size:6.8px; margin-top:1px;">Generado por <t t-esc="user.name"/></div>
+                </div>
+            </div>
+
+            <div class="jm-body" style="font-size:7.5px; color:#172B4D; line-height:1.15; font-family:DejaVu Sans,Helvetica,Arial,sans-serif; margin-top:4px;">
+                <t t-set="grand" t-value="doc._prepare_qweb_grand()"/>
+                <t t-set="sales" t-value="grand.get('sales') or grand.get('operations') or []"/>
+
+                <t t-if="layout != 'summary'">
+                    <table class="jm-excel-table" style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:7.5px; color:#172B4D;">
+                        <thead>
+                            <tr>
+                                <th colspan="7" style="padding:3px 4px; text-align:center; vertical-align:middle; font-size:8px; font-weight:bold; color:#FFFFFF; background:#1A5A8A; border:1px solid #123F63;">COSTOS / PROVEEDORES</th>
+                                <th colspan="6" style="padding:3px 4px; text-align:center; vertical-align:middle; font-size:8px; font-weight:bold; color:#FFFFFF; background:#0B5A5E; border:1px solid #0B5A5E;">VENTA / CLIENTE</th>
+                            </tr>
+                            <tr style="background:#123F63; color:#FFFFFF; font-size:7.5px;">
+                                <th style="width:11.6%; padding:4px 3px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; border:1px solid #8EA0B5;">Proveedor</th>
+                                <th style="width:5.2%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; border:1px solid #8EA0B5;">Fecha</th>
+                                <th style="width:11.6%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; border:1px solid #8EA0B5;">Factura / OC</th>
+                                <th style="width:7.5%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; border:1px solid #8EA0B5;">Subtotal</th>
+                                <th style="width:5.8%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; border:1px solid #8EA0B5;">ITBIS</th>
+                                <th style="width:8.1%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; border:1px solid #8EA0B5;">Total</th>
+                                <th style="width:8.2%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; border:1px solid #8EA0B5;">Estado / Saldo</th>
+                                <th style="width:13.4%; padding:4px 3px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; background:#0B5A5E; border:1px solid #0B5A5E;">Cliente</th>
+                                <th style="width:4.2%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; background:#0B5A5E; border:1px solid #0B5A5E;">Fecha</th>
+                                <th style="width:10.9%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; background:#0B5A5E; border:1px solid #0B5A5E;">Factura / NCF</th>
+                                <th style="width:5.0%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; background:#0B5A5E; border:1px solid #0B5A5E;">Subtotal</th>
+                                <th style="width:3.4%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; background:#0B5A5E; border:1px solid #0B5A5E;">ITBIS</th>
+                                <th style="width:5.1%; padding:4px 2px; text-align:center; vertical-align:middle; font-weight:bold; color:#FFFFFF; background:#0B5A5E; border:1px solid #0B5A5E;">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="sales" t-as="op">
+                                <t t-set="sale" t-value="op['sale']"/>
+                                <t t-set="curr" t-value="op['currency']"/>
+                                <t t-set="mpct" t-value="op.get('margin_pct') or 0.0"/>
+                                <t t-set="mcolor" t-value="'#64748B' if (op.get('margin_pending_rate') or op.get('incomplete_sale_only') or op.get('incomplete_cost_only')) else ('#15803D' if mpct &gt;= 15 else ('#CA8A04' if mpct &gt;= 5 else '#DC2626'))"/>
+                                <t t-set="cost_list" t-value="op['costs'] if op['costs'] else [{'__empty': True, '__sale_only': True}]"/>
+                                <t t-set="nrows" t-value="len(cost_list)"/>
+                                <t t-set="sale_empty" t-value="op.get('incomplete_cost_only')"/>
+
+                                <t t-foreach="cost_list" t-as="c">
+                                    <t t-set="has_cost" t-value="not c.get('__empty')"/>
+                                    <t t-set="ccurr" t-value="(c.get('display_currency') or c.get('currency') or curr) if has_cost else curr"/>
+                                    <tr class="jm-sale" t-att-style="'background:' + ('#F8FAFC' if c_index % 2 else '#FFFFFF')">
+                                        <td style="padding:2px 3px; border-bottom:1px solid #8EA0B5; border-right:1px solid #8EA0B5; vertical-align:middle; text-align:left; color:#172B4D; font-weight:600;">
+                                            <t t-if="has_cost"><t t-esc="c.get('vendor') or '—'"/></t>
+                                            <t t-else=""><span style="color:#64748B; font-weight:700;">SIN COSTOS RELACIONADOS</span></t>
+                                        </td>
+                                        <td style="padding:2px 2px; border-bottom:1px solid #8EA0B5; border-right:1px solid #8EA0B5; text-align:center; vertical-align:middle; white-space:nowrap;">
+                                            <t t-if="has_cost"><t t-esc="doc._format_report_date(c.get('date'))"/></t>
+                                        </td>
+                                        <td style="padding:2px 2px; border-bottom:1px solid #8EA0B5; border-right:1px solid #8EA0B5; text-align:center; vertical-align:middle; color:#172B4D;">
+                                            <t t-if="has_cost and c.get('kind') == 'inventory'">
+                                                <div style="font-weight:600;"><t t-esc="c.get('bill') or '—'"/></div>
+                                                <div style="font-size:6px; color:#4A5568;"><t t-esc="c.get('origin_note') or 'Inventario consumido'"/></div>
+                                            </t>
+                                            <t t-elif="has_cost and (c.get('bill') or c.get('po'))">
+                                                <t t-if="c.get('po')">
+                                                    <div style="font-weight:600;">OC <t t-esc="c['po']"/></div>
+                                                </t>
+                                                <t t-if="c.get('bill')">
+                                                    <div style="font-weight:600;"><t t-esc="c['bill']"/></div>
+                                                    <t t-if="c.get('ncf')">
+                                                        <div style="font-size:6px; color:#4A5568;">NCF: <t t-esc="c['ncf']"/></div>
+                                                    </t>
+                                                    <t t-if="not c.get('po')">
+                                                        <div style="font-size:6px; color:#4A5568;">Sin OC relacionada</div>
+                                                    </t>
+                                                </t>
+                                                <t t-elif="c.get('po')">
+                                                    <div style="font-size:6px; color:#4A5568;">Sin factura</div>
+                                                </t>
+                                                <t t-if="c.get('is_credit_note')">
+                                                    <div style="font-size:6px; color:#7C3AED;">Nota de crédito</div>
+                                                </t>
+                                            </t>
+                                            <t t-else="">
+                                                <span style="color:#64748B;">—</span>
+                                            </t>
+                                        </td>
+                                        <td style="padding:2px 2px; border-bottom:1px solid #8EA0B5; border-right:1px solid #8EA0B5; text-align:right; vertical-align:middle; white-space:nowrap; font-weight:normal;">
+                                            <t t-if="has_cost"><t t-esc="doc._format_amount(c.get('untaxed') or 0.0, ccurr)"/></t>
+                                            <t t-else=""><t t-esc="doc._format_amount(0.0, curr)"/></t>
+                                        </td>
+                                        <td style="padding:2px 2px; border-bottom:1px solid #8EA0B5; border-right:1px solid #8EA0B5; text-align:right; vertical-align:middle; white-space:nowrap; color:#4A5568; font-weight:normal;">
+                                            <t t-if="has_cost"><t t-esc="doc._format_tax_display(c.get('tax') or 0.0, ccurr, False)"/></t>
+                                        </td>
+                                        <td style="padding:2px 2px; border-bottom:1px solid #8EA0B5; border-right:1px solid #8EA0B5; text-align:right; vertical-align:middle; white-space:nowrap; font-weight:bold;">
+                                            <t t-if="has_cost"><t t-esc="doc._format_amount(c.get('total') or 0.0, ccurr)"/></t>
+                                        </td>
+                                        <td style="padding:2px 2px; border-bottom:1px solid #8EA0B5; border-right:1px solid #123F63; text-align:center; vertical-align:middle; line-height:1.2;">
+                                            <t t-if="has_cost">
+                                                <div t-att-style="'font-size:6.5px; font-weight:700; color:' + (c.get('payment_color') or '#64748B')">
+                                                    <t t-esc="c.get('payment_badge') or '—'"/>
+                                                </div>
+                                                <t t-if="c_index == 0 and op.get('relation_badge')">
+                                                    <div t-att-style="'font-size:6px; font-weight:700; color:' + ('#15803D' if op.get('relation_status') == 'confirmed' else ('#CA8A04' if op.get('relation_status') == 'unconfirmed' else '#64748B'))">
+                                                        <t t-esc="op.get('relation_badge')"/>
+                                                    </div>
+                                                </t>
+                                                <t t-if="c_index == 0 and op.get('cost_stage_badge')">
+                                                    <div style="font-size:5.5px; font-weight:600; color:#334155;">
+                                                        <t t-esc="op.get('cost_stage_badge')"/>
+                                                    </div>
+                                                </t>
+                                                <t t-if="c.get('residual_display') is not False">
+                                                    <div style="font-size:6.5px; text-align:right; color:#172B4D; white-space:nowrap;">
+                                                        <t t-esc="doc._format_amount(c.get('residual_display') or 0.0, ccurr)"/>
+                                                    </div>
+                                                </t>
+                                                <t t-elif="c.get('kind') == 'po' or not c.get('bill')">
+                                                    <div style="font-size:6.5px; color:#4A5568;">—</div>
+                                                </t>
+                                                <t t-if="c.get('abono') and c.get('is_credit_note')">
+                                                    <div style="font-size:6px; color:#7C3AED; text-align:right; white-space:nowrap;">
+                                                        NC <t t-esc="doc._format_amount(c['abono'], ccurr)"/>
+                                                    </div>
+                                                </t>
+                                                <t t-elif="c.get('abono') and (c.get('residual_display') or 0.0) &gt; 0.005">
+                                                    <div style="font-size:6px; color:#4A5568; text-align:right; white-space:nowrap;">
+                                                        Abonado <t t-esc="doc._format_amount(c['abono'], ccurr)"/>
+                                                    </div>
+                                                </t>
+                                                <t t-elif="c.get('abono') and c.get('abono_note')">
+                                                    <div style="font-size:6px; color:#4A5568; text-align:right; white-space:nowrap;">
+                                                        <t t-esc="c['abono_note']"/> <t t-esc="doc._format_amount(c['abono'], ccurr)"/>
+                                                    </div>
+                                                </t>
+                                            </t>
+                                        </td>
+
+                                        <t t-if="c_index == 0">
+                                            <td t-att-rowspan="nrows" style="padding:2px 3px; border-bottom:1.5px solid #123F63; border-right:1px solid #8EA0B5; vertical-align:middle; background:#F0FDF4; text-align:left;">
+                                                <t t-if="sale_empty">
+                                                    <div style="font-weight:bold; font-size:8px; color:#64748B;">SIN VENTA RELACIONADA</div>
+                                                </t>
+                                                <t t-else="">
+                                                <div class="jm-client" style="font-weight:bold; font-size:8.5px; color:#172B4D; line-height:1.15; max-height:2.4em; overflow:hidden; word-break:break-word;">
+                                                    <t t-esc="sale['customer'] or '—'"/>
+                                                </div>
+                                                <t t-if="sale.get('is_estimated')">
+                                                    <div style="font-size:6.5px; color:#CA8A04; font-weight:bold; margin-top:1px;">ESTIMADA</div>
+                                                </t>
+                                                <t t-else="">
+                                                    <div style="font-size:6.5px; color:#0B5A5E; font-weight:bold; margin-top:1px;">FACTURADA</div>
+                                                    <div t-att-style="'font-size:6.5px; font-weight:600; color:' + (sale.get('collection_color') or '#64748B')">
+                                                        <t t-esc="sale.get('collection_badge') or ''"/>
+                                                    </div>
+                                                    <t t-if="sale.get('residual_display') is not False and (sale.get('residual_display') or 0.0) &gt; 0.005">
+                                                        <div style="font-size:6.5px; color:#172B4D;">
+                                                            Saldo <t t-esc="doc._format_amount(sale.get('residual_display') or 0.0, curr)"/>
+                                                        </div>
+                                                    </t>
+                                                </t>
+                                                </t>
+                                            </td>
+                                            <td t-att-rowspan="nrows" style="padding:2px 2px; border-bottom:1.5px solid #123F63; border-right:1px solid #8EA0B5; text-align:center; vertical-align:middle; background:#F0FDF4; white-space:nowrap;">
+                                                <t t-if="not sale_empty"><t t-esc="doc._format_report_date(sale.get('date')) or '—'"/></t>
+                                                <t t-else="">—</t>
+                                            </td>
+                                            <td t-att-rowspan="nrows" style="padding:2px 2px; border-bottom:1.5px solid #123F63; border-right:1px solid #8EA0B5; text-align:center; vertical-align:middle; background:#F0FDF4;">
+                                                <t t-if="sale_empty">
+                                                    <div style="font-size:6.5px; color:#64748B;">—</div>
+                                                </t>
+                                                <t t-elif="sale.get('is_estimated')">
+                                                    <div style="font-weight:600; color:#172B4D;"><t t-esc="op.get('sale_doc') or sale.get('invoice_label') or 'Venta estimada'"/></div>
+                                                    <div style="font-size:6px; color:#4A5568;">Venta estimada</div>
+                                                </t>
+                                                <t t-else="">
+                                                    <div style="font-weight:600; color:#172B4D;"><t t-esc="sale.get('invoice_label') or '—'"/></div>
+                                                    <t t-if="sale.get('ncf')">
+                                                        <div style="font-size:6px; color:#4A5568;">NCF: <t t-esc="sale['ncf']"/></div>
+                                                    </t>
+                                                </t>
+                                                <t t-if="layout == 'detailed' and op.get('tx_number')">
+                                                    <div style="font-size:6px; color:#4A5568;">Ref. <t t-esc="op['tx_number']"/></div>
+                                                </t>
+                                            </td>
+                                            <td t-att-rowspan="nrows" style="padding:2px 2px; border-bottom:1.5px solid #123F63; border-right:1px solid #8EA0B5; text-align:right; vertical-align:middle; background:#F0FDF4; white-space:nowrap; font-weight:normal;">
+                                                <t t-if="not sale_empty"><t t-esc="doc._format_amount(sale['untaxed'], curr)"/></t>
+                                                <t t-else="">—</t>
+                                            </td>
+                                            <td t-att-rowspan="nrows" style="padding:2px 2px; border-bottom:1.5px solid #123F63; border-right:1px solid #8EA0B5; text-align:right; vertical-align:middle; background:#F0FDF4; white-space:nowrap; color:#4A5568; font-weight:normal;">
+                                                <t t-if="not sale_empty"><t t-esc="doc._format_tax_display(sale['tax'], curr, sale.get('tax_label'))"/></t>
+                                            </td>
+                                            <td t-att-rowspan="nrows" style="padding:2px 2px; border-bottom:1.5px solid #123F63; text-align:right; vertical-align:middle; background:#F0FDF4; white-space:nowrap; font-weight:bold;">
+                                                <t t-if="not sale_empty"><t t-esc="doc._format_amount(sale['total'], curr)"/></t>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+
+                                <tr style="background:#E8EEF4; page-break-inside:avoid;">
+                                    <td colspan="13" style="padding:3px 8px; border-bottom:2px solid #123F63; font-size:8px; color:#172B4D; white-space:nowrap;">
+                                        <span style="display:inline-block; width:26%; color:#172B4D; font-weight:700;">TOTAL COSTOS <t t-esc="doc._format_amount(op['cost_untaxed'], curr)"/></span>
+                                        <span style="display:inline-block; width:22%; color:#172B4D; font-weight:700;">
+                                            <t t-if="sale_empty">VENTA —</t>
+                                            <t t-else="">VENTA <t t-esc="doc._format_amount(sale['untaxed'], curr)"/></t>
+                                        </span>
+                                        <span class="jm-margin-hero" t-att-style="'display:inline-block; width:34%; font-weight:700; color:' + mcolor">
+                                            <t t-if="op.get('margin_pending_rate')">
+                                                MARGEN pendiente tasa
+                                            </t>
+                                            <t t-elif="op.get('incomplete_cost_only')">
+                                                MARGEN PENDIENTE
+                                            </t>
+                                            <t t-elif="op.get('incomplete_sale_only')">
+                                                MARGEN PENDIENTE DE COSTO <t t-esc="doc._format_amount(op['margin'], curr)"/>
+                                            </t>
+                                            <t t-else="">
+                                                MARGEN <t t-esc="doc._format_amount(op['margin'], curr)"/> · <t t-esc="'%.2f' % mpct"/>%
+                                            </t>
+                                        </span>
+                                        <t t-if="op.get('relation_badge')">
+                                            <span t-att-style="'display:inline-block; margin-left:6px; font-weight:700; font-size:7.5px; color:' + ('#15803D' if op.get('relation_status') == 'confirmed' else ('#CA8A04' if op.get('relation_status') == 'unconfirmed' else '#64748B'))">
+                                                · <t t-esc="op.get('relation_badge')"/>
+                                            </span>
+                                        </t>
+                                        <t t-if="op.get('cost_stage_badge')">
+                                            <span style="display:inline-block; margin-left:4px; font-weight:600; font-size:6.5px; color:#334155;">
+                                                · <t t-esc="op.get('cost_stage_badge')"/>
+                                            </span>
+                                        </t>
+                                        <t t-if="op.get('margin_state_short')">
+                                            <span t-att-style="'display:inline-block; width:16%; text-align:right; font-weight:700; font-size:7.5px; color:' + (op.get('margin_state_color') or '#4A5568')">
+                                                <t t-esc="op['margin_state_short']"/>
+                                            </span>
+                                        </t>
+                                        <span t-att-style="'display:none;'" t-esc="op.get('margin_label') or ''"/>
+                                        <span t-att-style="'display:none;'" t-esc="op.get('sale_number') or (op_index + 1)"/>
+                                        <t t-if="op.get('multi_currency') and op.get('conversions')">
+                                            <div style="font-size:6.5px; color:#4A5568; margin-top:1px; white-space:normal;">
+                                                <t t-esc="op['conversions'][0]"/>
+                                            </div>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </t>
+
+                <div class="jm-dashboard" style="margin-top:10px; page-break-inside:avoid;">
+                    <div style="font-size:10px; font-weight:bold; color:#123F63; border-bottom:1.5px solid #123F63; padding-bottom:2px; margin-bottom:5px;">
+                        RESUMEN GENERAL
+                    </div>
+                    <table style="width:100%; border-collapse:collapse; margin-bottom:6px; font-size:9px; border:1px solid #8EA0B5;">
+                        <tr style="background:#123F63; color:#FFFFFF;">
+                            <th style="padding:4px 6px; text-align:center; vertical-align:middle; color:#FFFFFF;">Moneda</th>
+                            <th style="padding:4px 6px; text-align:center; vertical-align:middle; color:#FFFFFF;">Ventas</th>
+                            <th style="padding:4px 6px; text-align:center; vertical-align:middle; color:#FFFFFF;">Costos</th>
+                            <th style="padding:4px 6px; text-align:center; vertical-align:middle; color:#FFFFFF;">Margen</th>
+                            <th style="padding:4px 6px; text-align:center; vertical-align:middle; color:#FFFFFF;">Margen %</th>
+                            <th style="padding:4px 6px; text-align:center; vertical-align:middle; color:#FFFFFF;">Operaciones</th>
+                        </tr>
+                        <t t-foreach="grand.get('by_currency_rows') or []" t-as="b">
+                            <t t-set="bcur" t-value="b.get('currency_id')"/>
+                            <tr t-att-style="'background:' + ('#F8FAFC' if b_index % 2 else '#FFFFFF')">
+                                <td style="padding:4px 6px; font-weight:bold;"><t t-esc="b.get('currency') or '—'"/></td>
+                                <td style="padding:4px 6px; text-align:right; white-space:nowrap;"><t t-esc="doc._format_amount(b.get('sale_untaxed') or 0.0, bcur)"/></td>
+                                <td style="padding:4px 6px; text-align:right; white-space:nowrap;"><t t-esc="doc._format_amount(b.get('cost_untaxed') or 0.0, bcur)"/></td>
+                                <td style="padding:4px 6px; text-align:right; font-weight:bold; white-space:nowrap;"><t t-esc="doc._format_amount(b.get('margin') or 0.0, bcur)"/></td>
+                                <td style="padding:4px 6px; text-align:right; white-space:nowrap;"><t t-esc="'%.2f' % (b.get('margin_pct') or 0.0)"/>%</td>
+                                <td style="padding:4px 6px; text-align:right;"><t t-esc="b.get('tx_count') or 0"/></td>
+                            </tr>
+                        </t>
+                    </table>
+                    <div style="font-size:8px; color:#4A5568; margin:-2px 0 6px 0; line-height:1.35;">
+                        <t t-set="cats" t-value="grand.get('category_totals') or {}"/>
+                        <t t-set="ccur" t-value="doc.company_id.currency_id"/>
+                        Ventas posted completas:
+                        <strong><t t-esc="doc._format_amount((cats.get('OPERACIONES_COMPLETAS') or {}).get('sale') or 0.0, ccur)"/></strong>
+                        · Ventas sin costo (pendiente):
+                        <strong style="color:#CA8A04;"><t t-esc="doc._format_amount((cats.get('VENTAS_SIN_COSTOS') or {}).get('sale') or 0.0, ccur)"/></strong>
+                        · Estimadas sin facturar:
+                        <strong><t t-esc="doc._format_amount((cats.get('ESTIMADAS_SIN_FACTURAR') or {}).get('sale') or 0.0, ccur)"/></strong>
+                        · Costos sin venta:
+                        <strong><t t-esc="doc._format_amount((cats.get('COSTOS_SIN_VENTA') or {}).get('cost') or 0.0, ccur)"/></strong>
+                        · Margen confirmado:
+                        <strong><t t-esc="doc._format_amount((cats.get('OPERACIONES_COMPLETAS') or {}).get('margin') or 0.0, ccur)"/></strong>
+                        · Margen % solo sobre operaciones completas.
+                    </div>
+                    <div style="font-size:8.5px; color:#172B4D; margin-bottom:6px;">
+                        Saludables: <strong style="color:#15803D;"><t t-esc="grand.get('positive') or 0"/></strong>
+                        · Bajas: <strong style="color:#CA8A04;"><t t-esc="grand.get('low') or 0"/></strong>
+                        · Negativas: <strong style="color:#DC2626;"><t t-esc="grand.get('negative') or 0"/></strong>
+                        · Facturas pendientes: <strong style="color:#B91C1C;"><t t-esc="grand.get('bill_pending') or 0"/></strong>
+                        <t t-if="grand.get('complete_ops') is not None">
+                            · Completas: <strong><t t-esc="grand.get('complete_ops') or 0"/></strong>
+                        </t>
+                        <t t-if="grand.get('sales_wo_cost')">
+                            · Ventas sin costos: <strong style="color:#CA8A04;"><t t-esc="grand.get('sales_wo_cost') or 0"/></strong>
+                        </t>
+                        <t t-if="grand.get('costs_wo_sale')">
+                            · Costos sin venta: <strong style="color:#64748B;"><t t-esc="grand.get('costs_wo_sale') or 0"/></strong>
+                        </t>
+                        <t t-if="grand.get('vendor_residual_by_currency')">
+                            · CxP pendiente:
+                            <t t-foreach="grand.get('vendor_residual_by_currency') or []" t-as="vr">
+                                <strong>
+                                    <t t-esc="doc._format_amount(vr.get('residual') or 0.0, vr.get('currency') or company.currency_id)"/>
+                                </strong>
+                                <t t-if="not vr_last"> · </t>
+                            </t>
+                        </t>
+                        <t t-else="">
+                            · Saldo por pagar:
+                            <strong>
+                                <t t-esc="doc._format_amount(grand.get('vendor_residual') or 0.0, ((grand.get('by_currency_rows') or [{}])[0].get('currency_id') if grand.get('by_currency_rows') else company.currency_id))"/>
+                            </strong>
+                        </t>
+                    </div>
+
+                    <t t-if="grand.get('cxp_rows')">
+                        <div class="jm-cxp" style="page-break-inside:avoid; margin-top:10px;">
+                        <div style="font-size:9px; font-weight:bold; color:#123F63; margin:0 0 3px;">
+                            CUENTAS POR PAGAR DEL REPORTE
+                        </div>
+                        <table style="width:100%; border-collapse:collapse; font-size:8px; border:1px solid #8EA0B5;">
+                            <tr style="background:#334155; color:#FFFFFF;">
+                                <th style="padding:3px 5px; text-align:center; vertical-align:middle; color:#FFFFFF;">Proveedor</th>
+                                <th style="padding:3px 5px; text-align:center; vertical-align:middle; color:#FFFFFF;">Facturas</th>
+                                <th style="padding:3px 5px; text-align:center; vertical-align:middle; color:#FFFFFF;">Total</th>
+                                <th style="padding:3px 5px; text-align:center; vertical-align:middle; color:#FFFFFF;">Pagado</th>
+                                <th style="padding:3px 5px; text-align:center; vertical-align:middle; color:#FFFFFF;">Saldo</th>
+                            </tr>
+                            <t t-foreach="grand.get('cxp_rows') or []" t-as="cx">
+                                <tr t-att-style="'background:' + ('#F8FAFC' if cx_index % 2 else '#FFFFFF')">
+                                    <td style="padding:3px 5px; text-align:left;"><t t-esc="cx.get('vendor')"/></td>
+                                    <td style="padding:3px 5px; text-align:right;"><t t-esc="cx.get('count')"/></td>
+                                    <td style="padding:3px 5px; text-align:right; white-space:nowrap;"><t t-esc="doc._format_amount(cx.get('total') or 0.0, cx.get('currency'))"/></td>
+                                    <td style="padding:3px 5px; text-align:right; white-space:nowrap;"><t t-esc="doc._format_amount(cx.get('paid') or 0.0, cx.get('currency'))"/></td>
+                                    <td style="padding:3px 5px; text-align:right; white-space:nowrap; font-weight:600;"><t t-esc="doc._format_amount(cx.get('residual') or 0.0, cx.get('currency'))"/></td>
+                                </tr>
+                            </t>
+                            <t t-foreach="grand.get('cxp_totals') or []" t-as="ct">
+                                <tr style="background:#E8EEF4;">
+                                    <td style="padding:4px 5px; text-align:left; font-weight:bold; color:#123F63;">
+                                        <t t-esc="ct.get('label') or ('TOTAL CxP %s' % (ct.get('currency_name') or ''))"/>
+                                    </td>
+                                    <td style="padding:4px 5px; text-align:right; font-weight:bold;"><t t-esc="ct.get('count') or 0"/></td>
+                                    <td style="padding:4px 5px; text-align:right; white-space:nowrap; font-weight:bold;"><t t-esc="doc._format_amount(ct.get('total') or 0.0, ct.get('currency'))"/></td>
+                                    <td style="padding:4px 5px; text-align:right; white-space:nowrap; font-weight:bold;"><t t-esc="doc._format_amount(ct.get('paid') or 0.0, ct.get('currency'))"/></td>
+                                    <td style="padding:4px 5px; text-align:right; white-space:nowrap; font-weight:bold; color:#123F63;"><t t-esc="doc._format_amount(ct.get('residual') or 0.0, ct.get('currency'))"/></td>
+                                </tr>
+                            </t>
+                        </table>
+                        </div>
+                    </t>
+                </div>
+            </div>
+
+            <div class="footer" style="width:100%; font-size:6.5px; color:#4A5568;">
+                <div style="height:1px; background:#CBD5E1; margin-bottom:2px;"/>
+                <div style="text-align:center;">
+                    <t t-esc="company.name"/>
+                    · <t t-esc="doc._format_report_date(doc.date_from)"/> – <t t-esc="doc._format_report_date(doc.date_to)"/>
+                    · Página <span class="page"/> de <span class="topage"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_cost_vs_sale_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="justech_purchase_sale_margin_control.report_cost_vs_sale_pdf_document"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_cost_vs_sale_pdf" model="ir.actions.report">
+        <field name="name">Detalle Costos vs Ventas (PDF)</field>
+        <field name="model">purchase.sale.cost.vs.sale.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">justech_purchase_sale_margin_control.report_cost_vs_sale_pdf</field>
+        <field name="report_file">justech_purchase_sale_margin_control.report_cost_vs_sale_pdf</field>
+        <field name="print_report_name">'Detalle_Costos_vs_Ventas_%s' % (object.date_to)</field>
+        <field name="paperformat_id" ref="paperformat_cost_vs_sale_landscape"/>
+        <field name="binding_model_id" eval="False"/>
+    </record>
+
+</odoo>

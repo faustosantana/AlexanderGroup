@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seq_justech_warranty" model="ir.sequence">
+        <field name="name">Garantía Justech</field>
+        <field name="code">justech.warranty</field>
+        <field name="prefix">GAR/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_justech_warranty_claim" model="ir.sequence">
+        <field name="name">Reclamo de garantía Justech</field>
+        <field name="code">justech.warranty.claim</field>
+        <field name="prefix">RMA/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_justech_warranty_unit" model="ir.sequence">
+        <field name="name">Unidad de garantía Justech</field>
+        <field name="code">justech.warranty.unit</field>
+        <field name="prefix">GARU/%(year)s/</field>
+        <field name="padding">6</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

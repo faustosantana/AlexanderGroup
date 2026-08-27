@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="justech_admin_product_core" model="justech.admin.product">
+        <field name="code">core</field>
+        <field name="name">Justech Core</field>
+        <field name="sequence">10</field>
+        <field name="icon">fa-th-large</field>
+        <field name="short_description">Núcleo común de la plataforma Justech. Administra la integración entre productos, permisos, empresas, auditoría, diagnósticos y servicios compartidos. Este producto es requerido por otros productos Justech y normalmente debe permanecer activo.</field>
+        <field name="capabilities_text">Administración Justech; Seguridad y roles; Configuración multiempresa; Auditoría global; Estado del sistema; Diagnóstico</field>
+        <field name="long_description"><![CDATA[
+<p>Núcleo común de la plataforma Justech. Administra la integración entre productos, permisos, empresas, auditoría, diagnósticos y servicios compartidos.</p>
+<p><strong>Importante:</strong> este producto es requerido por otros productos Justech y normalmente debe permanecer activo. No es un módulo comercial que deba activarse y desactivarse como una operación de venta.</p>
+]]></field>
+    </record>
+
+    <record id="justech_admin_product_fiscal" model="justech.admin.product">
+        <field name="code">fiscal</field>
+        <field name="name">Justech Fiscal</field>
+        <field name="sequence">20</field>
+        <field name="icon">fa-balance-scale</field>
+        <field name="short_description">Centraliza la gestión fiscal dominicana: comprobantes, NCF, padrón DGII, reportes, retenciones, auditoría y salud fiscal.</field>
+        <field name="capabilities_text">Motor Fiscal NCF; Justech e-CF; Tipos de comprobante; Rangos y secuencias NCF; Padrón DGII; Centro Fiscal; Reportes 606/607/608/609/623; Retenciones fiscales (capacidad compartida); Auditoría Fiscal; Salud Fiscal</field>
+        <field name="long_description"><![CDATA[
+<p>Centraliza la gestión fiscal dominicana: comprobantes, NCF, e-CF, padrón DGII, reportes, retenciones, auditoría y salud fiscal.</p>
+<p>Los reportes DGII, el padrón, el centro fiscal, el motor NCF y Justech e-CF forman parte de este producto; no se administran como productos independientes.</p>
+]]></field>
+    </record>
+
+    <record id="justech_admin_product_finance" model="justech.admin.product">
+        <field name="code">finance</field>
+        <field name="name">Justech Finanzas</field>
+        <field name="sequence">30</field>
+        <field name="icon">fa-money</field>
+        <field name="short_description">Centraliza cobros, pagos, pagos abiertos, tesorería, bancos, conciliación y control financiero.</field>
+        <field name="capabilities_text">Cobros de clientes; Pagos a proveedores; Pagos abiertos; Tesorería; Bancos; Conciliación; Retenciones operativas (capacidad compartida); Auditoría financiera</field>
+        <field name="long_description"><![CDATA[
+<p>Centraliza cobros, pagos, pagos abiertos, tesorería, bancos, conciliación y control financiero.</p>
+<p>Si las retenciones son compartidas con Justech Fiscal, se mantiene una sola fuente funcional y se puede abrir desde ambos productos.</p>
+]]></field>
+    </record>
+
+    <record id="justech_admin_product_warranty" model="justech.admin.product">
+        <field name="code">warranty</field>
+        <field name="name">Justech Garantías</field>
+        <field name="sequence">40</field>
+        <field name="icon">fa-shield</field>
+        <field name="short_description">Permite registrar, consultar y dar seguimiento a las garantías de productos vendidos a clientes.</field>
+        <field name="capabilities_text">Registro de garantías; Seguimiento; Reclamaciones; Aprobaciones; Cierre; Reportes; Configuración</field>
+        <field name="long_description"><![CDATA[
+<p>Permite registrar, consultar y dar seguimiento a las garantías de productos vendidos a clientes.</p>
+]]></field>
+    </record>
+
+    <record id="justech_admin_product_integrations" model="justech.admin.product">
+        <field name="code">integrations</field>
+        <field name="name">Integraciones</field>
+        <field name="sequence">50</field>
+        <field name="icon">fa-plug</field>
+        <field name="short_description">Administra conexiones con DGII, bancos, proveedores, APIs y servicios externos.</field>
+        <field name="capabilities_text">DGII; Bancos; Microsoft; APIs; Proveedores; Servicios externos</field>
+        <field name="long_description"><![CDATA[
+<p>Administra conexiones con DGII, bancos, proveedores, APIs y servicios externos.</p>
+<p>Si no hay integraciones instaladas, se muestra un estado vacío profesional.</p>
+]]></field>
+    </record>
+
+    <record id="justech_admin_product_audit" model="justech.admin.product">
+        <field name="code">audit</field>
+        <field name="name">Auditoría y cumplimiento</field>
+        <field name="sequence">60</field>
+        <field name="icon">fa-search</field>
+        <field name="short_description">Centraliza trazabilidad, diagnósticos, alertas, controles y registros de cambios de la plataforma Justech.</field>
+        <field name="capabilities_text">Auditoría global; Logs funcionales; Diagnóstico; Estado del sistema; Historial de cambios; Alertas</field>
+        <field name="long_description"><![CDATA[
+<p>Centraliza trazabilidad, diagnósticos, alertas, controles y registros de cambios de la plataforma Justech.</p>
+]]></field>
+    </record>
+</odoo>

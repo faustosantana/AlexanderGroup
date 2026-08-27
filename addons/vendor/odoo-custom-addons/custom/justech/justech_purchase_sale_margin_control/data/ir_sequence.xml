@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_purchase_sale_cost_link" model="ir.sequence">
+            <field name="name">Enlace costo-venta</field>
+            <field name="code">purchase.sale.cost.link</field>
+            <field name="prefix">CLK/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_purchase_sale_cost_allocation" model="ir.sequence">
+            <field name="name">Asignación de costo</field>
+            <field name="code">purchase.sale.cost.allocation</field>
+            <field name="prefix">ALLOC/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_purchase_sale_margin_snapshot" model="ir.sequence">
+            <field name="name">Foto de margen</field>
+            <field name="code">purchase.sale.margin.snapshot</field>
+            <field name="prefix">SNAP/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_purchase_sale_margin_transaction" model="ir.sequence">
+            <field name="name">Operación de margen compra-venta</field>
+            <field name="code">purchase.sale.margin.transaction</field>
+            <field name="prefix">MTX/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- 19.0.3.0.0: Auxiliar de Cuentas por Pagar por operación -->
+        <record id="seq_purchase_sale_payable_auxiliary" model="ir.sequence">
+            <field name="name">Auxiliar de cuentas por pagar</field>
+            <field name="code">purchase.sale.payable.auxiliary</field>
+            <field name="prefix">AUX/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_approval_sale_confirm_wizard" model="ir.ui.view">
+        <field name="name">justech.approval.sale.confirm.wizard.form</field>
+        <field name="model">justech.approval.sale.confirm.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Aprobación requerida">
+                <group>
+                    <field name="sale_order_id" invisible="1"/>
+                    <field name="purchase_order_id" invisible="1"/>
+                    <field name="move_id" invisible="1"/>
+                    <field name="message" nolabel="1" readonly="1"/>
+                    <field name="request_note"
+                           placeholder="Explique brevemente lo que desea que el aprobador revise..."/>
+                    <field name="attachment_ids" widget="many2many_binary"
+                           string="Adjuntar archivos"/>
+                </group>
+                <footer>
+                    <button name="action_request_approval" type="object"
+                            string="Solicitar aprobación" class="btn-primary"/>
+                    <button special="cancel" string="Cerrar"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

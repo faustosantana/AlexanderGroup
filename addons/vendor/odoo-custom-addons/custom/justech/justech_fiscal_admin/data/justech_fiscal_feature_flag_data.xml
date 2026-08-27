@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="flag_ncf_motor" model="justech.fiscal.feature.flag">
+        <field name="name">Motor NCF Justech</field>
+        <field name="code">ncf_motor</field>
+        <field name="category">motor</field>
+        <field name="sequence">10</field>
+        <field name="description">Asignación automática de NCF al publicar documentos nuevos.</field>
+        <field name="enabled" eval="True"/>
+    </record>
+    <record id="flag_dual_write" model="justech.fiscal.feature.flag">
+        <field name="name">Dual-write NCF</field>
+        <field name="code">ncf_dual_write</field>
+        <field name="category">motor</field>
+        <field name="sequence">20</field>
+        <field name="description">LEGACY/P0.1 OFF: mirror Justech→LATAM del NCF en documentos nuevos. Emisión canónica = Justech; compras recibidas = LATAM. Reactivar solo con aprobación.</field>
+        <field name="enabled" eval="False"/>
+        <field name="readonly_flag" eval="False"/>
+    </record>
+    <record id="flag_provider_historical" model="justech.fiscal.feature.flag">
+        <field name="name">Provider solo histórico</field>
+        <field name="code">provider_historical_only</field>
+        <field name="category">provider</field>
+        <field name="sequence">30</field>
+        <field name="description">Fiscal Data Provider únicamente para lectura de histórico Adel.</field>
+        <field name="enabled" eval="True"/>
+        <field name="readonly_flag" eval="True"/>
+    </record>
+    <record id="flag_dgii_reports" model="justech.fiscal.feature.flag">
+        <field name="name">Reportes DGII</field>
+        <field name="code">dgii_reports</field>
+        <field name="category">reports</field>
+        <field name="sequence">40</field>
+        <field name="description">Exportación y validación 606/607/608/609.</field>
+        <field name="enabled" eval="True"/>
+    </record>
+    <record id="flag_duplicate_block" model="justech.fiscal.feature.flag">
+        <field name="name">Bloqueo duplicados NCF v2</field>
+        <field name="code">duplicate_blocking</field>
+        <field name="category">integrity</field>
+        <field name="sequence">50</field>
+        <field name="description">Impide asignación duplicada de NCF por ámbito fiscal.</field>
+        <field name="enabled" eval="True"/>
+    </record>
+    <record id="flag_fiscal_dashboard" model="justech.fiscal.feature.flag">
+        <field name="name">Dashboard Fiscal</field>
+        <field name="code">fiscal_dashboard</field>
+        <field name="category">dashboard</field>
+        <field name="sequence">60</field>
+        <field name="description">Panel de KPIs fiscales.</field>
+        <field name="enabled" eval="True"/>
+    </record>
+    <record id="flag_payments_withholding" model="justech.fiscal.feature.flag">
+        <field name="name">Pagos y Retenciones</field>
+        <field name="code">payments_withholding</field>
+        <field name="category">payments</field>
+        <field name="sequence">45</field>
+        <field name="description">Wizard de pago con retenciones fiscales dominicanas.</field>
+        <field name="enabled" eval="True"/>
+    </record>
+    <record id="flag_diagnostic_alerts" model="justech.fiscal.feature.flag">
+        <field name="name">Alertas de diagnóstico</field>
+        <field name="code">diagnostic_alerts</field>
+        <field name="category">integrity</field>
+        <field name="sequence">70</field>
+        <field name="description">Muestra alertas y advertencias del escaneo fiscal.</field>
+        <field name="enabled" eval="True"/>
+    </record>
+</odoo>

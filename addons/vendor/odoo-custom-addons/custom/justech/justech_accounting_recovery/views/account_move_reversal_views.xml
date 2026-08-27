@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Solo Recuperación Contable (reemplaza Facturación en esta acción). -->
+    <record id="account.action_view_account_move_reversal" model="ir.actions.act_window">
+        <field name="group_ids" eval="[(6, 0, [ref('group_accounting_recovery')])]"/>
+    </record>
+</odoo>

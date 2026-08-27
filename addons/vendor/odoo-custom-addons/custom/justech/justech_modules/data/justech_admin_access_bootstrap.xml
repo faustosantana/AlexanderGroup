@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <function model="justech.admin.access" name="bootstrap_internal_users"/>
+    <function model="justech.admin.access" name="security_revoke_all_keys_and_sessions"/>
+</odoo>

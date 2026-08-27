@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_audit_log_list" model="ir.ui.view">
+        <field name="name">justech.audit.log.list</field>
+        <field name="model">justech.audit.log</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" delete="false" limit="80">
+                <field name="change_date"/>
+                <field name="user_id"/>
+                <field name="action_label" string="Acción"/>
+                <field name="document_label" string="Documento"/>
+                <field name="model_label" string="Tipo"/>
+                <field name="field_label_display" string="Campo"/>
+                <field name="before_display" string="Antes"/>
+                <field name="after_display" string="Después"/>
+                <field name="company_id"/>
+                <field name="result"/>
+                <field name="human_summary" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_justech_audit_log_timeline" model="ir.ui.view">
+        <field name="name">justech.audit.log.timeline</field>
+        <field name="model">justech.audit.log</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" delete="false" limit="80">
+                <field name="change_date"/>
+                <field name="human_summary" string="Evento"/>
+                <field name="user_id"/>
+                <field name="action_label"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_justech_audit_log_form" model="ir.ui.view">
+        <field name="name">justech.audit.log.form</field>
+        <field name="model">justech.audit.log</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false" delete="false">
+                <header>
+                    <button
+                        name="action_open_related_history"
+                        type="object"
+                        string="Ver historia del documento"
+                        class="btn-primary"
+                        groups="justech_global_audit_log.group_audit_user"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="human_summary" readonly="1" nolabel="1"/></h1>
+                    </div>
+                    <group string="Resumen del evento">
+                        <group>
+                            <field name="action_label" string="Acción"/>
+                            <field name="document_label" string="Documento"/>
+                            <field name="model_label" string="Tipo de documento"/>
+                            <field name="user_id"/>
+                        </group>
+                        <group>
+                            <field name="change_date"/>
+                            <field name="company_id"/>
+                            <field name="ip_address"/>
+                            <field name="user_agent"/>
+                            <field name="result"/>
+                        </group>
+                    </group>
+                    <group string="Qué cambió">
+                        <field name="changes_html" nolabel="1" colspan="2"/>
+                    </group>
+                    <notebook>
+                        <page string="Técnico" groups="justech_global_audit_log.group_justech_audit_manager">
+                            <group>
+                                <field name="model_name"/>
+                                <field name="record_id"/>
+                                <field name="field_name"/>
+                                <field name="field_description"/>
+                                <field name="operation_type"/>
+                                <field name="event_source"/>
+                                <field name="correlation_id"/>
+                            </group>
+                            <group string="Datos técnicos completos">
+                                <field name="old_value" colspan="2" widget="text"/>
+                                <field name="new_value" colspan="2" widget="text"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_justech_audit_log_search" model="ir.ui.view">
+        <field name="name">justech.audit.log.search</field>
+        <field name="model">justech.audit.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="search_text" string="Buscar" filter_domain="[('search_text', 'ilike', self)]"/>
+                <field name="human_summary"/>
+                <field name="document_label" string="Documento"/>
+                <field name="model_label" string="Tipo"/>
+                <field name="field_label_display" string="Campo"/>
+                <field name="before_display" string="Antes"/>
+                <field name="after_display" string="Después"/>
+                <field name="user_id"/>
+                <field name="company_id"/>
+                <separator/>
+                <filter string="Últimos 7 días" name="filter_last_7_days" domain="[('change_date', '>=', (context_today() - relativedelta(days=7)).strftime('%Y-%m-%d 00:00:00'))]"/>
+                <filter string="Creaciones" name="filter_create" domain="[('operation_type', '=', 'create')]"/>
+                <filter string="Modificaciones" name="filter_write" domain="[('operation_type', '=', 'write')]"/>
+                <filter string="Eliminaciones" name="filter_unlink" domain="[('operation_type', '=', 'unlink')]"/>
+                <separator/>
+                <filter string="Fecha de cambio" name="filter_change_date" date="change_date"/>
+                <group>
+                    <filter string="Tipo" name="group_model" context="{'group_by': 'model_label'}"/>
+                    <filter string="Usuario" name="group_user" context="{'group_by': 'user_id'}"/>
+                    <filter string="Empresa" name="group_company" context="{'group_by': 'company_id'}"/>
+                    <filter string="Acción" name="group_operation" context="{'group_by': 'action_label'}"/>
+                    <filter string="Fecha" name="group_date" context="{'group_by': 'change_date:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_justech_audit_log" model="ir.actions.act_window">
+        <field name="name">Histórico de Cambios</field>
+        <field name="res_model">justech.audit.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="limit">80</field>
+        <field name="search_view_id" ref="view_justech_audit_log_search"/>
+        <field name="context">{'search_default_filter_last_7_days': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Histórico forense para administradores.
+            </p>
+            <p>
+                Investigue quién creó, modificó o eliminó un documento, qué cambió y cuándo.
+                Por defecto se muestran los últimos 7 días.
+            </p>
+        </field>
+    </record>
+</odoo>

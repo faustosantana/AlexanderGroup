@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_activity_vendor_bill_approval" model="mail.activity.type">
+        <field name="name">Revisar factura de proveedor sin OC</field>
+        <field name="summary">Aprobar factura sin Orden de Compra</field>
+        <field name="icon">fa-check-square-o</field>
+        <field name="delay_count">1</field>
+        <field name="delay_unit">days</field>
+        <field name="res_model">account.move</field>
+    </record>
+
+    <record id="mail_template_vendor_bill_approval_request" model="mail.template">
+        <field name="name">Solicitud de aprobación de factura sin OC</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="subject">Aprobación requerida: factura de {{ object.partner_id.name or '' }} por {{ format_amount(object.amount_total, object.currency_id) }}</field>
+        <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.vendor_bill_approver_id.email_formatted or object.vendor_bill_approver_id.partner_id.email_formatted }}</field>
+        <field name="body_html" type="html">
+<div style="font-family: Arial, sans-serif; font-size: 14px; color: #1f2937;">
+    <p>Hola <t t-out="object.vendor_bill_approver_id.name or ''"/>,</p>
+    <p>
+        <t t-out="object.vendor_bill_submitted_by.name or ''"/> le solicitó aprobar una factura
+        de proveedor sin Orden de Compra.
+    </p>
+    <ul>
+        <li><strong>Empresa:</strong> <t t-out="object.company_id.name or ''"/></li>
+        <li><strong>Proveedor:</strong> <t t-out="object.partner_id.name or ''"/></li>
+        <li><strong>Referencia:</strong> <t t-out="object.ref or object.name or ''"/></li>
+        <li><strong>Importe:</strong> <t t-out="format_amount(object.amount_total, object.currency_id)"/></li>
+        <li><strong>Tipo de costos y gastos:</strong>
+            <t t-out="object.justech_do_expense_type_id.display_name if 'justech_do_expense_type_id' in object._fields and object.justech_do_expense_type_id else '-'"/>
+        </li>
+        <li><strong>Motivo de no tener OC:</strong>
+            <t t-out="object.vendor_bill_no_po_reason or '-'"/>
+        </li>
+        <li><strong>Justificación:</strong>
+            <t t-out="object.vendor_bill_approval_notes or '-'"/>
+        </li>
+    </ul>
+    <p>
+        <a t-att-href="object.get_base_url() + '/odoo/account.move/%s' % object.id"
+           style="background:#2563eb;color:#fff;padding:10px 16px;text-decoration:none;border-radius:4px;">
+            Revisar factura en Odoo
+        </a>
+    </p>
+</div>
+        </field>
+        <field name="lang">{{ object.vendor_bill_approver_id.lang or object.company_id.partner_id.lang }}</field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+</odoo>

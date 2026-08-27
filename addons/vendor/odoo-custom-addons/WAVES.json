@@ -1,0 +1,54 @@
+{
+  "WAVE_A_COMMUNITY_SAFE": [
+    "bi_convert_purchase_from_sales",
+    "justech_approval_flow",
+    "justech_core",
+    "justech_global_audit_log",
+    "justech_purchase_sale_margin_control",
+    "justech_quotation_client_dedup",
+    "justech_report_identity_guard",
+    "justech_sale_purchase_trace",
+    "justech_sale_terms_guard",
+    "justech_warranty",
+    "l10n_do_accounting",
+    "multi_invoice_manual_payment_prod"
+  ],
+  "WAVE_B_REQUIRES_ADAPTATION": [
+    "justech_accounting_recovery",
+    "justech_admin_center",
+    "justech_fiscal_admin",
+    "justech_l10n_do_adel_freeze",
+    "justech_l10n_do_base",
+    "justech_l10n_do_ncf",
+    "justech_modules",
+    "justech_vendor_bill_po_control"
+  ],
+  "WAVE_C_ENTERPRISE_BLOCKED": [
+    "justech_l10n_do_hr_payroll",
+    "justech_l10n_do_hr_payroll_account",
+    "justech_l10n_do_hr_payroll_attendance",
+    "justech_l10n_do_hr_payroll_bank",
+    "justech_l10n_do_hr_payroll_holidays",
+    "justech_l10n_do_hr_payroll_reports",
+    "justech_l10n_do_hr_payroll_subsidies",
+    "justech_l10n_do_payments_withholding",
+    "justech_l10n_do_reports",
+    "justech_l10n_do_treasury",
+    "studio_hotfix"
+  ],
+  "NOT_APPLICABLE": [
+    "justech_dgcp_bridge",
+    "justech_ecf_admin",
+    "justech_ecf_core",
+    "justech_ecf_dgii",
+    "justech_ecf_queue",
+    "justech_ecf_signature",
+    "justech_ecf_xml",
+    "justech_mail_outgoing_policy",
+    "justech_managed_services",
+    "justech_recurring_fee",
+    "justech_security_ux",
+    "l10n_do_ecf_connector",
+    "l10n_do_ecf_connector_receptor"
+  ]
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_buy_pending_wizard_form" model="ir.ui.view">
+        <field name="name">justech.buy.pending.wizard.form</field>
+        <field name="model">justech.buy.pending.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generar orden de compra" class="o_justech_sp_wizard o_justech_sp_buy_wizard">
+                <field name="warning_html" nolabel="1" colspan="2" invisible="not warning_html"/>
+                <group class="o_justech_sp_wizard_header">
+                    <group>
+                        <field name="partner_id" string="Proveedor"/>
+                        <field name="date_order" string="Fecha de OC"/>
+                    </group>
+                    <group>
+                        <field name="sale_order_id" string="Orden de venta"/>
+                        <field name="company_id" string="Empresa" groups="base.group_multi_company"/>
+                    </group>
+                </group>
+                <field name="line_ids" class="o_justech_sp_wizard_table">
+                    <list editable="bottom" create="0" delete="0" class="o_justech_sp_list">
+                        <field name="selected" string="Sel." width="48px"/>
+                        <field name="product_id" string="Producto" force_save="1"/>
+                        <field name="description" string="Descripción" optional="hide" force_save="1"/>
+                        <field name="sale_line_id" column_invisible="1" force_save="1"/>
+                        <field name="qty_sold" string="Vendido" width="90px" force_save="1"/>
+                        <field name="qty_stock_covered" string="Inventario" width="100px" force_save="1"/>
+                        <field name="qty_purchased" string="Ya comprado" width="100px" force_save="1"/>
+                        <field name="qty_pending" string="Pendiente" width="100px" force_save="1"/>
+                        <field name="qty_to_buy" string="A comprar" width="110px"/>
+                        <field name="snapshot_pending" column_invisible="1" force_save="1"/>
+                    </list>
+                </field>
+                <footer class="o_justech_sp_wizard_footer">
+                    <button name="action_create_purchase_order"
+                            type="object"
+                            string="Generar orden de compra"
+                            class="btn-primary"
+                            invisible="not line_ids"/>
+                    <button string="Cerrar" special="cancel" invisible="line_ids"/>
+                    <button string="Cancelar" special="cancel" invisible="not line_ids"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_justech_buy_pending_wizard" model="ir.actions.act_window">
+        <field name="name">Generar orden de compra</field>
+        <field name="res_model">justech.buy.pending.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

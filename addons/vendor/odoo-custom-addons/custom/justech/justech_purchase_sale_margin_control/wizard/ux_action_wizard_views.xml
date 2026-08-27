@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_purchase_sale_relate_documents_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.relate.documents.wizard.form</field>
+        <field name="model">purchase.sale.relate.documents.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Relacionar documentos">
+                <sheet>
+                    <div class="alert alert-info" role="alert">
+                        Solo indique los documentos a relacionar. Empresa, cliente, proveedor, NCF y montos se completan solos.
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="vendor_bill_id"/>
+                            <field name="customer_invoice_id"/>
+                            <field name="sale_order_id"/>
+                            <field name="transaction_id" optional="hide"/>
+                        </group>
+                        <group string="Completado automáticamente">
+                            <field name="supplier_id" readonly="1"/>
+                            <field name="customer_id" readonly="1"/>
+                            <field name="purchase_order_id" readonly="1"/>
+                            <field name="ncf_number" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="amount_to_relate"/>
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Comentario opcional..."/>
+                </sheet>
+                <footer>
+                    <button name="action_confirm" type="object" string="Relacionar" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_relate_documents_wizard" model="ir.actions.act_window">
+        <field name="name">Relacionar documentos</field>
+        <field name="res_model">purchase.sale.relate.documents.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_purchase_sale_validate_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.validate.wizard.form</field>
+        <field name="model">purchase.sale.validate.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Validar relación">
+                <sheet>
+                    <group>
+                        <field name="transaction_id" readonly="1"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="sale_amount"/>
+                        <field name="cost_amount"/>
+                        <field name="margin_amount"/>
+                        <field name="amount_to_pay"/>
+                        <field name="amount_to_collect"/>
+                    </group>
+                    <group string="Confirmaciones de Compras">
+                        <field name="confirm_supplier"/>
+                        <field name="confirm_products"/>
+                        <field name="confirm_cost"/>
+                        <field name="confirm_sale"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_confirm" type="object" string="Validar relación" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_purchase_sale_approve_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.approve.wizard.form</field>
+        <field name="model">purchase.sale.approve.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Aprobar operación">
+                <sheet>
+                    <div class="alert alert-warning" role="alert">
+                        Confirme el resumen financiero. No se vuelve a pedir la información de documentos.
+                    </div>
+                    <group>
+                        <field name="transaction_id" readonly="1"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="sale_amount" string="Venta"/>
+                        <field name="cost_amount" string="Costo"/>
+                        <field name="margin_amount" string="Margen"/>
+                        <field name="amount_to_pay" string="Pendiente proveedor"/>
+                        <field name="amount_to_collect" string="Pendiente cliente"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_confirm" type="object" string="Aprobar operación" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

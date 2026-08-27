@@ -1,0 +1,36 @@
+{
+  "canonical_repo": "faustosantana/odoo-custom-addons",
+  "canonical_commit": "12458c0e92163eba86e5fd348a337be4cc6209e1",
+  "canonical_tags": [
+    "doralex-wave-ab-2026-08-27"
+  ],
+  "waves_included": [
+    "WAVE_A_COMMUNITY_SAFE",
+    "WAVE_B_REQUIRES_ADAPTATION"
+  ],
+  "modules": [
+    "bi_convert_purchase_from_sales",
+    "justech_accounting_recovery",
+    "justech_admin_center",
+    "justech_approval_flow",
+    "justech_core",
+    "justech_fiscal_admin",
+    "justech_global_audit_log",
+    "justech_l10n_do_adel_freeze",
+    "justech_l10n_do_base",
+    "justech_l10n_do_ncf",
+    "justech_modules",
+    "justech_purchase_sale_margin_control",
+    "justech_quotation_client_dedup",
+    "justech_report_identity_guard",
+    "justech_sale_purchase_trace",
+    "justech_sale_terms_guard",
+    "justech_vendor_bill_po_control",
+    "justech_warranty",
+    "l10n_do_accounting",
+    "multi_invoice_manual_payment_prod"
+  ],
+  "generated_note": "DO NOT EDIT \u2014 regenerate from odoo-custom-addons",
+  "synced_at": "2026-08-27T22:27:33.188440+00:00",
+  "synced_into": "AlexanderGroup/addons/vendor/odoo-custom-addons"
+}

@@ -1,0 +1,20 @@
+flowchart TB
+    AM[account.move thin wrapper]
+    subgraph ncf_services [services/]
+        RS[document.type.resolver]
+        DS[duplicate.service]
+        AS[assignment.service]
+    end
+    subgraph base_services [justech_l10n_do_base]
+        FVS[fiscal.validator.service]
+        FCS[fiscal.config.service]
+    end
+    NR[ncf.range]
+    NC[ncf.consumption]
+    AM --> AS
+    AS --> RS
+    AS --> DS
+    AS --> NR
+    DS --> FVS
+    RS --> FCS
+    NR --> NC

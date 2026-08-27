@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- company_id empty: shared DGII catalog for all companies -->
+    <record id="doc_type_b01" model="justech.do.fiscal.document.type">
+        <field name="name">Factura de Crédito Fiscal</field>
+        <field name="code">01</field>
+        <field name="series">B</field>
+        <field name="prefix">B01</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_sale_document" eval="True"/>
+        <field name="requires_vat" eval="True"/>
+        <field name="move_type">out_invoice</field>
+    </record>
+    <record id="doc_type_b02" model="justech.do.fiscal.document.type">
+        <field name="name">Factura de Consumo</field>
+        <field name="code">02</field>
+        <field name="series">B</field>
+        <field name="prefix">B02</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_sale_document" eval="True"/>
+        <field name="requires_vat" eval="False"/>
+        <field name="move_type">out_invoice</field>
+    </record>
+    <record id="doc_type_b03" model="justech.do.fiscal.document.type">
+        <field name="name">Nota de Débito</field>
+        <field name="code">03</field>
+        <field name="series">B</field>
+        <field name="prefix">B03</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_sale_document" eval="True"/>
+        <field name="is_debit_note" eval="True"/>
+        <field name="move_type">out_invoice</field>
+    </record>
+    <record id="doc_type_b04" model="justech.do.fiscal.document.type">
+        <field name="name">Nota de Crédito</field>
+        <field name="code">04</field>
+        <field name="series">B</field>
+        <field name="prefix">B04</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_sale_document" eval="True"/>
+        <field name="is_credit_note" eval="True"/>
+        <field name="move_type">out_refund</field>
+    </record>
+    <record id="doc_type_b11" model="justech.do.fiscal.document.type">
+        <field name="name">Comprobante de Compras / Proveedor Informal</field>
+        <field name="code">11</field>
+        <field name="series">B</field>
+        <field name="prefix">B11</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_purchase_document" eval="True"/>
+        <field name="move_type">in_invoice</field>
+    </record>
+    <record id="doc_type_b13" model="justech.do.fiscal.document.type">
+        <field name="name">Comprobante para Gastos Menores</field>
+        <field name="code">13</field>
+        <field name="series">B</field>
+        <field name="prefix">B13</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_purchase_document" eval="True"/>
+        <field name="move_type">in_invoice</field>
+    </record>
+    <record id="doc_type_b12" model="justech.do.fiscal.document.type">
+        <field name="name">Registro Único de Ingresos</field>
+        <field name="code">12</field>
+        <field name="series">B</field>
+        <field name="prefix">B12</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_sale_document" eval="True"/>
+        <field name="requires_vat" eval="False"/>
+        <field name="move_type">out_invoice</field>
+    </record>
+    <record id="doc_type_b14" model="justech.do.fiscal.document.type">
+        <field name="name">Regímenes Especiales de Tributación</field>
+        <field name="code">14</field>
+        <field name="series">B</field>
+        <field name="prefix">B14</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_sale_document" eval="True"/>
+        <field name="requires_vat" eval="True"/>
+        <field name="move_type">out_invoice</field>
+    </record>
+    <record id="doc_type_b15" model="justech.do.fiscal.document.type">
+        <field name="name">Comprobante Gubernamental</field>
+        <field name="code">15</field>
+        <field name="series">B</field>
+        <field name="prefix">B15</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_sale_document" eval="True"/>
+        <field name="requires_vat" eval="True"/>
+        <field name="move_type">out_invoice</field>
+    </record>
+    <record id="doc_type_b16" model="justech.do.fiscal.document.type">
+        <field name="name">Comprobante para Exportaciones</field>
+        <field name="code">16</field>
+        <field name="series">B</field>
+        <field name="prefix">B16</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_sale_document" eval="True"/>
+        <field name="requires_vat" eval="True"/>
+        <field name="move_type">out_invoice</field>
+    </record>
+    <record id="doc_type_b17" model="justech.do.fiscal.document.type">
+        <field name="name">Comprobante para Pagos al Exterior</field>
+        <field name="code">17</field>
+        <field name="series">B</field>
+        <field name="prefix">B17</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_purchase_document" eval="True"/>
+        <field name="requires_vat" eval="False"/>
+        <field name="move_type">in_invoice</field>
+    </record>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Catálogo DGII 606 — códigos/nombres alineados a la localización instalada. -->
+    <record id="dgii_expense_type_01" model="justech.do.dgii.expense.type">
+        <field name="code">01</field>
+        <field name="name">Gastos de personal</field>
+        <field name="help_text">Sueldos, salarios y cargas sociales del personal.</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+    <record id="dgii_expense_type_02" model="justech.do.dgii.expense.type">
+        <field name="code">02</field>
+        <field name="name">Gastos por trabajos, suministros y servicios</field>
+        <field name="help_text">Servicios y suministros contratados a terceros.</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+    <record id="dgii_expense_type_03" model="justech.do.dgii.expense.type">
+        <field name="code">03</field>
+        <field name="name">Arrendamientos</field>
+        <field name="help_text">Alquileres de inmuebles u otros bienes.</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+    <record id="dgii_expense_type_04" model="justech.do.dgii.expense.type">
+        <field name="code">04</field>
+        <field name="name">Gastos de activos fijos</field>
+        <field name="help_text">Gastos relacionados con activos fijos (no adquisiciones).</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+    <record id="dgii_expense_type_05" model="justech.do.dgii.expense.type">
+        <field name="code">05</field>
+        <field name="name">Gastos de representación</field>
+        <field name="help_text">Gastos de representación admitidos.</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+    <record id="dgii_expense_type_06" model="justech.do.dgii.expense.type">
+        <field name="code">06</field>
+        <field name="name">Otras deducciones admitidas</field>
+        <field name="help_text">Otras deducciones admitidas por la DGII.</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+    <record id="dgii_expense_type_07" model="justech.do.dgii.expense.type">
+        <field name="code">07</field>
+        <field name="name">Gastos financieros</field>
+        <field name="help_text">Intereses y cargos financieros.</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+    <record id="dgii_expense_type_08" model="justech.do.dgii.expense.type">
+        <field name="code">08</field>
+        <field name="name">Gastos extraordinarios</field>
+        <field name="help_text">Gastos de naturaleza extraordinaria.</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+    <record id="dgii_expense_type_09" model="justech.do.dgii.expense.type">
+        <field name="code">09</field>
+        <field name="name">Compras y gastos que forman parte del costo de venta</field>
+        <field name="help_text">Mercancía y costos que integran el costo de venta.</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+    <record id="dgii_expense_type_10" model="justech.do.dgii.expense.type">
+        <field name="code">10</field>
+        <field name="name">Adquisiciones de activos</field>
+        <field name="help_text">Compra de activos (no gasto corriente).</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+    <record id="dgii_expense_type_11" model="justech.do.dgii.expense.type">
+        <field name="code">11</field>
+        <field name="name">Gastos de seguros</field>
+        <field name="help_text">Primas y gastos de seguros.</field>
+        <field name="applies_to_606" eval="True"/>
+    </record>
+</odoo>

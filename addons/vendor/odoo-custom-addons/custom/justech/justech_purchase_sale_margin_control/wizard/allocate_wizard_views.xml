@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_purchase_sale_allocate_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.allocate.wizard.form</field>
+        <field name="model">purchase.sale.allocate.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Asignar costo a venta(s)">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="vendor_bill_line_id"/>
+                            <field name="purchase_order_line_id"/>
+                        </group>
+                        <group>
+                            <field name="currency_id"/>
+                            <field name="source_amount"/>
+                            <field name="total_allocated"/>
+                            <field name="remaining_amount"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="sale_order_id"/>
+                            <field name="sale_order_line_id" domain="[('order_id', '=', sale_order_id)]"/>
+                            <field name="amount" sum="Total"/>
+                            <field name="cost_usage_type"/>
+                            <field name="additional_cost_type"/>
+                            <field name="notes"/>
+                        </list>
+                    </field>
+                </sheet>
+                <footer>
+                    <button name="action_confirm" type="object" string="Confirmar asignación" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_allocate_wizard" model="ir.actions.act_window">
+        <field name="name">Asignar costo a venta</field>
+        <field name="res_model">purchase.sale.allocate.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

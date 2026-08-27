@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_activity_approval" model="mail.activity.type">
+        <field name="name">Revisar aprobación Justech</field>
+        <field name="summary">Aprobar documento</field>
+        <field name="icon">fa-check</field>
+        <field name="delay_count">1</field>
+        <field name="delay_unit">days</field>
+    </record>
+
+    <record id="mail_template_approval_request" model="mail.template">
+        <field name="name">Justech: solicitud de aprobación</field>
+        <field name="model_id" ref="model_justech_approval_request"/>
+        <field name="subject">APROBACIÓN REQUERIDA — {{ object.display_name }}</field>
+        <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.email_to }}</field>
+        <field name="use_default_to" eval="False"/>
+        <field name="lang">{{ object.approver_id.lang or object.company_id.partner_id.lang }}</field>
+        <field name="auto_delete" eval="True"/>
+        <field name="body_html" type="html">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef2f7;padding:24px 0;margin:0;">
+  <tr><td align="center">
+    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;">
+      <tr>
+        <td style="padding:20px 28px;background:#1e3a5f;color:#ffffff;font-family:Arial,Helvetica,sans-serif;">
+          <div style="font-size:12px;letter-spacing:.14em;font-weight:700;opacity:.85;" t-out="object._mail_brand_label()"/>
+          <div style="font-size:22px;font-weight:700;margin-top:8px;line-height:1.3;">APROBACIÓN REQUERIDA</div>
+          <div style="font-size:13px;margin-top:6px;opacity:.92;text-transform:uppercase;letter-spacing:.06em;">
+            <t t-if="object.request_type == 'purchase_order'">Orden de compra</t>
+            <t t-elif="object.request_type == 'sale_order'">Cotización</t>
+            <t t-else="">Factura de cliente</t>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:24px 28px;font-family:Arial,Helvetica,sans-serif;color:#1f2937;font-size:14px;line-height:1.5;">
+          <div style="font-size:12px;color:#64748b;" t-out="object.company_id.name or ''"/>
+          <div style="font-size:20px;font-weight:700;margin:6px 0 18px 0;color:#0f172a;" t-out="object.document_name or ''"/>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;margin-bottom:18px;">
+            <tr>
+              <td style="padding:5px 0;color:#64748b;width:150px;">
+                <t t-if="object.request_type == 'purchase_order'">Proveedor</t>
+                <t t-else="">Cliente</t>
+              </td>
+              <td style="padding:5px 0;font-weight:600;" t-out="object.partner_id.name or '-'"/>
+            </tr>
+            <tr>
+              <td style="padding:5px 0;color:#64748b;">Solicitado por</td>
+              <td style="padding:5px 0;" t-out="object.requester_id.name or ''"/>
+            </tr>
+            <tr>
+              <td style="padding:5px 0;color:#64748b;">Fecha</td>
+              <td style="padding:5px 0;" t-out="format_datetime(object.requested_at) if object.requested_at else ''"/>
+            </tr>
+            <tr t-if="object.origin">
+              <td style="padding:5px 0;color:#64748b;">Origen</td>
+              <td style="padding:5px 0;" t-out="object.origin"/>
+            </tr>
+          </table>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 20px 0;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
+            <tr>
+              <td style="padding:18px 20px;">
+                <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.1em;">Total</div>
+                <div style="font-size:28px;font-weight:700;color:#0f172a;margin-top:4px;">
+                  <t t-out="format_amount(object.amount_total, object.currency_id)"/>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Detalle</div>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:13px;border-collapse:collapse;">
+            <tr style="background:#f1f5f9;">
+              <th align="left" style="padding:8px 6px;font-weight:600;color:#475569;">Producto / Servicio</th>
+              <th align="right" style="padding:8px 6px;font-weight:600;color:#475569;">Cant.</th>
+              <th align="right" style="padding:8px 6px;font-weight:600;color:#475569;">Precio</th>
+              <th align="right" style="padding:8px 6px;font-weight:600;color:#475569;">Subtotal</th>
+            </tr>
+          </table>
+          <t t-out="object.snapshot_html"/>
+          <t t-if="object.request_note">
+            <div style="margin-top:18px;padding:14px 16px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;">
+              <div style="font-size:11px;color:#92400e;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Comentario del solicitante</div>
+              <div style="color:#78350f;" t-out="object.request_note_html()"/>
+            </div>
+          </t>
+          <t t-if="object.attachment_count">
+            <div style="margin-top:16px;padding:14px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;">
+              <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Adjuntos</div>
+              <t t-out="object.request_attachment_names_html()"/>
+              <div style="font-size:12px;color:#64748b;margin-top:8px;">Ábralos desde Odoo con una sesión autenticada. Si el tamaño es razonable también se adjuntan a este correo.</div>
+            </div>
+          </t>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:26px;">
+            <tr>
+              <td style="padding:0 0 10px 0;">
+                <a t-att-href="object._justech_url('approve')"
+                   style="display:block;text-align:center;background:#15803d;color:#ffffff;text-decoration:none;padding:14px 22px;font-weight:700;border-radius:8px;font-size:14px;">
+                  APROBAR
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 0 10px 0;">
+                <a t-att-href="object._justech_url('reject')"
+                   style="display:block;text-align:center;background:#b91c1c;color:#ffffff;text-decoration:none;padding:14px 22px;font-weight:700;border-radius:8px;font-size:14px;">
+                  RECHAZAR
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a t-att-href="object._odoo_document_url()"
+                   style="display:block;text-align:center;background:#475569;color:#ffffff;text-decoration:none;padding:12px 20px;font-weight:600;border-radius:8px;font-size:13px;">
+                  VER EN ODOO
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:16px 28px;background:#f8fafc;border-top:1px solid #e5e7eb;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#64748b;line-height:1.5;">
+          Este mensaje corresponde a una solicitud interna de aprobación en Odoo.
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+</table>
+        </field>
+    </record>
+
+    <record id="mail_template_approval_result" model="mail.template">
+        <field name="name">Justech: resultado de aprobación</field>
+        <field name="model_id" ref="model_justech_approval_request"/>
+        <field name="subject">{{ 'APROBADA' if object.state == 'approved' else 'RECHAZADA' }} — {{ object.display_name }}</field>
+        <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object._user_notify_email(object.requester_id) }}</field>
+        <field name="use_default_to" eval="False"/>
+        <field name="lang">{{ object.requester_id.lang or object.company_id.partner_id.lang }}</field>
+        <field name="auto_delete" eval="True"/>
+        <field name="body_html" type="html">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef2f7;padding:24px 0;margin:0;">
+  <tr><td align="center">
+    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;">
+      <tr t-if="object.state == 'approved'">
+        <td style="padding:20px 28px;color:#ffffff;font-family:Arial,Helvetica,sans-serif;background:#15803d;">
+          <div style="font-size:12px;letter-spacing:.14em;font-weight:700;opacity:.85;" t-out="object._mail_brand_label()"/>
+          <div style="font-size:22px;font-weight:700;margin-top:8px;line-height:1.3;">TU SOLICITUD FUE APROBADA</div>
+        </td>
+      </tr>
+      <tr t-else="">
+        <td style="padding:20px 28px;color:#ffffff;font-family:Arial,Helvetica,sans-serif;background:#b91c1c;">
+          <div style="font-size:12px;letter-spacing:.14em;font-weight:700;opacity:.85;" t-out="object._mail_brand_label()"/>
+          <div style="font-size:22px;font-weight:700;margin-top:8px;line-height:1.3;">TU SOLICITUD FUE RECHAZADA</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:24px 28px;font-family:Arial,Helvetica,sans-serif;color:#1f2937;font-size:14px;line-height:1.5;">
+          <div style="font-size:12px;color:#64748b;" t-out="object.company_id.name or ''"/>
+          <div style="font-size:20px;font-weight:700;margin:6px 0 18px 0;color:#0f172a;" t-out="object.document_name or ''"/>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;margin-bottom:18px;">
+            <tr>
+              <td style="padding:5px 0;color:#64748b;width:150px;">
+                <t t-if="object.request_type == 'purchase_order'">Proveedor</t>
+                <t t-else="">Cliente</t>
+              </td>
+              <td style="padding:5px 0;font-weight:600;" t-out="object.partner_id.name or '-'"/>
+            </tr>
+            <tr>
+              <td style="padding:5px 0;color:#64748b;">Total</td>
+              <td style="padding:5px 0;font-weight:700;" t-out="format_amount(object.amount_total, object.currency_id)"/>
+            </tr>
+            <tr>
+              <td style="padding:5px 0;color:#64748b;">
+                <t t-if="object.state == 'approved'">Aprobada por</t>
+                <t t-else="">Rechazada por</t>
+              </td>
+              <td style="padding:5px 0;" t-out="object.decided_by_id.name or ''"/>
+            </tr>
+            <tr>
+              <td style="padding:5px 0;color:#64748b;">Fecha</td>
+              <td style="padding:5px 0;" t-out="format_datetime(object.decided_at) if object.decided_at else ''"/>
+            </tr>
+          </table>
+          <t t-if="object.decision_note">
+            <div style="margin:0 0 18px 0;padding:14px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;">
+              <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">
+                <t t-if="object.state == 'approved'">Comentario del aprobador</t>
+                <t t-else="">Motivo</t>
+              </div>
+              <div t-out="object.decision_note_html()"/>
+            </div>
+          </t>
+          <t t-if="object.state == 'approved' and object.request_type == 'sale_order'">
+            <p style="margin:0 0 18px 0;font-weight:600;color:#15803d;">La cotización ya puede ser confirmada.</p>
+          </t>
+          <a t-att-href="object._odoo_document_url()"
+             style="display:block;text-align:center;background:#1e3a5f;color:#ffffff;text-decoration:none;padding:14px 22px;font-weight:700;border-radius:8px;font-size:14px;">
+            VER EN ODOO
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:16px 28px;background:#f8fafc;border-top:1px solid #e5e7eb;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#64748b;line-height:1.5;">
+          Este mensaje es interno. No se envía al cliente ni al proveedor.
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+</table>
+        </field>
+    </record>
+</odoo>

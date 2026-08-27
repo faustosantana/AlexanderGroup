@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Raíz definida sin parent; GO-LIVE-UX reparenta vía hellenia_ui.menu.customizer -->
+    <menuitem
+        id="menu_justech_global_audit_root"
+        name="Auditoría de Cambios"
+        sequence="75"
+        groups="justech_global_audit_log.group_audit_user"
+    />
+
+    <menuitem
+        id="menu_justech_audit_dashboard"
+        name="Panel de investigación"
+        parent="menu_justech_global_audit_root"
+        action="action_justech_audit_dashboard"
+        sequence="5"
+        groups="justech_global_audit_log.group_audit_user"
+    />
+
+    <menuitem
+        id="menu_justech_audit_log"
+        name="Histórico de Cambios"
+        parent="menu_justech_global_audit_root"
+        action="action_justech_audit_log"
+        sequence="10"
+        groups="justech_global_audit_log.group_audit_user"
+    />
+
+    <menuitem
+        id="menu_justech_audit_rule"
+        name="Configuración de Auditoría"
+        parent="menu_justech_global_audit_root"
+        action="action_justech_audit_rule"
+        sequence="20"
+        groups="justech_global_audit_log.group_justech_audit_manager"
+    />
+
+    <menuitem
+        id="menu_justech_audit_retention"
+        name="Retención"
+        parent="menu_justech_global_audit_root"
+        action="action_justech_audit_retention"
+        sequence="30"
+        groups="justech_global_audit_log.group_justech_audit_manager"
+    />
+
+    <menuitem
+        id="menu_justech_audit_security"
+        name="Seguridad"
+        parent="menu_justech_global_audit_root"
+        sequence="40"
+        groups="justech_global_audit_log.group_justech_audit_manager"
+    />
+
+    <menuitem
+        id="menu_justech_audit_field_exclude"
+        name="Campos excluidos"
+        parent="menu_justech_audit_security"
+        action="action_justech_audit_field_exclude"
+        sequence="10"
+        groups="justech_global_audit_log.group_justech_audit_manager"
+    />
+
+    <menuitem
+        id="menu_justech_audit_user_exclude"
+        name="Usuarios excluidos"
+        parent="menu_justech_audit_security"
+        action="action_justech_audit_user_exclude"
+        sequence="20"
+        groups="justech_global_audit_log.group_justech_audit_manager"
+    />
+</odoo>

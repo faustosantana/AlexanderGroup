@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_vendor_bill_po_control" model="ir.actions.act_window">
+        <field name="name">Control de facturas proveedor y órdenes de compra</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('move_type', 'in', ('in_invoice', 'in_refund'))]</field>
+        <field name="view_id" ref="view_vendor_bill_po_control_list"/>
+        <field name="help" type="html">
+            <p>Exporte a XLSX desde Acción → Exportar. Columnas: empresa, proveedor, factura, referencia/NCF, fecha, total, OC, estado, excepción, motivo, aprobado por.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_vendor_bill_po_xlsx_report"
+              name="Control facturas / OC (exportable)"
+              parent="menu_vendor_bill_po_root"
+              action="action_report_vendor_bill_po_control"
+              sequence="30"/>
+</odoo>

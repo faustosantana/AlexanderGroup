@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_license_list" model="ir.ui.view">
+        <field name="name">justech.license.list</field>
+        <field name="model">justech.license</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="license_key_fingerprint"/>
+                <field name="tier"/>
+                <field name="state"/>
+                <field name="expires_at"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_justech_license_form" model="ir.ui.view">
+        <field name="name">justech.license.form</field>
+        <field name="model">justech.license</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_activate" type="object" string="Activate" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="license_key_fingerprint" readonly="1"/>
+                        <field name="license_key_hash" invisible="1"/>
+                        <field name="tier"/>
+                        <field name="state"/>
+                        <field name="expires_at"/>
+                        <field name="max_users"/>
+                        <field name="max_companies"/>
+                        <field name="grace_days"/>
+                    </group>
+                    <notebook>
+                        <page string="Features">
+                            <field name="feature_line_ids">
+                                <list editable="bottom">
+                                    <field name="feature_id"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Companies">
+                            <field name="company_line_ids">
+                                <list editable="bottom">
+                                    <field name="company_id"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_justech_license" model="ir.actions.act_window">
+        <field name="name">Licenses</field>
+        <field name="res_model">justech.license</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
