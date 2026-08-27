@@ -5,6 +5,13 @@
 > datos. El objetivo es **reutilizar la arquitectura probada** y fijar en Doralex
 > una release compatible. **No inventar** valores.
 
+## Estado: `JUSTGROUP_ACCESS_REQUIRED`
+
+`erp.justech.do` → `207.244.242.58` (alcanzable), pero **no hay credenciales**
+(SSH ni admin Odoo) para auditar. No se toca su producción ni se copian datos.
+Para desbloquear, proveer acceso de solo lectura (SSH o admin Odoo o export de
+`ir.module.module` + `custom-addons`). Ver `JUSTGROUP_MODULE_INVENTORY.md`.
+
 ## Cómo obtener los datos (solo lectura, con autorización)
 
 Ejecutar en el servidor de Justgroup (o revisar su config/despliegue) sin alterar

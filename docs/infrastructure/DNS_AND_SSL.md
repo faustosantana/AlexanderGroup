@@ -33,6 +33,22 @@ dig +short www.doralexgroup.cloud
 Si **no** resuelven aún, el estado permanece `DNS_REQUIRED` y **no** se emiten
 certificados (no crear certificados falsos).
 
+### Estado dev (2026-08-27): `DNS_CREDENTIAL_REQUIRED`
+
+- `doralexgroup.cloud` está gestionado en **Hostinger** (NS `hermes/artemis.dns-parking.com`,
+  SOA `dns.hostinger.com`). `doralexgroup.cloud` y `www` ya resuelven a `2.25.121.111`.
+- `dev.doralexgroup.cloud` → **NXDOMAIN**.
+- No se dispone de token de API de Hostinger DNS en el entorno, por lo que **no**
+  se puede crear el registro automáticamente.
+
+**Acción requerida (una de dos):**
+1. Crear en el panel de Hostinger: `A dev.doralexgroup.cloud → 2.25.121.111`, o
+2. Proveer un token de API de Hostinger (como Secret) para que el agente lo cree.
+
+En cuanto resuelva, la emisión de SSL de dev es automática:
+`certbot --nginx -d dev.doralexgroup.cloud --redirect` (el vhost `:80` de dev ya
+está configurado en Nginx sirviendo el challenge ACME).
+
 ## SSL (Let's Encrypt / certbot)
 
 Cuando cada dominio resuelva a `2.25.121.111`:
