@@ -20,7 +20,12 @@
 | DORALEX_DEV_BACKUP | **PASS** (`dev_20260827_163526`) |
 | JUSTGROUP_AUDIT | **PARTIAL** (versión/edición confirmadas; inventario de módulos pendiente) |
 | MODULE_CLASSIFICATION | **PASS** (estándar/Enterprise/custom conocidos clasificados) |
-| CUSTOM_MODULE_MIGRATION | **PARTIAL** (0 módulos custom copiados — falta código fuente) |
+| MIGRATED_SOURCE_FOUND | **PASS** (24 módulos en `addons/third_party/justgroup_prod_source/`) |
+| MODULE_PRECHECK | **PASS** (0 secretos reales; higiene benigna) |
+| WAVE_A_INSTALL | **PARTIAL** (6 instaladas en DEV; healthy, 0 runtime errors) |
+| WAVE_B_ADAPTATION | **BLOCKED** (faltan `data/` por bug `.gitignore`, ya corregido → re-commit local) |
+| ENTERPRISE_BLOCKED | 3 fiscales (`payments_withholding`, `reports`, `treasury`) + Studio/documents/sign |
+| CUSTOM_MODULE_MIGRATION | **PARTIAL** (24 copiados; 6 instalados; 15 pendientes de `data/`) |
 | ENTERPRISE_STATUS | Justgroup=Enterprise `19.0+e-20260324`; Doralex=Community → `BLOCKED_BY_ENTERPRISE_SOURCE` |
 | ENTERPRISE_DECISION | **DONE** (ver `ENTERPRISE_DECISION.md`) |
 | DORALEX_6_COMPANIES_READY | **YES** (capacidad validada 6/6, sin crear empresas reales) |

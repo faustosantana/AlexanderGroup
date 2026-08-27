@@ -37,9 +37,23 @@ for d in "${dirs[@]}"; do
   log "OK  $d"
 done
 
-# El directorio Enterprise existe desde el inicio (addons_path final), pero
-# permanece VACIO y protegido hasta disponer de la fuente legítima.
-chmod 700 "${DORALEX_BASE}/enterprise"
+# El directorio Enterprise existe desde el inicio (addons_path final). Debe ser
+# TRAVERSABLE (755) por el usuario del contenedor Odoo; de lo contrario Odoo no
+# resuelve el addons_path (queda vacío). Permanece VACIO hasta la licencia.
+chmod 755 "${DORALEX_BASE}/enterprise"
+
+# Los directorios de addons deben ser legibles por el usuario del contenedor.
+chmod 755 "${DORALEX_BASE}/custom-addons" \
+          "${DORALEX_BASE}/production/custom-addons" \
+          "${DORALEX_BASE}/dev/custom-addons"
+
+# Los logs deben ser escribibles por el usuario 'odoo' del contenedor
+# (imagen oficial: uid 100, gid 101). Configurable con ODOO_UID/ODOO_GID.
+_ouid="${ODOO_UID:-100}"; _ogid="${ODOO_GID:-101}"
+chown "${_ouid}:${_ogid}" "${DORALEX_BASE}/production/logs" \
+                          "${DORALEX_BASE}/dev/logs" 2>/dev/null || true
+chmod 775 "${DORALEX_BASE}/production/logs" "${DORALEX_BASE}/dev/logs"
+
 if [ ! -f "${DORALEX_BASE}/enterprise/ENTERPRISE_SOURCE_PENDING" ]; then
   {
     echo "ENTERPRISE_SOURCE_PENDING=TRUE"

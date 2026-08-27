@@ -50,10 +50,15 @@ def test_addons_areas_have_readme() -> None:
         assert readme.is_file(), f"Falta README en addons/{area}"
 
 
-def test_no_functional_odoo_modules_yet() -> None:
-    """En Fase 0 no debe existir ningún módulo Odoo funcional (sin __manifest__.py)."""
-    manifests = list((REPO_ROOT / "addons").rglob("__manifest__.py"))
-    assert not manifests, (
-        "No deben existir módulos Odoo funcionales en Fase 0: "
-        f"{[str(m.relative_to(REPO_ROOT)) for m in manifests]}"
+def test_no_own_functional_modules_yet() -> None:
+    """Aún no se crean módulos PROPIOS (justech_alexander_*) en addons/shared|alexander.
+
+    Los módulos de terceros vendorizados en addons/third_party/ (p. ej. importados
+    de Justgroup para su reutilización/adaptación) SÍ están permitidos.
+    """
+    own = list((REPO_ROOT / "addons" / "shared").rglob("__manifest__.py"))
+    own += list((REPO_ROOT / "addons" / "alexander").rglob("__manifest__.py"))
+    assert not own, (
+        "No deben existir módulos Odoo propios todavía en addons/shared|alexander: "
+        f"{[str(m.relative_to(REPO_ROOT)) for m in own]}"
     )
