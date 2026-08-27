@@ -62,12 +62,12 @@ services:
     networks:
       - internal
     healthcheck:
-      test:
-        ["CMD-SHELL", "curl -fsS http://localhost:8069/web/health || exit 1"]
+      # python3 siempre está en la imagen de Odoo (curl puede no estarlo).
+      test: ["CMD", "python3", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8069/web/health', timeout=5).getcode()==200 else 1)"]
       interval: 30s
       timeout: 10s
       retries: 5
-      start_period: 60s
+      start_period: 90s
 
 volumes:
   db_data:

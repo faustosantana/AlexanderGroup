@@ -29,7 +29,9 @@ check_health "$DB_CT"
 check_health "$ODOO_CT"
 
 log "Probando HTTP de Odoo en 127.0.0.1:${PORT} ..."
-if curl -fsS "http://127.0.0.1:${PORT}/web/health" >/dev/null 2>&1; then
+health_url="http://127.0.0.1:${PORT}/web/health"
+if curl -fsS "$health_url" >/dev/null 2>&1 ||
+   python3 -c "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('${health_url}', timeout=5).getcode()==200 else 1)" 2>/dev/null; then
   log "OK  HTTP /web/health responde"
 else
   err "HTTP /web/health no responde en 127.0.0.1:${PORT}"; status=1
