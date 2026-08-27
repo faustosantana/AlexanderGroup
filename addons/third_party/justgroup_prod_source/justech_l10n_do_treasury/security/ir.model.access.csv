@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_treasury_open_payment_apply_wizard,treasury.open.payment.apply.wizard,model_treasury_open_payment_apply_wizard,account.group_account_invoice,1,1,1,1
-access_treasury_open_payment_apply_wizard_line,treasury.open.payment.apply.wizard.line,model_treasury_open_payment_apply_wizard_line,account.group_account_invoice,1,1,1,1

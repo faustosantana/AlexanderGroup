@@ -27,3 +27,8 @@ Ver **[`JUSTGROUP_MODULE_CLASSIFICATION.md`](JUSTGROUP_MODULE_CLASSIFICATION.md)
 **BLOCKED en este entorno local Justgroup:** falta `~/.ssh/doralex_ed25519` y el puerto 22 de `2.25.121.111` respondió `Connection refused` tras el probe. HTTP `https://dev.doralexgroup.cloud` = 200.
 
 Cuando el agente Doralex / esta máquina tengan `ssh doralex-server`, instalar por waves A→B→C del classification doc (**nunca** `-u all`, **nunca** PROD primero).
+
+
+## Canonical GitHub source (2026-08-27)
+
+See [`CANONICAL_ADDONS_SOURCE.md`](CANONICAL_ADDONS_SOURCE.md) and https://github.com/faustosantana/odoo-custom-addons

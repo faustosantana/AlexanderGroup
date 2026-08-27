@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_multi_invoice_manual_payment_wizard,multi.invoice.manual.payment.wizard,model_multi_invoice_manual_payment_wizard,account.group_account_user,1,1,1,1
-access_multi_invoice_manual_payment_wizard_line,multi.invoice.manual.payment.wizard.line,model_multi_invoice_manual_payment_wizard_line,account.group_account_user,1,1,1,1

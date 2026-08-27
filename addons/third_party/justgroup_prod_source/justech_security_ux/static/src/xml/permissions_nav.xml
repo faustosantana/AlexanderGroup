@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<templates xml:space="preserve">
-    <!-- Templates reservadas (nav se inyecta por servicio JS, sin widget de campo). -->
-    <t t-name="justech_security_ux.PermissionsNavPlaceholder"/>
-</templates>

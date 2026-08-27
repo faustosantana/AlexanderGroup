@@ -1,9 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_justech_approval_request_user,justech.approval.request user,model_justech_approval_request,base.group_user,1,0,1,0
-access_justech_approval_request_approver,justech.approval.request approver,model_justech_approval_request,group_approver,1,1,1,0
-access_justech_approval_request_manager,justech.approval.request manager,model_justech_approval_request,group_manager,1,1,1,1
-access_justech_approval_reject_wizard_user,justech.approval.reject.wizard user,model_justech_approval_reject_wizard,base.group_user,1,1,1,1
-access_justech_approval_user_rule_manager,justech.approval.user.rule manager,model_justech_approval_user_rule,group_manager,1,1,1,1
-access_justech_approval_user_rule_system,justech.approval.user.rule system,model_justech_approval_user_rule,base.group_system,1,1,1,1
-access_justech_approval_sale_confirm_wizard,justech.approval.sale.confirm.wizard user,model_justech_approval_sale_confirm_wizard,base.group_user,1,1,1,1
-access_justech_approval_approve_wizard,justech.approval.approve.wizard user,model_justech_approval_approve_wizard,base.group_user,1,1,1,1

@@ -1,21 +1,13 @@
-# Justgroup PROD source snapshot (code only)
+# Deprecated local copy
 
-**Freeze source:** Justgroup PROD `justgroup-vps` `/usr/lib/odoo/custom-addons`  
-**Freeze ID reference:** `JUSTECH_PROD_GOLDEN_2026_08_27`  
-**Copied:** 2026-08-27 — NO business data, NO filestore, NO secrets.
+**Do not maintain modules here.**
 
-## Status
+Canonical source of truth:
 
-- Read-only extract from Justgroup for Doralex reuse evaluation.
-- Not auto-installed on Doralex DEV/PROD from this folder until hygiene + install plan pass.
-- Enterprise addons were **not** copied (`ENTERPRISE_BLOCKED`).
-- Modules NOT copied (examples): `justech_dgcp_bridge`, e-CF stack, payroll stack, `justech_managed_services`.
+https://github.com/faustosantana/odoo-custom-addons
 
-## Adaptations applied in this tree
+Tags: `odoo19-baseline`, `justgroup-2026-08`
 
-- `justech_admin_center`: secret file paths overridable via env
-  `JUSTECH_ADMIN_CENTER_PASSWORD_HASH_FILE` / `JUSTECH_ADMIN_CENTER_PASSWORD_INCOMING_FILE`.
+Consume via clone / submodule / subtree — see that repo’s `docs/DEPLOYMENT.md`.
 
-## Next
-
-See `docs/migration/JUSTGROUP_MODULE_CLASSIFICATION.md` for ACTION matrix.
+Previous one-off extract (24 modules) was superseded on 2026-08-27.
