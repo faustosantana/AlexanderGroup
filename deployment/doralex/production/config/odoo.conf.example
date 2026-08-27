@@ -1,0 +1,36 @@
+; Doralex PRODUCCION — odoo.conf (PLANTILLA)
+; Este archivo se RENDERIZA a `config/odoo.conf` (gitignored) mediante
+; scripts/render_config.sh, que sustituye ${VARIABLES} desde `.env`.
+; NUNCA commitear el odoo.conf renderizado (contiene el master password).
+
+[options]
+; Master password (desde .env: ODOO_ADMIN_PASSWD).
+admin_passwd = ${ODOO_ADMIN_PASSWD}
+
+; La conexión a la base de datos se pasa por variables de entorno del contenedor
+; (HOST/USER/PASSWORD/PORT en docker-compose.yml), no se fija aquí.
+
+; Aislamiento de la base productiva.
+dbfilter = ${ODOO_DBFILTER}
+list_db = False
+
+; Rutas de addons (custom versionado; enterprise opcional bajo licencia).
+addons_path = /mnt/extra-addons
+; addons_path = /mnt/enterprise,/mnt/extra-addons
+
+data_dir = /var/lib/odoo
+
+; Detrás de reverse proxy con TLS.
+proxy_mode = True
+http_enable = True
+http_port = 8069
+
+; Rendimiento (ajustar tras auditoría del servidor).
+workers = 2
+max_cron_threads = 1
+limit_time_cpu = 600
+limit_time_real = 1200
+limit_memory_soft = 1073741824
+limit_memory_hard = 1342177280
+
+log_level = info

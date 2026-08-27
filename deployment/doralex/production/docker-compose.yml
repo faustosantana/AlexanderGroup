@@ -1,0 +1,89 @@
+# Doralex / Alexander Group — Odoo 19 · ENTORNO: PRODUCCION
+# ==============================================================================
+# Stack AISLADO de Produccion. Debe vivir en el servidor bajo:
+#   /opt/doralex/production/
+#
+# AISLAMIENTO (nunca compartir con Dev):
+#   - red Docker propia:        doralex_prod_net
+#   - volumen PostgreSQL propio: doralex_prod_db_data
+#   - volumen filestore propio:  doralex_prod_odoo_data
+#   - password de DB propio (desde .env, no versionado)
+#   - puerto Odoo publicado SOLO a loopback: 127.0.0.1:${ODOO_HTTP_PORT}
+#
+# SEGURIDAD:
+#   - PostgreSQL NO se publica a la red (sin `ports:`); solo accesible en la red interna.
+#   - Odoo se expone únicamente a 127.0.0.1 y se sirve al exterior vía reverse proxy + SSL.
+#   - Los secretos provienen de `.env` (ver .env.example). NUNCA commitear `.env` real.
+# ==============================================================================
+name: doralex-production
+
+services:
+  db:
+    image: postgres:16
+    container_name: doralex-production-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?define POSTGRES_DB en .env}
+      POSTGRES_USER: ${POSTGRES_USER:?define POSTGRES_USER en .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - internal
+    # Sin `ports:` -> PostgreSQL nunca queda expuesto públicamente.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  odoo:
+    # NOTA ENTERPRISE: `odoo:19` es Community. Para Enterprise se debe construir/
+    # usar una imagen con los addons Enterprise (licencia requerida) y montar
+    # `/mnt/enterprise`. Ver docs/infrastructure/ENTERPRISE_READINESS.md (BLOCKED).
+    image: ${ODOO_IMAGE:-odoo:19}
+    container_name: doralex-production-odoo
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    environment:
+      HOST: db
+      PORT: 5432
+      USER: ${POSTGRES_USER:?define POSTGRES_USER en .env}
+      PASSWORD: ${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env}
+    volumes:
+      - odoo_data:/var/lib/odoo
+      # odoo.conf se RENDERIZA desde config/odoo.conf.example con scripts/render_config.sh
+      # (queda gitignored). Contiene admin_passwd, dbfilter, proxy_mode, addons_path.
+      - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
+      # Addons custom versionados (release controlado). Solo lectura.
+      - ./addons:/mnt/extra-addons:ro
+      # Enterprise (opcional, licencia): descomentar cuando exista fuente legítima.
+      # - ./enterprise:/mnt/enterprise:ro
+    ports:
+      # Solo loopback: el reverse proxy (host) termina TLS y hace proxy aquí.
+      - "127.0.0.1:${ODOO_HTTP_PORT:-8069}:8069"
+      - "127.0.0.1:${ODOO_LONGPOLLING_PORT:-8072}:8072"
+    networks:
+      - internal
+    healthcheck:
+      test:
+        ["CMD-SHELL", "curl -fsS http://localhost:8069/web/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+volumes:
+  db_data:
+    name: doralex_prod_db_data
+  odoo_data:
+    name: doralex_prod_odoo_data
+
+networks:
+  internal:
+    name: doralex_prod_net
+    driver: bridge
+    internal: false

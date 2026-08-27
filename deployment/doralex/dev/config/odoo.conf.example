@@ -1,0 +1,29 @@
+; Doralex DEV — odoo.conf (PLANTILLA)
+; Se RENDERIZA a `config/odoo.conf` (gitignored) con scripts/render_config.sh.
+; NUNCA commitear el odoo.conf renderizado.
+
+[options]
+admin_passwd = ${ODOO_ADMIN_PASSWD}
+
+; Conexión a DB por variables de entorno del contenedor (ver docker-compose.yml).
+
+dbfilter = ${ODOO_DBFILTER}
+; En Dev puede activarse el gestor de bases para crear/duplicar entornos de prueba.
+list_db = True
+
+addons_path = /mnt/extra-addons
+; addons_path = /mnt/enterprise,/mnt/extra-addons
+
+data_dir = /var/lib/odoo
+
+proxy_mode = True
+http_enable = True
+http_port = 8069
+
+; Dev con menos recursos que Produccion.
+workers = 0
+max_cron_threads = 1
+limit_time_cpu = 600
+limit_time_real = 1200
+
+log_level = info

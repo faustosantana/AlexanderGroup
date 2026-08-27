@@ -42,3 +42,26 @@ aclaraciones **duraderas y no evidentes**.
   porque aún no existen módulos (directorios con `__manifest__.py`).
 - **Despliegue**: todo lo de `deployment/` son ejemplos (`*.example*`). **No**
   construir imágenes ni levantar contenedores en esta fase.
+
+## Infraestructura Doralex (servidor nuevo)
+
+- El bootstrap de infraestructura vive en `deployment/doralex/` (stacks Prod/Dev
+  aislados) y `docs/infrastructure/`. Es **fuente de verdad versionada**; se
+  despliega en el servidor bajo `/opt/doralex/**` (aún no desplegado).
+- **STOP por SSH (no evidente y obligatorio)**: el servidor `2.25.121.111`
+  (user `root`) **no** debe accederse por SSH hasta que el usuario lo autorice y
+  entregue la contraseña. Cuando una tarea requiera SSH, DETENERSE y responder
+  solo con el bloque `SSH_REQUIRED` (host/user/reason) y esperar. Nunca simular
+  acceso ni inventar resultados de auditoría.
+- **Aislamiento Prod/Dev**: redes (`doralex_prod_net` / `doralex_dev_net`),
+  volúmenes (`doralex_prod_*` / `doralex_dev_*`), DB y puertos loopback distintos
+  (Prod `8069/8072`, Dev `8169/8172`). PostgreSQL nunca se publica. Nunca montar
+  volúmenes de Produccion en Dev. `scripts/validate_isolation.sh` lo verifica.
+- **Secretos de infra**: cada entorno usa su `.env` (desde `.env.example`) y un
+  `config/odoo.conf` **renderizado** con `scripts/render_config.sh` (envsubst);
+  ambos quedan fuera de Git. Enterprise (`/opt/doralex/*/enterprise`) también.
+- **Validación local sin Docker**: los scripts se comprueban con `shellcheck -x`
+  y `bash -n`; los compose con `yamllint`/`pyyaml`; Docker **no** está instalado
+  en el entorno de Cursor (el despliegue real ocurre en el servidor).
+- **Enterprise**: `odoo:19` es Community; Enterprise está **BLOCKED** hasta contar
+  con licencia/fuente legítima (ver `docs/infrastructure/ENTERPRISE_READINESS.md`).
