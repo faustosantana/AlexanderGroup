@@ -1,0 +1,35 @@
+Doralex DEV — 6 empresas configuradas (2026-08-27)
+Backups previos: dev_20260827_183205 / dev_20260827_185831 (verificados).
+NO se cargaron datos reales; nombres = placeholder (PENDIENTE RAZON SOCIAL/RNC).
+
+Empresas creadas (persistidas):
+  id 28  Doralex Empresa 1 [PENDIENTE RAZON SOCIAL/RNC]
+  id 29  Doralex Empresa 2 [PENDIENTE RAZON SOCIAL/RNC]
+  id 30  Doralex Empresa 3 [PENDIENTE RAZON SOCIAL/RNC]
+  id 31  Doralex Empresa 4 [PENDIENTE RAZON SOCIAL/RNC]
+  id 32  Doralex Empresa 5 [PENDIENTE RAZON SOCIAL/RNC]
+  id 33  Doralex Empresa 6 [PENDIENTE RAZON SOCIAL/RNC]
+
+Por empresa (aislado):
+  moneda=DOP  pais=DO  timezone(partner)=America/Santo_Domingo
+  chart=do    cuentas=289   impuestos=37 (ITBIS + retenciones RD)
+  diarios=8   (sale, purchase, bank, cash/caja, + general)
+  almacen=1   ubicaciones=5   operation types=2
+  posiciones_fiscales=11   payment_terms=10
+
+NCF: 23 l10n_latam.document.type + 11 justech.do.fiscal.document.type disponibles;
+     justech.do.ncf.range = 0  -> PENDING_REAL_DGII_SEQUENCE (no se inventan rangos).
+
+Config params (Doralex, via ir.config_parameter, sin editar vendor):
+  web.base.url = https://dev.doralexgroup.cloud
+  justech.approval.public.base.url = https://dev.doralexgroup.cloud
+  mail.catchall.domain = doralexgroup.cloud
+  (guards report_identity/sale_terms = habilitados)
+
+Pruebas:
+  ISOLATION funcional 36/36 PASS (cliente, proveedor, producto, venta, compra,
+    factura cliente, factura proveedor, almacen, diario) por empresa, revertido.
+  golden 9/9, six-company 6/6, repo 15/15, runtime errors = 0.
+  DXTEST leftover = 0 (sin datos persistentes de prueba).
+
+Prod = intacto (http 200).
