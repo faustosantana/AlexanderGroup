@@ -1,0 +1,17 @@
+Doralex DEV — Golden environment validation (2026-08-27)
+Ejecutado en doralex_dev vía `odoo shell` con datos temporales dentro de una
+transacción revertida (env.cr.rollback()). No quedaron datos persistentes
+(companies=1, DX_TMP_partners=0, DX_TMP_users=0). Runtime: 0 ERROR/CRITICAL.
+
+PASS - multicompany.create_companies            base=1 now=3
+PASS - multicompany.user_multi                  (usuario con 2 compañías)
+PASS - multicompany.partner_company_isolation   (company_id correcto)
+PASS - multicompany.record_rules_present        global_rules=96
+PASS - sales.order_amount                        total=230.0
+PASS - purchase.order_amount                     total=207.0
+PASS - accounting.invoice_created                total=115.0 state=draft
+PASS - inventory.picking_types                   types=2
+PASS - crm.lead_created                          (lead creado)
+
+SUMMARY total=9 pass=9 fail=0
+ROLLED_BACK - sin datos persistentes

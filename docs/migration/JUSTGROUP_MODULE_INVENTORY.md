@@ -1,13 +1,15 @@
 # Inventario y clasificación de módulos (Justgroup → Doralex)
 
-> Fecha: 2026-08-27. **Estado del audit real de Justgroup: `JUSTGROUP_ACCESS_REQUIRED`.**
+> Fecha: 2026-08-27. **Estado del audit real de Justgroup: `JUSTGROUP_AUDIT = PARTIAL`.**
 >
-> `erp.justech.do` resuelve a `207.244.242.58`, pero **no se dispone de credenciales**
-> (SSH ni admin Odoo) para auditar su instalación. Por regla, **no** se copia su base
-> de datos ni datos comerciales, y no se inventa el contenido de su instancia. La
-> matriz de abajo se completa con: (a) módulos **estándar** ya instalados y validados
-> en Doralex DEV, y (b) módulos **custom Justech conocidos** por su nombre/versión
-> (referencias operativas), marcados como pendientes de acceso para auditar/copiar.
+> **Verificado (solo lectura, sin auth):** `erp.justech.do` = **Odoo 19.0 Enterprise**
+> (`19.0+e-20260324`) vía endpoint público `common.version`. El **listado de módulos**
+> (`ir.module.module`) requiere autenticación de admin/SSH que **no existe en el
+> entorno** tras una búsqueda exhaustiva (env, `~/.ssh`, archivos de credenciales,
+> remotos Git, repos GitHub accesibles). No se copia su base de datos ni datos
+> comerciales, ni se inventa el contenido de su instancia. La matriz de abajo combina:
+> (a) módulos **estándar** ya instalados/validados en Doralex DEV, y (b) módulos
+> **custom Justech conocidos** por nombre/versión, pendientes de acceso para auditar/copiar.
 
 ## Cómo completar el audit real (cuando haya acceso)
 
