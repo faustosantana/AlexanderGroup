@@ -7,6 +7,9 @@
 
 | Clave | Valor |
 | ----- | ----- |
+| DORALEX_DEV_DNS | **PASS** (`dev.doralexgroup.cloud` → `2.25.121.111`) |
+| DORALEX_DEV_SSL | **PASS** (Let's Encrypt, exp. 2026-11-25, auto-renovación) |
+| DORALEX_DEV_HTTPS | **PASS** (`https://dev.doralexgroup.cloud`, HTTP→HTTPS 301) |
 | DORALEX_DEV_HEALTH | **PASS** (`/web/health` 200) |
 | DORALEX_DEV_RUNTIME_ERRORS | **0** |
 | DORALEX_DEV_TESTS | **9/9** (golden env, datos temporales revertidos) |
@@ -26,24 +29,15 @@
 
 ## Bloqueos reales restantes
 
-### 1. DNS dev — paso manual exacto (no hay API de Hostinger en el entorno)
+### 1. DNS + SSL dev — RESUELTO (2026-08-27)
 
-`doralexgroup.cloud` está en **Hostinger** (NS `*.dns-parking.com`). No hay token
-de API en el entorno, por lo que se documenta el paso manual (no bloquea el resto):
+`dev.doralexgroup.cloud` → `2.25.121.111` (DNS Hostinger creado por el usuario) y
+**SSL emitido** con Let's Encrypt (`certbot --nginx --redirect`):
 
-1. Entrar a **hPanel de Hostinger** → *Dominios* → `doralexgroup.cloud` → **Zona DNS / DNS Records**.
-2. **Añadir registro**:
-   - **Tipo:** `A`
-   - **Nombre / Host:** `dev`
-   - **Apunta a / Points to:** `2.25.121.111`
-   - **TTL:** por defecto (300–3600).
-3. Guardar y esperar propagación. Validar: `dig +short dev.doralexgroup.cloud` → `2.25.121.111`.
-
-En cuanto resuelva, el SSL de dev se emite **automáticamente**
-(`certbot --nginx -d dev.doralexgroup.cloud --redirect`); el vhost `:80` de dev ya
-está configurado en Nginx.
-
-> Alternativa: cargar un `HOSTINGER_API_TOKEN` como Secret para crearlo por API.
+- Certificado: emisor **Let's Encrypt** (CN `dev.doralexgroup.cloud`), exp. **2026-11-25**.
+- `https://dev.doralexgroup.cloud/web/health` → **200**; `ssl_verify_result=0` (cadena válida).
+- HTTP→HTTPS **301** (sin loops); `X-Forwarded-Proto`/`X-Forwarded-For` y websocket (`:8172`) configurados.
+- Renovación automática: `certbot.timer` (systemd) activo.
 
 ### 2. Inventario real de módulos de Justgroup
 

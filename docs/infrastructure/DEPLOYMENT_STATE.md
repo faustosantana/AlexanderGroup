@@ -52,7 +52,7 @@ volumes = **0**. PostgreSQL **no publicado**.
 | ------- | --- | --- |
 | `doralexgroup.cloud` | → `2.25.121.111` ✅ | Let's Encrypt ✅ (exp. 2026-11-25) |
 | `www.doralexgroup.cloud` | → `2.25.121.111` ✅ | ✅ (301 → canónico) |
-| `dev.doralexgroup.cloud` | **NXDOMAIN** ❌ | **DNS_REQUIRED** (sin certificado) |
+| `dev.doralexgroup.cloud` | → `2.25.121.111` ✅ | Let's Encrypt ✅ (exp. 2026-11-25) |
 
 HTTP→HTTPS (301) y `www`→canónico (301) verificados. Renovación automática certbot.
 
