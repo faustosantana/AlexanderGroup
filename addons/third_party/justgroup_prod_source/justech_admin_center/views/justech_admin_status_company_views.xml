@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_admin_system_status_form" model="ir.ui.view">
+        <field name="name">justech.admin.system.status.form</field>
+        <field name="model">justech.admin.system.status</field>
+        <field name="arch" type="xml">
+            <form class="o_justech_admin_center" create="0" delete="0">
+                <header>
+                    <button name="action_back_console" type="object" string="← Volver" class="btn-secondary"/>
+                    <button name="action_open_pending" type="object" string="Resolver acciones"
+                            class="btn-primary" invisible="warning_count == 0 and error_count == 0"/>
+                    <button name="action_run_diagnostics" type="object" string="Diagnosticar" class="btn-secondary"/>
+                    <field name="status_visual" widget="badge"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group string="Resumen">
+                            <field name="company_id"/>
+                            <field name="health_score" string="Puntuación de salud"/>
+                            <field name="status_label"/>
+                            <field name="next_action" string="Siguiente acción"/>
+                            <field name="last_validation" string="Última validación"/>
+                        </group>
+                        <group string="Incidencias">
+                            <field name="error_count" string="Errores"/>
+                            <field name="warning_count" string="Advertencias"/>
+                        </group>
+                    </group>
+                    <group string="Controles por categoría">
+                        <group>
+                            <field name="platform_status" string="Plataforma"/>
+                            <field name="security_status" string="Seguridad"/>
+                            <field name="fiscal_status" string="Fiscal"/>
+                            <field name="finance_status" string="Finanzas"/>
+                        </group>
+                        <group>
+                            <field name="warranty_status" string="Garantías"/>
+                            <field name="integrations_status" string="Integraciones"/>
+                            <field name="automation_status" string="Procesos automáticos"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_justech_admin_company_hub_form" model="ir.ui.view">
+        <field name="name">justech.admin.company.hub.form</field>
+        <field name="model">justech.admin.company.hub</field>
+        <field name="arch" type="xml">
+            <form class="o_justech_admin_center" create="0" delete="0">
+                <header>
+                    <button name="action_back_console" type="object" string="← Volver" class="btn-secondary"/>
+                    <button name="action_open_pending" type="object" string="Resolver acciones" class="btn-primary"
+                            invisible="pending_count == 0"/>
+                    <button name="action_open_users" type="object" string="Usuarios" class="btn-secondary"/>
+                    <button name="action_run_diagnostics" type="object" string="Diagnosticar" class="btn-secondary"/>
+                    <field name="status_visual" widget="badge"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="status_label" string="Estado"/>
+                            <field name="status_reason" string="Motivo"/>
+                            <field name="pending_count"/>
+                        </group>
+                        <group>
+                            <field name="active_product_count" string="Productos activos"/>
+                            <field name="user_count" string="Usuarios"/>
+                        </group>
+                    </group>
+                    <separator string="Acciones requeridas" invisible="pending_count == 0"/>
+                    <field name="pending_ids" mode="list" nolabel="1" invisible="pending_count == 0">
+                        <list create="0" delete="0">
+                            <field name="severity"/>
+                            <field name="name"/>
+                            <field name="product_id"/>
+                            <field name="recommendation"/>
+                            <button name="action_resolve" type="object" string="Resolver" class="btn-link"/>
+                        </list>
+                    </field>
+                    <separator string="Productos"/>
+                    <field name="product_ids" mode="kanban" nolabel="1"
+                             options="{'no_create': True, 'no_open': True}"
+                             context="{'kanban_view_ref': 'justech_admin_center.view_justech_admin_product_kanban', 'justech_admin_company_id': company_id}"/>
+                    <separator string="Actividad reciente"/>
+                    <field name="activity_ids" mode="list" nolabel="1">
+                        <list create="0" delete="0" limit="5">
+                            <field name="create_date"/>
+                            <field name="executed_by"/>
+                            <field name="summary"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

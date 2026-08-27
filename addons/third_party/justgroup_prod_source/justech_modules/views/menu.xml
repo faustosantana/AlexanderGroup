@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Licensing menus are provided by justech_admin when present.
+         Do not create orphan ir.ui.menu rows without name (Odoo 19). -->
+</odoo>

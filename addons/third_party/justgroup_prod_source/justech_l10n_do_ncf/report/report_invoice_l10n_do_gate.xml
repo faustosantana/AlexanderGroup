@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Hotfix reportes Justech (19.0.2.6.0):
+        Restaura el bloque l10n_do `do_informations` cuando el documento
+        es dominicano y tiene evidencia fiscal real (latam o Motor Justech),
+        aunque el diario ya no tenga l10n_latam_use_documents=True.
+
+        No fuerza datos fiscales DO en empresas/localizaciones extranjeras.
+    -->
+    <template
+        id="report_invoice_document_justech_l10n_do_gate"
+        inherit_id="l10n_do_accounting.l10n_do_report_invoice_document"
+    >
+        <xpath expr="//t[@t-set='is_l10n_do_invoice']" position="replace">
+            <!--
+                DO company gate (not a literal True):
+                restores #do_informations for Dominican companies even when
+                journals no longer set l10n_latam_use_documents after Justech cutover.
+                Non-DO companies keep is_l10n_do_invoice=False.
+            -->
+            <t t-set="is_l10n_do_invoice" t-value="bool(o.company_id.country_id and o.company_id.l10n_do_country_code == 'DO')"/>
+        </xpath>
+    </template>
+</odoo>

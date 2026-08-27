@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_account_move_reversal_inherited" model="ir.ui.view">
+        <field name="name">view.account.move.reversal.inherited</field>
+        <field name="model">account.move.reversal</field>
+        <field name="inherit_id" ref="account.view_account_move_reversal"/>
+        <field name="arch" type="xml">
+            <form>
+                <field name="l10n_latam_use_documents" invisible="1"/>
+                <field name="l10n_latam_manual_document_number" invisible="1"/>
+            </form>
+            <field name="date" position="before">
+                <field name="l10n_latam_available_document_type_ids" invisible="1"/>
+                <field name="l10n_latam_document_type_id"
+                       invisible="1"
+                       required="l10n_latam_use_documents"
+                       options="{'no_open': True, 'no_create': True}"/>
+                <field name="l10n_latam_document_number"
+                       invisible="not l10n_latam_manual_document_number"
+                       required="move_type == 'in_invoice'"/>
+            </field>
+            <field name="journal_id" position="after">
+                <field name="l10n_latam_country_code" invisible="1"/>
+                <field name="is_ecf_invoice" invisible="1"/>
+            </field>
+            <xpath expr="//field[@name='reason']" position="after">
+                <field name="l10n_do_ecf_modification_code"
+                       invisible="move_type != 'out_invoice' or not is_ecf_invoice"
+                       required="move_type == 'out_invoice' and is_ecf_invoice"/>
+            </xpath>
+            <xpath expr="//group" position="after">
+                <div class="text-muted" invisible="l10n_do_ecf_modification_code != '1'">
+                    "1: Anula el NCF modificado":
+                    Su monto total debe ser equivalente al monto total del e-NCF modificado o su balance,
+                    considerando si le han sido aplicadas otras Notas de Crédito o Notas de Débito previamente.
+
+                    Luego de anulado un e-NCF, no se admitirá la aplicación de otras Notas de Crédito o Notas de Débito al mismo.
+                </div>
+                <div class="text-muted" invisible="l10n_do_ecf_modification_code != '3'">
+                    "3: Corrige montos del NCF modificado":
+                    Se mantiene la validación que permite modificar el balance del comprobante fiscal electrónico original con otra Nota de Crédito/Débito Electrónica, conforme aplique.
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

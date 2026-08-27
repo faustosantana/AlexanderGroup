@@ -29,3 +29,7 @@ Cada módulo incorporado aquí debe registrar, como mínimo, la siguiente ficha:
 ## Estado
 
 `Fase 0 — Vacío por diseño. Pendiente de selección y aprobación de terceros.`
+
+## justgroup_prod_source/
+
+Snapshot code-only from Justgroup PROD (2026-08-27). See `justgroup_prod_source/README.md` and `docs/migration/JUSTGROUP_MODULE_CLASSIFICATION.md`.

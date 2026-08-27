@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_config_settings_justech_admin_center" model="ir.ui.view">
+        <field name="name">res.config.settings.justech.admin.center</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="priority">40</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Administración Justech" string="Administración Justech" name="justech_admin_center_settings"
+                     groups="base.group_system,justech_admin_center.group_justech_admin_center_user">
+                    <block title="Consola central" name="justech_admin_center_block">
+                        <setting string="Administración Justech"
+                                 help="Catálogo de módulos, instalación controlada, activación, roles, diagnóstico y auditoría.">
+                            <div class="mt8">
+                                <button name="action_justech_open_admin_center"
+                                        type="object"
+                                        string="Abrir Administración Justech"
+                                        icon="oi-arrow-right"
+                                        class="btn-link o_web_settings_access_rights"/>
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

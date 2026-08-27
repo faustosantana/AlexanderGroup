@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_withholding_catalog_search" model="ir.ui.view">
+        <field name="name">justech.do.withholding.catalog.search</field>
+        <field name="model">justech.do.withholding.catalog</field>
+        <field name="arch" type="xml">
+            <search string="Buscar retenciones">
+                <field name="name"/>
+                <field name="code"/>
+                <filter name="filter_active" string="Activas" domain="[('active', '=', True)]"/>
+                <filter name="filter_global" string="Globales"
+                        domain="[('company_id', '=', False)]"/>
+                <filter name="filter_isr" string="ISR" domain="[('withholding_type', '=', 'isr')]"/>
+                <filter name="filter_itbis" string="ITBIS" domain="[('withholding_type', '=', 'itbis')]"/>
+                <filter name="filter_pending_conf" string="Pendiente confirmación"
+                        domain="[('pending_confirmation', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_justech_withholding_catalog_list" model="ir.ui.view">
+        <field name="name">justech.do.withholding.catalog.list</field>
+        <field name="model">justech.do.withholding.catalog</field>
+        <field name="arch" type="xml">
+            <list string="Retenciones" decoration-muted="not active">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code" optional="show"/>
+                <field name="rate" string="Porcentaje"/>
+                <field name="withholding_type" string="Tipo"/>
+                <field name="base_type" string="Base"/>
+                <field name="partner_scope" string="Aplica a"/>
+                <field name="dgii_withholding_code" string="DGII" optional="show"/>
+                <field name="company_config_pending_count" string="Pendientes" optional="show"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="pending_confirmation" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_justech_withholding_catalog_form" model="ir.ui.view">
+        <field name="name">justech.do.withholding.catalog.form</field>
+        <field name="model">justech.do.withholding.catalog</field>
+        <field name="arch" type="xml">
+            <form string="Retención">
+                <sheet>
+                    <div class="alert alert-info" role="alert"
+                         invisible="company_id">
+                        Retención global: definición fiscal compartida.
+                        La cuenta contable se configura por empresa.
+                    </div>
+                    <div class="alert alert-warning" role="alert"
+                         invisible="not pending_confirmation">
+                        Pendiente de confirmación fiscal — no utilizable en pagos.
+                    </div>
+
+                    <group>
+                        <group string="Definición fiscal">
+                            <field name="name"/>
+                            <field name="code" groups="justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin"/>
+                            <field name="withholding_type"/>
+                            <field name="rate"/>
+                            <field name="base_type"/>
+                            <field name="sequence"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                        <group string="Alcance">
+                            <field name="company_id" groups="base.group_multi_company"
+                                   options="{'no_create': True}"
+                                   placeholder="Global (todas las empresas)"/>
+                            <field name="source_tax_name" invisible="company_id"
+                                   groups="justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin"/>
+                            <field name="source_tax_use" invisible="company_id"
+                                   groups="justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin"/>
+                            <field name="tax_id" invisible="not company_id"
+                                   groups="justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin"/>
+                            <field name="partner_scope"/>
+                            <field name="move_scope"/>
+                            <field name="active"/>
+                            <field name="pending_confirmation"/>
+                        </group>
+                    </group>
+                    <group string="Reportes DGII"
+                           groups="justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin">
+                        <field name="affects_606"/>
+                        <field name="affects_607"/>
+                        <field name="affects_623"/>
+                        <field name="dgii_withholding_code"/>
+                    </group>
+                    <field name="notes" placeholder="Notas internas (opcional)"/>
+
+                    <!-- Campos técnicos (siguen en el modelo; no se muestran al contable) -->
+                    <field name="effective_account_code" invisible="1"/>
+                    <field name="effective_account_type" invisible="1"/>
+                    <field name="effective_config_active" invisible="1"/>
+                    <field name="effective_warning" invisible="1"/>
+                    <field name="account_id" invisible="1"
+                           groups="justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin"/>
+
+                    <separator string="Cuenta contable para esta empresa"/>
+
+                    <div class="alert alert-warning" role="alert"
+                         invisible="effective_config_state not in ('pending', 'missing')">
+                        Esta retención no puede utilizarse hasta configurar una cuenta
+                        contable para esta empresa.
+                    </div>
+                    <div class="alert alert-warning" role="alert"
+                         invisible="effective_config_state != 'inactive'">
+                        La cuenta está definida, pero la configuración permanece inactiva
+                        para esta empresa.
+                    </div>
+                    <div class="alert alert-danger" role="alert"
+                         invisible="effective_config_state != 'invalid'">
+                        La cuenta configurada ya no es válida.
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="effective_company_id" string="Empresa" readonly="1"/>
+                            <field name="effective_config_state" string="Estado" readonly="1"
+                                   widget="badge"
+                                   decoration-success="effective_config_state == 'configured'"
+                                   decoration-warning="effective_config_state in ('pending', 'inactive', 'missing')"
+                                   decoration-danger="effective_config_state == 'invalid'"/>
+                        </group>
+                        <group>
+                            <field name="effective_account_id" string="Cuenta contable" readonly="1"
+                                   options="{'no_open': True, 'no_create': True}"/>
+                            <field name="effective_account_nature" string="Naturaleza" readonly="1"/>
+                        </group>
+                    </group>
+                    <div class="oe_button_box mb-3">
+                        <button name="action_configure_active_company" type="object"
+                                string="Configurar cuenta"
+                                class="btn-primary"
+                                invisible="effective_account_id"/>
+                        <button name="action_configure_active_company" type="object"
+                                string="Editar configuración"
+                                class="btn-secondary"
+                                invisible="not effective_account_id"/>
+                    </div>
+
+                    <separator string="Configuración contable por empresa"/>
+                    <field name="company_config_ids" nolabel="1"
+                           context="{'default_catalog_id': id}">
+                        <list create="0" delete="0"
+                              decoration-warning="state in ('pending', 'inactive')"
+                              decoration-danger="state == 'invalid'"
+                              decoration-muted="state == 'inactive'"
+                              decoration-success="state == 'configured'">
+                            <field name="company_id" string="Empresa"/>
+                            <field name="state" string="Estado" widget="badge"
+                                   decoration-success="state == 'configured'"
+                                   decoration-warning="state in ('pending', 'inactive')"
+                                   decoration-danger="state == 'invalid'"/>
+                            <field name="account_id" string="Cuenta contable"
+                                   options="{'no_create': True}"/>
+                            <field name="account_nature" string="Naturaleza" optional="show"/>
+                            <field name="date_from" string="Vigente desde" optional="show"/>
+                            <field name="date_to" string="Vigente hasta" optional="show"/>
+                            <field name="account_code" column_invisible="1"/>
+                            <field name="account_type" column_invisible="1"/>
+                            <field name="active_config" column_invisible="1"/>
+                            <field name="warning_message" column_invisible="1"/>
+                            <button name="action_open_form" type="object" string="Abrir"
+                                   title="Editar configuración" icon="fa-pencil"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Company config standalone -->
+    <record id="view_justech_wh_company_config_list" model="ir.ui.view">
+        <field name="name">justech.do.withholding.company.config.list</field>
+        <field name="model">justech.do.withholding.company.config</field>
+        <field name="arch" type="xml">
+            <list decoration-warning="state in ('pending', 'inactive')"
+                  decoration-danger="state == 'invalid'"
+                  decoration-success="state == 'configured'">
+                <field name="company_id" string="Empresa"/>
+                <field name="catalog_id" string="Retención"/>
+                <field name="state" string="Estado" widget="badge"
+                       decoration-success="state == 'configured'"
+                       decoration-warning="state in ('pending', 'inactive')"
+                       decoration-danger="state == 'invalid'"/>
+                <field name="account_id" string="Cuenta contable"/>
+                <field name="account_nature" string="Naturaleza"/>
+                <field name="date_from" string="Vigente desde" optional="show"/>
+                <field name="date_to" string="Vigente hasta" optional="show"/>
+                <field name="rate" optional="hide"/>
+                <field name="withholding_type" optional="hide"/>
+                <field name="account_code" column_invisible="1"/>
+                <field name="active_config" column_invisible="1"/>
+                <field name="warning_message" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_justech_wh_company_config_form" model="ir.ui.view">
+        <field name="name">justech.do.withholding.company.config.form</field>
+        <field name="model">justech.do.withholding.company.config</field>
+        <field name="arch" type="xml">
+            <form string="Configuración de cuenta">
+                <header>
+                    <button name="action_activate" type="object" string="Activar"
+                            class="btn-primary"
+                            invisible="active_config or not account_id"/>
+                    <button name="action_deactivate" type="object" string="Desactivar"
+                            invisible="not active_config"/>
+                    <field name="state" widget="badge"
+                           decoration-success="state == 'configured'"
+                           decoration-warning="state in ('pending', 'inactive')"
+                           decoration-danger="state == 'invalid'"/>
+                </header>
+                <sheet>
+                    <div class="alert alert-warning" role="alert"
+                         invisible="state != 'pending'">
+                        Esta retención no puede utilizarse hasta configurar una cuenta
+                        contable para esta empresa.
+                    </div>
+                    <div class="alert alert-danger" role="alert"
+                         invisible="state != 'invalid'">
+                        La cuenta configurada ya no es válida.
+                    </div>
+                    <div class="alert alert-warning" role="alert"
+                         invisible="state != 'inactive'">
+                        La configuración está inactiva para esta empresa.
+                    </div>
+                    <field name="warning_message" invisible="1"/>
+                    <field name="account_code" invisible="1"/>
+                    <field name="account_type" invisible="1"/>
+                    <field name="account_name" invisible="1"/>
+                    <group>
+                        <group string="Empresa">
+                            <field name="catalog_id" readonly="1"/>
+                            <field name="company_id" readonly="1"/>
+                            <field name="active_config" string="Activa"/>
+                        </group>
+                        <group string="Cuenta contable">
+                            <field name="account_id" string="Cuenta contable"
+                                   options="{'no_create': True}"/>
+                            <field name="account_nature" string="Naturaleza" readonly="1"/>
+                            <field name="date_from" string="Vigente desde"/>
+                            <field name="date_to" string="Vigente hasta"/>
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Observaciones (opcional)"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_justech_wh_company_config_search" model="ir.ui.view">
+        <field name="name">justech.do.withholding.company.config.search</field>
+        <field name="model">justech.do.withholding.company.config</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="catalog_id"/>
+                <field name="company_id"/>
+                <filter name="pending" string="Pendiente de configurar"
+                        domain="[('state', '=', 'pending')]"/>
+                <filter name="configured" string="Configurada"
+                        domain="[('state', '=', 'configured')]"/>
+                <filter name="invalid" string="Configuración inválida"
+                        domain="[('state', '=', 'invalid')]"/>
+                <filter name="active_cfg" string="Activas"
+                        domain="[('active_config', '=', True)]"/>
+                <filter name="isr" string="ISR" domain="[('withholding_type', '=', 'isr')]"/>
+                <filter name="itbis" string="ITBIS" domain="[('withholding_type', '=', 'itbis')]"/>
+                <group>
+                    <filter name="groupby_company" string="Empresa" context="{'group_by': 'company_id'}"/>
+                    <filter name="groupby_state" string="Estado" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_justech_withholding_catalog" model="ir.actions.act_window">
+        <field name="name">Administrar Retenciones</field>
+        <field name="res_model">justech.do.withholding.catalog</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_filter_active': 1, 'default_company_id': False}</field>
+    </record>
+
+    <record id="action_justech_wh_company_config" model="ir.actions.act_window">
+        <field name="name">Configurar cuentas de retenciones</field>
+        <field name="res_model">justech.do.withholding.company.config</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_pending': 1}</field>
+    </record>
+
+    <record id="action_justech_wh_config_wizard" model="ir.actions.act_window">
+        <field name="name">Configurar cuentas de retenciones</field>
+        <field name="res_model">justech.withholding.config.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_justech_wh_config_wizard_form" model="ir.ui.view">
+        <field name="name">justech.withholding.config.wizard.form</field>
+        <field name="model">justech.withholding.config.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Configurar cuentas de retenciones">
+                <group>
+                    <group>
+                        <field name="company_id"/>
+                        <field name="withholding_type"/>
+                        <field name="partner_scope"/>
+                    </group>
+                    <group>
+                        <field name="state"/>
+                        <field name="active_only"/>
+                        <field name="pending_count" readonly="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_create_missing_configs" type="object"
+                            string="Crear configuraciones faltantes" class="btn-secondary"/>
+                    <button name="action_open_configs" type="object"
+                            string="Abrir lista" class="btn-primary"/>
+                    <button string="Cerrar" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_justech_wh_company_config"
+              name="Configurar cuentas de retenciones"
+              parent="justech_l10n_do_reports.menu_justech_do_audit_root"
+              action="action_justech_wh_company_config"
+              sequence="135"
+              groups="account.group_account_manager,justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin"/>
+
+    <menuitem id="menu_justech_wh_config_wizard"
+              name="Asistente configuración retenciones"
+              parent="justech_l10n_do_reports.menu_justech_do_audit_root"
+              action="action_justech_wh_config_wizard"
+              sequence="136"
+              groups="account.group_account_manager,justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin"/>
+</odoo>

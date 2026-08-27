@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_justech_do_document_type" model="ir.ui.view">
+        <field name="name">sale.order.form.justech.do.document.type</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Campo interno: hereda a factura vía _prepare_invoice. No visible en cotización/pedido. -->
+            <field name="partner_id" position="after">
+                <field name="justech_do_document_type_id"
+                       invisible="1"
+                       options="{'no_create': True}"
+                       readonly="state in ('sale', 'done', 'cancel')"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,39 @@
+.o_treasury_open_payment_form {
+    .oe_title h1 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+        word-break: break-word;
+    }
+    .o_field_badge {
+        white-space: nowrap;
+    }
+}
+
+.o_treasury_open_payment_list {
+    .o_list_table th,
+    .o_list_table td {
+        vertical-align: middle;
+    }
+}
+
+// Modal XL responsive para wizards de tesorería (registro y aplicación).
+.modal-dialog:has(.o_treasury_wizard_xl),
+.modal-dialog:has(.o_treasury_apply_wizard_xl) {
+    max-width: 1700px !important;
+    width: 95vw !important;
+
+    @media (max-width: 1700px) {
+        width: 95vw !important;
+    }
+    @media (max-width: 768px) {
+        width: 100vw !important;
+        margin: 0 auto;
+    }
+}
+
+.o_treasury_wizard_xl,
+.o_treasury_apply_wizard_xl {
+    .o_list_renderer {
+        overflow-x: visible;
+    }
+}

@@ -1,0 +1,784 @@
+/* Justech Admin Center — tema adaptativo (claro/oscuro) alineado a Odoo */
+:root {
+  --jac-navy: #1B3A5C;
+  --jac-teal: #0D9488;
+  --jac-ok: #16a34a;
+  --jac-warn: #ca8a04;
+  --jac-err: #dc2626;
+  --jac-info: #2563eb;
+}
+
+.o_justech_admin_center,
+.o_jac_enterprise,
+.o_jac_module_kanban,
+.o_jac_product_kanban,
+.o_jac_product_form,
+.o_jac_module_form,
+.o_jac_hub_form,
+.o_jac_activation_wizard {
+  --jac-card-bg: var(--o-view-background-color, var(--bs-body-bg, #ffffff));
+  --jac-card-border: color-mix(in srgb, var(--bs-body-color, #0f172a) 12%, transparent);
+  --jac-text: var(--o-view-text-color, var(--bs-body-color, #0f172a));
+  --jac-text-muted: color-mix(in srgb, var(--jac-text) 72%, transparent);
+  --jac-surface: color-mix(in srgb, var(--jac-card-bg) 92%, var(--jac-text) 8%);
+  color: var(--jac-text);
+}
+
+.o_web_client.o_dark .o_justech_admin_center,
+.o_web_client.o_dark .o_jac_enterprise,
+.o_web_client.o_dark .o_jac_module_kanban,
+.o_web_client.o_dark .o_jac_product_kanban,
+.o_web_client.o_dark .o_jac_product_form,
+.o_web_client.o_dark .o_jac_module_form,
+.o_web_client.o_dark .o_jac_hub_form,
+.o_web_client.o_dark .o_jac_activation_wizard,
+html.o_dark .o_justech_admin_center,
+.o_color_scheme_dark .o_justech_admin_center,
+.o_color_scheme_dark .o_jac_enterprise,
+.o_color_scheme_dark .o_jac_module_kanban,
+.o_color_scheme_dark .o_jac_product_kanban,
+.o_color_scheme_dark .o_jac_product_form,
+.o_color_scheme_dark .o_jac_module_form,
+.o_color_scheme_dark .o_jac_hub_form,
+.o_color_scheme_dark .o_jac_activation_wizard,
+[data-bs-theme="dark"] .o_justech_admin_center,
+[data-bs-theme="dark"] .o_jac_enterprise,
+[data-bs-theme="dark"] .o_jac_module_kanban,
+[data-bs-theme="dark"] .o_jac_product_kanban,
+[data-bs-theme="dark"] .o_jac_product_form,
+[data-bs-theme="dark"] .o_jac_module_form,
+[data-bs-theme="dark"] .o_jac_hub_form,
+[data-bs-theme="dark"] .o_jac_activation_wizard {
+  --jac-card-bg: color-mix(in srgb, var(--o-view-background-color, #1e293b) 88%, #0b1220);
+  --jac-card-border: rgba(148, 163, 184, 0.35);
+  --jac-text: #e8eef7;
+  --jac-text-muted: #b6c2d4;
+  --jac-surface: color-mix(in srgb, var(--jac-card-bg) 85%, #000);
+}
+
+/* Forzar legibilidad: anula text-muted / text-bg-light heredados */
+.o_justech_admin_center .text-muted,
+.o_jac_product_form .text-muted,
+.o_jac_module_form .text-muted,
+.o_jac_hub_form .text-muted,
+.o_jac_activation_wizard .text-muted,
+.o_justech_admin_center .o_form_label,
+.o_jac_hub_form .o_form_label,
+.o_jac_activation_wizard .o_form_label {
+  color: var(--jac-text-muted) !important;
+}
+
+.o_justech_admin_center,
+.o_jac_hub_form,
+.o_jac_activation_wizard {
+  color: var(--jac-text);
+}
+
+.o_jac_table,
+.o_jac_matrix table {
+  color: var(--jac-text);
+}
+
+.o_jac_table th,
+.o_jac_matrix th {
+  color: var(--jac-text);
+  border-color: var(--jac-card-border);
+}
+
+.o_jac_table td,
+.o_jac_matrix td {
+  color: var(--jac-text-muted);
+  border-color: var(--jac-card-border);
+}
+
+.modal-content .o_jac_activation_wizard,
+.o_dialog .o_jac_activation_wizard {
+  color: var(--jac-text);
+}
+
+.o_jac_enterprise {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.o_jac_brand_row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.o_jac_brand_mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--jac-navy), var(--jac-teal));
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.o_jac_brand_title {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--jac-navy);
+  line-height: 1.25;
+}
+
+.o_color_scheme_dark .o_jac_brand_title,
+.o_web_client.o_dark .o_jac_brand_title,
+[data-bs-theme="dark"] .o_jac_brand_title {
+  color: #f1f5f9;
+}
+
+.o_jac_brand_sub,
+.o_jac_section_hint,
+.o_jac_product_lead {
+  margin: 4px 0 12px;
+  color: var(--jac-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.o_jac_section_title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--jac-text);
+  margin: 8px 0 4px;
+}
+
+.o_jac_product_card,
+.o_jac_module_kanban .o_jac_card {
+  position: relative;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--jac-card-border);
+  background: var(--jac-card-bg);
+  color: var(--jac-text);
+  min-height: 168px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.o_jac_card_interactive {
+  cursor: pointer;
+}
+
+.o_jac_card_interactive:hover,
+.o_jac_card_interactive:focus-within {
+  border-color: color-mix(in srgb, var(--jac-teal) 55%, var(--jac-card-border));
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+}
+
+.o_jac_card_interactive:focus-within {
+  outline: 2px solid color-mix(in srgb, var(--jac-teal) 70%, transparent);
+  outline-offset: 2px;
+}
+
+/* Whole-card hit target via primary action */
+.o_jac_stretched::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.o_jac_card_actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.o_jac_card_actions .btn-link {
+  position: relative;
+  z-index: 3;
+}
+
+.o_jac_product_head,
+.o_jac_card_head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 1.05rem;
+  color: var(--jac-text);
+  flex-wrap: wrap;
+}
+
+.o_jac_product_head .fa,
+.o_jac_card_head .fa {
+  color: var(--jac-teal);
+  width: 1.2em;
+  text-align: center;
+}
+
+.o_jac_estado_pill {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--jac-surface);
+  color: var(--jac-text-muted);
+  border: 1px solid var(--jac-card-border);
+}
+
+.o_jac_product_desc,
+.o_jac_card_body {
+  color: var(--jac-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  flex: 1;
+}
+
+.o_jac_product_meta,
+.o_jac_card_meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--jac-text-muted);
+}
+
+.o_jac_tone_green { border-left: 4px solid var(--jac-ok) !important; }
+.o_jac_tone_yellow { border-left: 4px solid var(--jac-warn) !important; }
+.o_jac_tone_red { border-left: 4px solid var(--jac-err) !important; }
+.o_jac_tone_blue { border-left: 4px solid var(--jac-info) !important; }
+.o_jac_tone_grey { border-left: 4px solid #94a3b8 !important; }
+
+.o_justech_admin_center .o_jac_action_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 12px;
+  max-width: 100%;
+}
+
+.o_jac_card_actions .btn-primary,
+.o_jac_action_row .btn-primary {
+  background: var(--jac-navy);
+  border-color: var(--jac-navy);
+  color: #fff;
+}
+
+.o_jac_card_actions .btn-primary:hover,
+.o_jac_action_row .btn-primary:hover {
+  background: var(--jac-teal);
+  border-color: var(--jac-teal);
+}
+
+.o_jac_empty {
+  border: 1px dashed var(--jac-card-border);
+  border-radius: 12px;
+  padding: 20px;
+  color: var(--jac-text-muted);
+  background: var(--jac-surface);
+}
+
+/* Evitar badges Bootstrap de bajo contraste en oscuro */
+.o_jac_module_kanban .badge.text-bg-info,
+.o_jac_module_kanban .badge.text-bg-primary,
+.o_jac_module_kanban .badge.text-bg-light {
+  background: var(--jac-surface) !important;
+  color: var(--jac-text) !important;
+  border: 1px solid var(--jac-card-border);
+}
+
+.o_jac_module_kanban.o_kanban_view .o_kanban_renderer,
+.o_jac_product_kanban.o_kanban_view .o_kanban_renderer {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.o_jac_module_kanban .o_kanban_group,
+.o_jac_product_kanban .o_kanban_group {
+  min-width: 280px;
+  max-width: 360px;
+}
+
+.o_jac_product_form .o_notebook .tab-content,
+.o_jac_module_form .o_notebook .tab-content {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.o_justech_admin_center .oe_stat_button {
+  min-width: 110px;
+}
+
+@media (max-width: 768px) {
+  .o_jac_brand_title {
+    font-size: 1.2rem;
+  }
+  .o_jac_product_card,
+  .o_jac_module_kanban .o_jac_card {
+    min-height: 140px;
+  }
+}
+
+/* Jerarquía visual 1 / 1.1 / 1.3 */
+.o_jac_hierarchy_badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.35rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--jac-navy);
+  margin-right: 0.35rem;
+}
+.o_jac_hierarchy_lg {
+  font-size: 1rem;
+  min-width: 2.25rem;
+  margin-bottom: 0.35rem;
+}
+.o_jac_product_title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.o_jac_status_strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem 1rem;
+  margin: 1rem 0 1.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--jac-card-border);
+  border-radius: 0.6rem;
+  background: var(--jac-surface);
+}
+.o_jac_muted {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--jac-text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.o_jac_console_clean .o_form_sheet {
+  max-width: 1280px;
+}
+
+.o_jac_empty {
+  border: 1px dashed var(--jac-card-border);
+  border-radius: 12px;
+  padding: 20px;
+  color: var(--jac-text-muted);
+  background: var(--jac-surface);
+  margin: 0.5rem 0 1rem;
+}
+
+.o_jac_capability_grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 0.5rem 0 1rem;
+}
+
+@media (max-width: 1024px) {
+  .o_jac_capability_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .o_jac_capability_grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.o_jac_recommend {
+  margin: 0.75rem 0 1rem;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--jac-teal);
+  background: var(--jac-surface);
+  border-radius: 0.4rem;
+}
+.o_jac_ecf_stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.o_jac_ecf_stats > span {
+  padding: 0.75rem;
+  border: 1px solid var(--jac-card-border);
+  border-radius: 0.5rem;
+  background: var(--jac-card-bg);
+  text-align: center;
+}
+@media (max-width: 900px) {
+  .o_jac_ecf_stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* —— Enterprise shell: breadcrumb, header, KPI grid, sidebar —— */
+.o_jac_breadcrumb {
+  font-size: 0.85rem;
+  color: var(--jac-text-muted);
+  margin: 0 0 0.75rem;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.o_jac_product_header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--jac-card-border);
+  border-radius: 0.65rem;
+  background: var(--jac-surface);
+}
+
+.o_jac_product_header_main {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.o_jac_product_icon {
+  font-size: 1.75rem;
+  color: var(--jac-teal);
+  margin-top: 0.15rem;
+}
+
+.o_jac_product_header_title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--jac-text);
+  line-height: 1.25;
+}
+
+.o_jac_product_header_desc {
+  margin: 0.35rem 0 0;
+  color: var(--jac-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.o_jac_product_header_meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.65rem 1rem;
+  flex: 1 1 240px;
+}
+
+.o_jac_kpi_grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+
+.o_jac_console_kpi {
+  margin-top: 0.75rem;
+}
+
+.o_jac_kpi_card {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--jac-card-border);
+  border-radius: 0.55rem;
+  background: var(--jac-card-bg);
+  min-height: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.o_jac_kpi_card strong {
+  font-size: 1.15rem;
+  color: var(--jac-text);
+}
+
+.o_jac_kpi_green { border-left: 4px solid var(--jac-ok); }
+.o_jac_kpi_yellow { border-left: 4px solid var(--jac-warn); }
+.o_jac_kpi_red { border-left: 4px solid var(--jac-err); }
+.o_jac_kpi_blue { border-left: 4px solid var(--jac-info); }
+.o_jac_kpi_grey { border-left: 4px solid #94a3b8; }
+
+.o_jac_shell_body {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.o_jac_product_shell .o_jac_side_notebook {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1.25rem;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.o_jac_product_shell .o_jac_side_notebook > ul.nav-tabs {
+  flex: 0 0 200px;
+  flex-direction: column;
+  border-bottom: 0;
+  border-right: 1px solid var(--jac-card-border);
+  padding-right: 0.5rem;
+  margin-bottom: 0;
+  max-width: 220px;
+}
+
+.o_jac_product_shell .o_jac_side_notebook > ul.nav-tabs .nav-link {
+  text-align: left;
+  border-radius: 0.4rem;
+  margin-bottom: 0.25rem;
+  color: var(--jac-text-muted);
+  border: 1px solid transparent;
+}
+
+.o_jac_product_shell .o_jac_side_notebook > ul.nav-tabs .nav-link.active {
+  color: var(--jac-text);
+  background: var(--jac-surface);
+  border-color: var(--jac-card-border);
+  font-weight: 600;
+}
+
+.o_jac_product_shell .o_jac_side_notebook > .tab-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.o_jac_module_grid .o_kanban_renderer {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0.85rem;
+  max-width: 100%;
+}
+
+.o_jac_module_grid .o_kanban_record {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.o_jac_company_selector {
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--jac-card-border);
+  border-radius: 0.55rem;
+  background: var(--jac-surface);
+}
+
+.o_jac_company_dash {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.55rem;
+  border: 1px solid var(--jac-card-border);
+  background: var(--jac-card-bg);
+}
+
+.o_jac_pending_card {
+  min-height: 180px;
+}
+
+.o_jac_inline {
+  display: inline !important;
+}
+
+@media (max-width: 1280px) {
+  .o_jac_module_grid .o_kanban_renderer {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .o_jac_module_grid .o_kanban_renderer {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.o_jac_module_grid .o_kanban_group {
+  min-width: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.o_jac_module_card {
+  min-height: 220px;
+}
+
+.o_jac_dependencies {
+  margin: 0.5rem 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.45rem;
+  background: color-mix(in srgb, var(--jac-surface) 80%, transparent);
+  border: 1px dashed var(--jac-card-border);
+  font-size: 0.85rem;
+}
+
+.o_jac_dependencies h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--jac-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.o_jac_dep_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.o_jac_dep_item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+  color: var(--jac-text);
+}
+
+.o_jac_dep_status {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--jac-card-border);
+}
+
+.o_jac_dep_configured .o_jac_dep_status { color: var(--jac-ok); }
+.o_jac_dep_available .o_jac_dep_status { color: var(--jac-info); }
+.o_jac_dep_pending .o_jac_dep_status { color: var(--jac-warn); }
+.o_jac_dep_blocked .o_jac_dep_status { color: var(--jac-err); }
+
+.o_jac_dep_hint {
+  margin: 0.45rem 0 0;
+  color: var(--jac-text-muted);
+  font-size: 0.82rem;
+}
+
+.o_jac_activity {
+  margin: 0.5rem 0 1rem;
+}
+
+.o_jac_activity_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.o_jac_activity_item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--jac-card-border);
+  font-size: 0.9rem;
+}
+
+.o_jac_activity_when {
+  flex: 0 0 72px;
+  color: var(--jac-text-muted);
+  font-size: 0.8rem;
+}
+
+.o_jac_activity_text {
+  color: var(--jac-text);
+}
+
+.o_jac_activity_empty {
+  color: var(--jac-text-muted);
+  font-style: italic;
+  padding: 0.5rem 0;
+}
+
+.o_jac_ecf_hub .o_jac_side_notebook,
+.o_jac_hub_form .o_jac_side_notebook {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  max-width: 100%;
+}
+
+.o_jac_ecf_action_cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.65rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.o_jac_ecf_action_card {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--jac-card-border);
+  border-radius: 0.5rem;
+  background: var(--jac-card-bg);
+}
+
+.o_jac_ecf_action_card strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--jac-text);
+}
+
+.o_jac_ecf_action_card span {
+  font-size: 0.82rem;
+  color: var(--jac-text-muted);
+}
+
+.o_jac_header_more {
+  display: inline-block;
+}
+
+@media (max-width: 1024px) {
+  .o_jac_kpi_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .o_jac_product_shell .o_jac_side_notebook {
+    flex-direction: column;
+  }
+  .o_jac_product_shell .o_jac_side_notebook > ul.nav-tabs {
+    flex: 1 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-right: 0;
+    border-bottom: 1px solid var(--jac-card-border);
+    max-width: 100%;
+    padding-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .o_jac_kpi_grid {
+    grid-template-columns: 1fr;
+  }
+  .o_jac_product_header_meta {
+    grid-template-columns: 1fr 1fr;
+  }
+  .o_jac_card_actions .btn-link {
+    width: 100%;
+    text-align: left;
+  }
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_warranty_kanban" model="ir.ui.view">
+        <field name="name">justech.warranty.kanban</field>
+        <field name="model">justech.warranty</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" class="o_kanban_small_column" sample="1">
+                <field name="state"/>
+                <field name="days_to_expire"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="fw-bolder fs-5">
+                            <field name="name"/>
+                        </div>
+                        <div>
+                            <i class="fa fa-user me-1" title="Cliente"/>
+                            <field name="partner_id"/>
+                        </div>
+                        <div class="text-muted">
+                            <i class="fa fa-cube me-1" title="Producto"/>
+                            <field name="product_id"/>
+                        </div>
+                        <div class="mt-1">
+                            <i class="fa fa-calendar-times-o me-1" title="Vencimiento"/>
+                            <field name="date_end"/>
+                            <span t-if="record.days_to_expire.raw_value &gt; 0 and record.days_to_expire.raw_value &lt;= 30"
+                                  class="badge text-bg-warning ms-1">
+                                Vence en <field name="days_to_expire"/> días
+                            </span>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_justech_warranty_graph" model="ir.ui.view">
+        <field name="name">justech.warranty.graph</field>
+        <field name="model">justech.warranty</field>
+        <field name="arch" type="xml">
+            <graph string="Garantías" type="bar" sample="1">
+                <field name="state"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_justech_warranty_pivot" model="ir.ui.view">
+        <field name="name">justech.warranty.pivot</field>
+        <field name="model">justech.warranty</field>
+        <field name="arch" type="xml">
+            <pivot string="Garantías" sample="1">
+                <field name="warranty_type" type="col"/>
+                <field name="state" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_justech_warranty_dashboard" model="ir.actions.act_window">
+        <field name="name">Panel de garantías</field>
+        <field name="res_model">justech.warranty</field>
+        <field name="view_mode">kanban,list,pivot,graph,form</field>
+        <field name="search_view_id" ref="view_justech_warranty_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Panel de garantías</p>
+            <p>Vista operativa de garantías agrupadas por estado, con filtros rápidos
+               (activas, vencidas, reclamadas, vencen en 30 días). Use los filtros de la
+               barra de búsqueda para acotar y las vistas gráfico/pivote para analizar.</p>
+        </field>
+    </record>
+</odoo>

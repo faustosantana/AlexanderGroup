@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_treasury_open_payment_alert" model="ir.ui.view">
+        <field name="name">account.move.form.treasury.open.payment.alert</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="priority">35</field>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <field name="treasury_has_open_payments" invisible="1"/>
+                <field name="treasury_open_payment_count" invisible="1"/>
+                <field name="treasury_open_payment_balance" invisible="1"/>
+                <field name="treasury_open_payment_message" invisible="1"/>
+                <div class="alert alert-info mb-0" role="alert"
+                     invisible="not treasury_has_open_payments or state != 'draft'">
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <div class="flex-grow-1">
+                            <strong>Este contacto tiene pagos abiertos disponibles.</strong>
+                            <div>
+                                Saldo disponible:
+                                <field name="treasury_open_payment_balance" nolabel="1" readonly="1"
+                                       widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </div>
+                            <div class="text-muted">
+                                ¿Desea aplicarlos a esta factura?
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button name="action_treasury_apply_open_payments"
+                                    type="object"
+                                    string="Aplicar"
+                                    class="btn btn-primary"/>
+                            <button name="action_treasury_view_open_payments"
+                                    type="object"
+                                    string="Ver pagos abiertos"
+                                    class="btn btn-secondary"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

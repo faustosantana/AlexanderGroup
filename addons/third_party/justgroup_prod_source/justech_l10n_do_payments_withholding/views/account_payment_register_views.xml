@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_payment_register_form_justech_wh" model="ir.ui.view">
+        <field name="name">account.payment.register.form.justech.wh</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount']" position="after">
+                <field name="justech_withholding_total" readonly="1"
+                       invisible="not justech_withholding_total"/>
+            </xpath>
+            <xpath expr="//group[@name='group1']" position="after">
+                <group string="Retenciones">
+                    <field name="justech_selectable_withholding_ids" invisible="1"/>
+                    <field name="justech_withholding_catalog_ids"
+                           widget="many2many_tags"
+                           options="{'no_create': True}"
+                           string="Retenciones a aplicar"
+                           domain="[('id', 'in', justech_selectable_withholding_ids)]"/>
+                    <field name="justech_withholding_line_ids" nolabel="1" readonly="1"
+                           invisible="not justech_withholding_line_ids">
+                        <list>
+                            <field name="catalog_code" string="Código"/>
+                            <field name="label" string="Retención"/>
+                            <field name="company_id" string="Empresa"/>
+                            <field name="account_code" string="Cód. cuenta"/>
+                            <field name="account_id" string="Cuenta contable"/>
+                            <field name="account_nature" string="Naturaleza"/>
+                            <field name="rate" string="Porcentaje"/>
+                            <field name="config_state" string="Estado"/>
+                            <field name="date_from" string="Desde" optional="hide"/>
+                            <field name="date_to" string="Hasta" optional="hide"/>
+                            <field name="base_amount" string="Base"/>
+                            <field name="amount" string="Monto retenido"/>
+                        </list>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_justech_do_fiscal_report" model="ir.actions.act_window">
+        <field name="name">Historial fiscal</field>
+        <field name="res_model">justech.do.fiscal.report</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('active', '=', True)]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('justech_l10n_do_reports.view_justech_do_fiscal_report_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('justech_l10n_do_reports.view_justech_do_fiscal_report_review_form')})]"/>
+    </record>
+    <record id="action_justech_do_fiscal_report_606" model="ir.actions.act_window">
+        <field name="name">Historial 606</field>
+        <field name="res_model">justech.do.fiscal.report</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('report_type', '=', '606'), ('active', '=', True)]</field>
+        <field name="context">{'default_report_type': '606'}</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('justech_l10n_do_reports.view_justech_do_fiscal_report_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('justech_l10n_do_reports.view_justech_do_fiscal_report_review_form')})]"/>
+    </record>
+    <record id="action_justech_do_fiscal_report_607" model="ir.actions.act_window">
+        <field name="name">Historial 607</field>
+        <field name="res_model">justech.do.fiscal.report</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('report_type', '=', '607'), ('active', '=', True)]</field>
+        <field name="context">{'default_report_type': '607'}</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('justech_l10n_do_reports.view_justech_do_fiscal_report_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('justech_l10n_do_reports.view_justech_do_fiscal_report_review_form')})]"/>
+    </record>
+    <record id="action_justech_do_fiscal_review" model="ir.actions.act_window">
+        <field name="name">Revisión fiscal</field>
+        <field name="res_model">justech.do.fiscal.report</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('justech_l10n_do_reports.view_justech_do_fiscal_report_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('justech_l10n_do_reports.view_justech_do_fiscal_report_review_form')})]"/>
+        <field name="context">{'default_report_type': '606', 'default_state': 'draft'}</field>
+        <field name="domain">[('report_type', 'in', ('606', '607', '608', '609', '623')), ('active', '=', True)]</field>
+    </record>
+</odoo>

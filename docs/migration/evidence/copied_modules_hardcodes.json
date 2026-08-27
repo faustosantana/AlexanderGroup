@@ -1,0 +1,342 @@
+[
+  {
+    "module": "bi_convert_purchase_from_sales",
+    "version": "19.0.0.0",
+    "depends": [
+      "base",
+      "sale_management",
+      "purchase",
+      "stock"
+    ],
+    "hardcodes": []
+  },
+  {
+    "module": "justech_accounting_recovery",
+    "version": "19.0.1.4.0",
+    "depends": [
+      "account"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_admin_center",
+    "version": "19.0.2.12.1",
+    "depends": [
+      "base",
+      "base_setup",
+      "web",
+      "mail",
+      "justech_modules",
+      "justech_fiscal_admin"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech",
+      "secret_path"
+    ]
+  },
+  {
+    "module": "justech_approval_flow",
+    "version": "19.0.1.3.8",
+    "depends": [
+      "base",
+      "mail",
+      "purchase",
+      "sale",
+      "account",
+      "web"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech",
+      "url_http"
+    ]
+  },
+  {
+    "module": "justech_core",
+    "version": "19.0.1.0.0",
+    "depends": [
+      "base"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_fiscal_admin",
+    "version": "19.0.1.10.0",
+    "depends": [
+      "base_setup",
+      "justech_l10n_do_base",
+      "justech_l10n_do_ncf"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_global_audit_log",
+    "version": "19.0.4.1.4",
+    "depends": [
+      "base"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "url_http"
+    ]
+  },
+  {
+    "module": "justech_l10n_do_adel_freeze",
+    "version": "19.0.1.0.0",
+    "depends": [
+      "justech_l10n_do_ncf",
+      "l10n_do_accounting"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_l10n_do_base",
+    "version": "19.0.1.27.1",
+    "depends": [
+      "account",
+      "contacts",
+      "sales_team",
+      "l10n_do",
+      "l10n_do_accounting",
+      "mail"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_l10n_do_ncf",
+    "version": "19.0.2.31.0",
+    "depends": [
+      "justech_l10n_do_base",
+      "mail",
+      "account_debit_note",
+      "sale",
+      "purchase",
+      "sale_purchase",
+      "bi_convert_purchase_from_sales",
+      "justech_accounting_recovery"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_l10n_do_payments_withholding",
+    "version": "19.0.1.7.2",
+    "depends": [
+      "account",
+      "account_accountant",
+      "justech_l10n_do_base",
+      "justech_l10n_do_ncf",
+      "justech_l10n_do_reports"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_l10n_do_reports",
+    "version": "19.0.1.24.8",
+    "depends": [
+      "accountant",
+      "justech_l10n_do_ncf",
+      "justech_fiscal_admin"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech",
+      "url_http"
+    ]
+  },
+  {
+    "module": "justech_l10n_do_treasury",
+    "version": "19.0.1.6.7",
+    "depends": [
+      "account",
+      "account_accountant",
+      "accountant",
+      "justech_l10n_do_payments_withholding",
+      "justech_l10n_do_reports"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_modules",
+    "version": "19.0.1.8.7",
+    "depends": [
+      "base",
+      "mail"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech",
+      "email_justech"
+    ]
+  },
+  {
+    "module": "justech_purchase_sale_margin_control",
+    "version": "19.0.8.29.38",
+    "depends": [
+      "sale_management",
+      "purchase",
+      "account",
+      "stock",
+      "sale_purchase",
+      "purchase_stock",
+      "sale_stock",
+      "mail"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech",
+      "url_http"
+    ]
+  },
+  {
+    "module": "justech_quotation_client_dedup",
+    "version": "19.0.1.0.0",
+    "depends": [
+      "sale"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "url_http"
+    ]
+  },
+  {
+    "module": "justech_report_identity_guard",
+    "version": "19.0.1.0.0",
+    "depends": [
+      "sale",
+      "account",
+      "stock",
+      "purchase"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "url_http"
+    ]
+  },
+  {
+    "module": "justech_sale_purchase_trace",
+    "version": "19.0.1.2.10",
+    "depends": [
+      "sale_management",
+      "purchase",
+      "sale_purchase",
+      "sale_stock",
+      "purchase_stock",
+      "stock_account",
+      "account",
+      "bi_convert_purchase_from_sales"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_sale_terms_guard",
+    "version": "19.0.1.0.0",
+    "depends": [
+      "sale_management"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "url_http"
+    ]
+  },
+  {
+    "module": "justech_security_ux",
+    "version": "19.0.4.1.9",
+    "depends": [
+      "base",
+      "account",
+      "purchase",
+      "sale",
+      "stock",
+      "crm",
+      "hr",
+      "l10n_do_accounting",
+      "justech_l10n_do_base",
+      "justech_fiscal_admin",
+      "justech_ecf_core",
+      "justech_l10n_do_payments_withholding",
+      "justech_warranty",
+      "justech_admin_center"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_vendor_bill_po_control",
+    "version": "19.0.3.6.2",
+    "depends": [
+      "account",
+      "purchase",
+      "mail",
+      "justech_l10n_do_ncf"
+    ],
+    "hardcodes": [
+      "db_justech",
+      "domain_justech"
+    ]
+  },
+  {
+    "module": "justech_warranty",
+    "version": "19.0.1.9.1",
+    "depends": [
+      "base",
+      "mail",
+      "contacts",
+      "justech_core",
+      "product",
+      "sale",
+      "account",
+      "purchase",
+      "justech_global_audit_log"
+    ],
+    "hardcodes": [
+      "db_justech"
+    ]
+  },
+  {
+    "module": "l10n_do_accounting",
+    "version": "19.0.1.0.1",
+    "depends": [
+      "l10n_do",
+      "account_debit_note"
+    ],
+    "hardcodes": []
+  },
+  {
+    "module": "multi_invoice_manual_payment_prod",
+    "version": "19.0.1.5.4",
+    "depends": [
+      "account"
+    ],
+    "hardcodes": []
+  }
+]

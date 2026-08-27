@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+      Una sola pestaña «Permisos» sobre group_ids.
+      La matriz nativa (access_rights) se oculta por completo de la ficha;
+      Grupos técnicos se administran en Ajustes → Técnicos → Grupos.
+
+      company_id / company_ids viven en access_rights (base Odoo 19) y
+      quedaban ocultos con esa página. Se reexponen en «Empresas».
+    -->
+    <record id="view_users_form_operational_permissions" model="ir.ui.view">
+        <field name="name">res.users.form.justech.permissions.unified</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="priority">25</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='access_rights']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//page[@name='access_rights']" position="before">
+                <page string="Empresas" name="justech_user_companies"
+                      groups="base.group_system,justech_admin_center.group_justech_admin_center_manager">
+                    <group string="Empresas">
+                        <field name="companies_count" invisible="1"/>
+                        <field name="company_id"
+                                 string="Empresa principal"
+                                 options="{'no_create': True}"
+                                 context="{'user_preference': 0}"/>
+                        <field name="company_ids"
+                                 string="Empresas permitidas"
+                                 widget="many2many_checkboxes"
+                                 options="{'no_create': True}"/>
+                    </group>
+                    <p class="text-muted" colspan="2">
+                        El usuario solo podrá acceder a información de las empresas
+                        seleccionadas, sujeto además a sus permisos.
+                        La empresa principal debe estar entre las empresas permitidas.
+                    </p>
+                </page>
+
+                <page string="Permisos" name="justech_enterprise_permissions"
+                      groups="base.group_system,justech_admin_center.group_justech_admin_center_manager">
+                    <div class="justech-jx-page" data-jx-root="1">
+                        <!-- group_ids: fuente de verdad; la UI JS lee/escribe vía RPC (4)/(3) -->
+                        <group invisible="1">
+                            <field name="group_ids" widget="many2many_tags"/>
+                        </group>
+                        <div class="justech-jx-mount"
+                             data-jx-user-id=""
+                             aria-live="polite">
+                            <!-- JS replaces this; never leave an infinite spinner on new records -->
+                            Cargando permisos…
+                        </div>
+                    </div>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Mantener oculto el bloque duplicado de Admin Center (dentro de access_rights ya invisible) -->
+    <record id="view_users_form_hide_duplicate_justech_role_blocks" model="ir.ui.view">
+        <field name="name">res.users.form.hide.duplicate.justech.roles</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="justech_admin_center.view_res_users_form_justech_admin_center"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='justech_admin_center_perms']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

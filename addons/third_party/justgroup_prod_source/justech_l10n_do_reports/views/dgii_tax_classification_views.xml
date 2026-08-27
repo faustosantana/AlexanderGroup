@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_do_dgii_tax_classification_tree" model="ir.ui.view">
+        <field name="name">justech.do.dgii.tax.classification.tree</field>
+        <field name="model">justech.do.dgii.tax.classification</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="tax_id"/>
+                <field name="classification_role"/>
+                <field name="column_606"/>
+                <field name="column_607"/>
+                <field name="company_id" optional="hide"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_justech_do_dgii_tax_classification_form" model="ir.ui.view">
+        <field name="name">justech.do.dgii.tax.classification.form</field>
+        <field name="model">justech.do.dgii.tax.classification</field>
+        <field name="arch" type="xml">
+            <form string="Clasificación fiscal DGII">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="tax_id"/>
+                            <field name="company_id" readonly="1"/>
+                            <field name="classification_role"/>
+                            <field name="active"/>
+                        </group>
+                        <group string="Columnas DGII">
+                            <field name="column_606"/>
+                            <field name="column_607"/>
+                            <field name="column_609"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_justech_do_dgii_tax_classification" model="ir.actions.act_window">
+        <field name="name">Clasificación fiscal DGII</field>
+        <field name="res_model">justech.do.dgii.tax.classification</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_sync_dgii_tax_classification" model="ir.actions.server">
+        <field name="name">Sincronizar clasificaciones desde impuestos</field>
+        <field name="model_id" ref="model_justech_do_dgii_tax_classification"/>
+        <field name="binding_model_id" ref="model_justech_do_dgii_tax_classification"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">model.sync_from_taxes()</field>
+    </record>
+
+    <menuitem id="menu_justech_do_dgii_tax_classification"
+              name="Clasificación fiscal"
+              parent="justech_l10n_do_reports.menu_justech_do_audit_root"
+              action="action_justech_do_dgii_tax_classification"
+              sequence="3"
+              active="False"
+              groups="justech_l10n_do_base.group_justech_do_fiscal_manager"/>
+</odoo>

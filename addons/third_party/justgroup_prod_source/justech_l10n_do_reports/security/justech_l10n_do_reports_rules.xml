@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="rule_justech_do_fiscal_report_company" model="ir.rule">
+        <field name="name">DGII Fiscal Report: multi-company</field>
+        <field name="model_id" ref="model_justech_do_fiscal_report"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_justech_do_fiscal_report_line_company" model="ir.rule">
+        <field name="name">DGII Fiscal Report Line: multi-company</field>
+        <field name="model_id" ref="model_justech_do_fiscal_report_line"/>
+        <field name="domain_force">[('report_id.company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_justech_do_fiscal_report_wizard_company" model="ir.rule">
+        <field name="name">DGII Fiscal Report Wizard: multi-company</field>
+        <field name="model_id" ref="model_justech_do_fiscal_report_wizard"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_justech_do_dgii_report_audit_company" model="ir.rule">
+        <field name="name">DGII Report Audit: multi-company</field>
+        <field name="model_id" ref="model_justech_do_dgii_report_audit"/>
+        <field name="domain_force">[('report_id.company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_justech_do_dgii_report_approval_company" model="ir.rule">
+        <field name="name">DGII Report Approval: multi-company</field>
+        <field name="model_id" ref="model_justech_do_dgii_report_approval"/>
+        <field name="domain_force">[('report_id.company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

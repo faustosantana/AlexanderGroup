@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sale_order_form_margin_control" model="ir.ui.view">
+        <field name="name">sale.order.form.margin.control</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="action_view_margin_transactions" type="object" class="oe_stat_button" icon="fa-line-chart"
+                        groups="justech_purchase_sale_margin_control.group_margin_readonly"
+                        invisible="margin_transaction_count == 0 and jm_related_purchase_order_count == 0">
+                    <field name="margin_transaction_count" widget="statinfo" string="Costos y Márgenes"/>
+                </button>
+                <button name="action_view_related_purchase_orders" type="object" class="oe_stat_button" icon="fa-shopping-cart"
+                        groups="justech_purchase_sale_margin_control.group_margin_readonly"
+                        invisible="jm_related_purchase_order_count == 0">
+                    <field name="jm_related_purchase_order_count" widget="statinfo" string="Órdenes de compra"/>
+                </button>
+                <!-- Hidden from normal SO UX (models/actions remain for engine & admin) -->
+                <button name="action_view_related_vendor_bills" type="object" class="oe_stat_button" icon="fa-file-text-o"
+                        invisible="1">
+                    <field name="jm_related_vendor_bill_count" widget="statinfo" string="Facturas proveedor"/>
+                </button>
+                <button name="action_open_cost_links" type="object" class="oe_stat_button" icon="fa-random"
+                        invisible="1">
+                    <field name="cost_link_count" widget="statinfo" string="Enlaces de costo"/>
+                </button>
+                <button name="action_open_cost_allocations" type="object" class="oe_stat_button" icon="fa-balance-scale"
+                        invisible="1">
+                    <field name="cost_allocation_count" widget="statinfo" string="Costos asignados"/>
+                </button>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_manage_purchases" type="object" string="Gestionar compras" class="btn-primary"
+                        groups="justech_purchase_sale_margin_control.group_margin_sales,justech_purchase_sale_margin_control.group_margin_purchase,justech_purchase_sale_margin_control.group_margin_finance,justech_purchase_sale_margin_control.group_margin_admin"/>
+                <button name="action_compute_margin_snapshot" type="object" string="Calcular margen" class="btn-secondary"
+                        invisible="1"/>
+                <button name="action_view_margin_transactions_technical" type="object" string="Ver operación" class="btn-secondary"
+                        invisible="1"/>
+                <button name="action_create_or_link_margin_transaction" type="object" string="Crear/vincular operación de margen" class="btn-secondary"
+                        invisible="1"/>
+                <button name="action_relate_purchases" type="object" string="Relacionar compras" class="btn-secondary"
+                        invisible="1"/>
+                <button name="action_add_purchase_orders" type="object" string="Agregar órdenes de compra" class="btn-secondary"
+                        invisible="1"/>
+            </xpath>
+            <xpath expr="//sheet/notebook" position="before">
+                <group string="Control de Costos y Margen" name="margin_control_compact"
+                       groups="justech_purchase_sale_margin_control.group_margin_readonly"
+                       invisible="margin_transaction_count == 0 and jm_related_purchase_order_count == 0">
+                    <group>
+                        <field name="margin_control_sale_untaxed"/>
+                        <field name="margin_control_cost"
+                                 groups="justech_purchase_sale_margin_control.group_margin_purchase,justech_purchase_sale_margin_control.group_margin_finance,justech_purchase_sale_margin_control.group_margin_admin,justech_purchase_sale_margin_control.group_margin_auditor"/>
+                        <field name="margin_control_margin"
+                                 groups="justech_purchase_sale_margin_control.group_margin_sales,justech_purchase_sale_margin_control.group_margin_purchase,justech_purchase_sale_margin_control.group_margin_finance,justech_purchase_sale_margin_control.group_margin_admin,justech_purchase_sale_margin_control.group_margin_auditor"/>
+                        <field name="margin_control_margin_pct"
+                                 groups="justech_purchase_sale_margin_control.group_margin_sales,justech_purchase_sale_margin_control.group_margin_purchase,justech_purchase_sale_margin_control.group_margin_finance,justech_purchase_sale_margin_control.group_margin_admin,justech_purchase_sale_margin_control.group_margin_auditor"/>
+                    </group>
+                    <group>
+                        <field name="margin_control_state"/>
+                        <field name="margin_control_primary_po_id" string="Orden de compra"
+                                 options="{'no_create': True, 'no_open': False}" readonly="1"
+                                 invisible="not margin_control_primary_po_id"/>
+                        <field name="jm_related_purchase_order_ids" widget="many2many_tags"
+                                 string="OC relacionadas"
+                                 options="{'no_create': True, 'no_open': False}" readonly="1"
+                                 invisible="margin_control_primary_po_id or jm_related_purchase_order_count == 0"/>
+                        <field name="margin_control_primary_bill_id" string="Factura proveedor"
+                                 options="{'no_create': True, 'no_open': False}" readonly="1"
+                                 groups="justech_purchase_sale_margin_control.group_margin_purchase,justech_purchase_sale_margin_control.group_margin_finance,justech_purchase_sale_margin_control.group_margin_admin,justech_purchase_sale_margin_control.group_margin_auditor"
+                                 invisible="not margin_control_primary_bill_id"/>
+                        <field name="jm_related_vendor_bill_ids" widget="many2many_tags"
+                                 string="Facturas proveedor"
+                                 options="{'no_create': True, 'no_open': False}" readonly="1"
+                                 groups="justech_purchase_sale_margin_control.group_margin_purchase,justech_purchase_sale_margin_control.group_margin_finance,justech_purchase_sale_margin_control.group_margin_admin,justech_purchase_sale_margin_control.group_margin_auditor"
+                                 invisible="margin_control_primary_bill_id or jm_related_vendor_bill_count == 0"/>
+                        <field name="margin_control_cost_origin"
+                                 groups="justech_purchase_sale_margin_control.group_margin_purchase,justech_purchase_sale_margin_control.group_margin_finance,justech_purchase_sale_margin_control.group_margin_admin,justech_purchase_sale_margin_control.group_margin_auditor"/>
+                        <field name="margin_control_po_names" invisible="1"/>
+                        <field name="margin_control_bill_names" invisible="1"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

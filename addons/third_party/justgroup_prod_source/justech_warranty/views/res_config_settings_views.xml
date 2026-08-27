@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_warranty" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.justech.warranty</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Justech Garantías" name="justech_warranty" invisible="1"
+                     logo="/justech_warranty/static/description/icon.png">
+                    <block title="Garantías" name="warranty_general">
+                        <setting string="Días de aviso de vencimiento"
+                                 help="Antelación para alertas de vencimiento de garantías (Fase 2).">
+                            <field name="justech_warranty_reminder_days"/>
+                        </setting>
+                        <setting string="Términos por defecto"
+                                 help="Se aplican a las garantías nuevas sin términos específicos.">
+                            <field name="justech_warranty_default_terms"
+                                   placeholder="Términos y condiciones de garantía por defecto..."/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_justech_warranty_config_settings" model="ir.actions.act_window">
+        <field name="name">Configuración General</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'justech_warranty'}</field>
+    </record>
+</odoo>

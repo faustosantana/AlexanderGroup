@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_do_rnc_padron_import_log_list" model="ir.ui.view">
+        <field name="name">justech.do.rnc.padron.import.log.list</field>
+        <field name="model">justech.do.rnc.padron.import.log</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" delete="false">
+                <field name="started_at"/>
+                <field name="finished_at"/>
+                <field name="user_id"/>
+                <field name="filename"/>
+                <field name="source"/>
+                <field name="state"
+                         decoration-success="state == 'done'"
+                         decoration-warning="state == 'done_warn'"
+                         decoration-danger="state == 'failed'"
+                         decoration-muted="state in ('running','reverted')"
+                         widget="badge"/>
+                <field name="total_valid"/>
+                <field name="count_new"/>
+                <field name="count_updated"/>
+                <field name="count_rejected"/>
+                <field name="file_hash" optional="hide"/>
+                <field name="duration_seconds" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_justech_do_rnc_padron_import_log_form" model="ir.ui.view">
+        <field name="name">justech.do.rnc.padron.import.log.form</field>
+        <field name="model">justech.do.rnc.padron.import.log</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false" delete="false">
+                <header>
+                    <button name="action_rollback" type="object" string="Ejecutar rollback"
+                            class="btn-warning"
+                            invisible="not can_rollback"
+                            confirm="¿Restaurar el padrón a la versión previa a esta importación?"/>
+                    <button name="action_retry_from_attachment" type="object"
+                            string="Reintentar con este archivo"
+                            class="btn-primary"
+                            invisible="state != 'failed' or not file_attachment_id"
+                            confirm="¿Reimportar usando el archivo adjunto de este intento fallido?"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="running,done,done_warn,failed,reverted"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="filename"/>
+                            <field name="file_hash"/>
+                            <field name="file_size"/>
+                            <field name="encoding"/>
+                            <field name="source"/>
+                            <field name="version"/>
+                            <field name="file_attachment_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="started_at"/>
+                            <field name="finished_at"/>
+                            <field name="duration_seconds"/>
+                            <field name="snapshot_available"/>
+                            <field name="can_rollback" invisible="1"/>
+                        </group>
+                    </group>
+                    <group string="Conteos">
+                        <group>
+                            <field name="count_before"/>
+                            <field name="count_after"/>
+                            <field name="total_rows"/>
+                            <field name="total_valid"/>
+                        </group>
+                        <group>
+                            <field name="count_new"/>
+                            <field name="count_updated"/>
+                            <field name="count_unchanged"/>
+                            <field name="count_absent"/>
+                            <field name="count_rejected"/>
+                        </group>
+                    </group>
+                    <group string="Detalle">
+                        <field name="summary" nolabel="1"/>
+                        <field name="error_message" nolabel="1"
+                               invisible="not error_message"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_justech_do_rnc_padron_import_log" model="ir.actions.act_window">
+        <field name="name">Historial padrón DGII</field>
+        <field name="res_model">justech.do.rnc.padron.import.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_justech_do_rnc_padron_config_form" model="ir.ui.view">
+        <field name="name">justech.do.rnc.padron.config.form</field>
+        <field name="model">justech.do.rnc.padron.config</field>
+        <field name="arch" type="xml">
+            <form string="Configurar actualización automática">
+                <sheet>
+                    <group string="Actualización automática">
+                        <field name="auto_update_enabled"/>
+                        <field name="frequency_days"/>
+                        <field name="run_hour"/>
+                        <field name="cron_active" readonly="1"/>
+                        <field name="official_url"/>
+                        <field name="notify_admins"/>
+                    </group>
+                    <group string="Protecciones">
+                        <field name="max_age_days"/>
+                        <field name="min_keep_ratio"/>
+                        <field name="max_error_ratio"/>
+                        <field name="max_retries"/>
+                        <field name="retry_hours"/>
+                    </group>
+                    <group string="Estado">
+                        <field name="last_run_at" readonly="1"/>
+                        <field name="next_run_at" readonly="1"/>
+                        <field name="last_success_at" readonly="1"/>
+                        <field name="last_status" readonly="1"/>
+                        <field name="retry_count" readonly="1"/>
+                        <field name="last_message" readonly="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_save_and_schedule" type="object"
+                            string="Guardar" class="btn-primary"/>
+                    <button name="action_run_now" type="object"
+                            string="Actualizar ahora" class="btn-secondary"
+                            confirm="¿Descargar e importar el padrón oficial ahora?"/>
+                    <button string="Cerrar" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_justech_do_rnc_padron_config" model="ir.actions.act_window">
+        <field name="name">Configurar actualización automática</field>
+        <field name="res_model">justech.do.rnc.padron.config</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_justech_do_rnc_padron_config_server" model="ir.actions.server">
+        <field name="name">Abrir configuración padrón DGII</field>
+        <field name="model_id" ref="model_justech_do_rnc_padron_config"/>
+        <field name="state">code</field>
+        <field name="code">
+config = env['justech.do.rnc.padron.config'].get_config()
+action = {
+    'type': 'ir.actions.act_window',
+    'name': 'Configurar actualización automática',
+    'res_model': 'justech.do.rnc.padron.config',
+    'res_id': config.id,
+    'view_mode': 'form',
+    'target': 'new',
+}
+        </field>
+    </record>
+</odoo>

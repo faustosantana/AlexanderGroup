@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_do_purchase_received_type_list" model="ir.ui.view">
+        <field name="name">l10n.latam.document.type.purchase.received.list</field>
+        <field name="model">l10n_latam.document.type</field>
+        <field name="arch" type="xml">
+            <list string="Tipos de documentos recibidos" create="0" delete="0">
+                <field name="doc_code_prefix" string="Código"/>
+                <field name="name" string="Nombre"/>
+                <field name="justech_do_document_category"/>
+                <field name="active" string="Activo recepción"/>
+                <field name="justech_do_participates_606"/>
+                <field name="justech_do_usage_count"/>
+                <field name="justech_do_last_used"/>
+                <field name="internal_type" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_justech_do_purchase_received_type_form" model="ir.ui.view">
+        <field name="name">l10n.latam.document.type.purchase.received.form</field>
+        <field name="model">l10n_latam.document.type</field>
+        <field name="arch" type="xml">
+            <form string="Documento recibido" create="0" delete="0">
+                <sheet>
+                    <group>
+                        <group string="Documento recibido del proveedor">
+                            <field name="doc_code_prefix" readonly="1"/>
+                            <field name="name" readonly="1"/>
+                            <field name="justech_do_document_category" readonly="1"/>
+                            <field name="active" readonly="1"/>
+                            <field name="justech_do_participates_606" readonly="1"/>
+                        </group>
+                        <group string="Uso histórico">
+                            <field name="justech_do_usage_count" readonly="1"/>
+                            <field name="justech_do_last_used" readonly="1"/>
+                            <field name="internal_type" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Reglas operativas">
+                        <field name="justech_do_received_help" readonly="1" nolabel="1"/>
+                    </group>
+                    <div class="alert alert-warning" role="alert">
+                        NCF manual del proveedor. No consume secuencia Justech.
+                        No puede activarse como emisión desde Compras (B11/B13/B17).
+                        Los usuarios operativos no crean tipos nuevos.
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_justech_do_purchase_received_types" model="ir.actions.act_window">
+        <field name="name">Tipos de documentos recibidos</field>
+        <field name="res_model">l10n_latam.document.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('doc_code_prefix', 'in', ('B01','B02','B03','B04','B14','B15','B16','E31','E32','E33','E34','E41','E43','E44','E45','E46','E47'))]</field>
+        <field name="context">{'create': False}</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('view_justech_do_purchase_received_type_list')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_justech_do_purchase_received_type_form')})]"/>
+        <field name="help" type="html">
+            <p>
+                Catálogo LATAM de comprobantes recibidos en Compras.
+                El número lo aporta el proveedor; Justech no asigna secuencia.
+            </p>
+        </field>
+    </record>
+</odoo>

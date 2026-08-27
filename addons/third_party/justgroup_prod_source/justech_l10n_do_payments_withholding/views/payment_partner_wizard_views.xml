@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_payment_partner_wizard_form" model="ir.ui.view">
+        <field name="name">justech.payment.partner.wizard.form</field>
+        <field name="model">justech.payment.partner.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Registrar pago" class="o_treasury_wizard_xl">
+                <group>
+                    <group>
+                        <field name="partner_type" invisible="1"/>
+                        <field name="partner_id"
+                               string="Cliente"
+                               invisible="partner_type != 'customer'"
+                               options="{'no_create': True}"/>
+                        <field name="partner_id"
+                               string="Proveedor"
+                               invisible="partner_type != 'supplier'"
+                               options="{'no_create': True}"/>
+                        <field name="currency_id" string="Moneda"/>
+                        <field name="payment_date" string="Fecha de pago"/>
+                        <field name="communication" string="Concepto de pago"/>
+                    </group>
+                    <group>
+                        <field name="journal_id" string="Banco"/>
+                        <field name="payment_method_line_id" string="Método de pago"/>
+                        <field name="payment_total" readonly="1" string="Total a pagar/cobrar"/>
+                        <field name="withholding_total" readonly="1" string="Total retenido"/>
+                        <field name="amount_after_withholding" readonly="1" string="Neto a transferir"/>
+                    </group>
+                </group>
+
+                <group string="Facturas pendientes">
+                    <field name="line_ids" nolabel="1">
+                        <list editable="bottom" create="0" delete="0">
+                            <field name="apply" string="Seleccionar" force_save="1"
+                                   widget="boolean"
+                                   options="{'autosave': false}"/>
+                            <field name="invoice_name" string="Factura"/>
+                            <field name="ncf" string="NCF"/>
+                            <field name="invoice_date" string="Fecha"/>
+                            <field name="date_maturity" string="Vencimiento"/>
+                            <field name="currency_id" string="Moneda"/>
+                            <field name="amount_total" string="Total"/>
+                            <field name="amount_untaxed" string="Base imponible" optional="show"/>
+                            <field name="amount_tax" string="ITBIS facturado" optional="show"/>
+                            <field name="amount_residual" string="Pendiente"/>
+                            <field name="amount_to_pay" string="Monto a aplicar" force_save="1"
+                                   readonly="not apply"/>
+                            <field name="company_id" column_invisible="1"/>
+                            <field name="move_scope_filter" column_invisible="1"/>
+                            <field name="selectable_withholding_ids" column_invisible="1"/>
+                            <field name="withholding_catalog_ids"
+                                   string="Retenciones"
+                                   widget="many2many_tags"
+                                   readonly="not apply"
+                                   options="{'no_create': True, 'no_open': True}"
+                                   domain="[('id', 'in', selectable_withholding_ids)]"/>
+                            <field name="withholding_summary" string="Resumen de retenciones" readonly="1" optional="show"/>
+                            <field name="withholding_config_preview" string="Configuración (empresa/cuenta/%/estado)" readonly="1" optional="show"/>
+                            <field name="withholding_amount" string="Total retenido" readonly="1"/>
+                            <field name="net_after_withholding" string="Neto a pagar/cobrar" readonly="1" optional="show"/>
+                            <field name="move_id" column_invisible="1"/>
+                        </list>
+                    </field>
+                </group>
+
+                <group string="Detalle de retenciones" invisible="not withholding_line_ids">
+                    <field name="withholding_line_ids" nolabel="1" readonly="1">
+                        <list>
+                            <field name="invoice_name" string="Factura"/>
+                            <field name="catalog_code" string="Código"/>
+                            <field name="label" string="Tipo de retención"/>
+                            <field name="company_id" string="Empresa"/>
+                            <field name="account_code" string="Código cuenta"/>
+                            <field name="account_id" string="Cuenta contable"/>
+                            <field name="account_nature" string="Naturaleza"/>
+                            <field name="rate" string="Porcentaje"/>
+                            <field name="config_state" string="Estado"/>
+                            <field name="date_from" string="Vigente desde" optional="show"/>
+                            <field name="date_to" string="Vigente hasta" optional="show"/>
+                            <field name="base_label" string="Base imponible" optional="hide"/>
+                            <field name="base_amount" string="Base"/>
+                            <field name="amount" string="Monto retenido"/>
+                            <field name="dgii_code" string="Código DGII" optional="show"/>
+                        </list>
+                    </field>
+                </group>
+
+                <group string="Datos del método de pago">
+                    <field name="justech_show_card_fields" invisible="1"/>
+                    <field name="justech_show_check_fields" invisible="1"/>
+                    <field name="justech_payment_reference" string="Referencia de pago"/>
+                    <field name="justech_card_auth" string="Autorización"
+                           invisible="not justech_show_card_fields"/>
+                    <field name="justech_card_batch" string="Lote"
+                           invisible="not justech_show_card_fields"/>
+                    <field name="justech_check_bank_id" string="Banco emisor"
+                           invisible="not justech_show_check_fields"/>
+                    <field name="justech_check_number" string="Número de cheque"
+                           invisible="not justech_show_check_fields"/>
+                    <field name="justech_check_date" string="Fecha del cheque"
+                           invisible="not justech_show_check_fields"/>
+                </group>
+
+                <footer>
+                    <button name="action_register_payments" type="object"
+                            string="Registrar pago" class="btn-primary"/>
+                    <button string="Cancelar" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_justech_register_customer_payment" model="ir.actions.act_window">
+        <field name="name">Registrar cobro</field>
+        <field name="res_model">justech.payment.partner.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_partner_type': 'customer'}</field>
+    </record>
+
+    <record id="action_justech_register_vendor_payment" model="ir.actions.act_window">
+        <field name="name">Registrar pago</field>
+        <field name="res_model">justech.payment.partner.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_partner_type': 'supplier'}</field>
+    </record>
+
+    <!-- Bloquear Nuevo en listas de account.payment (cobro/pago van por wizard Justech). -->
+    <record id="view_account_payment_tree_justech_no_create" model="ir.ui.view">
+        <field name="name">account.payment.tree.justech.no.create</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="create">false</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Primary: no sangra a la lista de proveedores (que hereda view_account_payment_tree). -->
+    <record id="view_account_payment_tree_customer_justech" model="ir.ui.view">
+        <field name="name">account.payment.tree.customer.justech</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree"/>
+        <field name="mode">primary</field>
+        <field name="priority">25</field>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="create">false</attribute>
+            </xpath>
+            <xpath expr="//list" position="inside">
+                <header>
+                    <button name="%(justech_l10n_do_payments_withholding.action_justech_register_customer_payment)d"
+                            type="action" string="Registrar cobro" class="btn-primary" display="always"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_payment_tree_vendor_justech" model="ir.ui.view">
+        <field name="name">account.payment.tree.vendor.justech</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_supplier_payment_tree"/>
+        <field name="priority">25</field>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="create">false</attribute>
+            </xpath>
+            <xpath expr="//list" position="inside">
+                <header>
+                    <button name="%(justech_l10n_do_payments_withholding.action_justech_register_vendor_payment)d"
+                            type="action" string="Registrar pago" class="btn-primary" display="always"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+</odoo>

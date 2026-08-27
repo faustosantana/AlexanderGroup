@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Lista operativa (bandeja / operaciones) -->
+    <record id="view_purchase_sale_margin_transaction_list" model="ir.ui.view">
+        <field name="name">purchase.sale.margin.transaction.list</field>
+        <field name="model">purchase.sale.margin.transaction</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="business_state == 'closed'"
+                  decoration-danger="business_state == 'need_relation'">
+                <field name="company_id" string="Empresa" groups="base.group_multi_company"/>
+                <field name="transaction_date" string="Fecha"/>
+                <field name="customer_id" string="Cliente"/>
+                <field name="primary_supplier_id" string="Proveedor"/>
+                <field name="primary_customer_invoice_id" string="Factura de cliente" optional="hide"/>
+                <field name="primary_vendor_bill_id" string="Factura de proveedor" optional="show"/>
+                <field name="primary_sale_order_id" string="Orden de venta" optional="show"/>
+                <field name="primary_purchase_order_id" string="Orden de compra" optional="show"/>
+                <field name="display_sale_amount" string="Venta" sum="Total"
+                         groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <field name="display_cost_amount" string="Costo" sum="Total"
+                         groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <field name="display_margin_amount" string="Margen" sum="Total"
+                         groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <field name="display_margin_pct" string="Margen %" digits="[16,2]"
+                         groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <field name="coverage_display" string="Cobertura"
+                         groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <field name="next_action" string="Próxima acción"/>
+                <field name="margin_band" string="Margen" widget="badge" optional="hide"
+                         groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <field name="pending_reason" string="Motivo del pendiente" optional="hide"/>
+                <field name="business_state" string="Situación" widget="badge"/>
+                <button name="action_inbox_relate" type="object" string="Relacionar" icon="fa-link"/>
+                <button name="action_inbox_validate" type="object" string="Validar" icon="fa-check"
+                        groups="justech_purchase_sale_margin_control.group_margin_purchase"/>
+                <button name="action_inbox_approve" type="object" string="Aprobar" icon="fa-thumbs-up"
+                        groups="justech_purchase_sale_margin_control.group_margin_finance"/>
+                <button name="action_view_operation" type="object" string="Ver operación" icon="fa-external-link"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_purchase_sale_margin_transaction_form" model="ir.ui.view">
+        <field name="name">purchase.sale.margin.transaction.form</field>
+        <field name="model">purchase.sale.margin.transaction</field>
+        <field name="arch" type="xml">
+            <form string="Control financiero de la operación">
+                <header>
+                    <button name="action_manage_purchases" type="object" string="Gestionar compras" class="btn-primary"
+                            invisible="state in ('closed', 'rejected')"
+                            groups="justech_purchase_sale_margin_control.group_margin_purchase,justech_purchase_sale_margin_control.group_margin_finance,justech_purchase_sale_margin_control.group_margin_admin"/>
+                    <button name="action_inbox_relate" type="object" string="Agregar costos" class="btn-secondary"
+                            invisible="1"/>
+                    <button name="action_relate_purchases" type="object" string="Relacionar compras" class="btn-secondary"
+                            invisible="1"/>
+                    <button name="action_add_purchase_orders" type="object" string="Agregar orden(es) de compra" class="btn-secondary"
+                            invisible="1"/>
+                    <button name="action_add_vendor_bills" type="object" string="Agregar factura de proveedor"
+                            class="btn-primary"
+                            invisible="state in ('closed', 'rejected')"/>
+                    <button name="action_inbox_validate" type="object" string="Validar relación" class="btn-primary"
+                            invisible="business_state not in ('to_review', 'suggested')"
+                            groups="justech_purchase_sale_margin_control.group_margin_purchase"/>
+                    <button name="action_inbox_approve" type="object" string="Aprobar operación" class="btn-primary"
+                            invisible="business_state != 'finance_pending'"
+                            groups="justech_purchase_sale_margin_control.group_margin_finance"/>
+                    <button name="action_close" type="object" string="Cerrar" class="btn-secondary" invisible="state != 'approved'"/>
+                    <button name="action_reject" type="object" string="Rechazar" invisible="state in ('closed', 'rejected')"/>
+                    <button name="action_reopen" type="object" string="Reabrir" invisible="state not in ('closed', 'rejected')"/>
+                    <button name="action_recompute_costs" type="object" string="Recalcular costos" class="btn-secondary"
+                            title="Actualiza los costos de las relaciones existentes."
+                            groups="base.group_system"/>
+                    <field name="business_state" widget="statusbar"
+                            statusbar_visible="to_review,need_relation,suggested,purchase_validated,finance_pending,approved,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_sale_orders" type="object" class="oe_stat_button" icon="fa-shopping-cart" invisible="not sale_order_count">
+                            <field name="sale_order_count" widget="statinfo" string="Órdenes de venta"/>
+                        </button>
+                        <button name="action_view_purchase_orders" type="object" class="oe_stat_button" icon="fa-truck" invisible="not purchase_order_count">
+                            <field name="purchase_order_count" widget="statinfo" string="Órdenes de compra"/>
+                        </button>
+                        <button name="action_view_customer_invoices" type="object" class="oe_stat_button" icon="fa-file-text-o" invisible="not customer_invoice_count">
+                            <field name="customer_invoice_count" widget="statinfo" string="Facturas cliente"/>
+                        </button>
+                        <button name="action_view_vendor_bills" type="object" class="oe_stat_button" icon="fa-file-text" invisible="not vendor_bill_count">
+                            <field name="vendor_bill_count" widget="statinfo" string="Facturas proveedor"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Venta sin costo" bg_color="text-bg-danger" invisible="not sale_without_cost"/>
+                    <div class="oe_title">
+                        <label for="transaction_number" string="Número de operación"/>
+                        <h1><field name="transaction_number" readonly="1"/></h1>
+                        <field name="name" placeholder="Descripción comercial..."/>
+                    </div>
+
+                    <div class="alert alert-info" role="alert" invisible="not pending_action_banner or show_legacy_pending_banner">
+                        <strong><field name="pending_action_banner" nolabel="1"/></strong>
+                    </div>
+                    <field name="commercial_cost_status" invisible="1"/>
+                    <field name="commercial_cost_status_label" invisible="1"/>
+                    <field name="show_legacy_pending_banner" invisible="1"/>
+                    <field name="cost_status_compact_html" nolabel="1" colspan="2"
+                           invisible="not cost_status_compact_html"/>
+                    <div class="alert alert-warning" role="alert"
+                         invisible="not pending_reason or not show_legacy_pending_banner">
+                        <strong>¿Qué falta?</strong>
+                        <field name="pending_reason" nolabel="1"/>
+                        <div invisible="not business_state_help" class="text-muted mt-1">
+                            <field name="business_state_help" nolabel="1"/>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" role="alert"
+                         groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"
+                         invisible="not invalid_cost_alert">
+                        <field name="invalid_cost_alert" nolabel="1"/>
+                    </div>
+                    <div class="alert alert-warning" role="alert" invisible="not cost_allocation_pending or not show_legacy_pending_banner">
+                        <strong>ASIGNACIÓN DE COSTO PENDIENTE</strong>
+                        Hay artículos de la venta que todavía no tienen el costo completamente
+                        relacionado. Use «Gestionar compras» para completar la relación.
+                        <field name="cost_allocation_pending" invisible="1"/>
+                    </div>
+                    <div class="alert alert-warning" role="alert"
+                         invisible="not margin_is_provisional or not show_legacy_pending_banner">
+                        <strong>MARGEN PROVISIONAL</strong>
+                        <field name="provisional_margin_banner" nolabel="1"/>
+                        <field name="margin_is_provisional" invisible="1"/>
+                    </div>
+
+                    <group>
+                        <group string="Encabezado">
+                            <field name="company_id" string="Empresa" groups="base.group_multi_company"/>
+                            <field name="customer_id" string="Cliente"/>
+                            <field name="project_name" string="Proyecto"/>
+                            <field name="salesperson_id" string="Vendedor comercial"/>
+                            <field name="create_uid" string="Registrado por" readonly="1"/>
+                            <field name="purchase_responsible_id" string="Responsable Compras"/>
+                            <field name="finance_responsible_id" string="Responsable Finanzas"/>
+                            <field name="transaction_date" string="Fecha"/>
+                        </group>
+                        <group string="Resultado"
+                               groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view">
+                            <field name="company_currency_id" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="display_sale_amount" string="Venta total"/>
+                            <field name="display_cost_amount" string="Costo relacionado"/>
+                            <field name="cost_coverage_state" string="Cobertura de costos"/>
+                            <field name="display_margin_amount" string="Margen"
+                                     decoration-warning="margin_is_provisional"/>
+                            <field name="display_margin_pct" string="Margen %" digits="[16,2]"
+                                     decoration-warning="margin_is_provisional"/>
+                            <field name="amount_to_collect" string="Pendiente de cobro"/>
+                            <field name="amount_to_pay" string="Pendiente de pago"/>
+                            <field name="coverage_display" string="Cobertura factura vs OC"/>
+                            <field name="next_action" string="Próxima acción"/>
+                            <field name="margin_band" string="Clasificación margen" widget="badge"/>
+                            <field name="link_mode" string="Origen de relación"/>
+                        </group>
+                    </group>
+                    <group string="Costos agrupados por proveedor"
+                           groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"
+                           invisible="not vendor_cost_summary">
+                        <field name="vendor_cost_summary" nolabel="1" colspan="2"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Venta" name="sale_block">
+                            <group>
+                                <group>
+                                    <field name="sale_order_ids" widget="many2many_tags" string="Órdenes de venta / cotizaciones"/>
+                                    <field name="sale_estimated_amount" string="Venta comprometida"/>
+                                    <field name="sale_real_amount" string="Total facturado"/>
+                                    <field name="amount_collected" string="Total cobrado"
+                                             groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                                    <field name="amount_to_collect" string="Saldo pendiente"
+                                             groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                                </group>
+                            </group>
+                            <field name="customer_invoice_ids" string="Facturas de cliente">
+                                <list>
+                                    <field name="name" string="Factura"/>
+                                    <field name="partner_id" string="Cliente"/>
+                                    <field name="invoice_date" string="Fecha"/>
+                                    <field name="amount_untaxed" string="Base" sum="Total"/>
+                                    <field name="amount_residual" string="Saldo" sum="Total"/>
+                                    <field name="payment_state" string="Estado de pago"/>
+                                    <field name="state" string="Estado"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Pendientes de relacionar" name="pending_cost_block"
+                              invisible="not cost_pending_line_html">
+                            <div class="alert alert-danger" role="alert">
+                                Líneas vendidas/facturadas sin costo completo (qty.assignment).
+                            </div>
+                            <field name="cost_pending_line_html" nolabel="1"/>
+                            <group>
+                                <field name="cost_related_sale_qty"/>
+                                <field name="cost_pending_sale_qty"/>
+                            </group>
+                        </page>
+                        <page string="Compras y costos" name="cost_block">
+                            <group>
+                                <group>
+                                    <field name="active_purchase_order_ids" widget="many2many_tags"
+                                             string="Órdenes de compra"
+                                             options="{'no_create': True}" readonly="1"/>
+                                    <field name="purchase_order_ids" invisible="1"/>
+                                    <field name="supplier_ids" widget="many2many_tags"
+                                             string="Proveedores"
+                                             options="{'no_create': True}"/>
+                                    <field name="cost_estimated_amount" string="Costo comprometido"/>
+                                    <field name="cost_real_amount" string="Costo realizado"/>
+                                    <field name="amount_paid_vendor" string="Total pagado"
+                                             groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view,justech_purchase_sale_margin_control.group_margin_sec_cxp_view"/>
+                                    <field name="amount_to_pay" string="Saldo pendiente"
+                                             groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view,justech_purchase_sale_margin_control.group_margin_sec_cxp_view"/>
+                                </group>
+                            </group>
+                            <field name="active_vendor_bill_ids" string="Facturas de proveedor" readonly="1">
+                                <list>
+                                    <field name="name" string="Factura"/>
+                                    <field name="partner_id" string="Proveedor"/>
+                                    <field name="invoice_date" string="Fecha"/>
+                                    <field name="amount_untaxed" string="Base" sum="Total"/>
+                                    <field name="amount_residual" string="Saldo" sum="Total"/>
+                                    <field name="payment_state" string="Estado de pago"/>
+                                    <field name="state" string="Estado"/>
+                                </list>
+                            </field>
+                            <field name="vendor_bill_ids" invisible="1"/>
+                        </page>
+                        <page string="Artículos vendidos" name="sale_lines">
+                            <field name="sale_line_ids">
+                                <list>
+                                    <field name="product_id" string="Producto"/>
+                                    <field name="description" string="Descripción"/>
+                                    <field name="sale_order_id" string="Orden de venta"/>
+                                    <field name="amount_untaxed" string="Importe" sum="Total"/>
+                                    <field name="data_origin" string="Origen" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Artículos comprados" name="cost_lines"
+                              groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view">
+                            <field name="cost_line_ids">
+                                <list>
+                                    <field name="product_id" string="Producto"/>
+                                    <field name="description" string="Descripción"/>
+                                    <field name="purchase_order_id" string="Orden de compra"/>
+                                    <field name="quantity" string="Cantidad"/>
+                                    <field name="amount_untaxed" string="Importe" sum="Total"/>
+                                    <field name="cost_source" string="Origen costo" optional="show"/>
+                                    <field name="partner_id" string="Proveedor" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Pagos" name="payments"
+                              groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view,justech_purchase_sale_margin_control.group_margin_sec_cxp_view">
+                            <group>
+                                <group string="Cliente"
+                                       groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view">
+                                    <field name="amount_collected"/>
+                                    <field name="amount_to_collect"/>
+                                </group>
+                                <group string="Proveedor"
+                                       groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view,justech_purchase_sale_margin_control.group_margin_sec_cxp_view">
+                                    <field name="amount_paid_vendor"/>
+                                    <field name="amount_to_pay"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Información técnica" name="technical"
+                              groups="justech_purchase_sale_margin_control.group_margin_admin,justech_purchase_sale_margin_control.group_margin_auditor">
+                            <group>
+                                <field name="state" string="Estado interno"/>
+                                <field name="validation_state"/>
+                                <field name="approval_state"/>
+                                <field name="source" string="Origen"/>
+                                <field name="confidence" string="Confianza %"/>
+                                <field name="transaction_type"/>
+                                <field name="margin_is_calculable"/>
+                                <field name="sale_without_cost"/>
+                                <field name="allocation_ids"
+                                          groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                                <field name="is_merged"/>
+                                <field name="merged_into_id"/>
+                                <field name="merged_at"/>
+                                <field name="merged_by_id"/>
+                                <field name="consolidation_note"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_purchase_sale_margin_transaction_search" model="ir.ui.view">
+        <field name="name">purchase.sale.margin.transaction.search</field>
+        <field name="model">purchase.sale.margin.transaction</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="transaction_number"/>
+                <field name="customer_id" string="Cliente"/>
+                <field name="primary_supplier_id" string="Proveedor"/>
+                <field name="primary_sale_order_id"/>
+                <field name="primary_purchase_order_id"/>
+                <separator/>
+                <filter string="Compras sin venta relacionada" name="filter_purchases_no_sale"
+                        domain="[('has_related_cost', '=', True), ('has_related_sale', '=', False)]"/>
+                <filter string="Ventas sin costos relacionados" name="filter_sales_no_cost"
+                        domain="[('sale_without_cost', '=', True)]"/>
+                <filter string="Relaciones sugeridas por revisar" name="filter_suggested"
+                        domain="[('business_state', '=', 'suggested')]"/>
+                <filter string="Pendientes de aprobación de Finanzas" name="filter_finance_pending"
+                        domain="[('business_state', '=', 'finance_pending')]"/>
+                <filter string="Diferencias de monto / margen negativo" name="filter_negative"
+                        domain="[('real_margin', '&lt;', 0), ('margin_is_calculable', '=', True)]"/>
+                <filter string="Facturas proveedor pendientes de pago" name="filter_to_pay"
+                        domain="[('amount_to_pay', '&gt;', 0)]"
+                        groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view,justech_purchase_sale_margin_control.group_margin_sec_cxp_view"/>
+                <filter string="Operaciones listas para cerrar" name="filter_ready_close"
+                        domain="[('state', '=', 'approved')]"/>
+                <filter string="Por revisar (Compras)" name="filter_to_review"
+                        domain="[('business_state', '=', 'to_review')]"/>
+                <separator/>
+                <filter string="Margen saludable" name="filter_margin_healthy" domain="[('margin_band', '=', 'healthy')]"
+                        groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <filter string="Margen bajo" name="filter_margin_low" domain="[('margin_band', '=', 'low')]"
+                        groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <filter string="Margen negativo" name="filter_margin_negative" domain="[('margin_band', '=', 'negative')]"
+                        groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <filter string="Margen pendiente" name="filter_margin_pending" domain="[('margin_band', '=', 'pending')]"
+                        groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <filter string="Sin costo" name="filter_no_cost_band" domain="[('sale_without_cost', '=', True)]"/>
+                <filter string="Activas" name="filter_active_canonical" domain="[('is_merged', '=', False)]"/>
+                <filter string="Consolidadas (auditoría)" name="filter_merged" domain="[('is_merged', '=', True)]"/>
+                <separator/>
+                <filter string="Fecha" name="group_date" context="{'group_by': 'transaction_date'}"/>
+                <filter string="Cliente" name="group_customer" context="{'group_by': 'customer_id'}"/>
+                <filter string="Estado" name="group_business_state" context="{'group_by': 'business_state'}"/>
+                <filter string="Margen" name="group_margin_band" context="{'group_by': 'margin_band'}"
+                        groups="justech_purchase_sale_margin_control.group_margin_sec_margins_view"/>
+                <filter string="Empresa" name="group_company" context="{'group_by': 'company_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_margins" model="ir.actions.act_window">
+        <field name="name">Márgenes</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_purchase_sale_margin_transaction_search"/>
+        <field name="domain">[('has_related_sale', '=', True), ('is_merged', '=', False)]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No hay márgenes para mostrar.</p>
+            <p>Use los filtros: Positivos, Bajo, Negativos, Sin costo, Pendientes de aprobación.</p>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_margin_transaction" model="ir.actions.act_window">
+        <field name="name">Operaciones</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_purchase_sale_margin_transaction_search"/>
+        <field name="domain">[('is_merged', '=', False)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No hay operaciones todavía.</p>
+            <p>Use el backfill histórico o «Relacionar documentos» para crear la primera.</p>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_work_inbox" model="ir.actions.act_window">
+        <field name="name">Pendientes de trabajo</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_purchase_sale_margin_transaction_search"/>
+        <field name="domain">[('state', 'not in', ('closed', 'rejected')), ('active', '=', True), ('is_merged', '=', False)]</field>
+        <field name="context">{
+            'search_default_filter_purchases_no_sale': 0,
+            'search_default_filter_sales_no_cost': 0,
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No hay pendientes.</p>
+            <p>Use los filtros superiores: compras sin venta, ventas sin costos, aprobación, etc.</p>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_unrelated_docs" model="ir.actions.act_window">
+        <field name="name">Compras y ventas sin relacionar</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_purchase_sale_margin_transaction_search"/>
+        <field name="domain">['|',
+            '&amp;', ('has_related_cost', '=', True), ('has_related_sale', '=', False),
+            ('sale_without_cost', '=', True)]</field>
+        <field name="context">{'search_default_filter_sales_no_cost': 1}</field>
+    </record>
+
+    <!-- Compatibilidad: acciones antiguas redirigidas a filtros claros -->
+    <record id="action_purchase_sale_margin_transaction_pending_relation" model="ir.actions.act_window">
+        <field name="name">Compras y ventas sin relacionar</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_purchase_sale_margin_transaction_search"/>
+        <field name="domain">['|',
+            '&amp;', ('has_related_cost', '=', True), ('has_related_sale', '=', False),
+            ('sale_without_cost', '=', True)]</field>
+    </record>
+
+    <record id="action_purchase_sale_margin_transaction_pending_validation" model="ir.actions.act_window">
+        <field name="name">Revisión de Compras</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[
+            ('has_related_sale', '=', True),
+            ('has_related_cost', '=', True),
+            ('business_state', 'in', ('to_review', 'suggested')),
+            ('state', 'not in', ('approved', 'closed', 'rejected')),
+        ]</field>
+        <field name="help" type="html">
+            <p><b>Revisión de Compras</b></p>
+            <p>La venta y el costo ya están propuestos o relacionados. Compras debe confirmar que proveedor, documentos, artículos, cantidades y costos son correctos.</p>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_margin_transaction_pending_approval" model="ir.actions.act_window">
+        <field name="name">Aprobación de Finanzas</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('business_state', '=', 'finance_pending')]</field>
+        <field name="help" type="html">
+            <p><b>Aprobación de Finanzas</b></p>
+            <p>Compras ya validó los costos. Finanzas debe revisar la venta, costo, margen, saldos y aprobar o rechazar.</p>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_margin_transaction_purchases_without_sale" model="ir.actions.act_window">
+        <field name="name">Compras sin Venta</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('has_related_cost', '=', True), ('has_related_sale', '=', False)]</field>
+        <field name="help" type="html">
+            <p><b>Compras sin Venta</b></p>
+            <p>Existe una OC o factura de proveedor que todavía no está vinculada a una venta. Debe relacionarse, clasificarse como inventario/gasto o excluirse del margen.</p>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_margin_transaction_sales_without_cost" model="ir.actions.act_window">
+        <field name="name">Ventas sin Costos</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('sale_without_cost', '=', True)]</field>
+        <field name="help" type="html">
+            <p><b>Ventas sin Costos</b></p>
+            <p>Existe una venta o factura de cliente sin OC o factura de proveedor relacionada. Compras debe agregar o buscar sus costos.</p>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_margin_transaction_admin_expenses" model="ir.actions.act_window">
+        <field name="name">Gastos administrativos</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('transaction_type', '=', 'administrative')]</field>
+    </record>
+
+    <record id="action_purchase_sale_margin_transaction_negative_margins" model="ir.actions.act_window">
+        <field name="name">Márgenes negativos</field>
+        <field name="res_model">purchase.sale.margin.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('real_margin', '&lt;', 0), ('margin_is_calculable', '=', True)]</field>
+    </record>
+
+</odoo>

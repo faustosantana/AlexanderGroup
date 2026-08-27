@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_do_dgii_expense_type_list" model="ir.ui.view">
+        <field name="name">justech.do.dgii.expense.type.list</field>
+        <field name="model">justech.do.dgii.expense.type</field>
+        <field name="arch" type="xml">
+            <list string="Tipos de costos y gastos DGII">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="display_name"/>
+                <field name="applies_to_606"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_justech_do_dgii_expense_type_form" model="ir.ui.view">
+        <field name="name">justech.do.dgii.expense.type.form</field>
+        <field name="model">justech.do.dgii.expense.type</field>
+        <field name="arch" type="xml">
+            <form string="Tipo de costos y gastos">
+                <sheet>
+                    <group>
+                        <group string="Catálogo DGII 606">
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="display_name" readonly="1"/>
+                            <field name="active"/>
+                            <field name="applies_to_606"/>
+                        </group>
+                        <group string="Ayuda">
+                            <field name="help_text" placeholder="Qué clasifica este código y cuándo usarlo."/>
+                        </group>
+                    </group>
+                    <div class="alert alert-info" role="alert">
+                        El tipo se selecciona en cada factura de proveedor.
+                        No define una regla rígida del contacto.
+                        Solo Administrador Fiscal / Settings pueden crear o desactivar códigos.
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_justech_do_dgii_expense_type" model="ir.actions.act_window">
+        <field name="name">Tipos de costos y gastos</field>
+        <field name="res_model">justech.do.dgii.expense.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'active_test': False}</field>
+        <field name="help" type="html">
+            <p>
+                Catálogo DGII de clasificación de costos y gastos (606).
+                Los usuarios operativos solo seleccionan; no crean tipos nuevos.
+            </p>
+        </field>
+    </record>
+</odoo>

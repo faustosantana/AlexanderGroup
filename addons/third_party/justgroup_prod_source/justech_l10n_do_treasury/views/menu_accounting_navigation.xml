@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+      Auditoría herencia menús (antes de cambiar):
+      - Parent raíz: accountant.menu_accounting (Enterprise) — NO account.menu_finance
+      - Clientes: account.menu_finance_receivables
+      - Proveedores: account.menu_finance_payables
+      - Acciones reutilizadas (sin duplicar):
+        * account.action_account_payments / action_account_payments_payable
+        * justech_l10n_do_payments_withholding.action_justech_register_*
+        * action_treasury_open_payments_*
+      - Conciliación bancaria bajo Pagos: DUPLICA widget estándar
+        (account.bank.statement.line + bank_rec_widget). Acceso canónico: Tablero.
+        Contabilidad→Contabilidad→Conciliar = apuntes (distinto). Menú Pagos oculto.
+    -->
+
+    <!-- Operativo: Facturación (invoice). Readonly conserva acceso contable/consulta. -->
+    <menuitem id="menu_finance_payments_root"
+              name="Pagos"
+              parent="accountant.menu_accounting"
+              sequence="50"
+              groups="account.group_account_invoice,account.group_account_readonly"/>
+
+    <!-- Acción conservada por compatibilidad; menú desactivado (no duplicar conciliación). -->
+    <record id="action_justech_bank_reconciliation" model="ir.actions.act_window">
+        <field name="name">Conciliación bancaria</field>
+        <field name="res_model">account.bank.statement.line</field>
+        <field name="view_mode">kanban,list</field>
+        <field name="search_view_id" ref="account_accountant.view_bank_statement_line_search_bank_rec_widget"/>
+        <field name="view_id" ref="account_accountant.view_bank_statement_line_kanban_bank_rec_widget"/>
+        <field name="domain">[('state', '!=', 'cancel')]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Dominios reales (no solo search_default): partner_type estricto. -->
+    <record id="action_payments_customer" model="ir.actions.act_window">
+        <field name="name">Pagos de clientes</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">list,form,kanban,graph</field>
+        <field name="view_id" ref="justech_l10n_do_payments_withholding.view_account_payment_tree_customer_justech"/>
+        <field name="domain">[('partner_type', '=', 'customer')]</field>
+        <field name="context">{
+            'default_payment_type': 'inbound',
+            'default_partner_type': 'customer',
+            'search_default_inbound_filter': 1,
+            'default_move_journal_types': ('bank', 'cash'),
+            'display_account_trust': True,
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Use «Registrar cobro» para aplicar facturas pendientes</p>
+            <p>Solo pagos con partner_type = cliente (cobros y devoluciones relacionadas).</p>
+        </field>
+    </record>
+
+    <record id="action_payments_vendor" model="ir.actions.act_window">
+        <field name="name">Pagos de proveedores</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">list,form,kanban,graph</field>
+        <!-- Obligatorio: sin esto Odoo resuelve la lista genérica (1428) y muestra
+             «Registrar cobro» (wizard customer) → 0 facturas de proveedor. -->
+        <field name="view_id" ref="account.view_account_supplier_payment_tree"/>
+        <field name="domain">[('partner_type', '=', 'supplier')]</field>
+        <field name="context">{
+            'default_payment_type': 'outbound',
+            'default_partner_type': 'supplier',
+            'search_default_outbound_filter': 1,
+            'default_move_journal_types': ('bank', 'cash'),
+            'display_account_trust': True,
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Use «Registrar pago» para aplicar facturas pendientes</p>
+            <p>Solo pagos con partner_type = proveedor (pagos y devoluciones relacionadas).</p>
+        </field>
+    </record>
+
+    <record id="action_account_payments_all" model="ir.actions.act_window">
+        <field name="name">Todos los pagos</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">list,form,kanban,graph</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registre un pago de cliente o proveedor.
+            </p>
+            <p>
+                Esta vista muestra cobros y pagos. Use los filtros por tipo de partner,
+                estado, diario, empresa y fecha.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_finance_payments_customer"
+              name="Pagos de clientes"
+              parent="menu_finance_payments_root"
+              action="action_payments_customer"
+              sequence="10"
+              groups="account.group_account_invoice,account.group_account_readonly"/>
+
+    <menuitem id="menu_finance_payments_vendor"
+              name="Pagos de proveedores"
+              parent="menu_finance_payments_root"
+              action="action_payments_vendor"
+              sequence="20"
+              groups="account.group_account_invoice,account.group_account_readonly"/>
+
+    <menuitem id="menu_finance_payments_all"
+              name="Todos los pagos"
+              parent="menu_finance_payments_root"
+              action="action_account_payments_all"
+              sequence="25"
+              groups="account.group_account_invoice,account.group_account_readonly"/>
+
+    <!-- Registrar cobro/pago: entrada directa al wizard Justech (facturas pendientes). -->
+    <menuitem id="menu_finance_register_customer_payment"
+              name="Registrar cobro / Aplicar pagos"
+              parent="menu_finance_payments_root"
+              action="justech_l10n_do_payments_withholding.action_justech_register_customer_payment"
+              sequence="30"
+              groups="account.group_account_invoice"/>
+
+    <menuitem id="menu_finance_register_vendor_payment"
+              name="Registrar pago / Aplicar pagos"
+              parent="menu_finance_payments_root"
+              action="justech_l10n_do_payments_withholding.action_justech_register_vendor_payment"
+              sequence="31"
+              groups="account.group_account_invoice"/>
+
+    <!-- Pagos abiertos: conservados en el hub Pagos (distintos de pagos registrados). -->
+    <menuitem id="menu_finance_open_payments_customer"
+              name="Pagos abiertos de clientes"
+              parent="menu_finance_payments_root"
+              action="action_treasury_open_payments_customer"
+              sequence="40"
+              groups="account.group_account_invoice,account.group_account_readonly"/>
+
+    <menuitem id="menu_finance_open_payments_vendor"
+              name="Pagos abiertos de proveedores"
+              parent="menu_finance_payments_root"
+              action="action_treasury_open_payments_vendor"
+              sequence="45"
+              groups="account.group_account_invoice,account.group_account_readonly"/>
+
+    <!-- Oculto: duplica conciliación bancaria estándar (acceso vía Tablero / diarios). -->
+    <record id="menu_finance_bank_reconciliation" model="ir.ui.menu">
+        <field name="name">Conciliación bancaria</field>
+        <field name="parent_id" ref="menu_finance_payments_root"/>
+        <field name="action" ref="action_justech_bank_reconciliation"/>
+        <field name="sequence">50</field>
+        <field name="active" eval="False"/>
+    </record>
+
+    <!-- ========== Clientes: reutilizar mismas acciones (sin acciones nuevas) ========== -->
+    <menuitem id="menu_receivable_payments_customer"
+              name="Pagos de clientes"
+              parent="account.menu_finance_receivables"
+              action="action_payments_customer"
+              sequence="30"
+              groups="account.group_account_invoice,account.group_account_readonly"/>
+
+    <menuitem id="menu_receivable_register_customer_payment"
+              name="Registrar cobro / Aplicar pagos"
+              parent="account.menu_finance_receivables"
+              action="justech_l10n_do_payments_withholding.action_justech_register_customer_payment"
+              sequence="35"
+              groups="account.group_account_invoice"/>
+
+    <record id="menu_receivable_open_payments_customer" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+    <!-- ========== Proveedores ========== -->
+    <record id="account.menu_action_move_in_refund_type" model="ir.ui.menu">
+        <field name="name">Notas de crédito</field>
+    </record>
+
+    <menuitem id="menu_payable_payments_vendor"
+              name="Pagos de proveedores"
+              parent="account.menu_finance_payables"
+              action="action_payments_vendor"
+              sequence="30"
+              groups="account.group_account_invoice,account.group_account_readonly"/>
+
+    <menuitem id="menu_payable_register_vendor_payment"
+              name="Registrar pago / Aplicar pagos"
+              parent="account.menu_finance_payables"
+              action="justech_l10n_do_payments_withholding.action_justech_register_vendor_payment"
+              sequence="35"
+              groups="account.group_account_invoice"/>
+
+    <record id="menu_payable_open_payments_vendor" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+</odoo>

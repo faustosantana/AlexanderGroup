@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form_justech_fiscal_perms" model="ir.ui.view">
+        <field name="name">res.users.form.justech.fiscal.perms</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='access_rights']" position="inside">
+                <group string="PERMISOS FISCALES JUSTECH" name="justech_fiscal_perms">
+                    <group>
+                        <field name="justech_fiscal_role" widget="radio"/>
+                        <field name="justech_fiscal_company_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                    </group>
+                    <group>
+                        <field name="justech_can_manage_padron" readonly="1"/>
+                        <field name="justech_can_manage_ranges" readonly="1"/>
+                        <field name="justech_can_manage_withholding" readonly="1"/>
+                        <field name="justech_can_approve_fiscal" readonly="1"/>
+                        <field name="justech_can_run_diagnostics" readonly="1"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

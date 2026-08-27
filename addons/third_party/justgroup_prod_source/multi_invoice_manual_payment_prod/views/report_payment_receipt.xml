@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payment_receipt_document_justech_applied"
+              inherit_id="account.report_payment_receipt_document">
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <t t-if="o.justech_applied_invoice_ids">
+                <div class="mt-4">
+                    <strong>Documentos aplicados</strong>
+                    <t t-out="o.justech_applied_invoice_html"/>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

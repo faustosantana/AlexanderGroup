@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- CREATE PURCHASE — 1 proveedor arriba, 1 OC -->
+    <record id="view_purchase_sale_cost_create_purchase_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.cost.create.purchase.wizard.form</field>
+        <field name="model">purchase.sale.cost.create.purchase.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Crear nueva compra">
+                <field name="company_id" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="hub_wizard_id" invisible="1"/>
+                <field name="step" invisible="1"/>
+                <field name="show_more_details" invisible="1"/>
+
+                <group invisible="step != 'prepare'">
+                    <div colspan="2">
+                        <h2>CREAR NUEVA COMPRA</h2>
+                        <p class="text-muted">
+                            Una orden de compra · un proveedor · los artículos seleccionados.
+                        </p>
+                    </div>
+                </group>
+
+                <group invisible="step != 'prepare'">
+                    <field name="supplier_id" string="Proveedor"
+                             options="{'no_create': True}"
+                             placeholder="Buscar proveedor..."/>
+                    <field name="payment_term_id" string="Términos de pago"/>
+                    <field name="partner_ref" string="Referencia"
+                             invisible="not show_more_details"/>
+                    <field name="notes" string="Notas"
+                             invisible="not show_more_details"/>
+                </group>
+
+                <separator string="Artículos seleccionados" invisible="step != 'prepare'"/>
+                <field name="line_ids" invisible="step != 'prepare'" nolabel="1">
+                    <list editable="bottom" create="0" delete="0">
+                        <field name="product_name" string="Artículo" readonly="1"/>
+                        <field name="pending_qty" string="Pendiente venta" readonly="1"/>
+                        <field name="buy_qty" string="Comprar"/>
+                        <field name="price_unit" string="Precio unitario"/>
+                        <field name="sale_cover_qty" string="Para esta venta"
+                                  column_invisible="not parent.show_more_details"/>
+                        <field name="assign_qty" column_invisible="1"/>
+                        <field name="supplier_id" column_invisible="1"/>
+                        <field name="currency_id" column_invisible="1"/>
+                        <field name="payment_term_id" column_invisible="1"/>
+                        <field name="partner_ref" column_invisible="1"/>
+                        <field name="notes" column_invisible="1"/>
+                        <field name="sale_line_id" column_invisible="1"/>
+                        <field name="product_id" column_invisible="1"/>
+                    </list>
+                </field>
+                <field name="excess_html" invisible="step != 'prepare'" nolabel="1" colspan="2"/>
+                <div invisible="step != 'prepare'" class="mt-2">
+                    <button name="action_toggle_more_details" type="object"
+                            string="Más detalles" class="btn-link btn-sm text-muted"/>
+                </div>
+
+                <group invisible="step != 'review'">
+                    <div colspan="2">
+                        <field name="review_html" nolabel="1"/>
+                    </div>
+                </group>
+                <field name="review_ids" invisible="1" nolabel="1">
+                    <list>
+                        <field name="supplier_id"/>
+                        <field name="product_name"/>
+                        <field name="buy_qty"/>
+                        <field name="assign_qty"/>
+                        <field name="price_unit"/>
+                        <field name="product_id"/>
+                        <field name="sale_line_id"/>
+                    </list>
+                </field>
+
+                <footer>
+                    <button name="action_goto_review" type="object"
+                            string="Revisar orden" class="btn-primary"
+                            invisible="step != 'prepare'"/>
+                    <button name="action_create_draft_orders" type="object"
+                            string="Crear OC en borrador" class="btn-primary"
+                            invisible="step != 'review'"/>
+                    <button name="action_back_prepare" type="object"
+                            string="Volver" class="btn-secondary"
+                            invisible="step != 'review'"/>
+                    <button string="Cancelar" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- LINK EXISTING — 1 proveedor + 1 OC/factura -->
+    <record id="view_purchase_sale_cost_link_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.cost.link.wizard.form</field>
+        <field name="model">purchase.sale.cost.link.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Vincular compra existente">
+                <field name="company_id" invisible="1"/>
+                <field name="hub_wizard_id" invisible="1"/>
+                <field name="mode" invisible="1"/>
+                <field name="sale_line_ids" invisible="1"/>
+                <field name="eligible_po_ids" invisible="1"/>
+                <field name="eligible_bill_ids" invisible="1"/>
+                <field name="show_all_po_lines" invisible="1"/>
+                <field name="show_all_bill_lines" invisible="1"/>
+
+                <div class="mb-2">
+                    <button name="action_set_mode_po" type="object"
+                            string="Orden de compra"
+                            class="btn-primary"
+                            invisible="mode == 'po'"/>
+                    <button name="action_set_mode_po" type="object"
+                            string="● Orden de compra"
+                            class="btn-secondary"
+                            invisible="mode != 'po'"/>
+                    <button name="action_set_mode_bill" type="object"
+                            string="Factura de proveedor"
+                            class="btn-primary"
+                            invisible="mode == 'bill'"/>
+                    <button name="action_set_mode_bill" type="object"
+                            string="● Factura de proveedor"
+                            class="btn-secondary"
+                            invisible="mode != 'bill'"/>
+                </div>
+
+                <group>
+                    <field name="supplier_id" string="Proveedor" options="{'no_create': True}"/>
+                </group>
+
+                <group invisible="mode != 'po'" string="Orden de compra">
+                    <field name="purchase_order_id"
+                             string="Orden de compra"
+                             domain="[('id', 'in', eligible_po_ids)]"
+                             options="{'no_create': True}"
+                             context="{'default_company_id': company_id}"/>
+                    <div colspan="2">
+                        <button name="action_load_po_lines" type="object"
+                                string="Cargar artículos" class="btn-link"
+                                invisible="not purchase_order_id"/>
+                        <button name="action_toggle_show_all_po_lines" type="object"
+                                string="Mostrar todos los artículos de esta OC"
+                                class="btn-link btn-sm text-muted"
+                                invisible="not purchase_order_id or show_all_po_lines"/>
+                        <button name="action_toggle_show_all_po_lines" type="object"
+                                string="Solo artículos de la venta"
+                                class="btn-link btn-sm text-muted"
+                                invisible="not purchase_order_id or not show_all_po_lines"/>
+                    </div>
+                </group>
+                <field name="pol_line_ids" invisible="mode != 'po'" nolabel="1"
+                         string="Artículos">
+                    <list editable="bottom" create="0" delete="0">
+                        <field name="product_id" string="Artículo" readonly="1"/>
+                        <field name="qty_available" string="Disponible OC" readonly="1"/>
+                        <field name="qty_needed" string="Necesito" readonly="1"/>
+                        <field name="qty_to_use" string="Usar"/>
+                        <field name="qty_purchased" column_invisible="1"/>
+                        <field name="qty_assigned" column_invisible="1"/>
+                        <field name="purchase_line_id" column_invisible="1"/>
+                        <field name="unit_cost" column_invisible="1"/>
+                        <field name="is_focus_product" column_invisible="1"/>
+                    </list>
+                </field>
+
+                <group invisible="mode != 'bill'" string="Factura de proveedor">
+                    <field name="bill_search" string="Buscar factura / NCF"/>
+                    <field name="vendor_bill_id"
+                             string="Factura de proveedor"
+                             domain="[('id', 'in', eligible_bill_ids)]"
+                             options="{'no_create': True}"/>
+                    <div colspan="2">
+                        <button name="action_load_bill_lines" type="object"
+                                string="Cargar líneas" class="btn-link"
+                                invisible="not vendor_bill_id"/>
+                        <button name="action_toggle_show_all_bill_lines" type="object"
+                                string="Mostrar todas las líneas de la factura"
+                                class="btn-link btn-sm text-muted"
+                                invisible="not vendor_bill_id or show_all_bill_lines"/>
+                        <button name="action_toggle_show_all_bill_lines" type="object"
+                                string="Solo artículos de la venta"
+                                class="btn-link btn-sm text-muted"
+                                invisible="not vendor_bill_id or not show_all_bill_lines"/>
+                    </div>
+                </group>
+                <field name="bill_line_ids" invisible="mode != 'bill'" nolabel="1">
+                    <list editable="bottom" create="0" delete="0">
+                        <field name="product_id" string="Artículo" readonly="1"/>
+                        <field name="qty_on_bill" string="En factura" readonly="1"/>
+                        <field name="qty_needed" string="Necesito" readonly="1"/>
+                        <field name="qty_to_use" string="Usar"/>
+                        <field name="unit_cost" string="Costo unitario" optional="hide" readonly="1"/>
+                        <field name="move_line_id" column_invisible="1"/>
+                    </list>
+                </field>
+
+                <footer>
+                    <button name="action_apply" type="object"
+                            string="Aplicar" class="btn-primary"/>
+                    <button string="Cancelar" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- INVENTORY / HISTORICAL -->
+    <record id="view_purchase_sale_cost_inventory_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.cost.inventory.wizard.form</field>
+        <field name="model">purchase.sale.cost.inventory.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Usar inventario">
+                <field name="company_id" invisible="1"/>
+                <field name="hub_wizard_id" invisible="1"/>
+                <field name="mode" invisible="1"/>
+
+                <div class="mb-2">
+                    <button name="action_set_reference" type="object"
+                            string="Inventario Odoo (referencia)"
+                            class="btn-secondary"
+                            invisible="mode == 'reference'"/>
+                    <button name="action_set_reference" type="object"
+                            string="● Inventario Odoo (referencia)"
+                            class="btn-link"
+                            invisible="mode != 'reference'"/>
+                    <button name="action_set_historical" type="object"
+                            string="Existencia histórica"
+                            class="btn-primary"
+                            invisible="mode == 'historical'"/>
+                    <button name="action_set_historical" type="object"
+                            string="● Existencia histórica"
+                            class="btn-link"
+                            invisible="mode != 'historical'"/>
+                </div>
+                <field name="info_html" nolabel="1" colspan="2"/>
+
+                <field name="line_ids" nolabel="1">
+                    <list editable="bottom" create="0" delete="0">
+                        <field name="product_name" string="Artículo" readonly="1"/>
+                        <field name="pending_qty" string="Pendiente" readonly="1"/>
+                        <field name="stock_available" string="Disponible Odoo" readonly="1"
+                                  column_invisible="parent.mode != 'reference'"/>
+                        <field name="use_qty" string="Usar"/>
+                        <field name="unit_cost" string="Costo unitario"
+                                  column_invisible="parent.mode != 'historical'"/>
+                        <field name="note" string="Nota" optional="show"
+                                  column_invisible="parent.mode != 'historical'"/>
+                        <field name="stock_qty" column_invisible="1"/>
+                        <field name="stock_reserved" column_invisible="1"/>
+                        <field name="sale_line_id" column_invisible="1"/>
+                        <field name="product_id" column_invisible="1"/>
+                    </list>
+                </field>
+
+                <footer>
+                    <button name="action_apply" type="object"
+                            string="Aplicar" class="btn-primary"
+                            invisible="mode != 'historical'"/>
+                    <button string="Cerrar" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

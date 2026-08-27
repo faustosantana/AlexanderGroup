@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- UX: distinguir aplicación a factura vs conciliación bancaria en formulario estándar. -->
+    <record id="view_account_payment_form_treasury_bank_ux" model="ir.ui.view">
+        <field name="name">account.payment.form.treasury.bank.ux</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="treasury_bank_state" invisible="1"/>
+                <field name="is_reconciled" invisible="1"/>
+                <button name="action_justech_open_bank_reconciliation"
+                        type="object"
+                        string="Conciliar con extracto bancario"
+                        class="btn-primary"
+                        invisible="treasury_bank_state != 'bank_pending' or state not in ('in_process', 'paid') or not is_reconciled"/>
+                <button name="action_justech_view_reconciliation_status"
+                        type="object"
+                        string="Ver conciliación"
+                        invisible="treasury_bank_state != 'bank_reconciled'"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_justech_open_bank_reconciliation"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-university"
+                        invisible="treasury_bank_state != 'bank_pending' or state not in ('in_process', 'paid')">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Extracto</span>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info" role="alert"
+                     invisible="not is_reconciled or treasury_bank_state != 'bank_pending' or state not in ('in_process', 'paid')">
+                    Aplicado a factura(s). Pendiente de conciliación bancaria con el extracto
+                    (cuenta transitoria). No intente conciliar de nuevo la cuenta por cobrar/pagar.
+                </div>
+                <div class="alert alert-success" role="alert"
+                     invisible="treasury_bank_state != 'bank_reconciled'">
+                    Conciliado con factura y con el banco.
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="treasury_bank_state" string="Estado bancario" widget="badge"
+                       decoration-warning="treasury_bank_state == 'bank_pending'"
+                       decoration-success="treasury_bank_state == 'bank_reconciled'"
+                       decoration-muted="treasury_bank_state == 'not_posted'"
+                       readonly="1"
+                       invisible="state in ('draft', 'canceled')"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

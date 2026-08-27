@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+      Auditoría herencia account.payment (antes de cambiar):
+      - Lista abierta: vista primaria propia (no hereda tree estándar).
+      - Formulario abierto: vista primaria propia (evita deformación del form
+        Enterprise account.view_account_payment_form: amount+estado concatenados).
+      - Otras herencias del form estándar (hellenia/justech WH) no aplican aquí.
+    -->
+
+    <record id="view_account_payment_open_tree_customer" model="ir.ui.view">
+        <field name="name">account.payment.open.tree.customer</field>
+        <field name="model">account.payment</field>
+        <field name="arch" type="xml">
+            <list string="Pagos abiertos" create="false" edit="false"
+                  class="o_treasury_open_payment_list"
+                  decoration-muted="state == 'canceled'"
+                  decoration-success="treasury_open_state == 'applied'"
+                  decoration-warning="treasury_open_state == 'partial'">
+                <field name="date" string="Fecha"/>
+                <field name="name" string="Número"/>
+                <field name="payment_type" string="Tipo"/>
+                <field name="partner_id" string="Cliente"/>
+                <field name="amount" string="Importe" widget="monetary"
+                         options="{'currency_field': 'currency_id'}"/>
+                <field name="currency_id" string="Moneda" optional="show"
+                         groups="base.group_multi_currency"/>
+                <field name="journal_id" string="Diario"/>
+                <field name="payment_method_line_id" string="Método de pago" optional="show"/>
+                <field name="state" string="Estado contable" widget="badge"
+                         decoration-info="state == 'in_process'"
+                         decoration-success="state == 'paid'"
+                         decoration-muted="state == 'draft'"
+                         decoration-danger="state == 'canceled'"/>
+                <field name="treasury_bank_state" string="Estado bancario" widget="badge"
+                         decoration-warning="treasury_bank_state == 'bank_pending'"
+                         decoration-success="treasury_bank_state == 'bank_reconciled'"
+                         decoration-muted="treasury_bank_state == 'not_posted'"/>
+                <field name="treasury_amount_applied" string="Aplicado" widget="monetary"
+                         options="{'currency_field': 'currency_id'}"/>
+                <field name="treasury_amount_available" string="Saldo disponible" widget="monetary"
+                         options="{'currency_field': 'currency_id'}"/>
+                <field name="memo" string="Memo" optional="show"/>
+                <field name="treasury_is_open" column_invisible="1"/>
+                <field name="partner_type" column_invisible="1"/>
+                <field name="treasury_open_state" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_account_payment_open_search" model="ir.ui.view">
+        <field name="name">account.payment.open.search</field>
+        <field name="model">account.payment</field>
+        <field name="arch" type="xml">
+            <search string="Pagos abiertos">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="memo"/>
+                <field name="treasury_payment_reference"/>
+                <filter name="filter_open" string="Abiertos"
+                        domain="[('treasury_open_state', '=', 'open')]"/>
+                <filter name="filter_partial" string="Parcialmente aplicados"
+                        domain="[('treasury_open_state', '=', 'partial')]"/>
+                <filter name="filter_applied" string="Aplicados"
+                        domain="[('treasury_open_state', '=', 'applied')]"/>
+                <separator/>
+                <filter name="filter_bank_pending" string="Pendiente de conciliación"
+                        domain="[('treasury_bank_state', '=', 'bank_pending'), ('state', 'in', ('paid', 'in_process'))]"/>
+                <filter name="filter_bank_reconciled" string="Conciliado"
+                        domain="[('treasury_bank_state', '=', 'bank_reconciled')]"/>
+                <filter name="filter_cancelled" string="Cancelados"
+                        domain="[('state', '=', 'canceled')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_account_payment_open_tree_vendor" model="ir.ui.view">
+        <field name="name">account.payment.open.tree.vendor</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="view_account_payment_open_tree_customer"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Proveedor</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Formulario primario dedicado: no hereda el form Enterprise deformado.
+         inherit_id=False + mode=primary limpia herencia residual en BD. -->
+    <record id="view_account_payment_open_form" model="ir.ui.view">
+        <field name="name">account.payment.open.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <form string="Pago abierto" create="false" class="o_treasury_open_payment_form">
+                <header>
+                    <button name="action_treasury_apply_to_invoice"
+                            type="object"
+                            string="Aplicar a factura"
+                            class="btn-primary"
+                            invisible="not treasury_is_open"/>
+                    <button name="action_treasury_view_move"
+                            type="object"
+                            string="Ver asiento"
+                            invisible="not move_id"/>
+                    <button name="action_treasury_view_reconciliation"
+                            type="object"
+                            string="Conciliar con extracto bancario"
+                            class="btn-primary"
+                            invisible="treasury_bank_state != 'bank_pending' or state not in ('in_process', 'paid')"/>
+                    <button name="action_justech_view_reconciliation_status"
+                            type="object"
+                            string="Ver conciliación"
+                            invisible="treasury_bank_state != 'bank_reconciled'"/>
+                    <button name="action_treasury_view_reconciliation"
+                            type="object"
+                            string="Aplicar / conciliar contable"
+                            invisible="is_reconciled or not treasury_amount_applied"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,in_process,paid"/>
+                </header>
+                <sheet>
+                    <field name="treasury_is_open" invisible="1"/>
+                    <field name="treasury_open_state" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="move_id" invisible="1"/>
+                    <field name="is_reconciled" invisible="1"/>
+                    <field name="treasury_bank_state" invisible="1"/>
+                    <field name="treasury_amount_applied" invisible="1"/>
+                    <div class="alert alert-warning mb-3" role="alert"
+                         invisible="treasury_bank_state != 'bank_pending' or state not in ('in_process', 'paid')">
+                        Aplicado contablemente a la factura (si aplica). Pendiente de
+                        conciliación bancaria con el extracto — no re-concilie la CxC/CxP.
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" string="Número del pago"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Datos del pago">
+                            <field name="payment_type" string="Tipo de pago" readonly="1"/>
+                            <field name="partner_type" invisible="1"/>
+                            <field name="partner_id" string="Cliente / Proveedor" readonly="1"/>
+                            <field name="amount" string="Importe" widget="monetary"
+                                   options="{'currency_field': 'currency_id'}" readonly="1"/>
+                            <field name="currency_id" string="Moneda" readonly="1"
+                                   groups="base.group_multi_currency"/>
+                            <field name="date" string="Fecha" readonly="1"/>
+                            <field name="memo" string="Memo" readonly="1"/>
+                        </group>
+                        <group string="Contabilidad y banco">
+                            <field name="journal_id" string="Diario" readonly="1"/>
+                            <field name="payment_method_line_id" string="Método de pago" readonly="1"/>
+                            <field name="state" string="Estado contable" widget="badge"
+                                   decoration-info="state == 'in_process'"
+                                   decoration-success="state == 'paid'"
+                                   decoration-muted="state == 'draft'"
+                                   decoration-danger="state == 'canceled'"
+                                   readonly="1"/>
+                            <field name="treasury_bank_state" string="Estado bancario" widget="badge"
+                                   decoration-warning="treasury_bank_state == 'bank_pending'"
+                                   decoration-success="treasury_bank_state == 'bank_reconciled'"
+                                   decoration-muted="treasury_bank_state == 'not_posted'"
+                                   readonly="1"/>
+                            <field name="treasury_amount_applied" string="Importe aplicado"
+                                   widget="monetary" options="{'currency_field': 'currency_id'}"
+                                   readonly="1"/>
+                            <field name="treasury_amount_available" string="Saldo disponible"
+                                   widget="monetary" options="{'currency_field': 'currency_id'}"
+                                   readonly="1"/>
+                            <field name="treasury_payment_reference" string="Referencia" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Facturas relacionadas"
+                           invisible="not reconciled_invoice_ids and not reconciled_bill_ids and not justech_application_line_ids">
+                        <div class="oe_right mb-2" colspan="2">
+                            <button name="action_justech_refresh_related_invoices"
+                                    type="object"
+                                    string="Actualizar detalle"
+                                    class="btn btn-secondary"
+                                    icon="fa-refresh"
+                                    invisible="state not in ('posted', 'in_process', 'paid')"/>
+                        </div>
+                        <field name="justech_application_line_ids"
+                               readonly="1"
+                               nolabel="1"
+                               colspan="2"
+                               invisible="not justech_application_line_ids"
+                               context="{'form_view_ref': 'justech_l10n_do_payments_withholding.view_justech_payment_application_line_form'}">
+                            <list create="0"
+                                  delete="0"
+                                  edit="0"
+                                  open_form_view="1"
+                                  limit="10"
+                                  decoration-success="payment_state == 'paid'"
+                                  decoration-warning="payment_state == 'partial'">
+                                <field name="move_id" string="Factura"/>
+                                <field name="ncf" string="NCF / e-CF"/>
+                                <field name="partner_id" string="Contacto"/>
+                                <field name="invoice_total" string="Total"/>
+                                <field name="applied_amount" string="Aplicado"/>
+                                <field name="amount_residual" string="Balance pendiente"/>
+                                <field name="move_currency_id" column_invisible="1"/>
+                                <field name="payment_state" string="Estado de pago" widget="badge"/>
+                                <field name="currency_id" column_invisible="1"/>
+                                <button name="action_justech_open_invoice" type="object"
+                                        string="Abrir factura" icon="fa-external-link"/>
+                                <button name="action_justech_open_partner" type="object"
+                                        string="Contacto" icon="fa-user"/>
+                                <button name="action_justech_open_payment" type="object"
+                                        string="Pago" icon="fa-money"/>
+                            </list>
+                        </field>
+                        <field name="reconciled_invoice_ids"
+                               string="Facturas de cliente"
+                               readonly="1"
+                               colspan="2"
+                               invisible="justech_application_line_ids or not reconciled_invoice_ids">
+                            <list create="0" delete="0" edit="0" open_form_view="1" limit="10">
+                                <field name="name" string="Factura"/>
+                                <field name="justech_do_ncf" string="NCF / e-CF"/>
+                                <field name="partner_id" string="Contacto"/>
+                                <field name="amount_total" string="Total"/>
+                                <field name="amount_residual" string="Balance pendiente"/>
+                                <field name="payment_state" string="Estado de pago" widget="badge"/>
+                            </list>
+                        </field>
+                        <field name="reconciled_bill_ids"
+                               string="Facturas de proveedor"
+                               readonly="1"
+                               colspan="2"
+                               invisible="justech_application_line_ids or not reconciled_bill_ids">
+                            <list create="0" delete="0" edit="0" open_form_view="1" limit="10">
+                                <field name="name" string="Factura"/>
+                                <field name="justech_do_ncf" string="NCF / e-CF"/>
+                                <field name="partner_id" string="Contacto"/>
+                                <field name="amount_total" string="Total"/>
+                                <field name="amount_residual" string="Balance pendiente"/>
+                                <field name="payment_state" string="Estado de pago" widget="badge"/>
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_treasury_open_payments_customer" model="ir.actions.act_window">
+        <field name="name">Pagos abiertos de clientes</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_account_payment_open_tree_customer"/>
+        <field name="search_view_id" ref="view_account_payment_open_search"/>
+        <field name="domain">[('partner_type', '=', 'customer'), ('treasury_is_open', '=', True)]</field>
+        <field name="context">{'default_partner_type': 'customer'}</field>
+    </record>
+
+    <record id="action_treasury_open_payments_vendor" model="ir.actions.act_window">
+        <field name="name">Pagos abiertos de proveedores</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_account_payment_open_tree_vendor"/>
+        <field name="search_view_id" ref="view_account_payment_open_search"/>
+        <field name="domain">[('partner_type', '=', 'supplier'), ('treasury_is_open', '=', True)]</field>
+        <field name="context">{'default_partner_type': 'supplier'}</field>
+    </record>
+
+    <record id="action_treasury_open_payments_customer_view_form" model="ir.actions.act_window.view">
+        <field name="sequence">2</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_account_payment_open_form"/>
+        <field name="act_window_id" ref="action_treasury_open_payments_customer"/>
+    </record>
+    <record id="action_treasury_open_payments_customer_view_list" model="ir.actions.act_window.view">
+        <field name="sequence">1</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_account_payment_open_tree_customer"/>
+        <field name="act_window_id" ref="action_treasury_open_payments_customer"/>
+    </record>
+    <record id="action_treasury_open_payments_vendor_view_form" model="ir.actions.act_window.view">
+        <field name="sequence">2</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_account_payment_open_form"/>
+        <field name="act_window_id" ref="action_treasury_open_payments_vendor"/>
+    </record>
+    <record id="action_treasury_open_payments_vendor_view_list" model="ir.actions.act_window.view">
+        <field name="sequence">1</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_account_payment_open_tree_vendor"/>
+        <field name="act_window_id" ref="action_treasury_open_payments_vendor"/>
+    </record>
+</odoo>

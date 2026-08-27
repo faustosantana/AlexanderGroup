@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_do_fiscal_report_tree" model="ir.ui.view">
+        <field name="name">justech.do.fiscal.report.list</field>
+        <field name="model">justech.do.fiscal.report</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="report_type"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="line_count"/>
+                <field name="total_amount"/>
+                <field name="generated_at"/>
+                <field name="generated_by_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_justech_do_fiscal_report_form" model="ir.ui.view">
+        <field name="name">justech.do.fiscal.report.form</field>
+        <field name="model">justech.do.fiscal.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_open_fiscal_review" string="Revisión fiscal" type="object"
+                            invisible="report_type not in ('606', '607', '608', '609', '623')"/>
+                    <button name="action_validate" string="Validar DGII" type="object"
+                            invisible="state != 'done' or report_type not in ('606', '607')"/>
+                    <button name="action_generate" string="Regenerar" type="object"
+                            invisible="state != 'done'"/>
+                    <button name="action_export_dgii" string="Exportar Excel DGII" type="object"
+                            class="btn-primary"
+                            invisible="state != 'done' or report_type not in ('606', '607')"/>
+                    <button name="action_download_errors" string="Descargar errores" type="object"
+                            invisible="state != 'done' or report_type not in ('606', '607')"/>
+                    <button name="action_export_csv" string="Exportar CSV" type="object"
+                            invisible="state != 'done'"/>
+                    <button name="action_export_xlsx" string="Exportar Excel resumen" type="object"
+                            invisible="state != 'done'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="report_type"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="date_from" invisible="1"/>
+                            <field name="date_to" invisible="1"/>
+                            <field name="period_code" readonly="1"/>
+                            <field name="date_from_display" readonly="1"/>
+                            <field name="date_to_display" readonly="1"/>
+                            <field name="generated_at"/>
+                            <field name="generated_by_id"/>
+                        </group>
+                    </group>
+                    <group string="Validación DGII" invisible="report_type not in ('606', '607')">
+                        <group>
+                            <field name="validation_state" string="Estado de validación" widget="badge"
+                                   decoration-success="validation_state == 'ok'"
+                                   decoration-warning="validation_state == 'warning'"
+                                   decoration-danger="validation_state == 'error'"/>
+                            <field name="count_all"/>
+                            <field name="count_valid"/>
+                            <field name="count_incomplete"/>
+                            <field name="count_excluded"/>
+                            <field name="count_cancelled"/>
+                            <field name="count_partners_errors"/>
+                        </group>
+                        <field name="validation_log" nolabel="1" readonly="1"/>
+                    </group>
+                    <group string="Totales del período">
+                        <field name="line_count"/>
+                        <field name="total_untaxed"/>
+                        <field name="total_tax"/>
+                        <field name="total_amount"/>
+                    </group>
+                    <notebook>
+                        <page string="Líneas">
+                            <field name="line_ids">
+                                <list>
+                                    <field name="partner_vat"/>
+                                    <field name="partner_name"/>
+                                    <field name="ncf"/>
+                                    <field name="document_type"/>
+                                    <field name="document_date"/>
+                                    <field name="amount_untaxed"/>
+                                    <field name="amount_tax"/>
+                                    <field name="amount_total"/>
+                                    <field name="notes"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

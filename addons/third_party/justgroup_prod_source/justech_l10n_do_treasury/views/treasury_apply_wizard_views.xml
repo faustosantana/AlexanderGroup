@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_treasury_open_payment_apply_wizard_form" model="ir.ui.view">
+        <field name="name">treasury.open.payment.apply.wizard.form</field>
+        <field name="model">treasury.open.payment.apply.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Aplicar pago abierto" class="o_treasury_apply_wizard_xl">
+                <group>
+                    <field name="partner_id"/>
+                    <field name="partner_type" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="move_id" invisible="1"/>
+                    <field name="payment_id" invisible="1"/>
+                </group>
+                <group string="Facturas y pagos abiertos">
+                    <field name="line_ids" nolabel="1">
+                        <list editable="bottom" create="0" delete="0">
+                            <field name="apply" string="Aplicar"/>
+                            <field name="payment_id" force_save="1" column_invisible="1"/>
+                            <field name="move_id" force_save="1" column_invisible="1"/>
+                            <field name="invoice_name" string="Factura"/>
+                            <field name="ncf" string="NCF"/>
+                            <field name="invoice_date" string="Fecha"/>
+                            <field name="date_maturity" string="Vencimiento"/>
+                            <field name="amount_total" string="Total"/>
+                            <field name="invoice_residual" string="Pendiente"/>
+                            <field name="withholding_amount" string="Retención" optional="show"/>
+                            <field name="payment_available" string="Saldo pago"/>
+                            <field name="amount" string="Monto a aplicar"/>
+                            <field name="balance_after_apply" string="Saldo luego de aplicar"/>
+                            <field name="line_state" string="Estado"/>
+                            <field name="currency_id" column_invisible="1"/>
+                        </list>
+                    </field>
+                </group>
+                <footer>
+                    <button name="action_apply" type="object" string="Aplicar" class="btn-primary"/>
+                    <button string="Omitir" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

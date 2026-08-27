@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_purchase_sale_create_transaction_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.create.transaction.wizard.form</field>
+        <field name="model">purchase.sale.create.transaction.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Relacionar compras">
+                <field name="state" invisible="1"/>
+                <field name="sale_order_domain" invisible="1"/>
+                <field name="purchase_order_domain" invisible="1"/>
+                <field name="customer_invoice_domain" invisible="1"/>
+                <field name="vendor_bill_domain" invisible="1"/>
+                <field name="active_purchase_order_domain" invisible="1"/>
+                <field name="customer_commercial_id" invisible="1"/>
+                <field name="supplier_commercial_id" invisible="1"/>
+                <field name="company_id_int" invisible="1"/>
+                <field name="customer_commercial_id_int" invisible="1"/>
+                <field name="supplier_commercial_id_int" invisible="1"/>
+                <field name="show_customer_invoices" invisible="1"/>
+                <field name="selected_purchase_line_ids" invisible="1"/>
+                <field name="supplier_step_index" invisible="1"/>
+                <field name="is_last_supplier_step" invisible="1"/>
+                <field name="active_supplier_id" invisible="1"/>
+                <field name="supplier_id" invisible="1"/>
+                <field name="pick_qty_stash" invisible="1"/>
+                <field name="can_advance_purchase_pick" invisible="1"/>
+                <field name="purchase_pick_load_error" invisible="1"/>
+                <sheet>
+                    <div class="alert alert-info mb-3" role="status" invisible="state != 'docs'">
+                        <strong>Paso 1 de 4 · DOCUMENTOS Y PROVEEDORES</strong>
+                        — Cliente / venta / factura, y uno o varios proveedores.
+                        Las OC se eligen en el siguiente paso, proveedor por proveedor.
+                    </div>
+                    <div class="alert alert-info mb-3" role="status" invisible="state != 'purchase_pick'">
+                        <strong>Paso 2 de 4 · SELECCIONAR ARTÍCULOS DE COMPRA</strong>
+                        — <field name="supplier_step_label" nolabel="1" class="oe_inline"/>
+                        <div class="text-muted mt-1">
+                            <field name="supplier_isolation_hint" nolabel="1"/>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mb-3" role="status" invisible="state != 'sale_match'">
+                        <strong>Paso 3 de 4 · ASIGNAR A VENTA</strong>
+                        — Cubra las líneas vendidas con las cantidades de compra seleccionadas.
+                    </div>
+                    <div class="alert alert-warning mb-3" role="status" invisible="state != 'summary'">
+                        <strong>Paso 4 de 4 · RESUMEN</strong>
+                        — Confirmar crea qty.assignment (todo o nada).
+                    </div>
+
+                    <group invisible="state != 'docs'" col="2">
+                        <group string="Empresa / operación">
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="transaction_date"/>
+                            <field name="transaction_type"/>
+                            <field name="name" placeholder="Descripción opcional…"/>
+                        </group>
+                        <group string="Responsables">
+                            <field name="salesperson_id"/>
+                            <field name="registered_by_id"/>
+                            <field name="purchase_responsible_id" optional="hide"/>
+                            <field name="finance_responsible_id" optional="hide"/>
+                        </group>
+                    </group>
+
+                    <group invisible="state != 'docs'" col="2">
+                        <group string="Venta / Cliente">
+                            <field name="customer_id" options="{'no_create': True}"/>
+                            <div class="text-muted" colspan="2" invisible="not customer_id">
+                                <field name="customer_filter_hint" nolabel="1" readonly="1"/>
+                            </div>
+                            <field name="sale_order_ids"
+                                     widget="many2many_tags"
+                                     domain="sale_order_domain"
+                                     context="{
+                                         'justech_margin_wizard': True,
+                                         'justech_margin_wizard_company_id': company_id_int,
+                                         'justech_margin_wizard_customer_id': customer_commercial_id_int,
+                                         'default_company_id': company_id_int,
+                                     }"
+                                     options="{'no_create': True}"
+                                     placeholder="Seleccione cliente primero…"/>
+                            <field name="customer_invoice_ids"
+                                     widget="many2many_tags"
+                                     domain="customer_invoice_domain"
+                                     invisible="not show_customer_invoices"
+                                     context="{
+                                         'justech_margin_show_ncf': True,
+                                         'justech_margin_wizard': True,
+                                         'justech_margin_wizard_company_id': company_id_int,
+                                         'justech_margin_wizard_customer_id': customer_commercial_id_int,
+                                         'default_company_id': company_id_int,
+                                     }"
+                                     options="{'no_create': True}"
+                                     placeholder="Autoload desde SO si existe…"/>
+                        </group>
+                        <group string="Proveedores">
+                            <field name="supplier_ids"
+                                     widget="many2many_tags"
+                                     options="{'no_create': True}"
+                                     placeholder="Agregar proveedor…"/>
+                            <div class="text-muted" colspan="2">
+                                <field name="supplier_filter_hint" nolabel="1" readonly="1"/>
+                            </div>
+                            <field name="vendor_bill_ids"
+                                     widget="many2many_tags"
+                                     domain="vendor_bill_domain"
+                                     context="{
+                                         'justech_margin_show_ncf': True,
+                                         'justech_margin_wizard': True,
+                                         'justech_margin_wizard_company_id': company_id_int,
+                                         'default_company_id': company_id_int,
+                                     }"
+                                     options="{'no_create': True}"
+                                     placeholder="Opcional: facturas proveedor…"/>
+                        </group>
+                    </group>
+                    <group invisible="state != 'docs' or not existing_assignment_html" string="Ya relacionado">
+                        <field name="existing_assignment_html" nolabel="1"/>
+                    </group>
+                    <field name="notes" placeholder="Notas…" invisible="state != 'docs'"/>
+                    <!-- Keep session PO accumulator hidden on docs -->
+                    <field name="purchase_order_ids" invisible="1"/>
+
+                    <!-- PASO 2: compras por proveedor — artículos se cargan al elegir OC -->
+                    <group invisible="state != 'purchase_pick'" string="Órdenes de compra del proveedor en curso">
+                        <field name="working_purchase_order_ids"
+                                 widget="many2many_tags"
+                                 domain="active_purchase_order_domain"
+                                 context="{
+                                     'justech_margin_wizard': True,
+                                     'justech_margin_wizard_company_id': company_id_int,
+                                     'justech_margin_wizard_supplier_id': supplier_commercial_id_int,
+                                     'default_company_id': company_id_int,
+                                 }"
+                                 options="{'no_create': True}"
+                                 placeholder="Seleccione OC de este proveedor…"/>
+                        <field name="show_fully_assigned"/>
+                    </group>
+                    <div invisible="state != 'purchase_pick'">
+                        <field name="purchase_pick_status_html" nolabel="1"/>
+                    </div>
+                    <field name="purchase_pick_line_ids" invisible="state != 'purchase_pick'">
+                        <list editable="bottom" decoration-muted="is_fully_assigned"
+                              create="false" delete="false">
+                            <field name="selected" column_invisible="1"/>
+                            <field name="is_fully_assigned" column_invisible="1"/>
+                            <field name="product_id"/>
+                            <field name="purchase_doc"/>
+                            <field name="purchase_line_id" column_invisible="1"/>
+                            <field name="qty_purchased"/>
+                            <field name="qty_assigned"/>
+                            <field name="qty_available"/>
+                            <field name="unit_cost" optional="hide"/>
+                            <field name="unit_cost_stored" column_invisible="1"/>
+                            <field name="qty_to_relate"/>
+                        </list>
+                    </field>
+
+                    <!-- PASO 3 -->
+                    <group invisible="state != 'sale_match'" string="Compra seleccionada">
+                        <field name="purchase_pick_summary_html" nolabel="1"/>
+                    </group>
+                    <group invisible="state != 'sale_match'" string="Asignar a venta">
+                        <field name="show_fully_assigned"/>
+                        <button name="action_suggest_lines" type="object"
+                                string="Sugerir coincidencias" class="btn-secondary"/>
+                    </group>
+                    <field name="allocation_line_ids" invisible="state != 'sale_match'">
+                        <list editable="bottom" decoration-muted="is_fully_assigned"
+                              create="false" delete="false">
+                            <field name="selected" column_invisible="1"/>
+                            <field name="is_fully_assigned" optional="hide"/>
+                            <field name="sale_doc" optional="hide"/>
+                            <field name="sale_product_id" string="Producto"/>
+                            <field name="sale_line_id" column_invisible="1"
+                                     domain="[('order_id', 'in', parent.sale_order_ids)]"/>
+                            <field name="qty_sold"/>
+                            <field name="qty_related"/>
+                            <field name="qty_sale_available"/>
+                            <field name="purchase_product_id" string="Producto compra" optional="show"/>
+                            <field name="purchase_line_id"
+                                     domain="[('id', 'in', parent.selected_purchase_line_ids)]"/>
+                            <field name="qty_to_assign"/>
+                            <field name="unit_cost" optional="show"/>
+                            <field name="allocated_cost" optional="show"/>
+                            <field name="allocated_sale" optional="hide"/>
+                            <field name="allocated_margin" optional="hide"/>
+                        </list>
+                    </field>
+
+                    <group invisible="state != 'summary'">
+                        <field name="summary_html" nolabel="1"/>
+                        <field name="remaining_po_qty_info" readonly="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_next_to_purchase_pick" type="object"
+                            string="Siguiente: compras"
+                            class="btn-primary" invisible="state != 'docs'"/>
+                    <button name="action_create" type="object"
+                            string="Crear relación sin asignación"
+                            class="btn-secondary" invisible="state != 'docs'"
+                            confirm="Solo si no hay venta y compra con artículos. ¿Continuar?"/>
+
+                    <button name="action_prev_supplier" type="object" string="Atrás"
+                            class="btn-secondary" invisible="state != 'purchase_pick'"/>
+                    <button name="action_next_supplier" type="object"
+                            string="Siguiente proveedor"
+                            class="btn-primary"
+                            invisible="state != 'purchase_pick' or is_last_supplier_step or not can_advance_purchase_pick"/>
+                    <button name="action_next_to_sale_match" type="object"
+                            string="Siguiente: asignar a venta"
+                            class="btn-primary"
+                            invisible="state != 'purchase_pick' or not is_last_supplier_step or not can_advance_purchase_pick"/>
+
+                    <button name="action_back_purchase_pick" type="object" string="Atrás"
+                            class="btn-secondary" invisible="state != 'sale_match'"/>
+                    <button name="action_next_to_summary" type="object"
+                            string="Siguiente: resumen"
+                            class="btn-primary" invisible="state != 'sale_match'"/>
+                    <button name="action_back_sale_match" type="object" string="Atrás"
+                            class="btn-secondary" invisible="state != 'summary'"/>
+                    <button name="action_confirm_relation" type="object"
+                            string="Confirmar relaciones"
+                            class="btn-primary" invisible="state != 'summary'"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_create_transaction_wizard" model="ir.actions.act_window">
+        <field name="name">Relacionar compras</field>
+        <field name="res_model">purchase.sale.create.transaction.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

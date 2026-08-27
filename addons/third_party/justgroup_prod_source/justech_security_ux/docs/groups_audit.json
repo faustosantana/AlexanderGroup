@@ -1,0 +1,1664 @@
+[
+  {
+    "id": 47,
+    "xmlid": "sales_team.group_sale_salesman",
+    "name": "Ventas / Usuario: solo mostrar documentos propios",
+    "privilege": "Ventas",
+    "implied": [
+      "base.group_user",
+      "event.group_event_registration_desk"
+    ],
+    "module": "sales_team",
+    "implied_by": [
+      "justech_recurring_fee.group_recurring_fee_user",
+      "sales_team.group_sale_salesman_all_leads"
+    ]
+  },
+  {
+    "id": 48,
+    "xmlid": "sales_team.group_sale_salesman_all_leads",
+    "name": "Ventas / Usuario: todos los documentos",
+    "privilege": "Ventas",
+    "implied": [
+      "sales_team.group_sale_salesman"
+    ],
+    "module": "sales_team",
+    "implied_by": [
+      "sales_team.group_sale_manager"
+    ]
+  },
+  {
+    "id": 49,
+    "xmlid": "sales_team.group_sale_manager",
+    "name": "Ventas / Administrador",
+    "privilege": "Ventas",
+    "implied": [
+      "mail.group_mail_canned_response_admin",
+      "sales_team.group_sale_salesman_all_leads"
+    ],
+    "module": "sales_team",
+    "implied_by": []
+  },
+  {
+    "id": 41,
+    "xmlid": "project.group_project_user",
+    "name": "Proyecto / Usuario",
+    "privilege": "Proyecto",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "project",
+    "implied_by": [
+      "industry_fsm.group_fsm_user",
+      "project.group_project_manager"
+    ]
+  },
+  {
+    "id": 42,
+    "xmlid": "project.group_project_manager",
+    "name": "Proyecto / Administrador",
+    "privilege": "Proyecto",
+    "implied": [
+      "hr_timesheet.group_hr_timesheet_approver",
+      "mail.group_mail_canned_response_admin",
+      "project.group_project_user"
+    ],
+    "module": "project",
+    "implied_by": [
+      "industry_fsm.group_fsm_manager"
+    ]
+  },
+  {
+    "id": 51,
+    "xmlid": "account.group_account_readonly",
+    "name": "Contabilidad / Mostrar funciones de contabilidad: solo lectura",
+    "privilege": "Contabilidad",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "account",
+    "implied_by": [
+      "account.group_account_basic",
+      "account.group_account_user"
+    ]
+  },
+  {
+    "id": 52,
+    "xmlid": "account.group_account_invoice",
+    "name": "Contabilidad / Facturación",
+    "privilege": "Contabilidad",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "account",
+    "implied_by": [
+      "account.group_account_basic",
+      "justech_l10n_do_base.group_justech_do_fiscal_user",
+      "l10n_do_accounting.group_l10n_do_debit_note",
+      "l10n_do_accounting.group_l10n_do_fiscal_credit_note",
+      "l10n_do_accounting.group_l10n_do_fiscal_invoice_cancel"
+    ]
+  },
+  {
+    "id": 53,
+    "xmlid": "account.group_account_basic",
+    "name": "Contabilidad / Básico",
+    "privilege": "Contabilidad",
+    "implied": [
+      "account.group_account_invoice",
+      "account.group_account_readonly"
+    ],
+    "module": "account",
+    "implied_by": [
+      "account.group_account_manager",
+      "account.group_account_user"
+    ]
+  },
+  {
+    "id": 54,
+    "xmlid": "account.group_account_user",
+    "name": "Contabilidad / Mostrar características de contabilidad completas",
+    "privilege": "Contabilidad",
+    "implied": [
+      "account.group_account_basic",
+      "account.group_account_readonly"
+    ],
+    "module": "account",
+    "implied_by": [
+      "account.group_account_manager"
+    ]
+  },
+  {
+    "id": 55,
+    "xmlid": "account.group_account_manager",
+    "name": "Contabilidad / Administrador",
+    "privilege": "Contabilidad",
+    "implied": [
+      "account.group_account_basic",
+      "account.group_account_user",
+      "justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin"
+    ],
+    "module": "account",
+    "implied_by": []
+  },
+  {
+    "id": 164,
+    "xmlid": "justech_fiscal_admin.group_justech_fiscal_admin_manager",
+    "name": "Contabilidad / Administrador Fiscal",
+    "privilege": "Contabilidad",
+    "implied": [
+      "justech_ecf_core.group_ecf_admin",
+      "justech_fiscal_admin.group_justech_fiscal_admin_user",
+      "justech_l10n_do_base.group_justech_do_fiscal_manager",
+      "justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin"
+    ],
+    "module": "justech_fiscal_admin",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 167,
+    "xmlid": "justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin",
+    "name": "Contabilidad / Administrador de Retenciones",
+    "privilege": "Contabilidad",
+    "implied": [
+      "justech_l10n_do_base.group_justech_do_fiscal_user"
+    ],
+    "module": "justech_l10n_do_payments_withholding",
+    "implied_by": [
+      "account.group_account_manager",
+      "justech_fiscal_admin.group_justech_fiscal_admin_manager"
+    ]
+  },
+  {
+    "id": 163,
+    "xmlid": "justech_fiscal_admin.group_justech_fiscal_admin_user",
+    "name": "Contabilidad / Fiscal Admin / Lectura",
+    "privilege": "Contabilidad",
+    "implied": [
+      "justech_l10n_do_base.group_justech_do_fiscal_user"
+    ],
+    "module": "justech_fiscal_admin",
+    "implied_by": [
+      "justech_fiscal_admin.group_justech_fiscal_admin_manager"
+    ]
+  },
+  {
+    "id": 158,
+    "xmlid": "justech_l10n_do_base.group_justech_do_fiscal_manager",
+    "name": "Contabilidad / Responsable Fiscal",
+    "privilege": "Contabilidad",
+    "implied": [
+      "justech_l10n_do_base.group_justech_do_fiscal_user"
+    ],
+    "module": "justech_l10n_do_base",
+    "implied_by": [
+      "justech_fiscal_admin.group_justech_fiscal_admin_manager"
+    ]
+  },
+  {
+    "id": 157,
+    "xmlid": "justech_l10n_do_base.group_justech_do_fiscal_user",
+    "name": "Contabilidad / Usuario Fiscal",
+    "privilege": "Contabilidad",
+    "implied": [
+      "account.group_account_invoice"
+    ],
+    "module": "justech_l10n_do_base",
+    "implied_by": [
+      "justech_fiscal_admin.group_justech_fiscal_admin_user",
+      "justech_l10n_do_base.group_justech_do_fiscal_manager",
+      "justech_l10n_do_payments_withholding.group_justech_withholding_catalog_admin"
+    ]
+  },
+  {
+    "id": 67,
+    "xmlid": "purchase.group_purchase_user",
+    "name": "Compras / Usuario",
+    "privilege": "Compras",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "purchase",
+    "implied_by": [
+      "purchase.group_purchase_manager"
+    ]
+  },
+  {
+    "id": 68,
+    "xmlid": "purchase.group_purchase_manager",
+    "name": "Compras / Administrador",
+    "privilege": "Compras",
+    "implied": [
+      "purchase.group_purchase_user"
+    ],
+    "module": "purchase",
+    "implied_by": []
+  },
+  {
+    "id": 137,
+    "xmlid": "approvals.group_approval_user",
+    "name": "Aprobaciones / Encargado: Aprobar todas las solicitudes",
+    "privilege": "Aprobaciones",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "approvals",
+    "implied_by": [
+      "approvals.group_approval_manager"
+    ]
+  },
+  {
+    "id": 138,
+    "xmlid": "approvals.group_approval_manager",
+    "name": "Aprobaciones / Administrador",
+    "privilege": "Aprobaciones",
+    "implied": [
+      "approvals.group_approval_user"
+    ],
+    "module": "approvals",
+    "implied_by": []
+  },
+  {
+    "id": 37,
+    "xmlid": "hr.group_hr_user",
+    "name": "Empleados / Encargado: gestionar a todos los empleados",
+    "privilege": "Empleados",
+    "implied": [
+      "base.group_user",
+      "maintenance.group_equipment_manager"
+    ],
+    "module": "hr",
+    "implied_by": [
+      "hr.group_hr_manager",
+      "hr_payroll.group_hr_payroll_user",
+      "hr_timesheet.group_timesheet_manager"
+    ]
+  },
+  {
+    "id": 38,
+    "xmlid": "hr.group_hr_manager",
+    "name": "Empleados / Administrador",
+    "privilege": "Empleados",
+    "implied": [
+      "hr.group_hr_user",
+      "sign.group_sign_user"
+    ],
+    "module": "hr",
+    "implied_by": [
+      "hr_payroll.group_hr_payroll_manager"
+    ]
+  },
+  {
+    "id": 20,
+    "xmlid": "product.group_product_manager",
+    "name": "Productos / Crear",
+    "privilege": "Productos",
+    "implied": [],
+    "module": "product",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 83,
+    "xmlid": "hr_timesheet.group_hr_timesheet_user",
+    "name": "Registro de horas / Usuario: solo las hojas de horas propias",
+    "privilege": "Registro de horas",
+    "implied": [
+      "base.group_user",
+      "helpdesk_timesheet.group_use_helpdesk_timesheet"
+    ],
+    "module": "hr_timesheet",
+    "implied_by": [
+      "hr_timesheet.group_hr_timesheet_approver",
+      "industry_fsm.group_fsm_user"
+    ]
+  },
+  {
+    "id": 84,
+    "xmlid": "hr_timesheet.group_hr_timesheet_approver",
+    "name": "Registro de horas / Usuario: todas las hojas de horas",
+    "privilege": "Registro de horas",
+    "implied": [
+      "hr_timesheet.group_hr_timesheet_user"
+    ],
+    "module": "hr_timesheet",
+    "implied_by": [
+      "hr_timesheet.group_timesheet_manager",
+      "project.group_project_manager"
+    ]
+  },
+  {
+    "id": 85,
+    "xmlid": "hr_timesheet.group_timesheet_manager",
+    "name": "Registro de horas / Administrador",
+    "privilege": "Registro de horas",
+    "implied": [
+      "hr.group_hr_user",
+      "hr_timesheet.group_hr_timesheet_approver"
+    ],
+    "module": "hr_timesheet",
+    "implied_by": []
+  },
+  {
+    "id": 98,
+    "xmlid": "hr_payroll.group_hr_payroll_user",
+    "name": "Nómina / Encargado: gestionar todos los contratos",
+    "privilege": "Nómina",
+    "implied": [
+      "hr.group_hr_user"
+    ],
+    "module": "hr_payroll",
+    "implied_by": [
+      "hr_payroll.group_hr_payroll_manager"
+    ]
+  },
+  {
+    "id": 99,
+    "xmlid": "hr_payroll.group_hr_payroll_manager",
+    "name": "Nómina / Administrador",
+    "privilege": "Nómina",
+    "implied": [
+      "hr.group_hr_manager",
+      "hr_payroll.group_hr_payroll_user"
+    ],
+    "module": "hr_payroll",
+    "implied_by": []
+  },
+  {
+    "id": 108,
+    "xmlid": "event.group_event_registration_desk",
+    "name": "Eventos / Módulo de registro",
+    "privilege": "Eventos",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "event",
+    "implied_by": [
+      "event.group_event_user",
+      "sales_team.group_sale_salesman"
+    ]
+  },
+  {
+    "id": 109,
+    "xmlid": "event.group_event_user",
+    "name": "Eventos / Usuario",
+    "privilege": "Eventos",
+    "implied": [
+      "event.group_event_registration_desk"
+    ],
+    "module": "event",
+    "implied_by": [
+      "event.group_event_manager"
+    ]
+  },
+  {
+    "id": 110,
+    "xmlid": "event.group_event_manager",
+    "name": "Eventos / Administrador",
+    "privilege": "Eventos",
+    "implied": [
+      "event.group_event_user"
+    ],
+    "module": "event",
+    "implied_by": []
+  },
+  {
+    "id": 103,
+    "xmlid": "mass_mailing.group_mass_mailing_user",
+    "name": "Marketing por correo / Usuario",
+    "privilege": "Marketing por correo",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "mass_mailing",
+    "implied_by": [
+      "marketing_automation.group_marketing_automation_user"
+    ]
+  },
+  {
+    "id": 105,
+    "xmlid": "marketing_automation.group_marketing_automation_user",
+    "name": "Automatización de marketing / Usuario",
+    "privilege": "Automatización de marketing",
+    "implied": [
+      "base.group_user",
+      "mass_mailing.group_mass_mailing_user"
+    ],
+    "module": "marketing_automation",
+    "implied_by": []
+  },
+  {
+    "id": 122,
+    "xmlid": "im_livechat.im_livechat_group_user",
+    "name": "Chat en vivo / Usuario",
+    "privilege": "Chat en vivo",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "im_livechat",
+    "implied_by": [
+      "im_livechat.im_livechat_group_manager"
+    ]
+  },
+  {
+    "id": 123,
+    "xmlid": "im_livechat.im_livechat_group_manager",
+    "name": "Chat en vivo / Administrador",
+    "privilege": "Chat en vivo",
+    "implied": [
+      "im_livechat.im_livechat_group_user",
+      "mail.group_mail_canned_response_admin"
+    ],
+    "module": "im_livechat",
+    "implied_by": []
+  },
+  {
+    "id": 112,
+    "xmlid": "documents.group_documents_user",
+    "name": "Documentos / Usuario",
+    "privilege": "Documentos",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "documents",
+    "implied_by": [
+      "documents.group_documents_manager"
+    ]
+  },
+  {
+    "id": 113,
+    "xmlid": "documents.group_documents_manager",
+    "name": "Documentos / Administrador",
+    "privilege": "Documentos",
+    "implied": [
+      "documents.group_documents_user"
+    ],
+    "module": "documents",
+    "implied_by": [
+      "documents.group_documents_system"
+    ]
+  },
+  {
+    "id": 114,
+    "xmlid": "documents.group_documents_system",
+    "name": "Documentos / Administrador del sistema",
+    "privilege": "Documentos",
+    "implied": [
+      "documents.group_documents_manager"
+    ],
+    "module": "documents",
+    "implied_by": []
+  },
+  {
+    "id": 35,
+    "xmlid": "survey.group_survey_user",
+    "name": "Encuestas / Usuario",
+    "privilege": "Encuestas",
+    "implied": [],
+    "module": "survey",
+    "implied_by": [
+      "survey.group_survey_manager"
+    ]
+  },
+  {
+    "id": 36,
+    "xmlid": "survey.group_survey_manager",
+    "name": "Encuestas / Administrador",
+    "privilege": "Encuestas",
+    "implied": [
+      "survey.group_survey_user"
+    ],
+    "module": "survey",
+    "implied_by": []
+  },
+  {
+    "id": 131,
+    "xmlid": "website.group_website_restricted_editor",
+    "name": "Sitio web / Editor restringido",
+    "privilege": "Sitio web",
+    "implied": [],
+    "module": "website",
+    "implied_by": [
+      "website.group_website_designer"
+    ]
+  },
+  {
+    "id": 132,
+    "xmlid": "website.group_website_designer",
+    "name": "Sitio web / Editor y diseñador",
+    "privilege": "Sitio web",
+    "implied": [
+      "base.group_sanitize_override",
+      "website.group_website_restricted_editor"
+    ],
+    "module": "website",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 60,
+    "xmlid": "spreadsheet_dashboard.group_dashboard_manager",
+    "name": "Tablero / Admin",
+    "privilege": "Tablero",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "spreadsheet_dashboard",
+    "implied_by": []
+  },
+  {
+    "id": 166,
+    "xmlid": "justech_admin_center.group_justech_admin_center_manager",
+    "name": "Administración Justech / Administrador Justech",
+    "privilege": "Administración Justech",
+    "implied": [
+      "justech_admin_center.group_justech_admin_center_user",
+      "justech_ecf_core.group_ecf_admin"
+    ],
+    "module": "justech_admin_center",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 165,
+    "xmlid": "justech_admin_center.group_justech_admin_center_user",
+    "name": "Administración Justech / Usuario consola Justech",
+    "privilege": "Administración Justech",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "justech_admin_center",
+    "implied_by": [
+      "justech_admin_center.group_justech_admin_center_manager"
+    ]
+  },
+  {
+    "id": 153,
+    "xmlid": "justech_ecf_core.group_ecf_admin",
+    "name": "Justech e-CF / Administrador e-CF",
+    "privilege": "Justech e-CF",
+    "implied": [
+      "justech_ecf_core.group_ecf_responsible"
+    ],
+    "module": "justech_ecf_core",
+    "implied_by": [
+      "justech_admin_center.group_justech_admin_center_manager",
+      "justech_fiscal_admin.group_justech_fiscal_admin_manager"
+    ]
+  },
+  {
+    "id": 154,
+    "xmlid": "justech_ecf_core.group_ecf_auditor",
+    "name": "Justech e-CF / Auditor e-CF",
+    "privilege": "Justech e-CF",
+    "implied": [
+      "justech_ecf_core.group_ecf_readonly"
+    ],
+    "module": "justech_ecf_core",
+    "implied_by": []
+  },
+  {
+    "id": 151,
+    "xmlid": "justech_ecf_core.group_ecf_operator",
+    "name": "Justech e-CF / Operador e-CF",
+    "privilege": "Justech e-CF",
+    "implied": [
+      "justech_ecf_core.group_ecf_readonly"
+    ],
+    "module": "justech_ecf_core",
+    "implied_by": [
+      "justech_ecf_core.group_ecf_responsible"
+    ]
+  },
+  {
+    "id": 152,
+    "xmlid": "justech_ecf_core.group_ecf_responsible",
+    "name": "Justech e-CF / Responsable e-CF",
+    "privilege": "Justech e-CF",
+    "implied": [
+      "justech_ecf_core.group_ecf_operator"
+    ],
+    "module": "justech_ecf_core",
+    "implied_by": [
+      "justech_ecf_core.group_ecf_admin"
+    ]
+  },
+  {
+    "id": 150,
+    "xmlid": "justech_ecf_core.group_ecf_readonly",
+    "name": "Justech e-CF / Solo lectura e-CF",
+    "privilege": "Justech e-CF",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "justech_ecf_core",
+    "implied_by": [
+      "justech_ecf_core.group_ecf_auditor",
+      "justech_ecf_core.group_ecf_operator"
+    ]
+  },
+  {
+    "id": 59,
+    "xmlid": "account.group_validate_bank_account",
+    "name": "Banco / Validar cuenta bancaria",
+    "privilege": "Banco",
+    "implied": [],
+    "module": "account",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 149,
+    "xmlid": "justech_global_audit_log.group_justech_audit_manager",
+    "name": "Auditoría / Administrador",
+    "privilege": "Auditoría",
+    "implied": [
+      "justech_global_audit_log.group_audit_user"
+    ],
+    "module": "justech_global_audit_log",
+    "implied_by": [
+      "base.group_erp_manager",
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 148,
+    "xmlid": "justech_global_audit_log.group_audit_user",
+    "name": "Auditoría / Usuario",
+    "privilege": "Auditoría",
+    "implied": [],
+    "module": "justech_global_audit_log",
+    "implied_by": [
+      "justech_global_audit_log.group_justech_audit_manager"
+    ]
+  },
+  {
+    "id": 9,
+    "xmlid": "base.group_partner_manager",
+    "name": "Contacto / Creación",
+    "privilege": "Contacto",
+    "implied": [],
+    "module": "base",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 8,
+    "xmlid": "base.group_allow_export",
+    "name": "Exportar / Permitido",
+    "privilege": "Exportar",
+    "implied": [],
+    "module": "base",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 169,
+    "xmlid": "justech_recurring_fee.group_recurring_fee_manager",
+    "name": "Fees recurrentes / Responsable Fees",
+    "privilege": "Fees recurrentes",
+    "implied": [
+      "justech_recurring_fee.group_recurring_fee_user"
+    ],
+    "module": "justech_recurring_fee",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 168,
+    "xmlid": "justech_recurring_fee.group_recurring_fee_user",
+    "name": "Fees recurrentes / Usuario Fees",
+    "privilege": "Fees recurrentes",
+    "implied": [
+      "sales_team.group_sale_salesman"
+    ],
+    "module": "justech_recurring_fee",
+    "implied_by": [
+      "justech_recurring_fee.group_recurring_fee_manager"
+    ]
+  },
+  {
+    "id": 140,
+    "xmlid": "sign.group_sign_user",
+    "name": "Firma electrónica / Usuario: plantillas propias",
+    "privilege": "Firma electrónica",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "sign",
+    "implied_by": [
+      "hr.group_hr_manager",
+      "sign.group_sign_manager"
+    ]
+  },
+  {
+    "id": 141,
+    "xmlid": "sign.group_sign_manager",
+    "name": "Firma electrónica / Administrador",
+    "privilege": "Firma electrónica",
+    "implied": [
+      "sign.group_sign_user"
+    ],
+    "module": "sign",
+    "implied_by": []
+  },
+  {
+    "id": 156,
+    "xmlid": "justech_warranty.group_warranty_manager",
+    "name": "Garantías / Responsable de Garantías",
+    "privilege": "Garantías",
+    "implied": [
+      "justech_warranty.group_warranty_user"
+    ],
+    "module": "justech_warranty",
+    "implied_by": [
+      "base.group_erp_manager",
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 155,
+    "xmlid": "justech_warranty.group_warranty_user",
+    "name": "Garantías / Usuario de Garantías",
+    "privilege": "Garantías",
+    "implied": [],
+    "module": "justech_warranty",
+    "implied_by": [
+      "justech_warranty.group_warranty_manager"
+    ]
+  },
+  {
+    "id": 21,
+    "xmlid": "stock.group_stock_user",
+    "name": "Inventario / Usuario",
+    "privilege": "Inventario",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "stock",
+    "implied_by": [
+      "stock.group_stock_manager"
+    ]
+  },
+  {
+    "id": 22,
+    "xmlid": "stock.group_stock_manager",
+    "name": "Inventario / Administrador",
+    "privilege": "Inventario",
+    "implied": [
+      "stock.group_stock_user"
+    ],
+    "module": "stock",
+    "implied_by": []
+  },
+  {
+    "id": 146,
+    "xmlid": "justech_modules.group_justech_internal_admin",
+    "name": "Justech Platform / Justech Internal Admin",
+    "privilege": "Justech Platform",
+    "implied": [
+      "justech_modules.group_justech_license_manager"
+    ],
+    "module": "justech_modules",
+    "implied_by": []
+  },
+  {
+    "id": 145,
+    "xmlid": "justech_modules.group_justech_license_manager",
+    "name": "Justech Platform / Justech License Manager",
+    "privilege": "Justech Platform",
+    "implied": [
+      "justech_modules.group_justech_license_user"
+    ],
+    "module": "justech_modules",
+    "implied_by": [
+      "justech_modules.group_justech_internal_admin"
+    ]
+  },
+  {
+    "id": 144,
+    "xmlid": "justech_modules.group_justech_license_user",
+    "name": "Justech Platform / Justech License User",
+    "privilege": "Justech Platform",
+    "implied": [],
+    "module": "justech_modules",
+    "implied_by": [
+      "justech_modules.group_justech_license_manager",
+      "justech_modules.group_justech_support"
+    ]
+  },
+  {
+    "id": 147,
+    "xmlid": "justech_modules.group_justech_support",
+    "name": "Justech Platform / Justech Support",
+    "privilege": "Justech Platform",
+    "implied": [
+      "justech_modules.group_justech_license_user"
+    ],
+    "module": "justech_modules",
+    "implied_by": []
+  },
+  {
+    "id": 102,
+    "xmlid": "maintenance.group_equipment_manager",
+    "name": "Mantenimiento / Responsable de los equipos",
+    "privilege": "Mantenimiento",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "maintenance",
+    "implied_by": [
+      "hr.group_hr_user"
+    ]
+  },
+  {
+    "id": 93,
+    "xmlid": "planning.group_planning_user",
+    "name": "Planeación / Usuario",
+    "privilege": "Planeación",
+    "implied": [
+      "base.group_user"
+    ],
+    "module": "planning",
+    "implied_by": [
+      "planning.group_planning_manager"
+    ]
+  },
+  {
+    "id": 94,
+    "xmlid": "planning.group_planning_manager",
+    "name": "Planeación / Administrador",
+    "privilege": "Planeación",
+    "implied": [
+      "planning.group_planning_user"
+    ],
+    "module": "planning",
+    "implied_by": []
+  },
+  {
+    "id": 15,
+    "xmlid": "mail.group_mail_canned_response_admin",
+    "name": "Respuestas predefinidas / Administrador de la respuesta predefinida",
+    "privilege": "Respuestas predefinidas",
+    "implied": [],
+    "module": "mail",
+    "implied_by": [
+      "base.group_system",
+      "helpdesk.group_helpdesk_manager",
+      "im_livechat.im_livechat_group_manager",
+      "project.group_project_manager",
+      "sales_team.group_sale_manager"
+    ]
+  },
+  {
+    "id": 87,
+    "xmlid": "industry_fsm.group_fsm_user",
+    "name": "Servicio externo / Usuario",
+    "privilege": "Servicio externo",
+    "implied": [
+      "hr_timesheet.group_hr_timesheet_user",
+      "project.group_project_user"
+    ],
+    "module": "industry_fsm",
+    "implied_by": [
+      "industry_fsm.group_fsm_manager"
+    ]
+  },
+  {
+    "id": 88,
+    "xmlid": "industry_fsm.group_fsm_manager",
+    "name": "Servicio externo / Administrador",
+    "privilege": "Servicio externo",
+    "implied": [
+      "industry_fsm.group_fsm_user",
+      "project.group_project_manager"
+    ],
+    "module": "industry_fsm",
+    "implied_by": []
+  },
+  {
+    "id": 125,
+    "xmlid": "helpdesk.group_helpdesk_user",
+    "name": "Soporte al cliente / Usuario",
+    "privilege": "Soporte al cliente",
+    "implied": [
+      "base.group_user",
+      "helpdesk.group_auto_assignment",
+      "helpdesk.group_use_sla",
+      "helpdesk_timesheet.group_use_helpdesk_timesheet",
+      "website_helpdesk_livechat.group_use_website_helpdesk_livechat"
+    ],
+    "module": "helpdesk",
+    "implied_by": [
+      "helpdesk.group_helpdesk_manager"
+    ]
+  },
+  {
+    "id": 126,
+    "xmlid": "helpdesk.group_helpdesk_manager",
+    "name": "Soporte al cliente / Administrador",
+    "privilege": "Soporte al cliente",
+    "implied": [
+      "helpdesk.group_helpdesk_user",
+      "mail.group_mail_canned_response_admin"
+    ],
+    "module": "helpdesk",
+    "implied_by": [
+      "base.default_user_group"
+    ]
+  },
+  {
+    "id": 12,
+    "xmlid": "base.default_user_group",
+    "name": "Acceso predeterminado para usuarios nuevos",
+    "privilege": "",
+    "implied": [
+      "helpdesk.group_helpdesk_manager"
+    ],
+    "module": "base",
+    "implied_by": []
+  },
+  {
+    "id": 133,
+    "xmlid": "website.website_page_controller_expose",
+    "name": "Acceso público a un modelo arbitrario",
+    "privilege": "",
+    "implied": [],
+    "module": "website",
+    "implied_by": [
+      "base.group_portal",
+      "base.group_public"
+    ]
+  },
+  {
+    "id": 19,
+    "xmlid": "product.group_product_variant",
+    "name": "Administrar variantes de productos",
+    "privilege": "",
+    "implied": [],
+    "module": "product",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 129,
+    "xmlid": "helpdesk.group_auto_assignment",
+    "name": "Auto asignación",
+    "privilege": "",
+    "implied": [],
+    "module": "helpdesk",
+    "implied_by": [
+      "helpdesk.group_helpdesk_user"
+    ]
+  },
+  {
+    "id": 62,
+    "xmlid": "sale.group_auto_done_setting",
+    "name": "Bloquear órdenes confirmadas",
+    "privilege": "",
+    "implied": [],
+    "module": "sale",
+    "implied_by": []
+  },
+  {
+    "id": 97,
+    "xmlid": "l10n_do_accounting.group_l10n_do_debit_note",
+    "name": "Can create Debit Notes",
+    "privilege": "",
+    "implied": [
+      "account.group_account_invoice"
+    ],
+    "module": "l10n_do_accounting",
+    "implied_by": []
+  },
+  {
+    "id": 7,
+    "xmlid": "base.group_no_one",
+    "name": "Características técnicas",
+    "privilege": "",
+    "implied": [],
+    "module": "base",
+    "implied_by": [
+      "base.group_system",
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 34,
+    "xmlid": "analytic.group_analytic_accounting",
+    "name": "Contabilidad analítica",
+    "privilege": "",
+    "implied": [],
+    "module": "analytic",
+    "implied_by": []
+  },
+  {
+    "id": 89,
+    "xmlid": "industry_fsm.group_fsm_quotation_from_task",
+    "name": "Cree nuevas cotizaciones directamente desde las tareas",
+    "privilege": "",
+    "implied": [],
+    "module": "industry_fsm",
+    "implied_by": []
+  },
+  {
+    "id": 58,
+    "xmlid": "account.group_partial_purchase_deductibility",
+    "name": "Deducibilidad parcial de la compra",
+    "privilege": "",
+    "implied": [],
+    "module": "account",
+    "implied_by": []
+  },
+  {
+    "id": 63,
+    "xmlid": "sale.group_discount_per_so_line",
+    "name": "Descuento en líneas",
+    "privilege": "",
+    "implied": [],
+    "module": "sale",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 50,
+    "xmlid": "account.group_delivery_invoice_address",
+    "name": "Dirección de entrega",
+    "privilege": "",
+    "implied": [],
+    "module": "account",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 13,
+    "xmlid": "api_doc.group_allow_doc",
+    "name": "Documentación técnica",
+    "privilege": "",
+    "implied": [],
+    "module": "api_doc",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 16,
+    "xmlid": "mail.group_mail_template_editor",
+    "name": "Editor de plantillas de correo",
+    "privilege": "",
+    "implied": [],
+    "module": "mail",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 70,
+    "xmlid": "purchase.group_send_reminder",
+    "name": "Envíe un correo electrónico de recordatorio automático para confirmar la entrega",
+    "privilege": "",
+    "implied": [],
+    "module": "purchase",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 3,
+    "xmlid": "base.group_sanitize_override",
+    "name": "Evitar la depuración de campos HTML",
+    "privilege": "",
+    "implied": [],
+    "module": "base",
+    "implied_by": [
+      "base.group_system",
+      "website.group_website_designer"
+    ]
+  },
+  {
+    "id": 65,
+    "xmlid": "sale.group_proforma_sales",
+    "name": "Facturas proforma",
+    "privilege": "",
+    "implied": [],
+    "module": "sale",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 29,
+    "xmlid": "stock.group_adv_location",
+    "name": "Gestionar flujos de inventario push y pull",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": []
+  },
+  {
+    "id": 23,
+    "xmlid": "stock.group_stock_multi_locations",
+    "name": "Gestionar múltiples ubicaciones de existencias",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 25,
+    "xmlid": "stock.group_production_lot",
+    "name": "Gestionar números de lote y de serie",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": [
+      "base.group_portal",
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 28,
+    "xmlid": "stock.group_tracking_lot",
+    "name": "Gestionar paquetes",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": []
+  },
+  {
+    "id": 14,
+    "xmlid": "uom.group_uom",
+    "name": "Gestionar varias unidades de medida",
+    "privilege": "",
+    "implied": [],
+    "module": "uom",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 24,
+    "xmlid": "stock.group_stock_multi_warehouses",
+    "name": "Gestionar varios almacenes",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": []
+  },
+  {
+    "id": 104,
+    "xmlid": "mass_mailing.group_mass_mailing_campaign",
+    "name": "Gestione campañas de correo masivo.",
+    "privilege": "",
+    "implied": [],
+    "module": "mass_mailing",
+    "implied_by": []
+  },
+  {
+    "id": 30,
+    "xmlid": "stock.group_tracking_owner",
+    "name": "Gestione diferentes propietarios de existencias",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": []
+  },
+  {
+    "id": 139,
+    "xmlid": "sign.manage_template_access",
+    "name": "Gestione el acceso a las plantillas",
+    "privilege": "",
+    "implied": [],
+    "module": "sign",
+    "implied_by": []
+  },
+  {
+    "id": 26,
+    "xmlid": "stock.group_stock_lot_print_gs1",
+    "name": "Imprimir un código de barras GS1 para números de serie y de lote",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": []
+  },
+  {
+    "id": 18,
+    "xmlid": "product.group_product_pricelist",
+    "name": "Listas de precios básicas",
+    "privilege": "",
+    "implied": [],
+    "module": "product",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 61,
+    "xmlid": "stock_account.group_lot_on_invoice",
+    "name": "Mostrar el número de serie y lote en las facturas",
+    "privilege": "",
+    "implied": [],
+    "module": "stock_account",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 56,
+    "xmlid": "account.group_account_secured",
+    "name": "Mostrar funciones de inalterabilidad",
+    "privilege": "",
+    "implied": [],
+    "module": "account",
+    "implied_by": []
+  },
+  {
+    "id": 73,
+    "xmlid": "crm.group_use_recurring_revenues",
+    "name": "Mostrar menú de ingresos recurrentes",
+    "privilege": "",
+    "implied": [],
+    "module": "crm",
+    "implied_by": []
+  },
+  {
+    "id": 27,
+    "xmlid": "stock.group_lot_on_delivery_slip",
+    "name": "Mostrar número de lote y serie en los recibos de entrega",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": [
+      "base.group_portal",
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 127,
+    "xmlid": "helpdesk.group_use_sla",
+    "name": "Mostrar políticas SLA",
+    "privilege": "",
+    "implied": [],
+    "module": "helpdesk",
+    "implied_by": [
+      "helpdesk.group_helpdesk_user"
+    ]
+  },
+  {
+    "id": 100,
+    "xmlid": "hr_payroll.group_payslip_display",
+    "name": "Mostrar recibo de nómina en formato PDF",
+    "privilege": "",
+    "implied": [],
+    "module": "hr_payroll",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 72,
+    "xmlid": "crm.group_use_lead",
+    "name": "Muestra el menú de leads",
+    "privilege": "",
+    "implied": [],
+    "module": "crm",
+    "implied_by": []
+  },
+  {
+    "id": 128,
+    "xmlid": "helpdesk.group_use_rating",
+    "name": "Muestre las calificaciones de los clientes",
+    "privilege": "",
+    "implied": [],
+    "module": "helpdesk",
+    "implied_by": []
+  },
+  {
+    "id": 5,
+    "xmlid": "base.group_multi_company",
+    "name": "Multiempresa",
+    "privilege": "",
+    "implied": [],
+    "module": "base",
+    "implied_by": []
+  },
+  {
+    "id": 6,
+    "xmlid": "base.group_multi_currency",
+    "name": "Multimonedas",
+    "privilege": "",
+    "implied": [],
+    "module": "base",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 2,
+    "xmlid": "base.group_erp_manager",
+    "name": "Permisos de acceso",
+    "privilege": "",
+    "implied": [
+      "base.group_user",
+      "justech_global_audit_log.group_justech_audit_manager",
+      "justech_warranty.group_warranty_manager"
+    ],
+    "module": "base",
+    "implied_by": [
+      "base.group_system"
+    ]
+  },
+  {
+    "id": 71,
+    "xmlid": "account_accountant.group_fiscal_year",
+    "name": "Permite definir años fiscales para más de 1 año o menos de 1 año.",
+    "privilege": "",
+    "implied": [],
+    "module": "account_accountant",
+    "implied_by": []
+  },
+  {
+    "id": 57,
+    "xmlid": "account.group_cash_rounding",
+    "name": "Permitir la gestión de redondeo de efectivo",
+    "privilege": "",
+    "implied": [],
+    "module": "account",
+    "implied_by": []
+  },
+  {
+    "id": 66,
+    "xmlid": "sale_management.group_sale_order_template",
+    "name": "Plantillas de cotización",
+    "privilege": "",
+    "implied": [],
+    "module": "sale_management",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 96,
+    "xmlid": "l10n_do_accounting.group_l10n_do_fiscal_invoice_cancel",
+    "name": "Puede cancelar Facturas Fiscales",
+    "privilege": "",
+    "implied": [
+      "account.group_account_invoice"
+    ],
+    "module": "l10n_do_accounting",
+    "implied_by": []
+  },
+  {
+    "id": 95,
+    "xmlid": "l10n_do_accounting.group_l10n_do_fiscal_credit_note",
+    "name": "Puede crear Notas de Crédito Fiscales",
+    "privilege": "",
+    "implied": [
+      "account.group_account_invoice"
+    ],
+    "module": "l10n_do_accounting",
+    "implied_by": []
+  },
+  {
+    "id": 69,
+    "xmlid": "purchase.group_warning_purchase",
+    "name": "Puede establecer una advertencia en un producto o cliente (Compra)",
+    "privilege": "",
+    "implied": [],
+    "module": "purchase",
+    "implied_by": []
+  },
+  {
+    "id": 17,
+    "xmlid": "mail.group_mail_notification_type_inbox",
+    "name": "Recibir notificaciones en Odoo",
+    "privilege": "",
+    "implied": [],
+    "module": "mail",
+    "implied_by": []
+  },
+  {
+    "id": 136,
+    "xmlid": "helpdesk_timesheet.group_use_helpdesk_timesheet",
+    "name": "Registro de horas",
+    "privilege": "",
+    "implied": [],
+    "module": "helpdesk_timesheet",
+    "implied_by": [
+      "helpdesk.group_helpdesk_user",
+      "hr_timesheet.group_hr_timesheet_user"
+    ]
+  },
+  {
+    "id": 4,
+    "xmlid": "base.group_system",
+    "name": "Rol / Administrador",
+    "privilege": "",
+    "implied": [
+      "account.group_validate_bank_account",
+      "api_doc.group_allow_doc",
+      "base.group_allow_export",
+      "base.group_erp_manager",
+      "base.group_no_one",
+      "base.group_partner_manager",
+      "base.group_sanitize_override",
+      "justech_admin_center.group_justech_admin_center_manager",
+      "justech_fiscal_admin.group_justech_fiscal_admin_manager",
+      "justech_global_audit_log.group_justech_audit_manager",
+      "justech_recurring_fee.group_recurring_fee_manager",
+      "justech_warranty.group_warranty_manager",
+      "mail.group_mail_canned_response_admin",
+      "mail.group_mail_template_editor",
+      "product.group_product_manager",
+      "website.group_website_designer"
+    ],
+    "module": "base",
+    "implied_by": []
+  },
+  {
+    "id": 10,
+    "xmlid": "base.group_portal",
+    "name": "Rol / Portal",
+    "privilege": "",
+    "implied": [
+      "stock.group_lot_on_delivery_slip",
+      "stock.group_production_lot",
+      "website.group_multi_website",
+      "website.website_page_controller_expose"
+    ],
+    "module": "base",
+    "implied_by": []
+  },
+  {
+    "id": 11,
+    "xmlid": "base.group_public",
+    "name": "Rol / Público",
+    "privilege": "",
+    "implied": [
+      "website.group_multi_website",
+      "website.website_page_controller_expose"
+    ],
+    "module": "base",
+    "implied_by": []
+  },
+  {
+    "id": 1,
+    "xmlid": "base.group_user",
+    "name": "Rol / Usuario",
+    "privilege": "",
+    "implied": [
+      "account.group_delivery_invoice_address",
+      "base.group_multi_currency",
+      "base.group_no_one",
+      "hr_payroll.group_payslip_display",
+      "product.group_product_pricelist",
+      "product.group_product_variant",
+      "project.group_project_stages",
+      "purchase.group_send_reminder",
+      "sale.group_discount_per_so_line",
+      "sale.group_proforma_sales",
+      "sale_management.group_sale_order_template",
+      "stock.group_lot_on_delivery_slip",
+      "stock.group_production_lot",
+      "stock.group_stock_multi_locations",
+      "stock_account.group_lot_on_invoice",
+      "uom.group_uom",
+      "website.group_multi_website"
+    ],
+    "module": "base",
+    "implied_by": [
+      "account.group_account_invoice",
+      "account.group_account_readonly",
+      "approvals.group_approval_user",
+      "base.group_erp_manager",
+      "documents.group_documents_user",
+      "event.group_event_registration_desk",
+      "helpdesk.group_helpdesk_user",
+      "hr.group_hr_user",
+      "hr_timesheet.group_hr_timesheet_user",
+      "im_livechat.im_livechat_group_user",
+      "justech_admin_center.group_justech_admin_center_user",
+      "justech_ecf_core.group_ecf_readonly",
+      "maintenance.group_equipment_manager",
+      "marketing_automation.group_marketing_automation_user",
+      "mass_mailing.group_mass_mailing_user",
+      "planning.group_planning_user",
+      "project.group_project_user",
+      "purchase.group_purchase_user",
+      "sales_team.group_sale_salesman",
+      "sign.group_sign_user",
+      "spreadsheet_dashboard.group_dashboard_manager",
+      "stock.group_stock_user"
+    ]
+  },
+  {
+    "id": 64,
+    "xmlid": "sale.group_warning_sale",
+    "name": "Se puede crear una advertencia sobre un producto o un cliente (Venta)",
+    "privilege": "",
+    "implied": [],
+    "module": "sale",
+    "implied_by": []
+  },
+  {
+    "id": 31,
+    "xmlid": "stock.group_warning_stock",
+    "name": "Se puede establecer una advertencia en un contacto (existencias)",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": []
+  },
+  {
+    "id": 134,
+    "xmlid": "website.group_multi_website",
+    "name": "Sitio web múltiple",
+    "privilege": "",
+    "implied": [],
+    "module": "website",
+    "implied_by": [
+      "base.group_portal",
+      "base.group_public",
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 32,
+    "xmlid": "stock.group_stock_sign_delivery",
+    "name": "Solicitar una firma en sus órdenes de entrega",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": []
+  },
+  {
+    "id": 135,
+    "xmlid": "website_helpdesk_livechat.group_use_website_helpdesk_livechat",
+    "name": "Usar chat en vivo",
+    "privilege": "",
+    "implied": [],
+    "module": "website_helpdesk_livechat",
+    "implied_by": [
+      "helpdesk.group_helpdesk_user"
+    ]
+  },
+  {
+    "id": 130,
+    "xmlid": "helpdesk_sale.group_use_helpdesk_sale_timesheet",
+    "name": "Usar facturación del tiempo",
+    "privilege": "",
+    "implied": [],
+    "module": "helpdesk_sale",
+    "implied_by": []
+  },
+  {
+    "id": 46,
+    "xmlid": "project.group_project_milestone",
+    "name": "Usar objetivos",
+    "privilege": "",
+    "implied": [],
+    "module": "project",
+    "implied_by": []
+  },
+  {
+    "id": 45,
+    "xmlid": "project.group_project_task_dependencies",
+    "name": "Use dependencias de las tareas",
+    "privilege": "",
+    "implied": [],
+    "module": "project",
+    "implied_by": []
+  },
+  {
+    "id": 43,
+    "xmlid": "project.group_project_stages",
+    "name": "Use etapas en el proyecto",
+    "privilege": "",
+    "implied": [],
+    "module": "project",
+    "implied_by": [
+      "base.group_user"
+    ]
+  },
+  {
+    "id": 44,
+    "xmlid": "project.group_project_recurring_tasks",
+    "name": "Use tareas recurrentes",
+    "privilege": "",
+    "implied": [],
+    "module": "project",
+    "implied_by": []
+  },
+  {
+    "id": 111,
+    "xmlid": "sale_stock_renting.group_rental_stock_picking",
+    "name": "Utilice las recolecciones para las órdenes de alquiler",
+    "privilege": "",
+    "implied": [],
+    "module": "sale_stock_renting",
+    "implied_by": []
+  },
+  {
+    "id": 33,
+    "xmlid": "stock.group_reception_report",
+    "name": "Utilizar reporte de recepción",
+    "privilege": "",
+    "implied": [],
+    "module": "stock",
+    "implied_by": []
+  }
+]

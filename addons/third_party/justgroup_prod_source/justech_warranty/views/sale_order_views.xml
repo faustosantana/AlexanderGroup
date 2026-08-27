@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_warranty" model="ir.ui.view">
+        <field name="name">sale.order.form.warranty</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="class" add="o_justech_warranty_compact_form" separator=" "/>
+            </xpath>
+
+            <!-- Producto (plantilla) + descripción (`name`/sol_text) visibles: estándar Odoo.
+                 Solo se oculta la variante `product_id` (redundante con product_template_id). -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_id']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='name']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='analytic_distribution']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_id']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='qty_delivered']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='qty_invoiced']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='discount']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/list/field[@name='price_subtotal']" position="after">
+                <field name="display_type" column_invisible="1"/>
+                <field name="warranty_apply" column_invisible="1"/>
+                <field name="warranty_months" column_invisible="1"/>
+                <field name="warranty_notes" column_invisible="1"/>
+                <field name="warranty_type_id" column_invisible="1"/>
+                <field name="warranty_expected_units" column_invisible="1"/>
+                <field name="warranty_vendor_id" column_invisible="1"/>
+                <field name="warranty_planned_serials" column_invisible="1"/>
+                <field name="warranty_status" column_invisible="1"/>
+                <field name="warranty_units_label" optional="hide"/>
+                <field name="warranty_config_btn" string="Garantía"
+                       widget="warranty_config_button"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="after">
+                <button name="action_open_warranty_config_wizard" type="object"
+                        string="Configurar garantía" icon="fa-shield" class="btn-link"/>
+                <field name="warranty_units_label" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
