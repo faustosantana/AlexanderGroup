@@ -1,14 +1,36 @@
 # Auditoría del servidor — Doralex / Alexander Group
 
-> **ESTADO: PENDING_SSH.** Este documento es una **plantilla**. Se completa
+> **ESTADO: PENDING_CREDENTIALS.** Este documento es una **plantilla**. Se completa
 > ejecutando `deployment/doralex/scripts/audit_server.sh` (solo lectura) en el
-> servidor, una vez autorizada la conexión SSH y entregada la contraseña.
+> servidor, una vez que el Cloud Agent tenga acceso por llave.
 > **No se ha accedido al servidor.** Nada aquí está inventado.
 
 - Servidor: `2.25.121.111`
 - Usuario SSH: `root`
 - Regla: **auditar primero, sin instalar nada.** No modificar infraestructura
   antes de terminar la auditoría.
+
+## Conectividad (verificada, sin login)
+
+Desde el Cloud Agent se probó el alcance de red al servidor (una sola vez, sin
+autenticar):
+
+- TCP `2.25.121.111:22` **accesible**; handshake SSH completado (host key ED25519).
+- Métodos de autenticación ofrecidos: **`publickey,password`**.
+- Resultado sin credenciales: `Permission denied (publickey,password)` — esperado.
+
+Conclusión: **la conectividad no es el bloqueo; faltan credenciales.** Para
+habilitar el acceso por llave del Cloud Agent, ver "Acceso" abajo.
+
+## Acceso (cómo desbloquear la auditoría)
+
+1. En tu máquina local: `bash deployment/doralex/scripts/setup_ssh_local.sh`
+   (crea la llave dedicada, la instala en `root@2.25.121.111` pidiendo la
+   contraseña **una sola vez**, y configura los alias SSH).
+2. Agrega la **llave privada** (`~/.ssh/doralex_ed25519`) como **Secret** de Cursor
+   con nombre `DORALEX_SSH_PRIVATE_KEY` (no se imprime ni se versiona).
+3. En el Cloud Agent: `bash deployment/doralex/scripts/cloud_ssh_bootstrap.sh`
+   habilita `ssh doralex-server`, y entonces se ejecuta la auditoría.
 
 ## Cómo generar este informe
 

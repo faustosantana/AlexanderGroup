@@ -14,9 +14,13 @@ admin_passwd = ${ODOO_ADMIN_PASSWD}
 dbfilter = ${ODOO_DBFILTER}
 list_db = False
 
-; Rutas de addons (custom versionado; enterprise opcional bajo licencia).
-addons_path = /mnt/extra-addons
-; addons_path = /mnt/enterprise,/mnt/extra-addons
+; --- addons_path FINAL (enterprise-ready) ---
+; El core de Odoo 19 se carga automáticamente desde la imagen; aquí se declaran
+; Enterprise (licencia, dir compartido) y los custom addons versionados.
+; NO cambiar esta ruta cuando llegue Enterprise: el dir ya existe (vacío).
+addons_path = /mnt/enterprise,/mnt/custom-addons
+; Módulos base cargados en todo el servidor.
+server_wide_modules = base,web
 
 data_dir = /var/lib/odoo
 
@@ -24,13 +28,18 @@ data_dir = /var/lib/odoo
 proxy_mode = True
 http_enable = True
 http_port = 8069
+; Websocket / longpolling (gevent) para bus/notificaciones en tiempo real.
+gevent_port = 8072
 
-; Rendimiento (ajustar tras auditoría del servidor).
-workers = 2
-max_cron_threads = 1
+; Rendimiento (ajustar tras auditoría del servidor; enterprise-ready).
+workers = 4
+max_cron_threads = 2
 limit_time_cpu = 600
 limit_time_real = 1200
-limit_memory_soft = 1073741824
-limit_memory_hard = 1342177280
+limit_request = 8192
+limit_memory_soft = 2147483648
+limit_memory_hard = 2684354560
 
+; Logging (docker logs + archivo persistente en /var/log/odoo).
 log_level = info
+logfile = /var/log/odoo/odoo.log

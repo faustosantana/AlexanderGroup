@@ -9,10 +9,13 @@ Documentación de infraestructura del servidor nuevo de Doralex / Alexander Grou
 | [`SERVER_AUDIT.md`](SERVER_AUDIT.md) | Auditoría del servidor (**PENDING** hasta SSH). |
 | [`DEPLOYMENT_RUNBOOK.md`](DEPLOYMENT_RUNBOOK.md) | Flujo LOCAL→GIT→DEV→TESTS→VALIDACION→BACKUP→DEPLOY. |
 | [`ISOLATION_VALIDATION.md`](ISOLATION_VALIDATION.md) | Checklist de aislamiento (PASS/FAIL). |
-| [`DNS_AND_SSL.md`](DNS_AND_SSL.md) | Dominios previstos, `PENDING_DNS`, emisión de certificados. |
+| [`DNS_AND_SSL.md`](DNS_AND_SSL.md) | Dominios definitivos `.cloud`, `DNS_REQUIRED`, certificados. |
 | [`SECURITY_HARDENING.md`](SECURITY_HARDENING.md) | Endurecimiento de SSH, firewall, secretos. |
 | [`BACKUP_STRATEGY.md`](BACKUP_STRATEGY.md) | Estrategia de backups verificables. |
-| [`ENTERPRISE_READINESS.md`](ENTERPRISE_READINESS.md) | Estado de Odoo 19 Enterprise (licencia/fuente). |
+| [`ENTERPRISE_READINESS.md`](ENTERPRISE_READINESS.md) | Odoo 19 Enterprise (`ENTERPRISE_SOURCE_PENDING`). |
+| [`STUDIO_AND_REPORTS.md`](STUDIO_AND_REPORTS.md) | Preparación de Odoo Studio y reportes PDF (QWeb). |
+| [`../migration/JUSTGROUP_TECHNICAL_REFERENCE.md`](../migration/JUSTGROUP_TECHNICAL_REFERENCE.md) | Referencia técnica de Justgroup (paridad de versión). |
 
-Servidor objetivo: `2.25.121.111` (user `root`). **No** se accede por SSH hasta
-que se autorice y se entregue la contraseña (ver `SERVER_AUDIT.md`).
+Servidor objetivo: `2.25.121.111` (user `root`). Dominios definitivos:
+`doralexgroup.cloud` (Prod), `dev.doralexgroup.cloud` (Dev),
+`www.doralexgroup.cloud` (→ canónico). Acceso por **llave SSH** (ver `SERVER_AUDIT.md`).

@@ -15,6 +15,9 @@ Los artefactos se despliegan en el servidor nuevo bajo `/opt/doralex/`.
 | `reverse-proxy/`                              | `/etc/nginx/sites-available/` (host)   |
 | `scripts/`                                    | `/opt/doralex/scripts/`                |
 | (este repo)                                   | `/opt/doralex/repository/`             |
+| —                                             | `/opt/doralex/enterprise/` (vacío, licencia) |
+| —                                             | `/opt/doralex/custom-addons/`          |
+| —                                             | `/opt/doralex/odoo/` (ref. de versión) |
 | —                                             | `/opt/doralex/backups/{production,dev}`|
 
 ## Aislamiento Produccion ↔ Dev
@@ -29,7 +32,7 @@ Los artefactos se despliegan en el servidor nuevo bajo `/opt/doralex/`.
 | Password DB        | propio (`.env`)         | propio (`.env`)        |
 | Odoo (loopback)    | `127.0.0.1:8069/8072`   | `127.0.0.1:8169/8172`  |
 | PostgreSQL         | **no publicado**        | **no publicado**       |
-| Dominio previsto   | `erp.doralexgroup.com`  | `dev.doralexgroup.com` |
+| Dominio definitivo | `doralexgroup.cloud`    | `dev.doralexgroup.cloud` |
 
 **Regla dura:** nunca montar volúmenes de Produccion en Dev. `scripts/validate_isolation.sh`
 lo verifica.

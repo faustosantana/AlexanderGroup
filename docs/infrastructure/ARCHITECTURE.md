@@ -12,7 +12,8 @@ un mismo servidor, detrás de un reverse proxy con TLS.
                    │  Nginx (host)     │  TLS / Let's Encrypt
                    │  reverse proxy    │  (PENDING_DNS)
                    └───┬───────────┬───┘
-        erp.doralexgroup.com   dev.doralexgroup.com
+        doralexgroup.cloud     dev.doralexgroup.cloud
+        (www -> canónico)
                    │               │
         127.0.0.1:8069        127.0.0.1:8169     (solo loopback)
                    │               │
@@ -37,21 +38,37 @@ un mismo servidor, detrás de un reverse proxy con TLS.
 
 ## Puertos (loopback)
 
-| Entorno    | HTTP           | Longpolling     |
-| ---------- | -------------- | --------------- |
+| Entorno    | HTTP           | Longpolling/gevent |
+| ---------- | -------------- | ------------------ |
 | Produccion | `127.0.0.1:8069` | `127.0.0.1:8072` |
 | Dev        | `127.0.0.1:8169` | `127.0.0.1:8172` |
 
-## Rutas en el servidor
+## Rutas en el servidor (enterprise-ready)
 
 ```text
 /opt/doralex/
-├── production/   (docker-compose.yml, .env, config/, addons/)
-├── dev/          (docker-compose.yml, .env, config/, addons/)
-├── backups/      (production/ , dev/)
-├── scripts/      (audit, backup, restore, healthcheck, isolation, ...)
-└── repository/   (checkout del repo Git, fuente de verdad)
+├── repository/     (checkout del repo Git, fuente de verdad)
+├── odoo/           (referencia de la fuente Community pin. — paridad de versión)
+├── enterprise/     (addons Enterprise; VACIO hasta licencia; -> /mnt/enterprise)
+├── custom-addons/  (canónico de custom addons versionados)
+├── production/     (docker-compose.yml, .env, config/, custom-addons/, logs/)
+├── dev/            (docker-compose.yml, .env, config/, custom-addons/, logs/)
+├── backups/        (production/ , dev/)
+├── scripts/        (audit, backup, restore, healthcheck, isolation, ssh, ...)
+└── logs/
 ```
+
+### addons_path final (dentro del contenedor)
+
+```text
+addons_path = /mnt/enterprise,/mnt/custom-addons
+```
+
+- Core de Odoo 19: se carga automáticamente desde la imagen (no requiere ruta).
+- `/mnt/enterprise`: montado desde `/opt/doralex/enterprise` (RO), vacío hasta la
+  licencia (`ENTERPRISE_SOURCE_PENDING=TRUE`). **No cambia** cuando llegue Enterprise.
+- `/mnt/custom-addons`: custom addons versionados (por entorno; se prueba en Dev
+  antes de Produccion).
 
 ## Reverse proxy y TLS
 

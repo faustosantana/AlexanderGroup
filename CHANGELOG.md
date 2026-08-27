@@ -21,3 +21,15 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
   backups y estado de Odoo 19 Enterprise (BLOCKED, pendiente de licencia).
 - Plantilla de inventario para migración de módulos Justgroup
   (`docs/migration/JUSTGROUP_MODULE_INVENTORY.md`).
+
+### Changed
+- Infraestructura Doralex **enterprise-ready** desde el inicio: `addons_path` final
+  `/mnt/enterprise,/mnt/custom-addons`, montaje del dir Enterprise (vacío,
+  `ENTERPRISE_SOURCE_PENDING=TRUE`), workers/gevent y logging productivos.
+- Dominios definitivos migrados a `.cloud`: `doralexgroup.cloud` (Prod),
+  `dev.doralexgroup.cloud` (Dev), `www.doralexgroup.cloud` (→ canónico).
+- `bootstrap_dirs.sh` crea la estructura final (`odoo/`, `enterprise/`,
+  `custom-addons/`, `logs/` y por entorno).
+- Acceso al servidor por **llave SSH** vía `setup_ssh_local.sh` (máquina del
+  usuario) y `cloud_ssh_bootstrap.sh` (Cloud Agent, Secret `DORALEX_SSH_PRIVATE_KEY`).
+- Nuevos documentos: `STUDIO_AND_REPORTS.md` y `JUSTGROUP_TECHNICAL_REFERENCE.md`.

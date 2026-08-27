@@ -58,10 +58,14 @@ services:
       # odoo.conf se RENDERIZA desde config/odoo.conf.example con scripts/render_config.sh
       # (queda gitignored). Contiene admin_passwd, dbfilter, proxy_mode, addons_path.
       - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
-      # Addons custom versionados (release controlado). Solo lectura.
-      - ./addons:/mnt/extra-addons:ro
-      # Enterprise (opcional, licencia): descomentar cuando exista fuente legítima.
-      # - ./enterprise:/mnt/enterprise:ro
+      # --- addons_path FINAL (enterprise-ready desde el inicio) ---
+      # Enterprise (licencia): dir compartido, MISMA revisión. Existe desde ya,
+      # vacío hasta disponer de la fuente legítima (ENTERPRISE_SOURCE_PENDING).
+      - ${ENTERPRISE_SRC:-../enterprise}:/mnt/enterprise:ro
+      # Custom addons versionados desde Git (release controlado por entorno).
+      - ${CUSTOM_ADDONS_SRC:-./custom-addons}:/mnt/custom-addons:ro
+      # Logs de Odoo (observabilidad; docker logs + archivo).
+      - ./logs:/var/log/odoo
     ports:
       # Solo loopback: el reverse proxy (host) termina TLS y hace proxy aquí.
       - "127.0.0.1:${ODOO_HTTP_PORT:-8069}:8069"

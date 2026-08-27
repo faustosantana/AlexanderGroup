@@ -6,17 +6,26 @@ Flujo **obligatorio**. Produccion nunca es fuente de experimentación.
 LOCAL/CURSOR → GIT → DEV → TESTS → VALIDACION → BACKUP PRODUCCION → DEPLOY CONTROLADO
 ```
 
-## 0. Pre-requisito: auditoría del servidor
+## 0. Acceso SSH por llave (una vez)
+
+- En tu máquina: `bash deployment/doralex/scripts/setup_ssh_local.sh`.
+- (Para el Cloud Agent) agregar Secret `DORALEX_SSH_PRIVATE_KEY` y ejecutar
+  `bash deployment/doralex/scripts/cloud_ssh_bootstrap.sh`.
+- No desactivar la autenticación por contraseña hasta confirmar la llave.
+
+## 0.1 Pre-requisito: auditoría del servidor
 
 Completar [`SERVER_AUDIT.md`](SERVER_AUDIT.md) con `audit_server.sh` (solo lectura)
-**antes** de instalar o modificar nada.
+**antes** de instalar o modificar nada. Verificar que no exista una instalación
+previa que se pudiera destruir.
 
 ## 1. Bootstrap del servidor (una vez)
 
 ```bash
-sudo bash /opt/doralex/scripts/bootstrap_dirs.sh      # crea /opt/doralex/**
-# instalar Docker + Docker Compose si la auditoría indica que faltan
+sudo bash /opt/doralex/scripts/bootstrap_dirs.sh      # crea /opt/doralex/** (enterprise-ready)
+# instalar paquetes base + Docker Engine + Docker Compose si faltan (ver Fase 7)
 # clonar el repo en /opt/doralex/repository
+# el dir /opt/doralex/enterprise queda vacío (ENTERPRISE_SOURCE_PENDING=TRUE)
 ```
 
 ## 2. Preparar un entorno (Dev primero)

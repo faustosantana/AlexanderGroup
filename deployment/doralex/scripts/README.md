@@ -6,8 +6,10 @@ secretos y leen la configuración sensible desde el `.env` del entorno.
 | Script                  | Qué hace | ¿Requiere servidor/Docker? |
 | ----------------------- | -------- | -------------------------- |
 | `lib.sh`                | Funciones comunes (se importa). | — |
+| `setup_ssh_local.sh`    | **En TU máquina**: crea llave dedicada, la instala en el servidor y configura alias SSH. | Local + red |
+| `cloud_ssh_bootstrap.sh`| **En el Cloud Agent**: configura SSH desde el Secret `DORALEX_SSH_PRIVATE_KEY`. | Cloud Agent |
 | `audit_server.sh`       | Auditoría **solo lectura** del servidor → Markdown. | SSH (tras autorización) |
-| `bootstrap_dirs.sh`     | Crea `/opt/doralex/**` con permisos. No instala nada. | Servidor |
+| `bootstrap_dirs.sh`     | Crea `/opt/doralex/**` (enterprise-ready) con permisos. No instala nada. | Servidor |
 | `render_config.sh`      | Genera `config/odoo.conf` desde `.example` + `.env` (600). | Servidor |
 | `backup.sh`             | Backup DB+filestore+config+addons+metadata y **verifica**. | Servidor + Docker |
 | `verify_backup.sh`      | Valida un backup: archivos, tamaño>0, checksum SHA256. | Servidor |

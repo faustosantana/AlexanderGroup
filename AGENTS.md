@@ -48,20 +48,26 @@ aclaraciones **duraderas y no evidentes**.
 - El bootstrap de infraestructura vive en `deployment/doralex/` (stacks Prod/Dev
   aislados) y `docs/infrastructure/`. Es **fuente de verdad versionada**; se
   despliega en el servidor bajo `/opt/doralex/**` (aún no desplegado).
-- **STOP por SSH (no evidente y obligatorio)**: el servidor `2.25.121.111`
-  (user `root`) **no** debe accederse por SSH hasta que el usuario lo autorice y
-  entregue la contraseña. Cuando una tarea requiera SSH, DETENERSE y responder
-  solo con el bloque `SSH_REQUIRED` (host/user/reason) y esperar. Nunca simular
-  acceso ni inventar resultados de auditoría.
+- **Acceso SSH (no evidente)**: el servidor `2.25.121.111` (user `root`) es
+  **alcanzable** desde el Cloud Agent (TCP 22 abierto, auth `publickey,password`),
+  pero **no** se guarda la contraseña root en ningún sitio. El acceso del agente se
+  habilita con una **llave**: el usuario ejecuta `scripts/setup_ssh_local.sh` en su
+  máquina y agrega la llave privada como Secret `DORALEX_SSH_PRIVATE_KEY`; el agente
+  corre `scripts/cloud_ssh_bootstrap.sh` para usar `ssh doralex-server`. Nunca
+  imprimir/commitear llaves ni contraseñas; nunca simular acceso ni auditorías.
+- **Dominios definitivos**: `doralexgroup.cloud` (Prod), `dev.doralexgroup.cloud`
+  (Dev), `www.doralexgroup.cloud` → 301 al canónico. Estado DNS: `PENDING_DNS`.
 - **Aislamiento Prod/Dev**: redes (`doralex_prod_net` / `doralex_dev_net`),
   volúmenes (`doralex_prod_*` / `doralex_dev_*`), DB y puertos loopback distintos
   (Prod `8069/8072`, Dev `8169/8172`). PostgreSQL nunca se publica. Nunca montar
   volúmenes de Produccion en Dev. `scripts/validate_isolation.sh` lo verifica.
+- **Enterprise-ready**: `addons_path` final = `/mnt/enterprise,/mnt/custom-addons`;
+  el dir `/opt/doralex/enterprise` existe vacío (`ENTERPRISE_SOURCE_PENDING=TRUE`).
+  Cuando llegue la licencia, se colocan los addons ahí **sin reconstruir** ni
+  recrear bases. Nunca usar Enterprise de fuentes no autorizadas.
 - **Secretos de infra**: cada entorno usa su `.env` (desde `.env.example`) y un
   `config/odoo.conf` **renderizado** con `scripts/render_config.sh` (envsubst);
-  ambos quedan fuera de Git. Enterprise (`/opt/doralex/*/enterprise`) también.
+  ambos quedan fuera de Git.
 - **Validación local sin Docker**: los scripts se comprueban con `shellcheck -x`
   y `bash -n`; los compose con `yamllint`/`pyyaml`; Docker **no** está instalado
   en el entorno de Cursor (el despliegue real ocurre en el servidor).
-- **Enterprise**: `odoo:19` es Community; Enterprise está **BLOCKED** hasta contar
-  con licencia/fuente legítima (ver `docs/infrastructure/ENTERPRISE_READINESS.md`).

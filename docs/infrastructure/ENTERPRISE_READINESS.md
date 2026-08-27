@@ -4,15 +4,21 @@
 
 Desplegar **Odoo 19 Enterprise** para Doralex / Alexander Group.
 
-## Estado actual: `BLOCKED`
+## Estado actual: `ENTERPRISE_SOURCE_PENDING=TRUE`
 
-La imagen pública `odoo:19` es **Community**. Enterprise requiere los addons
-Enterprise, que **no** son públicos y exigen una **licencia/suscripción** y acceso
-legítimo a su fuente. **No se inventa acceso Enterprise.**
+La suscripción/licencia Enterprise está **en trámite**. La arquitectura ya es
+**enterprise-ready**: no habrá que rehacerla cuando llegue la licencia.
 
-Mientras no se confirme la fuente legítima, el stack se define con imagen
-Community como placeholder (`ODOO_IMAGE=odoo:19`) y un punto de montaje preparado
-para los addons Enterprise (`/mnt/enterprise`, comentado).
+- `addons_path` **final** desde ya: `/mnt/enterprise,/mnt/custom-addons`.
+- El directorio `/opt/doralex/enterprise` **existe desde el inicio** (montado en
+  `/mnt/enterprise`, solo lectura), **vacío y protegido** (`chmod 700`) con un
+  marcador `ENTERPRISE_SOURCE_PENDING`.
+- Imagen actual: `odoo:19` (Community) como base; se cambiará a la imagen/paquetes
+  Enterprise cuando exista la fuente legítima. **No** se usan addons Enterprise de
+  fuentes no autorizadas ni de repositorios de terceros.
+
+> Regla: cualquier dependencia real de Enterprise se marca
+> **`BLOCKED_BY_ENTERPRISE_SOURCE`**; el resto de la infraestructura avanza.
 
 ## Se debe confirmar antes de instalar Enterprise
 
@@ -29,12 +35,17 @@ para los addons Enterprise (`/mnt/enterprise`, comentado).
 **Detenerse y reportar** (como aquí). No descargar ni empaquetar Enterprise sin
 autorización.
 
-## Cómo se habilitará (cuando haya acceso)
+## Cuando llegue Enterprise (Fase 28 — sin reconstruir)
 
-1. Obtener los addons Enterprise por el medio autorizado.
-2. Construir una imagen que los incluya **o** montarlos en `/mnt/enterprise`.
-3. Ajustar `ODOO_IMAGE` y `addons_path` (`/mnt/enterprise,/mnt/extra-addons`).
-4. Validar arranque en **Dev** antes que en Produccion.
+1. Colocar/clonar los addons Enterprise en `/opt/doralex/enterprise` desde la
+   **fuente legítima**, con la **misma revisión** que Community (ver
+   [`../migration/JUSTGROUP_TECHNICAL_REFERENCE.md`](../migration/JUSTGROUP_TECHNICAL_REFERENCE.md)).
+2. Ajustar `ODOO_IMAGE` a la imagen Enterprise si corresponde (el `addons_path`
+   **no cambia**: ya es `/mnt/enterprise,/mnt/custom-addons`).
+3. Actualizar la lista de aplicaciones e instalar los módulos requeridos.
+4. Activar la suscripción/base por el procedimiento oficial.
+5. Ejecutar pruebas en **Dev** primero.
+6. **No** reconstruir el servidor ni recrear las bases de datos.
 
 ## Credenciales pendientes
 

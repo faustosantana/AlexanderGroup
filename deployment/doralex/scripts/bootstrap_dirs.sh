@@ -13,17 +13,23 @@ umask 077
 
 dirs=(
   "${DORALEX_BASE}"
+  "${DORALEX_BASE}/repository"
+  "${DORALEX_BASE}/odoo"
+  "${DORALEX_BASE}/enterprise"
+  "${DORALEX_BASE}/custom-addons"
   "${DORALEX_BASE}/production"
   "${DORALEX_BASE}/production/config"
-  "${DORALEX_BASE}/production/addons"
+  "${DORALEX_BASE}/production/custom-addons"
+  "${DORALEX_BASE}/production/logs"
   "${DORALEX_BASE}/dev"
   "${DORALEX_BASE}/dev/config"
-  "${DORALEX_BASE}/dev/addons"
+  "${DORALEX_BASE}/dev/custom-addons"
+  "${DORALEX_BASE}/dev/logs"
   "${DORALEX_BASE}/backups"
   "${DORALEX_BASE}/backups/production"
   "${DORALEX_BASE}/backups/dev"
   "${DORALEX_BASE}/scripts"
-  "${DORALEX_BASE}/repository"
+  "${DORALEX_BASE}/logs"
 )
 
 for d in "${dirs[@]}"; do
@@ -31,4 +37,17 @@ for d in "${dirs[@]}"; do
   log "OK  $d"
 done
 
-log "Estructura creada. Recuerde: los .env reales y odoo.conf renderizados NO se versionan."
+# El directorio Enterprise existe desde el inicio (addons_path final), pero
+# permanece VACIO y protegido hasta disponer de la fuente legítima.
+chmod 700 "${DORALEX_BASE}/enterprise"
+if [ ! -f "${DORALEX_BASE}/enterprise/ENTERPRISE_SOURCE_PENDING" ]; then
+  {
+    echo "ENTERPRISE_SOURCE_PENDING=TRUE"
+    echo "# Coloque aquí los addons Enterprise SOLO desde la fuente legítima autorizada."
+    echo "# No descargar Enterprise desde repositorios de terceros."
+  } > "${DORALEX_BASE}/enterprise/ENTERPRISE_SOURCE_PENDING"
+fi
+
+log "Estructura creada (enterprise-ready)."
+log "Enterprise: ${DORALEX_BASE}/enterprise (vacío, ENTERPRISE_SOURCE_PENDING=TRUE)."
+log "Recuerde: .env reales y odoo.conf renderizados NO se versionan."

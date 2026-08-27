@@ -1,27 +1,24 @@
-# Reverse proxy (Nginx de host) — PRODUCCION
-# Dominio previsto: erp.doralexgroup.com  ->  Odoo Produccion (127.0.0.1:8069)
+# Reverse proxy (Nginx de host) — DEV
+# Dominio: dev.doralexgroup.cloud -> Odoo Dev (127.0.0.1:8169, websocket 127.0.0.1:8172)
 # ------------------------------------------------------------------------------
-# ESTADO: PENDING_DNS. No emitir certificados ni activar 443 hasta que el DNS
-# de erp.doralexgroup.com resuelva a la IP del servidor. Ver DNS_AND_SSL.md.
-# Certificados con certbot (Let's Encrypt); NUNCA commitear *.pem/*.key/*.crt.
+# ESTADO: PENDING_DNS. No emitir certificados ni activar 443 hasta que
+# dev.doralexgroup.cloud resuelva a 2.25.121.111. Ver DNS_AND_SSL.md.
 # ------------------------------------------------------------------------------
 
-upstream doralex_prod_odoo {
-    server 127.0.0.1:8069;
+upstream doralex_dev_odoo {
+    server 127.0.0.1:8169;
 }
-upstream doralex_prod_odoo_chat {
-    server 127.0.0.1:8072;
+upstream doralex_dev_odoo_chat {
+    server 127.0.0.1:8172;
 }
 
-# HTTP: solo para el challenge de certbot y redirección a HTTPS (activar tras DNS).
 server {
     listen 80;
-    server_name erp.doralexgroup.com;
+    server_name dev.doralexgroup.cloud;
 
     location /.well-known/acme-challenge/ {
         root /var/www/certbot;
     }
-
     location / {
         return 301 https://$host$request_uri;
     }
@@ -30,22 +27,17 @@ server {
 # HTTPS (activar SOLO cuando exista certificado válido).
 # server {
 #     listen 443 ssl http2;
-#     server_name erp.doralexgroup.com;
+#     server_name dev.doralexgroup.cloud;
 #
-#     ssl_certificate     /etc/letsencrypt/live/erp.doralexgroup.com/fullchain.pem;
-#     ssl_certificate_key /etc/letsencrypt/live/erp.doralexgroup.com/privkey.pem;
+#     ssl_certificate     /etc/letsencrypt/live/dev.doralexgroup.cloud/fullchain.pem;
+#     ssl_certificate_key /etc/letsencrypt/live/dev.doralexgroup.cloud/privkey.pem;
 #     ssl_protocols TLSv1.2 TLSv1.3;
 #
 #     client_max_body_size 200M;
 #     proxy_read_timeout 720s;
-#     proxy_connect_timeout 720s;
-#     proxy_send_timeout 720s;
-#
-#     add_header X-Frame-Options SAMEORIGIN;
-#     add_header X-Content-Type-Options nosniff;
 #
 #     location /websocket {
-#         proxy_pass http://doralex_prod_odoo_chat;
+#         proxy_pass http://doralex_dev_odoo_chat;
 #         proxy_set_header Upgrade $http_upgrade;
 #         proxy_set_header Connection "upgrade";
 #         proxy_set_header Host $host;
@@ -55,7 +47,7 @@ server {
 #     }
 #
 #     location / {
-#         proxy_pass http://doralex_prod_odoo;
+#         proxy_pass http://doralex_dev_odoo;
 #         proxy_set_header Host $host;
 #         proxy_set_header X-Real-IP $remote_addr;
 #         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

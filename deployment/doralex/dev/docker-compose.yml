@@ -49,9 +49,12 @@ services:
     volumes:
       - odoo_data:/var/lib/odoo
       - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
-      - ./addons:/mnt/extra-addons:ro
-      # Enterprise (opcional, licencia): descomentar cuando exista fuente legítima.
-      # - ./enterprise:/mnt/enterprise:ro
+      # --- addons_path FINAL (enterprise-ready desde el inicio) ---
+      # Enterprise compartido (misma revisión), vacío hasta la licencia.
+      - ${ENTERPRISE_SRC:-../enterprise}:/mnt/enterprise:ro
+      # Custom addons de Dev (aquí se prueba primero antes de Produccion).
+      - ${CUSTOM_ADDONS_SRC:-./custom-addons}:/mnt/custom-addons:ro
+      - ./logs:/var/log/odoo
     ports:
       # Puertos DISTINTOS a Produccion, solo loopback.
       - "127.0.0.1:${ODOO_HTTP_PORT:-8169}:8069"
