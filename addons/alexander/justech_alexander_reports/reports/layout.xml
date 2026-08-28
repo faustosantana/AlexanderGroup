@@ -31,7 +31,7 @@
         </t>
         <t t-set="dx_theme" t-value="company._dx_report_theme()"/>
         <t t-set="dx_record" t-value="o if o else doc"/>
-        <t t-set="dx_ident" t-value="dx_header_identity if dx_header_identity else (dx_record._dx_doc_identity() if dx_record and hasattr(dx_record, '_dx_doc_identity') else {})"/>
+        <t t-set="dx_ident" t-value="dx_header_identity or company._dx_header_identity_for(dx_record)"/>
         <div t-attf-class="header o_company_#{company.id}_layout dx-report-header dx-theme-#{dx_theme['code']}">
             <table class="dx-head-table">
                 <tr>

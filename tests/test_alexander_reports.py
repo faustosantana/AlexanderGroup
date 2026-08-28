@@ -33,7 +33,7 @@ def test_layout_uses_document_company():
     assert "web.external_layout" in layout
     assert "dx-theme-" in layout
     assert "external_layout_force_document_company" in layout
-    assert "_dx_doc_identity" in layout
+    assert "_dx_header_identity_for" in layout
     assert "dx-head-doc" in layout
     extras = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
     assert "dx_extras_mode" in extras

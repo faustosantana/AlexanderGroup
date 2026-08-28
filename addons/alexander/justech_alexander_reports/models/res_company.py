@@ -81,7 +81,14 @@ class ResCompany(models.Model):
             return "%s-%s-%s-%s" % (raw[0], raw[1:3], raw[3:8], raw[8])
         return self.vat or ""
 
-    def _dx_report_theme(self):
+    def _dx_header_identity_for(self, record):
+        self.ensure_one()
+        if record and hasattr(record, "_dx_doc_identity"):
+            try:
+                return record._dx_doc_identity()
+            except Exception:
+                return {}
+        return {}
         self.ensure_one()
         code = (self.dx_short_code or "").upper()
         theme = dict(_DX_THEMES.get(code) or {"code": code or "DX"})
