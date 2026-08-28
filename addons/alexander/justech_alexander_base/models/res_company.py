@@ -204,13 +204,15 @@ class ResCompany(models.Model):
                 ("usage", "in", ("internal", "view")),
             ]
         )
+        locations.invalidate_recordset()
         view = warehouse.view_location_id
         if view and view.name != new_code:
             view.write({"name": new_code})
+        labels = {key.lower(): value for key, value in LOCATION_LABELS.items()}
         for loc in locations:
-            name = loc.name or ""
-            new_name = LOCATION_LABELS.get(name, name)
-            if new_name != name:
+            name = (loc.name or "").strip()
+            new_name = labels.get(name.lower())
+            if new_name and new_name != name:
                 loc.write({"name": new_name})
 
     def _dx_rename_picking_types(self, warehouse, old_code, new_code):

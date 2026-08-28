@@ -13,5 +13,6 @@
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence">30</field>
         </record>
+        <function model="website" name="_dx_setup_public_site"/>
     </data>
 </odoo>
