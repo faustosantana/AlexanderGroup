@@ -1,0 +1,39 @@
+DORALEX MAIL DNS CLOSEOUT 2026-08-28
+PROD_UNTOUCHED = YES (doralex-production-odoo running since 2026-08-27T20:12:21Z)
+
+DNS PROVIDER
+pinariagroup.com           Microsoft 365 FullRedelegation (ns*.bdm.microsoftonline.com)
+rempartgroup.com           Microsoft 365 FullRedelegation
+inversionesdoralex.com     GoDaddy (ns75/76.domaincontrol.com)
+dominion-business.com      GoDaddy (ns71/72.domaincontrol.com)
+elmayuma.com               GoDaddy (ns39/40.domaincontrol.com)
+blueelite.net              GoDaddy (ns17/18.domaincontrol.com)
+
+LIVE
+pinariagroup.com  MX=0 pinariagroup-com.mail.protection.outlook.com  SPF=Outlook -all  DKIM=missing  DMARC=missing
+rempartgroup.com  MX=0 rempartgroup-com.mail.protection.outlook.com SPF=Outlook -all  DKIM=missing  DMARC=missing
+inversionesdoralex.com MX=none SPF=none (TXT MS=ms42350016 only) DKIM=missing DMARC=p=quarantine
+dominion-business.com MX=GoDaddy secureserver SPF=spf.em.secureserver.net ?all DKIM=missing DMARC=p=quarantine
+elmayuma.com MX=none SPF=none DKIM=missing DMARC=p=quarantine
+blueelite.net MX=none SPF=none DKIM=missing DMARC=p=quarantine
+
+EXCHANGE DKIM (all Enabled=False Status=CnameMissing)
+
+TENANT FIX APPLIED
+PATCH Graph supportedServices += Email on inversionesdoralex.com, dominion-business.com, elmayuma.com, blueelite.net
+EOP SMTP RCPT before: 451 4.4.4 no mail-enabled subscriptions
+EOP SMTP RCPT after: 250 2.1.5 Recipient OK (all 6 administracion@)
+
+GRAPH MAIL FLOW (tenant-internal)
+SEND 36/36  INBOX 6/6  FROM_ALIAS 6/6
+CROSS-COMPANY From preserved 3/3 (pinaria->doralex, rempart->blueelite, mayuma->dominion)
+
+NO API: GoDaddy, Azure DNS (0 subscriptions), M365 Admin DNS write, New-DkimSigningConfigSelectorCnames (server error)
+
+SCORES
+MX = 2/6
+SPF = 2/6
+DKIM = 0/6
+DMARC = 4/6
+MAIL_FLOW_TEST = 2/6
+READY_FOR_MAIL_PRODUCTION = NO

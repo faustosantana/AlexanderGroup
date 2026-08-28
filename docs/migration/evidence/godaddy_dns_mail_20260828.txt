@@ -1,0 +1,66 @@
+GODADDY API DNS + M365 CLOSEOUT 2026-08-28
+PAT used in-memory only. Not in Git. Shredded from /dev/shm.
+
+GODADDY_API_ACCESS = PASS
+GODADDY_DOMAINS = 4/4
+NS unchanged on all 6 domains. Web A/www untouched.
+PROD_UNTOUCHED = YES (doralex-production-odoo since 2026-08-27T20:12:21Z)
+
+CREATED (GoDaddy API)
+inversionesdoralex.com MX @ 0 inversionesdoralex-com.mail.protection.outlook.com
+inversionesdoralex.com TXT @ v=spf1 include:spf.protection.outlook.com -all
+inversionesdoralex.com CNAME autodiscover autodiscover.outlook.com
+inversionesdoralex.com CNAME selector1._domainkey selector1-inversionesdoralex-com._domainkey.doralex.a-v1.dkim.mail.microsoft
+inversionesdoralex.com CNAME selector2._domainkey selector2-inversionesdoralex-com._domainkey.doralex.a-v1.dkim.mail.microsoft
+dominion-business.com MX @ 0 dominionbusiness-com02b.mail.protection.outlook.com
+dominion-business.com CNAME autodiscover autodiscover.outlook.com
+dominion-business.com CNAME selector1._domainkey selector1-dominionbusiness-com02b._domainkey.doralex.q-v1.dkim.mail.microsoft
+dominion-business.com CNAME selector2._domainkey selector2-dominionbusiness-com02b._domainkey.doralex.q-v1.dkim.mail.microsoft
+elmayuma.com MX/SPF/autodiscover/selector1/selector2 (Outlook)
+blueelite.net MX/SPF/autodiscover/selector1/selector2 (Outlook)
+
+MODIFIED
+dominion-business.com TXT @ SPF replaced
+  from v=spf1 include:spf.em.secureserver.net ?all
+  to   v=spf1 include:spf.protection.outlook.com -all
+
+DELETED
+dominion-business.com MX smtp.secureserver.net (via v1 replace MX @)
+dominion-business.com MX mailstore1.secureserver.net (via v1 replace MX @)
+v3 DELETE failed 409 IMMUTABLE_RECORD sable_mx; v1 PUT MX @ outlook-only succeeded.
+
+KEPT
+DMARC p=quarantine on 4 GoDaddy domains
+TXT MS=ms42350016 on inversionesdoralex.com
+Parked/WebsiteBuilder A, www CNAME, Intune CNAMEs, _domainconnect
+dominion Email Marketing CNAMEs (bounces.cloud.em / sable.cloud._domainkey) — not MX
+
+EXCHANGE DKIM Enabled=True Status=Valid:
+inversionesdoralex.com dominion-business.com elmayuma.com blueelite.net
+
+EXCHANGE DKIM CnameMissing (Microsoft-hosted DNS, no write API):
+pinariagroup.com rempartgroup.com
+also missing _dmarc on those two
+
+PUBLIC DNS 1.1.1.1 / 8.8.8.8 / VPS
+GoDaddy 4/4 MX SPF autodiscover DKIM DMARC PASS
+Piñaria/Rempart MX SPF autodiscover PASS; DKIM FAIL; DMARC FAIL
+
+MAIL FLOW
+Graph send/receive aliases 36/36 From PASS
+Cross-company From preserved PASS
+SMTP RCPT 250 Recipient OK 6/6
+Odoo DEV mapping 6/6 outgoing 6/6 inbound cron OK isolation map 6/6
+
+SCORES
+MX = 6/6
+SPF = 6/6
+AUTODISCOVER = 6/6
+DKIM = 4/6
+DMARC = 4/6
+EXCHANGE_DKIM_ENABLED = 4/6
+MAIL_FLOW_TEST = 6/6
+ODOO_OUTGOING_MAIL = PASS
+ODOO_INCOMING_MAIL = PASS
+MULTICOMPANY_MAIL_ISOLATION = PASS
+READY_FOR_MAIL_PRODUCTION = NO

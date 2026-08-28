@@ -14,6 +14,7 @@ justech_alexander_<nombre_funcional>
 | `justech_alexander_website` | Website institucional público (sin datos confidenciales) |
 | `justech_alexander_admin` | Centro Administración Doralex (reutiliza la clave administrativa Justech) |
 | `justech_alexander_reports` | Layout A4 central, identidad por `company_id` y vista previa |
+| `justech_alexander_microsoft_mail` | Microsoft Graph: user mailbox `administracion@` + aliases por empresa |
 
 ## Reglas
 

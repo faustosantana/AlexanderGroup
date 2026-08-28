@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="dx_ms_inbox_company_rule" model="ir.rule">
+        <field name="name">Doralex functional inbox by company</field>
+        <field name="model_id" ref="model_dx_ms_functional_inbox"/>
+        <field name="domain_force">[("company_id", "in", company_ids)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="dx_ms_inbound_company_rule" model="ir.rule">
+        <field name="name">Doralex inbound cursor by company</field>
+        <field name="model_id" ref="model_dx_ms_inbound_message"/>
+        <field name="domain_force">[("company_id", "in", company_ids)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+    </record>
+</odoo>

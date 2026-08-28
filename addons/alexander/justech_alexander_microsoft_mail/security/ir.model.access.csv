@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dx_ms_inbox_user,dx.ms.functional.inbox user,model_dx_ms_functional_inbox,base.group_user,1,1,0,0
+access_dx_ms_inbox_system,dx.ms.functional.inbox system,model_dx_ms_functional_inbox,base.group_system,1,1,1,1
+access_dx_ms_inbound_system,dx.ms.inbound.message system,model_dx_ms_inbound_message,base.group_system,1,1,1,1

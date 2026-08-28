@@ -1,0 +1,20 @@
+DORALEX PRIMARY FROM ROUTING 2026-08-28 DEV
+PROD_UNTOUCHED=YES (doralex-production-odoo since 2026-08-27T20:12:21Z)
+GMAIL_SOURCE=res.users.email + mail.template.email_from + mail.compose.message._compute_authorship
+FIX=document.company_id -> company._dx_outgoing_address() = administracion@domain
+REPLY_TO=same administracion@ (not catchall; Graph inbox is the licensed mailbox)
+ALIASES ventas/compras/info/facturacion/contabilidad = inbound only
+PLANTILLA alias_domain=None (no Blue Elite leak)
+
+MARKER=DX-PRIM-20260828T202237
+Graph SentItems quote+invoice+po 6/6 administracion@
+Cross Blue Elite active -> Rempart FROM administracion@rempartgroup.com PASS (5/5 others)
+
+PRIMARY_EMAIL_ROUTING=6/6
+QUOTATION_EMAIL_ROUTING=6/6
+INVOICE_EMAIL_ROUTING=6/6
+PURCHASE_EMAIL_ROUTING=6/6
+CROSS_COMPANY_EMAIL_ISOLATION=PASS
+GMAIL_FROM_REMOVED=YES
+BLUEELITE_DOMAIN_LEAK=NO
+READY_FOR_MAIL_PRODUCTION=YES
