@@ -61,11 +61,25 @@
   background: #1a1a1a;
 }
 
-.dx-report-body h2 {
-  font-size: 18pt;
-  font-weight: 700;
-  margin: 0 0 10px;
-  line-height: 1.15;
+.dx-intro-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+.dx-intro-title {
+  width: 58%;
+  vertical-align: top;
+  padding-right: 12px;
+}
+.dx-party-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 12px;
+}
+.dx-party-table td {
+  vertical-align: top;
+  padding: 0 12px 0 0;
+  font-size: 9.5pt;
 }
 
 .dx-report-body h3 {
@@ -308,7 +322,7 @@
   color: #2EC4B6;
   padding: 8px 10px;
 }
-.dx-theme-MAY .dx-logo-panel { background: #111111; }
+.dx-theme-MAY .dx-logo-panel { background: #111111; padding: 4px 6px; border: 1px solid #2EC4B6; }
 .dx-theme-MAY .dx-trade { color: #ffffff; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12pt; }
 .dx-theme-MAY .dx-legal,
 .dx-theme-MAY .dx-meta { color: #b9b9b9; }

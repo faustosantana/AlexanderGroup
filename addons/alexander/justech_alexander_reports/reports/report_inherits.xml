@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="sale_document_dx" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']" position="before">
+            <table class="dx-party-table" t-if="doc.partner_id">
+                <tr>
+                    <td>
+                        <div class="dx-block-title">Cliente</div>
+                        <div t-field="doc.partner_id"/>
+                        <div t-if="doc.partner_id.vat">RNC / Cédula: <span t-field="doc.partner_id.vat"/></div>
+                        <div t-field="doc.partner_id"
+                             t-options='{"widget": "contact", "fields": ["address", "phone"], "no_marker": True}'/>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
         <xpath expr="//span[@name='order_note']" position="after">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="doc.company_id"/>
@@ -9,10 +22,23 @@
     </template>
 
     <template id="invoice_document_dx" inherit_id="account.report_invoice_document">
-        <xpath expr="//div[hasclass('page')]" position="before">
-            <t t-if="o.move_type in ('out_refund', 'in_refund')">
-                <div class="dx-badge-refund">Nota de crédito</div>
-            </t>
+        <xpath expr="//div[@id='informations']" position="before">
+            <table class="dx-party-table" t-if="o.partner_id">
+                <tr>
+                    <td>
+                        <div class="dx-block-title">Cliente</div>
+                        <div t-field="o.partner_id"/>
+                        <div t-if="o.partner_id.vat">RNC / Cédula: <span t-field="o.partner_id.vat"/></div>
+                        <div t-field="o.partner_id"
+                             t-options='{"widget": "contact", "fields": ["address", "phone"], "no_marker": True}'/>
+                    </td>
+                    <td t-if="o.move_type in ('out_refund', 'in_refund')" class="dx-intro-title">
+                        <div class="dx-badge-refund">Nota de crédito</div>
+                        <div t-if="'l10n_do_origin_ncf' in o and o.l10n_do_origin_ncf">NCF afectado: <span t-field="o.l10n_do_origin_ncf"/></div>
+                        <div t-if="o.ref">Referencia: <span t-field="o.ref"/></div>
+                    </td>
+                </tr>
+            </table>
         </xpath>
         <xpath expr="//div[@id='payment_term']" position="after">
             <t t-call="justech_alexander_reports.dx_report_extras">
@@ -52,7 +78,7 @@
     </template>
 
     <template id="payment_receipt_dx" inherit_id="account.report_payment_receipt_document">
-        <xpath expr="//div[hasclass('oe_structure')]" position="before">
+        <xpath expr="//div[hasclass('page')]" position="inside">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
             </t>

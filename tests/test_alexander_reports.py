@@ -31,7 +31,8 @@ def test_layout_uses_document_company():
     assert "web.external_layout" in layout
     assert "dx-theme-" in layout
     assert "external_layout_force_document_company" in layout
-    assert "address_layout" not in layout
+    assert "web.address_layout" in layout
+    assert "layout_document_title" in layout
 
 
 def test_official_report_names_not_rebound():

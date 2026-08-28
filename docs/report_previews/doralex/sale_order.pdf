@@ -1,0 +1,591 @@
+%PDF-1.4
+
+%âãÏÓ
+1 0 obj
+<<
+/Type /Pages
+/Count 0
+/Kids [ ]
+>>
+endobj
+2 0 obj
+<<
+/Producer (Odoo)
+/Creator (Odoo)
+>>
+endobj
+3 0 obj
+<<
+/Type /EmbeddedFile
+/Params <<
+/CheckSum (7f3c6d0e85e0c5344ef16e9030d76ed0)
+/ModDate (D\07220260828205844\05300\04700\047)
+/Size 25691
+>>
+/Subtype /text#2Fxml
+/Length 25691
+>>
+stream
+<?xml version='1.0' encoding='UTF-8'?>
+<Order xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"><cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order:3</cbc:CustomizationID><cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:ordering:3</cbc:ProfileID><cbc:ID>DOR/SO/00011</cbc:ID><cbc:IssueDate>2026-08-28</cbc:IssueDate><cbc:OrderTypeCode>220</cbc:OrderTypeCode><cbc:DocumentCurrencyCode>DOP</cbc:DocumentCurrencyCode><cac:ValidityPeriod><cbc:EndDate>2026-09-27</cbc:EndDate></cac:ValidityPeriod><cac:BuyerCustomerParty><cac:Party><cac:PartyName><cbc:Name>DX FUNC TEST Cliente</cbc:Name></cac:PartyName><cac:Contact><cbc:Name>DX FUNC TEST Cliente</cbc:Name><cbc:ElectronicMail>administracion@inversionesdoralex.com</cbc:ElectronicMail></cac:Contact></cac:Party></cac:BuyerCustomerParty><cac:SellerSupplierParty><cac:Party><cac:PartyName><cbc:Name>INVERSIONES DORALEX,S.RL.</cbc:Name></cac:PartyName><cac:PostalAddress><cbc:StreetName>AV. SAN VICENTE DE PAUL, NO. 115, LOS MINA</cbc:StreetName><cbc:CityName>SANTO DOMINGO ESTE</cbc:CityName><cbc:CountrySubentity>Santo Domingo</cbc:CountrySubentity><cac:Country><cbc:IdentificationCode>DO</cbc:IdentificationCode></cac:Country></cac:PostalAddress><cac:PartyTaxScheme><cbc:CompanyID>132220112</cbc:CompanyID><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:PartyTaxScheme><cac:PartyLegalEntity><cbc:RegistrationName>INVERSIONES DORALEX,S.RL.</cbc:RegistrationName><cbc:CompanyID>132220112</cbc:CompanyID></cac:PartyLegalEntity><cac:Contact><cbc:Name>INVERSIONES DORALEX,S.RL.</cbc:Name><cbc:Telephone>849-207-5817</cbc:Telephone><cbc:ElectronicMail>administracion@inversionesdoralex.com</cbc:ElectronicMail></cac:Contact></cac:Party></cac:SellerSupplierParty><cac:Delivery><cac:DeliveryParty><cac:PartyName><cbc:Name>DX FUNC TEST Cliente</cbc:Name></cac:PartyName></cac:DeliveryParty></cac:Delivery><cac:TaxTotal><cbc:TaxAmount currencyID="DOP">1661.22</cbc:TaxAmount><cac:TaxSubtotal><cbc:TaxableAmount currencyID="DOP">9229.00</cbc:TaxableAmount><cbc:TaxAmount currencyID="DOP">1661.22</cbc:TaxAmount><cac:TaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:TaxCategory></cac:TaxSubtotal></cac:TaxTotal><cac:AnticipatedMonetaryTotal><cbc:LineExtensionAmount currencyID="DOP">9229.00</cbc:LineExtensionAmount><cbc:TaxExclusiveAmount currencyID="DOP">9229.00</cbc:TaxExclusiveAmount><cbc:TaxInclusiveAmount currencyID="DOP">10890.22</cbc:TaxInclusiveAmount><cbc:PrepaidAmount currencyID="DOP">0.00</cbc:PrepaidAmount><cbc:PayableAmount currencyID="DOP">10890.22</cbc:PayableAmount></cac:AnticipatedMonetaryTotal><cac:OrderLine><cac:LineItem><cbc:ID>1</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">100.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">100.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Prueba funcional cotizacion correo</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>2</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">252.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">252.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 02 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>3</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">253.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">253.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 03 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>4</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">254.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">254.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 04 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>5</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">255.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">255.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 05 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>6</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">256.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">256.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 06 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>7</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">257.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">257.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 07 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>8</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">258.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">258.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 08 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>9</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">259.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">259.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 09 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>10</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">260.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">260.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 10 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>11</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">261.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">261.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 11 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>12</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">262.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">262.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 12 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>13</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">263.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">263.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 13 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>14</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">264.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">264.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 14 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>15</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">265.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">265.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 15 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>16</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">266.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">266.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 16 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>17</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">267.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">267.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 17 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>18</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">268.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">268.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 18 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>19</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">269.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">269.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 19 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>20</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">270.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">270.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 20 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>21</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">271.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">271.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 21 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>22</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">272.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">272.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 22 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>23</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">273.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">273.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 23 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>24</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">274.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">274.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 24 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>25</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">275.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">275.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 25 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>26</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">276.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">276.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 26 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>27</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">277.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">277.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 27 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>28</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">278.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">278.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 28 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>29</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">279.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">279.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 29 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>30</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">280.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">280.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 30 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>31</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">281.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">281.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 31 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>32</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">282.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">282.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 32 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>33</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">283.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">283.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 33 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>34</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">284.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">284.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 34 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine><cac:OrderLine><cac:LineItem><cbc:ID>35</cbc:ID><cbc:Quantity unitCode="C62">1.0</cbc:Quantity><cbc:LineExtensionAmount currencyID="DOP">285.00</cbc:LineExtensionAmount><cac:Price><cbc:PriceAmount currencyID="DOP">285.0</cbc:PriceAmount></cac:Price><cac:Item><cbc:Description>Linea de prueba PDF 35 â€” descripcion suficientemente larga para validar wrap y salto de pagina en cotizacion A4 Doralex.</cbc:Description><cbc:Name>DX FUNC TEST Service</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18.0</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item></cac:LineItem></cac:OrderLine></Order>
+endstream
+endobj
+4 0 obj
+<<
+/AFRelationship /Data
+/Type /Filespec
+/F (DOR\137SO\13700011\137ubl\137bis3\056xml)
+/EF <<
+/F 3 0 R
+/UF 3 0 R
+>>
+/UF (DOR\137SO\13700011\137ubl\137bis3\056xml)
+>>
+endobj
+5 0 obj
+[ 4 0 R ]
+endobj
+6 0 obj
+<<
+/Type /Catalog
+/Pages 11 0 R
+/Outlines 9 0 R
+/PageMode /UseOutlines
+/Dests 7 0 R
+/Names <<
+/EmbeddedFiles <<
+/Names [ (DOR\137SO\13700011\137ubl\137bis3\056xml) 4 0 R ]
+>>
+>>
+/AF 5 0 R
+>>
+endobj
+7 0 obj
+<<
+/__WKANCHOR_2 8 0 R
+>>
+endobj
+8 0 obj
+[ 0 /XYZ 48.75 711.5 0 ]
+endobj
+9 0 obj
+<<
+/Type /Outlines
+/First 10 0 R
+/Last 10 0 R
+>>
+endobj
+10 0 obj
+<<
+/Title (Quotation\040\043\040DOR\057SO\05700011)
+/Parent 9 0 R
+/Dest /__WKANCHOR_2
+/Count 0
+>>
+endobj
+11 0 obj
+<<
+/Type /Pages
+/Kids [ 32 0 R 29 0 R 12 0 R ]
+/Count 3
+/ProcSet [ /PDF /Text /ImageB /ImageC ]
+>>
+endobj
+12 0 obj
+<<
+/Type /Page
+/Parent 11 0 R
+/Contents 28 0 R
+/Resources 14 0 R
+/Annots 13 0 R
+/MediaBox [ 0 0 595 842 ]
+>>
+endobj
+13 0 obj
+[ ]
+endobj
+14 0 obj
+<<
+/ColorSpace <<
+/PCSp 27 0 R
+/CSp /DeviceRGB
+/CSpg /DeviceGray
+>>
+/ExtGState <<
+/GSa 26 0 R
+>>
+/Pattern <<
+>>
+/Font <<
+/F6 21 0 R
+/F7 16 0 R
+>>
+/XObject <<
+/Im9 15 0 R
+>>
+>>
+endobj
+15 0 obj
+<<
+/Type /XObject
+/Subtype /Image
+/Width 281
+/Height 239
+/BitsPerComponent 8
+/ColorSpace /DeviceRGB
+/Filter /FlateDecode
+/Length 13539
+>>
+stream
+xœí}y”UÅµş_/nš¦™{Û8€l†EU¨Qd¼—ˆ‘Iß3Ñˆ
+D5FÁ!$æ8¢Q5b¢¢+/®%"Q[$tÀ×à}_ßMoªk:uÎ=wìúÖ^½nŸ[÷Œõ=Ô®]‰„‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡GºğÕ—Mÿ»õÙôí¿ùW¾úbWúöïá‘MhFß»fÉg‹OİıÃ/7=šãìß¹öÿé•š¾ª…V_6¥ã@™:ö¾çïıâ¶s©{‹‚®'?ĞŒİªÇq84ˆùˆiŒ+Øo{îŸ¥viI 5â=4øxPğ
+ñÀ®÷â=´‡G,€~)jh•‚EbìÒØU¨C“Ö{ÇÊ#ë@'„"`÷'‚à·qŒÖŒt?øq- ‡G6 K)rïe‰%š‡¤~&0JS?ˆ…J0´RŒÀ¼kXz*yäb¡ÆU*§—'–ÓğTòÈâ¢Òîâ<ä©ä‘¿ˆ‘J_Üvn”38ĞœJĞÃSÉ#G#• Íï¼’İğTòÈâíÉaã_}±+Æ£{*ydñR	²ïù{İî’Pá©ä‘ˆJÇÜƒX’<•<ré ’S6¤­z*yä)ÒA¥İñ‡¸’<•<ri¢RKb9ş6mÕSÉ#÷‘&*eK<•<²O%Xà©äá<•<Ú!ÒQ-ÄSÉ£½¡ùWv'SF#ä¹Yà©dÄf_é¨ğ@<bùlñ©-Wã¨½ã©¤ÂmùôÊ-%•|Õˆ‚Ä#<è–Jt©ÊSIˆ³wÍé&{6L<O?²)â©D8°ë=Sn­gS TV@ÓÃW…ÇŠö1N»Ë‰@%¼¬o‚gS^Ï.BÂ'ú’K\Z,ö	¹ !¨t ™"Ç={6å)¢ñˆ¯Y#¡4»T@ÍS9xáVÿ¯É!òl*T¤È#ñÑKq‰ÿİúl:¦6ä Pİ~‰S‡È³©ğÄ§OeKÌ-
+Å)‡Èı~z6å4§Rì×KfÄ³)×áy”?âÙ”»ğ<Ê7ñlÊExå§´TÑôK§åÒTè Ã²çşY¸/7=Jëˆi…¾İ»f	F,Ñ³)§cÑìL
+-i”ÊJa_}ÙDüÊë—‰gSN!rĞsZè“†	 •iİÛ\–Ô×Äñˆq-0”>¡™™™Â“úZ„ª<tVÅ¯GwàÃÓºÿmf÷¸öï2Ô‘j¥±4f¶¦Äqc±ıÎëß©¨¸˜e`ïwÑ%6ùy»¹‰\3óp>¹°yä¬9è ‘G$·œZş—»¥~‹üLÛÜDêfŞ3“»Ötë\\\rÕ°ò÷¿ß#ò~à°ä‰Ú R".TOU—•J—é4éè³¢ß"HKŠ£G®"3¯_H”„—sÙø5=ÄÄ#È9ı:şjdçïöïùnÛ+Ğzä¢™yÿ3³{MEG‰Jš.î]áøú…c’İ>T ú¶ğˆÜ¥Õ*îÕ9²™—-ÿÑÃÌ<¨âQŸ>}W®\P8bõÍöˆ„jPi…6W~»ì²¡eïş{èøCË;Ç#ÊÌAÎ8¢QæÅ_|÷İwU*Ù	Ï(OİgØ¢¦×Ä ‰JĞJtë®=±óÃËBñ¨%û.?oWû„£™'ò²gÏ•´„Ú»fI¶¯5%|õÅ.uTWÇôkø/tµ„ƒùÿNé|ã)åîTòÑ†ü‚£™wõ)½‰ cÇÃ_ü0J$õ½KŸ™Ü5—#! {¿İ…øÂ:H²î˜JÔ6ïä4µD<òfóhe¡¨D2dÈPØ„Ù¾ĞxÀ…È ’*Ë‹E_id]G‰JPXk'wåö?Ölr´Í¹17XÌ¼GÎëKtX´hZ‚¨T`„¢²KOo£’¤Ï¢€Adè‚DÔæì#K-Á™|7†Û3LfŞ3Së˜Ô’”ˆD¥B"ÔşÛ¦Ö÷páÛ~¤ŒØ·úÃ¤.¦hC^Œx˜ šy›g!R€š1•öìÙãÈêêš#<J%ÔÖ­[³zÅ)aÃ†•ÕÕçìæH%{G÷è ³¦àM#ô!ˆ–:íyÑÌûŸ‹kkkj,Tìš0á;|ğïŸo¿ı‰SÓ§ÏÀ³p©)ã‚)S¦MŸ^]SÃJGu”´ò£¡@(RL¯O“C-“’<ò\9üı‹{×VURoïÓ§¯J¥ÆÆÆ„™J]7oŞl:
+è#µÏ;BÁ@@%&È%ƒÊìµ¢€t‹O.G1¾GâË8hÜ¤ñ‡½ÇVÜúæ¬jCT¢¯åQiiÇç{NÜíµ×,xâñÕ;ŞÛÁ[æÏŸ¯ş05xÈ1ãÆÕôé#ÄÏ$·x4á¨b|ÏG
+xJ<"Ê„¥Òu×]Ïûlnn¾íÖ[ëjû@æÎİÔthì”öç¹‘PUh5h@şwãùİìZ‰eáÉ-±qåù4¡Â MÕydÊ‘Å­¡o-•`ÚÙ©$úGS/˜B<úÖàÁôa×®ƒü&íÏaOfşÚC*	<UÒÂE‹ÄàT¨ôĞY.lš=¸L4ó|¦PŞã@3ÃÏ?®'Ùu‰$SxL–éCÛMT‚®÷JÊ<Â_Ğjì¨ÑĞSôÕªU«L®Vf¯<H%]vùå"ÄI%M¸™0Ş\Ø4c@'ğÎ‡ï
+p *544$"QéÈ#wKÖ©$ÑWâıä•ğ€J"yÄ
+Úêş™Ã(…•Ä‘MSíôçºú^€5‰JÄŠ9lÙ²ÅD¥iÓ¦«±;Ş':ŞúçÖ½ºi[wO<¾š¿İ¼ys~Q	—L”‘T’hİ5¬]‹6ÏLû†”sdÓÉ}æ?x/A•J`
+¨ÄY"•Hm©T}%VI°îğÖè+]wİõùE%fTÏ¥³gÓg‡·CU-]¶ÕUÙ4²®#Ø´ïù{³}­!Öq¤¶'Tš0á;ÔŒcw¢0•Ôü‡§Ò}÷ß?°¾Ü¹û{Î=Zõ’V¬\‰¿T«C¸°é¼şÀ&Ÿ¯8Ğ,>qÑWŠF%+ÁÀãÉµ×, =hÇ•rœJ6l€Æ™qÑEcÆãÎ5Ä*	–¾âöêä&G6ıtXgŸRïˆJÌ”hT*-íxûíwPc
+ÜA8ì`1ír™J É£=&v{¨9%1‹f³;›ªº”@1=wÕÄ/7=ºç6*Å«öÀf®T/Õ&½ô„*‘)‹-b*‘ª†j§Éˆ§‚PMMM»’H$à»%spJ4œ¤“Ç„o¥_i‹€²‰ÒùÔ9MxR{îŸÁnA4¼é	ú0E\Wph~çZÄ„î<‰cE”û&C¤„©D­Ú*D%úä8•@I%‰T¢ æ´4k«(²	6Ş%ƒÂ‚Ø¬ÌIË|øD¾{·CQér¼i§M§ô-•Ğ Gò”Jü±©#iG£K&•D0­bgÌ<P)r…d_"4ÚFb§ş‚5‰Ö±T•JÚú]…G%(»ï¹GÌUY} ›éç¦ÊÌ&XtÚ¢¦	MâsùÂB¿È• íƒJ{öì‰n¿ã‰Jì7QìÎ²Ëc²°I;ÃQ|ÊDX¤cé1¢3ÅD%ÚŞ¨š,_¾\Ì"ëÌêÕ»÷~ücüİì;±”Î°d½¬ëøÆ´ˆ6^fnNÁ€KßÄN%fŠ–JäC%Ú•Àti¨$q,‰UÒÀúú±ãÇÿò¶Û÷óÕ—M–{şÍV}îˆ³3 §(-6‚øÈC(DXp!,•†šh¥÷ğæææVĞ˜İŠäÎ”¥¥Ë–]³`p ­„¿ó/»º‰sİí°,7sã)å¢&’ByÑcÌÒ±LÒK#R©89`Š¿×ÿç¼¦UWşó?û‹bTÈ+vC³uKE€#`
+¨$'±†zeÓ¦7:îÍâ1‰TRCy%(%ñA¼PHÇjª[æ¼æ÷ßüãœ“¸d9\~ù
+•J+V®¼~áB1ñ›dÉÆÃW*‰`z^¿k›½6EXÉ¯
+±óH¢Òß_şã?~>–¿Â}`æ	Ó§Ï }ÄØ/?µòI^S©±±ñ“O>e–/_n¢¬¾­Î£#xR˜$“Fl#xL>'6Ò0¨ÄTš2règ‹N··,ó×¥ƒØá-Z,F®`ìÁ±* *Á?ªª©9fÀ€|°~Ğ )Îl<dH(•DĞæœ<L%50áQ¦ãæ$Ò1¨´;¹™´„ßÓº×÷.Õöùä*K«Ä…¹ØW>R	:è¤áÃ¹W×Ö~ï?şãì	T6E‹h#EÚElIJJ~9ŠÏƒuD:•$¡¾Û¿S`ÏwÄ~•Œï¥ÙË•pï&Á[¶lİÚC;ãŒƒº ¦¦ªµbä¤É“Å•í ötñ½:°RÇ˜Â>>ÄsD:•XàA7…êÿRáb8S¹L¥†µk¡€^LD9X_î@%ñ–¦®’j‚+\!*’<¤ê]Çlê]~ğCØ”<ÄsD:•ˆD÷®Ü"’iÓ¦744Ø³Á§OŸÁœ©hTÂNÒwßÀñiÓ§kG±qÅÊ•Rè[Š6P0<•PSid]©zÜ‰Gi
+›’çƒxHÇ Ò3“»JnŒ·EÉ·7;DX€AÔ2²™—>*ÑP¸ ¾@áºÔ4TlDƒË.¿jÌÂ¿Pa¤³Î:ûì¹óæıõµ×R9ÕÆG¨ške¹¦å÷;´Z¨§éƒxˆwP	¯äÑÂÍjÊe-j™ƒTÒjÑZÃgªvbRIô9l\‚dãÁâÂÈÚq6öÂÚx)ß°v¸Hôş÷{üpPg%’..s”¨q®Q	ÊEå©2Jñ\Ó6c!Ğ4;ÉRÈ²ñüƒ‹Ë\{bgéˆàÔV4Ïñ‚Ç Ü¢%#ºHİX%şÅ»f{”›~˜kT³»Å"EÉÊ‰¤Î¢ªA&!«~•Ê™ˆcµP4—*ãxø£ºDq´‰fãù ^ RTRccÇ£¥^ø—*‡‡úyNQ	>‘ÚE™\à^ÚÑX‘}¬°RL¸Å:«‚RƒŠZÇÔH8¨ÄÅ!¿@ñA¼@h‡'E[à(8Du,TÚºukîP	W¤e†º‘&%I"ÖéJı|8í¼$Ö;øWZª©(Y‡œ	5VëƒxN8ĞŒwcñ5¶Pœq‹ù?ø¬õ†8”ç2G‰BÍ‘«MÇbZ*iı&­€hÌ»Xæ€p –Ægñ— ŒZöüâîåSš¾ÊûJ¡ {Ø%š‹Nê±C†İ²eË¡ı$g!©½zéÒeÒ(Lº©Tœ†RxZ	ºÆdà‰e»bQI	a„¼¤›F”ÓĞşÂ„“N ôáîÒg‹OmYÃ/xÿà-dº½?ì]Û«»H)¼ NIÉ¨–8^ÁPÉQ%‰Sÿâšá+FŠZ‹²µ&I i#»K¦§¼wÍ¯†âüYÜOÕêûûå¹—JQ-:‰À8—@D>RÉ$¢¶¢@_,GdÚñĞÒîä ­t»“1ó¢Ö(„WCBÒ’Æ‰#¢E444H!n•DàZ`¾P¡R‰&S°ÚŠñ|Ä ÅVO8oœÕƒ‡™X(fNŸ¹vŠWC¬vo‹…:'‰d×;vœØ{©z¤øs´‰/*1À)K¥»h`*‘>â	€`
+ÇÆY°‘ÕÖ–+†y5”àÅ…×SIkÑÅÏS*IÁpĞ'Ş¨1²ŠCÜqz¹¨t$w	<b*¥˜¶ä‘"Š[ÚR§­\‚áC†Åoa¢AàlYîx‘©a‚ªT†+ĞœÓş£‹$Bti‹’A<f¶ğ@É¯®·âÿÿÎS) e‡ÒÃiÑ
+ÉğTX<á(Ò”8ÁÀ+J9GÈ1·ÿ¼ş8m•¨$•šÄiĞŠÒJY‡İ¢Sƒáø×dÕHNV¼TÂqc÷Jxä^æ.D*>TÙ¸¨uVš¥ã“mTO¥ì‚ûêÒ¥ËìÁp‰ĞÛ]2Ã#S	ú(}]×2rd’´vZ‘JDœ‹ë[bt\*\:O¥ÁôéÓ#ÃÁ¾@M”:•–	.	SìåMÓcMWbƒ	ÒäM‘jKr}!é|şúÚkJ¹ ®™OĞÃ¥2òà]´8^X*I…V8¥\­h”
+ÔzÅvÙ"”ªH$*A-<ù`¨¶HA¼7z*å@
+p'AÜÚ$ö`x(*‰ÎX£–{M®‹dŸL‘•”PjâÁ]ºñ”ƒT¢™œŞ@²|ùrO¥\ QCµÓàûH®“–Dø!…òĞØ=‚6#jÜ¸6§U%,KÅêãÙF<]‚ÖvÑR)MpRr×ßfvŸĞZ…†–$*ıêöÛ=•rjÿw†‹5Ró,8šm/€,:G[·nUgéÒW`·øÀ>£˜’ÛNyìÈ³%%ÒE¡æ£2whR’D¥_q…J¥½{÷nØ°!u•íá‘JjŒ.T0<0›(J`X4Ï4ß–Ç³(q
+”OÖ®]Ê"‘ºa©„]eÒºÓ®¸tÉ 2qhI¢—µd*½şÆø·~Ğ á#Fô®ªúÁ¬Y+W­ÊÀK ƒ©˜n":6\*—PJ°âìÎ{pD%:‰’p£Ü	Å©tÌ)ŠE\–\å0İé"´% ŒÈÆ£r(TX__”½…íŠsæ™ìRŠÜYô­@¥{ë§¤ÖP¥õ-TDç(p·`.xMT¢H>™—8%áåºšë˜V:S,‚^¬¡2ğb×®jñş÷{œud•:•¶DìT"×ï¤áÃÛì¶¹yËÖ­RaL*ú—î€dûQü/:§ÔÕÌpÉë…Jl×açî%Œ¨%N˜hÈïœ°ä*|G»¥î—ë.a®S=¼ÏÁ­jrøÑıû3•pÂÇP”g‹»‰ueÓ7Ş~ÀTr†›ôEŠ«E55„[Â%Åû›¦Ç”&'òJ7´Åu¡‰(©ud]G.œ¢
+¨DÊÔ‘õP²bm¥t_ZÁƒ¨¤j™Em—®£÷¼ª(-œZ®›H%ÇùÌ5f(rŸÆËR^2ëŸ>3ïmµ?-Ñü>pj¹y)@`rw…D{–aZ/­à¡FÉ@)¾té2µ$-­=h4*%Z:1BBçF_¥~öíÛ·óı·,¹ù£>J}ov˜L§b)}+Z²¾©T<fùîùç…IYç	&PI4¿ŞGùRÁƒ7ÿLìêÁp‰h"\l<j™"•Ä¹T¼OèMÑÉ¢Ó¶\88òÉ®]û÷ï75ÀWŸ}öÙ‚«vÄauuµ}Æœ1êÃ?L«n2­EÅR~ô­2íâe'Ö¶YçÂ]%‰eyï4E Ş_ÜvîòKF±E'~«†KY¯<;Zy­ô•pP—ğ	SœišCâd˜S–ËÇè| YşüòËÒ·ĞAk9êhˆeÈqõ[6o¿¢Şò ˜ô‹6­ßeòÑU*?âĞÆó¿}¸´¾¶	¬’˜z4T½°m7ğ^€”ëõØ¥§I.FB	†S­!iÑ*<ĞoMTJDšÊÄJ
+TâóÄ%Ø©„pÒ¡kÀ‘'V¯æíPUÛ·o§íª@C­Z±"M†¶náßfv•öîÀÏ%™zì¡Ø8ã±º”×9§¨…»C|ûÑzÍâ«Iµè¤ü“TVj¦=¨T
+5W²şD"Ùin/Ÿ§Jë×¯‡–!‚üåÕWI“ïãÆÆysæhI$
+Ú|òÉ'1>‘(K'¬Ü•’ÀyêŸ–J?h]héR¡@ëŞ5K,õRT•D Åäsù\@Fø¼ˆJèÉjŒNšãĞ¹NÜRÌŞ‰@¥PIãÌÕ „ÉÖ¾J Sã¥/Â¢»ûÎ;É-"9gâ$Pæß“«Ÿ˜9cójëãdo\Fœ…[MÄU«º”¨å÷IFµ®	(UàÇƒ6{¤’Ô˜9­ºëµR Ø¨S©¤Šc0¾	à¢}†©”HÆ:pªâ0…èqVö`8èÃ¼ _D¦œ|Â	 ú“ÿŞ°AlF®tYŠÏ…ğöW=tVTˆ³ñünĞGÌl”æ(±œÓïàöšŠÕ8Ô{¬’Ôa\Zk –Ë)`˜\Z•JRzƒ)®A8RI]Ì"•DuÉg"¥á‘XR£A­ñ‰ÍvíÚÕæ•òQ#´•è:­mhH=A–•º´SÉ¤’ø'×ËïKÆI%Å¼ugjÔ™¨$M¯H$-:)ÇGã@˜‚Şæªãl)–µ(O‹°e:Õıû÷k}"(…›555M½`Ê·;{6oDÑ$¥–¢ë4fÔé¦Ñ"¢’–eÃûÚh_C³ÅØû²)aUIsğó2LĞuZ*IA<Ç`8ÕHqÏk¤’{jòáïå­	081ìJK¥÷wìÜ"‘Üìí·Ş¿› ¡è«[–Ü,ıªê½íÛÃºNk×RN©…Gv¤¼ôĞg—4Éo"•¤~‚òéC&˜Œ:•JÑ‚á.U†ÂRÉ>+„ÔH¤™õb
+«ª@?şøãõëÖÁ„3…æŞÚ¶ƒ;cGÆFh%úvısëè+(&­Fƒëdó• ]pPkÂ©Ri‡âÁ•M¾ÙƒƒWV¢UÑÅú™c„)-	p°Â”…"Iã¬¢!¤Moˆ1n¢Ïœu§Ÿ%Ö‹n_×Ÿ¾óı¢›£3/óÚk•`ã½ºiÓ¯¿5í®S“›äR¶(™Âªn„ë419ƒiÂQ]2^ª	A%±°gD¹CN«]Â²²’(¤•Ô(aƒájtÂJsÕYØ”¢aYtKqiÊ€7n5±{÷nxFZ‹Nñbq°IµîRl\vv9¥àôÂÖ;"Ğ«„‰æòˆaİ™˜Ë3î}ÀÁÇUµ}Õ%®–;œÇ•8B"f8Pj:ª¢¢+Ú¬Z±BÊÿ1)è¬O?ı”vâÀ®»íÖ[)ì@mšššønØ÷†]}Üv’W"ÉÍë.<üˆ#êjfÍxÓD©x(ùõè.ö5ÉºSU’$>à`‡vş‹JÁpíä²À õXé)R‰Oœbÿˆk"É©n¸qÛ›Û,n	X6sÆø8ÿØùÏ?ÿü‹/¾ ]Áœ£dãÑ_˜yôí§ÿüg šƒÚÚ¾};»N¸ä³'Lz/ºwãÎ–×º8f L<ªáwÉ ²çw3YwÆ¤8Â”l¬¥R*Áp0.p¾R±9A(•hX–ÿåå‰J{÷îığƒA{?‡ïiÇûöíÃeŞ±t)”Å×‹‹?øàƒD«V’~EZé£>zô±ÇĞ9ßÛ¾;±¨<píÏ/¿7MË#Ñâ¡PRYŞ’€7 ×¡8¥êIJ
+Ö] Jòhg“©T’btê¤ZS0~–{(Ï4~ŠJ4ï	‡“ÀñaşüË^zé%¡Ê˜3Fİ²äæ?ü$ƒ6nÜ‹«ººúß¾ö5–ã;Ùë~ˆo¿õáÉÃ‡£~µbÅ
+œ9ìÓB(|ûä“O–”–†eŠ»Œ¬+Y×fÿ¬¤ğôy©“à"ô<´ĞVŞ¨$Í°p)“‚ª`¸#•–-]Éu0>Á¬“N:?„U¦vir‚à1A‰€DèükæÏŸ/ÒG’^½{?ûì³Ø9,ºå< ¡c½±y3ˆ&¶dBíŞ½ûî;ï4
+'°~ıúÊêj‹b2å38
+~> WÉ…Çvª,o³Ÿ)cNüí¥³g¥gÃÂƒ]1ĞŸU’6.•I¡ì°$r¤’©ö$ÌkœÌïÿ{x%’[DNĞyNL,\úüèÑ£-R	5uêÔ+W.¸öZ| e¤"ÔÜgŸ}f"LÊ7ß|³~ğ`iAPà¦å¦”¡PTâô×IGwsxs‘&ıM›>=}‹FìÓ…ãO£2#eRL#JØí`
+•»P	Ç¢íT¢¬!ê©§zú©§Å;oÎœ?½ğÂÃ?ü	ßyä‘G 2`À¸3(²0¡(›B«_zñ¥é3fp®®(à"{IÇAIMZ]][koÿƒY³˜PE)P–ï°„ò@%µ¯JË-iƒáTŒN¢Ö:¶äÚµîÁ‰JLÀÅ‹CÁ	‚‹ôÎßÿ3oïŞ½´`-xs.<	ÿëóÏ?¡îZ¶L"ØtóM7-]¶®Seï^±óH$Ôyı;6ŸçÎ›gYY€ËèA%Acúb)°Œ1ITr†kãxñ‡¸¨ÄSà/šqÑÖ­[o^ró/¼h;G	4ÇŞ )â%+›¡ÍÓO?åN2>ayÂ›5vhšxÄ2¨¾–€n:ëì³ÕĞ×ü<Z¸h‘/Üê‚½k–Ø©„ÎY•ÁGB J*„¤Å)ÂR‰ãlÇ?S´úŠ…‰ÉñÅZ*AwÌŸ?ß…ªp
+—Ÿ­¨èˆ#¡~ÿä“"¡ğ®¾Š@8qußøFïªªÀ–¤Œğ—
+
+AIê‰,PLJN8Ğ¬Í'*AÑØWQGIÃr/Öj	zÓöPTJ´Î ‡™x•|…£H$âşc=JÒ]
+$õÒ[n½„ZıøãL(Ø~úÓŸFœzjUVûÍovïÑ£GÏ T(B=P¢z"m%¶ñixîĞÆˆJb3q¼¦Ø-H¥µk×ºìG,FA’!ŠsÆéá(NÊ½İOT©>ø ôBX*©wU%T×nİD*vúéT¤‡{è¡‡Ö<ı4
+®t“¥ÿÓğkßºº²òò£úõëÙ«şÅPIl6â´ÓÀ‹ãú9µ¾GeùÁÕ5ÕR´È‚–3.ºhÆÌ™8+I…ùrC¡ Î¼˜;q{TctRf8-·mV‘•Ká·7&­Ä§Wœ#ãK¨TSS#Ş
+²ıĞ»R¤¶uôÑ]»l_TT”,ö(®ÓD„"GO	¯,/é^&;5øKlåœsÏ•¶ÌĞ©/[@Ã…ˆ¶@U{†È&˜|¿½fVq2d§Ã¥ôS¸½º¡¡Aª¤•©FÑ®R§›sÅmkqÆ,i%q,	šx9×]wİ·?>T¨í÷öõ×_¯;üğCI*ia¯¬®† §Š’É	çõï4¼OéàÊƒ*;Ş­e˜µ[Yñ°ÚÒò²RTtëe¤2/
+_àÍ™;×İÄŞ|=ÉøêË¦»Ş£)ÿZ÷Ä%Iå#ßíßiÏı³ph—²á¥JYºt.å¦_übÜè1}kj{õèIrú©§Í¹ôRlù÷™ß›;{62T$ÂñÇÿÄêÕ,§œrJeUU(•„®k¿±xÛ´ùI’J#Ï8ÃÒ‡«º”€Gôf{ôìŠIÉº‘PI=;÷ ›2† ìªjjìéì±ÿuå•.Tò“,R‡D%Õ¢s†»ñI®9å¤~%I²t,íHìøŞEÍ›=çÜÉçØs¹ÃJII	wìò²ÎâW:•…u”úõë‡“¼íÖ_×¯[·#	¾?ş¸ØşkI*Y†u(KA¬Ìğ—»aËøÃKînëù'M¢õ_L2|Ä(¦ûî¿l:÷¼ó©ä'Y¤¦’K0ÜD"»u×¡¤i–®]* AúVö—/.Ò·ºæ°šZqKuïÊòÎåeÊ E_ÿº•ĞŞrˆq£F3Fl×]wıøŠ+ìÑ6Za–…Ö,[>íØNß¯I¢«®­å%hµ2ì„Ğ`ê´i´ößÏo¸ÁÎ£Ì,ySğ *¹d†K$jYKnËJ([Bİ®éÑ­{U¯,°&EÆÕVVA@´İ»“İ ½{ô´ÿE*á_ğ–ç¢…‹úÖÕòh·°>æÓ»Ò‡ßıîwwŞu-‹I2{ÎQÓõ;æqŸãÏ<S"Ú/nºÉN%Ÿ}¤…ÿÔçCb$œ¹Ó§ª:“=Ÿª§Jòß6ˆøÖ¶mj’î»oŞœ9,çLœd™iî"U½z•	v#()~zVt9Xú»_ÏÏ«™¬GÙD½Ë‹¯=ñàÔZŠ`ãÃ€òÓŸ<øâÖÄ9Èœ¹sÅ°¨»ï¹GbÊşøG•>´4-„ÒY3Úç
+k™Jj0œbÎ4)Iä¶Îe¡wjÚö–L
+z~ìw£ñ£ÆÙJFSsãé•ëÏïµó-<âõ1‡Õ–òj/¢Âç6ˆ[®_¸Püöæ[nQY£NıCKš–å#(h¦-úîˆÉßédä˜äˆÃêN>á—Jî2æŒQ¢Zq—–y:E†.UÒD«;ÇVÖtIúÊS‰>”&Ç¡¤.˜2E4íÔ”Úè±cµ×]yå§i[ã¦Â>”Ó¡¤iŸ°”¡~NV<¢iÉ•Â“¬ìS]Ó­k×neš™€ ÅSO?ı«Ûoç-Wşä'"×TÊĞh‘ÉEš:mÚğ#<›â‚ZÁ»8éût«èÊxƒÆ™9c†J	ğ\²õÚÏ°pÙdh:rÊÜ•rßê¼¾JKÛ$-ÀüÆ{ï!mO¢–e-]¶L;!.ÕŠ•+ñ“ÉÒg™êk…¼²Ä$m¸Ìî
+ˆ¹#¹ù"Ğ—À¬Wÿ,TG*‘*‹÷„™øV©ìÙ«¼3P>ìÛßşÍË_ıu¦Ã€aÑ‰:K¥Lccãš†i#ôÚ¼ùóù_?G)u¬]»ŞPIq	L8—¨5;M²³èĞ
+ärì'/`Ó9'ÑÓÒ*‘TÓ¸cÁÃÚªjQ³ğÄ=­\³`Åî¶mÛÆ‘µJ¹ŸX‘
+’)jc]DeFğ¬ÅzÚ"Àt•ÔÃÈíAØ41‹–º2<©¯—t£ú)Yy’\0e
+ÅÉaÅq8Bâ‘¯ûöí»hÆw+N\Ü NÑã,Øè%Y¤³´²‰VxûÊÊôKj²¬\µŠ>üõµ×´ş”Oa†;vü|ñâ°F^¡	ÁiWÎN&…F
+Ha©Ïï?5î[S‹—aI["ÖDU55lİ‰ƒ¹øìSXCasóúuëÆ%KõzÉ1ÑJ\Œã°šÚÊ½:uÒè¦ßşö·hÌ”0p «!)¾—.™€ºnÁ‚¬÷
+/©‡z`ÂäÓÉÕVUw­¨èÜ¹Ò­k×šÊÊºdn-¥Ñ1Bå%ùúÆvx5ä…¤º²ªGİº©so‹|É}+şÕÔtÛ­¿<~ğ¬?D/¹#-9´åå|`ËÍ›­Y§8ßº×¥ÊoX.Î‡,0€µûÏú…Ç.‡µÌ8îÑ¿ÿÉçœã£Z¼ºiÓ´)SÄ›F!Ö\…®Ôáí·ŞŞÑŠ×O`3ï û™ÏŸ/Jz
+¹,8[ÜölßÔH$9D`Ğ÷İGß¾µm[&Ÿ:^òÒLíµ®”×~À¼Cw¥»«›è–S¶7:/¾Ö>'…§#>”!ÇÕß²äfiôÜ¾VWä·DÔ&9«GrÌ5‘hÙ
+µOBI$¢”uÆ(H”Ê@*Yb¤_H¹x¾dÄ2Rg0ƒÓD1ôšüÂyí‡P‰T5„Ïâ	ÅªŸCZ&‹×èaìdöÑR÷ËĞOxÏxó°/ö\Ø}@ò‰ tÄoéV¸pÿI×`‡…}ÇÚ	ˆ_¬¿B9b®ş™ô*æuu’Pj`B…@5ÄÄºñZ;Ù‡P^.äÒ:è]”¥[¥0BFöq"u*¿xâxH rQpÃd¢;áµ,ş
+7Y}øáş¼MÇ«À%q•nTş^¬Gæ7-¬R[j,B´úh<ª-ï"`.ĞÄè¼X(¤–í3õ(¨Ì­>’†oóÅÚÁåH–-şõzÇ#Ã`f]rñÅê
+¶çrWSØˆ¥¤ø;…áñeèœä“Ãñ±r¹›…]Ñ¦W6=üĞCx¥ó{ÖQÚE¸óZ[NlƒÓV@Uiw¨TĞWÚ‘>ĞÖtnà²öÜˆãÑ>ÅÓÆçÀöœËJ–­½£‚>¸Ó€&vb1øŸ‚zsh|G=ÙöÎ¦Ş=üJ{uO_ÛÀE´gˆw¸ÈI–üâ¦uÏ=Gá‹ô¢Q	¢5\-TÒv]ôÓ‰¡ëj;¤å@±SI<A“¹>à2ª‚ëÕî!•pg\…>i2-´wíÕ–™¤8âòCœ|n*ßÀ‡hºWèWêŞ,T²kÚ("¿‹²B¥ºäÛ[Miµ+ìA½äÀ§@ C¥˜b_¦»’J-3C%P#Ôé´}&»|ˆ–{¥šg*™¾U_Â`yŠFH¶¨T§¼C"ô%Ö­îO-]G}ÿ›îJóÌPÉQv›ì"ğ!Úï•ô˜ìTÂ2°gZZŠï¢4Q‰#{§h`h‡hÈ Waê$’‰øL'ì"ªm¹{Í3C%õn“7-lªl ¾²À‡h¿W¸L±WØ©„–Z#_5x´=P¼ùÚ…
+ìh{¦ØIp¶°å´W-ZMêƒ–œí©JvWàSÀ-2ùG8ô7ìĞB)Ld‰/ühT
+ÕÏÁu¢mrrÍcJ‘JumÍ<;•¨ÊZí6Ò«5T²Hl¦~+ùSt¥ÉìÒ©>­ç¨ºBè–&š^”¸[~¹e€JZD¥‚!â=Ä9äÚxMêTûp •´{“^ãZ] ùe£’Ö=™b2ñèÑĞO\xàSĞª$í„é.öÌ@ó˜¹-­D‚›O£œî{Ë"b¡›yTJú^ ÷!uHíhNºI$2R	îâé¸¸Ì¸dİ’÷b
+¦Îf²p´*,Ğ<ÖŞŠhT’4ˆ*’2u‰íãWC{ÙE,Tªk	¸PIÛ‡íŞ‡šˆv^•‘½xi?/Fû[mg°?í#°É¾%ïålØw-ì éS­gË°~vaˆ	ókGİEìB%­Â6ö¬d‹J µÊÇñY¾uªz²?…°F”öÒìñOíùãb3C¥DÈx8ç z²?Ä„á^iSğ8´…zPí£¤¯´İ@½oY¡’–Gª¥é¸•Mö§•Äöêİ£ä(í¯Ôé íÊ½„åYdö‡˜0Ü+š)éxÕêAµ
+¼K•ŒÚ¡íS	ß%¦Aix.©R¤Å~ßb¡’İÀ#ËÓ±'§‰JtÇ¿¹ìü&*%œû³zPí M@v¼ciŠàÑËYûCM@Ã…àUcÉÌd-L°ß7SØÁtt­~	¤RÂ™ñFğLÀUã@–÷R®¥¥B%G[{\õqcWª¦39×i†[®K2ÌxvXÆåRÅ–Ù”â®ï›¶ézµÊE¼3Q)aŸ¦JbÕY.9+½<ñ8´ÛxÉ
+R¡RÂ¿íB%í›Ví¦pMºÇ•LyRv‡ö©F´}[<ÛÀû¦½^m5EÃÄÑ•\Ì¼©¤µCT˜z‹ãQ2ƒ©”p0óL‡v±ÌMc1¢5]—ØFûWé¯U$6¼o&‚ˆ3wp¯L¡©o[¨”p0óâ5ğß3	ã
+ÉÀ#šy¦Cj4m¦+!Â-	ïÁeˆV{Vb‚ºIyqÇÍÑÒMê÷Í”¾È§duH^J¦›ã~—‡hÅQZı±^¤¦âW…v`˜z”J¦K"}„t2.‰C¦ÊKÜÌ=êeïÛ.÷Í~“-¢Îé¤RÂ:¡#–ÌpŞIä=˜úF¶x’.TJ˜{ı’íUÂ,™¡’‰ì¢b²¤™Dat¼o.1I$çÎt÷T*Y®+^*™…]
+fBºJ%‹b9º%cD;?š‘*%Ìæ‡ØÒ}ˆM{—§íX¦<%*™nQ]¨êjÓErÑ‘J	³b?í–pÆ¨dzEHuE\²,#S¡î:R`ÍO˜g¡ÌcS @kæ¥ƒJ‰¶•¯,×•ks+ÜAÅm$1]¸vœE…8"“ú¯…÷°£uu!QL¯í®Ô›€-\QÌH7í9€Ètøp¼L[àK[½{&Ó8©å.i»‡‹˜nÈÖªÈÒì$t­ü%‘‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡G*øWSÓÙ>´Àeî$•k°×®—@ÓyLš°=–™PT¾€Öªp9+Ó„ÜÀ²9¡¦2Iˆ0;UÜ¿iV”:ÙÁ4«ËRÃ#F„}Ğf,EçTB…Zò8poEw-'fW—Y¤’© :OĞt ÜœîZxˆğ -“(CUœ&ÑÎ36?W»X³Ë¹Ù_Y¤RÂ<ÿİ¥äTÎ.9Qxˆö ¥™à{m+‹¸/y(–™¿öbAÚ+bd—J¦"Ú¥Ú™øÚò,iBä­vÚ¥xHWnâ
+{–â¿ °ìƒÅáÊ:•LJ‡‚©0‘òdÚMkúĞ“Û+½Æ-•:¨t¡iá'-1ë¾âĞ¦.ª}ccF3b§R`İ¦5€piÚÛ•kuSÚ-¹´&ÓHts´Œƒ¡ËÕ>w©æ°K	e;´¯bµ@™ã2ñ„\ RÂ¬¬M‹pÈp¡RÂÀ±J¶³iM&—eë]¨dÚö2Õş†÷€ûB9B%÷Ê™¹V¸=À‘JZÅ4Ïº„·¤hD2ÅŞ =
+ç£ÇiKÉiI§-$n`ŠJ8cYu—½Ib/ê‘&8RÉN–°+)höµ‡EZ7QF{ÚÚ÷yìT
+Ëí%G<ÒG*%¬İÉ}'–öO8¬c“£m1ä´ë†ºöhw8*Ùk±ZêÁz¤…A%0ÂäæhMSN ĞFÈU‡=§¨dtğÖ]¶•b1ğ"SÉ’€”0,Êßj‰¦FKr‡J.åÁ}Ì!+p¤’}Qcíóµäˆj™è+€–åµ™fÚ€9vÎiêZ*©L±S)ZÏq%)	Ï
+©¤]8†Ébâ1uo-#xÔZNÛE$5—#TrÏ'ñf^æáB%SçİmXIëÂ[Fí¹=nêQª»¸¾‰I¤]å•L¦é½™—aØ©D&ËÃ2½ÿ¡,ğÑÄ’;$‘ÎN%KŞ¬¨M×µˆdjÛ8®·•L¦Ù¢>á!9ÙÒQsñcµùR&Cà®é´Å³Šœ^[§¼("üœÉù‹×kºjcRXŞÌË$"O²Pƒf‘—<V3—tVs¹™)BmKQQf—J&¦ˆghâš7ó2†hÚô€"(m>¶KÉ¤$Åäš#˜â“l e—JZ¦Kö›éİâ§,ea4Í¿°ìpıºuî Mãª.TJ˜gÅ¢¥vìÕâ¡hÏ™˜²H%ÓÏÕ¬Ó»ÅO¤Í4$q¯Fb bo¡¤#•Lgî¥³µÛ-U´Ôc-–-*™Ô¥iøÛÕñs 3 ©²–‘wÎk1ÓªÇôMt!õ4´¿Òğöwß{!¦û`9ŠìKºÜa-p½¦ßš²;ğm{_)ÅÃÃÃÃÃÃÃÃÃÃÃÃÃÃ£İâÿ Õà
+endstream
+endobj
+16 0 obj
+<<
+/Type /Font
+/Subtype /Type0
+/BaseFont /DejaVuSans-Bold
+/Encoding /Identity-H
+/DescendantFonts [ 18 0 R ]
+/ToUnicode 17 0 R
+>>
+endobj
+17 0 obj
+<<
+/Length 658
+>>
+stream
+/CIDInit /ProcSet findresource begin
+12 dict begin
+begincmap
+/CIDSystemInfo << /Registry (Adobe) /Ordering (UCS) /Supplement 0 >> def
+/CMapName /Adobe-Identity-UCS def
+/CMapType 2 def
+1 begincodespacerange
+<0000> <FFFF>
+endcodespacerange
+2 beginbfrange
+<0000> <0000> <0000>
+<0001> <002A> [<0051> <0075> <006F> <0074> <0061> <0069> <006E> <0020> <0044> <0065> <0045> <0078> <0070> <0072> <0053> <006C> <0073> <0043> <0052> <0049> <0050> <0054> <004F> <004E> <0055> <0041> <0059> <0058> <004D> <0031> <002D> <0033> <0032> <0030> <0024> <002C> <0038> <0039> <002E> <0046> <00D3> <0047> ]
+endbfrange
+endcmap
+CMapName currentdict /CMap defineresource pop
+end
+end
+
+endstream
+endobj
+18 0 obj
+<<
+/Type /Font
+/Subtype /CIDFontType2
+/BaseFont /DejaVuSans-Bold
+/CIDSystemInfo <<
+/Registry (Adobe)
+/Ordering (Identity)
+/Supplement 0
+>>
+/FontDescriptor 19 0 R
+/CIDToGIDMap /Identity
+/W [ 0 [ 595 843 706 682 474 669 340 706 345 823 673 678 640 710 489 714 340 590 728 764 369 727 677 843 830 806 768 718 765 987 690 412 690 690 690 690 377 690 690 377 678 843 814 ] ]
+>>
+endobj
+19 0 obj
+<<
+/Type /FontDescriptor
+/FontName /QIBAAA+DejaVuSans-Bold
+/Flags 4
+/FontBBox [ -1069.33593 -415.039062 1975.09765 1175.29296 ]
+/ItalicAngle 0
+/Ascent 928.222656
+/Descent -235.839843
+/CapHeight 928.222656
+/StemV 43.9453125
+/FontFile2 20 0 R
+>>
+endobj
+20 0 obj
+<<
+/Length1 20196
+/Filter /FlateDecode
+/Length 7469
+>>
+stream
+xœí<	xÕ™ï‡+ql @ì8‰b'>bâ\È¶lËÈ²s6ñXYJ$F>œƒÂQJPp(Y–/=¶…´»-ôëG¡”fwBJC”´°ı¶”&ñxÿ÷fF‡í„„c¿o%¤yóÿ¾æÂ¡1h#2 äj--[¶ø{aæ›ğiï
+õùWÕ¬ì…ñ»kˆ‚ÏõµÊ¶ÁÜì LŒ½ğâ§àŞ÷Sa¹÷İy¸¿î÷…$¯à:ìş!KÜ/	½QTŠjàÂ'!,Æòzî÷!4¿aãî 2!d*7íD_©^ÿ‰üÜx„¸Çf#ÇßC‘¡_£Á!~JG±‘‹Zü"ˆ™s”ü`Ví@xhhÑ‡üÊ}F¿i/p™…Ğ‹ÕRhµXıFt2n˜tòÊ}Yc?ıkÌ\;Eå°ÙoúM@@G)š:«š]Hòr-æ,s¶âü,s^N^nynÕìÊŠ¢©†»®TîzùÆ‡^Â]xÍÁ_âÕ¡_âÊvåè3B'^µòûÏt
+Bç¤—â0^sèeüÒKÊöÁïÿërå³ñ¦Í~¼a#Ş¼éØ‡›oB5™h2£rb 2çåÒwU Â­•@FA~ÑÔÀÆc²,¹SòK%û5Ø¯<xı²¡ç}~ü=n_tÅ­·—ÜZ=oRÁ„ÜŞö W|b`wgIiO7p¹ğ×¡qåh"åPTM(³ÙYf+0oÉ®šÍı´wşÂ…ó{æc<A“½»wïU~§¼½gïŞ=†um‹vµµ··íXÜ†ÑÃ+Ç”cÃçàœ‡®&÷šAeÁ<U•[¬ÀE¥¥ÀRnáÊñÊ]˜L^ñCååß,Yº¿éågCH)ltBK—ü¿‰^@u¹xè¨ñç@ûÅ`Kƒ4&š5mT¦ÄS5´VNT@õf™¼ór¹İ7TÍÁ¥3®÷Õ;pP¹¿qÙ²MO‡"ß¶ç¿V[w§Üém‹Ëñ.İz3ş9…EøÚ†HñÖÁMûKJı¾=/|c9¾ÜS\„sóJ°åòqcÜİ”sãÍ9š•Y«Ö}T/ôcì81 æù[ šî4.g©´ ™ôMIÍ£‡&¹å uÓxåó˜q§L)¹a¡S@-+–G~ê÷qO¶Kø¡mWW]–?qn[¼sğucÇ^af	îîZ€/Ì1F<º‚â º¥Â(ÂV¢5.ú.´róoÿpı7öü¾{¾óxO°^ÁŞ'PQV÷Ÿ¼!!ÿîm9qÁÌ²¸¸åæÇŸÜ|‹OY†U}üŞÄ/—QÁ­¹ª6ª¨¿işC‘š(‹`jY&şäs773ÚÛİ¿qıÆõÊ+ßyãï<†óñ˜G¿­lÇÕó:‚×Ø³¹rÿú…qµN96ó’ËğCâ<lyäÛÜí_8v…A’Œï Ÿ¦$NßŒãc\×àNnï‰7M‡•·”?ÁçIå-*}°y ¸ƒÁØ:a‚¾+ş…Âëşğ>^×'”›OşC¹™›Ï(ßÃMƒGŠ;•G¨–•vÓJà7MA¨0][Ôi¨íMĞªJ:7*Î¹|YâĞ-7ß|Ë¡Ä²åÉó,˜'ÇÌ›·`÷à÷Ì<ÓÜÇ”AåäÇJKUöGõ´cOë®G³Ã1ÀK½ˆÚ
+E¢c¯*••–Ì,¹ÃyÅæX¶dıø‰9Å†ÒÜù%K<iìøa¸bÆ#…vhmÄ¹rjšéQšó˜mP» FŠ,¹jX`¦C-´²”	ÈŒ×%º»n¯©™1½{ï?‚A¼ıåµ»¾µí[ßÚº¥¿¿®vFéÖ¿ë
+lÛ†Ç®İ¼Éô¸òÂì+.orÍ³äYËü]Ï}Ú³OšT‰‹
+‹®ºª¹~jádëÌ`à»Gz{ÇçhüjŞÄ4ËüÈœóctm5Ä€NE’ú|zğñ<°lk:õUéÔSQóäÕ¡•şYeS§t.Äã;Vâ-[”ãRwï«cQ9XY§L-ü¨£cmß`g$lœ¯|<ó’K.TaË½„¿`Š«å©ï.[6>{
+Î®¼ô²+.¯yIîØ1W^ıcûÛÛğ¸lJ¡ä»äkÑÆR*»<â<-pU™V¬‰É7*·¿şÆ¯ãîåØšPW ~¨»ãîCñ@WÈ}5ÂW…EìõW—_1[9ØX¿eËûïmÙr-õCğ3bŸèJ+°X¨‘P§§îN]‚Õ@]‘;ÒWYQQÙ·[ÙÀ5á¢ÛoÅ¸¾q›ká|û«ŠÿWWÍYiX8ÃğÛ¦ce“òÉàAÓa¯÷?v¬\5cüBûFe	G‹§a¤ú 70kš:€7)L‡O×¨2İk¡<ºªÑQX`±BPÒRhÁn¾bçıß¿S9ª(ğ¦ÃÒ‚ùóH¦Ãë7~p¬#<nü‰²
+_])úfÏ¦8¡Ê0­¸i‘–7u(eƒ’MııD³q?Å/eù<™é¨Ğ«ôÜmLe:¦~š²q§ğËÙÏàÀKğRPv¾Ä¼ñuHØÇ6mÆZÆ†xôò!e‡²ãåCØ×Ğô®ÉÃô	Ğv¥e<L¥ò47‡÷à;Ê=¦Ã'‘Ÿb' ?'&2nÌšÓÁI=ƒLñ‚y·İ¶`Şôè€òœòì#M?rµ´¸~dØpr“ò³‚¹ xÙ˜‹˜l`¡ÍŠÙÛ`¬||•ÒÏãƒ\±Ò?øŞùÎV>¦ºâ
+97l÷2³c ÚĞ¸HÉÏÁa¼üUìà1.çäÀà\(/\œénı?ÃIÎ¬HÊåq%£±ønÜ€ëñ½ÜñA3V;Î½©LÆï¨ÒÊšÃ,±HqØŸ g;ş@¹Wyâ”'˜ÔŞ1L©Õ|ÓPxâ •Ü{@¯‘Y=•œ‰vëÇØ£ìÁËq{NÃ¼áçØÜx¢RùNHø w”;¢[«ÄÉƒßä¨™á¶¡ßÿÖõ*Öâ Õ¬EÍ©çT2§­ĞÒ--ÊjB5<{_K3ş§§”çäX"Z<Ğz=v{ö<¸{{C=v8Ö¯\¹jå7DC8ÿîm‡¡°¨£óŞ·ã2Î±LÅÅ³ÁÉ++|şÊŠO¡FùF¤„‰¹Óğe“-ÙxeÇ¿oq{€Æİñ WRİRaÍV‰IÖ9åDËî\3·ıÄóœÕYëËW‡ú6mÜ°_´ãŞ…‰')À“ğ;5Ö |,,jÂÓór»{~½6¸æ°#bXiÒw²Õ eÉV­ƒiSéİğtEåı••ıë €Ş4°KySù¯Gwa¼ëQ<îàá<9“•”wã2”—*w¾xãƒ/â8|ñÅƒ “å5“¢ştT‰ ÜÃ,VQùçY’!¼ª|"˜È–ô„•e -Íó&P10Ÿ´÷'R¬G^kıÈ'®ë{ïöŠ>Q„/2ğã¾µßİp•5ï^l›>­XyÏ0^’{6ÏLŒ¸Ê|Õ²¥Oî÷û.xïèÙ–IÊU—äš•wÌÅ+VıàG‚ïbC6™¬S*æZÆ(Ï*ÂVkMm=…•·¸9x3};3Lxş~Ø‡7+¯(wàğÚ^?Éw&ºF­eóÌ©„[¨ç[Í¸XğÎQÃ„œ´ìªá^UÏÅxnuhuõœ9ÕJÿmu;ïÄ<îÎ;[ïw5á{v(`ê÷îhnÚ¹¬lÖŠ¥e³f•-]1«Œ{˜ÖS‘ê¹s«#ÒÜêÓÚ=ìõbÁû“öiW­\µíH4‹Ù¶jåUxúÒ™ğZºdV	9“FÙ XÊXÓ_àn«to©¢‰ùSU&X4wÒ““µ_^ŞÖÚº¯£ÃâhZ´ìwÜ‰ygá‚]ÏPvx£¯¢¼¼Â'Ò²ÔŠsl9y¸cåË.½ßróß½¿ğsÒwşú7Ø2–û¨æš-7ÕÀë¦-×Ô€^©4-(€úµHm<¨Gêµ#vjå8¸Â¡šK²Ö€¾­ı>+›B8+ø¬”‚»&#}áR†ÂôSµ¶8j:vS¨ÖÃk‹"sÚ<`YMÇ·?øĞc´¾xûm|Ó½·o]Û¿®İoìïí}kneyñ‡Ü©!¿€ÕÁW^aõEı”|Œ7Üô—?oÚ4ÆlÚœC˜å*ô«Há¾Uãæı6†¿†)íYs@FŠıg²Â
+<‡d£¡Î¡Î¬9Rúkºñeä7ÃÇ´˜6 %†×Ğ$“-á~‚öÁÜ>îEÈ3{ÑS-1õÀµM6=‹öş
+ëÏ£{è>ãóhµéÀ)F¸ã°ç-ø$Oáš÷£æğ™…xÓÁ¡cæé¨(ëXßŞ3¸‘×Ûà³>ğ0ğ(×~ø¬†ñ«'ƒ³ùŞ‰ÈƒnEÿ†şˆËq#îƒ÷ÓøÏ\7•ëänãŞàŞ7Ì1Äÿbø±áÃ ±ÊØbì1î0ş³ññÏ&³)Çä7=d:l®6_g~Æ¬d]”UÕ•µ—Ie:²SKU¥6âuäw}ş\¦1ºÕÆ2âhcÊæˆ66Â¸U›ĞEÜzmlFã¸§´ñd¼¨/DWfhã‹Ç{ÚVm<UÌ½Kg£çşV[qî_#6‚/á™;c”‹jcÁic"XÑÆFD¸YÚØ„.á|ÚØŒ®äîĞÆcP>÷œ6¾Usÿ­/.¬6\§Ç¢ÀÜBmœrç¾ -hÌÜ÷Q-’Põ¡
+¢.@2xñ4äEÅp-ƒ¸5&ê„ÕÀÅáC"PÙ`Ö‰"°¿Fv‚7Aî$¬8»á*Â™nøöÁNş°ÎNbõ ¦nÀµÎD`7¥C€3ŸcŒVÃ¹v”€^Ø+0h";!0@‰ÀwötÜ ì#p^ì[ƒzªVŠöÅ‚]™Ló“²™3ËIg©	Êq9&
+aqF¼%Ä
+7İ'n1.ÆºE_	?âèlzÔ#t‡WK‘.R#Nq°N\-´'ˆ7 DºÄ8b"	FH4Ñ
+z‰O
+ÁP–Éb+c0ÓêáV!75ÀLXB5RÈwª#$µ-í09ë#íLq Ää[)GU° ÆâA)BÊJÊ«2!ëpg‡KÁÎ?®€¬™§N‹_Š€<ePbF"ƒŠ«Q)¼}Œn€Qg%¸Æ@í"ƒcRpE8ƒ²­.-õĞîDI\JÄ¼¢_Šu‰%–ëÓ(ĞJ7ê‘®C×¨‘ŠÌĞEàQB=°—šõù1V
+©Vú`O€ÂZ”ñ%3Ç R‹±Ô•(Ôîa’ÎGÊÎx*nxxÆ»jŒÒ¥62,ğ`gÿæÏ(Ôœÿ 7º¾S<a…g#™ÍP+3Y¯9	4ğY´PÎZ¼0ƒ–r® £)ÀÖD¯.†%¢iİ¦é]Õ–ŠMµ1ÕŞmŒ.‰i?ÂÎG5V1H UÖl,¨YÀ`¨’æ5˜2£b¸=yÙ>j‡*tİ­Ò®Ú²Èü_µ½ü4+Égš£g}ìgtyáŒ ñÇ3/ğ‚…†™­èòñÃ(¤yÒ´$)4¦Qúe°_Õú)Æ”LèL”y0xÙiã@f¶Ö	«2[Uqğ§Á`Ó¼Ù”%U&=Ì,*ÉšdÂl.#‡X†UªÔ&˜miÚ¡ã0Ó§ªk>-‚Äá´í|Ø’|–²BdÕTØAMª™Ú?=×ºäTj£I‹–])«KqÔÃä>#º7øYThŠi}ì›â°±+•ÄjØáeğÔ=ºşü,©‘M×—áö1Šƒ¥ÕÌ;=u@”XdHé =¥$02D`¿¬yC<c¯î+)‰¥Ç€ôs„ñ,0Êy›3mM•†šK„ÓèSbYhº³k*~œ‰.d–‰hf4J2$uº³T&}ZnQ±S™û>Í’BÌNcÉ•R*S_šÎÓ­NÏ ËˆA3BìOräc”R}EÒ¤Ñ•‘WULz˜õ¨¶«ã.Ÿøgò¤SÉk¤,L`::s
+2ñ—Çh´Ù4}‡Ø¹à)¢9ŸÔNŒÅYÅ•\}&´Hİ_†gQ‹s"ãBÇÔÃ¸ò±óù£äÃü$ßÃOĞf¿móÓ¬Lõ™¦aù¥“ù»”FkBóİNºa58ŠÄDÔËäÑ<9
+o5{	,¢ŠÉézWiÖgøQ=%À"<a×¸F£È,éTv¢ÇºÑb·e‚Ó{º¼F“*Ÿ&¹t­¯ÆµúhœèŞ¦{­BÉÚ#¦È„e½¾»4©ùZŸŒª_d¤:5WšÈZ>ô'%Õˆ5ÃÅã‚;Zu¤›­9a@ç†•v¸«ƒÙ:¦;[¡ëùÌÃ˜Bt¡6K…á†o
+{)ÌPØ„İÓ»ë`3À¢gh	Ãá h­@™Æö"˜m‚«CÛGOÔÂLÜÓq¢U¨Š¯Ny˜ïĞs”•RÌ§°fRåduÊÁà7j«v€ídğ(ı6VÑq³F§*97ƒNeD!S˜µ@Q»£³mpm}­LvÆ³Jm3ã¡ÖU^ŒU*EµpmÜtGĞåaR ˜<ÚNÓ#å§§X¯c»TÊ\š–é8¥D“¥J•{s+ã¿	Ş„ñïÓàëpuÛi`(İ<“FãÏÎäàbjØ>*E*Ï¦¤Å¹Ó´RËäEõF)¯c˜ìL"­£r¢CK×ÎhÖÁ'140şLRMlw+ÈÑûÉÕŒ×ZMÖ*LÕîU›hJ“n-ã‘jözÀêĞlÊÎd—ÉÕÓbFŠUví»6Mf)í7kÚÕéñ0ÌQ¤²˜ù¢ƒí²3]·&}¤ùï"ò¶¤…¥b@›fŸ®$e™òÕıHßw&±C…¥ãÎÔ`³§&ÂÖ¤4Ôüiàª±ËyÍËsädÜÎÌÜéUcªM¯;mi±6½P£pÛ¶/5«>-©9+õ¬“^»ö„­?«µ¼^õ¦ª5v«ÏDéU¯ÕçjOV%«¥deÒÃVS9=ªõN¤Œç<ŠY`¹ß–Ä¥ç¢,µ®Xµ@±ÅG‘æ©3?âÉ0Êò½Š¥‡e­2¡ü%´½t~í°§a½ÿ3RdTè¼ŒV9¤Ë?ÆôÕ¥‚LÂ´,ÑàÆş\–’	•€ÚwÓzÊú(´j4¼«@eĞ•F¹ÉšGjâäY¼Ò{\_}×é|7¸¿Nı >£4¼òúâúAü¨ı ò%÷ƒø3êeVòŞ4šR½}ç™uPGë°ğ_Y_‰Œè+ñÿßWJë+¥:ÿ7ûJ|F†ıêúJü(Ok_‡¾?j_)ÅÑ—ÓWâOÓ/ørúJ<ú¼}¥Ô¿:Ï¾RÊß2ûJ§Ê¾§î.©Ïçj%ñuë.ñ(³»4zwãËé.ñ§‘.I“à×»ËÄ3YÍ|ù]&şkÜeâ‡u™RÏº_f—‰ÿÌ.ùÒºLüçè2‘/¬ËÄ3´Ôkµª´í°şåõøQuşUõø½#ò•õøSöR= /¾wÄŞÑéà~±½#=²:£ŒìøğgÑñIïÒœÏNŸ‘Ïlg×ñáÓ:>§ë;œ<ş5(ÕiàzW‚P=ûı]ıe\òÇtdZ\I§’zŠKÈü
+®„4„ú¢8	†£RL}Ä“ÂÄ»µé8Ø¯îê¯îÒÑğ|
+{»ˆJZò§{üŒÓ¾ø‘?ò;ãß’a˜ƒq^ rLğ‰a!¶†HşáPx¾EŒ…ƒqöº`œÄ˜¸ºbBX·ïÀ‰ÅºD‘%"DúHTŒÅá€Ô)ƒÄ‚ xhvÊQ—“×+…£°n ¤,Fâ ½|&’üb æ#B<.yƒàã}’7#² SzüÁ(i…ÈVÉ/÷€øó‹%11“|	¯ÈÀø‚ÀX°3!‹”>ã€Ôì%|”’ 2jˆ(†˜*J ›ˆÃ~Ê„EÊ5Ï$°¥á°Qœ¥RŒÄEĞì©ûÃPSâ l”
+ZæUÑ1D=0¬¨ü‰XŠì O"qÉFâ‰ÎÕ¢W¦3”?¿c£y¥ˆ/HùˆWó¼À	R·È8P­ˆ4‚ˆ$ƒâê,ÕJ4eê‰„Pˆï5©à%BŸRì"FÂRL•m"÷EE¿ ˆJT¢2WÃBx÷ıAjhBHÓƒ |>Æ¹*:ê BèJ„„OùÄx°+ÂÈèR}Q¼ $NOèôÄ‡c¢ y@À&„F ÑéHAò"¡>L3s²éßÜ³½t§‚¤zÑİC›cìPóÅI~Òó)n}Ï§n›ÏDšiÒü¥SO¢P *“n)˜$Lì•Ácˆ‚{	!‘.¨¼d:àSJ	2	q€(F2dB­.eİ>’ˆø4‚S¤òŒ8•ÃÓi5.…¨W3µQ%	$D£øŠ¾1*x×]ÀøaDâ©©~>£Ê@HC~JT£ƒÔ»š=¤ÕUïYlw;ˆ³•´¸]íÎ:GÉ··Â}¾,vz]m;ÜöfÏRâª'öæ¥ä:gs8–´¸­­¼ËMœ‹Zšœ˜s6×6µÕ9›HœkvyH“s‘Ó@=.vTåt´R`‹îÚF¸µ×8›œ¥6¾Şéi˜@œ›ØI‹İíqÖ¶5Ùİ¤¥Íİâju Œ: Ûìl®wÇ"0€j]-KİÎ†Fy`ÒÆ{Üö:Ç"»û:`.`ÙMØ– `G;=ÜÚhoj"5NO«Çí°/¢{©tš]‹|½«­¹ÎîqºšIX±×49TÚ€•Ú&»s‘ÔÙÙ(;:ºMe'%hp4;Üö&imqÔ:é äèt;j=l'È$ÑÄÈ­u5·:®oƒ	Ø§£°ñ‹0`‡ÿjeŒıf`—Âñ¸Ü$)‹­±»­T#õnKõéªgĞò¤ÊkÖè¥:¢s#­vÑÓƒu{ l¥dÀŸ±¬ËÑë£2µmÍ¹ÕĞÈÂ¨;mÌjÕ  &ÜÇUçØÒxË:jtK%lšmjèeá¬2‘z}İ"DÀ8%RŒ—h0é	Æ™§C
+KjÎ#q!Èàõ"¶b¥‚cñ$™ÅëÉ0Â‘XP†`B„ÌÆ‚kµ4ÓÒã€¤8 XRÁA¥?&Æ£¥‚İb¨¯öÆh.c”#~)ÖXgâóÊÕz© “.Ü'É¼ë*!<Ï*®s.Îôï#ÎOÄ«u9›:ˆOÕAä,ë ~d¤y/ƒ×sÆ(jª`áÏ¥V"z­Ä=j%^ÕÃV+ñªÃS­ÄŸÇZ‰OÕJä,k%>£.8‹Z‰?U­DÎ¼VâÓj¥t÷Í(— ŸC8_å¯•KäœÊ%>ƒ\öÜx¾K&>"‘s.™øóZ2ñZÉDÎ¾dâ‡—LälJ&~Ô’‰|’‰÷ØÛ]ë¢dÛÏª:âSœŸKuÄëÕ9—êˆO¯ÈYUGü¨Õ9—êˆk†£$ş”…ù…úÂ‡œAáÃ³Â'³vøì‚FÖ÷_ÃŠ¾.%çò7ƒ¥¬o·>¥¬wæcÿªWÂş}•şoß2ÿµğôaXÚ\,B°ê-‰¢¥ZÄ<«?üDèÙ†Fw
+endstream
+endobj
+21 0 obj
+<<
+/Type /Font
+/Subtype /Type0
+/BaseFont /DejaVuSans
+/Encoding /Identity-H
+/DescendantFonts [ 23 0 R ]
+/ToUnicode 22 0 R
+>>
+endobj
+22 0 obj
+<<
+/Length 847
+>>
+stream
+/CIDInit /ProcSet findresource begin
+12 dict begin
+begincmap
+/CIDSystemInfo << /Registry (Adobe) /Ordering (UCS) /Supplement 0 >> def
+/CMapName /Adobe-Identity-UCS def
+/CMapType 2 def
+1 begincodespacerange
+<0000> <FFFF>
+endcodespacerange
+2 beginbfrange
+<0000> <0000> <0000>
+<0001> <0045> [<0051> <0075> <006F> <0074> <0061> <0069> <006E> <0020> <0023> <0044> <004F> <0052> <002F> <0053> <0030> <0031> <0038> <0032> <0036> <0039> <0037> <0041> <004C> <0045> <0058> <004E> <0050> <0049> <00D1> <0055> <0072> <0065> <0062> <0066> <0063> <006C> <007A> <002E> <0073> <0025> <0054> <0042> <0024> <0064> <0070> <0046> <2014> <006D> <0067> <0076> <0077> <0079> <0034> <0078> <0035> <0033> <0056> <002C> <0043> <004D> <0047> <002D> <00B7> <0040> <00FA> <00E1> <00F1> <0071> <00F3> ]
+endbfrange
+endcmap
+CMapName currentdict /CMap defineresource pop
+end
+end
+
+endstream
+endobj
+23 0 obj
+<<
+/Type /Font
+/Subtype /CIDFontType2
+/BaseFont /DejaVuSans
+/CIDSystemInfo <<
+/Registry (Adobe)
+/Ordering (Identity)
+/Supplement 0
+>>
+/FontDescriptor 24 0 R
+/CIDToGIDMap /Identity
+/W [ 0 [ 595 781 629 607 389 608 276 629 315 831 764 781 689 334 630 631 631 631 631 631 631 631 679 553 627 680 742 598 293 742 726 408 610 630 349 545 276 521 315 517 943 606 681 631 630 630 571 992 966 630 587 811 587 631 587 631 631 679 315 693 856 769 358 315 992 629 608 629 630 607 ] ]
+>>
+endobj
+24 0 obj
+<<
+/Type /FontDescriptor
+/FontName /QDBAAA+DejaVuSans
+/Flags 4
+/FontBBox [ -1020.50781 -462.890625 1793.45703 1232.42187 ]
+/ItalicAngle 0
+/Ascent 928.222656
+/Descent -235.839843
+/CapHeight 928.222656
+/StemV 43.9453125
+/FontFile2 25 0 R
+>>
+endobj
+25 0 obj
+<<
+/Length1 23128
+/Filter /FlateDecode
+/Length 9475
+>>
+stream
+xœí|	|TÕ¹ø9w–„‹,!›b-7	ID†B$2$“dÂdf&		d2s'˜™I ²„Eˆ
+È&!"RJ-µÖ¶€KëÓÊªï‰åõQj[åQí«¯õÙ¾ş2—÷sï%DÀåÿûıîÌ¹çóíÛùfÂ¡x´)ª2çæÕë3ÀUÛêêtÜíºÆÿ‰ĞÈÒ6Şjw|¿â Bwj`nRL»mÈh¸·Ãıè6wpqC|æ(¸_‹¾İåµY?üñÙgúN/<Ìm]ìCä@è®ñpÏy¬n~”·òY¸¯Fhj<ÂÊ¡x#R!¤ÊWí ßß¿AfBÌ`µB¯dåGÈsù
+]fG7Q"î¶j‡Î¦#îòeu’„ŸŒsãsÍ_şÃeD~ä¶)ª=ÀeB‰	i	™i	i%ê(îì;/l‹zá3¿z¬TgTŸ¢a((PÇ©™Ô”ü¼ÂI‰LvV"ÎÈ†©levVÂğÂIi\jJ"§Vd¿¿b5Æ«W¼ÿ»•]w­¼³ÿx?}øˆáÂ›/¿úêËø><^q«SeÀÏîÎçŸİ³çY|'¾sÏ³ÿMxÿof0şõ)lÅÖ_Ÿ:õka—péà!„Ñ/ŸSÎV6£TBu~B’HJ!3
+€Œôì¬§M]¶ev>x°¤®¾ı_l<>ÌìYwUU75>Ç,¹Ôû¼cBŞâÅÀÛÂË*Û•K€7ĞNS'Ë ³²³²óDf²Õ"sL`kMmmÍÖÍµ5×ÔnştİZŒ×®ûô³îuëºƒcGÚO÷ôŸÿİ³ã=8'õô í… øÏT;Q2àJHKN£Ôç'š€üü¼/Öd¾úêéY³º»U;…Ùê]—ıduÕ)¦yFt÷ P=¨‚r#T¦ Õ…¢ÉY…“òÓ
+€‘˜‰+˜·ÀóÚkjµÓ½;æÍİßØÔıC»¯X~	n²lo3×lonœó÷Å‹™üüü%-“§`ìq½4ÆZ¹ß1>ã–æİ¯67X^¦Ã)©9û³“—/'T½´tª“$‹}$ k¯„eó¥^uÒŸA‡RÚòT"Œ‰¶dºè+LIMQÚâ©Ó–n«©=thFÃì×m6fOh.³sgunl~6Ô­l>`ÏŸ€qÑàN„Ô©ª× +Ñ`š"M¡HKÌW€té•‘H¯‚4z)S…÷-8³¤vö¶â{…gLxšğT[o«p¶õ™6áW¸Ù"¼†ÅáEE·`Å»ë“Â‹;„¼“\;°ñI¼‹p{ìòeÕªÓˆµ™Ï‰ş–I]`xœ:3oş.ØøÆmN3ğ.üã“ÇñÉ“Bµ`Uå^ZôÈzœ‹5¬ßûÒÏ„•ÂòŸşo»ü¡äm£®ô¶lÉ½29Ñ"¯p³ß‰nõò«ÂÑÑp¯ç¨7í:õk|ên!îEùc~RQ:à=¤&f(ˆ~2@9iÊÔ”d ø”|#Cñèôû§N{ûÌ/*te‹~wÅhùr<½8ô°°É ÇXoØÄ¼’ZV¾\hÃ][ó&„Ö©NãùşãÑyó˜ªĞ_KŠW¯*™.Ï`^¼mq>Î`â÷‡.ìWşÜÏºÁÎwƒ,òáY2A*™zj*¡/	ä “]"
+¨`"ÜÀ¿¬‚‰¢¥+Ëƒ|kãŞÙ÷}ï]óñ¦ÍÂÇ::»XÔá¾©±¸äÉ%çìü#ëÿ·ÍãVíùUáwN×¶Û'äºC³ÀóÓßzâÛoÏı·ÒôŒ’â.÷ıS¹ÛÇ57ÿà-¿?1‰Hì! nCXSé¢¦ˆ&cGÂpÑˆë{ŒÕW{zªÆê‹=øàC/=øÆ=¨ªŞñ”ğ¶pò‰§0~ê	<ç?µ£÷­£B·ĞıÖQŒ¾…;qçÑ·@"€ÿ4P«C…i	ª‚Ì|G\!ìÀüq\Ñ·g¿2P~°üâéı Ñ‡!V®§‡\@­)ß@X™ «Â‰¢×%ƒ4ã¤w
+!x*ÔQ’…ÍÌú&³Ù´q£Ù„Mfá¹ÕexE×ï¿¢«¼bÅ&ó¬úç…ÕÀ‘Ùôx®(_½ªB¯¯Xµº¼‚ù6Tv¯5Tİİ•†ºQ³W¾èl%ñÿÅ•³Fe´Øû-‰¿}ÌŞ’ïoŸ®ÕNoÌ˜ñô@8Ú|W 'Y3aËè¯dbp“Ù †ºy½Ïà?úV¾5;cSÍš&ç‚Eœõ?üpzÆœ‘kÚ¿Çñ#S\•†™iiÅ'Ç¼Ú_Ÿk2ûîzøĞğĞğ6I~1q–$l‘
+)°Üá<HíuÆêjãºµÕUUÕxP¥Áh8ê\0´¨a¶ëƒÕ«Ö®û@è[»nß÷ğwàbÊ¼y»Ÿ™×„qÓ¼gvƒ‹tÌHJìîşV—›³vİ_ş´şÉÀ]‡ÚV mİ@Gh+$>PH‚Dtì‡`‘ÀˆN‚%-ÊôÁhœydsØ”Ùõ®?®Z×uŸÃ
+Èg{÷	ç++x¥z-å`ÔÁÑ‰I¸{N¬ÍÉÅxİCŸœd=5OD†c¶ñ½Móæ5õé -¨”m`¥jÈiÉ8§íSü2ôá{Xå«N×^\©‡ˆCV1Äš1N#îá;ƒyEø+“),9ÏL>µ6Ô´ö´jhèÅ‹cq—° C¤RÎ‡}*šeÀg~Ó×¤:MŒ^z¾¦ØÓ¤ë˜â…ĞHæHh2s¡ošêô~¡tèÜ~X?è˜"­ÏÇ@ÿVÁÜ~FàtF˜+Ôÿ–IVfÆ†òû.0KBkwIØ &;là%ãÎl{Sø44ÿMÕéK£”\«üàÒ()Î*¥Ls`~ŠdÅ™i$¦‘
+.Ş,<ZiÀà4
+÷â£W‘à¾ê¢p\•úW\¡ï^S¡ß‹}ş³¿÷-í©À›Å(J2ï±ãÇAcå¸×ôåFSˆI Ì&Öœ‘%† Uil(È—*©(>˜	“GMœ™˜´ä×fpß?9eÄğá£’ñ2&¿ÀœñïFóª>6$N‰ï©QÛï+Â8.şÎïU©GŞ1FÍİGd÷ãËçTc€êdJµì[@!Î4Hq‰/¨«{ãõÙu'6>.|$üç†Ç±êt_û§Î/p~ªXß7W8»eëÖ-8S¬-P[|œ%¬paAbCª¢‚ËÈû´ÉrèPÑ¼¹%¦¦Ü¥xiÄ 8Œí×B/BYáÈƒ²B©$róu´‘(ƒdŸ4ÉÁ
+IÌ&´—‚—ÇÉ!HÙÕ÷âà6ÇÏ¼­ÅŞêœ/üı©xë–¾\õsÆd^ûÔœÆ!LcÃ/Zx<ò‚÷¤¤âÌâÏöâM¿¹½¡¡nöÓóaÀ¼ê¨a$Úá¨´Gtƒ¥`CD”*ÎC„Û´Ùd±˜6oª1…6ÕÏ^rrEW×Š“Kf×:ÄäoÚŸ 1–1ÙòÆïŞ-\.ìŞórù}€äöÁ\€!‘_2Å™L\'ƒT¦4¥2^°gfã\áİC/¼PW÷ª:iÇİcZmúrïn0¾\[C ø.ŸS|rK“s¶œtR$á»J€ŒH$ªøraÕOlğó“*È‹•&ó<aËVüÄVW3«ZYğü=©É`ço¿ãóãÔ$ÍşÑ#FìÚ…‡â„Oãá‰_¤ê¤–õ¦:éóOÈ“Ù`gá¤0HŒB$mà´…Šù!óRß2æ¥¯lŞ×wvó>±³°å œB¨[Ï¾÷ (ŞË* ?rB}F-yù15H–TƒĞü	zR¬7Z,ëpŞø­÷¿i6-Yö›k‹ËakiYYVŠ'äÿ`ú•/ô½ãh¨WŞàî¤D|Ï=mF7ôƒqmÏœ¹xÄğÑ¯MºãÎqcMc²³†©_ıt]„^pn8Ãœ‹C³‡& I¨46ÓÓä•Ùij Ôš32óI˜Î‹°D4®z·nB^Ş„ºš¼	òjn„ßóÌÜy£v]ºP;!Ã³:p™	ù5ŠîŞ¾†^ÅŞ¾Î§›ç5íì3²Ø&¬¯xpµ~&Ğ»Ê _İ—_qy<®W^öº+ÖÏ\µF_Q¡_³ræÌ®Ïÿ®Ï_u{°ÇıÊaØ¸|¢åŸ!B@¸PˆÆ˜¦Vş-ô×¡¿B¿x	hjqå'4¦¦ 1ôl%§»È0;-›°—UçdC…Kv“zl·ğ
+»¹¢¼¼b³pú8§—-ÅÓµK¶XLk×]}Ì½_2ã‘õ%3‡0íŞB¿or!ŞÛÜüãu³L‰iöÖíGjBÉ÷…÷”n°Æ1`/÷%´„¦Ö‘J;Dö]“É=5¦)èÇ)à5•Ö¶	“DŠ™—ìØétÎw8[}ïÛyÊIû¼º:³¹®~©fÁ/şİœ:O.\nïÒNŸ:MxÃ·§Œ{I;*Ê…Ñµ5Ûw75ıËÇª¡	#tOjŠJ¨ÉhhèÙßÜ2Lğ“C'Ì®?>ù—BÕğ{ê
+&"éLÜ <$Ñø#¬‰MÊ†eZ´Ú}ğà”ºú¥'ºV¬è:±´¾.t”F"‹…F%ÅÏ˜ÆÏ?ÙÇçæa8ñ8~÷îñyB
+F'h`"QO¨Uî?£X3Ãq;*Ô]
+Ç£soLÜ: f÷ÇÆ:üIT ”j…9{KµBÆ1ECÈÇT‡^8NÊ„òı¡BXiÇëa:iœUö¸{/e:7Šy'î. ü–t†Mú'FÎ¶ÈFÊ1ºæ¦Õ?jjÄ‡&On‡ºúĞä¢ÇàíĞ´úº:ëjë–N¼Ù¹äCrøí­2Š‡_fçn#TòA˜d¬©ÓˆÖ@~´“JÄ2FIT©$¡ÆÄ)¹I «4µ _±ÛdÙ²u–Ù<k+ØıÁ®Â¥–šÚYP šÚĞP4»~é;Ëáç¥õ³‹2Sxİ»½GÀô=îÿ>xø‘aCFıD“œÜÔø‹96¤ó¡ÄŠOOÈk‘ê,È¨Í´*¤uVÆÔ7p#n|C˜{QÙÜgQ<©—DÜZ8ÑÀºÛÈºDúüH‘Q{ğOçÏüéüAáì™ÿùììØ¦˜O®K½Šm}óÉÎ©BÅ a‘ğ‰‹¤ìBRÓå3›«ôK7»÷Ü“Ÿ&LQ·ÿyrôè‡,Jcß…‹Ø¿èÜCëÒ!´.Uä“F	=
+µÀ`¡@8}úX¨Q•ÙwNñv_ş>¡7¿AğO€0Ù'V‘µÒ.,ÀûÏ‡…ÃgğOÿ<Q6‡şzÊ™
+&EXˆ7;Á÷ì€;S²G¹th•¦–õ—uğy_qG¨wì¸±ã.>¾	oÛ&ü­©ÙÖÚĞÜ¼ày‡Ô5Ï›ªfYˆ?>,>¯]÷_ŸÁ‘3a8w"/õv<wNÏSsçŒH$ù¯0 ‹LOÿ$SgÊåÌ&
+Tvûğ©‹D0ÅıÍ³ğö'„›Zx§™·y^åmxÎ¼çülKuÕ,óvKc“?ÀÛëÏÃA—–+29kËÆ÷;À8)!ë¼ÛGâ™37<8S÷ŞW´00m*õÒ¨„áäˆ¸ÌRÊç°Ÿ4ªQÌT„ŞzŸÁ¿=:µgªòÏ¤æ%Rß€\®¢¹\‘‘øé{{Vš„ç…_br¦=–làU®Q²9ñğ)xò1˜Se;ÁUÂåîupôéÆxU0àXĞ¾èAá‡oÀ6¯YÜ¡j9İ8>÷ìÎÿU_nNó{å£Gãwÿ·âVxMÏczĞ­Ã1If` ä°0/Ã]xÜ¯„®Bœúâ.UêCJtñ™br’Ï$±1­ -A{Ö¤Ù$ØHš’¢|Cø3¢ıÑG{…gŞ|ë­7qÓ¦5«|—-_/ü÷Ú‡^‹ç×˜OãM{C]æ{4¿s»±û“£G—ş¦qÂø;„w…S;và¤4öıébV‡csgè<³z©š˜r|@Q*V_´jR”
+¤7"<·Pµ¢x:5»ÁêH‰Q(Æ9çeËİJ©>I•ËîTiO¶Ü³’­Â º©˜‹e¥Ë–”•–ë;(-gÒ¦Œ­?œïr¹~Ğj4NÙ°ÉbÅMwnÙş£¥¾…Í;ëêñ”{=Î‡×í\¹li[Ã²Í[·~ö¹®Å%¸¤¸kÅşï¿úŞÏºŠ­]»„™;6Ì2clµa½Åd2úÊÑYxÙÒ£G–/Å™Y†Õ!.y¡÷Çó›«W•éğ¨´éç¾÷Ë]ëq¶MºkÆÎò¶äàÓ—/İûìk?İûÜ²®’âººŞ–@ğáÂö'Ô$æĞ®¶ÚgÂ;¯Ş×&!óÊŞ6SD8¼cà·j³°tCûÅ }OıûKvŒhcîºÛÆÂ„ /Ñ<¾ŒŒØV‚¦\½?LO®4üdÈá‡Z	aF>·ĞCÆON–0$kWñÄ¼¹™i£²&§$š™8‚lşœìQÜUÍøÂÄÁƒFgÍê®Ğã!CÓ
+“Æ8+ÃÜ­¯:ÅäßÑ¢ÅGGJÜ¯€"Ÿs£‹$&SAM9xÉªB?Š-Ÿlû?ÿ'h–~~š%µÿè/ş#Ÿ¤Òk~ŒñÙz¢¼/ü0ÿ†Hd¢×»Í:×4ì¾ÿ%œõÿ¹|Q¨‰ë‰k„uêğ$ì‰sw! Vü2®‡BŠş)U¾j
+¨F Êóh¡"*?BK˜Éèu˜;Ì¬‡xúÚ©ƒÑuĞ1æEÈI¨[•J¯àZ×6¸6Àµ®}ªN4\Ù©†ÂµMUõ¡cÊ÷`ï\¸‡±ê,zQQ+?AÖaæ]”«t …¯2Í¼g•c‘7îI´PyîòEÕ2Ø“ŠöÃZº^ù$:R°Ç@‡Éœò4U½Õ’wXg‡÷)ğ¾®BÀÛ©Ú†ê€|`Î!;Á0º)ïÀ3á—Â9€l’Ñ\´¼å÷PHLÁvøíÅ'™x¦„11Ï0g™ÏuŠÇTæ(µÊyJ·rTÖ¯(?RşC5CåTmT½­¤Ö¨íê…êµê-êóqæ8GÜâ‡Ä—Ç¯"ş¹øMT9hş Gít‚gëY»œ=ÄşfpÊàŒÁ¹ƒşçm·í»íÜÉJO²­t×ÿg$çIcŒãsÒ˜AJü¹4V ÁLŠ4VÂ¸H«ĞmL³4V#ò‘8G	 wq<İ¥i2âé»¤ñP4qJ‹4Où‘4N@Ê)¿ŒX	' <b'cŒRğ	iÌ xü7i¬€yA+Q
+“.Uèv¦T«Qã–Æñ(yLFEÌ›ÒxHf‘â»Òx(j+º ‡£”)Û¥qŠŸò2*F^äCÈœ¨µ¡ xúİÈ'LåA<'MµÀ
+Í€5A€Ëú°"7ÒÀ¬y`}Œ´È¿2…aèï<ìé€W;¬d¯ë¤0V`ê \óaV:¬°çËa,Ñ|ØW‹Úa…ÖZ)4î°R8€âW¬i¸NXÇÁ~/`·Òg,BÅ^_§ßÙÚäî¶áòÆÏçZ:¹Î` èç­n§÷Ør8­ËÅ™Èª gâ¼¿ƒ·ç°WlD¶Z¬îù^O+7ÃÚv•%ü|km;gk³zZù gõóœÓÃùÚ[\Ng÷º­NPË¢™2€iq³Ùê›ÀŒ-€×»àú¶\ÏšZ*í ÈÈK%˜2Ï'ŸG×òş€ÓëáòròcAõ4.…&ê4(YœŒ×áõ€ˆ‚ qDõ­¡\øµK0: FìõÂ»4ÉSx~ªó€ËÃÔúŠrsí ´£='àm÷Ûx‡×ßÊçxø ‰;
+d‘íôJo ÏˆİñÔvy° /Zk‰¥Şû#ÊàI'¬i£;ğÌGù
+R['RóÓÄ;Ô~’ìÏGÄ¿ÚcüëjÜ°ğ;ï¢Xa-µ+=Eãnâ—½®èqëcÖÀúğì„',é±B7•õ˜ó‚¾ˆÂY5…ç¦Ğ"Şä¤4µÑg¼ÄW+Åâ‘´®‘ô.jKÄ&Ú˜hïJ——jßC÷û$1xjP²1§dV
+C”4+ÁR*úÛ“®#v(B—!Õ"í¢-óÔáEÛK²’tª9²×Nß”.ì±Jü±Ôl`¡n
+%HŸÈòqÀÈ%yÒİa#HÔ"ôÁ~Eë'#2!3>ê5vÀ`£»ejì”ƒ µµx¤OEì50h$o¶eíŠ(“EÔÚhT
+J’qÓ¹hdü1V)RÛNe¨‰Ò»©>E]³Q$ »5WáCæ3—FBıA„í”¤«ıks-KN¤Ö¶è ¥+buQy¸¯ƒìÕ=‡|F;}%84ôHb>¬°QxâYÄ]Rd“5d£¸í”b§DiõN‹D zidˆè :E$pe$ğÀú ä˜µ²¯D$¢÷q”g+¥œ¥±9ÖÖDiˆ¹Äz}ziä$İ»é{$~\.‚4‘Ìj•8Ê‰‘Ôµö™tJ¹EÄNdî 4Ú%KrQ;õ‡gDJ‰LíQ:¶:9ƒZiFtÒ˜á¢wl˜#;¥”èË%Ö˜¼*b’c¨•Zh»2şò	|!O2•¬ÄAÄÂ¬TG×OA,şòˆ6¤oİç¼J4gÃÚñÓ8k¥q%W	„-Rö—şÙƒ—âO¹1-¢\Ùéşôòaz˜ïş;Xx&gÛô(+}ÆĞ/¿´P÷FÑÚ.ùl'ğÔ9€Äx´˜ÊÙ#y²~Åìe¥•ïˆÖ»H³<Ãè)m4Âsô= ÑÈSKºšÈ±n Øm§™ÀCõ-¯¤ÊFI.Z‡7ê«5å\ñ6Ù“Håà
+×~iG,DµèğÚ*iLÌ‡ÄªØpTı*#ÕÕ¹j‘|$(åCGXRåHGñT!#Ü<UpgAuPGšè3=ÌqPÇ™àI-Ü•Àl	Õ‹–>!ÏÓ©7ÖÁ˜@¬B5–Ã¯v=ÌØ½'w3a½`‘½:4›âĞ43PVc»fğ®“Ö‘Å0S÷d\†H*â3Â.õ²Ğ"RjùÖXªô£LY%Ü™ ~¹ôT°õ¡_Cë#26JtŠ’3QèDF2Yè™­÷jXg¦òÔREj”‡Rx.ò¢£ˆš)*†÷jÀMV”]*‚É"­ÔP=~Jè~‚u&]%RV%i™Œ#Pr$YŠtù×†1›)ÿøå(ÿ˜±Pİh¾W¶2
+ĞÍRiÔPş´TUÃºH‘ÈÓ¶8S”VŠ©¼ˆŞå%“–JÄ< '2´hídlCåOG%e «Í G¬×‡gD{ÔS^‹%Y‹0E»mÂ%İbÊ#Ñì,Àª“lJKeËÑS¥?Â…¨­ôZ%³ˆö’vez,³e ©ÔQ_ÔÑUZªksØGJ©ÿVJ”×„-,j$û¬
+S+_Ùäu×;DX2îX–P{2HšÃÒW°×€+Æ.ä5=çÃq;6sGW‘j4ºîÔDÅÚèJ@ŒÂet­»ßºÈ¬xZsVä¬]»tÂ–OÇb-/W½‘êCŒİâ™(ºêµÓú\¬áªÄKë@o¸2YDŸFrºOêxcÎy³•æ~M—œ‹"°ÄºÒJ«‚-0€4¯¡Ø+N†>šïE,‹è8(U&„¿vi-™ ßiXîÿ\©n@È¼T9DËßOõí“ÎRN*aROæHpıH>—EdB$ öİÜı´±>­õï*´FQn§²f‘ØÃ#8Y¯ä×7ßuºÕ=ëoS?ˆéõ¯¼¾º~;`?ˆûšûAìuõƒb+y[M‘^‡¼òú:¨uXØo¬¯Ä]ÑWbÿ_)ª¯é0ü¿ÙWbc2ì7×Wb8­}úJì€}¥G_O_‰½F¿àëé+±èËö•"Ÿ:İÊ¾RÄßbûJWË¾Wï.‰çs±’ø¶u—XÛ]¸»ñõt—ØkH—‹’à·»ËÄR»²šùú»Lì·¸ËÄöë2EÎº_g—‰ıÂ.÷µu™Ø/Ñeâ¾².KePP+(µ¢´µğüëë±êü›ê±Wô¸o¬wÄ^µwé}õ½#öKô®÷«íÉ‘õêåÊ{Ÿè.Í­ìø°7Õñ¹òÌvc6ªãs­¾Ã­èĞ¯€?E:,ÅCîr*¥_Ğ"_U#_v?»;Àó\ïò.“Ã]ÇÛr¸2W§¯-À9İ>¯?ÈÛ9‡ßëæ´~¾Cú˜Œƒ~‘®]ü"]4–`¯åıVN$-üm<vÜ5Ø+¿·wİ_ùãúavX+ô[í¼Ûê_Àyı¡°l5ïw;ôKsÎ ×ÆûyÀÕê·z€uğlÁ6˜¿•×pA/gõtr>Ş€Ş– HÌ	"°r6 š…•Á6^–“Íæuû`9Ylè eŞ é¥S‘¤`vÎxmN+àcí^[»›÷­ABÃé%İM ÒœÙë.ñ§¡”øyŸßko·ñŒİ	Œ9[Úƒ<¡Ù 5Û\ívBÉ"g°ÍÛbÜN	ÁàE	`Û°°£áÜ<áš¥hÓDáĞœ¹^?àA°Ú	¤Jì÷CMˆ°>"è +Š"ZÔ†uÅ¢G»ßyºÑîå^ho™ÏÛ‚d†ğçğºÀØC6¯Çî$|ŠXÖà¬-Şr Z% loÔg‰V|Ÿq6«ËÅ¶ğ’Ô€ğkŸ^Ø…Ÿs{ıü€lsÁNï°¢‘¨Ø§nk'xl·;NbhVWL Ôj·SÎEÑµú®v—ÕÏDv>àlõP2ZE_…MÄB­6  ;dzı1,  ³º í‘éˆ@ò<®NÎeæ,aÇÏ“ÿêŠ®%ƒ $Ñ‹ì<Øï§›yıö —öÃt‚[~À¦·M§"Í$iáÁ“ÔvĞ‘I‡×&Œ_á¬>¸—µÅÅ“"ï ™ØˆRÚ¬A®Í ˆ¼'F&Äê"ÖmçÚ=v‰à©,%NäğZZx]Ä«©Úˆ’¬œ‹Dğy¡Ïj[`mÆÀ=^–˜ê—3ªT°€DŞå D•ë¸Ò*£…3W•Zê´&§7sÕ¦ªZ}‰®„K×šá>]ÃÕé-åU5V˜´FK=WUÊiõÜL½±DÃéfW›tf3[eâô•Õ½æôÆbCM‰ŞXÆÍ€}Æ*gĞWê- ÔRE·J ô:3V©3—Ã­v†Ş ·ÔkØR½Å08§åªµ&‹¾¸Æ 5qÕ5¦ê*³`” X£ŞXj,ºJ0€Š«ªëMú²r‹6Y`RÃZLÚ]¥Ö4SÃ°*`ÙÄÑ%9@%Ààtµd³¹\k0p3ô³Å¤ÓV’µD:eÆªJ[ZUc,ÑZôUFn†XÑÎ0èDÚ€•bƒV_©áJ´•Ú2ÂŒ„,Ù‰ˆƒ%ÊtFIkĞpæj]±@z“®ØBW‚ìAJnq•Ñ¬›U°NF¡aëÊu0 …Å”2Ê¾Ø%p,U&K˜”:½Y§á´&½™h¤ÔTä}V•R¨yå%z‰ÈÜ•Ö«Èn‰ÁÖ  Í„˜`cÖ‚uéÛx_Ø¶äÜbh¤aTŒjµb .ó€ãŠsti	<‹f1ºE6IÇ1ôÒğÖ™H½ö"`€„¯Ÿõ’`²È )Ğís°º ì"^DWA¬´º`[ LfŒC±r2ôù°e‘ß„`ÂYÛaÖï|@JÃ~)MQ¸K$8ˆôûù€²”³ƒwuæÀZ?Ée”§Çáõ»%Ö©ølÁ"¹Tr­¸İd½şÖeiÅuÓ¥ÓõşÉÃ­©ƒX±ân¤b#uwƒu{e$y…sÆ j¤`ao¦VâäZ‰ıvÔJ¬¨‡¯¬VbE‡½©Z‰½…µ©•¸¬•Ø˜ºàj%öjµwıµU+E»oL¹ù‚Ä­*—X©\ânª\bcÈ¥çÆ[]2±/wÓ%{KK&V*™¸/™Øş%w#%;`ÉÄ}™’‰µhk++ªÙÚòªØç7S±ruÄİLuÄFWGÜUGì€Õw3Õ1ÖG	>ìUîK>ìµî:
+–>±µÃ4AyıtZ4°9ğ–s33˜KûvàÊ¥½3;ıT/‡~¾êƒ¹ØO¯ı†¹‹œœ¹NV‹s|m¾\)bŞÈßrşê·®â
+endstream
+endobj
+26 0 obj
+<<
+/Type /ExtGState
+/SA true
+/SM 0.02
+/ca 1
+/CA 1
+/AIS false
+/SMask /None
+>>
+endobj
+27 0 obj
+[ /Pattern /DeviceRGB ]
+endobj
+28 0 obj
+<<
+/Filter /FlateDecode
+/Length 3037
+>>
+stream
+xœí]Ë¹İë+j=€e¾@ÀİnÉ"€áfdx2¦tf‘ßYEJ¬Ç¡TlY¬nÑ†íRSäå}’çRÖû?}ùG÷¯ß»÷÷_şÓ}ÿŞÙ‘½–døÕùßïÒp_tšÒ}xüú´{îwŸwŸİßÏ»¡ß—û¿º§ÿu¬û‹ûók÷·¿»şŞäßğ´SFïû¤{ù[úÒ(¹·D1©İÏÉô¥ó/»è¾yi{m%åÆXÙË¿~G5§{C™¤~š'¦ö¼‹Ö {«ŒbZHŸÿúm÷~°âÚyPÕ1ªM'‰è”èşûÏİÏNü•„KFé”²ëKWœÒ¹¾pMY4|á*j®®/ÜG'ªbÄyéõ"ÎK¯qƒá+E\¯ùrÄ+(ÕJhø|!Œ£d3ÁªÈÁká^óÂSh¯"Û+^AvºªT‘=„úõe'ZÙ½¿¯/»&º¤ëøMËhqKè’n_n
+]’Ó-¡Kºi»%téekRÙjË Üi^Ù*¡Ë Û)^Ùj¡e1Ôo
+]ÙŞß•­ºxÙ‚‹ŠÈV	\zá^ózÈV]zÙ^ñjÈV	](‹¡~SèÒËîı½(Ûk·ŒºgAå@í¹g¢‰4†qùÙBX/[vÜÚÏ…SB­"ÚøüBhSœ;ÙfIñï*[ø$«%<*.Ü©![²z²Ş.¿m-×”]ÃæƒğJ¯iu#Ì\öçµ£$“eìı³*ûç~¦œòÑdÏy?(%?½{Ü½ÿäŞ=şì@ôêôÿ<>íÜòQ‡v?u „ê?v¿îôqÁ}]Ş¿«o!ªoá{Eì¤eècæ}	£Y3MÆÉQÓÓ·ˆ}ÿc’våH2iÁrğhÑhôSß"÷Ad4¶^SF‘œĞ»ĞÇ03éó¡o¡‰ä‡ğ^¡ÌD8>7q¶JªÑø”¡–ŒKRş¼Ë†ÈS{=ã¡d¢ö.Œp+XN&_8ô;Ì¤Œİ 2ÑÊÂhCólP i&/±¦"ø'vÎh|h¡l?‹ƒ+Í ãã æ?Q~Q4Áq]2·’púˆ:g´ŒEq$Bt9©éÃ£ÛltáfTFCò ÿûiJ—8,Ø•º²¼JÜ7¹Õ·XÓL²lÆŠ ¢>ñhx	ÁşÁ>ÅÉ.CT:]ŞpTU_È©
+}ŒÌ€Ëõ[¯ùvÏ¶!`f–i…‚©-C­T“CAşz,ùãôá¦—iÉH÷q›­{j8Ù}rÿüd†â|ÇC½e«(ÅÆVG9Jaìóöb^3sf¾c{±Mç‰fb´{¤÷!æg´³Íù³?İÃr•XF¶mŸ'Œ³ñlWíÙJÖÅm£‡Vz¼ÜL%ƒê¹=»;±sÙªÎÖ4Ä\}U1q‹ÜXäå0Æ-En,òÚ…³±È¹üo,rÙFíöXdm£!‹ÜXä<¬5¹±ÈE.f‘“CÒÍ±ÈGİ·}úXäÄSE>°È‰U
+8|ü{{1?°Èçäû+g‘»ÇÆ"',²UãÙ6y¼Ü‹ÜsÕa”³˜8En,2HŠ‚£Lc‘‹¼š„h,rc‘7j7Ç";DC6¹±ÈyXk,rc‘‹\Ì"'‡¤›c‘ºoûô?°È‰§‹|`‘«”p"ƒŞ^Ì,ò9ùşºYäãî±±ÈG™«Él‹<^n†Enˆ¹î0jFi,rc‘—“BŸ „Æ"7¹±ÈEn,òõnAt4dc‘‹œ‡µÆ"7¹±Èå,òñt{,²DÜfg+Æj,ò‘E>Z¥„Ç¿·óE>#ß_7‹|Ü=6ùÈ"g›Ñl‹<^n‡Enˆyî
+#¥Ïu¨J•¬»x§OHxG‰³íşXÒœq*€¤Wæ\)Á“~Ù¨½´£È»t2d’mbĞxÚÄˆ†[ œ·Šh’´ÿókmG«ÜN¶%‘ O™lã0§pKËp2«{—~/Î9ï?Ã7ë„ö¾ÑÕ™,å$,Cé^.su®Eiê7ÓõÍ,`—Œ}Buê›±[³ÊpI¬tçn°nØE](»®cŒì 
+dëætïO+‰îHP]j?³Ó„}TåPØ‡.åñº/9çıç`ì*¡ÑktÉkTy§™xğã5I<F¦&3a9Â;§·à;»!A?†åk?=ŒĞ¸¨ÏåDğ%³Ô'l–æ5	¸´yˆ£Í¡ìYFcÙÌàÚ lyÜ†€N ½¸ŒF ÏãÀ=ış3wĞ¸9À««ïÌ<İÑxR•3ÃDc2:½¦sO·³K,& ÇlÏö®eÒ¸”Ã-œ5ÔÏ`¼rlÎ•„|É?…Ä Ê»ĞBãÊ1cÔ,´„sĞB—-fı‡µj4<ë{Ù\ÀË0öìï2µpÓ!pXjš£—5`kr,°[K-p¡ş+rÛà.Œ¦fKB6"Ö´ÀB@9¶ÀYc[‡3ÅdIãñ|/i§ßF†¬zÆ’&ÿM\6p°cw2zÂ˜®ÏtÌ„'–Ó ËÁ¡.ï”Ì:ÀàÖœì¿TräeiQÃ–±WÜ	sp5gÉ—p¨‘ĞË8¡ÿÉÇĞ¢á^|Şnª2v+Ğ4“Q¸Ï©ìè£Öıîıw}öAâÓèU´0iÜAÂ*«F_üÙÿÁŞlL’éG{Ú)ãæëñQÃoiƒU%$”¹Ÿ“éËq·_v?şĞ}ë¿ËÔ8[YË,f:z})•Êù•3ì¿¢Ö0ÕéK|Yì:Ál˜òß {uÉVÔ’L}à›‹|ï÷
+Áî°^W²¿wmk{ÑÎÑµD×±·¬’dÜdÀ’ˆNH­¸ÕV«0¦QšRÓQ¶7Ô=åçâ ‘¹#Èã®÷L¿¹a¾ÂÓù¿¿>uïÿüd»îã¿ßW]‚ñ¯‰W5‹°ş´oyÙ~p?Ş™ŸËqàp*\°˜mØ\Ÿpeú¸õœ°—Lú|ˆ}«9İ.MéAt†ÏzğäûÏaV	Ín³{ûÏ?«=»c9ÀWÀçeØA87ë¶jêM<ë~2³•ræd„sËp§˜‰Gƒy]êCş™2¾¡¼¤´S°ÖÎz|«~“¹!ÍI¯àÈXÇÎ€†ÊÉä-Ì4‹4¡D}VüÁ¹…ÒÒ5³³ KFÃìaÆq%š—£`drÏ{¢MI$VÉ9[¸†-%šB»epµ ¿y¼%4ŸAÁŠ˜©<+Ã;)y‚w%şº,va|Èxÿ¢kôeã‚ÇOXÎã¢@Ÿ’Ìw£1«Fkôec¶¤º•¡hıLÌÂÑâ­k¹àcŸ‚
+?UÙh\ô{7}8×àú1¬SãJ9vœ£C}p5šâJ9”ƒWY¬if5‡3ØvîsÍŸ¬“oV›hQR0¼lÆgŠ2C¹€`õŠJ£E¦ºBME°}BÆœv¨©÷26¾¨î™œAIÉºÈÿ½£‚O>™8;µº¾Ş[êxµ<~–_:…W>ñÕÒÌõÍøßÍ£CÔLG;|jn^´¦£Á>™å`}J4MîQÇB÷åëØ«ŠçF]¢hîGËıFErjİsC)é«â“—ÃÛÏ,¿tÊß¯(fv(†÷ÚÙQ î”¸B%ú(Ğ™ìÊµYq%yJÑ©¹B•9‘è¼xm‘Wµª¯c.ÌNñåM\®¤‘O)áêïø2<oÁ]ê¢krğz¡€|
+¾&—¹ÆŠÏjxo[p“¹>uaM±œSÖÙèuY{IŞÅycóĞ˜‡­3K¹¶idœ¼™{{¿Qïk­ïã[‚¡œÌT JÖ˜Wº¾gÃ$‹¶=W&Ó3Dù‡V¶ª—ÀsîåüÓü)?×}Şı"›—
+endstream
+endobj
+29 0 obj
+<<
+/Type /Page
+/Parent 11 0 R
+/Contents 31 0 R
+/Resources 30 0 R
+/Annots 13 0 R
+/MediaBox [ 0 0 595 842 ]
+>>
+endobj
+30 0 obj
+<<
+/ColorSpace <<
+/PCSp 27 0 R
+/CSp /DeviceRGB
+/CSpg /DeviceGray
+>>
+/ExtGState <<
+/GSa 26 0 R
+>>
+/Pattern <<
+>>
+/Font <<
+/F6 21 0 R
+/F7 16 0 R
+>>
+/XObject <<
+/Im9 15 0 R
+>>
+>>
+endobj
+31 0 obj
+<<
+/Filter /FlateDecode
+/Length 4527
+>>
+stream
+xœí]¯Ü¶†ï÷Wè:@d‘”H
+(
+$ş(Ú‹Fä¢èEá$‚8­“‹şıJ")QÒÄs¼£]¾6âì®V~Ì¼ä<”–¯şòİ¿ŠÿQ¼zıİ‹şÿ¯¿»T¥i*÷§èÿ~ Úğ¦0B”şåÇO—ÏÅçËûËûîßÏwŞw¯ÿŞ½ú_!‹¿uÿıRüãŸİ‡?ø/õ_øtÑÖ”Ãšîí¯ñ[«›²­´lL÷yµ|ÛùçË÷_¿õÖJÓ6BYÛ6ƒİùû¯£S»b>Q´Ï—ĞUÙj«¥©›Š|ıÇÇß.¯\+-‡Ğ…*šª.t]üşãå§ÎüŒ7²rÖ…··®•tÖmu{ãFÈĞğÆu¨¹¾½ñŞã¤Œ×[çó¸Ş:›Ç¹†gò¸¡æLWW-£ÇõÖù<®·Îæq®á™<n¨9“Ç5Ê0z\oÏãzëlçÉã†š3yœÖ£ÇõÖù<®·Îæq®á™<n¨9“Ç™–3sè­óy\oÍã\Ã3yÜPs&k%gæĞ[çó¸Ş:›Ç¹†gò¸¡æ<'«š1s¬³yÜ`Ëã|Ãóxœ«ùu³m-„Ñµ!_?Sã*ë<N0Ø,ğÖ¶yí+Ş;;‹ñÀ!om|ö¾æ] ±ØöôÖ¶‡QÅ¹:mO_on[‡şÖ<¶=øÍI]æ,Ÿ²q‰‹ãİÂğ)“º8Ô.›²q©‹ÁÕ³R·À —²q©K¼š–•¸ÌVòrR—x1+u‰Ö/sR—xé4'uém«ºaT6&qŒ÷5çS6ul÷gS6&u2¸zVê2Øú›GÙ¸Ô%¾%+q™İ““ºÄ·ád¥.Ñ@9©K|óQNê2Ø6Œ+\ââŒÆ&uq¶ß
+—º\=+uq¶Û
+—ºÄwtf%.³»IsR—øFÖ¬Ô%º‡6'u‰oßÍI]†;‡+Æ.qqw-WŒ+Lêân˜®øV¸ÔEÈàêY©‹»M¼b[AàR—ø™ˆ¬Äeö<FNê?
+’•ºDO¡ä¤.ñ09©Ëğìd\Aà÷Üd\A`R÷È‘ä[AàR!ƒ«g¥.îA+É¶‚À¥.ñS…Y‰Ëì‰ÆœÔ%~˜2+u‰ãÌI]âGHsR—Ş¶mW¸Äe0Ş×œOÙxÔe°İWœMÙ˜ÔEÈàêY©Ë`{èoeãR—ø¹ü¬Äeö› 9©KüsY©KôK9©Kü#9©Ë`Û2® p‰‹3nW˜ÔÅÙ¶|+\ê"dpõ¬ÔÅÙ¶l+\êÿ²MVâ2ûUœÔ%şAŸ¬Ô%ú-¡œÔ%ş£œÔ¥·-ß
+›¸Æûšs)—º¶ûŠ3)›º\=+ulıÍ£l\ê2Ø6|+lââŒ¾.uq¶Û
+›º\=+uq¶Íœñ½?z•©°BúRõ¯ë¦jm¥Úşµ®Œ­UWÉ¸°{¾OìXó9Ùè·.¯Şõã~êêÜWîk÷¿Ÿ.RtoDÕ~(şTUÂü¹øğËÅ”RÕªßş§ÿÖp¤ÒÃUêª]qçØõ9²òWkíòjM8Ò(!gGìp¤.‡«øj¯ƒ¦Z¡íĞW{C]M¼4¥¯Nt5y¼¦RPvRÚ@|ëÏ±Ò.Îùf8""Ëoıwkmõ ¯_…ÒêFÏ®¯ud£]Kv÷ezWº2éÒ,Ë$•?GÔÕüÈFï’Nû
+mg#^Ùïd$m´ÙŞ*ıÕÜûÚ ¡¦qI×´öıã/¶çjÊ²\ùÁJ°Ñ?5édüÓ>ª^TMh¿N)[J	”ôçx‰Úsµ¥=‘T—'kúöC7?8ëÀ-uhHåå¿\†tJ‡m8İ•5Ù•)â•ÒıdànH.ûtƒ®éF°'LÆ’"E>é«ÑCİ?tŸÒÁŞx¯²b9¼Ñ^Å>íÏ±í¢ª9>õZOéÒ&)…Ã´¦Bê3Km£I9Iöõ¸ÖïÈ><õ0Ó´Õ¬îŞãN[ÚzŞS.jËh›Û'#”wzbhÎÜ*ZËy«HÊ…:ş=ÏiwÆ»d«œ:NŒ¬g³GñÚûü
++È6¨¹Zjö7¾î~¸ŠZ…¼ZõöÜ­2ÄI­æ¥=4gKÏ­F›ùğÚkjåª¾5çß>1s9k[Å<œŒš8 È ÈGÃùèÀ	Š¼ÿ Èiµü(r;6$(2(ò¶¬"ƒ"ƒ"§Sä)IÊ"u?wöï)òÔS ÈEZ%‰ĞGÏç=EŞïwN‘ÇÙ#(òD‘eeæ¥E ùPd(æ‘dTª8 È ÈDP$¤2 È È‡!(2(râD-;Š,›:4$(2(ò¶¬"ƒ"ƒ"'Sä(IÊ"Ou?wöï(rÔS È#EZ%…‰ôx>ï(òx¿oŠ<ÍA‘#ŠlÄ¼´ Èó ŠÅ<”Œª*(2(òÑùèÀ	Š¼ÿ Èiµì(²64$(2(ò¶¬"ƒ"ƒ"'Sä(IÊ"Ou?wöï(rÔS È#EZ%…‰Ğ¼ôá|ŞQä=ñ~ßyš=‚"OY©f^ZPäùE†bKFuPdPd"(êã©(2(òaŠŠœ8QË"[y[Ö@‘A‘A‘Ó)ò”$åG‘ÇºŸ;û÷yê)Pä‰"O­’ÂDÈôïñ|ŞSäñ~çyœ=‚"G¹mç¥E ùPd(æ‘d´–Ø]o×¤úñ)2.ŠŠŠLõ(2(ò¸kì®·'pA‘Y/’¤ì(òT÷sgÿ"G=Š<Rä¨Uh&B+é¿çó"ï‰÷û¦ÈÓìy¢ÈµÆîzkŠ ÙPd(æ±d´Åîz»&ÕSdz(EE>:p‚"oÅ?(rÚD-;ŠÜˆ±!A‘A‘·e9"OIR~y¬û¹³O‘§E(òÔ*	L$'Ÿ÷yG¼ß7Ef ÈEn$v×»B‘§ ŠÅ<”Œ6Ø]o×¤:gŠLß¥ŠŠŠLõ(2(ò¸v×Û¸ È‰ŠŠŠ¬IRFù¡£ÈSİÏı;Šõ(òH‘£VIa"ä9çó"ï‰÷;§È»ë]¡È-v×[SähÈ†"C1%£Zbw½]“êŒ)²²ÇSPdPäÃ9q¢–EÖ
+»ëí	\PäD EEEÖ‹$);Š<ÕıÜÙ¿£ÈQO"9j•&B§çó"ï‰÷û¦ÈÓìy¢ÈºÁîzkŠ ÙPd(æ±dÔbw½]“êœ)rB*ŠŠ|B€"ƒ"'NÔ²£È¦Âîz{9Q @‘A‘A‘õ"IÊ"Û{Ú]/ê)Pä‰"Û{EÑL„<òx>ï)òx¿oŠ<ÍA‘'Šlv×»B‘m~»ëA1%£5v×Û5©Î™"›'ù†·Æîz{9Q @‘A‘A‘õ"IÊ"Ou?wöï(rÔS È#EZ%…‰éßãù¼£È{âıÎ)²ÆîzW(²ÅîzkŠ ÙPd(æ¡dÔ
+ì®·kR1Eêx*ŠŠ|B€"ƒ"'NÔ²£ÈV	ŠŠ¼-k È È ÈÉ9J’²£ÈSİÏı;Šõ(òH‘£VIù•O2ı{<ŸwyO¼ß7Ef ÈE¶5v×[SähÈ†"C1%£»ëíšTçL‘ñ‹ È ÈÇuù‹Ü-v×Û¸ È‰ŠŠŠ¬IR~ÙÜÓîzQO"OÙ<k¯¨ŒÏöyG¼ß9En±»Şš"·»ë]¡È&¿İõ ˜‡’Ñîj¡ê È ÈLPdPä£'(òVüƒ"§MÔ²£Èmƒİõö.(r¢@€"ƒ"ƒ"ëE’”Eê~îìßQä¨§@‘GŠµJ
+¡yéÃù¼£È{âı¾)ò4{E(²ÁîzkŠ ÙPd(æ‘dTvQªŠŠ|=(êã©(2(òaŠŠœ8QË"Ë.’CC‚"ƒ"oË(2(2(r*E“¤Ü(rT÷sgÿE{
+9Pä¸UR˜™ş=ÏyW¼ß5Ef È#E–ıé³Ò‚"ÏG€\(2ó`2ª±»Ş®IõÃSdeŸpcPä½‰1(2(òæ´ù¹·Åîz{9Q @‘A‘A‘õ"IÊ"ë;Ú]/î)Pä‰"ë{EÑœ’şûx>ï)òx¿sŠl±»Şš"‹
+»ë]¡È:»İõ ˜Ç’Q¡°»Ş®IuÆ™JA‘A‘œ È[ñŠœ6QË"‹flHPdPämYEEEN¦ÈQ’”Eê~îìßQä¨§@‘GŠµJÉÉçEŞï÷M‘§Ù#(rD‘5v×[SähÈ†"ŸU1»¿Åç®êÕP\¢eŞw_põCÕšnb)[İêâã§©Ñ†¿q³¬¯YÅ×ìÏ¯Ö/V—mÿGÍühu]6¨…ì>¯–oç§ı|ùş«â·¾~¥íFã¶•­r%½©*Å.Ô:§érëª¬EÓU@šŞ*S5ÖJÕÌ.|°„BwŸY©Süşãå§Îtä»•h7%_?Ï°EçRİ¡›[îfdL–EïøVİØp7äñZî³•[·voºëh.Ó<ímkÉd¹wîÊiÉ˜u²”F«Ö´Fû"Hc+m„°…¥İ«û²t‚(e—mënß3Ã°*ûa¸èÿıø©xõ×OmQ¼ùÏ0¥jüÁ:îùş	Æ!£ÃÃ]ã]£·mÆ‰¦›d‹º$Àe×üª-§Ò]ó˜å$¢	çx–µœ’èR4úúÔM–ÒMë¦#¯§‰ÇÔ²õu&_ÏÛÿéïïhÿcFÃOí_«eÂ²‚"$9R,ÖPUHŒ±œøYßÊ«”É·¥)õ
+2¾ç,×jé²Uar­—½I—z£ld	üT]•õ
+;ëf²ltM¶hX&XCS²>bìŸeš¢¾!ëC¶Ôä9t}ÈRÏqç)ccú±K²WèØh-Ú—è ı‚ôsÚÎFÜ’‘¦Â]İ`hÍ¾X§Ëæ‘Š.ÍèLˆÁ”«ùûKtXEÜÕa$ª|vDÀFÒe£{›T›OGÉ¨¡(CI©)Ùnºš ß* œu	FDÚCæ°çlz×4*Ò»”şzYí¢õa£÷_tŒ~Y¿Paé{í	õI™Á<CqOê³z6F¿¬ÏVaùÜ¬fœ†<§öHS­–ÜéÍ)>K^-ÜV•f™Á„1`5>Ñõñ·^\«©:³_s73æ5c-VÊßPGüOh\;ç­oÇµÊIê­¯Ù!K@Û¡GYº¦£9Y‚sÇ¾22êcõî‰Ø?m-Ú¨´æøÛ°®Åè‹F<}_k®(©zş–šúÊ˜G×4hÛºÔt}hu%kZûvÏSÈón†×#DÜê¦>ºU6ÚøEëN—.ít	’ú¿&=,µ¿¥êZ/™Ï†Ÿ=5º.(à±å²=ßß¡AÇŒ
+K–íØgê‰Lºpt5òu¹ïêNú0»Yİ!Âskb4zÍòjãÍ«süó%Ç®F³qD’vèú¤ÔTLº_~ûĞâ¹Õ/±hŞ_e¶XŞ0[$­mKe…¨†UñÅ[÷õ‹ãÏ-ò—[÷%Ã¿øÚÙdĞº¾ÁJôd°k²[4½ËÖ7²§µà0(ìV™#‹]/ŞÚäM[µ_Ç|zav©/¥
+È×ó©ÀÓßß18ft3ıÂvà))üÆ·ÁyŸÊ­kmÌ¡ß9ÉS$}„l\ÛÒTëÄê…kJÛyªu<E8]Ø¶qÜ&ù9ÈÈÈÃÙÉÃµX;µ2Õªz¦2Şï ÷'í}cLÔûô]µ¤brc*eŒ¹Óñİ
+·£<uYeçôŒã?b–4ñä}¡âú©¨¬kN÷|ş´şBÌçŠ÷—ÿpO-©
+endstream
+endobj
+32 0 obj
+<<
+/Type /Page
+/Parent 11 0 R
+/Contents 34 0 R
+/Resources 33 0 R
+/Annots 13 0 R
+/MediaBox [ 0 0 595 842 ]
+>>
+endobj
+33 0 obj
+<<
+/ColorSpace <<
+/PCSp 27 0 R
+/CSp /DeviceRGB
+/CSpg /DeviceGray
+>>
+/ExtGState <<
+/GSa 26 0 R
+>>
+/Pattern <<
+>>
+/Font <<
+/F6 21 0 R
+/F7 16 0 R
+>>
+/XObject <<
+/Im9 15 0 R
+>>
+>>
+endobj
+34 0 obj
+<<
+/Filter /FlateDecode
+/Length 4690
+>>
+stream
+xœíßÜ¶Çßï¯Ğs€Èü%ş Š¾³]´ÈCÑ‡ÂIqÚ$ı÷KR¤D‰;Z‰·ÇÓJ#öŞi¥!‡ó?Ô®ŞüåÓ¿šÿÑ¼yúôßæKø÷éÓiUGúÿ÷çÛôÜÄEi^~ùúğ[óÛÃÇ‡öïø¯;÷ëƒÔªõoêì¿¤?jÙµ†HÖ)û{2ÿÑ½ù§‡ï¾i~µŒM$-%ÔH¢´ _ÿñå×‡7}×ì™¶í¦£\kÓùÎÌ¶-§Òş+4·ÿşÃÃ¶õ/mÎv±ª=÷ÊÚ¬aMSß¦’3=Ûµº+úS]ÓœMÊº¦#¢a²ŠÅo’RVË¤äÌ›Ô¤–EEYğk5‹2ôQ^´h¤–L‰€¯KB‡QáCGŠ*]è8“.t*™t¡ãLÚĞ©dÑ…Nï×jeè£¬eÑ†¬vè8“•CÇ™¬:½_k†ïcÍĞŠÔg²rè8“uC§÷kÍĞñ}¬:ÑµCÇ™¬:ÎdİĞéıZ3t|k†²eUåĞq&+‡3Y7tz¿ÖßÇš¡£»êe²3Y9tœÉº¡Óûµfèø>Ö£«—ÉÎdåĞq&ë†Nï×š¡ãûx9t´”*)øú9‹sZÅ`º6¯c1Yš×1˜¬Ì+æuVgPéC‡©·¨ô‘…á*}d%Rõ¨Ò÷•®›kªJ?GU~J9*ı„ªUú#Å=¨ôj|Pé;JMdå\SWù‹Y9×T•¾ÇğDÖÍ5u¥OYÔ£Jßo3Y5×Ô•~²#vTå§[p•~²åwTé[Œ•~²¥yPé»-T^+ÖU¾ß³åµAfUéû=b^™œÖ•>e!P*}¿Îë²áºÒOn×8ªòÓûC*ıä~”£J¼ÿå ÒOî·9¨ô­A)k³áºÊw]+çššÒw]ëæšªÒ§,êQ¥ïú1¬˜kêJ?¹—ğ¨ÊOo^<¨ô“›%*ıñæÌƒJ?¹ô ÒwMm6\WùŞ¢©Í†«Jß4•Ùp]éSõ¨Ò÷M]6\WúÉîGU~zgıA¥ŸÜÉTéŸ8¨ô“O*Túî“´6®«|ÿQZ›W•¾ÿè­Ì†ëJŸ²¨G•¾ÿh­Ë†ëJ?ùÖQ•Ÿ~ìë ÒO>fvTék;¨ô“ÑTúîë˜ˆ¨‡ëJß”ëdålSSüş§\ë¦›ªê§,ÆêQåï¿SËâE‹†M¸aÔ¾´ë?l_E:­ïÊnèc°åÑŞÇugÍÚöåbkŞÿééï¤ù_Ãš¿ÙÿnşñOkó{Û®R£ŸŞ|Éç­g]¾íÿùì}ğ-·¯¾oşD¡n>ÿüÀº–jÿµ—Íp„õGHË4e]z„û#Ô´ò‡Æ#¢?ÂÚNHw½ñHÏ‘Äpµîéhbî[3×µ@­Öı9ÖgŠNí˜şÙö§dç¼ÿl£dÉKGòmßÑJáİ5öâã§şkÓQy½¥æ~|=ÌçŞ‚íÀWû0\­›ÅEÁJ®yå‘Tå$õL’”¶d.ˆ^’¦eİğíµAèÖfKïû¹¼dËŸ¹¾ç(ÙÍäŸÓKR´¢›[ ÀVëpµÎ[`À€)iõÛ=¾\|£¦±­[6ï¥Ğ‘ .ÑòøÅÅÃ9¬ÎÕZ·€ïaP E2#RI>Æ™hî“Auî­àGöFÎ‹è}á>ƒ¿Xw*?*k´"nª•µ²¤•NÑT+BÜ‡)xM‡ÙùR¤¾Êë‹,ƒ©Võ¥Ë*åWƒ•·`çNUäÇkP«lªBÏÙ¼çTÇHçjÀ«ÁvŞ†ñRYİø6”+,‡LlZ’Õ¥±Ìƒ\í1ôPÏW´¿¿päÔZ¸‡-€Ï¡±šG}Z<Äàj«a?±Ãú?i@õ¿¹§ù‰1sĞ‹ùÜ"µòIÑgr/‘8NYC¶Q¹‡leSİöåu>oˆ–ÌËÎa5y6‚Ú¶pµXaeñíGãe|ŞI1q:›¥œ»6¦Ñ¼Ë:¦Ş,1”¸	>çñ¥İ$¹Jİ´à¸Ë™â’‚á,‰gPäÅ]«èÔµğ(ÃqöuùjªxÉi3éÜü‡˜¹èàÌP2Ïí¶d`Ùº×¢ë)«{íën‹†À¼úş5õË&£Ë« 7k¨sx?à]îK2TÚóÊ†‘8Ÿèù‘aÅœaŒ.“U¯à¼ÏXD™şÀ¶…ªòR«yhó*B†|°kV½^j5hî) Øp«á¶‰0¦d®¸§¬µ}^õÃı©åÑ›zxøñdºêÜYèä4hñÌ$äbx)Î;ìº!i×g»»k¬˜Œ¸xY	,900µg§¸á¬
+Ş«!zŠ€WL¯sŒµÙ®E¢˜‰˜¸g&fë€Ç#±Ú4Á¯¨×nbEÂˆ˜6vS—%…Ş®3‡’j’ûaê•±3öªßâ0+ÕÉ2.ì:]P^€¸³*¼Ğ€‹Å’EĞ¤è;ğÕŞAWÛóB^¾^ğûğŞœz€×/ÙnZğq5x/3º!÷Ê|‹^-Œ.¼$ce?ĞÑ
+ãØ=]Ğ%ÜS¸F¯Æû#”µYTjÁÂøÀ¨Ô?£ü¶X	Œë’¶•´€³pNHQÏ«Ò"Ì.W{ºçy»£ÑáGÒfÛWãµğH
+p$KrWÉèÃ°Î¸¯^mÀ=]ĞzA-V”J²'Ü"ïÀ[û¾¡®ã²j°ßv¥ÌãÎ]–!X²ñ´¿LëÑq²D::»¾ï…¿GÇÉ8!:è8q
+¸Šã
+:Ÿs¼€÷èxÖïu#¢ãK=m,¢ãIî?:Æd¹i	j¢j#:Ô¢¯¤DÇˆ#:Ft\mŞæ´‹~DtŒèx9«!:FtŒè¸K¤Ó¡ã¡ëû^ø÷èx'DÇ:R@Cà•ßñ¾GÇ+´~×èx¬è˜s6m,¢ãIî?:Æd¹e	*‡¾":Ft|YDÇˆ7£DÇˆ«´Ó¡ce¢#:^Îjˆ#:.EÇÉélèxìú¾ş'ã„è8¢ãÄ)%4Ì?Çx×hı¾ÑñP7":Ñ±‘ÓÆ":äş³ cL–[– ‚EÕ :Ft¼U-ˆo5/éÑqY•v6t,~DtŒèx9«!:FtŒè¸'K¤³¡ã±ëû^ø{tœŒ¢ãˆ§”ĞğÈñŞ£ã5Z¿kt<Öˆt,ä¬±ˆ'¹ÿ,è“å¦%¨ÄèÑñå¹’_Iˆ#:FtŒè¸Ú¼İ‘ø¸DÇKºEt\˜#:Ft,§K¤Ó¡c3‹·İ6VLÆ	Ññ€G§”|}'¸ò;^À÷èx…Öïu#¢ãw“—£ã1÷Ÿc²Ü²íğ1y«Jé3£cüÂ
+DÇˆ·çDÇˆ_jŞVø˜¼5ºEt\˜#:Ft,§K¤³¡ã±ëû^ø{tœŒ¢ãˆ§”Ğ}Û£ã5Z¿ot¬ğ1y9:Öø˜¼'¹ÿ,è“å–%¨¤ø˜¼U¥ô™Ñ18W":Ft¼uÖDt¼¤DÇeUÚÙĞ±äø˜¼5ºEt\˜#:Ft,§K¤³¡ã±ëû^ø{tœŒ¢ãˆ§”Ğ˜’.à=:^£õ»FÇcİˆèx@Ç²ÃÇäeè8ÉıgAÇ˜,7-A5>&oU)}ft,¶/`#:ŞŒ#:.¬ÒN‡>&onæDÇˆËéétèXßÑcò’qBt< cıœ'?Á+¿ã|Whı¾Ñ±ÁÇäeèXQ|L^õé“‡ÉrËT	|LŞªRúğè+âÑ1¢cDÇĞø :FtüRó¶ÄÇä­Ñ-¢ãÂü€èÑ1¢c9]"]ß÷Âß£ãdœGtœ8¤!Ï²ƒ÷xïÑñ­ß5:ëFDÇ#:Ö³Æ":äş³ cL–[– š>AtŒèø²Z`¨ŒèÑ1¢ch|#:~©y›ácòÖèÑqa~@tŒèÑ±œ.‘Î†Ç®ï{áïÑq2Nˆ#:NœR@CÎğ¯Ñú]£ã±nDt< c-ğ1y:NrÿYĞ1&ËMKP…É[UJŸƒ:BtŒèxë¬‰èxIÿˆËª´Ó¡cƒÉ[£[DÇ…ùÑ1¢cDÇrºD:Ñâ°GÇê“—Œ¢ã«ëO~Z !à9Çø¯Ğú}£cƒÉËĞ±!ø˜¼«Ó=&“å–%¨áø˜¼U¥ô‰Ñ1×Û0ˆoFˆVigCÇ¦ÃÇä­Ñ-¢ãÂü€èÑ1¢c9]"]ß÷Âß£ãdœGtœ8¥€†À+¿ã¼GÇk´~×èx¬èXácò2tœäş³ cL–[– Ôv,:Ù1²ãË¢(XÁ ;Fv¼™= ;Fv\X¦SBñAyk„‹ğ¸0A <FxŒğXÎIg£ÇIß÷½ø÷ø8)äÇ‘§^)a"`:^Ì{€¼JïwM“êò€©¦¦­E†<Î‘w›1íŸæ7Ûuâ›xæ£}Cßê»ÖÙÂ’idóåëè4ÿ'uK~M’^Ó^ÍN/Z¶ÆıÇ'~I)Ú®£‚2û{2ÿqzÚOß}Óüêú×j;Ãï[:ùùV]JCÈôAc×Ö¤´³`Ê…Q¤Óšñnrá-¤ÒşN3Ù¨æ÷~´¦“Øµ¹Ø‡)øúy†)mlHÙCÕ-ÛŠì•,SøšW6l§¼×µìV+µ½íLÛ~-Ó¯ão-Ø+YvÁMú\rÓCl™’Ü(£dhSšHE©n(k5µ/´tm±	‘1»šäİvİ¸ùI—¹IºqùÚ¼ùëWÓ4ïşãg¹Ò`cKÖ¼Mù±É¨/?Tc]{‰íjı¿Uô%8-€5íàğÎ›ÚÖ=j^btñœ@ºÆR†lF;y¹°c-ë‹¾ñÈÓX–Œ®`&ô|=õÿõ÷¯ğÿ6£±ü£ ÿEö@˜Ğ¸bt¶ÃÊã²©£ó‚Q/gªàKÕÊA¾çÌwrá¶‘XzËùhÂ­^hØ‚PÈóVdˆ8ÚÉ÷ŸÁ¶Á> ôhÜDÈ‘*Ø:ŒÏ|Ãß‚ı}À$xÜ°ÕSºKmtúê¨À
+XğK°à¸ ã¶³ [Pi<Ş“a§J­Öin[ .²UÔY Á’«…»OdÜc\5
+q&"¡	+° A¸mğhƒÙ¦$‡Y2Ã8ğ®À#%=ı¶Wò7 'oAÁŒGÈí-ßuOò]Éxİ6wÁùaaôo:Gß6.xÜÏã¢ ?%Ì32îNcVNæèÛÆ,‰›ë*«8xÀ“gòŒæ’˜¯ï#­š¯`âÍOpÂ—zÊ÷¾vSÃºfèE–ù;èà9ïƒó,Ç sÔ¾dlleá.Ìæ`ö­}®X2ÆüÃíï¶&éœsÂMZ—4zSÅÃç„Í»îB³^¸áF\˜óàÆÜ–·îœ]ÁŠà7ú¼5ßW¨i?¢â²[ş`¯,øø¦}‡Û· @¸Eã/À[n¸º4
+àÊg!Î®Í®3
+¸m3mÍûWä mF#……gK3ŒYÜè…VÒ&ÂÑlæ³kßì>ûXİd·HĞø©œQ3¿ÚpkAvNøôÉ¶«ç,a ¸?%=¥c¤ÅmğÛïroÚZ×ò[êî*“­t÷‹É:5Ú´\SJüùìÇşí+·ÎŸÛä—Û2-¶Ê_|gm4¨)*ìS­Ë*[T.dE%{RÒ×0Hu…=èÄ¢ÅÚ&«zÕírO^ß˜ç—–ÇÿÀ×ÓRàúûW”ÛŒ..G¨Ûö>E]À^¿â[à¼×Öˆ›öµjèwàšä)>zga­×¶0ÕÚ1‡ºqOa;×¼(ÂîdkRİÅ9’$HöN.im×™IpòÌÌ„ô~½ßéè+¥’Ñ‡ïªÒäÂTÉs§ó»¦:õ#Ùu[Y—®!àŠã]8¢æ4qçcÁÓşñ¤­9§{>Êßò¹æãÃÿ<¦+
+endstream
+endobj
+xref
+0 35
+0000000000 65535 f 
+0000000016 00000 n 
+0000000069 00000 n 
+0000000123 00000 n 
+0000026026 00000 n 
+0000026207 00000 n 
+0000026232 00000 n 
+0000026438 00000 n 
+0000026479 00000 n 
+0000026519 00000 n 
+0000026583 00000 n 
+0000026697 00000 n 
+0000026812 00000 n 
+0000026937 00000 n 
+0000026957 00000 n 
+0000027149 00000 n 
+0000040860 00000 n 
+0000041005 00000 n 
+0000041715 00000 n 
+0000042104 00000 n 
+0000042364 00000 n 
+0000049922 00000 n 
+0000050062 00000 n 
+0000050961 00000 n 
+0000051453 00000 n 
+0000051708 00000 n 
+0000061272 00000 n 
+0000061365 00000 n 
+0000061405 00000 n 
+0000064516 00000 n 
+0000064641 00000 n 
+0000064833 00000 n 
+0000069434 00000 n 
+0000069559 00000 n 
+0000069751 00000 n 
+trailer
+<<
+/Size 35
+/Root 6 0 R
+/Info 2 0 R
+>>
+startxref
+74515
+%%EOF
