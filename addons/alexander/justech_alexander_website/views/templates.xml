@@ -200,14 +200,27 @@
                 <a href="/web">/web</a>.
             </p>
         </xpath>
-        <xpath expr="//a[@href='mailto:info@yourcompany.example.com']" position="replace">
-            <a t-attf-href="mailto:#{res_company.email or website.company_id.email}"
-               t-out="res_company.email or website.company_id.email"/>
-        </xpath>
-        <xpath expr="//a[@href='tel:+1 555-555-5556']" position="replace">
-            <a t-attf-href="tel:#{res_company.phone or website.company_id.phone}">
-                <span class="o_force_ltr" t-out="res_company.phone or website.company_id.phone"/>
-            </a>
+        <xpath expr="//h5[text()='My Company']/parent::div" position="replace">
+            <div class="col-lg-4 offset-lg-1 mt-4 mt-lg-0">
+                <h5>Doralex Group</h5>
+                <ul class="list-unstyled mb-0 ps-2">
+                    <t t-set="dx_c" t-value="website.company_id"/>
+                    <li t-if="dx_c.city">
+                        <i class="fa fa-map-marker fa-fw me-2"/>
+                        <span><t t-out="dx_c.city"/>, República Dominicana</span>
+                    </li>
+                    <li t-if="dx_c.phone">
+                        <i class="fa fa-phone fa-fw me-2"/>
+                        <a t-attf-href="tel:#{dx_c.phone}">
+                            <span class="o_force_ltr" t-out="dx_c.phone"/>
+                        </a>
+                    </li>
+                    <li t-if="dx_c.email">
+                        <i class="fa fa-envelope fa-fw me-2"/>
+                        <a t-attf-href="mailto:#{dx_c.email}" t-out="dx_c.email"/>
+                    </li>
+                </ul>
+            </div>
         </xpath>
     </template>
 
