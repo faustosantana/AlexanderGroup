@@ -1,6 +1,6 @@
 {
     "name": "Doralex Microsoft Mail",
-    "version": "19.0.1.0.2",
+    "version": "19.0.1.0.3",
     "category": "Communications",
     "summary": "Correo Microsoft 365 por empresa vía Graph (user mailbox y aliases)",
     "description": "Integra Microsoft Graph con Odoo Community: envío y recepción por company_id usando el user mailbox administracion@ y aliases funcionales, sin mezclar dominios entre empresas.",

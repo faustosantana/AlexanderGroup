@@ -4,31 +4,37 @@ from odoo import api, models
 class MailComposeMessage(models.TransientModel):
     _inherit = "mail.compose.message"
 
-    def _dx_role_address(self):
+    def _dx_document_company(self):
         self.ensure_one()
         res_ids = self._evaluate_res_ids() or []
-        company = self.record_company_id
         model = self.model
         res_id = res_ids[0] if len(res_ids) == 1 else None
         if model and model in self.env and res_id:
             record = self.env[model].sudo().browse(res_id)
             if record.exists() and "company_id" in record._fields and record.company_id:
-                company = record.company_id
-        if not company or not company.dx_mail_domain:
+                return record.company_id
+        if self.record_company_id and self.record_company_id.dx_mail_domain:
+            return self.record_company_id
+        return self.env["res.company"]
+
+    def _dx_outgoing_address(self):
+        self.ensure_one()
+        company = self._dx_document_company()
+        if not company:
             return ""
-        return company._dx_mail_identity(model, res_id)
+        return company._dx_outgoing_address()
 
     def _compute_authorship(self):
         super()._compute_authorship()
         for composer in self:
-            addr = composer._dx_role_address()
+            addr = composer._dx_outgoing_address()
             if addr:
                 composer.email_from = addr
 
     def _compute_reply_to(self):
         super()._compute_reply_to()
         for composer in self:
-            addr = composer._dx_role_address()
+            addr = composer._dx_outgoing_address()
             if addr:
                 composer.reply_to = addr
                 composer.reply_to_force_new = True

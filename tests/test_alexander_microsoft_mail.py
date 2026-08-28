@@ -115,6 +115,27 @@ def test_graph_send_is_used_instead_of_smtp_for_mapped_domains():
     assert "sentitems" in graph
 
 
+def test_outgoing_uses_primary_mailbox_not_role_aliases():
+    catalog = _catalog()
+    for profile in catalog.MAIL_PROFILES:
+        assert profile["mailbox"] == f"administracion@{profile['domain']}"
+    company = (MODULE / "models" / "res_company.py").read_text(encoding="utf-8")
+    mail = (MODULE / "models" / "mail_mail.py").read_text(encoding="utf-8")
+    composer = (MODULE / "models" / "mail_compose_message.py").read_text(
+        encoding="utf-8"
+    )
+    invoice = (MODULE / "models" / "account_move_send.py").read_text(encoding="utf-8")
+    thread = (MODULE / "models" / "mail_thread.py").read_text(encoding="utf-8")
+    assert "_dx_outgoing_address" in company
+    assert "_dx_outgoing_address" in mail
+    assert "_dx_outgoing_address" in composer
+    assert "_dx_outgoing_address" in invoice
+    assert "_dx_outgoing_address" in thread
+    assert "ventas@" not in composer
+    assert "facturacion@" not in invoice
+    assert "_dx_address_for_role" not in mail
+
+
 def test_composer_and_invoice_force_company_identity():
     composer = (MODULE / "models" / "mail_compose_message.py").read_text(
         encoding="utf-8"
@@ -122,11 +143,10 @@ def test_composer_and_invoice_force_company_identity():
     invoice = (MODULE / "models" / "account_move_send.py").read_text(encoding="utf-8")
     company = (MODULE / "models" / "res_company.py").read_text(encoding="utf-8")
     views = (MODULE / "views" / "mail_send_views.xml").read_text(encoding="utf-8")
-    assert "_dx_role_address" in composer
+    assert "_dx_document_company" in composer
     assert "email_from = addr" in composer
     assert "reply_to = addr" in composer
     assert "partner_id" in composer
-    assert "_dx_mail_identity" in invoice
     assert 'kwargs["email_from"]' in invoice
     assert "dx_email_from" in invoice
     assert "dx_email_from" in views

@@ -7,7 +7,7 @@ class AccountMoveSend(models.AbstractModel):
     def _send_mail(self, move, mail_template, **kwargs):
         company = move.company_id
         if company and company.dx_mail_domain:
-            addr = company._dx_mail_identity("account.move", move.id)
+            addr = company._dx_outgoing_address()
             if addr:
                 kwargs["email_from"] = addr
                 kwargs["reply_to"] = addr
@@ -31,6 +31,6 @@ class AccountMoveSendWizard(models.TransientModel):
             company = wizard.company_id
             move = wizard.move_id
             if company and company.dx_mail_domain and move:
-                addr = company._dx_mail_identity("account.move", move.id)
+                addr = company._dx_outgoing_address()
             wizard.dx_email_from = addr
             wizard.dx_reply_to = addr

@@ -11,6 +11,10 @@ from .catalog import (
     role_for_model,
 )
 
+_OUTGOING_SKIP_LOCALS = frozenset(
+    {"ventas", "compras", "info", "facturacion", "contabilidad"}
+)
+
 
 class ResCompany(models.Model):
     _inherit = "res.company"
@@ -41,7 +45,31 @@ class ResCompany(models.Model):
             "info": self.dx_mail_alias_info,
         }
 
+    def _dx_outgoing_address(self):
+        """Único remitente saliente: administracion@ del dominio de esta company."""
+        self.ensure_one()
+        domain = (self.dx_mail_domain or "").lower()
+        candidates = (
+            self.email,
+            self.dx_mail_mailbox,
+            self.dx_mail_alias_admin,
+        )
+        for candidate in candidates:
+            addr = (candidate or "").strip()
+            if not addr or "@" not in addr:
+                continue
+            local = addr.rsplit("@", 1)[0].lower()
+            if local in _OUTGOING_SKIP_LOCALS:
+                continue
+            if domain and not belongs_to_domain(addr, domain):
+                continue
+            return addr
+        if domain:
+            return "administracion@%s" % domain
+        return ""
+
     def _dx_address_for_role(self, role):
+        """Aliases de entrada (CRM / buzones funcionales). No usar en From saliente."""
         self.ensure_one()
         mapping = self._dx_alias_map()
         addr = mapping.get(role) or mapping.get("admin")
@@ -50,15 +78,12 @@ class ResCompany(models.Model):
         profile = self._dx_mail_profile()
         if profile:
             return address_for(profile, role if role in mapping else "admin")
-        return self.email or ""
+        return self._dx_outgoing_address()
 
-    def _dx_mail_identity(self, model, res_id=None):
-        """From/Reply-To del documento: alias del rol, siempre del dominio propio."""
+    def _dx_mail_identity(self, model=None, res_id=None):
+        """From/Reply-To saliente: siempre el correo principal de la compañía."""
         self.ensure_one()
-        if not self.dx_mail_domain:
-            return ""
-        role = self._dx_role_for_document(model, res_id)
-        return self._dx_address_for_role(role)
+        return self._dx_outgoing_address()
 
     def _dx_role_for_document(self, model, res_id=None):
         if model == "dx.ms.functional.inbox" and res_id:

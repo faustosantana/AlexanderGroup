@@ -24,8 +24,7 @@ class MailMail(models.Model):
             company = mail._dx_related_company()
             if not company or not company.dx_mail_domain:
                 continue
-            role = company._dx_role_for_document(mail.model, mail.res_id)
-            address = company._dx_address_for_role(role)
+            address = company._dx_outgoing_address()
             if not address or not belongs_to_domain(address, company.dx_mail_domain):
                 continue
             mail.email_from = address
