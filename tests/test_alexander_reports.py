@@ -74,6 +74,10 @@ def test_statement_uses_python_rows():
     py = (REPORTS / "models" / "res_partner.py").read_text(encoding="utf-8")
     assert "_dx_statement_bundles" in py
     assert "invoice_date or move.date" in py
+    assert "_dx_line_residual_at_cutoff" in py
+    assert "assert_balance_invariants" in py
+    assert "dx_statement_cutoff" in py
+    assert "asset_receivable" in py
 
 
 def test_payment_receipt_has_hero_and_anticipo():
@@ -98,6 +102,9 @@ def test_paperformat_is_compact():
     assert ">28</field>" in xml
     assert ">16</field>" in xml
     assert ">46</field>" not in xml
+    assert "paperformat_doralex_a5" in xml
+    assert ">A5</field>" in xml
+    assert "action_report_payment_receipt" in xml
 
 
 def test_invoice_title_is_factura_not_borrador():
@@ -107,6 +114,9 @@ def test_invoice_title_is_factura_not_borrador():
     assert '"COTIZACIÓN"' in py
     assert '"RECIBO DE PAGO"' in py
     assert '"BORRADOR"' in py
+    assert '"Pendiente"' in py
+    assert "Sin numerar" not in py
+    assert "justech_do_ncf" in py
     assert "def _dx_terms" in py
     assert "def _dx_salesperson" in py
     assert "Pago manual" in py

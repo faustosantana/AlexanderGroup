@@ -83,8 +83,10 @@
                 <tr>
                     <td class="dx-foot-text">
                         <t t-out="company.dx_report_footer_text or (company.dx_trade_name or company.name)"/>
+                        <t t-if="company.country_id"> · <t t-out="company.country_id.name"/></t>
                         <t t-if="company.email"> · <t t-out="company.email"/></t>
                         <t t-if="company.phone"> · <t t-out="company.phone"/></t>
+                        <t t-if="company.website"> · <t t-out="company.website"/></t>
                     </td>
                     <td class="dx-foot-page">
                         <t t-if="report_type == 'pdf'">Página <span class="page"/> / <span class="topage"/></t>

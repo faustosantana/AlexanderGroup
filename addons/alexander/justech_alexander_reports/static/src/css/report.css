@@ -214,6 +214,7 @@
 .dx-zone-bottom {
   margin-top: 4px;
   page-break-inside: avoid;
+  page-break-before: avoid;
 }
 .dx-zone-terms {
   width: 56%;
@@ -261,6 +262,7 @@
 .dx-sign-table {
   margin-top: 18px;
   page-break-inside: avoid;
+  page-break-before: avoid;
 }
 .dx-sign-table td {
   width: 50%;
@@ -312,11 +314,14 @@
   color: #444;
 }
 .dx-amount-hero {
-  font-size: 26pt;
+  font-size: 22pt;
   font-weight: 700;
   line-height: 1.1;
   margin-top: 2px;
   white-space: nowrap;
+}
+.dx-doc-payment .dx-amount-hero {
+  font-size: 20pt;
 }
 .dx-amount-words {
   font-size: 9.5pt;

@@ -12,4 +12,31 @@
         <field name="header_spacing">28</field>
         <field name="dpi">96</field>
     </record>
+
+    <record id="paperformat_doralex_a5" model="report.paperformat">
+        <field name="name">Doralex A5 Recibo</field>
+        <field name="format">A5</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">22</field>
+        <field name="margin_bottom">12</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">18</field>
+        <field name="dpi">96</field>
+    </record>
+
+    <record id="account.action_report_payment_receipt" model="ir.actions.report">
+        <field name="paperformat_id" ref="paperformat_doralex_a5"/>
+        <field name="print_report_name">'Recibo_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'Pendiente').replace('/', ''))</field>
+    </record>
+    <record id="sale.action_report_saleorder" model="ir.actions.report">
+        <field name="print_report_name">'Cotizacion_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'SO').replace('/', ''))</field>
+    </record>
+    <record id="account.account_invoices" model="ir.actions.report">
+        <field name="print_report_name">'%s_%s_%s' % (('Nota_Credito' if object.move_type in ('out_refund', 'in_refund') else 'Factura'), object.company_id.dx_short_code or 'DX', (object.name or 'Pendiente').replace('/', ''))</field>
+    </record>
+    <record id="purchase.action_report_purchase_order" model="ir.actions.report">
+        <field name="print_report_name">'Orden_Compra_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'PO').replace('/', ''))</field>
+    </record>
 </odoo>

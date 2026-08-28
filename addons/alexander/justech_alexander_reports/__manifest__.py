@@ -1,8 +1,8 @@
 {
     "name": "Doralex Report Layout",
-    "version": "19.0.3.0.0",
+    "version": "19.0.3.1.0",
     "category": "Reporting",
-    "summary": "Sistema visual V2 de reportes A4 por empresa",
+    "summary": "Sistema visual V2.3 + estado de cuenta cuadrado + recibo A5",
     "description": "Capa visual reconstruida (componentes + composición por documento) sobre el motor multiempresa por company_id. No rebinda acciones oficiales.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",

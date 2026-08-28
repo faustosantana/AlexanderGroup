@@ -277,7 +277,7 @@
                     <div class="dx-bank-line">
                         <t t-out="bank.bank_id.name or 'Banco'"/>
                         <t t-if="bank.acc_number"> · <t t-out="bank.acc_number"/></t>
-                        <t t-if="bank.acc_holder_name"> · <t t-out="bank.acc_holder_name"/></t>
+                        <t t-if="company.name"> · <t t-out="company.name"/></t>
                     </div>
                 </t>
             </div>

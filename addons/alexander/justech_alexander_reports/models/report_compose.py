@@ -53,7 +53,8 @@ def _dx_banks(company):
             {
                 "bank": bank.bank_id.name if bank.bank_id else "Banco",
                 "account": bank.acc_number or "",
-                "holder": bank.acc_holder_name or company.name,
+                # Customer-facing titular is the company, not a personal holder.
+                "holder": company.name,
             }
         )
     return rows
@@ -213,7 +214,10 @@ class AccountMoveCompose(models.Model):
             title = "FACTURA DE CRÉDITO"
         else:
             title = "FACTURA"
-        number = self.name if self.name and self.name != "/" else "Sin numerar"
+        if self.state == "posted" and self.name and self.name != "/":
+            number = self.name
+        else:
+            number = "Pendiente"
         badge = ""
         if self.state == "draft":
             badge = "BORRADOR"
@@ -232,10 +236,14 @@ class AccountMoveCompose(models.Model):
         currency = self.currency_id
         ident = self._dx_doc_identity()
         ncf = ""
-        if "l10n_latam_document_number" in self._fields:
+        if "justech_do_ncf" in self._fields:
+            ncf = self.justech_do_ncf or ""
+        if not ncf and "l10n_latam_document_number" in self._fields:
             ncf = self.l10n_latam_document_number or ""
         origin_ncf = ""
-        if "l10n_do_origin_ncf" in self._fields:
+        if "justech_do_origin_ncf" in self._fields:
+            origin_ncf = self.justech_do_origin_ncf or ""
+        if not origin_ncf and "l10n_do_origin_ncf" in self._fields:
             origin_ncf = self.l10n_do_origin_ncf or ""
         origin_move = ""
         if self.reversed_entry_id:
@@ -302,7 +310,7 @@ class AccountMoveCompose(models.Model):
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.invoice_date or self.date),
             "due": _dx_date(self.env, self.invoice_date_due),
-            "ncf": ncf or "Pendiente de NCF",
+            "ncf": ncf or "Pendiente",
             "ncf_missing": not bool(ncf),
             "origin_ncf": origin_ncf,
             "origin_move": origin_move,
@@ -331,9 +339,60 @@ class AccountMoveCompose(models.Model):
 class AccountPaymentCompose(models.Model):
     _inherit = "account.payment"
 
+    def _dx_payment_applications(self):
+        self.ensure_one()
+        rows = []
+        move = self.move_id
+        if not move:
+            return rows
+        pay_lines = move.line_ids.filtered(
+            lambda l: l.account_id.account_type == "asset_receivable"
+        )
+        seen = set()
+        for line in pay_lines:
+            for partial in line.matched_debit_ids:
+                inv_line = partial.debit_move_id
+                inv = inv_line.move_id
+                if not inv or inv.id in seen:
+                    continue
+                seen.add(inv.id)
+                applied_amt = abs(partial.amount or 0.0)
+                if (
+                    line.currency_id
+                    and "credit_amount_currency" in partial._fields
+                    and partial.credit_amount_currency
+                ):
+                    applied_amt = abs(partial.credit_amount_currency)
+                ncf = ""
+                if "justech_do_ncf" in inv._fields:
+                    ncf = inv.justech_do_ncf or ""
+                if not ncf and "l10n_latam_document_number" in inv._fields:
+                    ncf = inv.l10n_latam_document_number or ""
+                label = (
+                    inv.name if inv.name and inv.name != "/" else (inv.ref or "Factura")
+                )
+                rows.append(
+                    {
+                        "document": label,
+                        "ncf": ncf or "—",
+                        "date": _dx_date(self.env, inv.invoice_date or inv.date),
+                        "invoice_amount": _dx_money(
+                            self.env, inv.amount_total, inv.currency_id
+                        ),
+                        "applied": _dx_money(self.env, applied_amt, self.currency_id),
+                        "residual": _dx_money(
+                            self.env, abs(inv.amount_residual or 0.0), inv.currency_id
+                        ),
+                    }
+                )
+        return rows
+
     def _dx_doc_identity(self):
         self.ensure_one()
-        number = self.name if self.name and self.name != "/" else "Sin numerar"
+        if self.state != "draft" and self.name and self.name != "/":
+            number = self.name
+        else:
+            number = "Pendiente"
         badge = "BORRADOR" if self.state == "draft" else ""
         return {
             "title": "RECIBO DE PAGO",
@@ -346,35 +405,7 @@ class AccountPaymentCompose(models.Model):
         self.ensure_one()
         company = self.company_id
         currency = self.currency_id
-        invoices = self.env["account.move"]
-        if (
-            "justech_applied_invoice_ids" in self._fields
-            and self.justech_applied_invoice_ids
-        ):
-            invoices = self.justech_applied_invoice_ids
-        elif self.reconciled_invoice_ids:
-            invoices = self.reconciled_invoice_ids
-        applied = []
-        for inv in invoices:
-            ncf = ""
-            if "l10n_latam_document_number" in inv._fields:
-                ncf = inv.l10n_latam_document_number or ""
-            label = inv.name if inv.name and inv.name != "/" else (inv.ref or "Factura")
-            residual = abs(inv.amount_residual or 0.0)
-            applied.append(
-                {
-                    "document": label,
-                    "ncf": ncf or "—",
-                    "date": _dx_date(self.env, inv.invoice_date or inv.date),
-                    "invoice_amount": _dx_money(
-                        self.env, inv.amount_total, inv.currency_id
-                    ),
-                    "applied": _dx_money(
-                        self.env, min(self.amount, inv.amount_total), currency
-                    ),
-                    "residual": _dx_money(self.env, residual, inv.currency_id),
-                }
-            )
+        applied = self._dx_payment_applications()
         method = ""
         if self.payment_method_line_id:
             method = _dx_method_label(self.payment_method_line_id.name)
