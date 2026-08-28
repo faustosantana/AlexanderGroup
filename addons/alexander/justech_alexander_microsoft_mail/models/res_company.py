@@ -52,6 +52,10 @@ class ResCompany(models.Model):
         return self.email or ""
 
     def _dx_role_for_document(self, model, res_id=None):
+        if model == "dx.ms.functional.inbox" and res_id:
+            inbox = self.env["dx.ms.functional.inbox"].sudo().browse(res_id)
+            if inbox.exists() and inbox.role:
+                return inbox.role
         move_type = None
         if model == "account.move" and res_id:
             move = self.env["account.move"].sudo().browse(res_id)
