@@ -1,0 +1,27 @@
+DORALEX ODOO DEV MAIL FUNCTIONAL TEST 2026-08-28
+PROD_UNTOUCHED=YES (doralex-production-odoo since 2026-08-27T20:12:21Z)
+
+CONFIG 6/6 isolated (own domain, mailbox, aliases, alias_domain, catchall, bounce)
+Plantilla C1 alias_domain cleared (was blueelite.net)
+
+QUOTATION wizard+Graph 6/6 From=ventas@ own domain Reply-To=same marker=DX-FUNC-20260828T200639-7b6d3563
+INVOICE composer+Graph 6/6 From=facturacion@ own domain marker=DX-FUNC-P3-20260828T201047
+  Enviar y imprimir blocked on draft: NCF_CONFIG=PENDING_REAL_RANGES (not enabled)
+CREDIT DOR/DOM/REM facturacion@ PASS
+RFQ DOR/PIN/MAY/BLU compras@ PASS
+PAYMENT DOR/DOM/BLU contabilidad@ PASS
+REMINDER MAY/REM facturacion@ PASS
+
+INBOUND Graph 30/30 marker=DX-FUNC-20260828T200314-8627a11f
+CRM ventas@ 6/6 company_id isolated cross=0
+info/compras/facturacion/contabilidad -> functional inbox 6/6
+
+Graph SentItems: 0 cross-company From leaks
+
+ODOO_MAIL_FUNCTIONAL_TEST=PASS
+QUOTATION_EMAIL=6/6
+INVOICE_EMAIL=6/6
+INCOMING_ALIAS=6/6
+CRM_ALIAS=6/6
+MULTICOMPANY_EMAIL_ISOLATION=PASS
+READY_FOR_MAIL_PRODUCTION=YES
