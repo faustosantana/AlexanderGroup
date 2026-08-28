@@ -35,4 +35,10 @@
             <t t-call="justech_alexander_reports.dx_report_extras"/>
         </xpath>
     </template>
+
+    <template id="picking_document_dx" inherit_id="stock.report_picking">
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <t t-call="justech_alexander_reports.dx_report_extras"/>
+        </xpath>
+    </template>
 </odoo>

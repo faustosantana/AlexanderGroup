@@ -60,6 +60,42 @@ def test_public_logo_uses_dedicated_route() -> None:
     assert "/doralex/logo/" in payload
     assert "/doralex/logo/<string:code>" in controller
     assert "dx_website_published" in controller
+    assert "_CODE_RE" in controller
+    assert "_fallback_svg" in controller
+    assert "base64.b64decode" in controller
+    assert "res.partner" not in controller
+    assert "ir.attachment" not in controller
+
+
+def test_report_preview_covers_required_documents() -> None:
+    preview = (
+        ALEXANDER / "justech_alexander_reports" / "models" / "preview.py"
+    ).read_text(encoding="utf-8")
+    for key in (
+        "quotation",
+        "sale_order",
+        "invoice",
+        "credit_note",
+        "purchase_order",
+        "rfq",
+        "delivery",
+        "reception",
+        "payment_receipt",
+        "statement",
+        "warranty",
+    ):
+        assert f'("{key}"' in preview
+    assert "No consume NCF" in preview
+
+
+def test_website_chrome_is_institutional() -> None:
+    templates = (
+        ALEXANDER / "justech_alexander_website" / "views" / "templates.xml"
+    ).read_text(encoding="utf-8")
+    assert "Contacto" in templates
+    assert ">ERP<" in templates
+    assert "+1 555" not in templates
+    assert "yourcompany.example.com" not in templates
 
 
 def test_no_vendor_edits_in_overlay() -> None:

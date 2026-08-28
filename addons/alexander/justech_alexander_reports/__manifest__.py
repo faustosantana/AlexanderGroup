@@ -1,6 +1,6 @@
 {
     "name": "Doralex Report Layout",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "category": "Reporting",
     "summary": "Layout A4 central y vista previa de documentos Doralex",
     "description": "Un solo layout QWeb/CSS por company_id para cotización, pedido, factura, nota de crédito, compra, RFQ, conduce, recepción, recibo, estado de cuenta y garantía. Sin Studio.",

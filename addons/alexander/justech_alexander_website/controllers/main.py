@@ -1,8 +1,16 @@
 import base64
+import hashlib
+import logging
+import re
 
 from odoo import http
 from odoo.exceptions import MissingError
 from odoo.http import request
+
+_logger = logging.getLogger(__name__)
+
+# Solo códigos cortos públicos (DOR, PIN, …). Nada de IDs ni rutas.
+_CODE_RE = re.compile(r"^[A-Za-z]{2,5}$")
 
 
 def _logo_content_type(raw):
@@ -13,6 +21,18 @@ def _logo_content_type(raw):
     if raw.startswith(b"RIFF") and raw[8:12] == b"WEBP":
         return "image/webp"
     return "image/png"
+
+
+def _fallback_svg(label):
+    safe = re.sub(r"[^A-Za-z0-9 .+-]", "", label or "DX")[:12] or "DX"
+    return (
+        "<svg xmlns='http://www.w3.org/2000/svg' width='160' height='64' "
+        "viewBox='0 0 160 64' role='img'>"
+        "<rect width='160' height='64' rx='8' fill='#0b1f3a'/>"
+        "<text x='80' y='38' text-anchor='middle' fill='#c4a35a' "
+        "font-family='Segoe UI, Arial, sans-serif' font-size='18'>%s</text>"
+        "</svg>" % safe
+    ).encode("utf-8")
 
 
 class DoralexWebsite(http.Controller):
@@ -43,30 +63,44 @@ class DoralexWebsite(http.Controller):
         sitemap=False,
     )
     def company_logo(self, code, **kwargs):
-        """Sirve el logo público sin filtrar por company isolation de /web/image."""
-        company = (
-            request.env["res.company"]
-            .sudo()
-            .search(
-                [
-                    ("dx_short_code", "=", (code or "").strip().upper()),
-                    ("dx_website_published", "=", True),
-                ],
-                limit=1,
+        """Logo público de compañías publicadas. No sirve otros adjuntos."""
+        try:
+            raw_code = (code or "").strip()
+            if not _CODE_RE.fullmatch(raw_code):
+                return request.not_found()
+            company = (
+                request.env["res.company"]
+                .sudo()
+                .search(
+                    [
+                        ("dx_short_code", "=", raw_code.upper()),
+                        ("dx_website_published", "=", True),
+                    ],
+                    limit=1,
+                )
             )
-        )
-        if not company or not company.logo:
-            raise MissingError("Logo no disponible")
-        raw = base64.b64decode(company.logo)
-        return request.make_response(
-            raw,
-            headers=[
-                ("Content-Type", _logo_content_type(raw)),
-                ("Content-Length", str(len(raw))),
-                ("Cache-Control", "public, max-age=86400"),
-                ("X-Content-Type-Options", "nosniff"),
-            ],
-        )
+            if not company:
+                return request.not_found()
+            if company.logo:
+                raw = base64.b64decode(company.logo)
+                ctype = _logo_content_type(raw)
+            else:
+                raw = _fallback_svg(company.dx_trade_name or company.dx_short_code)
+                ctype = "image/svg+xml"
+            etag = hashlib.sha256(raw).hexdigest()[:16]
+            return request.make_response(
+                raw,
+                headers=[
+                    ("Content-Type", ctype),
+                    ("Content-Length", str(len(raw))),
+                    ("Cache-Control", "public, max-age=86400"),
+                    ("X-Content-Type-Options", "nosniff"),
+                    ("ETag", '"%s"' % etag),
+                ],
+            )
+        except Exception:
+            _logger.info("public logo request rejected")
+            return request.not_found()
 
 
 def _group_contact():

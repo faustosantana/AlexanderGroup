@@ -230,6 +230,18 @@
         </xpath>
     </template>
 
+    <template id="doralex_header_cta" inherit_id="website.header_call_to_action" name="Doralex CTA">
+        <xpath expr="//a[hasclass('btn_cta')]" position="replace">
+            <a href="/contactus" class="oe_unremovable btn btn-primary btn_cta">Contacto</a>
+        </xpath>
+    </template>
+
+    <template id="doralex_sign_in" inherit_id="portal.user_sign_in" name="Doralex ERP login">
+        <xpath expr="//a" position="replace">
+            <a t-attf-href="/web/login" t-attf-class="#{_link_class}">ERP</a>
+        </xpath>
+    </template>
+
     <template id="company_detail" name="Empresa Doralex">
         <t t-call="website.layout">
             <t t-set="additional_title" t-value="dx['trade_name']"/>

@@ -23,6 +23,7 @@ class DoralexReportPreview(models.TransientModel):
         "res.company",
         required=True,
         default=lambda self: self.env.company,
+        domain="[('dx_short_code', '!=', False)]",
     )
     doc_type = fields.Selection(DOC_TYPES, required=True, default="quotation")
     preview_note = fields.Char(

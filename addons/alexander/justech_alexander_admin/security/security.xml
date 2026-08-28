@@ -8,4 +8,7 @@
         <field name="name">Administrador Doralex</field>
         <field name="privilege_id" ref="privilege_doralex_admin"/>
     </record>
+    <record id="base.group_system" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_doralex_admin'))]"/>
+    </record>
 </odoo>
