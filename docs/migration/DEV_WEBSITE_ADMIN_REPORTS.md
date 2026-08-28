@@ -30,11 +30,13 @@ Muestra: nombre comercial, logo, sector, descripción breve.
 No muestra: RNC, bancos, saldos, representantes, cédulas, usuarios, datos fiscales.
 
 Los logos se sirven en `/doralex/logo/<CODE>` (público, solo compañías publicadas).
+Códigos inválidos y path traversal responden **404 de texto plano** (sin QWeb Website).
 No se usa `/web/image/res.company/<id>/logo` para visitantes anónimos, porque el
 aislamiento multiempresa de Odoo devolvía un placeholder en 5 de 6 compañías.
 
-El header/footer de Odoo Website (teléfono `+1 555…` y `yourcompany.example.com`)
-se sustituyen por contacto de la compañía del website (DOR).
+El header/footer de Odoo Website (teléfono `+1 555…`, `Contact Us`, `Sign in` y
+`yourcompany.example.com`) se sustituyen por contacto institucional (DOR) y enlaces
+**Contacto** / **ERP**.
 
 ## Estado DEV 2026-08-28
 
@@ -42,6 +44,7 @@ se sustituyen por contacto de la compañía del website (DOR).
 | --------- | --------- |
 | DORALEX_WEBSITE | PASS (DEV). PROD no se tocó |
 | PUBLIC_COMPANY_PRESENTATION | PASS |
+| PUBLIC_LOGOS | 6/6 |
 | CONFIDENTIAL_DATA_EXPOSURE | 0 |
 | WAREHOUSE_ORGANIZATION | PASS |
 | MULTICOMPANY_ORGANIZATION | PASS |
@@ -58,6 +61,8 @@ se sustituyen por contacto de la compañía del website (DOR).
 | REPORT_PREVIEW | PASS |
 | MULTICOMPANY_REPORT_IDENTITY | PASS |
 | DORALEX_DEV_RUNTIME_ERRORS | 0 |
+| DORALEX_DEV_TESTS | 23/23 |
+| READY_FOR_PRODUCTION_REVIEW | YES (revisión de esta fase en DEV; no promocionar a PROD sin autorización) |
 
 Pendiente fuera de este alcance: rangos NCF reales, roles de usuario por empresa, promoción del website a PROD.
 
