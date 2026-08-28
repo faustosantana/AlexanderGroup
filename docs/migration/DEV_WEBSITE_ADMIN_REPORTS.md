@@ -36,6 +36,31 @@ aislamiento multiempresa de Odoo devolvía un placeholder en 5 de 6 compañías.
 El header/footer de Odoo Website (teléfono `+1 555…` y `yourcompany.example.com`)
 se sustituyen por contacto de la compañía del website (DOR).
 
+## Estado DEV 2026-08-28
+
+| Indicador | Resultado |
+| --------- | --------- |
+| DORALEX_WEBSITE | PASS (DEV). PROD no se tocó |
+| PUBLIC_COMPANY_PRESENTATION | PASS |
+| CONFIDENTIAL_DATA_EXPOSURE | 0 |
+| WAREHOUSE_ORGANIZATION | PASS |
+| MULTICOMPANY_ORGANIZATION | PASS |
+| MODULE_ADMIN_CENTER | PASS |
+| MODULE_ADMIN_AUTH | PASS |
+| REPORT_BASE_LAYOUT | PASS |
+| QUOTATION_LAYOUT | PASS |
+| SALE_ORDER_LAYOUT | PASS |
+| INVOICE_LAYOUT | PASS |
+| PURCHASE_ORDER_LAYOUT | PASS |
+| DELIVERY_LAYOUT | PASS |
+| PAYMENT_RECEIPT_LAYOUT | PASS |
+| WARRANTY_LAYOUT | PASS |
+| REPORT_PREVIEW | PASS |
+| MULTICOMPANY_REPORT_IDENTITY | PASS |
+| DORALEX_DEV_RUNTIME_ERRORS | 0 |
+
+Pendiente fuera de este alcance: rangos NCF reales, roles de usuario por empresa, promoción del website a PROD.
+
 ## Auth admin
 
 Reutiliza `justech.admin.access.service`. Complementa con:
