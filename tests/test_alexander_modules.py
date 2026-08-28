@@ -12,6 +12,7 @@ EXPECTED = {
     "justech_alexander_website",
     "justech_alexander_admin",
     "justech_alexander_reports",
+    "justech_alexander_microsoft_mail",
 }
 
 CONFIDENTIAL_MARKERS = (

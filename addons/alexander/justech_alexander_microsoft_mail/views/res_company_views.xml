@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form_doralex_microsoft_mail" model="ir.ui.view">
+        <field name="name">res.company.form.doralex.microsoft.mail</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="justech_alexander_base.view_company_form_doralex_base"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='dx_doralex']" position="after">
+                <page string="Correo Microsoft" name="dx_microsoft_mail">
+                    <group string="Dominio y mailbox">
+                        <field name="dx_mail_domain"/>
+                        <field name="dx_mail_mailbox"/>
+                        <field name="alias_domain_id"/>
+                        <field name="email"/>
+                    </group>
+                    <group string="Aliases">
+                        <field name="dx_mail_alias_admin"/>
+                        <field name="dx_mail_alias_sales"/>
+                        <field name="dx_mail_alias_purchase"/>
+                        <field name="dx_mail_alias_invoice"/>
+                        <field name="dx_mail_alias_accounting"/>
+                        <field name="dx_mail_alias_info"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
