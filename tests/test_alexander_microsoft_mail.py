@@ -146,6 +146,9 @@ def test_composer_and_invoice_force_company_identity():
     assert "_dx_document_company" in composer
     assert "email_from = addr" in composer
     assert "reply_to = addr" in composer
+    assert "move.company_id if move else wizard.company_id" in invoice
+    assert '"res_ids"' in composer
+    assert '"composition_mode"' in composer
     assert "partner_id" in composer
     assert 'kwargs["email_from"]' in invoice
     assert "dx_email_from" in invoice

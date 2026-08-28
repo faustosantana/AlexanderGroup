@@ -27,8 +27,8 @@ si pertenecen al dominio de esa company y **no** son
 
 Resultado: `administracion@<dominio de esa company>`.
 
-Aplica a compositor, `mail.mail.send`, factura, chatter (`_message_compute_author`)
-y Reply-To (`_notify_get_reply_to`). La compañía **activa** del usuario no cuenta.
+El wizard de factura (`account.move.send.wizard`) resuelve From/Reply-To con
+`move_id.company_id`, no con la compañía activa del usuario.
 
 ## Reply-To
 

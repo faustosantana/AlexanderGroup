@@ -24,6 +24,14 @@ class MailComposeMessage(models.TransientModel):
             return ""
         return company._dx_outgoing_address()
 
+    @api.depends(
+        "composition_mode",
+        "email_from",
+        "model",
+        "res_domain",
+        "res_ids",
+        "template_id",
+    )
     def _compute_authorship(self):
         super()._compute_authorship()
         for composer in self:
@@ -31,6 +39,13 @@ class MailComposeMessage(models.TransientModel):
             if addr:
                 composer.email_from = addr
 
+    @api.depends(
+        "composition_mode",
+        "model",
+        "res_domain",
+        "res_ids",
+        "template_id",
+    )
     def _compute_reply_to(self):
         super()._compute_reply_to()
         for composer in self:

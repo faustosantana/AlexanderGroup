@@ -28,9 +28,9 @@ class AccountMoveSendWizard(models.TransientModel):
     def _compute_dx_mail_identity(self):
         for wizard in self:
             addr = ""
-            company = wizard.company_id
             move = wizard.move_id
-            if company and company.dx_mail_domain and move:
+            company = move.company_id if move else wizard.company_id
+            if company and company.dx_mail_domain:
                 addr = company._dx_outgoing_address()
             wizard.dx_email_from = addr
             wizard.dx_reply_to = addr
