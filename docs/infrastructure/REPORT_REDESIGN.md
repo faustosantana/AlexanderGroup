@@ -1,73 +1,66 @@
 # Rediseño de reportes A4 — Doralex DEV
 
-Fecha: 2026-08-28. Solo **DEV**. **PROD no se tocó** (container start `2026-08-27T20:12:21Z`).
-
-## Inventario de reportes en DEV (47 QWeb PDF)
-
-Cliente / operación (rediseñados vía layout + CSS + herencias, sin rebindar acciones oficiales):
-
-- Cotización / pedido / proforma (`sale.report_saleorder`, `sale.report_saleorder_pro_forma`)
-- Factura / NC (`account.report_invoice`, `account.report_invoice_with_payments` + `l10n_do_accounting`)
-- RFQ / orden de compra
-- Recibo de pago
-- Estado de cuenta (`justech_alexander_reports.report_partner_statement_document`)
-- Garantía (`justech.warranty`)
-- Delivery / picking / recepción / return slip
-
-No se rebindan acciones oficiales (`justech_report_identity_guard`).
-
-Etiquetas de producto, badges HR, márgenes/CxP landscape: fuera del estándar comercial A4.
-
-## Justgroup (solo lectura)
-
-Revisado en `addons/vendor/odoo-custom-addons/`:
-
-- `justech_report_identity_guard` — obliga plantillas core, bloquea Hellenia / `justech_report_design`
-- `l10n_do_accounting/views/report_invoice.xml` — RNC, NCF, NCF modificado, moneda, cliente
-- `multi_invoice_manual_payment_prod` — documentos aplicados en recibo
-
-No se copió Hellenia. Se reutilizó: NCF/RNC, banco por `company_id`, firma en blanco, tablas core.
-
-## Arquitectura
-
-`justech_alexander_reports` 19.0.2.1.0
-
-- `web.external_layout` fuerza `o.company_id` / `doc.company_id` (campos, no compañía activa)
-- layout `external_layout_doralex` + clase `dx-theme-{DOR|PIN|DOM|MAY|REM|BLU}`
-- CSS modular wkhtmltopdf-safe
-- extras por modo: `customer` | `purchase` | `payment` | `stock` | `signs`
-- `_render_qweb_pdf` aplica `with_company(document.company_id)` y `lang` del partner
-
-## COMPANY_DATA_MISSING
-
-- website: las 6 empresas
-- `dx_report_terms` / `invoice_terms`: las 6
-
-No inventados. Bancos Banreservas sí existen por empresa.
-
-## Criterios
+Fecha: 2026-08-28. Solo **DEV**. **PROD no se tocó** (container start `2026-08-27T20:12:21.681221743Z`).
 
 ```
-QUOTATION_REPORT = PASS
-SALE_ORDER_REPORT = PASS
-INVOICE_REPORT = PASS (borrador; NCF pendiente de rangos reales)
-CREDIT_NOTE_REPORT = PASS
-PURCHASE_ORDER_REPORT = PASS
-PAYMENT_RECEIPT_REPORT = PASS
-STATEMENT_REPORT = PASS
-DELIVERY_REPORT = PASS
-MULTICOMPANY_REPORT_ISOLATION = PASS
-PDF_RENDER = PASS
-PNG_PREVIEW_GENERATION = PASS
-VISUAL_AUDIT = PASS
-PRINT_READABILITY = PASS
-BLACK_WHITE_READABILITY = PASS
-EMAIL_PDF_COMPANY_MATCH = PASS
+REPORT_DESIGN_V1 = REJECTED
+DORALEX_DESIGN_V2_CHECKPOINT = PENDING
+REPORT_SUITE_COMPLETE = NO
 PROD_UNTOUCHED = YES
-REPORT_SUITE_COMPLETE = YES
 READY_FOR_REPORTS_PRODUCTION = NO
 ```
 
-READY_FOR_REPORTS_PRODUCTION = NO hasta NCF reales, términos comerciales cargados y websites si se desean en el pie.
+Los scores 8.8–9.3 de V1 son **inválidos**. PDF_RENDER=PASS no implica DESIGN=PASS.
 
-Galería: [`docs/report_previews/index.html`](../report_previews/index.html)
+## Arquitectura V2
+
+Separación:
+
+- A. Motor de datos / multiempresa (`document.company_id`, NCF, bancos, logos, `administracion@`)
+- B. Componentes visuales (`reports/components.xml`)
+- C. Tema por empresa (paleta extraída del logo)
+- D. Composición por tipo de documento
+
+Módulo `justech_alexander_reports` **19.0.3.0.0**.
+
+Paperformat compacto: `margin_top=32`, `header_spacing=28`, `margin_bottom=16`, L/R=12.
+
+La composición V2 se inyecta en `div.page`; el esqueleto Odoo se oculta (no se borra) para no romper herencias (`payment_communication`, l10n_do, warranty).
+
+## Checkpoint Doralex (solo estos 4)
+
+1. Cotización
+2. Factura
+3. Recibo
+4. Estado de cuenta
+
+No se rediseñaron todavía los 47 reportes ni las otras 5 empresas.
+
+## Paletas derivadas de logos reales
+
+| Empresa | primary | secondary | accent | neutral |
+| --- | --- | --- | --- | --- |
+| Doralex | `#E86A12` | `#1A1A1A` | `#E86A12` | `#5C5C5C` |
+| Piñaria | `#C41E3A` | `#2E7D32` | `#C41E3A` | `#5C5C5C` |
+| Dominion | `#2AA8A4` | `#F08A3C` | `#F08A3C` | `#5C5C5C` |
+| El Mayuma | `#2EC4B6` | `#111111` | `#2EC4B6` | `#5C5C5C` |
+| Rempart | `#1A1A1A` | `#3D7AB5` | `#3D7AB5` | `#5C5C5C` |
+| Blue Elite | `#0A3D91` | `#00AEEF` | `#00AEEF` | `#5C5C5C` |
+
+## COMPANY_DATA_MISSING
+
+- website 6/6
+- `dx_report_terms` / `invoice_terms` 6/6
+- NCF: rangos no configurados; facturas/recibos en borrador
+
+No inventados. Bancos Banreservas sí existen.
+
+## WHAT_WAS_WRONG_V1
+
+Header 46 mm, layout técnico de Odoo, título “Borrador”, tablas pequeñas, totales flotando, recibo y estado casi vacíos, scores autoasignados.
+
+## WHAT_CHANGED_V2
+
+Header 20–30 mm con logo + empresa + título/número. Título comercial (FACTURA, no Borrador). Tabla a ancho completo. Totales junto a la tabla. Recibo con monto protagonista y ANTICIPO explícito. Estado con KPIs + aging. V2.1: vendedor no-OdooBot, método en español, monto en letras.
+
+Galería BEFORE/AFTER: [`docs/report_previews/index.html`](../report_previews/index.html)
