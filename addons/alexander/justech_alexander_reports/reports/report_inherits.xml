@@ -2,43 +2,57 @@
 <odoo>
     <template id="sale_document_dx" inherit_id="sale.report_saleorder_document">
         <xpath expr="//span[@name='order_note']" position="after">
-            <t t-call="justech_alexander_reports.dx_report_extras"/>
+            <t t-call="justech_alexander_reports.dx_report_extras">
+                <t t-set="company" t-value="doc.company_id"/>
+            </t>
         </xpath>
     </template>
 
     <template id="invoice_document_dx" inherit_id="account.report_invoice_document">
         <xpath expr="//div[@id='payment_term']" position="after">
-            <t t-call="justech_alexander_reports.dx_report_extras"/>
+            <t t-call="justech_alexander_reports.dx_report_extras">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
         </xpath>
     </template>
 
     <template id="purchase_order_dx" inherit_id="purchase.report_purchaseorder_document">
         <xpath expr="//div[@id='total']" position="after">
-            <t t-call="justech_alexander_reports.dx_report_extras"/>
+            <t t-call="justech_alexander_reports.dx_report_extras">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
         </xpath>
     </template>
 
     <template id="purchase_rfq_dx" inherit_id="purchase.report_purchasequotation_document">
         <xpath expr="//table" position="after">
-            <t t-call="justech_alexander_reports.dx_report_extras"/>
+            <t t-call="justech_alexander_reports.dx_report_extras">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
         </xpath>
     </template>
 
     <template id="delivery_document_dx" inherit_id="stock.report_delivery_document">
         <xpath expr="//div[hasclass('page')]" position="inside">
-            <t t-call="justech_alexander_reports.dx_report_extras"/>
+            <t t-call="justech_alexander_reports.dx_report_extras">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
         </xpath>
     </template>
 
     <template id="payment_receipt_dx" inherit_id="account.report_payment_receipt_document">
         <xpath expr="//div[hasclass('oe_structure')]" position="before">
-            <t t-call="justech_alexander_reports.dx_report_extras"/>
+            <t t-call="justech_alexander_reports.dx_report_extras">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
         </xpath>
     </template>
 
     <template id="picking_document_dx" inherit_id="stock.report_picking">
         <xpath expr="//div[hasclass('page')]" position="inside">
-            <t t-call="justech_alexander_reports.dx_report_extras"/>
+            <t t-call="justech_alexander_reports.dx_report_extras">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
         </xpath>
     </template>
 </odoo>

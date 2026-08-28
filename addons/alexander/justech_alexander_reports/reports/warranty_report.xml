@@ -21,7 +21,9 @@
                             <div>Meses: <span t-field="doc.warranty_months"/></div>
                         </div>
                     </div>
-                    <t t-call="justech_alexander_reports.dx_report_extras"/>
+                    <t t-call="justech_alexander_reports.dx_report_extras">
+                        <t t-set="company" t-value="doc.company_id"/>
+                    </t>
                 </t>
             </t>
         </t>

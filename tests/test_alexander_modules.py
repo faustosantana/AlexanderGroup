@@ -101,6 +101,15 @@ def test_website_chrome_is_institutional() -> None:
     assert "yourcompany.example.com" not in templates
 
 
+def test_report_extras_receive_company() -> None:
+    inherits = (
+        ALEXANDER / "justech_alexander_reports" / "reports" / "report_inherits.xml"
+    ).read_text(encoding="utf-8")
+    assert inherits.count('t-set="company"') >= 7
+    assert "doc.company_id" in inherits
+    assert "o.company_id" in inherits
+
+
 def test_no_vendor_edits_in_overlay() -> None:
     for path in _manifests():
         text = path.read_text(encoding="utf-8")
