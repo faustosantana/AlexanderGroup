@@ -155,7 +155,7 @@ class ResPartner(models.Model):
             bundles.append(
                 {
                     "company": co,
-                    "anchor": moves[:1] if moves else self.env["account.move"],
+                    "anchor": moves[0] if moves else self.env["account.move"],
                     "rows": rows,
                     "cutoff": cutoff.strftime("%d/%m/%Y"),
                     "currency": currency.name,

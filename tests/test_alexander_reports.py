@@ -76,6 +76,7 @@ def test_statement_uses_python_rows():
     assert "invoice_date or move.date" in py
     assert "_dx_line_residual_at_cutoff" in py
     assert "assert_balance_invariants" in py
+    assert "moves[0]" in py
     assert "dx_statement_cutoff" in py
     assert "asset_receivable" in py
 
