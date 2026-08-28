@@ -16,8 +16,8 @@ COMPANY_PROFILES = (
             "Empresa del grupo con actividad en servicio, comercio, "
             "agroindustria e industria. Casa de referencia de Doralex Group."
         ),
-        "color": "#1B365D",
-        "color_secondary": "#C4A35A",
+        "color": "#E86A12",
+        "color_secondary": "#1A1A1A",
         "sequence": 10,
         "areas": ("Inversiones", "Comercio", "Agroindustria", "Industria"),
     },
@@ -31,8 +31,8 @@ COMPANY_PROFILES = (
             "Comercializadora de alimentos con operaciones de comercio, "
             "distribución, importación y servicio al mercado dominicano."
         ),
-        "color": "#2E7D32",
-        "color_secondary": "#8D6E63",
+        "color": "#C41E3A",
+        "color_secondary": "#2E7D32",
         "sequence": 20,
         "areas": ("Alimentos", "Distribución", "Importación"),
     },
@@ -46,8 +46,8 @@ COMPANY_PROFILES = (
             "Compañía del grupo orientada al comercio y a la prestación "
             "de servicios empresariales."
         ),
-        "color": "#1565C0",
-        "color_secondary": "#90A4AE",
+        "color": "#2AA8A4",
+        "color_secondary": "#F08A3C",
         "sequence": 30,
         "areas": ("Comercio", "Servicios"),
     },
@@ -61,8 +61,8 @@ COMPANY_PROFILES = (
             "Empresa de comercio y servicios que forma parte del portafolio "
             "de inversión del grupo."
         ),
-        "color": "#6A1B9A",
-        "color_secondary": "#B39DDB",
+        "color": "#2EC4B6",
+        "color_secondary": "#111111",
         "sequence": 40,
         "areas": ("Inversión", "Comercio", "Servicios"),
     },
@@ -76,8 +76,8 @@ COMPANY_PROFILES = (
             "Grupo comercial de servicios que opera de forma independiente "
             "dentro de Doralex Group."
         ),
-        "color": "#C62828",
-        "color_secondary": "#BCAAA4",
+        "color": "#1A1A1A",
+        "color_secondary": "#3D7AB5",
         "sequence": 50,
         "areas": ("Comercio", "Servicios"),
     },
@@ -91,8 +91,8 @@ COMPANY_PROFILES = (
             "Compañía de comercio y servicios del grupo, con identidad "
             "propia y operación independiente."
         ),
-        "color": "#0D47A1",
-        "color_secondary": "#90CAF9",
+        "color": "#0A3D91",
+        "color_secondary": "#00AEEF",
         "sequence": 60,
         "areas": ("Comercio", "Servicios"),
     },

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_partner_statement_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="partner">
+                <t t-set="bundles" t-value="partner._dx_statement_bundles()"/>
+                <t t-foreach="bundles" t-as="bundle">
+                    <t t-set="o" t-value="partner"/>
+                    <t t-set="company" t-value="bundle['company']"/>
+                    <t t-set="layout_document_title">Estado de cuenta</t>
+                    <t t-call="web.external_layout">
+                        <h2>Estado de cuenta</h2>
+                        <div class="dx-block">
+                            <strong t-out="partner.commercial_partner_id.name"/>
+                            <div t-if="partner.vat">RNC / Cédula: <t t-out="partner.vat"/></div>
+                            <div>Corte: <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/></div>
+                        </div>
+                        <table class="dx-lines">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Documento</th>
+                                    <th>Vence</th>
+                                    <th>Estado</th>
+                                    <th class="text-end">Cargo</th>
+                                    <th class="text-end">Abono</th>
+                                    <th class="text-end">Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="bundle['moves']" t-as="move">
+                                    <td><span t-field="move.invoice_date"/></td>
+                                    <td>
+                                        <span t-field="move.name"/>
+                                        <t t-if="move.l10n_latam_document_number"> · <span t-field="move.l10n_latam_document_number"/></t>
+                                    </td>
+                                    <td><span t-field="move.invoice_date_due"/></td>
+                                    <td><span t-field="move.state"/></td>
+                                    <td class="text-end">
+                                        <t t-if="move.move_type == 'out_invoice'">
+                                            <span t-field="move.amount_total_signed"/>
+                                        </t>
+                                    </td>
+                                    <td class="text-end">
+                                        <t t-if="move.move_type == 'out_refund'">
+                                            <span t-field="move.amount_total_signed"/>
+                                        </t>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-field="move.amount_residual_signed"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="total">
+                            <table>
+                                <tr>
+                                    <td>Saldo</td>
+                                    <td class="text-end">
+                                        <strong class="dx-totals-grand" t-esc="bundle['balance']"
+                                                t-options='{"widget": "monetary", "display_currency": company.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+                <t t-if="not bundles">
+                    <t t-set="o" t-value="partner"/>
+                    <t t-set="company" t-value="partner.company_id or company"/>
+                    <t t-call="web.external_layout">
+                        <h2>Estado de cuenta</h2>
+                        <p>No hay documentos de cliente para este contacto.</p>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_partner_statement" model="ir.actions.report">
+        <field name="name">Estado de cuenta</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">justech_alexander_reports.report_partner_statement_document</field>
+        <field name="report_file">justech_alexander_reports.report_partner_statement_document</field>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_doralex_a4"/>
+    </record>
+</odoo>

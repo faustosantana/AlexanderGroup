@@ -9,10 +9,21 @@
     </template>
 
     <template id="invoice_document_dx" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[hasclass('page')]" position="before">
+            <t t-if="o.move_type in ('out_refund', 'in_refund')">
+                <div class="dx-badge-refund">Nota de crédito</div>
+            </t>
+        </xpath>
         <xpath expr="//div[@id='payment_term']" position="after">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
             </t>
+        </xpath>
+    </template>
+
+    <template id="invoice_l10n_do_dx" inherit_id="l10n_do_accounting.l10n_do_report_invoice_document">
+        <xpath expr="//div[@id='do_informations']/div[hasclass('col-6')][1]" position="attributes">
+            <attribute name="style">display:none</attribute>
         </xpath>
     </template>
 
@@ -49,6 +60,14 @@
     </template>
 
     <template id="picking_document_dx" inherit_id="stock.report_picking">
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <t t-call="justech_alexander_reports.dx_report_extras">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="return_document_dx" inherit_id="stock.report_return_slip">
         <xpath expr="//div[hasclass('page')]" position="inside">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>

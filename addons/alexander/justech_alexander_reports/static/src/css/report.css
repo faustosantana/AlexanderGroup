@@ -1,98 +1,408 @@
+/* Doralex report suite — 6 company themes. wkhtmltopdf-safe (tables, no flex/grid). */
+
 .dx-report-header,
 .dx-report-body,
 .dx-report-footer {
   font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
-  color: #1c2430;
-  font-size: 11px;
+  color: #1a1a1a;
+  font-size: 10pt;
+  line-height: 1.35;
 }
 
 .dx-head-table,
 .dx-foot-table,
+.dx-sign-table,
 .dx-lines {
   width: 100%;
   border-collapse: collapse;
 }
 
 .dx-head-logo {
-  width: 28%;
+  width: 32%;
   vertical-align: middle;
+  padding: 0 8px 0 0;
 }
 
 .dx-head-identity {
   width: 68%;
-  padding-left: 8px;
-  vertical-align: top;
-}
-
-.dx-head-accent {
-  width: 4px;
+  vertical-align: middle;
+  padding-left: 10px;
 }
 
 .dx-trade {
-  font-size: 16px;
+  font-size: 13.5pt;
   font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
 }
 
 .dx-legal {
-  font-size: 11px;
-  color: #5b6573;
+  font-size: 8.5pt;
+  color: #4a4a4a;
+  margin-top: 1px;
 }
 
 .dx-meta,
 .dx-rnc {
-  font-size: 10px;
-  color: #5b6573;
+  font-size: 8.5pt;
+  color: #4a4a4a;
+  margin-top: 1px;
 }
 
-.dx-doc-title {
-  font-size: 18px;
-  margin: 8px 0 12px;
+.dx-rnc {
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-top: 3px;
 }
 
+.dx-head-rule {
+  height: 2px;
+  margin-top: 6px;
+  background: #1a1a1a;
+}
+
+.dx-report-body h2 {
+  font-size: 18pt;
+  font-weight: 700;
+  margin: 0 0 10px;
+  line-height: 1.15;
+}
+
+.dx-report-body h3 {
+  font-size: 12pt;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.dx-report-body p,
+.dx-report-body li {
+  font-size: 9.5pt;
+}
+
+.dx-report-body #informations,
+.dx-report-body .row#informations,
+.dx-report-body div#informations {
+  margin-bottom: 12px;
+}
+
+.dx-report-body table.o_main_table,
+.dx-report-body table.table,
+.dx-report-body .dx-lines {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+  margin-top: 4px;
+}
+
+.dx-report-body table.o_main_table thead,
+.dx-report-body table.table thead,
 .dx-lines thead {
   display: table-header-group;
 }
 
+.dx-report-body table.o_main_table th,
+.dx-report-body table.table thead th,
 .dx-lines th {
   text-align: left;
-  border-bottom: 1px solid #1b365d;
-  padding: 4px 3px;
-  font-size: 10px;
+  padding: 6px 5px;
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: none;
+  border-bottom: 1.5px solid #1a1a1a;
 }
 
+.dx-report-body table.o_main_table td,
+.dx-report-body table.table td,
 .dx-lines td {
-  border-bottom: 1px solid #eceff3;
-  padding: 5px 3px;
+  padding: 6px 5px;
   vertical-align: top;
-  page-break-inside: avoid;
+  border: none;
+  border-bottom: 1px solid #e4e4e4;
 }
 
+.dx-report-body table.o_main_table tbody tr,
+.dx-report-body table.table tbody tr,
 .dx-lines tr {
   page-break-inside: avoid;
 }
 
+.dx-report-body td.text-end,
+.dx-report-body th.text-end,
+.dx-report-body .o_price_total,
+.dx-report-body .o_list_price,
+.dx-lines td:last-child,
+.dx-lines th:last-child {
+  text-align: right;
+}
+
+.dx-report-body #total,
+.dx-report-body div#total {
+  width: 48%;
+  margin-left: auto;
+  margin-top: 10px;
+  page-break-inside: avoid;
+}
+
+.dx-report-body #total table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dx-report-body #total td {
+  padding: 4px 6px;
+  font-size: 9.5pt;
+  border: none;
+}
+
+.dx-report-body #total strong,
+.dx-report-body #total .o_total,
+.dx-totals-grand {
+  font-size: 12.5pt;
+  font-weight: 700;
+}
+
 .dx-block {
-  margin-top: 12px;
+  margin-top: 14px;
+  page-break-inside: avoid;
+}
+
+.dx-block-title {
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.dx-terms p,
+.dx-bank-line {
+  font-size: 8.5pt;
+  color: #333;
+  margin: 0 0 3px;
 }
 
 .dx-sign {
   margin-top: 28px;
+  page-break-inside: avoid;
+}
+
+.dx-sign-table td {
+  width: 50%;
+  padding-right: 18px;
+  vertical-align: top;
 }
 
 .dx-sign-line {
-  width: 45%;
-  border-top: 1px solid #1c2430;
+  border-top: 1px solid #1a1a1a;
   padding-top: 4px;
+  font-size: 8pt;
+  color: #555;
+}
+
+.dx-foot-rule {
+  height: 1px;
+  background: #c8c8c8;
+  margin-bottom: 4px;
 }
 
 .dx-foot-table td {
-  border-top: 1px solid #d7dce3;
-  padding-top: 4px;
-  font-size: 9px;
-  color: #5b6573;
+  font-size: 8pt;
+  color: #555;
+  padding: 0;
 }
 
 .dx-foot-page {
   text-align: right;
   white-space: nowrap;
+  width: 22%;
+}
+
+/* Invoice l10n_do fiscal block */
+.dx-report-body #do_informations {
+  margin: 0 0 12px;
+}
+.dx-report-body #do_informations h3 {
+  font-size: 14pt;
+  margin: 0 0 4px;
+}
+
+/* Payment receipt */
+.dx-doc-payment .dx-amount-hero {
+  font-size: 20pt;
+  font-weight: 700;
+  margin: 8px 0 12px;
+}
+
+/* ============ DOR — industrial orange / black ============ */
+.dx-theme-DOR.dx-report-header {
+  border-top: 7px solid #E86A12;
+  padding-top: 4px;
+}
+.dx-theme-DOR .dx-head-rule { background: #1A1A1A; height: 3px; }
+.dx-theme-DOR .dx-trade { color: #1A1A1A; }
+.dx-theme-DOR .dx-rnc { color: #E86A12; }
+.dx-theme-DOR.dx-report-body h2 { color: #1A1A1A; border-bottom: 3px solid #E86A12; padding-bottom: 4px; display: inline-block; }
+.dx-theme-DOR.dx-report-body table.o_main_table th,
+.dx-theme-DOR.dx-report-body table.table thead th,
+.dx-theme-DOR .dx-lines th {
+  background: #1A1A1A;
+  color: #fff;
+  border-bottom: none;
+}
+.dx-theme-DOR.dx-report-body table.o_main_table tbody tr:nth-child(even) td,
+.dx-theme-DOR .dx-lines tbody tr:nth-child(even) td { background: #f7f7f7; }
+.dx-theme-DOR.dx-report-body #total { border-top: 3px solid #E86A12; padding-top: 4px; }
+.dx-theme-DOR.dx-report-body #total strong,
+.dx-theme-DOR .dx-totals-grand { color: #E86A12; }
+.dx-theme-DOR.dx-report-footer .dx-foot-rule { background: #E86A12; height: 3px; }
+
+/* ============ PIN — food seal, red + green ============ */
+.dx-theme-PIN.dx-report-header {
+  border-left: 8px solid #2E7D32;
+  padding-left: 10px;
+  border-bottom: 2px solid #C41E3A;
+}
+.dx-theme-PIN .dx-head-rule { display: none; }
+.dx-theme-PIN .dx-trade { color: #C41E3A; font-family: "DejaVu Serif", "Times New Roman", serif; }
+.dx-theme-PIN .dx-rnc { color: #2E7D32; }
+.dx-theme-PIN.dx-report-body h2 {
+  color: #C41E3A;
+  font-family: "DejaVu Serif", "Times New Roman", serif;
+}
+.dx-theme-PIN.dx-report-body table.o_main_table th,
+.dx-theme-PIN.dx-report-body table.table thead th,
+.dx-theme-PIN .dx-lines th {
+  background: transparent;
+  color: #2E7D32;
+  border-bottom: 2px solid #C41E3A;
+}
+.dx-theme-PIN.dx-report-body #total { border-left: 4px solid #2E7D32; padding-left: 8px; }
+.dx-theme-PIN.dx-report-body #total strong,
+.dx-theme-PIN .dx-totals-grand { color: #C41E3A; }
+.dx-theme-PIN.dx-report-footer .dx-foot-rule { background: #2E7D32; }
+
+/* ============ DOM — teal + orange dual accent ============ */
+.dx-theme-DOM.dx-report-header { border-top: 4px solid #2AA8A4; }
+.dx-theme-DOM .dx-logo-panel { background: #111111; padding: 6px; width: 28%; text-align: center; }
+.dx-theme-DOM .dx-head-rule { background: #F08A3C; height: 3px; }
+.dx-theme-DOM .dx-trade { color: #2AA8A4; text-transform: uppercase; }
+.dx-theme-DOM .dx-rnc { color: #1a1a1a; }
+.dx-theme-DOM.dx-report-body h2 { color: #2AA8A4; }
+.dx-theme-DOM.dx-report-body table.o_main_table th,
+.dx-theme-DOM.dx-report-body table.table thead th,
+.dx-theme-DOM .dx-lines th {
+  background: #2AA8A4;
+  color: #fff;
+  border-bottom: none;
+}
+.dx-theme-DOM.dx-report-body #total { background: #f6fbfb; border-top: 3px solid #F08A3C; padding: 6px 8px; }
+.dx-theme-DOM.dx-report-body #total strong,
+.dx-theme-DOM .dx-totals-grand { color: #F08A3C; }
+.dx-theme-DOM.dx-report-footer .dx-foot-rule { background: #2AA8A4; }
+
+/* ============ MAY — architectural teal on charcoal ============ */
+.dx-theme-MAY.dx-report-header {
+  background: #111111;
+  color: #2EC4B6;
+  padding: 8px 10px;
+}
+.dx-theme-MAY .dx-logo-panel { background: #111111; }
+.dx-theme-MAY .dx-trade { color: #ffffff; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12pt; }
+.dx-theme-MAY .dx-legal,
+.dx-theme-MAY .dx-meta { color: #b9b9b9; }
+.dx-theme-MAY .dx-rnc { color: #2EC4B6; }
+.dx-theme-MAY .dx-head-rule { display: none; }
+.dx-theme-MAY.dx-report-body h2 {
+  color: #111111;
+  border-bottom: 1px solid #2EC4B6;
+  padding-bottom: 3px;
+}
+.dx-theme-MAY.dx-report-body table.o_main_table th,
+.dx-theme-MAY.dx-report-body table.table thead th,
+.dx-theme-MAY .dx-lines th {
+  background: transparent;
+  color: #111111;
+  border-bottom: 2px solid #2EC4B6;
+  letter-spacing: 0.08em;
+}
+.dx-theme-MAY.dx-report-body table.o_main_table td,
+.dx-theme-MAY .dx-lines td { border-bottom: 1px solid #d9d9d9; }
+.dx-theme-MAY.dx-report-body #total { border-top: 2px solid #111111; }
+.dx-theme-MAY.dx-report-body #total strong,
+.dx-theme-MAY .dx-totals-grand { color: #111111; }
+.dx-theme-MAY.dx-report-footer .dx-foot-rule { background: #111111; height: 2px; }
+
+/* ============ REM — monochrome + construction blue ============ */
+.dx-theme-REM.dx-report-header { border-top: 8px solid #1A1A1A; padding-top: 6px; }
+.dx-theme-REM .dx-head-rule { background: #3D7AB5; height: 2px; }
+.dx-theme-REM .dx-trade {
+  font-family: "DejaVu Serif", "Times New Roman", serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12.5pt;
+}
+.dx-theme-REM .dx-rnc { color: #1A1A1A; }
+.dx-theme-REM.dx-report-body h2 {
+  font-family: "DejaVu Serif", "Times New Roman", serif;
+  letter-spacing: 0.06em;
+}
+.dx-theme-REM.dx-report-body table.o_main_table th,
+.dx-theme-REM.dx-report-body table.table thead th,
+.dx-theme-REM .dx-lines th {
+  background: #1A1A1A;
+  color: #fff;
+  border-bottom: none;
+}
+.dx-theme-REM.dx-report-body #total { border-bottom: 3px solid #3D7AB5; }
+.dx-theme-REM.dx-report-body #total strong,
+.dx-theme-REM .dx-totals-grand { color: #1A1A1A; }
+.dx-theme-REM.dx-report-footer .dx-foot-rule { background: #1A1A1A; height: 2px; }
+
+/* ============ BLU — royal / cyan geometry ============ */
+.dx-theme-BLU.dx-report-header {
+  border-top: 5px solid #0A3D91;
+  border-bottom: 3px solid #00AEEF;
+  padding: 4px 0 6px;
+}
+.dx-theme-BLU .dx-head-rule { display: none; }
+.dx-theme-BLU .dx-trade { color: #0A3D91; text-transform: uppercase; font-style: italic; }
+.dx-theme-BLU .dx-rnc { color: #0A3D91; }
+.dx-theme-BLU.dx-report-body h2 { color: #0A3D91; }
+.dx-theme-BLU.dx-report-body table.o_main_table th,
+.dx-theme-BLU.dx-report-body table.table thead th,
+.dx-theme-BLU .dx-lines th {
+  background: #0A3D91;
+  color: #fff;
+  border-bottom: none;
+}
+.dx-theme-BLU.dx-report-body table.o_main_table tbody tr:nth-child(even) td,
+.dx-theme-BLU .dx-lines tbody tr:nth-child(even) td { background: #f3f8fd; }
+.dx-theme-BLU.dx-report-body #total { border-top: 3px solid #00AEEF; }
+.dx-theme-BLU.dx-report-body #total strong,
+.dx-theme-BLU .dx-totals-grand { color: #0A3D91; }
+.dx-theme-BLU.dx-report-footer .dx-foot-rule { background: #0A3D91; height: 3px; }
+
+/* Credit note distinction without losing company identity */
+.dx-report-body.dx-is-refund h2:before {
+  content: "";
+}
+.dx-badge-refund {
+  display: inline-block;
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid #1a1a1a;
+  padding: 2px 6px;
+  margin-bottom: 6px;
+}
+
+/* Purchase: quieter commercial tone */
+.dx-doc-purchase.dx-report-body h2 { font-size: 16pt; }
+
+/* B/W fallback: do not rely on color alone */
+.dx-report-body #total strong:after {
+  content: "";
 }

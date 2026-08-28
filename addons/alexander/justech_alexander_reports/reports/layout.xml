@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <template id="external_layout_force_document_company" inherit_id="web.external_layout">
+        <xpath expr="//t[@t-if='not company']" position="before">
+            <t t-if="o and 'company_id' in o and o.company_id">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-elif="doc and 'company_id' in doc and doc.company_id">
+                <t t-set="company" t-value="doc.company_id.sudo()"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="internal_layout_force_document_company" inherit_id="web.internal_layout">
+        <xpath expr="//t[@t-if='not company']" position="before">
+            <t t-if="o and 'company_id' in o and o.company_id">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-elif="doc and 'company_id' in doc and doc.company_id">
+                <t t-set="company" t-value="doc.company_id.sudo()"/>
+            </t>
+        </xpath>
+    </template>
+
     <template id="external_layout_doralex" name="Doralex">
-        <div t-attf-class="header o_company_#{company.id}_layout dx-report-header">
+        <t t-if="o and 'company_id' in o and o.company_id">
+            <t t-set="company" t-value="o.company_id.sudo()"/>
+        </t>
+        <t t-elif="doc and 'company_id' in doc and doc.company_id">
+            <t t-set="company" t-value="doc.company_id.sudo()"/>
+        </t>
+        <t t-set="dx_theme" t-value="company._dx_report_theme()"/>
+        <div t-attf-class="header o_company_#{company.id}_layout dx-report-header dx-theme-#{dx_theme['code']}">
             <table class="dx-head-table">
                 <tr>
-                    <td class="dx-head-logo">
+                    <td t-attf-class="dx-head-logo #{'dx-logo-panel' if dx_theme.get('logo_on_dark') else ''}">
                         <img t-if="company.dx_report_show_logo and company.logo"
                              t-att-src="image_data_uri(company.logo)"
                              t-att-style="company._dx_report_logo_style()"
@@ -15,34 +44,43 @@
                         <div t-if="company.dx_report_show_legal_name" class="dx-legal" t-out="company.name"/>
                         <div t-if="company.dx_report_show_address" class="dx-meta">
                             <t t-if="company.street" t-out="company.street"/>
-                            <t t-if="company.city"> · <t t-out="company.city"/></t>
+                            <t t-if="company.city">, <t t-out="company.city"/></t>
+                            <t t-if="company.state_id">, <t t-out="company.state_id.name"/></t>
                         </div>
                         <div class="dx-meta">
                             <t t-if="company.dx_report_show_phone and company.phone" t-out="company.phone"/>
-                            <t t-if="company.dx_report_show_email and company.email"> · <t t-out="company.email"/></t>
+                            <t t-if="company.dx_report_show_email and company.email">
+                                <t t-if="company.phone"> · </t>
+                                <t t-out="company.email"/>
+                            </t>
+                            <t t-if="company.website">
+                                <t t-if="company.phone or company.email"> · </t>
+                                <t t-out="company.website"/>
+                            </t>
                         </div>
                         <div t-if="company.dx_report_show_rnc and company.vat" class="dx-rnc">
-                            RNC: <t t-out="company._dx_vat_display()"/>
+                            RNC <t t-out="company._dx_vat_display()"/>
                         </div>
                     </td>
-                    <td class="dx-head-accent" t-attf-style="background: #{company.primary_color or '#1B365D'};"/>
                 </tr>
             </table>
+            <div class="dx-head-rule"/>
         </div>
 
-        <div t-attf-class="article o_company_#{company.id}_layout dx-report-body"
+        <div t-attf-class="article o_company_#{company.id}_layout dx-report-body dx-theme-#{dx_theme['code']} #{'dx-is-refund' if o and o._name == 'account.move' and o.move_type in ('out_refund', 'in_refund') else ''} #{'dx-doc-payment' if o and o._name == 'account.payment' else ''} #{'dx-doc-purchase' if o and o._name == 'purchase.order' else ''} #{'dx-doc-stock' if o and o._name == 'stock.picking' else ''}"
              t-att-data-oe-model="o and o._name"
              t-att-data-oe-id="o and o.id">
-            <t t-call="web.address_layout"/>
-            <h2 class="dx-doc-title" t-out="layout_document_title"/>
             <t t-out="0"/>
         </div>
 
-        <div t-attf-class="footer o_company_#{company.id}_layout dx-report-footer">
+        <div t-attf-class="footer o_company_#{company.id}_layout dx-report-footer dx-theme-#{dx_theme['code']}">
+            <div class="dx-foot-rule"/>
             <table class="dx-foot-table">
                 <tr>
                     <td class="dx-foot-text">
-                        <t t-out="company.dx_report_footer_text or company.report_footer or (company.dx_trade_name or company.name)"/>
+                        <t t-out="company.dx_report_footer_text or (company.dx_trade_name or company.name)"/>
+                        <t t-if="company.email"> · <t t-out="company.email"/></t>
+                        <t t-if="company.phone"> · <t t-out="company.phone"/></t>
                     </td>
                     <td class="dx-foot-page">
                         <t t-if="report_type == 'pdf'">Página <span class="page"/> / <span class="topage"/></t>
@@ -59,24 +97,35 @@
     </record>
 
     <template id="dx_report_extras" name="Bloques extra Doralex">
-        <div t-if="company.dx_report_terms" class="dx-block">
-            <strong>Términos</strong>
-            <p t-out="company.dx_report_terms"/>
+        <t t-set="dx_terms" t-value="company.dx_report_terms or company.invoice_terms"/>
+        <div t-if="dx_terms" class="dx-block dx-terms">
+            <div class="dx-block-title">Términos y condiciones</div>
+            <p t-out="dx_terms"/>
         </div>
         <t t-if="company.dx_report_show_bank">
             <t t-set="dx_banks" t-value="company._dx_report_banks()"/>
-            <div t-if="dx_banks" class="dx-block">
-                <strong>Información de pago</strong>
+            <div t-if="dx_banks" class="dx-block dx-banks">
+                <div class="dx-block-title">Información de pago</div>
                 <t t-foreach="dx_banks" t-as="bank">
-                    <div>
+                    <div class="dx-bank-line">
                         <t t-out="bank.bank_id.name or 'Banco'"/>
                         <t t-if="bank.acc_number"> · <t t-out="bank.acc_number"/></t>
+                        <t t-if="bank.acc_holder_name"> · <t t-out="bank.acc_holder_name"/></t>
                     </div>
                 </t>
             </div>
         </t>
         <div t-if="company.dx_report_show_signature" class="dx-sign">
-            <div class="dx-sign-line">Firma / Aceptación</div>
+            <table class="dx-sign-table">
+                <tr>
+                    <td>
+                        <div class="dx-sign-line">Elaborado por</div>
+                    </td>
+                    <td>
+                        <div class="dx-sign-line">Aceptación / Recibido</div>
+                    </td>
+                </tr>
+            </table>
         </div>
     </template>
 </odoo>
