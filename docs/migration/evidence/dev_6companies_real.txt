@@ -1,0 +1,25 @@
+Doralex DEV — 6 empresas con datos reales (2026-08-28)
+Backups: dev_20260828_110913 (pre) / dev_20260828_111325 (post), verificados.
+
+Empresas (companies 28-33, actualizadas; provisional_leftover=0):
+  28 INVERSIONES DORALEX,S.RL.                     RNC 1-32-22011-2  logo=Doralex
+  29 COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L. RNC 1-32-27106-8  logo=CAP
+  30 DOMINION BUSINESS,S.R.L.                       RNC 1-32-72150-2  logo=Dominion
+  31 INVERSIONES EL MAYUMA, S.R.L.                  RNC 1-32-71015-2  logo=El Mayuma
+  32 REMPART GROUP S.R.L.                           RNC 1-32-76915-5  logo=Rempart
+  33 BLUE ELITE, S.R.L.                             RNC 1-33-37126-1  logo=Blue Elite
+
+Por empresa: DOP, DO, logo=Y, chart do (289 cuentas), 37 impuestos, 8 diarios,
+  1 almacen, 1 cuenta bancaria (BANRESERVAS). Config tecnica preservada.
+
+Bancos: 6 (BANRESERVAS), vinculados a partner + diario de banco.
+  balances -> PENDING_OPENING_BALANCE_POSTING ; fechas 05//08/2026 -> PENDING_DATE_VALIDATION
+  (numeros de cuenta / cedulas NO versionados; solo en Odoo DEV).
+
+Usuarios: 1 (ALEXANDER PIÑA AQUINO), login inversionesdoralex@gmail.com,
+  default company=28, allowed_company_ids=[28..33]; roles -> PENDING_USER_ROLE.
+
+NCF: hoja fiscal vacia -> PENDING_REAL_RANGES (sin inventar secuencias).
+
+Pruebas: isolation 36/36, golden 9/9, six-company 6/6, repo 15/15;
+  runtime errors=0 (bundles de assets obsoletos limpiados/regenerados); dev/prod=200.
