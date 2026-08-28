@@ -10,6 +10,7 @@ Documentación de infraestructura del servidor nuevo de Doralex / Alexander Grou
 | [`DEPLOYMENT_RUNBOOK.md`](DEPLOYMENT_RUNBOOK.md) | Flujo LOCAL→GIT→DEV→TESTS→VALIDACION→BACKUP→DEPLOY. |
 | [`ISOLATION_VALIDATION.md`](ISOLATION_VALIDATION.md) | Checklist de aislamiento (PASS/FAIL). |
 | [`DNS_AND_SSL.md`](DNS_AND_SSL.md) | Dominios definitivos `.cloud`, `DNS_REQUIRED`, certificados. |
+| [`MAIL_DNS_CLOSEOUT.md`](MAIL_DNS_CLOSEOUT.md) | MX/SPF/DKIM/DMARC de los 6 dominios de correo (pendiente DNS). |
 | [`SECURITY_HARDENING.md`](SECURITY_HARDENING.md) | Endurecimiento de SSH, firewall, secretos. |
 | [`BACKUP_STRATEGY.md`](BACKUP_STRATEGY.md) | Estrategia de backups verificables. |
 | [`ENTERPRISE_READINESS.md`](ENTERPRISE_READINESS.md) | Odoo 19 Enterprise (`ENTERPRISE_SOURCE_PENDING`). |
