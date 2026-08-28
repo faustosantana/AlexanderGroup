@@ -52,6 +52,8 @@ def test_official_report_names_not_rebound():
     assert "_dx_sale_compose" in inherits
     assert "_dx_invoice_compose" in inherits
     assert "_dx_payment_compose" in inherits
+    assert "dx-composition-wrap" in inherits
+    assert 'position="replace"' not in inherits
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     assert "l10n_do_accounting" in manifest
     assert "components.xml" in manifest

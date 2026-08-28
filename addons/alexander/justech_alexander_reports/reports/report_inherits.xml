@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="sale_document_dx" inherit_id="sale.report_saleorder_document">
-        <xpath expr="//div[hasclass('page')]" position="replace">
-            <div class="page dx-page">
+        <xpath expr="//div[hasclass('page')]" position="attributes">
+            <attribute name="class">page dx-page dx-v2</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <div class="dx-composition-wrap">
                 <t t-set="dx" t-value="doc._dx_sale_compose()"/>
                 <t t-call="justech_alexander_reports.dx_sale_composition"/>
-                <div id="informations" style="display:none"/>
-                <span name="order_note" style="display:none"/>
             </div>
         </xpath>
     </template>
 
     <template id="invoice_document_dx" inherit_id="account.report_invoice_document">
-        <xpath expr="//div[hasclass('page')]" position="replace">
-            <div class="page dx-page">
+        <xpath expr="//div[hasclass('page')]" position="attributes">
+            <attribute name="class">page dx-page dx-v2</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <div class="dx-composition-wrap">
                 <t t-set="dx" t-value="o._dx_invoice_compose()"/>
                 <t t-call="justech_alexander_reports.dx_invoice_composition"/>
-                <div id="informations" style="display:none"/>
-                <div id="do_informations" style="display:none">
-                    <div class="col-6"/>
-                    <div class="col-6"/>
-                </div>
-                <div id="total" style="display:none"/>
-                <div id="payment_term" style="display:none"/>
             </div>
         </xpath>
     </template>
@@ -60,11 +57,13 @@
     </template>
 
     <template id="payment_receipt_dx" inherit_id="account.report_payment_receipt_document">
-        <xpath expr="//div[hasclass('page')]" position="replace">
-            <div class="page dx-page">
+        <xpath expr="//div[hasclass('page')]" position="attributes">
+            <attribute name="class">page dx-page dx-v2</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <div class="dx-composition-wrap">
                 <t t-set="dx" t-value="o._dx_payment_compose()"/>
                 <t t-call="justech_alexander_reports.dx_payment_composition"/>
-                <table name="invoices" style="display:none"/>
             </div>
         </xpath>
     </template>

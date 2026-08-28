@@ -96,6 +96,10 @@
   margin: 0;
   padding: 0;
 }
+.dx-page.dx-v2 > *:not(.dx-composition-wrap) {
+  display: none !important;
+}
+.dx-composition-wrap,
 .dx-composition {
   margin: 0;
   padding: 0;
