@@ -7,64 +7,73 @@
                 <t t-foreach="bundles" t-as="bundle">
                     <t t-set="o" t-value="bundle['anchor']"/>
                     <t t-set="company" t-value="bundle['company']"/>
-                    <t t-set="layout_document_title">Estado de cuenta</t>
+                    <t t-set="dx_header_identity" t-value="{'title': 'ESTADO DE CUENTA', 'number': bundle['cutoff'], 'badge': ''}"/>
                     <t t-call="web.external_layout">
-                        <div class="dx-block">
-                            <strong t-out="partner.commercial_partner_id.name"/>
-                            <div t-if="partner.vat">RNC / Cédula: <t t-out="partner.vat"/></div>
-                            <div>Corte: <t t-out="bundle['cutoff']"/></div>
-                        </div>
-                        <table class="dx-lines">
-                            <thead>
+                        <div class="page dx-page">
+                            <table class="dx-zone-party">
                                 <tr>
-                                    <th>Fecha</th>
-                                    <th>Documento</th>
-                                    <th>Vence</th>
-                                    <th>Estado</th>
-                                    <th class="text-end">Cargo</th>
-                                    <th class="text-end">Abono</th>
-                                    <th class="text-end">Saldo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr t-foreach="bundle['rows']" t-as="row">
-                                    <td t-out="row['date']"/>
-                                    <td t-out="row['document']"/>
-                                    <td t-out="row['due']"/>
-                                    <td t-out="row['state']"/>
-                                    <td class="text-end" t-out="row['debit']"/>
-                                    <td class="text-end" t-out="row['credit']"/>
-                                    <td class="text-end" t-out="row['balance']"/>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div id="total">
-                            <table>
-                                <tr>
-                                    <td>Total vencido</td>
-                                    <td class="text-end" t-out="bundle['overdue']"/>
-                                </tr>
-                                <tr>
-                                    <td>0–30</td>
-                                    <td class="text-end" t-out="bundle['age_30']"/>
-                                </tr>
-                                <tr>
-                                    <td>31–60</td>
-                                    <td class="text-end" t-out="bundle['age_60']"/>
-                                </tr>
-                                <tr>
-                                    <td>61–90</td>
-                                    <td class="text-end" t-out="bundle['age_90']"/>
-                                </tr>
-                                <tr>
-                                    <td>90+</td>
-                                    <td class="text-end" t-out="bundle['age_90p']"/>
-                                </tr>
-                                <tr>
-                                    <td><strong>Saldo</strong></td>
-                                    <td class="text-end">
-                                        <strong class="dx-totals-grand" t-out="bundle['balance_disp']"/>
+                                    <td class="dx-zone-customer">
+                                        <div class="dx-card-title">Cliente</div>
+                                        <div class="dx-card-name" t-out="bundle['partner_name']"/>
+                                        <div t-if="bundle.get('partner_vat')">RNC <t t-out="bundle['partner_vat']"/></div>
                                     </td>
+                                    <td class="dx-zone-meta">
+                                        <table class="dx-meta-table">
+                                            <tr><th>Fecha de corte</th><td t-out="bundle['cutoff']"/></tr>
+                                            <tr><th>Moneda</th><td t-out="bundle['currency']"/></tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="dx-kpi">
+                                <tr>
+                                    <td t-foreach="bundle['kpis']" t-as="kpi" t-attf-class="dx-kpi-#{kpi['tone']}">
+                                        <div class="dx-kpi-label" t-out="kpi['label']"/>
+                                        <div class="dx-kpi-value dx-money" t-out="kpi['value']"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="dx-lines dx-statement-lines">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Documento</th>
+                                        <th>NCF</th>
+                                        <th>Vencimiento</th>
+                                        <th>Días</th>
+                                        <th class="dx-col-amt">Débito</th>
+                                        <th class="dx-col-amt">Crédito</th>
+                                        <th class="dx-col-amt">Saldo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="bundle['rows']" t-as="row">
+                                        <td t-out="row['date']"/>
+                                        <td t-out="row['document']"/>
+                                        <td t-out="row['ncf']"/>
+                                        <td t-out="row['due']"/>
+                                        <td t-out="row['days']"/>
+                                        <td class="dx-money" t-out="row['debit']"/>
+                                        <td class="dx-money" t-out="row['credit']"/>
+                                        <td class="dx-money" t-out="row['balance']"/>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="dx-block-title">Antigüedad de saldo</div>
+                            <table class="dx-aging">
+                                <tr>
+                                    <th>Corriente</th>
+                                    <th>1–30</th>
+                                    <th>31–60</th>
+                                    <th>61–90</th>
+                                    <th>90+</th>
+                                </tr>
+                                <tr>
+                                    <td class="dx-money" t-out="bundle['current']"/>
+                                    <td class="dx-money" t-out="bundle['age_30']"/>
+                                    <td class="dx-money" t-out="bundle['age_60']"/>
+                                    <td class="dx-money" t-out="bundle['age_90']"/>
+                                    <td class="dx-money" t-out="bundle['age_90p']"/>
                                 </tr>
                             </table>
                         </div>
@@ -73,9 +82,11 @@
                 <t t-if="not bundles">
                     <t t-set="o" t-value="False"/>
                     <t t-set="company" t-value="partner.company_id or company"/>
-                    <t t-set="layout_document_title">Estado de cuenta</t>
+                    <t t-set="dx_header_identity" t-value="{'title': 'ESTADO DE CUENTA', 'number': '', 'badge': ''}"/>
                     <t t-call="web.external_layout">
-                        <p>No hay documentos de cliente para este contacto.</p>
+                        <div class="page dx-page">
+                            <p>No hay documentos de cliente para este contacto.</p>
+                        </div>
                     </t>
                 </t>
             </t>

@@ -1,57 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="sale_document_dx" inherit_id="sale.report_saleorder_document">
-        <xpath expr="//div[@id='informations']" position="before">
-            <table class="dx-party-table" t-if="doc.partner_id">
-                <tr>
-                    <td>
-                        <div class="dx-block-title">Cliente</div>
-                        <div t-field="doc.partner_id"/>
-                        <div t-if="doc.partner_id.vat">RNC / Cédula: <span t-field="doc.partner_id.vat"/></div>
-                        <div t-field="doc.partner_id"
-                             t-options='{"widget": "contact", "fields": ["address", "phone"], "no_marker": True}'/>
-                    </td>
-                </tr>
-            </table>
-        </xpath>
-        <xpath expr="//span[@name='order_note']" position="after">
-            <t t-call="justech_alexander_reports.dx_report_extras">
-                <t t-set="company" t-value="doc.company_id"/>
-                <t t-set="dx_extras_mode" t-value="'customer'"/>
-            </t>
+        <xpath expr="//div[hasclass('page')]" position="replace">
+            <div class="page dx-page">
+                <t t-set="dx" t-value="doc._dx_sale_compose()"/>
+                <t t-call="justech_alexander_reports.dx_sale_composition"/>
+                <div id="informations" style="display:none"/>
+                <span name="order_note" style="display:none"/>
+            </div>
         </xpath>
     </template>
 
     <template id="invoice_document_dx" inherit_id="account.report_invoice_document">
-        <xpath expr="//div[@id='informations']" position="before">
-            <table class="dx-party-table" t-if="o.partner_id">
-                <tr>
-                    <td>
-                        <div class="dx-block-title">Cliente</div>
-                        <div t-field="o.partner_id"/>
-                        <div t-if="o.partner_id.vat">RNC / Cédula: <span t-field="o.partner_id.vat"/></div>
-                        <div t-field="o.partner_id"
-                             t-options='{"widget": "contact", "fields": ["address", "phone"], "no_marker": True}'/>
-                    </td>
-                    <td t-if="o.move_type in ('out_refund', 'in_refund')" class="dx-intro-title">
-                        <div class="dx-badge-refund">Nota de crédito</div>
-                        <div t-if="'l10n_do_origin_ncf' in o and o.l10n_do_origin_ncf">NCF afectado: <span t-field="o.l10n_do_origin_ncf"/></div>
-                        <div t-if="o.ref">Referencia: <span t-field="o.ref"/></div>
-                    </td>
-                </tr>
-            </table>
-        </xpath>
-        <xpath expr="//div[@id='payment_term']" position="after">
-            <t t-call="justech_alexander_reports.dx_report_extras">
-                <t t-set="company" t-value="o.company_id"/>
-                <t t-set="dx_extras_mode" t-value="'signs' if o.move_type in ('out_refund', 'in_refund') else 'customer'"/>
-            </t>
-        </xpath>
-    </template>
-
-    <template id="invoice_l10n_do_dx" inherit_id="l10n_do_accounting.l10n_do_report_invoice_document">
-        <xpath expr="//div[@id='do_informations']/div[hasclass('col-6')][1]" position="attributes">
-            <attribute name="style">display:none</attribute>
+        <xpath expr="//div[hasclass('page')]" position="replace">
+            <div class="page dx-page">
+                <t t-set="dx" t-value="o._dx_invoice_compose()"/>
+                <t t-call="justech_alexander_reports.dx_invoice_composition"/>
+                <div id="informations" style="display:none"/>
+                <div id="do_informations" style="display:none">
+                    <div class="col-6"/>
+                    <div class="col-6"/>
+                </div>
+                <div id="total" style="display:none"/>
+                <div id="payment_term" style="display:none"/>
+            </div>
         </xpath>
     </template>
 
@@ -88,25 +60,12 @@
     </template>
 
     <template id="payment_receipt_dx" inherit_id="account.report_payment_receipt_document">
-        <xpath expr="//div[hasclass('page')]/h3" position="before">
-            <div class="dx-receipt-kicker">Comprobante de pago</div>
-            <div class="dx-amount-hero">
-                <div class="dx-amount-label">Monto recibido</div>
-                <div t-field="o.amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+        <xpath expr="//div[hasclass('page')]" position="replace">
+            <div class="page dx-page">
+                <t t-set="dx" t-value="o._dx_payment_compose()"/>
+                <t t-call="justech_alexander_reports.dx_payment_composition"/>
+                <table name="invoices" style="display:none"/>
             </div>
-        </xpath>
-        <xpath expr="//table[@name='invoices']" position="attributes">
-            <attribute name="t-if">o.reconciled_invoice_ids or o.reconciled_bill_ids</attribute>
-        </xpath>
-        <xpath expr="//div[hasclass('page')]" position="inside">
-            <div t-if="not (o.reconciled_invoice_ids or o.reconciled_bill_ids)" class="dx-block">
-                <div class="dx-block-title">Facturas aplicadas</div>
-                <p>Pago no conciliado. No hay facturas aplicadas.</p>
-            </div>
-            <t t-call="justech_alexander_reports.dx_report_extras">
-                <t t-set="company" t-value="o.company_id"/>
-                <t t-set="dx_extras_mode" t-value="'payment'"/>
-            </t>
         </xpath>
     </template>
 

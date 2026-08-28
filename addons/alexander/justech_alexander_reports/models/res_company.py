@@ -1,19 +1,29 @@
 from odoo import api, models
 
-# Paleta y caja de logo derivadas de los PNG reales (no de colores genéricos).
+# Paleta extraída de los PNG reales (no inventada).
+# DOR: naranja del engranaje (232,104,24) + negro del isotipo.
+# PIN: rojo del sello + verde de la hoja.
+# DOM: teal del wordmark + naranja del acento (logo sobre negro).
+# MAY: teal sobre carbón.
+# REM: negro institucional + azul de la figura.
+# BLU: azul real + cyan.
 _DX_THEMES = {
     "DOR": {
         "code": "DOR",
         "primary": "#E86A12",
         "secondary": "#1A1A1A",
-        "logo_h": 22,
-        "logo_w": 46,
+        "accent": "#E86A12",
+        "neutral": "#5C5C5C",
+        "logo_h": 28,
+        "logo_w": 32,
         "logo_on_dark": False,
     },
     "PIN": {
         "code": "PIN",
         "primary": "#C41E3A",
         "secondary": "#2E7D32",
+        "accent": "#C41E3A",
+        "neutral": "#5C5C5C",
         "logo_h": 26,
         "logo_w": 36,
         "logo_on_dark": False,
@@ -22,32 +32,40 @@ _DX_THEMES = {
         "code": "DOM",
         "primary": "#2AA8A4",
         "secondary": "#F08A3C",
-        "logo_h": 22,
-        "logo_w": 26,
+        "accent": "#F08A3C",
+        "neutral": "#5C5C5C",
+        "logo_h": 26,
+        "logo_w": 30,
         "logo_on_dark": True,
     },
     "MAY": {
         "code": "MAY",
         "primary": "#2EC4B6",
         "secondary": "#111111",
-        "logo_h": 20,
-        "logo_w": 62,
+        "accent": "#2EC4B6",
+        "neutral": "#5C5C5C",
+        "logo_h": 24,
+        "logo_w": 58,
         "logo_on_dark": True,
     },
     "REM": {
         "code": "REM",
         "primary": "#1A1A1A",
         "secondary": "#3D7AB5",
-        "logo_h": 24,
-        "logo_w": 32,
+        "accent": "#3D7AB5",
+        "neutral": "#5C5C5C",
+        "logo_h": 28,
+        "logo_w": 36,
         "logo_on_dark": False,
     },
     "BLU": {
         "code": "BLU",
         "primary": "#0A3D91",
         "secondary": "#00AEEF",
-        "logo_h": 24,
-        "logo_w": 32,
+        "accent": "#00AEEF",
+        "neutral": "#5C5C5C",
+        "logo_h": 26,
+        "logo_w": 34,
         "logo_on_dark": False,
     },
 }
