@@ -11,8 +11,10 @@ dbfilter = ${ODOO_DBFILTER}
 ; En Dev puede activarse el gestor de bases para crear/duplicar entornos de prueba.
 list_db = True
 
-; --- addons_path FINAL (idéntico a Produccion, enterprise-ready) ---
-addons_path = /mnt/enterprise,/mnt/custom-addons
+; --- addons_path FINAL (enterprise-ready + vendored Justgroup Wave A/B) ---
+; /mnt/vendor/{custom/justech,third_party} = regenerable snapshot from
+; faustosantana/odoo-custom-addons (see tools/sync_odoo_custom_addons_vendor.sh).
+addons_path = /mnt/enterprise,/mnt/custom-addons,/mnt/vendor/custom/justech,/mnt/vendor/third_party
 server_wide_modules = base,web
 
 data_dir = /var/lib/odoo

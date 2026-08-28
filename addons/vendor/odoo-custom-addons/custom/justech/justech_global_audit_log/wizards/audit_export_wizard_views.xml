@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_audit_export_wizard_form" model="ir.ui.view">
+        <field name="name">justech.audit.export.wizard.form</field>
+        <field name="model">justech.audit.export.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="model_name"/>
+                    <field name="operation_type"/>
+                    <field name="company_id"/>
+                </group>
+                <group invisible="not file_data">
+                    <field name="file_name" readonly="1"/>
+                    <field name="file_data" filename="file_name" readonly="1"/>
+                </group>
+                <footer>
+                    <button name="action_export_csv" type="object" string="Generar CSV" class="btn-primary"/>
+                    <button special="cancel" string="Cerrar"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

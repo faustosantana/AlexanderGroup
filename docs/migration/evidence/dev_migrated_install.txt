@@ -1,0 +1,37 @@
+Doralex DEV — Instalación de módulos migrados (WAVE A) — 2026-08-27
+Backup previo verificado: /opt/doralex/backups/dev/dev_20260827_174812
+Instalación DIRIGIDA (-i por módulo, sin -u all, sin demo). Rollback por módulo.
+
+WAVE A — INSTALADOS (6, community-safe, completos):
+  INSTALLED  justech_core
+  INSTALLED  bi_convert_purchase_from_sales
+  INSTALLED  multi_invoice_manual_payment_prod
+  INSTALLED  justech_accounting_recovery
+  INSTALLED  justech_quotation_client_dedup
+  INSTALLED  justech_sale_purchase_trace
+
+Post-install:
+  dev /web/health = 200 (healthy, estable 3/3 checks)
+  runtime errors = 0
+  golden env = 9/9 PASS ; 6-company = 6/6 PASS (datos temporales revertidos)
+
+BLOQUEADOS — migración incompleta (faltan archivos data/ por bug .gitignore, ver abajo):
+  justech_global_audit_log, justech_report_identity_guard, justech_sale_terms_guard,
+  justech_purchase_sale_margin_control, justech_approval_flow, justech_warranty,
+  justech_l10n_do_base, justech_l10n_do_ncf, justech_fiscal_admin,
+  justech_vendor_bill_po_control, justech_admin_center, justech_modules,
+  l10n_do_accounting (falta data/l10n_latam.document.type.csv + data/ir_cron_data.xml)
+
+ENTERPRISE_BLOCKED (requieren account_accountant/accountant — Enterprise):
+  justech_l10n_do_payments_withholding, justech_l10n_do_reports, justech_l10n_do_treasury
+
+NOT_APPLICABLE / HOLD:
+  justech_security_ux (dep justech_ecf_core ausente + Enterprise),
+  justech_modules / justech_admin_center (plataforma interna Justech de licencias/admin),
+  justech_l10n_do_adel_freeze (dep justech_l10n_do_ncf, incompleto)
+
+Fixes de entorno aplicados (versionados en bootstrap_dirs.sh):
+  - /opt/doralex/enterprise chmod 755 (traversable -> addons_path resuelve /mnt/custom-addons)
+  - custom-addons chmod 755 (legible por odoo)
+  - logs chown 100:101 chmod 775 (odoo escribe logfile; 0 errores)
+  - limpieza de 234 archivos AppleDouble ._* (repo + server)

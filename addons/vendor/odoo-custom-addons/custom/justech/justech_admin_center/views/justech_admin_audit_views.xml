@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_admin_audit_list" model="ir.ui.view">
+        <field name="name">justech.admin.audit.log.list</field>
+        <field name="model">justech.admin.audit.log</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0">
+                <field name="create_date"/>
+                <field name="summary"/>
+                <field name="operation"/>
+                <field name="module_id"/>
+                <field name="executed_by"/>
+                <field name="result"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_justech_admin_audit_form" model="ir.ui.view">
+        <field name="name">justech.admin.audit.log.form</field>
+        <field name="model">justech.admin.audit.log</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0" delete="0">
+                <sheet>
+                    <group>
+                        <field name="summary"/>
+                        <field name="operation"/>
+                        <field name="module_id"/>
+                        <field name="executed_by"/>
+                        <field name="result"/>
+                        <field name="backup_path"/>
+                        <field name="state_before"/>
+                        <field name="state_after"/>
+                        <field name="error"/>
+                        <field name="reason"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_justech_admin_audit" model="ir.actions.act_window">
+        <field name="name">Auditoría de cambios</field>
+        <field name="res_model">justech.admin.audit.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

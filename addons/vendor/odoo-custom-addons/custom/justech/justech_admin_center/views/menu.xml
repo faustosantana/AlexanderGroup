@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Único punto: Ajustes → Administración Justech -->
+    <menuitem id="menu_justech_admin_center_root"
+              name="Administración Justech"
+              parent="base.menu_administration"
+              action="action_justech_admin_console"
+              sequence="94"
+              groups="base.group_system,justech_admin_center.group_justech_admin_center_user"/>
+
+    <!-- Icono propio Justech (RNG Odoo 19 no admite web_icon en menuitem). -->
+    <record id="menu_justech_admin_center_root" model="ir.ui.menu">
+        <field name="web_icon">justech_admin_center,static/description/icon.png</field>
+    </record>
+
+    <!-- Subnavegación solo desde la consola (menús ocultos) -->
+    <menuitem id="menu_justech_admin_center_products"
+              name="Productos"
+              parent="menu_justech_admin_center_root"
+              action="action_justech_admin_product"
+              sequence="5"
+              active="False"/>
+    <menuitem id="menu_justech_admin_center_catalog"
+              name="Submódulos"
+              parent="menu_justech_admin_center_root"
+              action="action_justech_admin_module"
+              sequence="10"
+              active="False"/>
+    <menuitem id="menu_justech_admin_center_companies"
+              name="Por empresa"
+              parent="menu_justech_admin_center_root"
+              action="action_justech_admin_module_company"
+              sequence="15"
+              active="False"/>
+    <menuitem id="menu_justech_admin_center_health"
+              name="Diagnóstico"
+              parent="menu_justech_admin_center_root"
+              action="action_justech_admin_health"
+              sequence="20"
+              active="False"/>
+    <menuitem id="menu_justech_admin_center_audit"
+              name="Auditoría de cambios"
+              parent="menu_justech_admin_center_root"
+              action="action_justech_admin_audit"
+              sequence="30"
+              active="False"/>
+    <menuitem id="menu_justech_admin_center_operations"
+              name="Operaciones"
+              parent="menu_justech_admin_center_root"
+              action="action_justech_admin_operation"
+              sequence="40"
+              active="False"
+              groups="justech_admin_center.group_justech_admin_center_manager"/>
+</odoo>

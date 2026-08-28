@@ -1,0 +1,17 @@
+Doralex DEV — Capacidad multiempresa para 6 empresas (2026-08-27)
+Validado en doralex_dev vía `odoo shell` con datos temporales revertidos
+(env.cr.rollback()). Sin persistencia: companies=1, dx6_partners=0.
+
+PASS - create_6_companies                       base=1 now=7
+PASS - multicompany_user_6                       (usuario con 6 compañías)
+PASS - per_company_journal                       (account.journal con company_id)
+PASS - per_company_sequence                      (ir.sequence con company_id)
+PASS - partner_company_isolation                 (res.partner company_id correcto)
+PASS - stock_warehouse_model_company_aware       (stock.warehouse tiene company_id)
+
+SUMMARY_6COMPANY total=6 pass=6 fail=0
+ROLLED_BACK - sin datos persistentes
+
+Conclusión: la arquitectura soporta 6 empresas aisladas (company_id), usuarios
+multiempresa, y diarios/secuencias/almacenes por compañía. NO se crearon empresas
+reales (eso es carga de datos).

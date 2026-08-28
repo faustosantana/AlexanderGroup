@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Administrador Fiscal = Centro Fiscal + flags + padrón + configuración crítica -->
+    <record id="group_justech_fiscal_admin_user" model="res.groups">
+        <field name="name">Fiscal Admin / Lectura</field>
+        <field name="comment">Interno: lectura de flags. Preferir roles Usuario/Responsable/Administrador Fiscal.</field>
+        <field name="privilege_id" ref="account.res_groups_privilege_accounting"/>
+        <field name="implied_ids" eval="[(4, ref('justech_l10n_do_base.group_justech_do_fiscal_user'))]"/>
+    </record>
+    <record id="group_justech_fiscal_admin_manager" model="res.groups">
+        <field name="name">Administrador Fiscal</field>
+        <field name="comment">Administra Centro Fiscal, feature flags, padrón DGII, rangos, tipos, retenciones y diagnósticos.</field>
+        <field name="privilege_id" ref="account.res_groups_privilege_accounting"/>
+        <field name="implied_ids" eval="[(4, ref('group_justech_fiscal_admin_user')), (4, ref('justech_l10n_do_base.group_justech_do_fiscal_manager'))]"/>
+    </record>
+    <!-- SoD: Contable / Account Manager NO heredan Administrador Fiscal -->
+    <record id="account.group_account_manager" model="res.groups">
+        <field name="implied_ids" eval="[(3, ref('group_justech_fiscal_admin_manager'))]"/>
+    </record>
+    <!-- Settings implica Administrador Fiscal -->
+    <record id="base.group_system" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_justech_fiscal_admin_manager'))]"/>
+    </record>
+    <!-- Responsable Fiscal NO implica Administrador Fiscal (SoD explícito) -->
+    <record id="justech_l10n_do_base.group_justech_do_fiscal_manager" model="res.groups">
+        <field name="implied_ids" eval="[(3, ref('group_justech_fiscal_admin_manager'))]"/>
+    </record>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_warranty_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="company" t-value="doc.company_id"/>
+                <t t-set="layout_document_title">Certificado de Garantía</t>
+                <t t-call="web.external_layout">
+                    <div class="dx-doc-info">
+                        <strong t-field="doc.name"/>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <strong>Cliente</strong>
+                            <div t-field="doc.partner_id"/>
+                        </div>
+                        <div class="col-6">
+                            <strong>Producto</strong>
+                            <div t-field="doc.product_id"/>
+                            <div>Inicio: <span t-field="doc.date_start"/></div>
+                            <div>Meses: <span t-field="doc.warranty_months"/></div>
+                        </div>
+                    </div>
+                    <t t-call="justech_alexander_reports.dx_report_extras"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_warranty" model="ir.actions.report">
+        <field name="name">Certificado de Garantía</field>
+        <field name="model">justech.warranty</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">justech_alexander_reports.report_warranty_document</field>
+        <field name="report_file">justech_alexander_reports.report_warranty_document</field>
+        <field name="binding_model_id" ref="justech_warranty.model_justech_warranty"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_doralex_a4"/>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="param_guard_enabled" model="ir.config_parameter">
+        <field name="key">justech_report_identity_guard.enabled</field>
+        <field name="value">1</field>
+    </record>
+    <record id="param_block_hellenia" model="ir.config_parameter">
+        <field name="key">justech_report_identity_guard.block_hellenia_modules</field>
+        <field name="value">1</field>
+    </record>
+</odoo>

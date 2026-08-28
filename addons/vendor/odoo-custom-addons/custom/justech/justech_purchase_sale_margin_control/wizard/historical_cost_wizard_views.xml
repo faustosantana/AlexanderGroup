@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_purchase_sale_historical_cost_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.historical.cost.wizard.form</field>
+        <field name="model">purchase.sale.historical.cost.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Inventario histórico / costo manual">
+                <field name="company_id" invisible="1"/>
+                <field name="transaction_id" invisible="1"/>
+                <field name="manage_wizard_id" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+                <div class="alert alert-info" role="alert">
+                    Afecta exclusivamente Costos y Márgenes.
+                    No crea stock, movimientos, recepciones ni asientos contables.
+                </div>
+                <field name="line_ids" nolabel="1">
+                    <list editable="bottom" create="0" delete="0">
+                        <field name="product_id" readonly="1"/>
+                        <field name="sold_qty" string="Vendido" readonly="1"/>
+                        <field name="purchase_qty" string="Relacionado con OC" readonly="1"/>
+                        <field name="historical_qty" string="Inventario histórico" readonly="1"/>
+                        <field name="pending_qty" string="Pendiente" readonly="1"/>
+                        <field name="qty_to_cover" string="Cantidad"/>
+                        <field name="unit_cost" string="Costo unitario"/>
+                        <field name="total_cost" string="Costo total" readonly="1"/>
+                        <field name="sale_line_id" column_invisible="1"/>
+                        <field name="currency_id" column_invisible="1"/>
+                    </list>
+                </field>
+                <footer>
+                    <button name="action_apply" type="object"
+                            string="Cubrir con inventario histórico" class="btn-primary"/>
+                    <button string="Cancelar" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

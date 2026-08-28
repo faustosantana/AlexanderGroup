@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="audit_field_exclude_password" model="justech.audit.field.exclude">
+        <field name="name">Password</field>
+        <field name="field_name">password</field>
+        <field name="is_sensitive" eval="True"/>
+    </record>
+    <record id="audit_field_exclude_password_crypt" model="justech.audit.field.exclude">
+        <field name="name">Password crypt</field>
+        <field name="field_name">password_crypt</field>
+        <field name="is_sensitive" eval="True"/>
+    </record>
+    <record id="audit_field_exclude_api_key" model="justech.audit.field.exclude">
+        <field name="name">API key</field>
+        <field name="field_name">api_key</field>
+        <field name="is_sensitive" eval="True"/>
+    </record>
+    <record id="audit_field_exclude_access_token" model="justech.audit.field.exclude">
+        <field name="name">Access token</field>
+        <field name="field_name">access_token</field>
+        <field name="is_sensitive" eval="True"/>
+    </record>
+</odoo>

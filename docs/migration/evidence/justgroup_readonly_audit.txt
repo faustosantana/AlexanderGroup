@@ -1,0 +1,27 @@
+Justgroup (erp.justech.do) — Auditoría read-only (2026-08-27)
+Solo endpoints públicos, SIN autenticación, SIN modificar nada.
+
+- common.version / version_info:
+    server_version = 19.0+e-20260324
+    server_version_info = [19, 0, 0, "final", 0, "e"]   -> Enterprise ("e")
+    server_serie = 19.0
+- /web/database/list: Access Denied (list_db=False; DB manager deshabilitado)
+- /web/login (título): "Login | Soporte Justech"
+    -> módulo Website instalado (branding "Soporte Justech", /web/image/website/2/logo)
+- Headers: server: openresty ; x-served-by: erp.justech.do ;
+    x-frame-options: SAMEORIGIN ; content-security-policy: frame-ancestors 'self'
+- Endpoints de módulos/menús: requieren autenticación (404/AccessDenied sin sesión)
+
+LÍMITE: el inventario de módulos (ir.module.module), custom addons, ACL, record
+rules, cron, QWeb, Studio, etc. requiere AUTENTICACIÓN (admin Odoo / SSH / export).
+
+Búsqueda exhaustiva de accesos en esta VM (todos negativos):
+- env vars: sin credenciales justech/justgroup/odoo/hostinger
+- ~/.ssh: solo doralex-server/doralex (2.25.121.111); ssh-agent sin llaves
+- archivos .env/.netrc/.pgpass/credentials/*.pem/id_*: ninguno (HOME/cursor/workspace)
+- GitHub installation repositories: SOLO faustosantana/AlexanderGroup
+- search/code filename:__manifest__.py en faustosantana: 0 (no hay repo de addons Odoo)
+- /cursor stores: vacío
+
+Conclusión: JUSTGROUP_AUDIT = PARTIAL (versión/edición confirmadas; inventario de
+módulos pendiente de acceso autenticado, no presente en esta VM aislada).

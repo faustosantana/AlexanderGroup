@@ -12,11 +12,15 @@
 *.tar
 *.tar.gz
 
-# === Datos de Odoo (nunca en Git) ===
-filestore/
-data/
-backups/
-sessions/
+# === Datos de Odoo RUNTIME (nunca en Git) ===
+# Scoped a raíz para NO excluir los `data/` de los módulos Odoo (addons/**/data/
+# contienen XML de datos legítimos del módulo, no datos productivos).
+/filestore/
+/data/
+/backups/
+/sessions/
+**/filestore/
+**/sessions/
 
 # === Python ===
 __pycache__/

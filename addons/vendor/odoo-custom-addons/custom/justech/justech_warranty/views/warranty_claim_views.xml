@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_warranty_claim_list" model="ir.ui.view">
+        <field name="name">justech.warranty.claim.list</field>
+        <field name="model">justech.warranty.claim</field>
+        <field name="arch" type="xml">
+            <list string="Reclamos de garantía"
+                  decoration-success="state == 'resolved'"
+                  decoration-danger="state == 'rejected'">
+                <field name="name"/>
+                <field name="warranty_id"/>
+                <field name="partner_id"/>
+                <field name="product_id"/>
+                <field name="reason_id" optional="show"/>
+                <field name="claim_date"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'resolved'"
+                       decoration-danger="state == 'rejected'"
+                       decoration-info="state == 'in_progress'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_justech_warranty_claim_form" model="ir.ui.view">
+        <field name="name">justech.warranty.claim.form</field>
+        <field name="model">justech.warranty.claim</field>
+        <field name="arch" type="xml">
+            <form string="Reclamo de garantía">
+                <header>
+                    <button name="action_submit" type="object" string="Enviar"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_start" type="object" string="Iniciar"
+                            invisible="state != 'submitted'"/>
+                    <button name="action_resolve" type="object" string="Resolver"
+                            class="btn-primary" invisible="state not in ('submitted', 'in_progress')"/>
+                    <button name="action_reject" type="object" string="Rechazar"
+                            invisible="state in ('resolved', 'rejected')"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,submitted,in_progress,resolved"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="warranty_id"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="product_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="reason_id"/>
+                            <field name="claim_date"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group string="Detalle">
+                        <field name="description" nolabel="1"
+                               placeholder="Describa el problema reportado..."/>
+                    </group>
+                    <group string="Resolución">
+                        <field name="resolution" nolabel="1"
+                               placeholder="Resolución aplicada..."/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_justech_warranty_claim" model="ir.actions.act_window">
+        <field name="name">Reclamos (RMA)</field>
+        <field name="res_model">justech.warranty.claim</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Aún no hay reclamos</p>
+            <p>Registre aquí los reclamos (RMA) asociados a garantías.</p>
+        </field>
+    </record>
+</odoo>

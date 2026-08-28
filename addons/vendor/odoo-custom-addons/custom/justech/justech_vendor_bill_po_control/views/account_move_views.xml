@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_vendor_bill_po" model="ir.ui.view">
+        <field name="name">account.move.form.vendor.bill.po</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_justech_view_related_purchase_orders"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-shopping-cart"
+                        invisible="move_type not in ('in_invoice', 'in_refund', 'in_receipt') or related_purchase_order_count == 0">
+                    <field name="related_purchase_order_count" widget="statinfo" string="Órdenes de Compra"/>
+                </button>
+                <button name="action_justech_view_approval_request"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-check-square-o"
+                        invisible="move_type not in ('in_invoice', 'in_refund', 'in_receipt') or vendor_bill_approval_request_count == 0">
+                    <field name="vendor_bill_approval_request_count" widget="statinfo" string="Aprobación"/>
+                </button>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="before">
+                <widget name="web_ribbon" title="Pendiente Validación"
+                        bg_color="text-bg-warning"
+                        invisible="vendor_bill_approval_state != 'pending_validation'"/>
+                <widget name="web_ribbon" title="Aprobada sin OC"
+                        bg_color="text-bg-info"
+                        invisible="not vendor_bill_approved_without_po"/>
+                <widget name="web_ribbon" title="Aprobada"
+                        bg_color="text-bg-success"
+                        invisible="vendor_bill_approval_state != 'approved' or vendor_bill_approved_without_po"/>
+                <widget name="web_ribbon" title="Rechazada"
+                        bg_color="text-bg-danger"
+                        invisible="vendor_bill_approval_state != 'rejected'"/>
+                <widget name="web_ribbon" title="Devuelta"
+                        bg_color="text-bg-secondary"
+                        invisible="vendor_bill_approval_state != 'returned'"/>
+            </xpath>
+
+            <!-- Odoo 19 ships two header action_post buttons (Post + Confirm); patch both. -->
+            <xpath expr="//header/button[@name='action_post']" position="attributes">
+                <attribute name="invisible">state != 'draft' or (move_type in ('in_invoice','in_refund','in_receipt') and not vendor_bill_show_confirm)</attribute>
+            </xpath>
+            <xpath expr="//header/button[@name='action_post'][contains(@invisible, 'hide_post_button')]" position="attributes">
+                <attribute name="invisible">hide_post_button or move_type == 'entry' or display_inactive_currency_warning or state != 'draft' or (move_type in ('in_invoice','in_refund','in_receipt') and not vendor_bill_show_confirm)</attribute>
+            </xpath>
+
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-warning" role="alert"
+                     invisible="move_type not in ('in_invoice','in_refund','in_receipt') or state != 'draft' or has_valid_purchase_order or vendor_bill_approval_state not in ('draft', 'returned', 'rejected')">
+                    Esta factura no tiene una Orden de Compra válida. Guárdela y utilice ‘Enviar a aprobación’.
+                </div>
+                <div class="alert alert-danger" role="alert"
+                     invisible="vendor_bill_approval_state != 'pending_validation'">
+                    Esta factura está pendiente de aprobación y no puede contabilizarse ni pagarse.
+                </div>
+                <div class="alert alert-warning" role="alert"
+                     invisible="not vendor_bill_approved_without_po or state != 'draft'">
+                    <field name="vendor_bill_fiscal_post_alert" nolabel="1" readonly="1"
+                           invisible="not vendor_bill_fiscal_post_alert"/>
+                    <div invisible="vendor_bill_fiscal_post_alert">
+                        La factura fue aprobada, pero no pudo contabilizarse porque faltan datos fiscales obligatorios. Complete la información indicada y pulse Confirmar.
+                    </div>
+                </div>
+            </xpath>
+
+            <xpath expr="//header" position="inside">
+                <field name="vendor_bill_show_confirm" invisible="1"/>
+                <field name="vendor_bill_show_submit_validation" invisible="1"/>
+                <field name="vendor_bill_show_resubmit" invisible="1"/>
+                <field name="vendor_bill_show_approver_actions" invisible="1"/>
+                <field name="vendor_bill_approved_without_po" invisible="1"/>
+                <field name="has_valid_purchase_order" invisible="1"/>
+                <button name="action_vendor_bill_open_submit_wizard" type="object"
+                        string="Enviar a aprobación" class="btn-primary"
+                        invisible="not vendor_bill_show_submit_validation"/>
+                <button name="action_vendor_bill_open_decision_wizard" type="object"
+                        string="Aprobar" class="btn-primary"
+                        context="{'default_decision': 'approve'}"
+                        groups="justech_vendor_bill_po_control.group_vendor_bill_approver_finance,account.group_account_manager,base.group_system"
+                        invisible="not vendor_bill_show_approver_actions"/>
+                <button name="action_vendor_bill_open_decision_wizard" type="object"
+                        string="Rechazar" class="btn-secondary"
+                        context="{'default_decision': 'reject'}"
+                        groups="justech_vendor_bill_po_control.group_vendor_bill_approver_finance,account.group_account_manager,base.group_system"
+                        invisible="not vendor_bill_show_approver_actions"/>
+                <button name="action_vendor_bill_open_decision_wizard" type="object"
+                        string="Devolver" class="btn-secondary"
+                        context="{'default_decision': 'return'}"
+                        groups="justech_vendor_bill_po_control.group_vendor_bill_approver_finance,account.group_account_manager,base.group_system"
+                        invisible="not vendor_bill_show_approver_actions"/>
+                <button name="action_vendor_bill_open_submit_wizard" type="object"
+                        string="Reenviar a aprobación" class="btn-primary"
+                        invisible="not vendor_bill_show_resubmit or state != 'draft'"/>
+                <button name="action_vendor_bill_open_reassign_wizard" type="object"
+                        string="Reasignar" class="btn-secondary"
+                        groups="justech_vendor_bill_po_control.group_vendor_bill_reassign,justech_vendor_bill_po_control.group_vendor_bill_approver_management,base.group_system"
+                        invisible="vendor_bill_approval_state != 'pending_validation'"/>
+                <field name="vendor_bill_approval_state" widget="statusbar"
+                       statusbar_visible="draft,pending_validation,approved"
+                       invisible="move_type not in ('in_invoice', 'in_refund', 'in_receipt')"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_form_purchase_autocomplete_receipt" model="ir.ui.view">
+        <field name="name">account.move.form.purchase.autocomplete.receipt</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="purchase.view_move_form_inherit_purchase"/>
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='purchase_vendor_bill_id']" position="attributes">
+                <attribute name="invisible">state != 'draft' or move_type not in ('in_invoice', 'in_refund', 'in_receipt')</attribute>
+                <attribute name="string">Autocompletar desde Orden de Compra</attribute>
+            </xpath>
+            <xpath expr="//field[@name='purchase_vendor_bill_id']" position="attributes">
+                <attribute name="invisible">state != 'draft' or move_type not in ('in_invoice', 'in_refund', 'in_receipt')</attribute>
+                <attribute name="string">Autocompletar desde Orden de Compra</attribute>
+                <attribute name="placeholder">Seleccione una Orden de Compra...</attribute>
+                <attribute name="domain">[('company_id', '=', company_id), ('partner_id.commercial_partner_id', '=', commercial_partner_id)] if partner_id else [('company_id', '=', company_id)]</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_vendor_bill_po_control_list" model="ir.ui.view">
+        <field name="name">account.move.list.vendor.bill.po.control</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+            <list string="Control de facturas proveedor y órdenes de compra" create="0">
+                <field name="company_id"/>
+                <field name="partner_id" string="Proveedor"/>
+                <field name="name" string="Factura"/>
+                <field name="ref" string="Referencia / NCF" optional="show"/>
+                <field name="invoice_date" string="Fecha"/>
+                <field name="invoice_date_due" string="Vencimiento" optional="show"/>
+                <field name="amount_total" string="Total"/>
+                <field name="currency_id" optional="hide"/>
+                <field name="justech_do_expense_type_id" string="Tipo costos y gastos" optional="show"/>
+                <field name="related_purchase_order_ids" widget="many2many_tags" string="OC relacionadas"/>
+                <field name="vendor_bill_approval_state"/>
+                <field name="vendor_bill_approved_by"/>
+                <field name="state" string="Estado contable"/>
+                <field name="payment_state" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_vendor_bill_pending_validation_list" model="ir.ui.view">
+        <field name="name">account.move.list.vendor.bill.pending</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+            <list string="Pendientes de Validación" create="0">
+                <field name="company_id"/>
+                <field name="partner_id"/>
+                <field name="name"/>
+                <field name="invoice_date"/>
+                <field name="amount_total"/>
+                <field name="currency_id"/>
+                <field name="justech_do_expense_type_id"/>
+                <field name="has_valid_purchase_order"/>
+                <field name="vendor_bill_approval_level_required"/>
+                <field name="vendor_bill_approver_id"/>
+                <field name="vendor_bill_submitted_by"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_vendor_bill_approval_inbox_list" model="ir.ui.view">
+        <field name="name">account.move.list.vendor.bill.approval.inbox</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+            <list string="Facturas pendientes de aprobación" create="0"
+                  decoration-warning="vendor_bill_approval_state == 'pending_validation' and vendor_bill_approval_level_required == 'finance' and not vendor_bill_approval_overdue"
+                  decoration-danger="vendor_bill_approval_state == 'rejected' or vendor_bill_approval_overdue"
+                  decoration-info="vendor_bill_approval_state == 'returned'"
+                  decoration-success="vendor_bill_approval_state in ('approved', 'legacy_approved')"
+                  decoration-bf="vendor_bill_approval_state == 'pending_validation' and vendor_bill_approval_level_required in ('management', 'dual')">
+                <field name="company_id" string="Empresa"/>
+                <field name="partner_id" string="Proveedor"/>
+                <field name="name" string="Factura"/>
+                <field name="ref" string="Referencia / NCF" optional="show"/>
+                <field name="invoice_date" string="Fecha"/>
+                <field name="invoice_date_due" string="Vencimiento" optional="show"/>
+                <field name="amount_total" string="Importe"/>
+                <field name="currency_id" string="Moneda"/>
+                <field name="justech_do_expense_type_id" string="Tipo de costos y gastos" optional="show"/>
+                <field name="vendor_bill_submitted_by" string="Solicitante"/>
+                <field name="vendor_bill_approver_id" string="Aprobador asignado"/>
+                <field name="vendor_bill_approval_level_required" string="Nivel requerido"/>
+                <field name="vendor_bill_submitted_at" string="Fecha de solicitud"/>
+                <field name="vendor_bill_approval_days_pending" string="Días pendientes"/>
+                <field name="vendor_bill_approval_deadline" string="Límite" optional="hide"/>
+                <field name="vendor_bill_approval_overdue" column_invisible="1"/>
+                <field name="vendor_bill_approval_state" string="Estado"/>
+                <field name="vendor_bill_no_po_reason" string="Motivo sin OC" optional="show"/>
+                <field name="state" string="Estado contable" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_vendor_bill_my_pending_list" model="ir.ui.view">
+        <field name="name">account.move.list.vendor.bill.my.pending</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+            <list string="Mis facturas pendientes de aprobación" create="0"
+                  decoration-danger="vendor_bill_approval_overdue"
+                  decoration-warning="not vendor_bill_approval_overdue">
+                <field name="company_id" string="Empresa"/>
+                <field name="partner_id" string="Proveedor"/>
+                <field name="name" string="Factura"/>
+                <field name="ref" string="Referencia / NCF" optional="show"/>
+                <field name="invoice_date" string="Fecha"/>
+                <field name="amount_total" string="Importe"/>
+                <field name="currency_id" string="Moneda"/>
+                <field name="vendor_bill_submitted_by" string="Solicitante"/>
+                <field name="vendor_bill_no_po_reason" string="Motivo"/>
+                <field name="vendor_bill_submitted_at" string="Fecha de solicitud"/>
+                <field name="vendor_bill_approval_days_pending" string="Días pendientes"/>
+                <field name="vendor_bill_approver_id" string="Aprobador"/>
+                <field name="vendor_bill_approval_deadline" string="Límite"/>
+                <field name="vendor_bill_approval_overdue" column_invisible="1"/>
+                <field name="vendor_bill_approval_state" string="Estado"/>
+                <field name="vendor_bill_approval_level_required" string="Nivel"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_vendor_bill_approval_search" model="ir.ui.view">
+        <field name="name">account.move.search.vendor.bill.approval</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+            <search string="Aprobaciones factura proveedor">
+                <field name="partner_id" string="Proveedor"/>
+                <field name="name" string="Factura"/>
+                <field name="vendor_bill_submitted_by" string="Solicitante"/>
+                <field name="vendor_bill_approver_id" string="Aprobador"/>
+                <field name="company_id" string="Empresa"/>
+                <separator/>
+                <filter name="pending" string="Pendientes"
+                        domain="[('vendor_bill_approval_state', '=', 'pending_validation')]"/>
+                <filter name="my_pending" string="Pendientes de mi aprobación"
+                        domain="[('vendor_bill_approver_id', '=', uid), ('vendor_bill_approval_state', '=', 'pending_validation')]"/>
+                <filter name="approved" string="Aprobadas"
+                        domain="[('vendor_bill_approval_state', 'in', ('approved', 'legacy_approved'))]"/>
+                <filter name="rejected" string="Rechazadas"
+                        domain="[('vendor_bill_approval_state', '=', 'rejected')]"/>
+                <filter name="returned" string="Devueltas"
+                        domain="[('vendor_bill_approval_state', '=', 'returned')]"/>
+                <filter name="all_approval" string="Todas"
+                        domain="[('vendor_bill_approval_state', 'in', ('pending_validation','approved','rejected','returned','legacy_approved'))]"/>
+                <filter name="overdue" string="Vencidas"
+                        domain="[('vendor_bill_approval_overdue', '=', True)]"/>
+                <filter name="finance" string="Pendientes de Finanzas"
+                        domain="[('vendor_bill_approval_state', '=', 'pending_validation'), ('vendor_bill_approval_level_required', 'in', ('finance', 'dual')), ('vendor_bill_finance_approved_by', '=', False)]"/>
+                <filter name="management" string="Pendientes de Gerencia"
+                        domain="[('vendor_bill_approval_state', '=', 'pending_validation'), '|', ('vendor_bill_approval_level_required', '=', 'management'), '&amp;', ('vendor_bill_approval_level_required', '=', 'dual'), ('vendor_bill_finance_approved_by', '!=', False)]"/>
+                <separator/>
+                <filter name="group_approver" string="Aprobador" context="{'group_by': 'vendor_bill_approver_id'}"/>
+                <filter name="group_company" string="Empresa" context="{'group_by': 'company_id'}"/>
+                <filter name="group_state" string="Estado" context="{'group_by': 'vendor_bill_approval_state'}"/>
+                <filter name="group_partner" string="Proveedor" context="{'group_by': 'partner_id'}"/>
+                <filter name="group_month" string="Mes" context="{'group_by': 'invoice_date:month'}"/>
+                <filter name="group_submitter" string="Solicitante" context="{'group_by': 'vendor_bill_submitted_by'}"/>
+            </search>
+        </field>
+    </record>
+</odoo>

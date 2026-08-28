@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_activity_data_ncf_range_alert" model="mail.activity.type">
+        <field name="name">Alerta consolidada de rangos NCF</field>
+        <field name="icon">fa-exclamation-triangle</field>
+        <field name="res_model">res.company</field>
+        <field name="delay_count">0</field>
+    </record>
+
+    <record id="ir_cron_justech_do_ncf_range_alerts" model="ir.cron">
+        <field name="name">Justech NCF: alertas internas consolidadas (multiempresa)</field>
+        <field name="model_id" ref="model_justech_do_ncf_range"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_process_ncf_range_alerts()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

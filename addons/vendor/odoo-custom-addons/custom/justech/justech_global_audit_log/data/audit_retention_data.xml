@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="audit_policy_global_default" model="justech.audit.policy">
+        <field name="name">Política global (desactivada)</field>
+        <field name="active" eval="False"/>
+        <field name="audit_create" eval="True"/>
+        <field name="audit_write" eval="True"/>
+        <field name="audit_unlink" eval="True"/>
+        <field name="audit_events" eval="True"/>
+        <field name="notes">Activar manualmente en TEST/PROD según política del cliente.</field>
+    </record>
+    <record id="audit_retention_default" model="justech.audit.retention">
+        <field name="name">Retención estándar</field>
+        <field name="active" eval="True"/>
+        <field name="retention_days" eval="365"/>
+        <field name="batch_size" eval="5000"/>
+    </record>
+</odoo>

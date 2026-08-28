@@ -5,6 +5,49 @@
 > datos. El objetivo es **reutilizar la arquitectura probada** y fijar en Doralex
 > una release compatible. **No inventar** valores.
 
+## Estado: `JUSTGROUP_AUDIT = PARTIAL`
+
+Auditoría **de solo lectura** realizada sobre la instancia real (sin autenticar,
+sin modificar nada), vía el endpoint público JSON-RPC `common.version` de
+`erp.justech.do`:
+
+| Clave | Valor (verificado) |
+| ----- | ------------------ |
+| `server_version` | **`19.0+e-20260324`** |
+| `server_version_info` | `[19, 0, 0, "final", 0, "e"]` |
+| `server_serie` | `19.0` |
+| Edición | **Enterprise** (sufijo `+e` / `"e"`) |
+
+`ODOO_MAJOR=19`, `ODOO_BUILD=19.0+e-20260324`, Edición=**Enterprise**.
+
+Otros datos read-only (sin login): DB manager **deshabilitado** (`/web/database/list`
+→ Access Denied, buena práctica), módulo **Website** instalado (login "Soporte
+Justech"), reverse proxy `openresty`. Evidencia:
+[`evidence/justgroup_readonly_audit.txt`](evidence/justgroup_readonly_audit.txt).
+
+### Lo que falta (requiere credenciales que NO existen en el entorno)
+
+El **inventario de módulos** (`ir.module.module`), modelos/campos custom, cron,
+QWeb, Studio, seguridad, etc. requiere autenticación (admin Odoo, SSH al servidor
+de Justgroup, o un export). **Búsqueda de accesos existentes realizada** (sin
+resultado):
+
+- Variables de entorno: sin credenciales Justgroup/Odoo.
+- `~/.ssh/config` y llaves: solo Doralex (`2.25.121.111`).
+- Archivos de credenciales (`.netrc`, `.pgpass`, `.odoorc`, etc.): ninguno.
+- Remotos Git: solo `faustosantana/AlexanderGroup`.
+- Repos GitHub accesibles: `faustosantana/justech` es **otra aplicación**
+  (FastAPI/frontend, no Odoo) y `website-justech` es la web; **no** hay repo de
+  addons Odoo de Justgroup accesible.
+
+> Enterprise: Justgroup es Enterprise, pero **sus addons Enterprise no pueden
+> copiarse a Doralex** (licenciamiento por instancia). Doralex requiere su propia
+> suscripción → `BLOCKED_BY_ENTERPRISE_SOURCE` para Doralex.
+
+Para completar el inventario, proveer acceso de solo lectura (admin Odoo de
+`erp.justech.do`, o SSH a su servidor, o export de `ir.module.module` +
+`custom-addons`) como Secret. Ver `JUSTGROUP_MODULE_INVENTORY.md`.
+
 ## Cómo obtener los datos (solo lectura, con autorización)
 
 Ejecutar en el servidor de Justgroup (o revisar su config/despliegue) sin alterar

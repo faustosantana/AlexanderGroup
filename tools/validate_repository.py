@@ -166,11 +166,24 @@ def _scan_content(path: Path, parts: tuple[str, ...], findings: list[str]) -> No
     except (UnicodeDecodeError, OSError):
         return  # binario o ilegible: se ignora para el escaneo de texto.
 
+    # Código de terceros vendorizado (importado de Justgroup): se revisa aparte y
+    # contiene definiciones de campos `token/password`, generadores `secrets.*` y
+    # lecturas de `os.environ`/`context.get` que NO son secretos literales. Se
+    # omite la heurística de palabra-clave, pero SÍ se detecta material de clave
+    # privada embebido (bloques PEM), que nunca es aceptable.
+    is_vendored = len(parts) >= 2 and parts[0] == "addons" and parts[1] in (
+        "third_party",
+        "vendor",
+    )
+
     for lineno, line in enumerate(text.splitlines(), start=1):
         if PRIVATE_KEY_BLOCK_RE.search(line):
             findings.append(
                 f"[CLAVE] Bloque de clave privada embebido: {rel(path)}:{lineno}"
             )
+
+        if is_vendored:
+            continue
 
         # Las referencias a variables/entorno (${VAR}, $(...)) no son secretos.
         if SHELL_INTERPOLATION_RE.search(line):

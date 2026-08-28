@@ -33,6 +33,15 @@ dig +short www.doralexgroup.cloud
 Si **no** resuelven aún, el estado permanece `DNS_REQUIRED` y **no** se emiten
 certificados (no crear certificados falsos).
 
+### Estado dev (2026-08-27): `PASS` (DNS + SSL)
+
+- `dev.doralexgroup.cloud` → `2.25.121.111` (registro `A` creado en Hostinger).
+- **SSL emitido** con Let's Encrypt (`certbot --nginx -d dev.doralexgroup.cloud --redirect`):
+  CN `dev.doralexgroup.cloud`, exp. **2026-11-25**, cadena válida (`ssl_verify_result=0`).
+- `https://dev.doralexgroup.cloud/web/health` → **200**; HTTP→HTTPS **301** (sin loops);
+  `X-Forwarded-Proto`/`X-Forwarded-For`/`Host` y `/websocket` (`:8172`) configurados;
+  renovación automática vía `certbot.timer`.
+
 ## SSL (Let's Encrypt / certbot)
 
 Cuando cada dominio resuelva a `2.25.121.111`:

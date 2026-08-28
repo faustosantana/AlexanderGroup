@@ -1,0 +1,4 @@
+=== run hygiene scan (custom-addons vacio => OK) ===
+== Escáner de higiene de módulos (Doralex) ==
+No se encontraron módulos Odoo (con __manifest__.py) en: deployment/doralex
+Resultado: OK (nada que analizar).

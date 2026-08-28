@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Aplicación independiente en el launcher principal de Odoo -->
+    <menuitem id="menu_justech_warranty_root"
+              name="Justech Garantías"
+              web_icon="justech_warranty,static/description/icon.png"
+              sequence="90"
+              groups="group_warranty_user"/>
+
+    <menuitem id="menu_justech_warranty_dashboard"
+              name="Dashboard"
+              parent="menu_justech_warranty_root"
+              action="action_justech_warranty_dashboard"
+              sequence="5"/>
+
+    <menuitem id="menu_justech_warranty"
+              name="Garantías"
+              parent="menu_justech_warranty_root"
+              action="action_justech_warranty"
+              sequence="10"/>
+
+    <menuitem id="menu_justech_warranty_unit"
+              name="Unidades / Seriales"
+              parent="menu_justech_warranty_root"
+              action="action_justech_warranty_unit"
+              sequence="15"/>
+
+    <menuitem id="menu_justech_warranty_claim"
+              name="Reclamos (RMA)"
+              parent="menu_justech_warranty_root"
+              action="action_justech_warranty_claim"
+              sequence="20"/>
+
+    <!-- Configuración (solo responsables) -->
+    <menuitem id="menu_justech_warranty_config"
+              name="Configuración"
+              parent="menu_justech_warranty_root"
+              sequence="90"
+              groups="group_warranty_manager"/>
+
+    <menuitem id="menu_justech_warranty_config_settings"
+              name="Configuración General"
+              parent="menu_justech_warranty_config"
+              action="action_justech_warranty_config_settings"
+              sequence="10"/>
+
+    <menuitem id="menu_justech_warranty_type"
+              name="Tipos de Garantía"
+              parent="menu_justech_warranty_config"
+              action="action_justech_warranty_type"
+              sequence="20"/>
+
+    <menuitem id="menu_justech_warranty_claim_reason"
+              name="Motivos de Reclamo"
+              parent="menu_justech_warranty_config"
+              action="action_justech_warranty_claim_reason"
+              sequence="30"/>
+</odoo>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="external_layout_doralex" name="Doralex">
+        <div t-attf-class="header o_company_#{company.id}_layout dx-report-header">
+            <table class="dx-head-table">
+                <tr>
+                    <td class="dx-head-logo">
+                        <img t-if="company.dx_report_show_logo and company.logo"
+                             t-att-src="image_data_uri(company.logo)"
+                             t-att-style="company._dx_report_logo_style()"
+                             t-att-alt="company.dx_trade_name or company.name"/>
+                    </td>
+                    <td class="dx-head-identity">
+                        <div class="dx-trade" t-out="company.dx_trade_name or company.name"/>
+                        <div t-if="company.dx_report_show_legal_name" class="dx-legal" t-out="company.name"/>
+                        <div t-if="company.dx_report_show_address" class="dx-meta">
+                            <t t-if="company.street" t-out="company.street"/>
+                            <t t-if="company.city"> · <t t-out="company.city"/></t>
+                        </div>
+                        <div class="dx-meta">
+                            <t t-if="company.dx_report_show_phone and company.phone" t-out="company.phone"/>
+                            <t t-if="company.dx_report_show_email and company.email"> · <t t-out="company.email"/></t>
+                        </div>
+                        <div t-if="company.dx_report_show_rnc and company.vat" class="dx-rnc">
+                            RNC: <t t-out="company._dx_vat_display()"/>
+                        </div>
+                    </td>
+                    <td class="dx-head-accent" t-attf-style="background: #{company.primary_color or '#1B365D'};"/>
+                </tr>
+            </table>
+        </div>
+
+        <div t-attf-class="article o_company_#{company.id}_layout dx-report-body"
+             t-att-data-oe-model="o and o._name"
+             t-att-data-oe-id="o and o.id">
+            <t t-call="web.address_layout"/>
+            <h2 class="dx-doc-title" t-out="layout_document_title"/>
+            <t t-out="0"/>
+        </div>
+
+        <div t-attf-class="footer o_company_#{company.id}_layout dx-report-footer">
+            <table class="dx-foot-table">
+                <tr>
+                    <td class="dx-foot-text">
+                        <t t-out="company.dx_report_footer_text or company.report_footer or (company.dx_trade_name or company.name)"/>
+                    </td>
+                    <td class="dx-foot-page">
+                        <t t-if="report_type == 'pdf'">Página <span class="page"/> / <span class="topage"/></t>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+    <record id="report_layout_doralex" model="report.layout">
+        <field name="name">Doralex</field>
+        <field name="sequence">1</field>
+        <field name="view_id" ref="external_layout_doralex"/>
+    </record>
+
+    <template id="dx_report_extras" name="Bloques extra Doralex">
+        <div t-if="company.dx_report_terms" class="dx-block">
+            <strong>Términos</strong>
+            <p t-out="company.dx_report_terms"/>
+        </div>
+        <t t-if="company.dx_report_show_bank">
+            <t t-set="dx_banks" t-value="company._dx_report_banks()"/>
+            <div t-if="dx_banks" class="dx-block">
+                <strong>Información de pago</strong>
+                <t t-foreach="dx_banks" t-as="bank">
+                    <div>
+                        <t t-out="bank.bank_id.name or 'Banco'"/>
+                        <t t-if="bank.acc_number"> · <t t-out="bank.acc_number"/></t>
+                    </div>
+                </t>
+            </div>
+        </t>
+        <div t-if="company.dx_report_show_signature" class="dx-sign">
+            <div class="dx-sign-line">Firma / Aceptación</div>
+        </div>
+    </template>
+</odoo>

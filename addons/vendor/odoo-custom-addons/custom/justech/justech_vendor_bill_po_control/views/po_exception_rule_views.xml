@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_po_exception_rule_tree" model="ir.ui.view">
+        <field name="name">justech.vendor.bill.po.exception.rule.list</field>
+        <field name="model">justech.vendor.bill.po.exception.rule</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="exception_category"/>
+                <field name="expense_type_id"/>
+                <field name="requires_purchase_order"/>
+                <field name="requires_approval"/>
+                <field name="approval_level"/>
+                <field name="company_id"/>
+                <field name="partner_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_po_exception_rule_form" model="ir.ui.view">
+        <field name="name">justech.vendor.bill.po.exception.rule.form</field>
+        <field name="model">justech.vendor.bill.po.exception.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="exception_category"/>
+                        <field name="company_id"/>
+                        <field name="active"/>
+                        <field name="sequence"/>
+                    </group>
+                    <group string="Política automática">
+                        <field name="requires_purchase_order"/>
+                        <field name="requires_approval"/>
+                        <field name="approval_level"/>
+                        <field name="require_attachment"/>
+                        <field name="amount_min"/>
+                        <field name="amount_max"/>
+                    </group>
+                    <group string="Filtros (al menos uno)">
+                        <field name="expense_type_id"/>
+                        <field name="partner_id"/>
+                        <field name="product_id"/>
+                        <field name="product_categ_id"/>
+                        <field name="account_id"/>
+                        <field name="journal_id"/>
+                        <field name="classification" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_po_exception_rule" model="ir.actions.act_window">
+        <field name="name">Excepciones / reglas OC facturas proveedor</field>
+        <field name="res_model">justech.vendor.bill.po.exception.rule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

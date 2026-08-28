@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_order_form_justech_approval" model="ir.ui.view">
+        <field name="name">purchase.order.form.justech.approval</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_justech_open_request_wizard"
+                        type="object"
+                        string="Solicitar aprobación"
+                        class="oe_highlight"
+                        invisible="not justech_approval_purchase_enabled or state not in ('draft', 'sent') or justech_approval_state in ('pending', 'approved')"/>
+                <!-- Recovery: to approve + invalidated/rejected must not trap the PO -->
+                <button name="action_justech_open_request_wizard"
+                        type="object"
+                        string="Solicitar aprobación nuevamente"
+                        class="oe_highlight"
+                        invisible="not justech_approval_purchase_enabled or state != 'to approve' or justech_approval_state not in ('invalidated', 'rejected', 'none')"/>
+                <button name="action_justech_approve"
+                        type="object"
+                        string="Aprobar"
+                        class="btn-primary"
+                        groups="justech_approval_flow.group_approver,purchase.group_purchase_manager"
+                        invisible="not justech_approval_purchase_enabled or justech_approval_state != 'pending'"/>
+                <button name="action_justech_reject_wizard"
+                        type="object"
+                        string="Rechazar"
+                        groups="justech_approval_flow.group_approver,purchase.group_purchase_manager"
+                        invisible="not justech_approval_purchase_enabled or justech_approval_state != 'pending'"/>
+            </xpath>
+            <!-- Native Confirm Order: only when AF purchase is OFF (restore per-state visibility) -->
+            <xpath expr="//button[@name='button_confirm'][@id='bid_confirm']" position="attributes">
+                <attribute name="invisible">state != 'sent' or justech_approval_purchase_enabled</attribute>
+            </xpath>
+            <xpath expr="//button[@name='button_confirm'][@id='draft_confirm']" position="attributes">
+                <attribute name="invisible">state != 'draft' or justech_approval_purchase_enabled</attribute>
+            </xpath>
+            <!-- Native Approve Order: AF owns the decision when purchase approval is enabled -->
+            <xpath expr="//button[@name='button_approve']" position="attributes">
+                <attribute name="invisible">state != 'to approve' or justech_approval_purchase_enabled</attribute>
+            </xpath>
+            <!-- RFQ → supplier: clarify label on both draft/sent Send RFQ buttons -->
+            <xpath expr="//button[@name='action_rfq_send'][@invisible=&quot;state != 'draft'&quot;]" position="attributes">
+                <attribute name="string">Enviar al proveedor</attribute>
+                <attribute name="title">Enviar esta solicitud de cotización al proveedor por correo.</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_rfq_send'][@invisible=&quot;state != 'sent'&quot;]" position="attributes">
+                <attribute name="string">Enviar al proveedor</attribute>
+                <attribute name="title">Enviar esta solicitud de cotización al proveedor por correo.</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="before">
+                <field name="justech_approval_purchase_enabled" invisible="1"/>
+                <field name="justech_approval_state" widget="badge"
+                       decoration-info="justech_approval_state == 'none'"
+                       decoration-warning="justech_approval_state in ('pending', 'invalidated')"
+                       decoration-success="justech_approval_state == 'approved'"
+                       decoration-danger="justech_approval_state == 'rejected'"
+                       invisible="not justech_approval_purchase_enabled"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

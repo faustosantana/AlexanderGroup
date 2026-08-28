@@ -50,10 +50,17 @@ def test_addons_areas_have_readme() -> None:
         assert readme.is_file(), f"Falta README en addons/{area}"
 
 
-def test_no_functional_odoo_modules_yet() -> None:
-    """En Fase 0 no debe existir ningún módulo Odoo funcional (sin __manifest__.py)."""
-    manifests = list((REPO_ROOT / "addons").rglob("__manifest__.py"))
-    assert not manifests, (
-        "No deben existir módulos Odoo funcionales en Fase 0: "
-        f"{[str(m.relative_to(REPO_ROOT)) for m in manifests]}"
+def test_no_own_modules_in_shared() -> None:
+    """addons/shared permanece vacío; los overlays viven en addons/alexander."""
+    own = list((REPO_ROOT / "addons" / "shared").rglob("__manifest__.py"))
+    assert not own, (
+        "No deben existir módulos Odoo en addons/shared: "
+        f"{[str(m.relative_to(REPO_ROOT)) for m in own]}"
     )
+
+
+def test_alexander_modules_use_required_prefix() -> None:
+    own = list((REPO_ROOT / "addons" / "alexander").rglob("__manifest__.py"))
+    assert own, "Se esperan módulos justech_alexander_* en addons/alexander"
+    for manifest in own:
+        assert manifest.parent.name.startswith("justech_alexander_"), manifest

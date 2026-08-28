@@ -1,52 +1,34 @@
-# Inventario de módulos Justgroup (para migración)
+# Inventario y clasificación de módulos (Justgroup → Doralex)
 
-> **PENDING_AUDIT.** Plantilla vacía. Se completa auditando el entorno Justgroup
-> (fase posterior). **No** copiar módulos a ciegas. **No** inventar datos.
+> Fecha: 2026-08-27. **JUSTGROUP_AUDIT = PASS** (acceso SSH real a Justgroup PROD).
 
-## Alcance de la auditoría
+## Acceso verificado
 
-Para el Justgroup a auditar, inventariar:
+| Check | Result |
+|-------|--------|
+| `ssh justgroup-vps` | PASS (`hostname=justgroup`, `odoo=active`) |
+| Odoo | 19.0-20260324 |
+| DB | `justech` (PostgreSQL 16.15) |
+| addons_path | community + **enterprise** + `/usr/lib/odoo/custom-addons` |
+| Custom modules on disk | 44 |
+| Installed total | 360 (Community 173 / Enterprise 142 / Justech custom 41 / …) |
+| Golden freeze | `/opt/odoo-backups/prod-golden-baseline-20260827_182451` |
 
-- módulos estándar instalados
-- Enterprise
-- OCA
-- custom addons
-- versión exacta
-- dependencias
-- módulos activos
-- módulos no usados
-- configuración específica
-- cron
-- reports
-- QWeb
-- customizaciones de Studio
-- automated actions
-- server actions
+## Matriz completa
 
-## Clasificación (valores permitidos)
+Ver **[`JUSTGROUP_MODULE_CLASSIFICATION.md`](JUSTGROUP_MODULE_CLASSIFICATION.md)**.
 
-| Valor                 | Significado |
-| --------------------- | ----------- |
-| `REQUIRED`            | Necesario para Doralex; migrar. |
-| `OPTIONAL`            | Útil pero no imprescindible. |
-| `NOT_APPLICABLE`      | No aplica a Doralex. |
-| `REQUIRES_ADAPTATION` | Reutilizable con cambios (prefijo `justech_`, quitar refs específicas). |
-| `BLOCKED`             | Bloqueado (licencia, dependencia, incompatibilidad 19). |
+## Código copiado (sin datos)
 
-## Inventario
+`addons/third_party/justgroup_prod_source/` — 24 módulos (code-only).
 
-| Módulo | Origen (repo) | Versión | Tipo (Estándar/Enterprise/OCA/Custom) | Dependencias | ¿Activo? | Cron/Reports/QWeb/Studio/Actions | Clasificación | Observaciones |
-| ------ | ------------- | ------: | ------------------------------------- | ------------ | -------- | -------------------------------- | ------------- | ------------- |
-|        |               |         |                                       |              |          |                                  |               |               |
+## Doralex DEV install
 
-## Resumen por clasificación
+**BLOCKED en este entorno local Justgroup:** falta `~/.ssh/doralex_ed25519` y el puerto 22 de `2.25.121.111` respondió `Connection refused` tras el probe. HTTP `https://dev.doralexgroup.cloud` = 200.
 
-| Clasificación | Cantidad |
-| ------------- | -------: |
-| REQUIRED | 0 |
-| OPTIONAL | 0 |
-| NOT_APPLICABLE | 0 |
-| REQUIRES_ADAPTATION | 0 |
-| BLOCKED | 0 |
+Cuando el agente Doralex / esta máquina tengan `ssh doralex-server`, instalar por waves A→B→C del classification doc (**nunca** `-u all`, **nunca** PROD primero).
 
-_Pendiente de auditoría._
+
+## Canonical GitHub source (2026-08-27)
+
+See [`CANONICAL_ADDONS_SOURCE.md`](CANONICAL_ADDONS_SOURCE.md) and https://github.com/faustosantana/odoo-custom-addons

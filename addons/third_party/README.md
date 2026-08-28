@@ -29,3 +29,11 @@ Cada módulo incorporado aquí debe registrar, como mínimo, la siguiente ficha:
 ## Estado
 
 `Fase 0 — Vacío por diseño. Pendiente de selección y aprobación de terceros.`
+
+## justgroup_prod_source/
+
+**Deprecated.** Use regenerable vendor snapshot:
+
+`addons/vendor/odoo-custom-addons/` ← `tools/sync_odoo_custom_addons_vendor.sh`
+
+Canonical SoT: `faustosantana/odoo-custom-addons`.

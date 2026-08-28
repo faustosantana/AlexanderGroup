@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form_justech_approval" model="ir.ui.view">
+        <field name="name">sale.order.form.justech.approval</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority" eval="99"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_justech_approve"
+                        type="object"
+                        string="Aprobar"
+                        class="btn-primary"
+                        groups="justech_approval_flow.group_approver"
+                        invisible="not justech_approval_sale_enabled or justech_approval_state != 'pending'"/>
+                <button name="action_justech_reject_wizard"
+                        type="object"
+                        string="Rechazar"
+                        groups="justech_approval_flow.group_approver"
+                        invisible="not justech_approval_sale_enabled or justech_approval_state != 'pending'"/>
+            </xpath>
+            <xpath expr="//button[@id='action_confirm']" position="attributes">
+                <attribute name="invisible">state != 'sent'</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_confirm'][not(@id)]" position="attributes">
+                <attribute name="invisible">state != 'draft'</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="before">
+                <field name="justech_approval_sale_enabled" invisible="1"/>
+                <field name="justech_approval_can_bypass" invisible="1"/>
+                <field name="justech_approval_state" widget="badge"
+                       decoration-info="justech_approval_state == 'none'"
+                       decoration-warning="justech_approval_state in ('pending', 'invalidated')"
+                       decoration-success="justech_approval_state == 'approved'"
+                       decoration-danger="justech_approval_state == 'rejected'"
+                       invisible="not justech_approval_sale_enabled"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

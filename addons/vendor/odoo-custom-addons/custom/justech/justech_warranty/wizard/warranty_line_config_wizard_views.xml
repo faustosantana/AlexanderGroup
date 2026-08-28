@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_warranty_line_config_wizard_form" model="ir.ui.view">
+        <field name="name">justech.warranty.line.config.wizard.form</field>
+        <field name="model">justech.warranty.line.config.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Configurar garantía" class="o_justech_warranty_wizard_form">
+                <sheet>
+                    <div class="oe_title mb-3">
+                        <label for="product_id" class="oe_edit_only"/>
+                        <h1>
+                            <field name="product_id" readonly="1" nolabel="1" class="oe_inline"/>
+                        </h1>
+                    </div>
+                    <div class="alert alert-info" role="alert"
+                         invisible="not is_draft_line">
+                        La línea todavía no se ha guardado. Los cambios se aplicarán a
+                        la línea en pantalla al pulsar <b>Guardar</b>.
+                    </div>
+                    <group>
+                        <group string="Estado">
+                            <field name="line_model" invisible="1"/>
+                            <field name="line_id" invisible="1"/>
+                            <field name="is_draft_line" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="warranty_status" invisible="1"/>
+                            <field name="warranty_status_label" readonly="1" nolabel="1"
+                                   class="o_warranty_status_badge fw-bold text-primary"/>
+                        </group>
+                        <group string="Condición de garantía">
+                            <field name="warranty_apply" widget="boolean_toggle"/>
+                            <field name="warranty_months" invisible="not warranty_apply"/>
+                            <field name="warranty_type_id"
+                                   invisible="not warranty_apply"
+                                   domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+                            <field name="warranty_vendor_id"
+                                   invisible="not warranty_apply"
+                                   options="{'no_create_edit': True}"/>
+                        </group>
+                        <group string="Unidades y seriales" colspan="2"
+                               invisible="not warranty_apply">
+                            <field name="warranty_expected_units"/>
+                            <field name="warranty_planned_serials" nolabel="1" colspan="2"
+                                   placeholder="Un serial por renglón. Ej.:&#10;SN-000001&#10;SN-000002&#10;SN-000003"/>
+                        </group>
+                        <group string="Observaciones / condiciones" colspan="2"
+                               invisible="not warranty_apply">
+                            <field name="warranty_notes" nolabel="1" colspan="2"
+                                   placeholder="Condiciones internas o notas para esta línea..."/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_apply" type="object" string="Guardar" class="btn-primary"/>
+                    <button name="action_cancel" type="object" string="Cancelar" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_warranty_line_config_wizard" model="ir.actions.act_window">
+        <field name="name">Configurar garantía</field>
+        <field name="res_model">justech.warranty.line.config.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_warranty_line_config_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

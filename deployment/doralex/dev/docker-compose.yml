@@ -52,8 +52,10 @@ services:
       # --- addons_path FINAL (enterprise-ready desde el inicio) ---
       # Enterprise compartido (misma revisión), vacío hasta la licencia.
       - ${ENTERPRISE_SRC:-../enterprise}:/mnt/enterprise:ro
-      # Custom addons de Dev (aquí se prueba primero antes de Produccion).
+      # Custom addons de Dev (producto Alexander / overrides locales).
       - ${CUSTOM_ADDONS_SRC:-./custom-addons}:/mnt/custom-addons:ro
+      # Vendored Wave A/B from faustosantana/odoo-custom-addons (GENERATED; do not edit).
+      - ${VENDOR_ADDONS_SRC:-../../../addons/vendor/odoo-custom-addons}:/mnt/vendor:ro
       - ./logs:/var/log/odoo
     ports:
       # Puertos DISTINTOS a Produccion, solo loopback.

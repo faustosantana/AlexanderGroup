@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_doralex_admin_dashboard_system,doralex.admin.dashboard system,model_doralex_admin_dashboard,base.group_system,1,1,1,1
+access_doralex_module_status_system,doralex.module.status system,model_doralex_module_status,base.group_system,1,1,1,1
+access_doralex_admin_auth_system,doralex.admin.auth.service system,model_doralex_admin_auth_service,base.group_system,1,0,0,0

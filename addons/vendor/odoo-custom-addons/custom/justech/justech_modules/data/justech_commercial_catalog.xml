@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Contabilidad Dominicana -->
+    <record id="commercial_contabilidad_rd" model="justech.commercial.product">
+        <field name="code">contabilidad_rd</field>
+        <field name="name">Contabilidad Dominicana</field>
+        <field name="description">Suite fiscal completa para República Dominicana: NCF, DGII, ITBIS, retenciones y estados financieros.</field>
+        <field name="icon">fa-balance-scale</field>
+        <field name="category">fiscal</field>
+        <field name="sequence">10</field>
+        <field name="version_display">2026.1</field>
+        <field name="license_tier">ent</field>
+    </record>
+    <record id="commercial_line_ncf" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="commercial_name">NCF</field>
+        <field name="description">Comprobantes fiscales electrónicos</field>
+        <field name="feature_code">l10n_do_ncf</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="commercial_line_dgii" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="commercial_name">DGII</field>
+        <field name="description">Reportes y exportadores DGII</field>
+        <field name="feature_code">l10n_do_reports</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="commercial_line_itbis" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="commercial_name">ITBIS</field>
+        <field name="description">Base fiscal e impuestos</field>
+        <field name="feature_code">l10n_do_base</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="commercial_line_retenciones" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="commercial_name">Retenciones</field>
+        <field name="description">Retenciones bancarias y fiscales</field>
+        <field name="feature_code">hellenia_account</field>
+        <field name="sequence">40</field>
+    </record>
+    <record id="commercial_line_estados" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="commercial_name">Estados Financieros</field>
+        <field name="feature_code">hellenia_reports</field>
+        <field name="sequence">50</field>
+    </record>
+    <record id="commercial_line_diario" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="commercial_name">Diario General</field>
+        <field name="feature_code">hellenia_account</field>
+        <field name="sequence">60</field>
+    </record>
+    <record id="commercial_line_balance" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="commercial_name">Balance</field>
+        <field name="feature_code">hellenia_account</field>
+        <field name="sequence">70</field>
+    </record>
+    <record id="commercial_map_cont_1" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="technical_module_code">hellenia_account</field>
+    </record>
+    <record id="commercial_map_cont_2" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="technical_module_code">justech_l10n_do_base</field>
+    </record>
+    <record id="commercial_map_cont_3" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="technical_module_code">justech_l10n_do_ncf</field>
+    </record>
+    <record id="commercial_map_cont_4" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_contabilidad_rd"/>
+        <field name="technical_module_code">justech_l10n_do_reports</field>
+    </record>
+
+    <!-- Reportes Corporativos -->
+    <record id="commercial_reportes" model="justech.commercial.product">
+        <field name="code">reportes_corporativos</field>
+        <field name="name">Reportes Corporativos</field>
+        <field name="description">Diseño PDF corporativo para cotizaciones, facturas, órdenes y documentos.</field>
+        <field name="icon">fa-file-pdf-o</field>
+        <field name="category">reports</field>
+        <field name="sequence">20</field>
+        <field name="version_display">7.3</field>
+        <field name="license_tier">pro</field>
+    </record>
+    <record id="commercial_line_reportes_pdf" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_reportes"/>
+        <field name="commercial_name">Diseño PDF</field>
+        <field name="feature_code">justech_report_design</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="commercial_line_reportes_legacy" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_reportes"/>
+        <field name="commercial_name">Reportes Legacy</field>
+        <field name="feature_code">hellenia_reports</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="commercial_map_rep_1" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_reportes"/>
+        <field name="technical_module_code">hellenia_reports</field>
+    </record>
+    <record id="commercial_map_rep_2" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_reportes"/>
+        <field name="technical_module_code">justech_report_design</field>
+    </record>
+
+    <!-- Punto de Venta -->
+    <record id="commercial_pos" model="justech.commercial.product">
+        <field name="code">punto_de_venta</field>
+        <field name="name">Punto de Venta</field>
+        <field name="description">POS fiscal integrado con NCF y tickets.</field>
+        <field name="icon">fa-shopping-cart</field>
+        <field name="category">pos</field>
+        <field name="sequence">30</field>
+        <field name="license_tier">pro</field>
+    </record>
+    <record id="commercial_line_pos" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_pos"/>
+        <field name="commercial_name">POS Fiscal</field>
+        <field name="feature_code">hellenia_pos</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="commercial_map_pos_1" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_pos"/>
+        <field name="technical_module_code">hellenia_pos</field>
+    </record>
+
+    <!-- Comprobantes Fiscales -->
+    <record id="commercial_ncf" model="justech.commercial.product">
+        <field name="code">comprobantes_fiscales</field>
+        <field name="name">Comprobantes Fiscales</field>
+        <field name="description">Motor NCF, rangos y validación fiscal.</field>
+        <field name="icon">fa-file-text</field>
+        <field name="category">fiscal</field>
+        <field name="sequence">15</field>
+        <field name="license_tier">ent</field>
+    </record>
+    <record id="commercial_line_ncf_only" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_ncf"/>
+        <field name="commercial_name">NCF</field>
+        <field name="feature_code">l10n_do_ncf</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="commercial_map_ncf_1" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_ncf"/>
+        <field name="technical_module_code">justech_l10n_do_ncf</field>
+    </record>
+
+    <!-- Inventario -->
+    <record id="commercial_inventario" model="justech.commercial.product">
+        <field name="code">inventario</field>
+        <field name="name">Inventario</field>
+        <field name="description">Gestión de stock e inventarios.</field>
+        <field name="icon">fa-cubes</field>
+        <field name="category">inventory</field>
+        <field name="sequence">40</field>
+        <field name="license_tier">std</field>
+    </record>
+    <record id="commercial_line_inv" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_inventario"/>
+        <field name="commercial_name">Inventario</field>
+        <field name="feature_code">hellenia_inventory</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="commercial_map_inv_1" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_inventario"/>
+        <field name="technical_module_code">hellenia_inventory</field>
+    </record>
+
+    <!-- Ventas / Compras / CRM / Activos / RRHH / Marketplace / IA (commercial placeholders) -->
+    <record id="commercial_ventas" model="justech.commercial.product">
+        <field name="code">ventas</field>
+        <field name="name">Ventas</field>
+        <field name="description">Gestión comercial y pipeline de ventas.</field>
+        <field name="icon">fa-line-chart</field>
+        <field name="category">sales</field>
+        <field name="sequence">50</field>
+        <field name="license_tier">std</field>
+    </record>
+    <record id="commercial_compras" model="justech.commercial.product">
+        <field name="code">compras</field>
+        <field name="name">Compras</field>
+        <field name="description">Gestión de compras y proveedores.</field>
+        <field name="icon">fa-truck</field>
+        <field name="category">purchase</field>
+        <field name="sequence">60</field>
+        <field name="license_tier">std</field>
+    </record>
+    <record id="commercial_crm" model="justech.commercial.product">
+        <field name="code">crm</field>
+        <field name="name">CRM</field>
+        <field name="description">Relaciones con clientes y oportunidades.</field>
+        <field name="icon">fa-users</field>
+        <field name="category">crm</field>
+        <field name="sequence">70</field>
+        <field name="license_tier">pro</field>
+    </record>
+    <record id="commercial_activos" model="justech.commercial.product">
+        <field name="code">activos_fijos</field>
+        <field name="name">Activos Fijos</field>
+        <field name="description">Depreciación y gestión de activos.</field>
+        <field name="icon">fa-building</field>
+        <field name="category">assets</field>
+        <field name="sequence">80</field>
+        <field name="license_tier">pro</field>
+    </record>
+    <record id="commercial_rrhh" model="justech.commercial.product">
+        <field name="code">rrhh</field>
+        <field name="name">RRHH</field>
+        <field name="description">Recursos humanos y nómina.</field>
+        <field name="icon">fa-id-card</field>
+        <field name="category">hr</field>
+        <field name="sequence">90</field>
+        <field name="license_tier">pro</field>
+    </record>
+    <record id="commercial_marketplace" model="justech.commercial.product">
+        <field name="code">marketplace</field>
+        <field name="name">Marketplace</field>
+        <field name="description">Tienda de extensiones Justech.</field>
+        <field name="icon">fa-shopping-bag</field>
+        <field name="category">platform</field>
+        <field name="sequence">100</field>
+        <field name="license_tier">ent</field>
+    </record>
+    <record id="commercial_ia" model="justech.commercial.product">
+        <field name="code">ia</field>
+        <field name="name">IA</field>
+        <field name="description">Asistente inteligente y automatización.</field>
+        <field name="icon">fa-magic</field>
+        <field name="category">ai</field>
+        <field name="sequence">110</field>
+        <field name="license_tier">ent</field>
+    </record>
+
+    <!-- UX Fiscal (internal enhancement, shown as integration-style) -->
+    <record id="commercial_ux" model="justech.commercial.product">
+        <field name="code">ux_fiscal</field>
+        <field name="name">Experiencia Fiscal</field>
+        <field name="description">Interfaz fiscal en español y flujos optimizados.</field>
+        <field name="icon">fa-paint-brush</field>
+        <field name="category">platform</field>
+        <field name="sequence">25</field>
+        <field name="license_tier">included</field>
+    </record>
+    <record id="commercial_line_ux" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_ux"/>
+        <field name="commercial_name">UX Fiscal ES</field>
+        <field name="feature_code">hellenia_ux</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="commercial_map_ux_1" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_ux"/>
+        <field name="technical_module_code">hellenia_ux</field>
+    </record>
+</odoo>

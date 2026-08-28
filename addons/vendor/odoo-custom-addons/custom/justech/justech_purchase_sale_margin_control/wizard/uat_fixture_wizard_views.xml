@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_sale_margin_uat_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.margin.uat.wizard.form</field>
+        <field name="model">purchase.sale.margin.uat.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generar UAT Sprint 6">
+                <group>
+                    <field name="company_id"/>
+                </group>
+                <group invisible="not result_log">
+                    <field name="result_log" nolabel="1"/>
+                    <field name="created_transaction_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button name="action_generate_cases" type="object" string="Generar 6 casos" class="btn-primary"/>
+                    <button string="Cerrar" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_margin_uat_wizard" model="ir.actions.act_window">
+        <field name="name">Generar UAT Sprint 6</field>
+        <field name="res_model">purchase.sale.margin.uat.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_purchase_sale_margin_uat_cleanup_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.sale.margin.uat.cleanup.wizard.form</field>
+        <field name="model">purchase.sale.margin.uat.cleanup.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Limpiar UAT Sprint 6">
+                <div class="alert alert-warning" role="alert">
+                    Elimina únicamente transacciones y documentos marcados como fixture UAT-S6.
+                    No borra configuración ni código.
+                </div>
+                <group>
+                    <field name="confirm"/>
+                    <field name="result_log" invisible="not result_log"/>
+                </group>
+                <footer>
+                    <button name="action_cleanup" type="object" string="Limpiar fixtures" class="btn-danger"/>
+                    <button string="Cancelar" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_purchase_sale_margin_uat_cleanup_wizard" model="ir.actions.act_window">
+        <field name="name">Limpiar UAT Sprint 6</field>
+        <field name="res_model">purchase.sale.margin.uat.cleanup.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

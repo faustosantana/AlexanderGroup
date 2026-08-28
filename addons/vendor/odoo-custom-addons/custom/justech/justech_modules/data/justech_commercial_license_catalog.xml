@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- LICENSE-3: flags, grouping and commercial naming for license wizard catalog -->
+
+    <!-- Existing real Justech solutions -->
+    <record id="commercial_contabilidad_rd" model="justech.commercial.product">
+        <field name="name">Contabilidad Dominicana</field>
+        <field name="commercial_icon_display">📊</field>
+        <field name="is_justech_licensable" eval="True"/>
+        <field name="commercial_group">fiscal</field>
+    </record>
+    <record id="commercial_ncf" model="justech.commercial.product">
+        <field name="name">Comprobantes Fiscales DGII</field>
+        <field name="description">Emisión de NCF, series B, secuencias y validaciones fiscales DGII.</field>
+        <field name="commercial_icon_display">📄</field>
+        <field name="is_justech_licensable" eval="True"/>
+        <field name="commercial_group">fiscal</field>
+    </record>
+    <record id="commercial_ux" model="justech.commercial.product">
+        <field name="name">Experiencia Fiscal RD</field>
+        <field name="description">Interfaz fiscal en español, contactos, facturas y flujos optimizados para RD.</field>
+        <field name="commercial_icon_display">🧾</field>
+        <field name="is_justech_licensable" eval="True"/>
+        <field name="commercial_group">fiscal</field>
+    </record>
+    <record id="commercial_reportes" model="justech.commercial.product">
+        <field name="name">Reportes Corporativos</field>
+        <field name="commercial_icon_display">📑</field>
+        <field name="is_justech_licensable" eval="True"/>
+        <field name="commercial_group">customizations</field>
+    </record>
+    <record id="commercial_pos" model="justech.commercial.product">
+        <field name="name">Punto de Venta Fiscal Justech</field>
+        <field name="description">Terminal de venta fiscal integrado con NCF, tickets y caja.</field>
+        <field name="commercial_icon_display">🛒</field>
+        <field name="is_justech_licensable" eval="True"/>
+        <field name="commercial_group">commercial</field>
+    </record>
+
+    <!-- Odoo-like placeholders — not licensable -->
+    <record id="commercial_inventario" model="justech.commercial.product">
+        <field name="is_justech_licensable" eval="False"/>
+    </record>
+    <record id="commercial_ventas" model="justech.commercial.product">
+        <field name="is_justech_licensable" eval="False"/>
+    </record>
+    <record id="commercial_compras" model="justech.commercial.product">
+        <field name="is_justech_licensable" eval="False"/>
+    </record>
+    <record id="commercial_crm" model="justech.commercial.product">
+        <field name="is_justech_licensable" eval="False"/>
+    </record>
+    <record id="commercial_activos" model="justech.commercial.product">
+        <field name="is_justech_licensable" eval="False"/>
+    </record>
+    <record id="commercial_rrhh" model="justech.commercial.product">
+        <field name="is_justech_licensable" eval="False"/>
+    </record>
+    <record id="commercial_marketplace" model="justech.commercial.product">
+        <field name="is_justech_licensable" eval="False"/>
+    </record>
+    <record id="commercial_ia" model="justech.commercial.product">
+        <field name="is_justech_licensable" eval="False"/>
+    </record>
+
+    <!-- Fiscal -->
+    <record id="commercial_facturacion_electronica" model="justech.commercial.product">
+        <field name="code">facturacion_electronica</field>
+        <field name="name">Facturación Electrónica</field>
+        <field name="description">Emisión electrónica de comprobantes fiscales y trazabilidad DGII.</field>
+        <field name="icon">fa-cloud-upload</field>
+        <field name="commercial_icon_display">⚡</field>
+        <field name="category">fiscal</field>
+        <field name="commercial_group">fiscal</field>
+        <field name="sequence">12</field>
+        <field name="license_tier">ent</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_firma_digital" model="justech.commercial.product">
+        <field name="code">firma_digital</field>
+        <field name="name">Firma Digital</field>
+        <field name="description">Firma electrónica de documentos fiscales y contratos.</field>
+        <field name="icon">fa-certificate</field>
+        <field name="commercial_icon_display">✍️</field>
+        <field name="category">fiscal</field>
+        <field name="commercial_group">fiscal</field>
+        <field name="sequence">18</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+
+    <!-- Comercial -->
+    <record id="commercial_ventas_corporativas" model="justech.commercial.product">
+        <field name="code">ventas_corporativas</field>
+        <field name="name">Ventas Corporativas</field>
+        <field name="description">Flujo comercial corporativo con cotizaciones, aprobaciones y seguimiento.</field>
+        <field name="icon">fa-line-chart</field>
+        <field name="commercial_icon_display">💼</field>
+        <field name="category">sales</field>
+        <field name="commercial_group">commercial</field>
+        <field name="sequence">52</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_compras_corporativas" model="justech.commercial.product">
+        <field name="code">compras_corporativas</field>
+        <field name="name">Compras Corporativas</field>
+        <field name="description">Gestión de compras con políticas, aprobaciones y trazabilidad.</field>
+        <field name="icon">fa-shopping-basket</field>
+        <field name="commercial_icon_display">🛍️</field>
+        <field name="category">purchase</field>
+        <field name="commercial_group">commercial</field>
+        <field name="sequence">55</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_multiempresa" model="justech.commercial.product">
+        <field name="code">multiempresa_avanzada</field>
+        <field name="name">Multiempresa Avanzada</field>
+        <field name="description">Operación multiempresa con políticas, monedas y consolidación Justech.</field>
+        <field name="icon">fa-sitemap</field>
+        <field name="commercial_icon_display">🏢</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">commercial</field>
+        <field name="sequence">58</field>
+        <field name="license_tier">ent</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_map_multi_1" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_multiempresa"/>
+        <field name="technical_module_code">justech_multicurrency</field>
+    </record>
+
+    <!-- Productividad -->
+    <record id="commercial_centro_justech" model="justech.commercial.product">
+        <field name="code">centro_justech</field>
+        <field name="name">Centro Justech</field>
+        <field name="description">Consola de administración Justech: licencias, módulos del cliente y gobierno.</field>
+        <field name="icon">fa-th-large</field>
+        <field name="commercial_icon_display">⚙️</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">platform</field>
+        <field name="sequence">5</field>
+        <field name="license_tier">ent</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_map_centro_1" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_centro_justech"/>
+        <field name="technical_module_code">justech_admin</field>
+    </record>
+    <record id="commercial_auditoria" model="justech.commercial.product">
+        <field name="code">auditoria_empresarial</field>
+        <field name="name">Auditoría Empresarial</field>
+        <field name="description">Histórico de cambios, trazabilidad y exportación de auditoría.</field>
+        <field name="icon">fa-shield</field>
+        <field name="commercial_icon_display">🔍</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">productivity</field>
+        <field name="sequence">20</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_map_audit_1" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_auditoria"/>
+        <field name="technical_module_code">justech_global_audit_log</field>
+    </record>
+    <record id="commercial_dashboard_gerencial" model="justech.commercial.product">
+        <field name="code">dashboard_gerencial</field>
+        <field name="name">Dashboard Gerencial</field>
+        <field name="description">Indicadores financieros y operativos para la gerencia.</field>
+        <field name="icon">fa-dashboard</field>
+        <field name="commercial_icon_display">📊</field>
+        <field name="category">reports</field>
+        <field name="commercial_group">productivity</field>
+        <field name="sequence">25</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_gestion_documental" model="justech.commercial.product">
+        <field name="code">gestion_documental</field>
+        <field name="name">Gestión Documental</field>
+        <field name="description">Repositorio documental con versiones, permisos y flujos de aprobación.</field>
+        <field name="icon">fa-folder-open</field>
+        <field name="commercial_icon_display">📁</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">productivity</field>
+        <field name="sequence">30</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_portal_clientes" model="justech.commercial.product">
+        <field name="code">portal_clientes</field>
+        <field name="name">Portal de Clientes</field>
+        <field name="description">Portal web para clientes: facturas, pagos y documentos.</field>
+        <field name="icon">fa-user-circle</field>
+        <field name="commercial_icon_display">👤</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">productivity</field>
+        <field name="sequence">35</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_portal_proveedores" model="justech.commercial.product">
+        <field name="code">portal_proveedores</field>
+        <field name="name">Portal de Proveedores</field>
+        <field name="description">Portal para proveedores: órdenes, entregas y facturación.</field>
+        <field name="icon">fa-truck</field>
+        <field name="commercial_icon_display">🚚</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">productivity</field>
+        <field name="sequence">38</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_rrhh_justech" model="justech.commercial.product">
+        <field name="code">rrhh_justech</field>
+        <field name="name">Recursos Humanos Justech</field>
+        <field name="description">Gestión de talento, nómina y expedientes desarrollada por Justech.</field>
+        <field name="icon">fa-id-badge</field>
+        <field name="commercial_icon_display">👥</field>
+        <field name="category">hr</field>
+        <field name="commercial_group">productivity</field>
+        <field name="sequence">42</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_help_desk" model="justech.commercial.product">
+        <field name="code">help_desk</field>
+        <field name="name">Help Desk</field>
+        <field name="description">Mesa de ayuda, tickets y SLA para soporte interno y clientes.</field>
+        <field name="icon">fa-life-ring</field>
+        <field name="commercial_icon_display">🎧</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">productivity</field>
+        <field name="sequence">45</field>
+        <field name="license_tier">std</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+
+    <!-- Integraciones -->
+    <record id="commercial_int_m365" model="justech.commercial.product">
+        <field name="code">integracion_microsoft_365</field>
+        <field name="name">Integración Microsoft 365</field>
+        <field name="description">Sincronización con Outlook, Teams y OneDrive.</field>
+        <field name="icon">fa-windows</field>
+        <field name="commercial_icon_display">🔷</field>
+        <field name="category">integration</field>
+        <field name="commercial_group">integrations</field>
+        <field name="sequence">10</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_int_whatsapp" model="justech.commercial.product">
+        <field name="code">integracion_whatsapp</field>
+        <field name="name">Integración WhatsApp</field>
+        <field name="description">Notificaciones y mensajería comercial vía WhatsApp Business.</field>
+        <field name="icon">fa-whatsapp</field>
+        <field name="commercial_icon_display">💬</field>
+        <field name="category">integration</field>
+        <field name="commercial_group">integrations</field>
+        <field name="sequence">15</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_int_dgii" model="justech.commercial.product">
+        <field name="code">integracion_dgii</field>
+        <field name="name">Integración DGII</field>
+        <field name="description">Conexión automatizada con servicios y reportes DGII.</field>
+        <field name="icon">fa-institution</field>
+        <field name="commercial_icon_display">🏛️</field>
+        <field name="category">integration</field>
+        <field name="commercial_group">integrations</field>
+        <field name="sequence">20</field>
+        <field name="license_tier">ent</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_int_powerbi" model="justech.commercial.product">
+        <field name="code">integracion_power_bi</field>
+        <field name="name">Integración Power BI</field>
+        <field name="description">Exportación de datos e indicadores hacia Microsoft Power BI.</field>
+        <field name="icon">fa-bar-chart</field>
+        <field name="commercial_icon_display">📈</field>
+        <field name="category">integration</field>
+        <field name="commercial_group">integrations</field>
+        <field name="sequence">25</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_int_api" model="justech.commercial.product">
+        <field name="code">integracion_api</field>
+        <field name="name">Integración API Justech</field>
+        <field name="description">API REST para integraciones externas y automatizaciones.</field>
+        <field name="icon">fa-plug</field>
+        <field name="commercial_icon_display">🔗</field>
+        <field name="category">integration</field>
+        <field name="commercial_group">integrations</field>
+        <field name="sequence">30</field>
+        <field name="license_tier">ent</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+
+    <!-- Personalizaciones -->
+    <record id="commercial_branding" model="justech.commercial.product">
+        <field name="code">branding_corporativo</field>
+        <field name="name">Branding Corporativo</field>
+        <field name="description">Identidad visual, colores y marca en toda la plataforma.</field>
+        <field name="icon">fa-paint-brush</field>
+        <field name="commercial_icon_display">🎨</field>
+        <field name="category">reports</field>
+        <field name="commercial_group">customizations</field>
+        <field name="sequence">22</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_pdf_cotizaciones" model="justech.commercial.product">
+        <field name="code">personalizacion_cotizaciones</field>
+        <field name="name">Personalización de Cotizaciones</field>
+        <field name="description">Diseño PDF corporativo para cotizaciones comerciales.</field>
+        <field name="icon">fa-file-text-o</field>
+        <field name="commercial_icon_display">📝</field>
+        <field name="category">reports</field>
+        <field name="commercial_group">customizations</field>
+        <field name="sequence">24</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_pdf_facturas" model="justech.commercial.product">
+        <field name="code">personalizacion_facturas</field>
+        <field name="name">Personalización de Facturas</field>
+        <field name="description">Diseño PDF corporativo para facturas fiscales.</field>
+        <field name="icon">fa-file-pdf-o</field>
+        <field name="commercial_icon_display">🧾</field>
+        <field name="category">reports</field>
+        <field name="commercial_group">customizations</field>
+        <field name="sequence">26</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_reportes_custom" model="justech.commercial.product">
+        <field name="code">reportes_personalizados</field>
+        <field name="name">Reportes Personalizados</field>
+        <field name="description">Reportes a medida con diseño corporativo Justech.</field>
+        <field name="icon">fa-table</field>
+        <field name="commercial_icon_display">📋</field>
+        <field name="category">reports</field>
+        <field name="commercial_group">customizations</field>
+        <field name="sequence">28</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_workflow_comercial" model="justech.commercial.product">
+        <field name="code">workflow_comercial</field>
+        <field name="name">Workflow Comercial</field>
+        <field name="description">Automatización de flujos de ventas, aprobaciones y alertas.</field>
+        <field name="icon">fa-random</field>
+        <field name="commercial_icon_display">🔄</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">customizations</field>
+        <field name="sequence">32</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+    <record id="commercial_workflow_compras" model="justech.commercial.product">
+        <field name="code">workflow_compras</field>
+        <field name="name">Workflow Compras</field>
+        <field name="description">Automatización de flujos de compras, recepción y pagos.</field>
+        <field name="icon">fa-exchange</field>
+        <field name="commercial_icon_display">🔁</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">customizations</field>
+        <field name="sequence">34</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="True"/>
+    </record>
+
+    <function model="justech.commercial.product" name="sync_license_catalog_flags"/>
+
+    <!-- Real products for license wizard whitelist (multicurrency + audit) -->
+    <record id="commercial_multicurrency_wizard" model="justech.commercial.product">
+        <field name="code">multicurrency_commercial</field>
+        <field name="name">Motor Comercial Multimoneda</field>
+        <field name="description">Política comercial multimoneda, tasas y precios por moneda.</field>
+        <field name="icon">fa-money</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">commercial</field>
+        <field name="sequence">35</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="False"/>
+    </record>
+    <record id="commercial_line_multicurrency_wizard" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_multicurrency_wizard"/>
+        <field name="commercial_name">Motor Multimoneda</field>
+        <field name="feature_code">multicurrency</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="commercial_map_multicurrency_wizard" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_multicurrency_wizard"/>
+        <field name="technical_module_code">justech_multicurrency</field>
+    </record>
+
+    <record id="commercial_global_audit_wizard" model="justech.commercial.product">
+        <field name="code">global_audit</field>
+        <field name="name">Auditoría</field>
+        <field name="description">Histórico de cambios y trazabilidad empresarial.</field>
+        <field name="icon">fa-shield</field>
+        <field name="category">platform</field>
+        <field name="commercial_group">productivity</field>
+        <field name="sequence">45</field>
+        <field name="license_tier">pro</field>
+        <field name="is_justech_licensable" eval="False"/>
+    </record>
+    <record id="commercial_line_global_audit_wizard" model="justech.commercial.product.line">
+        <field name="product_id" ref="commercial_global_audit_wizard"/>
+        <field name="commercial_name">Auditoría Global</field>
+        <field name="feature_code">global_audit</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="commercial_map_global_audit_wizard" model="justech.commercial.product.module">
+        <field name="product_id" ref="commercial_global_audit_wizard"/>
+        <field name="technical_module_code">justech_global_audit_log</field>
+    </record>
+</odoo>

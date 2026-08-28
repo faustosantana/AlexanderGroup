@@ -1,0 +1,1 @@
+from . import multi_invoice_manual_payment_wizard
