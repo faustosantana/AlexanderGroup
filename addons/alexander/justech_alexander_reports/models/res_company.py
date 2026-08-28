@@ -89,6 +89,8 @@ class ResCompany(models.Model):
             except Exception:
                 return {}
         return {}
+
+    def _dx_report_theme(self):
         self.ensure_one()
         code = (self.dx_short_code or "").upper()
         theme = dict(_DX_THEMES.get(code) or {"code": code or "DX"})

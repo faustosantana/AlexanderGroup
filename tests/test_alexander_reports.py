@@ -109,3 +109,5 @@ def test_invoice_title_is_factura_not_borrador():
     assert '"BORRADOR"' in py
     company = (REPORTS / "models" / "res_company.py").read_text(encoding="utf-8")
     assert '"logo_h": 28' in company
+    assert "def _dx_report_theme" in company
+    assert "def _dx_header_identity_for" in company
