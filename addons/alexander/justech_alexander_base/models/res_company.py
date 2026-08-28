@@ -91,7 +91,7 @@ class ResCompany(models.Model):
             "sector": self.dx_public_sector or "",
             "description": self.dx_public_description or "",
             "color": self.primary_color or "#1B365D",
-            "logo_url": "/web/image/res.company/%s/logo" % self.id,
+            "logo_url": "/doralex/logo/%s" % (self.dx_short_code or self.id),
             "sequence": self.dx_sequence,
             "areas": tuple(
                 a.strip() for a in (self.dx_public_sector or "").split(",") if a.strip()
@@ -337,11 +337,35 @@ class ResCompany(models.Model):
         leftover = companies - targets
         main = self.env.ref("base.main_company", raise_if_not_found=False)
         for company in leftover:
-            if main and company.id == main.id and "My Company" in (company.name or ""):
+            name = company.name or ""
+            is_template = (
+                main
+                and company.id == main.id
+                and ("My Company" in name or "Plantilla técnica" in name)
+            )
+            if is_template:
                 company.write(
                     {
                         "name": "Plantilla técnica (no operativa)",
                         "dx_website_published": False,
                     }
                 )
+                self._dx_neutralize_leftover_warehouse(company)
         return True
+
+    def _dx_neutralize_leftover_warehouse(self, company):
+        warehouses = (
+            self.env["stock.warehouse"]
+            .sudo()
+            .with_context(active_test=False)
+            .search([("company_id", "=", company.id)])
+        )
+        for warehouse in warehouses:
+            vals = {}
+            if warehouse.code in ("WH", "WH2", "WH3") or "My Company" in (
+                warehouse.name or ""
+            ):
+                vals["code"] = "TPL"
+                vals["name"] = "No operativo"
+            if vals:
+                warehouse.write(vals)

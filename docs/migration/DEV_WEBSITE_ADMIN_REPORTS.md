@@ -29,6 +29,13 @@ No se alteran RNC, impuestos, posiciones fiscales ni rangos NCF.
 Muestra: nombre comercial, logo, sector, descripción breve.
 No muestra: RNC, bancos, saldos, representantes, cédulas, usuarios, datos fiscales.
 
+Los logos se sirven en `/doralex/logo/<CODE>` (público, solo compañías publicadas).
+No se usa `/web/image/res.company/<id>/logo` para visitantes anónimos, porque el
+aislamiento multiempresa de Odoo devolvía un placeholder en 5 de 6 compañías.
+
+El header/footer de Odoo Website (teléfono `+1 555…` y `yourcompany.example.com`)
+se sustituyen por contacto de la compañía del website (DOR).
+
 ## Auth admin
 
 Reutiliza `justech.admin.access.service`. Complementa con:

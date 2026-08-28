@@ -17,6 +17,21 @@ def _setup_doralex_website(env):
             if doralex.logo:
                 vals["logo"] = doralex.logo
         website.write(vals)
+        Menu = env["website.menu"].sudo()
+        for menu in Menu.search(
+            [("website_id", "=", website.id), ("url", "=", "/contactus")]
+        ):
+            if menu.name in ("Contact us", "Contacto"):
+                menu.write({"name": "Contacto"})
+        for menu in Menu.search(
+            [
+                ("website_id", "=", website.id),
+                ("url", "=", "/"),
+                ("parent_id", "!=", False),
+            ]
+        ):
+            if menu.name in ("Home", "Inicio"):
+                menu.write({"name": "Inicio"})
     meta_home = {
         "website_meta_title": "Doralex Group | Alexander Group",
         "website_meta_description": (

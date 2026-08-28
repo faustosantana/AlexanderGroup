@@ -50,6 +50,18 @@ def test_website_templates_hide_confidential_data() -> None:
             assert marker not in text, f"{marker} en {path}"
 
 
+def test_public_logo_uses_dedicated_route() -> None:
+    payload = (
+        ALEXANDER / "justech_alexander_base" / "models" / "res_company.py"
+    ).read_text(encoding="utf-8")
+    controller = (
+        ALEXANDER / "justech_alexander_website" / "controllers" / "main.py"
+    ).read_text(encoding="utf-8")
+    assert "/doralex/logo/" in payload
+    assert "/doralex/logo/<string:code>" in controller
+    assert "dx_website_published" in controller
+
+
 def test_no_vendor_edits_in_overlay() -> None:
     for path in _manifests():
         text = path.read_text(encoding="utf-8")

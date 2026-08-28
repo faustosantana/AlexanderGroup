@@ -168,6 +168,28 @@
   color: var(--dx-gold);
 }
 
+#footer.dx-footer {
+  background: #081526;
+  color: rgba(255, 255, 255, 0.78);
+  border: 0 !important;
+}
+
+#footer.dx-footer h5 {
+  color: var(--dx-gold);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#footer.dx-footer a {
+  color: var(--dx-gold);
+  text-decoration: none;
+}
+
+#footer.dx-footer .border-top {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
 @media (max-width: 991px) {
   .dx-hero {
     padding: 5rem 0 3.5rem;

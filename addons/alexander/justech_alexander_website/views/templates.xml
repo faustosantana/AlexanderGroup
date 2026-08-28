@@ -118,14 +118,96 @@
                         </div>
                     </div>
                 </section>
-
-                <footer class="dx-footer">
-                    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
-                        <span>© Doralex Group · Alexander Group</span>
-                        <span>ERP interno en <a href="/web">/web</a></span>
-                    </div>
-                </footer>
             </div>
+        </xpath>
+    </template>
+
+    <template id="doralex_header_text" inherit_id="website.header_text_element" name="Doralex header contact">
+        <xpath expr="//li" position="replace">
+            <li t-attf-class="#{_item_class}">
+                <div t-attf-class="s_text_block #{_div_class}" data-name="Text">
+                    <t t-set="dx_c" t-value="website.company_id"/>
+                    <a t-if="dx_c.phone" t-attf-href="tel:#{dx_c.phone}" class="nav-link o_nav-link_secondary">
+                        <small>
+                            <i class="fa fa-1x fa-fw fa-phone me-1"/>
+                            <span class="o_force_ltr" t-out="dx_c.phone"/>
+                        </small>
+                    </a>
+                    <a t-if="dx_c.email" t-attf-href="mailto:#{dx_c.email}" class="nav-link o_nav-link_secondary">
+                        <small>
+                            <i class="fa fa-1x fa-fw fa-envelope me-1"/>
+                            <t t-out="dx_c.email"/>
+                        </small>
+                    </a>
+                </div>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="doralex_footer" inherit_id="website.footer_custom" name="Doralex footer institucional">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo dx-footer" t-ignore="true" t-if="not no_footer">
+                <div class="container py-4">
+                    <div class="row gy-3">
+                        <div class="col-md-5">
+                            <h5>Doralex Group</h5>
+                            <p class="mb-2">Grupo empresarial dominicano. Información institucional pública.</p>
+                            <p class="mb-0">ERP interno en <a href="/web">/web</a></p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>Grupo</h5>
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="/">Inicio</a></li>
+                                <li><a href="/#grupo">Quiénes somos</a></li>
+                                <li><a href="/#empresas">Empresas</a></li>
+                                <li><a href="/contactus">Contacto</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Contacto</h5>
+                            <t t-set="dx_c" t-value="website.company_id"/>
+                            <ul class="list-unstyled mb-0">
+                                <li t-if="dx_c.phone">
+                                    <a t-attf-href="tel:#{dx_c.phone}">
+                                        <span class="o_force_ltr" t-out="dx_c.phone"/>
+                                    </a>
+                                </li>
+                                <li t-if="dx_c.email">
+                                    <a t-attf-href="mailto:#{dx_c.email}" t-out="dx_c.email"/>
+                                </li>
+                                <li t-if="dx_c.city">
+                                    <t t-out="dx_c.city"/>, República Dominicana
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-3 mt-3 border-top d-flex flex-column flex-md-row justify-content-between gap-2">
+                        <span>© Doralex Group · Alexander Group</span>
+                        <span>Solo información pública</span>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="doralex_contactus" inherit_id="website.contactus" name="Doralex contacto">
+        <xpath expr="//h1" position="replace">
+            <h1>Contacto institucional</h1>
+        </xpath>
+        <xpath expr="//p[hasclass('lead')]" position="replace">
+            <p class="lead">
+                Consultas institucionales de Doralex Group. El ERP interno permanece en
+                <a href="/web">/web</a>.
+            </p>
+        </xpath>
+        <xpath expr="//a[@href='mailto:info@yourcompany.example.com']" position="replace">
+            <a t-attf-href="mailto:#{res_company.email or website.company_id.email}"
+               t-out="res_company.email or website.company_id.email"/>
+        </xpath>
+        <xpath expr="//a[@href='tel:+1 555-555-5556']" position="replace">
+            <a t-attf-href="tel:#{res_company.phone or website.company_id.phone}">
+                <span class="o_force_ltr" t-out="res_company.phone or website.company_id.phone"/>
+            </a>
         </xpath>
     </template>
 
