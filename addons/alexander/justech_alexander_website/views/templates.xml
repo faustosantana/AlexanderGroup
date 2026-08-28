@@ -224,7 +224,11 @@
         </xpath>
     </template>
 
-    <template id="company_detail" name="Empresa Doralex">
+    <template id="doralex_copyright" inherit_id="website.footer_copyright_company_name">
+        <xpath expr="//span[hasclass('o_footer_copyright_name')]" position="replace">
+            <span class="o_footer_copyright_name me-2 small">© Doralex Group</span>
+        </xpath>
+    </template>
         <t t-call="website.layout">
             <t t-set="additional_title" t-value="dx['trade_name']"/>
             <div id="wrap" class="dx-site">
