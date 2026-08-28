@@ -15,6 +15,10 @@ class ResPartner(models.Model):
         ]
         if company:
             domain.append(("company_id", "=", company.id))
+        else:
+            cid = self.env.context.get("dx_statement_company_id")
+            if cid:
+                domain.append(("company_id", "=", cid))
         moves = Move.search(domain, order="company_id, date, id")
         bundles = []
         today = fields.Date.context_today(self)

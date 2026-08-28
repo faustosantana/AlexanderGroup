@@ -9,7 +9,7 @@
     table { border-collapse: collapse; width: 100%; background: #fff; margin-bottom: 28px; }
     th, td { border: 1px solid #ddd; padding: 8px; font-size: 13px; vertical-align: top; }
     th { background: #111; color: #fff; text-align: left; }
-    img { max-width: 200px; height: auto; border: 1px solid #ccc; }
+    img { max-width: 180px; height: auto; border: 1px solid #ccc; }
     .pass { color: #157347; font-weight: 700; }
     .meta { color: #555; font-size: 14px; margin-bottom: 18px; }
   </style>
@@ -17,9 +17,10 @@
 <body>
   <h1>Auditoría visual de reportes Doralex (DEV)</h1>
   <p class="meta">
-    Motor: wkhtmltopdf 0.12.6.1 · A4 · company_id del documento · PROD no se tocó.<br/>
+    Motor: wkhtmltopdf 0.12.6.1 · A4 · <code>document.company_id</code> · PROD no se tocó.<br/>
     COMPANY_DATA_MISSING: website 6/6, términos comerciales 6/6 (no inventados).<br/>
-    Facturas en borrador: sin NCF real. El título fiscal muestra Borrador.
+    Facturas en borrador: sin NCF real (rangos pendientes). Título fiscal: Borrador.<br/>
+    Idioma de prueba: es_DO. Promedio de auditoría interna ≈ 9.1 / 10.
   </p>
 
   <h2>Identidad por empresa</h2>
@@ -27,8 +28,8 @@
     <tr><th>Empresa</th><th>Tema</th><th>Paleta (logo real)</th></tr>
     <tr><td>Inversiones Doralex</td><td>Industrial</td><td>Naranja #E86A12 + negro</td></tr>
     <tr><td>Piñaria</td><td>Sello agroalimentario</td><td>Rojo #C41E3A + verde #2E7D32</td></tr>
-    <tr><td>Dominion Business</td><td>Dual teal/naranja</td><td>#2AA8A4 + #F08A3C</td></tr>
-    <tr><td>El Mayuma</td><td>Arquitectónico</td><td>Teal #2EC4B6 sobre carbón</td></tr>
+    <tr><td>Dominion Business</td><td>Dual teal/naranja + panel de logo</td><td>#2AA8A4 + #F08A3C</td></tr>
+    <tr><td>El Mayuma</td><td>Arquitectónico, logo en panel carbón</td><td>Teal #2EC4B6 + carbón</td></tr>
     <tr><td>Rempart Group</td><td>Institucional</td><td>Negro + azul #3D7AB5</td></tr>
     <tr><td>Blue Elite</td><td>Geométrico</td><td>Azul #0A3D91 + cian #00AEEF</td></tr>
   </table>
@@ -39,34 +40,41 @@
       <th>Empresa</th><th>Documento</th><th>PNG</th><th>PDF</th>
       <th>Logo</th><th>Tipo</th><th>Tabla</th><th>Totales</th><th>Score</th><th>Resultado</th>
     </tr>
-    <!-- rows injected below -->
-    <tr><td>Doralex</td><td>Cotización</td><td><a href="doralex/quotation.png"><img src="doralex/quotation.png" alt="cotización Doralex"/></a></td><td><a href="doralex/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.2</td><td class="pass">PASS</td></tr>
-    <tr><td>Doralex</td><td>Factura</td><td><a href="doralex/invoice.png"><img src="doralex/invoice.png" alt="factura Doralex"/></a></td><td><a href="doralex/invoice.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>8.8</td><td class="pass">PASS</td></tr>
-    <tr><td>Doralex</td><td>Nota de crédito</td><td><a href="doralex/credit_note.png"><img src="doralex/credit_note.png" alt="NC Doralex"/></a></td><td><a href="doralex/credit_note.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>8.8</td><td class="pass">PASS</td></tr>
-    <tr><td>Doralex</td><td>Orden de compra</td><td><a href="doralex/purchase_order.png"><img src="doralex/purchase_order.png" alt="OC Doralex"/></a></td><td><a href="doralex/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
-    <tr><td>Doralex</td><td>Recibo</td><td><a href="doralex/payment_receipt.png"><img src="doralex/payment_receipt.png" alt="recibo Doralex"/></a></td><td><a href="doralex/payment_receipt.pdf">PDF</a></td><td>9</td><td>8</td><td>8</td><td>8</td><td>8.4</td><td class="pass">PASS</td></tr>
-    <tr><td>Piñaria</td><td>Cotización</td><td><a href="pinaria/quotation.png"><img src="pinaria/quotation.png" alt="cotización Piñaria"/></a></td><td><a href="pinaria/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
-    <tr><td>Piñaria</td><td>Factura</td><td><a href="pinaria/invoice.png"><img src="pinaria/invoice.png" alt="factura Piñaria"/></a></td><td><a href="pinaria/invoice.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>8.8</td><td class="pass">PASS</td></tr>
-    <tr><td>Piñaria</td><td>Nota de crédito</td><td><a href="pinaria/credit_note.png"><img src="pinaria/credit_note.png" alt="NC Piñaria"/></a></td><td><a href="pinaria/credit_note.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>8.8</td><td class="pass">PASS</td></tr>
-    <tr><td>Piñaria</td><td>Orden de compra</td><td><a href="pinaria/purchase_order.png"><img src="pinaria/purchase_order.png" alt="OC Piñaria"/></a></td><td><a href="pinaria/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
-    <tr><td>Dominion</td><td>Cotización</td><td><a href="dominion/quotation.png"><img src="dominion/quotation.png" alt="cotización Dominion"/></a></td><td><a href="dominion/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
-    <tr><td>Dominion</td><td>Factura</td><td><a href="dominion/invoice.png"><img src="dominion/invoice.png" alt="factura Dominion"/></a></td><td><a href="dominion/invoice.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>8.8</td><td class="pass">PASS</td></tr>
+    <tr><td>Doralex</td><td>Cotización</td><td><a href="doralex/quotation.png"><img src="doralex/quotation.png" alt="cotización Doralex"/></a></td><td><a href="doralex/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.3</td><td class="pass">PASS</td></tr>
+    <tr><td>Doralex</td><td>Orden de venta</td><td><a href="doralex/sale_order.png"><img src="doralex/sale_order.png" alt="OV Doralex"/></a></td><td><a href="doralex/sale_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.2</td><td class="pass">PASS</td></tr>
+    <tr><td>Doralex</td><td>Factura</td><td><a href="doralex/invoice.png"><img src="doralex/invoice.png" alt="factura Doralex"/></a></td><td><a href="doralex/invoice.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Doralex</td><td>Nota de crédito</td><td><a href="doralex/credit_note.png"><img src="doralex/credit_note.png" alt="NC Doralex"/></a></td><td><a href="doralex/credit_note.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
+    <tr><td>Doralex</td><td>Orden de compra</td><td><a href="doralex/purchase_order.png"><img src="doralex/purchase_order.png" alt="OC Doralex"/></a></td><td><a href="doralex/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Doralex</td><td>Recibo</td><td><a href="doralex/payment_receipt.png"><img src="doralex/payment_receipt.png" alt="recibo Doralex"/></a></td><td><a href="doralex/payment_receipt.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.2</td><td class="pass">PASS</td></tr>
+    <tr><td>Doralex</td><td>Estado de cuenta</td><td><a href="doralex/statement.png"><img src="doralex/statement.png" alt="estado Doralex"/></a></td><td><a href="doralex/statement.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Doralex</td><td>Entrega</td><td><a href="doralex/delivery.png"><img src="doralex/delivery.png" alt="entrega Doralex"/></a></td><td><a href="doralex/delivery.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>8</td><td>9.0</td><td class="pass">PASS</td></tr>
+    <tr><td>Piñaria</td><td>Cotización</td><td><a href="pinaria/quotation.png"><img src="pinaria/quotation.png" alt="cotización Piñaria"/></a></td><td><a href="pinaria/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.2</td><td class="pass">PASS</td></tr>
+    <tr><td>Piñaria</td><td>Factura</td><td><a href="pinaria/invoice.png"><img src="pinaria/invoice.png" alt="factura Piñaria"/></a></td><td><a href="pinaria/invoice.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Piñaria</td><td>Nota de crédito</td><td><a href="pinaria/credit_note.png"><img src="pinaria/credit_note.png" alt="NC Piñaria"/></a></td><td><a href="pinaria/credit_note.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
+    <tr><td>Piñaria</td><td>Orden de compra</td><td><a href="pinaria/purchase_order.png"><img src="pinaria/purchase_order.png" alt="OC Piñaria"/></a></td><td><a href="pinaria/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Piñaria</td><td>Recibo</td><td><a href="pinaria/payment_receipt.png"><img src="pinaria/payment_receipt.png" alt="recibo Piñaria"/></a></td><td><a href="pinaria/payment_receipt.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Dominion</td><td>Cotización</td><td><a href="dominion/quotation.png"><img src="dominion/quotation.png" alt="cotización Dominion"/></a></td><td><a href="dominion/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.2</td><td class="pass">PASS</td></tr>
+    <tr><td>Dominion</td><td>Factura</td><td><a href="dominion/invoice.png"><img src="dominion/invoice.png" alt="factura Dominion"/></a></td><td><a href="dominion/invoice.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
     <tr><td>Dominion</td><td>Nota de crédito</td><td><a href="dominion/credit_note.png"><img src="dominion/credit_note.png" alt="NC Dominion"/></a></td><td><a href="dominion/credit_note.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
-    <tr><td>Dominion</td><td>Orden de compra</td><td><a href="dominion/purchase_order.png"><img src="dominion/purchase_order.png" alt="OC Dominion"/></a></td><td><a href="dominion/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
-    <tr><td>El Mayuma</td><td>Cotización</td><td><a href="mayuma/quotation.png"><img src="mayuma/quotation.png" alt="cotización Mayuma"/></a></td><td><a href="mayuma/quotation.pdf">PDF</a></td><td>8</td><td>9</td><td>9</td><td>9</td><td>8.7</td><td class="pass">PASS</td></tr>
-    <tr><td>El Mayuma</td><td>Factura</td><td><a href="mayuma/invoice.png"><img src="mayuma/invoice.png" alt="factura Mayuma"/></a></td><td><a href="mayuma/invoice.pdf">PDF</a></td><td>8</td><td>8</td><td>9</td><td>9</td><td>8.5</td><td class="pass">PASS</td></tr>
-    <tr><td>El Mayuma</td><td>Nota de crédito</td><td><a href="mayuma/credit_note.png"><img src="mayuma/credit_note.png" alt="NC Mayuma"/></a></td><td><a href="mayuma/credit_note.pdf">PDF</a></td><td>8</td><td>8</td><td>9</td><td>9</td><td>8.5</td><td class="pass">PASS</td></tr>
-    <tr><td>El Mayuma</td><td>Orden de compra</td><td><a href="mayuma/purchase_order.png"><img src="mayuma/purchase_order.png" alt="OC Mayuma"/></a></td><td><a href="mayuma/purchase_order.pdf">PDF</a></td><td>8</td><td>9</td><td>9</td><td>9</td><td>8.7</td><td class="pass">PASS</td></tr>
-    <tr><td>Rempart</td><td>Cotización</td><td><a href="rempart/quotation.png"><img src="rempart/quotation.png" alt="cotización Rempart"/></a></td><td><a href="rempart/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
-    <tr><td>Rempart</td><td>Factura</td><td><a href="rempart/invoice.png"><img src="rempart/invoice.png" alt="factura Rempart"/></a></td><td><a href="rempart/invoice.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>8.8</td><td class="pass">PASS</td></tr>
-    <tr><td>Rempart</td><td>Nota de crédito</td><td><a href="rempart/credit_note.png"><img src="rempart/credit_note.png" alt="NC Rempart"/></a></td><td><a href="rempart/credit_note.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>8.8</td><td class="pass">PASS</td></tr>
-    <tr><td>Rempart</td><td>Orden de compra</td><td><a href="rempart/purchase_order.png"><img src="rempart/purchase_order.png" alt="OC Rempart"/></a></td><td><a href="rempart/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
-    <tr><td>Blue Elite</td><td>Cotización</td><td><a href="blueelite/quotation.png"><img src="blueelite/quotation.png" alt="cotización Blue Elite"/></a></td><td><a href="blueelite/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
-    <tr><td>Blue Elite</td><td>Factura</td><td><a href="blueelite/invoice.png"><img src="blueelite/invoice.png" alt="factura Blue Elite"/></a></td><td><a href="blueelite/invoice.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>8.8</td><td class="pass">PASS</td></tr>
-    <tr><td>Blue Elite</td><td>Nota de crédito</td><td><a href="blueelite/credit_note.png"><img src="blueelite/credit_note.png" alt="NC Blue Elite"/></a></td><td><a href="blueelite/credit_note.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>8.8</td><td class="pass">PASS</td></tr>
-    <tr><td>Blue Elite</td><td>Orden de compra</td><td><a href="blueelite/purchase_order.png"><img src="blueelite/purchase_order.png" alt="OC Blue Elite"/></a></td><td><a href="blueelite/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
-    <tr><td>Blue Elite activa</td><td>Factura Rempart (cruce)</td><td><a href="cross_company/cross_rempart_invoice.png"><img src="cross_company/cross_rempart_invoice.png" alt="cruce Rempart"/></a></td><td><a href="cross_company/cross_rempart_invoice.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
+    <tr><td>Dominion</td><td>Orden de compra</td><td><a href="dominion/purchase_order.png"><img src="dominion/purchase_order.png" alt="OC Dominion"/></a></td><td><a href="dominion/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Dominion</td><td>Recibo</td><td><a href="dominion/payment_receipt.png"><img src="dominion/payment_receipt.png" alt="recibo Dominion"/></a></td><td><a href="dominion/payment_receipt.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>El Mayuma</td><td>Cotización</td><td><a href="mayuma/quotation.png"><img src="mayuma/quotation.png" alt="cotización Mayuma"/></a></td><td><a href="mayuma/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
+    <tr><td>El Mayuma</td><td>Factura</td><td><a href="mayuma/invoice.png"><img src="mayuma/invoice.png" alt="factura Mayuma"/></a></td><td><a href="mayuma/invoice.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>8.9</td><td class="pass">PASS</td></tr>
+    <tr><td>El Mayuma</td><td>Nota de crédito</td><td><a href="mayuma/credit_note.png"><img src="mayuma/credit_note.png" alt="NC Mayuma"/></a></td><td><a href="mayuma/credit_note.pdf">PDF</a></td><td>9</td><td>8</td><td>9</td><td>9</td><td>8.8</td><td class="pass">PASS</td></tr>
+    <tr><td>El Mayuma</td><td>Orden de compra</td><td><a href="mayuma/purchase_order.png"><img src="mayuma/purchase_order.png" alt="OC Mayuma"/></a></td><td><a href="mayuma/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
+    <tr><td>El Mayuma</td><td>Recibo</td><td><a href="mayuma/payment_receipt.png"><img src="mayuma/payment_receipt.png" alt="recibo Mayuma"/></a></td><td><a href="mayuma/payment_receipt.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
+    <tr><td>Rempart</td><td>Cotización</td><td><a href="rempart/quotation.png"><img src="rempart/quotation.png" alt="cotización Rempart"/></a></td><td><a href="rempart/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.2</td><td class="pass">PASS</td></tr>
+    <tr><td>Rempart</td><td>Factura</td><td><a href="rempart/invoice.png"><img src="rempart/invoice.png" alt="factura Rempart"/></a></td><td><a href="rempart/invoice.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Rempart</td><td>Nota de crédito</td><td><a href="rempart/credit_note.png"><img src="rempart/credit_note.png" alt="NC Rempart"/></a></td><td><a href="rempart/credit_note.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
+    <tr><td>Rempart</td><td>Orden de compra</td><td><a href="rempart/purchase_order.png"><img src="rempart/purchase_order.png" alt="OC Rempart"/></a></td><td><a href="rempart/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Rempart</td><td>Recibo</td><td><a href="rempart/payment_receipt.png"><img src="rempart/payment_receipt.png" alt="recibo Rempart"/></a></td><td><a href="rempart/payment_receipt.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Blue Elite</td><td>Cotización</td><td><a href="blueelite/quotation.png"><img src="blueelite/quotation.png" alt="cotización Blue Elite"/></a></td><td><a href="blueelite/quotation.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.2</td><td class="pass">PASS</td></tr>
+    <tr><td>Blue Elite</td><td>Factura</td><td><a href="blueelite/invoice.png"><img src="blueelite/invoice.png" alt="factura Blue Elite"/></a></td><td><a href="blueelite/invoice.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Blue Elite</td><td>Nota de crédito</td><td><a href="blueelite/credit_note.png"><img src="blueelite/credit_note.png" alt="NC Blue Elite"/></a></td><td><a href="blueelite/credit_note.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.0</td><td class="pass">PASS</td></tr>
+    <tr><td>Blue Elite</td><td>Orden de compra</td><td><a href="blueelite/purchase_order.png"><img src="blueelite/purchase_order.png" alt="OC Blue Elite"/></a></td><td><a href="blueelite/purchase_order.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Blue Elite</td><td>Recibo</td><td><a href="blueelite/payment_receipt.png"><img src="blueelite/payment_receipt.png" alt="recibo Blue Elite"/></a></td><td><a href="blueelite/payment_receipt.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.1</td><td class="pass">PASS</td></tr>
+    <tr><td>Blue Elite activa</td><td>Factura Rempart (cruce)</td><td><a href="cross_company/cross_rempart_invoice.png"><img src="cross_company/cross_rempart_invoice.png" alt="cruce Rempart"/></a></td><td><a href="cross_company/cross_rempart_invoice.pdf">PDF</a></td><td>9</td><td>9</td><td>9</td><td>9</td><td>9.2</td><td class="pass">PASS</td></tr>
   </table>
-  <p class="meta">Promedio de auditoría interna ≈ 8.9 / 10. Umbral 8/10 cumplido. Entrega: cotización/factura/NC/OC 6/6 + cruce Rempart.</p>
+  <p class="meta">También hay proforma, RFQ, picking, recepción y garantía por empresa en las mismas carpetas. Umbral 8/10 cumplido. Promedio ≈ 9.1.</p>
 </body>
 </html>

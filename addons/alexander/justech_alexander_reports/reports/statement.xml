@@ -3,7 +3,7 @@
     <template id="report_partner_statement_document">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="partner">
-                <t t-set="bundles" t-value="partner._dx_statement_bundles()"/>
+                <t t-set="bundles" t-value="partner._dx_statement_bundles(company)"/>
                 <t t-foreach="bundles" t-as="bundle">
                     <t t-set="o" t-value="bundle['anchor']"/>
                     <t t-set="company" t-value="bundle['company']"/>

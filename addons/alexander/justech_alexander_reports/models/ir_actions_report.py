@@ -19,6 +19,9 @@ class IrActionsReport(models.Model):
         if not model or model not in self.env:
             return self.env["res.company"]
         if model == "res.partner":
+            cid = self.env.context.get("dx_statement_company_id")
+            if cid:
+                return self.env["res.company"].sudo().browse(cid)
             return self.env["res.company"]
         if "company_id" not in self.env[model]._fields:
             return self.env["res.company"]

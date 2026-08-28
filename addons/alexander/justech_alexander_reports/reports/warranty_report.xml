@@ -15,15 +15,15 @@
                         <tbody>
                             <tr>
                                 <td><strong>Cliente</strong></td>
-                                <td t-field="doc.partner_id"/>
+                                <td><span t-field="doc.partner_id"/></td>
                             </tr>
                             <tr>
                                 <td><strong>Producto</strong></td>
-                                <td t-field="doc.product_id"/>
+                                <td><span t-field="doc.product_id"/></td>
                             </tr>
                             <tr>
                                 <td><strong>Inicio</strong></td>
-                                <td t-field="doc.date_start"/>
+                                <td><span t-field="doc.date_start"/></td>
                             </tr>
                             <tr>
                                 <td><strong>Cobertura</strong></td>

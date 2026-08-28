@@ -95,6 +95,9 @@
                 <div t-field="o.amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
             </div>
         </xpath>
+        <xpath expr="//table[@name='invoices']" position="attributes">
+            <attribute name="t-if">o.reconciled_invoice_ids or o.reconciled_bill_ids</attribute>
+        </xpath>
         <xpath expr="//div[hasclass('page')]" position="inside">
             <div t-if="not (o.reconciled_invoice_ids or o.reconciled_bill_ids)" class="dx-block">
                 <div class="dx-block-title">Facturas aplicadas</div>
