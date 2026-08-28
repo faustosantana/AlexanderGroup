@@ -45,7 +45,7 @@ FORBIDDEN_REFERENCES = [
 ]
 
 # Dominios/URLs permitidas dentro de manifests o código (documentación oficial).
-ALLOWED_URL_HINTS = ("odoo.com", "example.com", "localhost")
+ALLOWED_URL_HINTS = ("odoo.com", "example.com", "localhost", "doralexgroup.cloud")
 
 
 class ModuleReport:

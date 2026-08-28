@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="doralex_homepage" inherit_id="website.homepage" name="Doralex Home">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="oe_structure dx-site">
+                <t t-set="dx_companies" t-value="request.env['res.company'].sudo()._dx_public_companies()"/>
+                <t t-set="dx_areas" t-value="request.env['res.company'].sudo()._dx_public_areas()"/>
+                <t t-set="dx_home" t-value="request.env['res.company'].sudo().search([('dx_short_code', '=', 'DOR')], limit=1)"/>
+                <section class="dx-hero">
+                    <div class="container">
+                        <div class="dx-kicker">Alexander / Doralex Group</div>
+                        <h1>Un grupo empresarial dominicano, con identidad propia en cada compañía.</h1>
+                        <p class="lead mt-3">
+                            Doralex Group reúne empresas de comercio, servicios, alimentos,
+                            agroindustria e inversión. Cada compañía opera con su propia marca
+                            y su propia estructura, dentro de un mismo estándar profesional.
+                        </p>
+                        <div class="mt-4">
+                            <a href="#empresas" class="dx-cta">Conocer las empresas</a>
+                            <a href="/contactus" class="dx-cta ghost">Contactar</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="grupo" class="dx-section">
+                    <div class="container">
+                        <div class="dx-kicker">El grupo</div>
+                        <h2>Quiénes somos</h2>
+                        <p class="dx-intro">
+                            Somos un grupo de compañías dominicanas que combinan operación
+                            comercial, servicio al cliente y un enfoque empresarial ordenado.
+                            El website muestra únicamente información institucional pública.
+                        </p>
+                        <div class="dx-values">
+                            <div class="dx-card">
+                                <h3>Visión general</h3>
+                                <p>Crecer con compañías especializadas, independientes y coherentes entre sí.</p>
+                            </div>
+                            <div class="dx-card">
+                                <h3>Enfoque</h3>
+                                <p>Operación por empresa, control de grupo y una presentación institucional clara.</p>
+                            </div>
+                            <div class="dx-card">
+                                <h3>Presencia</h3>
+                                <p>Actividad en República Dominicana, con marcas propias para cada unidad de negocio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="empresas" class="dx-section alt">
+                    <div class="container">
+                        <div class="dx-kicker">Empresas</div>
+                        <h2>Seis compañías, una misma exigencia</h2>
+                        <p class="dx-intro">Nombre comercial, sector y una descripción pública breve. Sin datos fiscales internos.</p>
+                        <div class="dx-grid">
+                            <t t-foreach="dx_companies" t-as="co">
+                                <article class="dx-card">
+                                    <img t-if="co.get('logo_url')" t-att-src="co['logo_url']" t-att-alt="co['trade_name']"/>
+                                    <div class="sector" t-out="co['sector']"/>
+                                    <h3 t-out="co['trade_name']"/>
+                                    <p t-out="co['description']"/>
+                                    <a class="dx-more" t-attf-href="/empresas/#{co['code']}">Conocer más</a>
+                                </article>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="areas" class="dx-section">
+                    <div class="container">
+                        <div class="dx-kicker">Áreas de negocio</div>
+                        <h2>Actividades del grupo</h2>
+                        <p class="dx-intro">Representación visual basada en las actividades generales del levantamiento.</p>
+                        <div class="dx-areas">
+                            <t t-foreach="dx_areas" t-as="area">
+                                <div class="dx-area">
+                                    <strong t-out="area"/>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="valores" class="dx-section alt">
+                    <div class="container">
+                        <div class="dx-kicker">Valores / propósito</div>
+                        <h2>Cómo trabajamos</h2>
+                        <div class="dx-values">
+                            <div class="dx-card">
+                                <h3>Orden</h3>
+                                <p>Cada empresa con su identidad, su operación y su documentación.</p>
+                            </div>
+                            <div class="dx-card">
+                                <h3>Confianza</h3>
+                                <p>Información pública clara. Lo confidencial permanece en el ERP.</p>
+                            </div>
+                            <div class="dx-card">
+                                <h3>Continuidad</h3>
+                                <p>Un grupo preparado para crecer sin perder control ni criterio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contacto" class="dx-section">
+                    <div class="container">
+                        <div class="dx-contact-box">
+                            <div class="dx-kicker">Contacto</div>
+                            <h2>Hablemos</h2>
+                            <p class="mt-3 mb-4">Para consultas institucionales del grupo.</p>
+                            <t t-if="dx_home">
+                                <p t-if="dx_home.phone"><t t-out="dx_home.phone"/></p>
+                                <p t-if="dx_home.email"><t t-out="dx_home.email"/></p>
+                                <p t-if="dx_home.city"><t t-out="dx_home.city"/>, República Dominicana</p>
+                            </t>
+                            <a href="/contactus" class="dx-cta mt-3">Escribir al grupo</a>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="dx-footer">
+                    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+                        <span>© Doralex Group · Alexander Group</span>
+                        <span>ERP interno en <a href="/web">/web</a></span>
+                    </div>
+                </footer>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="company_detail" name="Empresa Doralex">
+        <t t-call="website.layout">
+            <t t-set="additional_title" t-value="dx['trade_name']"/>
+            <div id="wrap" class="dx-site">
+                <section class="dx-hero" t-attf-style="background: linear-gradient(135deg, #{dx['color']} 0%, #0b1f3a 100%);">
+                    <div class="container">
+                        <div class="dx-kicker">Doralex Group</div>
+                        <h1 t-out="dx['trade_name']"/>
+                        <p class="lead mt-3" t-out="dx['sector']"/>
+                    </div>
+                </section>
+                <section class="dx-section">
+                    <div class="container">
+                        <img t-if="dx.get('logo_url')" t-att-src="dx['logo_url']" t-att-alt="dx['trade_name']" style="max-height:72px;margin-bottom:1.5rem;"/>
+                        <p class="dx-intro" t-out="dx['description']"/>
+                        <a href="/#empresas" class="dx-cta">Volver al grupo</a>
+                        <a href="/contactus" class="dx-cta ghost" style="color:#0b1f3a;border-color:#0b1f3a;">Contactar</a>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

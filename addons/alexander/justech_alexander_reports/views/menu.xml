@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_doralex_report_preview"
+        name="Diseñador / Vista previa"
+        parent="justech_alexander_admin.menu_doralex_root"
+        action="action_open_preview_protected"
+        sequence="40"
+    />
+</odoo>

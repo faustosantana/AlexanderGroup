@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="menu_group" model="website.menu">
+            <field name="name">Grupo</field>
+            <field name="url">/#grupo</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">20</field>
+        </record>
+        <record id="menu_companies" model="website.menu">
+            <field name="name">Empresas</field>
+            <field name="url">/#empresas</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">30</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_preview_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="company" t-value="doc.company_id"/>
+                <t t-set="payload" t-value="doc._demo_payload()"/>
+                <t t-set="layout_document_title" t-value="payload['title']"/>
+                <t t-call="web.external_layout">
+                    <div class="dx-doc-info">
+                        <strong t-out="payload['number']"/>
+                        · <t t-out="payload['date']"/>
+                    </div>
+                    <div class="row mt-2 mb-3">
+                        <div class="col-6">
+                            <strong>Cliente / Proveedor</strong>
+                            <div t-out="payload['partner_name']"/>
+                            <div t-out="payload['partner_address']"/>
+                        </div>
+                        <div class="col-6 text-end">
+                            <div t-if="payload.get('salesperson')">Asesor: <t t-out="payload['salesperson']"/></div>
+                            <div>Documento de demostración</div>
+                        </div>
+                    </div>
+                    <table class="dx-lines">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Cant.</th>
+                                <th>Precio</th>
+                                <th>Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="payload['lines']" t-as="line">
+                                <td t-out="line['code']"/>
+                                <td t-out="line['name']"/>
+                                <td t-out="line['qty']"/>
+                                <td t-out="line['price']"/>
+                                <td t-out="line['subtotal']"/>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-end mt-3">
+                        <div>Subtotal: <t t-out="payload['amount_untaxed']"/></div>
+                        <div>ITBIS: <t t-out="payload['amount_tax']"/></div>
+                        <div><strong>Total: <t t-out="payload['amount_total']"/></strong></div>
+                    </div>
+                    <div class="dx-block">
+                        <strong>Términos / notas</strong>
+                        <p t-out="payload['terms']"/>
+                    </div>
+                    <div class="dx-block">
+                        <strong>Información de pago (demostración)</strong>
+                        <p>Banco de demostración · cuenta no fiscal · no se usa NCF.</p>
+                    </div>
+                    <div t-if="payload['show_signature']" class="dx-sign">
+                        <div class="dx-sign-line">Firma / Aceptación</div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_doralex_preview" model="ir.actions.report">
+        <field name="name">Vista previa Doralex</field>
+        <field name="model">doralex.report.preview</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">justech_alexander_reports.report_preview_document</field>
+        <field name="report_file">justech_alexander_reports.report_preview_document</field>
+        <field name="print_report_name">'PREVIEW-%s-%s' % (object.company_id.dx_short_code or 'DX', object.doc_type)</field>
+        <field name="paperformat_id" ref="paperformat_doralex_a4"/>
+    </record>
+</odoo>

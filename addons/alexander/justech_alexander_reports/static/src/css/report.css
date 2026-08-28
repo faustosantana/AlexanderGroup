@@ -1,0 +1,98 @@
+.dx-report-header,
+.dx-report-body,
+.dx-report-footer {
+  font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+  color: #1c2430;
+  font-size: 11px;
+}
+
+.dx-head-table,
+.dx-foot-table,
+.dx-lines {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dx-head-logo {
+  width: 28%;
+  vertical-align: middle;
+}
+
+.dx-head-identity {
+  width: 68%;
+  padding-left: 8px;
+  vertical-align: top;
+}
+
+.dx-head-accent {
+  width: 4px;
+}
+
+.dx-trade {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.dx-legal {
+  font-size: 11px;
+  color: #5b6573;
+}
+
+.dx-meta,
+.dx-rnc {
+  font-size: 10px;
+  color: #5b6573;
+}
+
+.dx-doc-title {
+  font-size: 18px;
+  margin: 8px 0 12px;
+}
+
+.dx-lines thead {
+  display: table-header-group;
+}
+
+.dx-lines th {
+  text-align: left;
+  border-bottom: 1px solid #1b365d;
+  padding: 4px 3px;
+  font-size: 10px;
+}
+
+.dx-lines td {
+  border-bottom: 1px solid #eceff3;
+  padding: 5px 3px;
+  vertical-align: top;
+  page-break-inside: avoid;
+}
+
+.dx-lines tr {
+  page-break-inside: avoid;
+}
+
+.dx-block {
+  margin-top: 12px;
+}
+
+.dx-sign {
+  margin-top: 28px;
+}
+
+.dx-sign-line {
+  width: 45%;
+  border-top: 1px solid #1c2430;
+  padding-top: 4px;
+}
+
+.dx-foot-table td {
+  border-top: 1px solid #d7dce3;
+  padding-top: 4px;
+  font-size: 9px;
+  color: #5b6573;
+}
+
+.dx-foot-page {
+  text-align: right;
+  white-space: nowrap;
+}

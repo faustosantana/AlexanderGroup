@@ -50,15 +50,17 @@ def test_addons_areas_have_readme() -> None:
         assert readme.is_file(), f"Falta README en addons/{area}"
 
 
-def test_no_own_functional_modules_yet() -> None:
-    """Aún no se crean módulos PROPIOS (justech_alexander_*) en addons/shared|alexander.
-
-    Los módulos de terceros vendorizados en addons/third_party/ (p. ej. importados
-    de Justgroup para su reutilización/adaptación) SÍ están permitidos.
-    """
+def test_no_own_modules_in_shared() -> None:
+    """addons/shared permanece vacío; los overlays viven en addons/alexander."""
     own = list((REPO_ROOT / "addons" / "shared").rglob("__manifest__.py"))
-    own += list((REPO_ROOT / "addons" / "alexander").rglob("__manifest__.py"))
     assert not own, (
-        "No deben existir módulos Odoo propios todavía en addons/shared|alexander: "
+        "No deben existir módulos Odoo en addons/shared: "
         f"{[str(m.relative_to(REPO_ROOT)) for m in own]}"
     )
+
+
+def test_alexander_modules_use_required_prefix() -> None:
+    own = list((REPO_ROOT / "addons" / "alexander").rglob("__manifest__.py"))
+    assert own, "Se esperan módulos justech_alexander_* en addons/alexander"
+    for manifest in own:
+        assert manifest.parent.name.startswith("justech_alexander_"), manifest

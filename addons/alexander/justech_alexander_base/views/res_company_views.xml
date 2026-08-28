@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form_doralex_base" model="ir.ui.view">
+        <field name="name">res.company.form.doralex.base</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Doralex" name="dx_doralex">
+                    <group string="Identidad pública">
+                        <field name="dx_short_code"/>
+                        <field name="dx_trade_name"/>
+                        <field name="dx_sequence"/>
+                        <field name="dx_website_published"/>
+                        <field name="dx_public_sector"/>
+                        <field name="dx_public_description"/>
+                    </group>
+                    <group string="Documentos">
+                        <field name="dx_report_show_logo"/>
+                        <field name="dx_report_logo_height"/>
+                        <field name="dx_report_show_legal_name"/>
+                        <field name="dx_report_show_rnc"/>
+                        <field name="dx_report_show_address"/>
+                        <field name="dx_report_show_phone"/>
+                        <field name="dx_report_show_email"/>
+                        <field name="dx_report_show_bank"/>
+                        <field name="dx_report_show_salesperson"/>
+                        <field name="dx_report_show_signature"/>
+                        <field name="dx_report_footer_text"/>
+                        <field name="dx_report_terms"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_doralex_admin_dashboard_form" model="ir.ui.view">
+        <field name="name">doralex.admin.dashboard.form</field>
+        <field name="model">doralex.admin.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Administración Doralex" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group string="Estado del sistema">
+                            <field name="system_state"/>
+                            <field name="odoo_version"/>
+                            <field name="active_company_id"/>
+                            <field name="module_count_installed"/>
+                            <field name="key_configured"/>
+                        </group>
+                        <group string="Diagnóstico">
+                            <field name="diagnosis" nolabel="1" colspan="2"/>
+                        </group>
+                    </group>
+                    <separator string="Módulos Justech / Doralex"/>
+                    <field name="line_ids" nolabel="1">
+                        <list>
+                            <field name="visual_state" decoration-success="visual_state == 'INSTALADO'" decoration-warning="visual_state in ('REQUIERE_CONFIGURACION', 'UPDATE_AVAILABLE')" decoration-danger="visual_state in ('ERROR', 'ENTERPRISE_REQUIRED')"/>
+                            <field name="technical_name"/>
+                            <field name="display_name_mod"/>
+                            <field name="version"/>
+                            <field name="dependencies"/>
+                            <field name="config_note"/>
+                            <field name="origin"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_doralex_admin_dashboard" model="ir.actions.server">
+        <field name="name">Estado del sistema</field>
+        <field name="model_id" ref="model_doralex_admin_dashboard"/>
+        <field name="state">code</field>
+        <field name="code">action = env["doralex.admin.dashboard"].action_open()</field>
+    </record>
+
+    <record id="action_open_dashboard_protected" model="ir.actions.server">
+        <field name="name">Estado del sistema</field>
+        <field name="model_id" ref="model_doralex_admin_auth_service"/>
+        <field name="state">code</field>
+        <field name="code">action = env["doralex.admin.auth.service"].action_open_dashboard()</field>
+    </record>
+
+    <record id="action_open_modules_protected" model="ir.actions.server">
+        <field name="name">Módulos Justech</field>
+        <field name="model_id" ref="model_doralex_admin_auth_service"/>
+        <field name="state">code</field>
+        <field name="code">action = env["doralex.admin.auth.service"].action_open_modules()</field>
+    </record>
+</odoo>

@@ -1,0 +1,57 @@
+"""Pruebas de módulos overlay justech_alexander_*."""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+ALEXANDER = REPO_ROOT / "addons" / "alexander"
+
+EXPECTED = {
+    "justech_alexander_base",
+    "justech_alexander_website",
+    "justech_alexander_admin",
+    "justech_alexander_reports",
+}
+
+CONFIDENTIAL_MARKERS = (
+    "1-32-",
+    "1-33-",
+    "cedula",
+    "cédula",
+    "representante legal",
+    "acc_number",
+    "partner.comment",
+    "company.vat",
+)
+
+
+def _manifests() -> list[Path]:
+    return list(ALEXANDER.rglob("__manifest__.py"))
+
+
+def test_alexander_modules_present() -> None:
+    names = {path.parent.name for path in _manifests()}
+    assert EXPECTED <= names
+
+
+def test_shared_has_no_own_modules() -> None:
+    own = list((REPO_ROOT / "addons" / "shared").rglob("__manifest__.py"))
+    assert not own
+
+
+def test_website_templates_hide_confidential_data() -> None:
+    website = ALEXANDER / "justech_alexander_website"
+    files = list(website.rglob("*.xml")) + list(website.rglob("*.py"))
+    assert files
+    for path in files:
+        text = path.read_text(encoding="utf-8").lower()
+        for marker in CONFIDENTIAL_MARKERS:
+            assert marker not in text, f"{marker} en {path}"
+
+
+def test_no_vendor_edits_in_overlay() -> None:
+    for path in _manifests():
+        text = path.read_text(encoding="utf-8")
+        assert "justech_alexander_" in path.parent.name
+        assert "LGPL-3" in text

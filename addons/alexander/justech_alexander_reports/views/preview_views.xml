@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_doralex_report_preview_form" model="ir.ui.view">
+        <field name="name">doralex.report.preview.form</field>
+        <field name="model">doralex.report.preview</field>
+        <field name="arch" type="xml">
+            <form string="Vista previa de documentos">
+                <sheet>
+                    <group>
+                        <field name="company_id"/>
+                        <field name="doc_type"/>
+                        <field name="preview_note"/>
+                    </group>
+                    <footer>
+                        <button name="action_print" type="object" string="Generar vista previa" class="btn-primary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_doralex_report_preview" model="ir.actions.server">
+        <field name="name">Vista previa de documentos</field>
+        <field name="model_id" ref="model_doralex_report_preview"/>
+        <field name="state">code</field>
+        <field name="code">action = env["doralex.report.preview"].action_open()</field>
+    </record>
+
+    <record id="action_open_preview_protected" model="ir.actions.server">
+        <field name="name">Vista previa de documentos</field>
+        <field name="model_id" ref="justech_alexander_admin.model_doralex_admin_auth_service"/>
+        <field name="state">code</field>
+        <field name="code">action = env["doralex.admin.auth.service"].open_protected("justech_alexander_reports.action_doralex_report_preview", "Vista previa de documentos")</field>
+    </record>
+</odoo>
