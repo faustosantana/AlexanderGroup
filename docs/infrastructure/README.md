@@ -12,6 +12,7 @@ Documentación de infraestructura del servidor nuevo de Doralex / Alexander Grou
 | [`DNS_AND_SSL.md`](DNS_AND_SSL.md) | Dominios definitivos `.cloud`, `DNS_REQUIRED`, certificados. |
 | [`MAIL_DNS_CLOSEOUT.md`](MAIL_DNS_CLOSEOUT.md) | MX/SPF/DKIM/DMARC de los 6 dominios de correo. |
 | [`MAIL_FUNCTIONAL_TEST.md`](MAIL_FUNCTIONAL_TEST.md) | Prueba funcional DEV: cotización, factura, aliases, aislamiento. |
+| [`MAIL_PRIMARY_FROM.md`](MAIL_PRIMARY_FROM.md) | From único `administracion@` por `document.company_id`. |
 | [`SECURITY_HARDENING.md`](SECURITY_HARDENING.md) | Endurecimiento de SSH, firewall, secretos. |
 | [`BACKUP_STRATEGY.md`](BACKUP_STRATEGY.md) | Estrategia de backups verificables. |
 | [`ENTERPRISE_READINESS.md`](ENTERPRISE_READINESS.md) | Odoo 19 Enterprise (`ENTERPRISE_SOURCE_PENDING`). |

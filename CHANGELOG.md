@@ -5,6 +5,10 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 
 ## Unreleased
 
+### Changed
+- Correo saliente Doralex: un solo From por empresa (`administracion@` de
+  `document.company_id`). Los aliases funcionales no se usan como remitente.
+
 ### Added
 - Estructura inicial del repositorio.
 - Documentación base.
