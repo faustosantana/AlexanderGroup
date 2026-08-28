@@ -89,6 +89,9 @@ def _dx_method_label(name):
         "Batch Payment": "Pago en lote",
     }
     return mapping.get(name or "", name or "—")
+
+
+def _dx_terms(company, fallback):
     return (company.dx_report_terms or company.invoice_terms or fallback or "").strip()
 
 
