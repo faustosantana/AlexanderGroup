@@ -1,0 +1,26 @@
+DORALEX MULTI-COMPANY M365 MAIL CLOSEOUT 2026-08-28
+PROD_UNTOUCHED=YES (doralex-production-odoo since 2026-08-27T20:12:21Z)
+
+PINARIA/REMPART public DNS (system, 1.1.1.1, 8.8.8.8): selector1, selector2, _dmarc PASS
+EXCHANGE DKIM Enable pinariagroup.com + rempartgroup.com: Enabled=True Status=Valid (all 6)
+
+DNS 1.1.1.1 all 6: MX SPF AUTODISCOVER DKIM1 DKIM2 DMARC PASS
+GoDaddy 4 domains not modified this run.
+
+MAIL
+Graph send/receive 36/36 From alias 6/6 Reply-To ventas@ 6/6
+Cross-company From preserved 3/3
+SMTP RCPT 250 on 6 aliases / 6 MX hosts
+Intra-tenant Graph Authentication-Results: dkim=none (same-tenant, expected)
+
+ODOO DEV
+mapping 6/6 outgoing 6/6 inbound cron OK
+CRM ventas@ -> crm.lead 6/6 company_id isolated (no cross-company)
+
+SCORES
+MX=6/6 SPF=6/6 AUTODISCOVER=6/6 DKIM=6/6 DMARC=6/6
+EXCHANGE_DKIM_ENABLED=6/6 MAIL_FLOW_TEST=6/6
+GRAPH_SEND=PASS FROM_ALIAS=PASS
+ODOO_OUTGOING_MAIL=PASS ODOO_INCOMING_MAIL=PASS MULTICOMPANY_MAIL_ISOLATION=PASS
+READY_FOR_MAIL_PRODUCTION=YES
+DORALEX MULTI-COMPANY M365 MAIL=COMPLETED
