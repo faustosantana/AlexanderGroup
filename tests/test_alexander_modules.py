@@ -62,6 +62,8 @@ def test_public_logo_uses_dedicated_route() -> None:
     assert "dx_website_published" in controller
     assert "_CODE_RE" in controller
     assert "_fallback_svg" in controller
+    assert "_reject_logo" in controller
+    assert "website=False" in controller
     assert "base64.b64decode" in controller
     assert "res.partner" not in controller
     assert "ir.attachment" not in controller

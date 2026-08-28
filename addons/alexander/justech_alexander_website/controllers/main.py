@@ -35,6 +35,56 @@ def _fallback_svg(label):
     ).encode("utf-8")
 
 
+def _reject_logo():
+    """404 de texto plano, sin plantilla Website."""
+    response = request.make_response(
+        b"Not found",
+        headers=[
+            ("Content-Type", "text/plain; charset=utf-8"),
+            ("Cache-Control", "no-store"),
+            ("X-Content-Type-Options", "nosniff"),
+        ],
+    )
+    response.status_code = 404
+    return response
+
+
+def _serve_published_logo(code):
+    raw_code = (code or "").strip()
+    if not _CODE_RE.fullmatch(raw_code):
+        return _reject_logo()
+    company = (
+        request.env["res.company"]
+        .sudo()
+        .search(
+            [
+                ("dx_short_code", "=", raw_code.upper()),
+                ("dx_website_published", "=", True),
+            ],
+            limit=1,
+        )
+    )
+    if not company:
+        return _reject_logo()
+    if company.logo:
+        raw = base64.b64decode(company.logo)
+        ctype = _logo_content_type(raw)
+    else:
+        raw = _fallback_svg(company.dx_trade_name or company.dx_short_code)
+        ctype = "image/svg+xml"
+    etag = hashlib.sha256(raw).hexdigest()[:16]
+    return request.make_response(
+        raw,
+        headers=[
+            ("Content-Type", ctype),
+            ("Content-Length", str(len(raw))),
+            ("Cache-Control", "public, max-age=86400"),
+            ("X-Content-Type-Options", "nosniff"),
+            ("ETag", '"%s"' % etag),
+        ],
+    )
+
+
 class DoralexWebsite(http.Controller):
     @http.route(
         ["/empresas/<string:code>"],
@@ -56,51 +106,22 @@ class DoralexWebsite(http.Controller):
         )
 
     @http.route(
-        ["/doralex/logo/<string:code>"],
+        [
+            "/doralex/logo/<string:code>",
+            "/doralex/logo/<path:code>",
+        ],
         type="http",
         auth="public",
-        website=True,
+        website=False,
         sitemap=False,
     )
     def company_logo(self, code, **kwargs):
         """Logo público de compañías publicadas. No sirve otros adjuntos."""
         try:
-            raw_code = (code or "").strip()
-            if not _CODE_RE.fullmatch(raw_code):
-                return request.not_found()
-            company = (
-                request.env["res.company"]
-                .sudo()
-                .search(
-                    [
-                        ("dx_short_code", "=", raw_code.upper()),
-                        ("dx_website_published", "=", True),
-                    ],
-                    limit=1,
-                )
-            )
-            if not company:
-                return request.not_found()
-            if company.logo:
-                raw = base64.b64decode(company.logo)
-                ctype = _logo_content_type(raw)
-            else:
-                raw = _fallback_svg(company.dx_trade_name or company.dx_short_code)
-                ctype = "image/svg+xml"
-            etag = hashlib.sha256(raw).hexdigest()[:16]
-            return request.make_response(
-                raw,
-                headers=[
-                    ("Content-Type", ctype),
-                    ("Content-Length", str(len(raw))),
-                    ("Cache-Control", "public, max-age=86400"),
-                    ("X-Content-Type-Options", "nosniff"),
-                    ("ETag", '"%s"' % etag),
-                ],
-            )
+            return _serve_published_logo(code)
         except Exception:
             _logger.info("public logo request rejected")
-            return request.not_found()
+            return _reject_logo()
 
 
 def _group_contact():
