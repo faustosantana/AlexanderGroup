@@ -3,6 +3,7 @@ from odoo.exceptions import ValidationError
 
 from .catalog import (
     address_for,
+    all_domains,
     belongs_to_domain,
     domain_of,
     profile_for_code,
@@ -50,6 +51,14 @@ class ResCompany(models.Model):
         if profile:
             return address_for(profile, role if role in mapping else "admin")
         return self.email or ""
+
+    def _dx_mail_identity(self, model, res_id=None):
+        """From/Reply-To del documento: alias del rol, siempre del dominio propio."""
+        self.ensure_one()
+        if not self.dx_mail_domain:
+            return ""
+        role = self._dx_role_for_document(model, res_id)
+        return self._dx_address_for_role(role)
 
     def _dx_role_for_document(self, model, res_id=None):
         if model == "dx.ms.functional.inbox" and res_id:
@@ -217,6 +226,11 @@ class ResCompany(models.Model):
         companies = self.sudo().search([])
         targets = companies.filtered(lambda c: c._dx_mail_profile())
         targets._dx_apply_mail_profile()
+        mapped = set(all_domains())
+        for company in companies - targets:
+            alias = company.alias_domain_id
+            if alias and alias.name in mapped:
+                company.alias_domain_id = False
         return True
 
     @api.model

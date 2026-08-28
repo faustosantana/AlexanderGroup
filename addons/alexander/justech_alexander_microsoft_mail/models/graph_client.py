@@ -285,23 +285,48 @@ class DxMsGraphClient(models.AbstractModel):
         )
 
     def list_inbox(self, mailbox, top=25):
+        return self._list_folder(
+            mailbox,
+            "inbox",
+            top=top,
+            select="id,subject,from,replyTo,toRecipients,receivedDateTime,internetMessageId,isRead,hasAttachments",
+            orderby="receivedDateTime desc",
+        )
+
+    def list_sent(self, mailbox, top=25):
+        return self._list_folder(
+            mailbox,
+            "sentitems",
+            top=top,
+            select="id,subject,from,replyTo,toRecipients,sentDateTime,internetMessageId",
+            orderby="sentDateTime desc",
+        )
+
+    def _list_folder(self, mailbox, folder, top=25, select=None, orderby=None):
         import urllib.parse
 
         qs = urllib.parse.urlencode(
             {
                 "$top": str(top),
-                "$select": "id,subject,from,receivedDateTime,internetMessageId,isRead,hasAttachments",
-                "$orderby": "receivedDateTime desc",
+                "$select": select
+                or "id,subject,from,receivedDateTime,internetMessageId,isRead,hasAttachments",
+                "$orderby": orderby or "receivedDateTime desc",
             }
         )
-        url = "%s/users/%s/mailFolders/inbox/messages?%s" % (
+        url = "%s/users/%s/mailFolders/%s/messages?%s" % (
             GRAPH_BASE,
             urllib.parse.quote(mailbox),
+            folder,
             qs,
         )
         status, data = self._http("GET", url)
         if status != 200:
-            _logger.error("Inbox list failed mailbox=%s status=%s", mailbox, status)
+            _logger.error(
+                "Folder list failed mailbox=%s folder=%s status=%s",
+                mailbox,
+                folder,
+                status,
+            )
             return []
         return data.get("value") or []
 

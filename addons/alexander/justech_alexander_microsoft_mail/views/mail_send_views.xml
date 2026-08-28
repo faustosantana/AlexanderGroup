@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_move_send_wizard_form_doralex_mail" model="ir.ui.view">
+        <field name="name">account.move.send.wizard.form.doralex.mail</field>
+        <field name="model">account.move.send.wizard</field>
+        <field name="inherit_id" ref="account.account_move_send_wizard_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='subject']" position="after">
+                <field name="dx_email_from" readonly="1"/>
+                <field name="dx_reply_to" readonly="1"/>
+                <field name="company_id" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

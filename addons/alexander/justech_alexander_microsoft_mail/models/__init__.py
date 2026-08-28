@@ -5,3 +5,5 @@ from . import functional_inbox
 from . import inbound
 from . import mail_mail
 from . import ir_mail_server
+from . import mail_compose_message
+from . import account_move_send

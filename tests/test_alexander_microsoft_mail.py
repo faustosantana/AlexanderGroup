@@ -59,6 +59,9 @@ def test_role_mapping_for_documents():
     assert catalog.role_for_model("account.move", "in_invoice") == "purchase"
     assert catalog.role_for_model("account.payment") == "accounting"
     assert catalog.role_for_model("mail.message") == "admin"
+    assert catalog.role_for_model("purchase.order") == catalog.role_for_model(
+        "purchase.requisition"
+    )
 
 
 def test_profiles_match_company_names():
@@ -106,4 +109,26 @@ def test_graph_send_is_used_instead_of_smtp_for_mapped_domains():
     assert "all_domains" in server
     assert "_dx_apply_company_from" in mail
     assert "belongs_to_domain" in mail
+    assert "self.exists()" in mail
     assert "smtp_password" not in graph
+    assert "list_sent" in graph
+    assert "sentitems" in graph
+
+
+def test_composer_and_invoice_force_company_identity():
+    composer = (MODULE / "models" / "mail_compose_message.py").read_text(
+        encoding="utf-8"
+    )
+    invoice = (MODULE / "models" / "account_move_send.py").read_text(encoding="utf-8")
+    company = (MODULE / "models" / "res_company.py").read_text(encoding="utf-8")
+    views = (MODULE / "views" / "mail_send_views.xml").read_text(encoding="utf-8")
+    assert "_dx_role_address" in composer
+    assert "email_from = addr" in composer
+    assert "reply_to = addr" in composer
+    assert "partner_id" in composer
+    assert "_dx_mail_identity" in invoice
+    assert 'kwargs["email_from"]' in invoice
+    assert "dx_email_from" in invoice
+    assert "dx_email_from" in views
+    assert "all_domains" in company
+    assert "alias_domain_id = False" in company
