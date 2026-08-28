@@ -200,6 +200,7 @@
                     <td>
                         <div class="dx-amount-label">Monto recibido</div>
                         <div class="dx-amount-hero" t-out="dx['amount']"/>
+                        <div t-if="dx.get('amount_words')" class="dx-amount-words">Son: <t t-out="dx['amount_words']"/></div>
                     </td>
                 </tr>
             </table>
@@ -251,6 +252,11 @@
                         </tr>
                     </tbody>
                 </table>
+            </t>
+            <t t-if="dx.get('banks') or dx.get('terms')">
+                <div class="dx-receipt-note">
+                    <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                </div>
             </t>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>

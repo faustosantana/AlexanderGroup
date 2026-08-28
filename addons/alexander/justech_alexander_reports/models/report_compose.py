@@ -71,7 +71,24 @@ def _dx_date(env, value):
     return format_date(env, value)
 
 
-def _dx_terms(company, fallback):
+def _dx_salesperson(user, company):
+    if not company.dx_report_show_salesperson or not user:
+        return ""
+    name = (user.name or "").strip()
+    if name in ("OdooBot", "Administrator", "Public user", "Public User"):
+        return "Equipo comercial"
+    return name
+
+
+def _dx_method_label(name):
+    mapping = {
+        "Manual Payment": "Pago manual",
+        "Manual": "Pago manual",
+        "Electronic": "Transferencia",
+        "Check": "Cheque",
+        "Batch Payment": "Pago en lote",
+    }
+    return mapping.get(name or "", name or "—")
     return (company.dx_report_terms or company.invoice_terms or fallback or "").strip()
 
 
@@ -156,11 +173,7 @@ class SaleOrderCompose(models.Model):
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.date_order),
             "validity": _dx_date(self.env, self.validity_date),
-            "salesperson": (
-                self.user_id.name
-                if company.dx_report_show_salesperson and self.user_id
-                else ""
-            ),
+            "salesperson": _dx_salesperson(self.user_id, company),
             "payment_term": self.payment_term_id.name if self.payment_term_id else "—",
             "currency": currency.name if currency else "",
             "client_ref": self.client_order_ref or "",
@@ -361,7 +374,7 @@ class AccountPaymentCompose(models.Model):
             )
         method = ""
         if self.payment_method_line_id:
-            method = self.payment_method_line_id.name
+            method = _dx_method_label(self.payment_method_line_id.name)
         bank = ""
         if self.journal_id:
             bank = self.journal_id.name
@@ -370,17 +383,30 @@ class AccountPaymentCompose(models.Model):
                 self.partner_bank_id.bank_id.name or bank,
                 self.partner_bank_id.acc_number or "",
             )
+        amount_words = ""
+        try:
+            amount_words = currency.with_context(lang="es_DO").amount_to_text(
+                self.amount
+            )
+        except Exception:
+            amount_words = ""
         return {
             "ident": self._dx_doc_identity(),
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.date),
             "amount": _dx_money(self.env, self.amount, currency),
+            "amount_words": amount_words,
             "currency": currency.name if currency else "",
             "method": method or "—",
             "bank": bank or "—",
             "reference": self.memo or "",
             "applied": applied,
             "unapplied": not bool(applied),
+            "banks": _dx_banks(company) if company.dx_report_show_bank else [],
+            "terms": (
+                "Este documento es un comprobante de ingreso. "
+                "No sustituye factura con NCF."
+            ),
             "show_signature": bool(company.dx_report_show_signature),
             "sign_left": "Recibido por",
             "sign_right": "Entregado por",

@@ -318,6 +318,17 @@
   margin-top: 2px;
   white-space: nowrap;
 }
+.dx-amount-words {
+  font-size: 9.5pt;
+  margin-top: 4px;
+  color: #333;
+}
+.dx-receipt-note {
+  margin-top: 10px;
+}
+.dx-comp-payment .dx-sign-table {
+  margin-top: 28px;
+}
 .dx-unapplied {
   font-size: 12pt;
   font-weight: 700;
