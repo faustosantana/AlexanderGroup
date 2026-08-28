@@ -14,7 +14,8 @@ class MailMail(models.Model):
             record = self.env[self.model].sudo().browse(self.res_id)
             if record.exists() and "company_id" in record._fields and record.company_id:
                 return record.company_id
-        return self.env["res.company"]
+        from_addr = parseaddr(self.email_from or "")[1]
+        return self.env["res.company"]._dx_company_for_email(from_addr)
 
     def _dx_apply_company_from(self):
         for mail in self:
@@ -23,22 +24,32 @@ class MailMail(models.Model):
                 continue
             role = company._dx_role_for_document(mail.model, mail.res_id)
             address = company._dx_address_for_role(role)
-            if not address:
+            if not address or not belongs_to_domain(address, company.dx_mail_domain):
                 continue
-            current = parseaddr(mail.email_from or "")[1]
-            if current and not belongs_to_domain(current, company.dx_mail_domain):
-                current = ""
-            if not current or current.lower() != address.lower():
-                mail.email_from = address
-            if not mail.reply_to or not belongs_to_domain(
-                parseaddr(mail.reply_to)[1], company.dx_mail_domain
-            ):
-                mail.reply_to = address
+            mail.email_from = address
+            mail.reply_to = address
+
+    def _dx_uses_graph(self):
+        self.ensure_one()
+        from_addr = parseaddr(self.email_from or "")[1]
+        company = self.env["res.company"]._dx_company_for_email(from_addr)
+        return bool(company and company.dx_mail_mailbox)
 
     def send(self, auto_commit=False, raise_exception=False, post_send_callback=None):
         self._dx_apply_company_from()
-        return super().send(
-            auto_commit=auto_commit,
-            raise_exception=raise_exception,
-            post_send_callback=post_send_callback,
-        )
+        graph = self.filtered(lambda mail: mail._dx_uses_graph())
+        smtp = self - graph
+        for mail in graph:
+            mail._send(
+                auto_commit=auto_commit,
+                raise_exception=raise_exception,
+                smtp_session=None,
+                post_send_callback=post_send_callback,
+            )
+        if smtp:
+            super(MailMail, smtp).send(
+                auto_commit=auto_commit,
+                raise_exception=raise_exception,
+                post_send_callback=post_send_callback,
+            )
+        return True
