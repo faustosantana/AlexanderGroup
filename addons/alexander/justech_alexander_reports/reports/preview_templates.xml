@@ -3,17 +3,19 @@
     <template id="report_preview_document">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
+                <t t-set="o" t-value="doc"/>
                 <t t-set="company" t-value="doc.company_id"/>
                 <t t-set="payload" t-value="doc._demo_payload()"/>
                 <t t-set="layout_document_title" t-value="payload['title']"/>
                 <t t-call="web.external_layout">
-                    <div class="dx-doc-info">
+                    <h2 t-out="payload['title']"/>
+                    <div class="dx-block">
                         <strong t-out="payload['number']"/>
                         · <t t-out="payload['date']"/>
                     </div>
                     <div class="row mt-2 mb-3">
                         <div class="col-6">
-                            <strong>Cliente / Proveedor</strong>
+                            <div class="dx-block-title">Cliente / Proveedor</div>
                             <div t-out="payload['partner_name']"/>
                             <div t-out="payload['partner_address']"/>
                         </div>
@@ -27,37 +29,40 @@
                             <tr>
                                 <th>Código</th>
                                 <th>Descripción</th>
-                                <th>Cant.</th>
-                                <th>Precio</th>
-                                <th>Importe</th>
+                                <th class="text-end">Cant.</th>
+                                <th class="text-end">Precio</th>
+                                <th class="text-end">Importe</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr t-foreach="payload['lines']" t-as="line">
                                 <td t-out="line['code']"/>
                                 <td t-out="line['name']"/>
-                                <td t-out="line['qty']"/>
-                                <td t-out="line['price']"/>
-                                <td t-out="line['subtotal']"/>
+                                <td class="text-end" t-out="line['qty']"/>
+                                <td class="text-end" t-out="line['price']"/>
+                                <td class="text-end" t-out="line['subtotal']"/>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="text-end mt-3">
-                        <div>Subtotal: <t t-out="payload['amount_untaxed']"/></div>
-                        <div>ITBIS: <t t-out="payload['amount_tax']"/></div>
-                        <div><strong>Total: <t t-out="payload['amount_total']"/></strong></div>
+                    <div id="total">
+                        <table>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td class="text-end" t-out="payload['amount_untaxed']"/>
+                            </tr>
+                            <tr>
+                                <td>ITBIS</td>
+                                <td class="text-end" t-out="payload['amount_tax']"/>
+                            </tr>
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td class="text-end"><strong class="dx-totals-grand" t-out="payload['amount_total']"/></td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="dx-block">
-                        <strong>Términos / notas</strong>
-                        <p t-out="payload['terms']"/>
-                    </div>
-                    <div class="dx-block">
-                        <strong>Información de pago (demostración)</strong>
-                        <p>Banco de demostración · cuenta no fiscal · no se usa NCF.</p>
-                    </div>
-                    <div t-if="payload['show_signature']" class="dx-sign">
-                        <div class="dx-sign-line">Firma / Aceptación</div>
-                    </div>
+                    <t t-call="justech_alexander_reports.dx_report_extras">
+                        <t t-set="company" t-value="doc.company_id"/>
+                    </t>
                 </t>
             </t>
         </t>

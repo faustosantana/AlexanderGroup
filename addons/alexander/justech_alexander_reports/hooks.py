@@ -8,6 +8,7 @@ def post_init_hook(env):
         raise_if_not_found=False,
     )
     companies = env["res.company"].sudo().search([("dx_short_code", "!=", False)])
+    companies._dx_sync_report_brand_colors()
     for company in companies:
         vals = {}
         if layout:

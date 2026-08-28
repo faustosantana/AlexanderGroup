@@ -3,26 +3,37 @@
     <template id="report_warranty_document">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
+                <t t-set="o" t-value="doc"/>
                 <t t-set="company" t-value="doc.company_id"/>
                 <t t-set="layout_document_title">Certificado de Garantía</t>
                 <t t-call="web.external_layout">
-                    <div class="dx-doc-info">
+                    <h2>Certificado de Garantía</h2>
+                    <div class="dx-block">
                         <strong t-field="doc.name"/>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-6">
-                            <strong>Cliente</strong>
-                            <div t-field="doc.partner_id"/>
-                        </div>
-                        <div class="col-6">
-                            <strong>Producto</strong>
-                            <div t-field="doc.product_id"/>
-                            <div>Inicio: <span t-field="doc.date_start"/></div>
-                            <div>Meses: <span t-field="doc.warranty_months"/></div>
-                        </div>
-                    </div>
+                    <table class="dx-lines">
+                        <tbody>
+                            <tr>
+                                <td><strong>Cliente</strong></td>
+                                <td><span t-field="doc.partner_id"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Producto</strong></td>
+                                <td><span t-field="doc.product_id"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Inicio</strong></td>
+                                <td><span t-field="doc.date_start"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cobertura</strong></td>
+                                <td><span t-field="doc.warranty_months"/> meses</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <t t-call="justech_alexander_reports.dx_report_extras">
                         <t t-set="company" t-value="doc.company_id"/>
+                        <t t-set="dx_extras_mode" t-value="'signs'"/>
                     </t>
                 </t>
             </t>

@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="sale_document_dx" inherit_id="sale.report_saleorder_document">
-        <xpath expr="//span[@name='order_note']" position="after">
-            <t t-call="justech_alexander_reports.dx_report_extras">
-                <t t-set="company" t-value="doc.company_id"/>
-            </t>
+        <xpath expr="//div[hasclass('page')]" position="attributes">
+            <attribute name="class">page dx-page dx-v2</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <div class="dx-composition-wrap">
+                <t t-set="dx" t-value="doc._dx_sale_compose()"/>
+                <t t-call="justech_alexander_reports.dx_sale_composition"/>
+            </div>
         </xpath>
     </template>
 
     <template id="invoice_document_dx" inherit_id="account.report_invoice_document">
-        <xpath expr="//div[@id='payment_term']" position="after">
-            <t t-call="justech_alexander_reports.dx_report_extras">
-                <t t-set="company" t-value="o.company_id"/>
-            </t>
+        <xpath expr="//div[hasclass('page')]" position="attributes">
+            <attribute name="class">page dx-page dx-v2</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <div class="dx-composition-wrap">
+                <t t-set="dx" t-value="o._dx_invoice_compose()"/>
+                <t t-call="justech_alexander_reports.dx_invoice_composition"/>
+            </div>
         </xpath>
     </template>
 
     <template id="purchase_order_dx" inherit_id="purchase.report_purchaseorder_document">
         <xpath expr="//div[@id='total']" position="after">
+            <div t-if="o.dest_address_id" class="dx-block">
+                <div class="dx-block-title">Entrega</div>
+                <div t-field="o.dest_address_id"
+                     t-options='{"widget": "contact", "fields": ["address", "phone"], "no_marker": True}'/>
+            </div>
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'purchase'"/>
             </t>
         </xpath>
     </template>
 
     <template id="purchase_rfq_dx" inherit_id="purchase.report_purchasequotation_document">
-        <xpath expr="//table" position="after">
+        <xpath expr="//div[hasclass('page')]/table" position="after">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'purchase'"/>
             </t>
         </xpath>
     </template>
@@ -36,15 +51,20 @@
         <xpath expr="//div[hasclass('page')]" position="inside">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'stock'"/>
             </t>
         </xpath>
     </template>
 
     <template id="payment_receipt_dx" inherit_id="account.report_payment_receipt_document">
-        <xpath expr="//div[hasclass('oe_structure')]" position="before">
-            <t t-call="justech_alexander_reports.dx_report_extras">
-                <t t-set="company" t-value="o.company_id"/>
-            </t>
+        <xpath expr="//div[hasclass('page')]" position="attributes">
+            <attribute name="class">page dx-page dx-v2</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <div class="dx-composition-wrap">
+                <t t-set="dx" t-value="o._dx_payment_compose()"/>
+                <t t-call="justech_alexander_reports.dx_payment_composition"/>
+            </div>
         </xpath>
     </template>
 
@@ -52,6 +72,16 @@
         <xpath expr="//div[hasclass('page')]" position="inside">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'stock'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="return_document_dx" inherit_id="stock.report_return_slip">
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <t t-call="justech_alexander_reports.dx_report_extras">
+                <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'stock'"/>
             </t>
         </xpath>
     </template>

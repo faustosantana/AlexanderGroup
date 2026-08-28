@@ -1,98 +1,543 @@
+/* Doralex report visual system V2. wkhtmltopdf 0.12.6 (Qt4): tables only, no flex/grid. */
+
 .dx-report-header,
 .dx-report-body,
 .dx-report-footer {
   font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
-  color: #1c2430;
-  font-size: 11px;
+  color: #1a1a1a;
+  font-size: 9.5pt;
+  line-height: 1.32;
 }
 
 .dx-head-table,
 .dx-foot-table,
-.dx-lines {
+.dx-sign-table,
+.dx-lines,
+.dx-meta-table,
+.dx-totals,
+.dx-zone-party,
+.dx-zone-bottom,
+.dx-kpi,
+.dx-aging,
+.dx-amount-box,
+.dx-applied {
   width: 100%;
   border-collapse: collapse;
 }
 
+/* ---- Header ~20–30mm ---- */
+.dx-report-header {
+  padding: 0;
+}
 .dx-head-logo {
-  width: 28%;
+  width: 24%;
   vertical-align: middle;
+  padding: 0 8px 0 0;
 }
-
 .dx-head-identity {
-  width: 68%;
-  padding-left: 8px;
-  vertical-align: top;
+  width: 42%;
+  vertical-align: middle;
+  padding: 0 8px 0 0;
 }
-
-.dx-head-accent {
-  width: 4px;
+.dx-head-doc {
+  width: 34%;
+  vertical-align: middle;
+  text-align: right;
+  padding: 0;
 }
-
 .dx-trade {
-  font-size: 16px;
+  font-size: 13pt;
   font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
 }
-
 .dx-legal {
-  font-size: 11px;
-  color: #5b6573;
+  font-size: 8pt;
+  color: #4a4a4a;
+  margin-top: 1px;
 }
-
 .dx-meta,
 .dx-rnc {
-  font-size: 10px;
-  color: #5b6573;
+  font-size: 8pt;
+  color: #4a4a4a;
+  margin-top: 1px;
+}
+.dx-rnc {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.dx-head-title {
+  font-size: 18pt;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+.dx-head-number {
+  font-size: 11pt;
+  margin-top: 3px;
+  font-weight: 700;
+}
+.dx-badge {
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: 1px solid #1a1a1a;
+  padding: 1px 5px;
+  margin-right: 6px;
+}
+.dx-head-rule {
+  height: 2px;
+  margin-top: 4px;
+  background: #1a1a1a;
 }
 
-.dx-doc-title {
-  font-size: 18px;
-  margin: 8px 0 12px;
+/* ---- Body composition ---- */
+.dx-page {
+  margin: 0;
+  padding: 0;
+}
+.dx-page.dx-v2 > *:not(.dx-composition-wrap) {
+  display: none !important;
+}
+.dx-composition-wrap,
+.dx-composition {
+  margin: 0;
+  padding: 0;
+}
+.dx-zone-party {
+  margin: 6px 0 8px;
+}
+.dx-zone-customer {
+  width: 56%;
+  vertical-align: top;
+  padding-right: 12px;
+}
+.dx-zone-meta {
+  width: 44%;
+  vertical-align: top;
+  padding-left: 4px;
+}
+.dx-card-title,
+.dx-block-title {
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 3px;
+  color: #333;
+}
+.dx-card-name {
+  font-size: 11pt;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+.dx-zone-customer div {
+  font-size: 9pt;
+  line-height: 1.3;
 }
 
+.dx-meta-table th {
+  text-align: left;
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: #555;
+  padding: 2px 8px 2px 0;
+  width: 38%;
+  vertical-align: top;
+}
+.dx-meta-table td {
+  font-size: 9.5pt;
+  padding: 2px 0;
+  font-weight: 500;
+}
+
+/* ---- Lines ---- */
+.dx-lines {
+  margin: 4px 0 6px;
+  font-size: 9pt;
+}
 .dx-lines thead {
   display: table-header-group;
 }
-
 .dx-lines th {
   text-align: left;
-  border-bottom: 1px solid #1b365d;
-  padding: 4px 3px;
-  font-size: 10px;
+  padding: 5px 4px;
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1.5px solid #1a1a1a;
 }
-
 .dx-lines td {
-  border-bottom: 1px solid #eceff3;
-  padding: 5px 3px;
+  padding: 7px 4px;
   vertical-align: top;
+  border-bottom: 1px solid #e6e6e6;
+  line-height: 1.28;
+}
+.dx-lines tbody tr {
   page-break-inside: avoid;
 }
+.dx-col-desc { width: 46%; }
+.dx-col-qty { width: 10%; text-align: right; }
+.dx-col-uom { width: 8%; }
+.dx-col-price { width: 12%; text-align: right; }
+.dx-col-tax { width: 9%; text-align: right; }
+.dx-col-amt { width: 15%; text-align: right; }
+.dx-lines th.dx-col-qty,
+.dx-lines th.dx-col-price,
+.dx-lines th.dx-col-tax,
+.dx-lines th.dx-col-amt,
+.dx-lines td.dx-col-qty,
+.dx-lines td.dx-col-price,
+.dx-lines td.dx-col-tax,
+.dx-lines td.dx-col-amt {
+  text-align: right;
+}
+.dx-money {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.dx-line-section td {
+  font-weight: 700;
+  background: #f3f3f3;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 8pt;
+}
+.dx-line-note td {
+  font-style: italic;
+  color: #444;
+}
 
-.dx-lines tr {
+/* ---- Totals next to terms ---- */
+.dx-zone-bottom {
+  margin-top: 4px;
   page-break-inside: avoid;
 }
-
-.dx-block {
-  margin-top: 12px;
+.dx-zone-terms {
+  width: 56%;
+  vertical-align: top;
+  padding-right: 14px;
+}
+.dx-zone-totals {
+  width: 44%;
+  vertical-align: top;
+}
+.dx-terms {
+  font-size: 8.5pt;
+  color: #333;
+  line-height: 1.35;
+  margin: 0 0 6px;
+}
+.dx-bank-title { margin-top: 8px; }
+.dx-bank-line {
+  font-size: 8.5pt;
+  color: #333;
+  margin: 0 0 2px;
+}
+.dx-totals th {
+  text-align: left;
+  font-size: 9.5pt;
+  font-weight: 500;
+  padding: 3px 8px 3px 0;
+}
+.dx-totals td {
+  text-align: right;
+  font-size: 9.5pt;
+  padding: 3px 0;
+  white-space: nowrap;
+}
+.dx-totals .dx-total-grand th,
+.dx-totals .dx-total-grand td {
+  font-size: 13pt;
+  font-weight: 700;
+  padding-top: 7px;
+  border-top: 2px solid #1a1a1a;
 }
 
-.dx-sign {
-  margin-top: 28px;
+/* ---- Signatures ---- */
+.dx-sign,
+.dx-sign-table {
+  margin-top: 18px;
+  page-break-inside: avoid;
 }
-
+.dx-sign-table td {
+  width: 50%;
+  padding-right: 22px;
+  vertical-align: top;
+}
+.dx-sign-space {
+  height: 32px;
+}
 .dx-sign-line {
-  width: 45%;
-  border-top: 1px solid #1c2430;
+  border-top: 1px solid #1a1a1a;
   padding-top: 4px;
+  font-size: 8pt;
+  color: #444;
 }
 
+/* ---- Footer ---- */
+.dx-foot-rule {
+  height: 2px;
+  background: #1a1a1a;
+  margin-bottom: 3px;
+}
 .dx-foot-table td {
-  border-top: 1px solid #d7dce3;
-  padding-top: 4px;
-  font-size: 9px;
-  color: #5b6573;
+  font-size: 8pt;
+  color: #444;
+  padding: 0;
 }
-
 .dx-foot-page {
   text-align: right;
   white-space: nowrap;
+  width: 22%;
 }
+
+/* ---- Payment ---- */
+.dx-amount-box {
+  margin: 4px 0 10px;
+  page-break-inside: avoid;
+}
+.dx-amount-box td {
+  padding: 10px 12px;
+  border-top: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+}
+.dx-amount-label {
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #444;
+}
+.dx-amount-hero {
+  font-size: 26pt;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+.dx-amount-words {
+  font-size: 9.5pt;
+  margin-top: 4px;
+  color: #333;
+}
+.dx-receipt-note {
+  margin-top: 10px;
+}
+.dx-comp-payment .dx-sign-table {
+  margin-top: 28px;
+}
+.dx-unapplied {
+  font-size: 12pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-top: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  padding: 8px 0;
+  margin: 8px 0 4px;
+}
+.dx-unapplied-help {
+  font-size: 9pt;
+  color: #333;
+  margin: 0 0 10px;
+}
+.dx-reason {
+  margin-top: 8px;
+  font-size: 9pt;
+}
+
+/* ---- Statement ---- */
+.dx-kpi {
+  margin: 6px 0 10px;
+}
+.dx-kpi td {
+  width: 33.33%;
+  vertical-align: top;
+  padding: 10px 8px 12px 0;
+  border-top: 2px solid #1a1a1a;
+}
+.dx-kpi-label {
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #555;
+}
+.dx-kpi-value {
+  font-size: 14pt;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.dx-statement-lines td,
+.dx-statement-lines th {
+  font-size: 8.5pt;
+}
+.dx-aging {
+  margin: 4px 0 8px;
+  page-break-inside: avoid;
+}
+.dx-aging th,
+.dx-aging td {
+  width: 20%;
+  text-align: center;
+  padding: 6px 4px;
+  font-size: 9pt;
+}
+.dx-aging th {
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1.5px solid #1a1a1a;
+}
+.dx-aging td {
+  font-weight: 700;
+  font-size: 10pt;
+  white-space: nowrap;
+}
+
+.dx-block { margin-top: 10px; }
+
+/* Fallback for remaining Odoo bodies (PO / stock until their V2) */
+.dx-report-body h2 {
+  font-size: 16pt;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.dx-report-body table.o_main_table,
+.dx-report-body table.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+.dx-report-body table.o_main_table thead,
+.dx-report-body table.table thead { display: table-header-group; }
+.dx-report-body table.o_main_table th,
+.dx-report-body table.table thead th {
+  text-align: left;
+  padding: 5px 4px;
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1.5px solid #1a1a1a;
+}
+.dx-report-body table.o_main_table td,
+.dx-report-body table.table td {
+  padding: 5px 4px;
+  vertical-align: top;
+  border-bottom: 1px solid #e6e6e6;
+}
+.dx-report-body #total {
+  width: 44%;
+  margin-left: auto;
+  margin-top: 8px;
+  page-break-inside: avoid;
+}
+
+/* ============ DOR — industrial, naranja/negro del logo ============ */
+.dx-theme-DOR.dx-report-header {
+  border-left: 4px solid #E86A12;
+  padding-left: 6px;
+}
+.dx-theme-DOR .dx-head-rule { background: #1A1A1A; height: 2px; }
+.dx-theme-DOR .dx-head-title { color: #1A1A1A; }
+.dx-theme-DOR .dx-rnc { color: #E86A12; }
+.dx-theme-DOR .dx-lines th {
+  background: #1A1A1A;
+  color: #fff;
+  border-bottom: none;
+}
+.dx-theme-DOR .dx-lines tbody tr:nth-child(even) td { background: #f7f7f7; }
+.dx-theme-DOR .dx-totals .dx-total-grand th,
+.dx-theme-DOR .dx-totals .dx-total-grand td {
+  border-top: 2px solid #E86A12;
+  color: #1A1A1A;
+}
+.dx-theme-DOR .dx-totals .dx-total-grand td { color: #E86A12; }
+.dx-theme-DOR.dx-report-footer .dx-foot-rule { background: #E86A12; height: 2px; }
+.dx-theme-DOR .dx-amount-box td { border-color: #E86A12; }
+.dx-theme-DOR .dx-amount-hero { color: #E86A12; }
+.dx-theme-DOR .dx-unapplied { border-color: #E86A12; }
+.dx-theme-DOR .dx-kpi td { border-top-color: #E86A12; }
+.dx-theme-DOR .dx-kpi-overdue .dx-kpi-value { color: #E86A12; }
+.dx-theme-DOR .dx-aging th { border-bottom-color: #E86A12; }
+.dx-theme-DOR.dx-report-body table.o_main_table th,
+.dx-theme-DOR.dx-report-body table.table thead th {
+  background: #1A1A1A;
+  color: #fff;
+  border-bottom: none;
+}
+
+/* ============ PIN — orgánico, rojo + verde del sello ============ */
+.dx-theme-PIN.dx-report-header {
+  border-left: 4px solid #2E7D32;
+  padding-left: 6px;
+}
+.dx-theme-PIN .dx-head-rule { background: #C41E3A; height: 2px; }
+.dx-theme-PIN .dx-trade,
+.dx-theme-PIN .dx-head-title {
+  font-family: "DejaVu Serif", "Times New Roman", serif;
+  color: #C41E3A;
+}
+.dx-theme-PIN .dx-rnc { color: #2E7D32; }
+.dx-theme-PIN .dx-lines th {
+  background: #f3f7f3;
+  color: #1a1a1a;
+  border-top: 2px solid #2E7D32;
+  border-bottom: 2px solid #C41E3A;
+}
+.dx-theme-PIN .dx-totals .dx-total-grand td { color: #C41E3A; }
+.dx-theme-PIN.dx-report-footer .dx-foot-rule { background: #2E7D32; }
+.dx-theme-PIN .dx-amount-hero { color: #C41E3A; }
+
+/* ============ DOM — corporativo teal / naranja ============ */
+.dx-theme-DOM.dx-report-header { border-top: 3px solid #2AA8A4; }
+.dx-theme-DOM .dx-logo-panel { background: #111111; padding: 4px; text-align: center; }
+.dx-theme-DOM .dx-head-rule { background: #F08A3C; height: 2px; }
+.dx-theme-DOM .dx-trade,
+.dx-theme-DOM .dx-head-title { color: #2AA8A4; text-transform: uppercase; }
+.dx-theme-DOM .dx-lines th { background: #2AA8A4; color: #fff; border-bottom: none; }
+.dx-theme-DOM .dx-totals .dx-total-grand td { color: #F08A3C; }
+.dx-theme-DOM.dx-report-footer .dx-foot-rule { background: #2AA8A4; }
+.dx-theme-DOM .dx-amount-hero { color: #2AA8A4; }
+
+/* ============ MAY — arquitectónico, teal sobre carbón ============ */
+.dx-theme-MAY.dx-report-header { border-top: 3px solid #111111; }
+.dx-theme-MAY .dx-logo-panel { background: #111111; padding: 4px 8px; text-align: center; }
+.dx-theme-MAY .dx-trade,
+.dx-theme-MAY .dx-head-title {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.dx-theme-MAY .dx-rnc { border-left: 3px solid #2EC4B6; padding-left: 6px; }
+.dx-theme-MAY .dx-head-rule { background: #2EC4B6; height: 2px; }
+.dx-theme-MAY .dx-lines th { background: #111111; color: #fff; border-bottom: none; }
+.dx-theme-MAY.dx-report-footer .dx-foot-rule { background: #111111; }
+
+/* ============ REM — institucional, logo con presencia ============ */
+.dx-theme-REM.dx-report-header { border-top: 3px solid #1A1A1A; }
+.dx-theme-REM .dx-head-rule { background: #3D7AB5; height: 2px; }
+.dx-theme-REM .dx-trade,
+.dx-theme-REM .dx-head-title {
+  font-family: "DejaVu Serif", "Times New Roman", serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.dx-theme-REM .dx-lines th { background: #1A1A1A; color: #fff; border-bottom: none; }
+.dx-theme-REM.dx-report-footer .dx-foot-rule { background: #1A1A1A; }
+.dx-theme-REM .dx-amount-hero { color: #1A1A1A; }
+
+/* ============ BLU — premium azul / cyan ============ */
+.dx-theme-BLU.dx-report-header {
+  border-top: 3px solid #0A3D91;
+  border-bottom: 2px solid #00AEEF;
+}
+.dx-theme-BLU .dx-head-rule { display: none; }
+.dx-theme-BLU .dx-trade,
+.dx-theme-BLU .dx-head-title { color: #0A3D91; }
+.dx-theme-BLU .dx-lines th { background: #0A3D91; color: #fff; border-bottom: none; }
+.dx-theme-BLU .dx-lines tbody tr:nth-child(even) td { background: #f3f8fd; }
+.dx-theme-BLU .dx-totals .dx-total-grand td { color: #0A3D91; }
+.dx-theme-BLU.dx-report-footer .dx-foot-rule { background: #0A3D91; }
+.dx-theme-BLU .dx-amount-hero { color: #0A3D91; }

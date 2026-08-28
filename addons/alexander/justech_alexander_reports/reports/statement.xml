@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_partner_statement_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="partner">
+                <t t-set="bundles" t-value="partner._dx_statement_bundles(company)"/>
+                <t t-foreach="bundles" t-as="bundle">
+                    <t t-set="o" t-value="bundle['anchor']"/>
+                    <t t-set="company" t-value="bundle['company']"/>
+                    <t t-set="dx_header_identity" t-value="{'title': 'ESTADO DE CUENTA', 'number': bundle['cutoff'], 'badge': ''}"/>
+                    <t t-call="web.external_layout">
+                        <div class="page dx-page">
+                            <table class="dx-zone-party">
+                                <tr>
+                                    <td class="dx-zone-customer">
+                                        <div class="dx-card-title">Cliente</div>
+                                        <div class="dx-card-name" t-out="bundle['partner_name']"/>
+                                        <div t-if="bundle.get('partner_vat')">RNC <t t-out="bundle['partner_vat']"/></div>
+                                    </td>
+                                    <td class="dx-zone-meta">
+                                        <table class="dx-meta-table">
+                                            <tr><th>Fecha de corte</th><td t-out="bundle['cutoff']"/></tr>
+                                            <tr><th>Moneda</th><td t-out="bundle['currency']"/></tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="dx-kpi">
+                                <tr>
+                                    <td t-foreach="bundle['kpis']" t-as="kpi" t-attf-class="dx-kpi-#{kpi['tone']}">
+                                        <div class="dx-kpi-label" t-out="kpi['label']"/>
+                                        <div class="dx-kpi-value dx-money" t-out="kpi['value']"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="dx-lines dx-statement-lines">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Documento</th>
+                                        <th>NCF</th>
+                                        <th>Vencimiento</th>
+                                        <th>Días</th>
+                                        <th class="dx-col-amt">Débito</th>
+                                        <th class="dx-col-amt">Crédito</th>
+                                        <th class="dx-col-amt">Saldo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="bundle['rows']" t-as="row">
+                                        <td t-out="row['date']"/>
+                                        <td t-out="row['document']"/>
+                                        <td t-out="row['ncf']"/>
+                                        <td t-out="row['due']"/>
+                                        <td t-out="row['days']"/>
+                                        <td class="dx-money" t-out="row['debit']"/>
+                                        <td class="dx-money" t-out="row['credit']"/>
+                                        <td class="dx-money" t-out="row['balance']"/>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="dx-block-title">Antigüedad de saldo</div>
+                            <table class="dx-aging">
+                                <tr>
+                                    <th>Corriente</th>
+                                    <th>1–30</th>
+                                    <th>31–60</th>
+                                    <th>61–90</th>
+                                    <th>90+</th>
+                                </tr>
+                                <tr>
+                                    <td class="dx-money" t-out="bundle['current']"/>
+                                    <td class="dx-money" t-out="bundle['age_30']"/>
+                                    <td class="dx-money" t-out="bundle['age_60']"/>
+                                    <td class="dx-money" t-out="bundle['age_90']"/>
+                                    <td class="dx-money" t-out="bundle['age_90p']"/>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+                <t t-if="not bundles">
+                    <t t-set="o" t-value="False"/>
+                    <t t-set="company" t-value="partner.company_id or company"/>
+                    <t t-set="dx_header_identity" t-value="{'title': 'ESTADO DE CUENTA', 'number': '', 'badge': ''}"/>
+                    <t t-call="web.external_layout">
+                        <div class="page dx-page">
+                            <p>No hay documentos de cliente para este contacto.</p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_partner_statement" model="ir.actions.report">
+        <field name="name">Estado de cuenta</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">justech_alexander_reports.report_partner_statement_document</field>
+        <field name="report_file">justech_alexander_reports.report_partner_statement_document</field>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_doralex_a4"/>
+    </record>
+</odoo>

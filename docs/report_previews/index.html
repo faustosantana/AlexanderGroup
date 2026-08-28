@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <title>Doralex — REPORT_DESIGN_V2 checkpoint</title>
+  <style>
+    body { font-family: Georgia, serif; margin: 24px; background: #f4f4f1; color: #1a1a1a; }
+    h1 { font-size: 28px; }
+    h2 { margin-top: 28px; }
+    table { border-collapse: collapse; width: 100%; background: #fff; margin-bottom: 28px; }
+    th, td { border: 1px solid #ddd; padding: 8px; font-size: 13px; vertical-align: top; }
+    th { background: #111; color: #fff; text-align: left; }
+    img.full { width: 100%; max-width: 720px; height: auto; border: 1px solid #ccc; background: #fff; }
+    img.thumb { max-width: 280px; height: auto; border: 1px solid #ccc; }
+    .meta { color: #555; font-size: 14px; margin-bottom: 18px; }
+    .rej { color: #9b1c1c; font-weight: 700; }
+    .pend { color: #8a5a00; font-weight: 700; }
+    .pair { display: table; width: 100%; margin-bottom: 24px; }
+    .col { display: table-cell; width: 50%; padding-right: 12px; vertical-align: top; }
+  </style>
+</head>
+<body>
+  <h1>Checkpoint visual Doralex V2</h1>
+  <p class="meta">
+    <span class="rej">REPORT_DESIGN_V1 = REJECTED</span> ·
+    DORALEX_DESIGN_V2_CHECKPOINT = PENDING (auditoría objetiva, no autoaprobación) ·
+    REPORT_SUITE_COMPLETE = NO · PROD_UNTOUCHED = YES<br/>
+    Motor: wkhtmltopdf 0.12.6.1 · A4 · <code>document.company_id</code> · DEV only.<br/>
+    Paleta Doralex (logo real): primary <code>#E86A12</code> · secondary <code>#1A1A1A</code> · accent <code>#E86A12</code> · neutral <code>#5C5C5C</code>.
+  </p>
+
+  <h2>WHAT_WAS_WRONG_V1</h2>
+  <p class="meta">
+    Header 46 mm + esqueleto Bootstrap de Odoo. Título “Borrador” / “Quotation #”.
+    Tablas pequeñas, totales flotando, recibo y estado casi vacíos, scores 8.8–9.3 inválidos.
+    PDF_RENDER=PASS no implica DESIGN=PASS.
+  </p>
+  <h2>WHAT_CHANGED_V2</h2>
+  <p class="meta">
+    Paperformat compacto (32/28/16). Header con logo + empresa + título/número.
+    Composición propia por documento (no el layout técnico de Odoo).
+    FACTURA/COTIZACIÓN/RECIBO/ESTADO como título; BORRADOR es badge.
+    Tabla a ancho completo, totales junto a términos, firmas profesionales.
+  </p>
+
+  <h2>Before / After — Doralex</h2>
+  <div class="pair">
+    <div class="col">
+      <h3>Cotización V1 (rechazada)</h3>
+      <a href="v1/doralex/quotation.png"><img class="thumb" src="v1/doralex/quotation.png" alt="V1 cotización"/></a>
+    </div>
+    <div class="col">
+      <h3>Cotización V2</h3>
+      <a href="doralex/quotation.png"><img class="full" src="doralex/quotation.png" alt="V2 cotización"/></a>
+    </div>
+  </div>
+  <div class="pair">
+    <div class="col">
+      <h3>Factura V1 (rechazada)</h3>
+      <a href="v1/doralex/invoice.png"><img class="thumb" src="v1/doralex/invoice.png" alt="V1 factura"/></a>
+    </div>
+    <div class="col">
+      <h3>Factura V2</h3>
+      <a href="doralex/invoice.png"><img class="full" src="doralex/invoice.png" alt="V2 factura"/></a>
+    </div>
+  </div>
+  <div class="pair">
+    <div class="col">
+      <h3>Recibo V1 (rechazada)</h3>
+      <a href="v1/doralex/payment_receipt.png"><img class="thumb" src="v1/doralex/payment_receipt.png" alt="V1 recibo"/></a>
+    </div>
+    <div class="col">
+      <h3>Recibo V2</h3>
+      <a href="doralex/payment_receipt.png"><img class="full" src="doralex/payment_receipt.png" alt="V2 recibo"/></a>
+    </div>
+  </div>
+  <div class="pair">
+    <div class="col">
+      <h3>Estado de cuenta V1 (rechazada)</h3>
+      <a href="v1/doralex/statement.png"><img class="thumb" src="v1/doralex/statement.png" alt="V1 estado"/></a>
+    </div>
+    <div class="col">
+      <h3>Estado de cuenta V2</h3>
+      <a href="doralex/statement.png"><img class="full" src="doralex/statement.png" alt="V2 estado"/></a>
+    </div>
+  </div>
+  <p class="meta">PNG a 150 dpi (página completa). Los previews de las otras empresas siguen siendo V1 y no forman parte de este checkpoint.</p>
+</body>
+</html>
