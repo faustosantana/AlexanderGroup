@@ -197,7 +197,7 @@ class ResCompany(models.Model):
             self._dx_rename_stock_sequences(old_code, code)
 
     def _dx_rename_locations(self, warehouse, old_code, new_code):
-        Location = self.env["stock.location"].sudo()
+        Location = self.env["stock.location"].sudo().with_context(active_test=False)
         locations = Location.search(
             [
                 ("company_id", "=", self.id),
