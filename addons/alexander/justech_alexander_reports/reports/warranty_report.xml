@@ -33,6 +33,7 @@
                     </table>
                     <t t-call="justech_alexander_reports.dx_report_extras">
                         <t t-set="company" t-value="doc.company_id"/>
+                        <t t-set="dx_extras_mode" t-value="'signs'"/>
                     </t>
                 </t>
             </t>

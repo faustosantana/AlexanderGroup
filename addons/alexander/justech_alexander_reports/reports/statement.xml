@@ -5,15 +5,14 @@
             <t t-foreach="docs" t-as="partner">
                 <t t-set="bundles" t-value="partner._dx_statement_bundles()"/>
                 <t t-foreach="bundles" t-as="bundle">
-                    <t t-set="o" t-value="partner"/>
+                    <t t-set="o" t-value="bundle['anchor']"/>
                     <t t-set="company" t-value="bundle['company']"/>
                     <t t-set="layout_document_title">Estado de cuenta</t>
                     <t t-call="web.external_layout">
-                        <h2>Estado de cuenta</h2>
                         <div class="dx-block">
                             <strong t-out="partner.commercial_partner_id.name"/>
                             <div t-if="partner.vat">RNC / Cédula: <t t-out="partner.vat"/></div>
-                            <div>Corte: <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/></div>
+                            <div>Corte: <t t-out="bundle['cutoff']"/></div>
                         </div>
                         <table class="dx-lines">
                             <thead>
@@ -28,37 +27,43 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr t-foreach="bundle['moves']" t-as="move">
-                                    <td><span t-field="move.invoice_date"/></td>
-                                    <td>
-                                        <span t-field="move.name"/>
-                                        <t t-if="move.l10n_latam_document_number"> · <span t-field="move.l10n_latam_document_number"/></t>
-                                    </td>
-                                    <td><span t-field="move.invoice_date_due"/></td>
-                                    <td><span t-field="move.state"/></td>
-                                    <td class="text-end">
-                                        <t t-if="move.move_type == 'out_invoice'">
-                                            <span t-field="move.amount_total_signed"/>
-                                        </t>
-                                    </td>
-                                    <td class="text-end">
-                                        <t t-if="move.move_type == 'out_refund'">
-                                            <span t-field="move.amount_total_signed"/>
-                                        </t>
-                                    </td>
-                                    <td class="text-end">
-                                        <span t-field="move.amount_residual_signed"/>
-                                    </td>
+                                <tr t-foreach="bundle['rows']" t-as="row">
+                                    <td t-out="row['date']"/>
+                                    <td t-out="row['document']"/>
+                                    <td t-out="row['due']"/>
+                                    <td t-out="row['state']"/>
+                                    <td class="text-end" t-out="row['debit']"/>
+                                    <td class="text-end" t-out="row['credit']"/>
+                                    <td class="text-end" t-out="row['balance']"/>
                                 </tr>
                             </tbody>
                         </table>
                         <div id="total">
                             <table>
                                 <tr>
-                                    <td>Saldo</td>
+                                    <td>Total vencido</td>
+                                    <td class="text-end" t-out="bundle['overdue']"/>
+                                </tr>
+                                <tr>
+                                    <td>0–30</td>
+                                    <td class="text-end" t-out="bundle['age_30']"/>
+                                </tr>
+                                <tr>
+                                    <td>31–60</td>
+                                    <td class="text-end" t-out="bundle['age_60']"/>
+                                </tr>
+                                <tr>
+                                    <td>61–90</td>
+                                    <td class="text-end" t-out="bundle['age_90']"/>
+                                </tr>
+                                <tr>
+                                    <td>90+</td>
+                                    <td class="text-end" t-out="bundle['age_90p']"/>
+                                </tr>
+                                <tr>
+                                    <td><strong>Saldo</strong></td>
                                     <td class="text-end">
-                                        <strong class="dx-totals-grand" t-esc="bundle['balance']"
-                                                t-options='{"widget": "monetary", "display_currency": company.currency_id}'/>
+                                        <strong class="dx-totals-grand" t-out="bundle['balance_disp']"/>
                                     </td>
                                 </tr>
                             </table>
@@ -66,10 +71,10 @@
                     </t>
                 </t>
                 <t t-if="not bundles">
-                    <t t-set="o" t-value="partner"/>
+                    <t t-set="o" t-value="False"/>
                     <t t-set="company" t-value="partner.company_id or company"/>
+                    <t t-set="layout_document_title">Estado de cuenta</t>
                     <t t-call="web.external_layout">
-                        <h2>Estado de cuenta</h2>
                         <p>No hay documentos de cliente para este contacto.</p>
                     </t>
                 </t>

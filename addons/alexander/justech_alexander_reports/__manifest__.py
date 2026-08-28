@@ -1,6 +1,6 @@
 {
     "name": "Doralex Report Layout",
-    "version": "19.0.2.0.0",
+    "version": "19.0.2.1.0",
     "category": "Reporting",
     "summary": "Formatos A4 por empresa con identidad visual propia",
     "description": "Layout QWeb A4 por company_id del documento, con tema visual distinto para cada empresa Doralex. Hereda reportes oficiales de Odoo 19 sin rebindar acciones protegidas.",

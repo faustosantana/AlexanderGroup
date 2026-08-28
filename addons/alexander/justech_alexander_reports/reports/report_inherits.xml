@@ -17,6 +17,7 @@
         <xpath expr="//span[@name='order_note']" position="after">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="doc.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'customer'"/>
             </t>
         </xpath>
     </template>
@@ -43,6 +44,7 @@
         <xpath expr="//div[@id='payment_term']" position="after">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'signs' if o.move_type in ('out_refund', 'in_refund') else 'customer'"/>
             </t>
         </xpath>
     </template>
@@ -55,16 +57,23 @@
 
     <template id="purchase_order_dx" inherit_id="purchase.report_purchaseorder_document">
         <xpath expr="//div[@id='total']" position="after">
+            <div t-if="o.dest_address_id" class="dx-block">
+                <div class="dx-block-title">Entrega</div>
+                <div t-field="o.dest_address_id"
+                     t-options='{"widget": "contact", "fields": ["address", "phone"], "no_marker": True}'/>
+            </div>
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'purchase'"/>
             </t>
         </xpath>
     </template>
 
     <template id="purchase_rfq_dx" inherit_id="purchase.report_purchasequotation_document">
-        <xpath expr="//table" position="after">
+        <xpath expr="//div[hasclass('page')]/table" position="after">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'purchase'"/>
             </t>
         </xpath>
     </template>
@@ -73,14 +82,27 @@
         <xpath expr="//div[hasclass('page')]" position="inside">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'stock'"/>
             </t>
         </xpath>
     </template>
 
     <template id="payment_receipt_dx" inherit_id="account.report_payment_receipt_document">
+        <xpath expr="//div[hasclass('page')]/h3" position="before">
+            <div class="dx-receipt-kicker">Comprobante de pago</div>
+            <div class="dx-amount-hero">
+                <div class="dx-amount-label">Monto recibido</div>
+                <div t-field="o.amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+            </div>
+        </xpath>
         <xpath expr="//div[hasclass('page')]" position="inside">
+            <div t-if="not (o.reconciled_invoice_ids or o.reconciled_bill_ids)" class="dx-block">
+                <div class="dx-block-title">Facturas aplicadas</div>
+                <p>Pago no conciliado. No hay facturas aplicadas.</p>
+            </div>
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'payment'"/>
             </t>
         </xpath>
     </template>
@@ -89,6 +111,7 @@
         <xpath expr="//div[hasclass('page')]" position="inside">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'stock'"/>
             </t>
         </xpath>
     </template>
@@ -97,6 +120,7 @@
         <xpath expr="//div[hasclass('page')]" position="inside">
             <t t-call="justech_alexander_reports.dx_report_extras">
                 <t t-set="company" t-value="o.company_id"/>
+                <t t-set="dx_extras_mode" t-value="'stock'"/>
             </t>
         </xpath>
     </template>

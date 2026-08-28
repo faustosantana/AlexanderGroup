@@ -82,6 +82,20 @@
   font-size: 9.5pt;
 }
 
+.dx-report-body h2 {
+  font-size: 18pt;
+  font-weight: 700;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.dx-report-body #do_informations h3 {
+  font-size: 16pt;
+  font-weight: 700;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
 .dx-report-body h3 {
   font-size: 12pt;
   font-weight: 700;
@@ -173,8 +187,14 @@
 .dx-report-body #total strong,
 .dx-report-body #total .o_total,
 .dx-totals-grand {
-  font-size: 12.5pt;
+  font-size: 13pt;
   font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.dx-report-body #total tr:last-child td {
+  border-top: 2px solid #1a1a1a;
+  padding-top: 8px;
 }
 
 .dx-block {
@@ -243,10 +263,29 @@
 }
 
 /* Payment receipt */
-.dx-doc-payment .dx-amount-hero {
-  font-size: 20pt;
+.dx-doc-payment .dx-receipt-kicker {
+  font-size: 8.5pt;
   font-weight: 700;
-  margin: 8px 0 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+}
+.dx-doc-payment .dx-amount-hero {
+  font-size: 22pt;
+  font-weight: 700;
+  margin: 0 0 10px;
+  line-height: 1.1;
+}
+.dx-doc-payment .dx-amount-label {
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #555;
+  margin-bottom: 2px;
+}
+.dx-doc-payment h3 {
+  font-size: 12pt;
 }
 
 /* ============ DOR — industrial orange / black ============ */
@@ -288,8 +327,9 @@
 .dx-theme-PIN.dx-report-body table.o_main_table th,
 .dx-theme-PIN.dx-report-body table.table thead th,
 .dx-theme-PIN .dx-lines th {
-  background: transparent;
-  color: #2E7D32;
+  background: #f3f7f3;
+  color: #1a1a1a;
+  border-top: 2px solid #2E7D32;
   border-bottom: 2px solid #C41E3A;
 }
 .dx-theme-PIN.dx-report-body #total { border-left: 4px solid #2E7D32; padding-left: 8px; }
@@ -316,18 +356,33 @@
 .dx-theme-DOM .dx-totals-grand { color: #F08A3C; }
 .dx-theme-DOM.dx-report-footer .dx-foot-rule { background: #2AA8A4; }
 
-/* ============ MAY — architectural teal on charcoal ============ */
+/* ============ MAY — architectural teal framed on charcoal ============ */
 .dx-theme-MAY.dx-report-header {
-  background: #111111;
-  color: #2EC4B6;
-  padding: 8px 10px;
+  background: #ffffff;
+  color: #111111;
+  border-top: 10px solid #111111;
+  padding: 8px 0 6px;
 }
-.dx-theme-MAY .dx-logo-panel { background: #111111; padding: 4px 6px; border: 1px solid #2EC4B6; }
-.dx-theme-MAY .dx-trade { color: #ffffff; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12pt; }
+.dx-theme-MAY .dx-logo-panel {
+  background: #111111;
+  padding: 8px 10px;
+  width: 30%;
+  text-align: center;
+}
+.dx-theme-MAY .dx-trade {
+  color: #111111;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 12.5pt;
+}
 .dx-theme-MAY .dx-legal,
-.dx-theme-MAY .dx-meta { color: #b9b9b9; }
-.dx-theme-MAY .dx-rnc { color: #2EC4B6; }
-.dx-theme-MAY .dx-head-rule { display: none; }
+.dx-theme-MAY .dx-meta { color: #4a4a4a; }
+.dx-theme-MAY .dx-rnc {
+  color: #111111;
+  border-left: 3px solid #2EC4B6;
+  padding-left: 6px;
+}
+.dx-theme-MAY .dx-head-rule { background: #2EC4B6; height: 2px; }
 .dx-theme-MAY.dx-report-body h2 {
   color: #111111;
   border-bottom: 1px solid #2EC4B6;
@@ -336,9 +391,9 @@
 .dx-theme-MAY.dx-report-body table.o_main_table th,
 .dx-theme-MAY.dx-report-body table.table thead th,
 .dx-theme-MAY .dx-lines th {
-  background: transparent;
-  color: #111111;
-  border-bottom: 2px solid #2EC4B6;
+  background: #111111;
+  color: #ffffff;
+  border-bottom: none;
   letter-spacing: 0.08em;
 }
 .dx-theme-MAY.dx-report-body table.o_main_table td,

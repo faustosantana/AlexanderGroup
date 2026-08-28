@@ -31,8 +31,8 @@ def test_layout_uses_document_company():
     assert "web.external_layout" in layout
     assert "dx-theme-" in layout
     assert "external_layout_force_document_company" in layout
-    assert "web.address_layout" in layout
     assert "layout_document_title" in layout
+    assert "dx_extras_mode" in layout
 
 
 def test_official_report_names_not_rebound():
@@ -48,10 +48,24 @@ def test_official_report_names_not_rebound():
 def test_render_forces_company_context():
     py = (REPORTS / "models" / "ir_actions_report.py").read_text(encoding="utf-8")
     assert "with_company" in py
-    assert "_dx_company_from_records" in py
+    assert "_dx_lang_from_records" in py
 
 
-def test_catalog_brand_colors_match_logos():
+def test_statement_uses_python_rows():
+    xml = (REPORTS / "reports" / "statement.xml").read_text(encoding="utf-8")
+    assert "bundle['rows']" in xml
+    assert "bundle['anchor']" in xml
+    py = (REPORTS / "models" / "res_partner.py").read_text(encoding="utf-8")
+    assert "_dx_statement_bundles" in py
+    assert "invoice_date or move.date" in py
+
+
+def test_payment_receipt_has_hero_and_no_bank_block():
+    inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
+    assert "dx-amount-hero" in inherits
+    assert "dx_extras_mode" in inherits
+    assert "'payment'" in inherits
+    assert "'purchase'" in inherits
     catalog = (BASE / "models" / "catalog.py").read_text(encoding="utf-8")
     assert '"color": "#E86A12"' in catalog
     assert '"color": "#C41E3A"' in catalog

@@ -30,8 +30,8 @@ _DX_THEMES = {
         "code": "MAY",
         "primary": "#2EC4B6",
         "secondary": "#111111",
-        "logo_h": 18,
-        "logo_w": 58,
+        "logo_h": 20,
+        "logo_w": 62,
         "logo_on_dark": True,
     },
     "REM": {
