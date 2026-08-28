@@ -229,6 +229,8 @@
             <span class="o_footer_copyright_name me-2 small">© Doralex Group</span>
         </xpath>
     </template>
+
+    <template id="company_detail" name="Empresa Doralex">
         <t t-call="website.layout">
             <t t-set="additional_title" t-value="dx['trade_name']"/>
             <div id="wrap" class="dx-site">
