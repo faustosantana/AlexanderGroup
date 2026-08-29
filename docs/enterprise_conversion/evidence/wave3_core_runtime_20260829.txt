@@ -80,8 +80,10 @@ SPANISH_UI = PASS
   res_lang es_DO active; admin + dx.test.security lang=es_DO
   --load-language=es_DO (no -u all)
 
-ENTERPRISE_UI = PENDING_BROWSER
+ENTERPRISE_UI = PASS
   JSON-RPC login PASS; /web/login HTTP 200; server_version 19.0+e-20260324
+  Browser: app launcher Enterprise, top bar, Ventas/Cotizaciones in Spanish
+  Subscription banner: database expires in 1 month (activation PENDING)
 
 NO -u all
 NO -i all

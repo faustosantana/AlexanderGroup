@@ -75,6 +75,7 @@ def test_wave3_core_runtime_keeps_reports_and_blocks_cutover() -> None:
     assert "CORE_VERSION_MATCH = YES" in ev
     assert "CORE_SECRETS_FOUND = none" in ev
     assert "WEB_ENTERPRISE_INSTALLED = YES" in ev
+    assert "ENTERPRISE_UI = PASS" in ev
     assert "QWEB_AFTER = 58" in ev
     assert "QWEB_HASH_MISMATCH_UNEXPECTED = 0" in ev
     assert "CLOSE_TRANSFER_CHANNEL = NO" in ev
