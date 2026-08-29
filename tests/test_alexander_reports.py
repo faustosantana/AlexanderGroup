@@ -1,4 +1,4 @@
-"""Pruebas estructurales V5.1: 6 composiciones completas distintas."""
+"""Pruebas estructurales V5.2: bodies con geometría distinta, sin cajas."""
 
 from __future__ import annotations
 
@@ -27,7 +27,13 @@ def test_six_company_themes_in_css():
     for layout in ("dor", "pin", "dom", "may", "rem", "blu"):
         assert f"dx-table-{layout}" in css
         assert f"dx-totals-{layout}" in css
+    assert "dx-sign-wrap" in css
     assert "dx-sign-pin" in css
+    assert "dx-dom-totals-shift" in css
+    assert "dx-pin-end" in css
+    assert "dx-rem-totals-box" in css
+    assert "dx-blu-totals-box" in css
+    assert "dx-may-terms-wide" in css
     assert "background: #ffffff !important" in css
     assert "#f7f7f7" not in css
     assert "position:absolute" not in css
@@ -75,9 +81,17 @@ def test_six_real_headers_and_sale_compositions():
     assert "dx-table-{{ dx.get('layout')" in comps
     assert "dx-totals-{{ dx.get('layout')" in comps
     assert "dx-pin-terms-full" in comps
+    assert "dx-sign-wrap" in comps
+    assert "dx-total-row" in comps
+    assert "dx-dor-end" in comps
+    assert "dx-dom-totals-shift" in comps
+    assert "dx-may-terms-wide" in comps
+    assert "dx-rem-totals-box" in comps
+    assert "dx-blu-totals-box" in comps
     assert "dx-blu-asym" in comps
     assert "dx-pin-titlecell" in comps
     assert "dx-dor-client" in comps
+    assert "dx-sign-table" not in comps
     assert "dx-h-rem-id" in headers
     assert "dx-rem-mast" not in comps
     assert 'border="0"' in headers

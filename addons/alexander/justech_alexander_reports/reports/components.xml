@@ -76,7 +76,7 @@
     </template>
 
     <template id="dx_line_table">
-        <table t-attf-class="dx-lines dx-table-{{ dx.get('layout') or 'dor' }}" border="0" cellpadding="0" cellspacing="0">
+        <table t-attf-class="dx-lines dx-table-{{ dx.get('layout') or 'dor' }}" border="0" cellpadding="0" cellspacing="0" frame="void" rules="none">
             <thead>
                 <tr>
                     <th class="dx-col-desc">Descripción</th>
@@ -130,22 +130,25 @@
     </template>
 
     <template id="dx_totals_panel">
-        <table t-attf-class="dx-totals dx-totals-{{ dx.get('layout') or 'dor' }}" border="0" cellpadding="0" cellspacing="0">
+        <div t-attf-class="dx-totals dx-totals-{{ dx.get('layout') or 'dor' }}">
             <t t-foreach="dx['totals']" t-as="row">
-                <tr t-att-class="'dx-total-grand' if row.get('grand') else ''">
-                    <th t-out="row['label']"/>
-                    <td class="dx-money" t-out="row['value']"/>
-                </tr>
+                <div t-att-class="'dx-total-row dx-total-grand' if row.get('grand') else 'dx-total-row'">
+                    <span class="dx-total-k" t-out="row['label']"/>
+                    <span class="dx-total-v dx-money" t-out="row['value']"/>
+                </div>
             </t>
-        </table>
+        </div>
     </template>
 
-    <template id="dx_terms_panel">
+    <template id="dx_terms_text">
         <t t-if="dx.get('terms') or dx.get('note')">
             <div class="dx-block-title">Términos y observaciones</div>
             <div t-if="dx.get('terms')" class="dx-terms" t-out="dx['terms']"/>
             <div t-if="dx.get('note')" class="dx-terms" t-out="dx['note']"/>
         </t>
+    </template>
+
+    <template id="dx_banks_text">
         <t t-if="dx.get('banks')">
             <div class="dx-block-title dx-bank-title">Cuentas para pago</div>
             <t t-foreach="dx['banks']" t-as="bank">
@@ -158,6 +161,11 @@
         </t>
     </template>
 
+    <template id="dx_terms_panel">
+        <t t-call="justech_alexander_reports.dx_terms_text"/>
+        <t t-call="justech_alexander_reports.dx_banks_text"/>
+    </template>
+
     <template id="dx_signature_panel">
         <t t-if="dx.get('show_signature')">
             <div t-if="dx.get('spacer_chunks')" class="dx-sign-spacer">
@@ -165,18 +173,18 @@
                     <img t-att-src="chunk['src']" t-att-style="chunk['style']" alt=""/>
                 </t>
             </div>
-            <table t-attf-class="dx-sign-table dx-sign-{{ dx.get('layout') or 'dor' }}" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td>
-                        <div class="dx-sign-space"/>
-                        <div class="dx-sign-line" t-out="dx.get('sign_left') or 'Elaborado por'"/>
-                    </td>
-                    <td>
-                        <div class="dx-sign-space"/>
-                        <div class="dx-sign-line" t-out="dx.get('sign_right') or 'Aceptado'"/>
-                    </td>
-                </tr>
-            </table>
+            <div t-attf-class="dx-sign-wrap dx-sign-{{ dx.get('layout') or 'dor' }}">
+                <div class="dx-sign-col">
+                    <div class="dx-sign-space"/>
+                    <div class="dx-sign-rule"/>
+                    <div class="dx-sign-cap" t-out="dx.get('sign_left') or 'Elaborado por'"/>
+                </div>
+                <div class="dx-sign-col">
+                    <div class="dx-sign-space"/>
+                    <div class="dx-sign-rule"/>
+                    <div class="dx-sign-cap" t-out="dx.get('sign_right') or 'Aceptado'"/>
+                </div>
+            </div>
         </t>
     </template>
 
@@ -195,57 +203,46 @@
                 </div>
             </div>
             <t t-call="justech_alexander_reports.dx_line_table"/>
-            <table class="dx-zone-bottom dx-keep-end" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-zone-terms">
-                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                    </td>
-                    <td class="dx-zone-totals">
-                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
-                    </td>
-                </tr>
-            </table>
+            <div class="dx-end-clear dx-dor-end">
+                <div class="dx-dor-terms">
+                    <t t-call="justech_alexander_reports.dx_terms_text"/>
+                    <div class="dx-dor-bank">
+                        <t t-call="justech_alexander_reports.dx_banks_text"/>
+                    </div>
+                </div>
+                <div class="dx-dor-totals">
+                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 
     <template id="dx_sale_pinaria">
         <div class="dx-composition dx-comp-sale dx-comp-pin dx-page-stack">
-            <table class="dx-pin-split" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-pin-titlecell">
-                        <div class="dx-head-title" t-out="dx['ident'].get('title')"/>
-                        <div class="dx-head-number">
-                            <span t-if="dx['ident'].get('badge')" class="dx-badge" t-out="dx['ident'].get('badge')"/>
-                            <span t-out="dx['ident'].get('number')"/>
-                        </div>
-                    </td>
-                    <td class="dx-pin-metacell">
-                        <table class="dx-meta-grid" border="0" cellpadding="0" cellspacing="0">
-                            <tr>
-                                <td>
-                                    <div class="dx-meta-k">Fecha</div>
-                                    <div class="dx-meta-v" t-out="dx['date']"/>
-                                </td>
-                                <td>
-                                    <div class="dx-meta-k">Validez</div>
-                                    <div class="dx-meta-v" t-out="dx['validity']"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="dx-meta-k">Vendedor</div>
-                                    <div class="dx-meta-v" t-out="dx['salesperson']"/>
-                                </td>
-                                <td>
-                                    <div class="dx-meta-k">Moneda</div>
-                                    <div class="dx-meta-v" t-out="dx['currency']"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+            <div class="dx-pin-split">
+                <div class="dx-pin-titlecell">
+                    <div class="dx-head-title" t-out="dx['ident'].get('title')"/>
+                    <div class="dx-head-number">
+                        <span t-if="dx['ident'].get('badge')" class="dx-badge" t-out="dx['ident'].get('badge')"/>
+                        <span t-out="dx['ident'].get('number')"/>
+                    </div>
+                </div>
+                <div class="dx-pin-metacell">
+                    <div class="dx-pin-meta-col">
+                        <div class="dx-meta-k">Fecha</div>
+                        <div class="dx-meta-v" t-out="dx['date']"/>
+                        <div class="dx-meta-k">Vendedor</div>
+                        <div class="dx-meta-v" t-out="dx['salesperson']"/>
+                    </div>
+                    <div class="dx-pin-meta-col">
+                        <div class="dx-meta-k">Validez</div>
+                        <div class="dx-meta-v" t-out="dx['validity']"/>
+                        <div class="dx-meta-k">Moneda</div>
+                        <div class="dx-meta-v" t-out="dx['currency']"/>
+                    </div>
+                </div>
+            </div>
             <div class="dx-pin-client">
                 <div class="dx-card-title"><span class="dx-pin-mark"/>Cliente</div>
                 <div class="dx-card-name" t-out="dx['partner']['name']"/>
@@ -255,24 +252,24 @@
             </div>
             <t t-call="justech_alexander_reports.dx_line_table"/>
             <div class="dx-pin-terms-full">
-                <t t-if="dx.get('terms') or dx.get('note')">
-                    <div class="dx-block-title">Términos y observaciones</div>
-                    <div t-if="dx.get('terms')" class="dx-terms" t-out="dx['terms']"/>
-                    <div t-if="dx.get('note')" class="dx-terms" t-out="dx['note']"/>
-                </t>
-                <div t-if="dx.get('banks')" class="dx-pin-bank">
-                    <span class="dx-meta-k">Cuenta para pago</span>
-                    <t t-foreach="dx['banks']" t-as="bank">
-                        <span class="dx-pin-bank-line">
-                            <t t-out="bank['bank']"/>
-                            <t t-if="bank.get('account')"> · <t t-out="bank['account']"/></t>
-                            <t t-if="bank.get('holder')"> · <t t-out="bank['holder']"/></t>
-                        </span>
+                <t t-call="justech_alexander_reports.dx_terms_text"/>
+            </div>
+            <div class="dx-end-clear dx-pin-end">
+                <div class="dx-pin-bank">
+                    <t t-if="dx.get('banks')">
+                        <div class="dx-meta-k">Cuenta para pago</div>
+                        <t t-foreach="dx['banks']" t-as="bank">
+                            <div class="dx-pin-bank-line">
+                                <t t-out="bank['bank']"/>
+                                <t t-if="bank.get('account')"> · <t t-out="bank['account']"/></t>
+                                <t t-if="bank.get('holder')"> · <t t-out="bank['holder']"/></t>
+                            </div>
+                        </t>
                     </t>
                 </div>
-            </div>
-            <div class="dx-pin-totals-wrap">
-                <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                <div class="dx-pin-totals-wrap">
+                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                </div>
             </div>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
@@ -280,45 +277,39 @@
 
     <template id="dx_sale_dominion">
         <div class="dx-composition dx-comp-sale dx-comp-dom dx-page-stack">
-            <table class="dx-dom-float" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-dom-client">
-                        <div class="dx-card-title">Cliente</div>
-                        <div class="dx-card-name" t-out="dx['partner']['name']"/>
-                        <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
-                        <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
-                    </td>
-                    <td class="dx-dom-meta">
-                        <div class="dx-meta-item">
-                            <div class="dx-meta-k">Fecha</div>
-                            <div class="dx-meta-v" t-out="dx['date']"/>
-                        </div>
-                        <div class="dx-meta-item">
-                            <div class="dx-meta-k">Validez</div>
-                            <div class="dx-meta-v" t-out="dx['validity']"/>
-                        </div>
-                        <div class="dx-meta-item">
-                            <div class="dx-meta-k">Vendedor</div>
-                            <div class="dx-meta-v" t-out="dx['salesperson']"/>
-                        </div>
-                        <div class="dx-meta-item">
-                            <div class="dx-meta-k">Moneda</div>
-                            <div class="dx-meta-v" t-out="dx['currency']"/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <div class="dx-dom-float">
+                <div class="dx-dom-client">
+                    <div class="dx-card-title">Cliente</div>
+                    <div class="dx-card-name" t-out="dx['partner']['name']"/>
+                    <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
+                    <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                </div>
+                <div class="dx-dom-meta">
+                    <div class="dx-meta-item">
+                        <div class="dx-meta-k">Fecha</div>
+                        <div class="dx-meta-v" t-out="dx['date']"/>
+                    </div>
+                    <div class="dx-meta-item">
+                        <div class="dx-meta-k">Validez</div>
+                        <div class="dx-meta-v" t-out="dx['validity']"/>
+                    </div>
+                    <div class="dx-meta-item">
+                        <div class="dx-meta-k">Vendedor</div>
+                        <div class="dx-meta-v" t-out="dx['salesperson']"/>
+                    </div>
+                    <div class="dx-meta-item">
+                        <div class="dx-meta-k">Moneda</div>
+                        <div class="dx-meta-v" t-out="dx['currency']"/>
+                    </div>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_line_table"/>
-            <table class="dx-zone-bottom dx-keep-end" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-zone-terms">
-                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                    </td>
-                    <td class="dx-zone-totals">
-                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
-                    </td>
-                </tr>
-            </table>
+            <div class="dx-dom-terms">
+                <t t-call="justech_alexander_reports.dx_terms_panel"/>
+            </div>
+            <div class="dx-dom-totals-shift">
+                <t t-call="justech_alexander_reports.dx_totals_panel"/>
+            </div>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
@@ -332,133 +323,115 @@
                 <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
                 <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
             </div>
-            <table class="dx-may-meta" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td>
-                        <div class="dx-meta-k">Fecha</div>
-                        <div class="dx-meta-v" t-out="dx['date']"/>
-                    </td>
-                    <td>
-                        <div class="dx-meta-k">Validez</div>
-                        <div class="dx-meta-v" t-out="dx['validity']"/>
-                    </td>
-                    <td>
-                        <div class="dx-meta-k">Vendedor</div>
-                        <div class="dx-meta-v" t-out="dx['salesperson']"/>
-                    </td>
-                    <td>
-                        <div class="dx-meta-k">Moneda</div>
-                        <div class="dx-meta-v" t-out="dx['currency']"/>
-                    </td>
-                </tr>
-            </table>
+            <div class="dx-may-meta">
+                <div class="dx-may-meta-col">
+                    <div class="dx-meta-k">Fecha</div>
+                    <div class="dx-meta-v" t-out="dx['date']"/>
+                </div>
+                <div class="dx-may-meta-col">
+                    <div class="dx-meta-k">Validez</div>
+                    <div class="dx-meta-v" t-out="dx['validity']"/>
+                </div>
+                <div class="dx-may-meta-col">
+                    <div class="dx-meta-k">Vendedor</div>
+                    <div class="dx-meta-v" t-out="dx['salesperson']"/>
+                </div>
+                <div class="dx-may-meta-col">
+                    <div class="dx-meta-k">Moneda</div>
+                    <div class="dx-meta-v" t-out="dx['currency']"/>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_line_table"/>
-            <table class="dx-zone-bottom dx-keep-end" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-zone-terms">
-                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                    </td>
-                    <td class="dx-zone-totals">
-                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
-                    </td>
-                </tr>
-            </table>
+            <div class="dx-may-terms-wide">
+                <t t-call="justech_alexander_reports.dx_terms_panel"/>
+            </div>
+            <div class="dx-may-totals">
+                <t t-call="justech_alexander_reports.dx_totals_panel"/>
+            </div>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 
     <template id="dx_sale_rempart">
         <div class="dx-composition dx-comp-sale dx-comp-rem dx-page-stack">
-            <table class="dx-rem-split" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-rem-client">
-                        <div class="dx-card-title">Cliente</div>
-                        <div class="dx-card-name" t-out="dx['partner']['name']"/>
-                        <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
-                        <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
-                        <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
-                        <div t-if="dx['partner'].get('phone')" t-out="dx['partner']['phone']"/>
-                    </td>
-                    <td class="dx-rem-meta">
-                        <div class="dx-meta-item">
-                            <div class="dx-meta-k">Fecha</div>
-                            <div class="dx-meta-v dx-meta-big" t-out="dx['date']"/>
-                        </div>
-                        <div class="dx-meta-item">
-                            <div class="dx-meta-k">Validez</div>
-                            <div class="dx-meta-v dx-meta-big" t-out="dx['validity']"/>
-                        </div>
-                        <div class="dx-meta-item">
-                            <div class="dx-meta-k">Vendedor</div>
-                            <div class="dx-meta-v dx-meta-big" t-out="dx['salesperson']"/>
-                        </div>
-                        <div class="dx-meta-item">
-                            <div class="dx-meta-k">Moneda</div>
-                            <div class="dx-meta-v dx-meta-big" t-out="dx['currency']"/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <div class="dx-rem-split">
+                <div class="dx-rem-client">
+                    <div class="dx-card-title">Cliente</div>
+                    <div class="dx-card-name" t-out="dx['partner']['name']"/>
+                    <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
+                    <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                    <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
+                    <div t-if="dx['partner'].get('phone')" t-out="dx['partner']['phone']"/>
+                </div>
+                <div class="dx-rem-meta">
+                    <div class="dx-meta-item">
+                        <div class="dx-meta-k">Fecha</div>
+                        <div class="dx-meta-v dx-meta-big" t-out="dx['date']"/>
+                    </div>
+                    <div class="dx-meta-item">
+                        <div class="dx-meta-k">Validez</div>
+                        <div class="dx-meta-v dx-meta-big" t-out="dx['validity']"/>
+                    </div>
+                    <div class="dx-meta-item">
+                        <div class="dx-meta-k">Vendedor</div>
+                        <div class="dx-meta-v dx-meta-big" t-out="dx['salesperson']"/>
+                    </div>
+                    <div class="dx-meta-item">
+                        <div class="dx-meta-k">Moneda</div>
+                        <div class="dx-meta-v dx-meta-big" t-out="dx['currency']"/>
+                    </div>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_line_table"/>
-            <table class="dx-zone-bottom dx-keep-end" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-zone-terms">
-                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                    </td>
-                    <td class="dx-zone-totals">
-                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
-                    </td>
-                </tr>
-            </table>
+            <div class="dx-end-clear dx-rem-end">
+                <div class="dx-rem-terms">
+                    <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                </div>
+                <div class="dx-rem-totals-box">
+                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 
     <template id="dx_sale_blueelite">
         <div class="dx-composition dx-comp-sale dx-comp-blu dx-page-stack">
-            <table class="dx-blu-asym" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-blu-client" rowspan="2">
-                        <div class="dx-card-title">Cliente</div>
-                        <div class="dx-card-name" t-out="dx['partner']['name']"/>
-                        <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
-                        <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
-                    </td>
-                    <td class="dx-blu-meta">
-                        <div class="dx-blu-pair">
-                            <div class="dx-meta-k">Fecha</div>
-                            <div class="dx-meta-v" t-out="dx['date']"/>
-                        </div>
-                        <div class="dx-blu-pair">
-                            <div class="dx-meta-k">Validez</div>
-                            <div class="dx-meta-v" t-out="dx['validity']"/>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="dx-blu-meta2">
-                        <div class="dx-blu-stack">
-                            <div class="dx-meta-k">Vendedor</div>
-                            <div class="dx-meta-v" t-out="dx['salesperson']"/>
-                        </div>
-                        <div class="dx-blu-stack">
-                            <div class="dx-meta-k">Moneda</div>
-                            <div class="dx-meta-v" t-out="dx['currency']"/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <div class="dx-blu-asym">
+                <div class="dx-blu-client">
+                    <div class="dx-card-title">Cliente</div>
+                    <div class="dx-card-name" t-out="dx['partner']['name']"/>
+                    <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
+                    <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                </div>
+                <div class="dx-blu-meta">
+                    <div class="dx-blu-pair">
+                        <div class="dx-meta-k">Fecha</div>
+                        <div class="dx-meta-v" t-out="dx['date']"/>
+                    </div>
+                    <div class="dx-blu-pair">
+                        <div class="dx-meta-k">Validez</div>
+                        <div class="dx-meta-v" t-out="dx['validity']"/>
+                    </div>
+                    <div class="dx-blu-stack">
+                        <div class="dx-meta-k">Vendedor</div>
+                        <div class="dx-meta-v" t-out="dx['salesperson']"/>
+                    </div>
+                    <div class="dx-blu-stack">
+                        <div class="dx-meta-k">Moneda</div>
+                        <div class="dx-meta-v" t-out="dx['currency']"/>
+                    </div>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_line_table"/>
-            <table class="dx-zone-bottom dx-keep-end" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-zone-terms">
-                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                    </td>
-                    <td class="dx-zone-totals">
-                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
-                    </td>
-                </tr>
-            </table>
+            <div class="dx-end-clear dx-blu-end">
+                <div class="dx-blu-terms">
+                    <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                </div>
+                <div class="dx-blu-totals-box">
+                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>

@@ -1,8 +1,9 @@
-# Report QA — V5.1 dirección de arte
+# Report QA — V5.2 geometría de body
 
-Módulo `justech_alexander_reports` **19.0.3.5.0**. DEV only. PROD no tocado.
+Módulo `justech_alexander_reports` **19.0.3.6.0**. DEV only. PROD no tocado.
 
-`VISUAL_V4 = REJECTED`. `VISUAL_V5 = PENDING`. `VISUAL_V5_1 = PENDING_HUMAN_REVIEW`.
+`VISUAL_V4 = REJECTED`. `VISUAL_V5 = PENDING`. `VISUAL_V5_1 = PENDING`.
+`VISUAL_V5_2 = PENDING_HUMAN_REVIEW`.
 
 ## Estado de este ciclo
 
@@ -40,6 +41,4 @@ No se tocó motor fiscal, NCF, `company_id`, email, bancos ni lógica contable.
 
 ## PNG
 
-V5.1: [`docs/report_previews/v51/`](report_previews/v51/) — full-size, crops
-header/body y comparativo. V5 queda en `report_previews/v5/`. V4 en
-`report_previews/v4/`.
+V5.2: [`docs/report_previews/v52/`](report_previews/v52/). V5.1 en `v51/`.
