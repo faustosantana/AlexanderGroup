@@ -1,0 +1,24 @@
+Justgroup runtime export transfer attempt — 2026-08-29.
+
+SOURCE = /root/doralex_runtime_export_19.0-e-20260324.tar.zst
+EXPECTED_SHA256 = d406ccfd73225db88b83dfd07def618b2c48e1b1aeaebcc5877f76fa26b4cb86
+DEST = /opt/doralex/imports/doralex_runtime_export_19.0-e-20260324.tar.zst
+
+EXPORT_TRANSFER = FAIL
+  ssh justgroup-vps: no justgroup_vps_ed25519 on this agent
+  Permission denied (publickey)
+  Doralex /opt/doralex/imports does not contain the archive
+
+QWEB_BEFORE = 58
+QWEB_BASELINE_HASH = PASS (md5 + sha256 of arch_db jsonb)
+STAGING_PRE_RUNTIME_BACKUP = PASS
+  enterprise-staging_20260829_142222
+DORALEX_CORE_VERSION_BEFORE = 19.0.20260817
+CORE vs source 19.0.20260324 = MISMATCH (no overlay yet)
+nightly odoo_19.0.20260324_all.deb = HTTP 404
+
+STAGING 127.0.0.1:8269 health=pass image=odoo:19
+PROD doralexgroup.cloud health=pass image=odoo:19
+JUSTGROUP_PROD_TOUCHED = NO
+DORALEX_PROD_TOUCHED = NO
+CUTOVER_ALLOWED = NO

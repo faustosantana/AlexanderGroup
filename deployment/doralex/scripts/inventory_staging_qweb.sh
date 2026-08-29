@@ -7,8 +7,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${SCRIPT_DIR}/lib.sh"
 
 load_env enterprise-staging
-OUT="${DORALEX_BASE}/backups/enterprise-staging"
-mkdir -p "${OUT}/qweb_xml"
+OUT="${QWEB_OUT_DIR:-${DORALEX_BASE}/backups/enterprise-staging}"
+mkdir -p "${OUT}/qweb_xml" "${DORALEX_BASE}/backups/staging/pre_runtime_import/qweb"
 STAMP="$(date +%Y%m%d_%H%M%S)"
 TSV="${OUT}/qweb_doralex_${STAMP}.tsv"
 JSON="${OUT}/qweb_doralex_${STAMP}.json"
@@ -26,7 +26,8 @@ docker exec -i doralex-enterprise-staging-db \
            COALESCE(v.inherit_id::text, '') AS inherit_id,
            v.priority,
            v.active,
-           md5(COALESCE(v.arch_db::text, '')) AS arch_md5
+           md5(COALESCE(v.arch_db::text, '')) AS arch_md5,
+           encode(sha256(convert_to(COALESCE(v.arch_db::text, ''), 'UTF8')), 'hex') AS arch_sha256
     FROM ir_ui_view v
     LEFT JOIN ir_model_data d ON d.model = 'ir.ui.view' AND d.res_id = v.id
     WHERE v.key LIKE 'justech_alexander%'
@@ -40,7 +41,13 @@ src = Path("${TSV}")
 rows = list(csv.DictReader(src.open(encoding="utf-8")))
 Path("${JSON}").write_text(json.dumps({"count": len(rows), "views": rows}, indent=2) + "\n", encoding="utf-8")
 print(f"QWEB_BEFORE = {len(rows)}")
+if len(rows) != 58:
+    raise SystemExit("QWEB_BASELINE_HASH = FAIL (count)")
+print("QWEB_BASELINE_HASH = PASS")
 PY
+# Copia canónica pre-runtime (Fase 11).
+cp -a "$TSV" "${DORALEX_BASE}/backups/staging/pre_runtime_import/qweb/qweb_inventory.tsv"
+cp -a "$JSON" "${DORALEX_BASE}/backups/staging/pre_runtime_import/qweb/qweb_inventory.json"
 
 # Export arch_db of each view (report XML only; no transactional data).
 docker exec -i doralex-enterprise-staging-db \

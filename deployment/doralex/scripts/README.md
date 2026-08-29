@@ -31,14 +31,10 @@ bash backup.sh production
 ## Convenciones
 
 - `ENV` válido: `production`, `dev` o `enterprise-staging`.
-- Conversión Community → Enterprise: `clone_prod_to_enterprise_staging.sh`,
-  `inventory_staging_qweb.sh` (58 QWeb + hashes),
-  `justgroup_ssh_bootstrap.sh` / `audit_justgroup_readonly.sh` (solo lectura),
-  `copy_justgroup_enterprise_runtime.sh` (rsync addons Enterprise →
-  `/opt/doralex/enterprise-addons/19/`; nunca licencia/DB Justech),
-  `download_odoo_enterprise.sh` (RPC oficial `deb_19e`, opcional),
-  `fetch_odoo_enterprise.sh`, `build_enterprise_staging_image.sh`,
-  `convert_community_to_enterprise.sh`, `install_enterprise_waves.sh`.
-  Nunca `-u all`. Nunca cutover sin aprobación.
+- Runtime Justgroup → staging: `transfer_justgroup_runtime_export.sh`,
+  `import_justgroup_runtime_export.sh`, `build_doralex_enterprise_image.sh`,
+  `apply_enterprise_runtime_staging.sh`. Hash fijo
+  `d406ccfd73225db88b83dfd07def618b2c48e1b1aeaebcc5877f76fa26b4cb86`.
+  Nunca `-u all`. Nunca cutover. Nunca Prod.
 - Variable `DORALEX_BASE` (por defecto `/opt/doralex`) permite pruebas en otra ruta.
 - Ningún script publica PostgreSQL ni imprime secretos.

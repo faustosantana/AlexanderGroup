@@ -1,78 +1,53 @@
 # Conversión Community → Enterprise — estado
 
 **Fecha:** 2026-08-29  
-**Cutover:** `CUTOVER_ALLOWED = NO`  
-**Estrategia vigente:** runtime Enterprise desde Justgroup/Justech (**solo lectura**).  
-El `.deb` Doralex no bloquea: Odoo aún no habilita ese contrato para descarga.
+**Cutover:** `CUTOVER_ALLOWED = NO`
 
 ```
-ENTERPRISE_PACKAGE_ROUTE = JUSTGROUP_RUNTIME_COPY
+ENTERPRISE_SOURCE_SELECTED = justgroup.app
+SOURCE_ODOO_VERSION = 19.0-20260324
+SOURCE_ODOO_EDITION = Enterprise
 GITHUB_BLOCKER = REMOVE
-DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
-JUSTECH_DATA_COPIED = NO
 JUSTECH_SUBSCRIPTION_COPIED = NO
-JUSTECH_PROD_TOUCHED = NO
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+JUSTGROUP_DATA_COPIED = NO
+JUSTGROUP_SUBSCRIPTION_COPIED = NO
+JUSTGROUP_PROD_TOUCHED = NO
 DORALEX_PROD_TOUCHED = NO
 CUTOVER_ALLOWED = NO
 ```
 
-## Fase 1 — source (HTTP vivo)
-
-| Sitio | IP | `server_version` | Edición |
-| --- | --- | --- | --- |
-| justgroup.app | 31.97.6.178 | `19.0+e-20260324` | Enterprise |
-| erp.justech.do | 207.244.242.58 | `19.0+e-20260324` | Enterprise |
-| doralexgroup.cloud | 2.25.121.111 | `19.0-20260817` | Community |
-| staging 127.0.0.1:8269 | mismo host Doralex | Community `odoo:19` | Community |
-
-Misma versión/edición pública Justgroup ↔ erp.justech.do. **Hosts distintos.**  
-Inventario SSH 2026-08-27 (solo lectura) está en **justgroup.app** (`/usr/lib/odoo/enterprise`, 360 módulos).  
-`erp.justech.do:22` está abierto, pero este agente **no tiene llave**.
-
-```
-ENTERPRISE_SOURCE_SELECTED = justgroup.app
-SOURCE_ODOO_VERSION = 19.0+e-20260324
-SOURCE_ODOO_EDITION = Enterprise
-SOURCE_RUNTIME_TYPE = host + addons /usr/lib/odoo/enterprise (no Docker en la auditoría 2026-08-27)
-SOURCE_IMAGE_DIGEST = N/A
-SOURCE_ENTERPRISE_PATH = /usr/lib/odoo/enterprise
-```
-
-## Fase 8 — QWeb Doralex (antes de cambiar staging)
+## Hecho en Doralex (sin el archivo todavía)
 
 ```
 QWEB_BEFORE = 58
-justech_alexander_reports = 19.0.3.8.5
+QWEB_BASELINE_HASH = PASS
+STAGING_PRE_RUNTIME_BACKUP = PASS
+  /opt/doralex/backups/enterprise-staging/enterprise-staging_20260829_142222
+DORALEX_CORE_VERSION_BEFORE = 19.0.20260817 (Community, imagen odoo:19)
+PYTHON_VERSION_ACTUAL = 3.12.3
+OS_VERSION_ACTUAL = Ubuntu 24.04.4 LTS
+WKHTMLTOPDF_VERSION_ACTUAL = 0.12.6.1 patched qt
+STAGING_HEALTH = PASS
+PROD_HEALTH = PASS
 ```
 
-Inventario + hashes: `docs/enterprise_conversion/evidence/qweb_doralex_before_20260829.json`  
-Copia en servidor: `/opt/doralex/backups/enterprise-staging/qweb_doralex_20260829_140443.*`
+No se montó Enterprise 20260324 sobre el core 20260817.
 
-## Bloqueo actual (no es el .deb)
+## Transfer del export
 
 ```
-ENTERPRISE_RUNTIME_COPIED = NO
-WEB_ENTERPRISE_INSTALLED = NO
-WHAT_IS_MISSING = JUSTGROUP_SSH_PRIVATE_KEY
+EXPORT_TRANSFER = FAIL
+EXPORT_SHA256_MATCH = (no calculado: archivo ausente)
+WHAT_IS_MISSING = SSH justgroup-vps (justgroup_vps_ed25519 / JUSTGROUP_SSH_PRIVATE_KEY)
+SOURCE = justgroup.app:/root/doralex_runtime_export_19.0-e-20260324.tar.zst
+EXPECTED_SHA256 = d406ccfd73225db88b83dfd07def618b2c48e1b1aeaebcc5877f76fa26b4cb86
+DEST = /opt/doralex/imports/doralex_runtime_export_19.0-e-20260324.tar.zst
 ```
 
-Este entorno tiene SSH a Doralex, no a Justgroup (`justgroup_vps_ed25519` ausente; `Permission denied` a 31.97.6.178).  
-Scripts listos (solo lectura / rsync addons):
+Scripts listos: `transfer_justgroup_runtime_export.sh` → `import_justgroup_runtime_export.sh` →
+`build_doralex_enterprise_image.sh` → `apply_enterprise_runtime_staging.sh`
+(`-i web_enterprise` únicamente).
 
-- `justgroup_ssh_bootstrap.sh`
-- `audit_justgroup_readonly.sh`
-- `copy_justgroup_enterprise_runtime.sh` → `/opt/doralex/enterprise-addons/19/`
-- `inventory_staging_qweb.sh`
-
-No se copia DB, filestore, correos, clientes ni el código de suscripción Justech.
-
-## Waves
-
-| Wave | Estado |
-| --- | --- |
-| 0 Backup / 1 Staging | PASS |
-| QWeb inventory | PASS 58 |
-| Runtime Enterprise copy | **espera llave SSH Justgroup** |
-| `-i web_enterprise` | pendiente copia |
-| 3–8 módulos / español / QA | pendiente |
-| Cutover | **NO** |
+Nightly `odoo_19.0.20260324_all.deb` = 404; el core exacto debe salir de Justgroup
+(`.deb` en cache o metadata del export). No se usó `odoo:19` latest.
