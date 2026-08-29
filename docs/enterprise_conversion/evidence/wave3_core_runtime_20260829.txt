@@ -1,0 +1,96 @@
+Doralex Enterprise runtime wave — core 19.0.20260324 + web_enterprise — 2026-08-29.
+
+CLOSE_TRANSFER_CHANNEL = NO
+TRANSFER_CHANNEL_CAN_CLOSE = YES
+ADDITIONAL_SOURCE_ARTIFACT_REQUIRED = NO
+doralex-core-transfer user and authorized key remain until explicit CLOSE_TRANSFER_CHANNEL = YES
+
+CORE_FINAL_PATH = /opt/doralex/imports/doralex_core_export_19.0.20260324.tar.zst
+CORE_FINAL_SIZE = 222257350
+CORE_FINAL_SHA256 = d6b1e36d113a26c4adad2731d7b422fa1c1eefebc7f82bbe14486f8c178ae36a
+CORE_FINAL_HASH_MATCH = YES
+owner/mode = root:root 600
+moved locally from core-incoming/; no second Justgroup copy
+
+CORE_EXTRACT_PATH = /opt/doralex/core-source/19.0.20260324
+CORE_TREE_FOUND = YES
+ODOO_BINARY_FOUND = YES
+DPKG_METADATA_FOUND = YES
+RUNTIME_DEPENDENCIES_FOUND = YES
+CORE_EXTRACTED_VERSION = 19.0.20260324
+CORE_VERSION_MATCH = YES
+
+CORE_SECRETS_FOUND = none
+CORE_DATABASE_FOUND = NO
+CORE_FILESTORE_FOUND = NO
+CORE_SUBSCRIPTION_FOUND = NO
+
+DEPENDENCY_MATCH = YES
+DEPENDENCIES_MISSING = none
+DEPENDENCIES_DIFFERENT = odoo package pin only (19.0.20260324 vs host leftover Community nightly; image uses extracted core)
+  Ubuntu 24.04.4 / Python 3.12.3 / wkhtmltopdf 0.12.6.1 patched
+  Pillow 10.2.0 / psycopg2 2.9.9 / gevent 24.2.1 / greenlet 3.0.3
+  cryptography 41.0.7 / reportlab 4.1.0 / libsass 0.22.0 / lxml 5.2.1
+
+CUSTOM_MATCH = 6
+CUSTOM_DIFFERENT = 5
+CUSTOM_MISSING = 33
+DORALEX_ONLY_CUSTOM = 5
+SOURCE_MODULE_COUNT = 44
+DORALEX_MODULE_COUNT = 16
+MODULES_MISSING = 33
+MODULE_VERSION_MISMATCH = 0
+DIFFERENT modules have same version and 0 changed tracked files; source-only extras are AppleDouble/._* and .DS_Store. Doralex copy wins via addons_path. justech_alexander_* not overwritten.
+
+DUPLICATE_MODULE_NAMES = 12 shared names (custom vs Justgroup custom; plus nested justech_dgcp_bridge)
+DUPLICATE_MODULE_RESOLUTION = /mnt/custom-addons first (Doralex, including justech_alexander_*), then /usr/lib/odoo/enterprise, then /usr/lib/odoo/custom-addons
+
+DORALEX_RUNTIME_IMAGE = doralex-odoo-enterprise:19.0.20260324
+odoo:19 tag left intact (Prod/Dev still odoo:19)
+
+ENTERPRISE_RUNTIME_BOOT = PASS
+PRE_WEB_ENTERPRISE_DB_PRESERVATION = PASS
+WEB_ENTERPRISE_DISCOVERED = YES
+ENTERPRISE_DISCOVERED = YES
+CUSTOM_DISCOVERED = YES
+WEB_ENTERPRISE_INSTALLED = YES
+ODOO_VERSION = 19.0+e-20260324
+ODOO_EDITION = Enterprise
+STAGING_LOGIN = PASS
+STAGING_HEALTH = PASS
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+REPORTS_PRESERVED = YES
+justech_alexander_reports = 19.0.3.8.5
+
+PDF_QUOTATION = PASS
+PDF_SALE_ORDER = PASS
+PDF_INVOICE = PASS
+
+DORALEX_MAIL_CONFIG_PRESERVED = YES
+DORALEX_CONFIG_PRESERVED = YES
+DORALEX_COMPANIES_PRESERVED = YES
+DORALEX_USERS_PRESERVED = YES
+DORALEX_SYSTEM_PARAMETERS_PRESERVED = YES
+MAIL_SAFE_MODE = YES
+
+SPANISH_UI = PASS
+  res_lang es_DO active; admin + dx.test.security lang=es_DO
+  --load-language=es_DO (no -u all)
+
+ENTERPRISE_UI = PENDING_BROWSER
+  JSON-RPC login PASS; /web/login HTTP 200; server_version 19.0+e-20260324
+
+NO -u all
+NO -i all
+web_enterprise installed via slim addons path only (full enterprise path auto-installs 129 modules)
+-u website used once to realign Community website.layout vs core 20260324; Alexander QWeb hashes unchanged
+
+JUSTGROUP_DATA_COPIED = NO
+JUSTGROUP_SUBSCRIPTION_COPIED = NO
+JUSTGROUP_PROD_TOUCHED = NO
+DORALEX_PROD_TOUCHED = NO
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+CUTOVER_ALLOWED = NO

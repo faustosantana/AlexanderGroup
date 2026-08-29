@@ -53,6 +53,11 @@ def test_apply_only_web_enterprise_on_staging() -> None:
     apply = (SCRIPTS / "apply_enterprise_runtime_staging.sh").read_text()
     assert " -i web_enterprise" in apply
     assert "--stop-after-init" in apply
+    assert "enterprise-slim" in apply
+    assert (
+        "/usr/lib/odoo/enterprise,/usr/lib/odoo/custom-addons -i web_enterprise"
+        not in apply
+    )
     for line in apply.splitlines():
         if "python3 /usr/bin/odoo" in line:
             assert "-u " not in line
@@ -60,3 +65,19 @@ def test_apply_only_web_enterprise_on_staging() -> None:
     assert "production" in apply  # healthcheck only
     assert "CONFIRM=yes" in apply
     assert "justech_alexander_reports" not in apply or "check_staging_reports" in apply
+
+
+def test_wave3_core_runtime_keeps_reports_and_blocks_cutover() -> None:
+    ev = (
+        REPO / "docs/enterprise_conversion/evidence/wave3_core_runtime_20260829.txt"
+    ).read_text()
+    assert "CORE_FINAL_HASH_MATCH = YES" in ev
+    assert "CORE_VERSION_MATCH = YES" in ev
+    assert "CORE_SECRETS_FOUND = none" in ev
+    assert "WEB_ENTERPRISE_INSTALLED = YES" in ev
+    assert "QWEB_AFTER = 58" in ev
+    assert "QWEB_HASH_MISMATCH_UNEXPECTED = 0" in ev
+    assert "CLOSE_TRANSFER_CHANNEL = NO" in ev
+    assert "CUTOVER_ALLOWED = NO" in ev
+    assert "JUSTGROUP_DATA_COPIED = NO" in ev
+    assert "doralex-odoo-enterprise:19.0.20260324" in ev
