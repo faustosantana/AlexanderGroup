@@ -1,52 +1,34 @@
 # Checklist preproducción — Alexander Group
 
-Estado: **suite documental DEV cerrada en E2E**.  
-`READY_TO_DEPLOY_PRODUCTION = BLOCKED_BY_CONFIGURATION`.  
-**No desplegar a PROD en este ciclo.**
+Estado: **suite documental y correo desplegados en PROD**.  
+`READY_TO_DEPLOY_PRODUCTION = YES` (ejecutado 2026-08-29).  
+`FISCAL_POSTING_READY = NO` — faltan rangos NCF reales.
 
-## Ya listo en DEV
+## Hecho en PROD
 
-- [x] Seis identidades V5.2/V5.3 en cotización (microajustes revisados en PNG)
-- [x] Factura borrador / posteada / NC con NCF del motor QA (flujo real)
-- [x] RFQ ≠ OC, recibo aplicado, recibo anticipo, estado, entrega, recepción
-- [x] Saldo a favor = `RD$ 500.00` (no total negativo)
-- [x] Header compacto en continuación (página 2+)
-- [x] Firmas solo última página; totales solo al final
-- [x] Aislamiento logo/RNC/banco/email/NCF por `document.company_id`
-- [x] Cruce fiscal: Blue Elite activa + factura Rempart → NCF Rempart
-- [x] EMAIL_PDF_MATCH = 6/6 (Graph Sent Items, FROM administración + PDF)
-- [x] PDF de factura adjunto en plantilla EDI
-- [x] PROD no tocado
-- [x] Backup DEV antes de datos QA masivos
+- [x] Backup PROD verificado (`production_20260829_104748`)
+- [x] Secret scan del código a desplegar
+- [x] Código + módulos target (sin `-u all`, sin módulos congelados)
+- [x] Reportes V5.3 6 identidades
+- [x] Multiempresa por `document.company_id`
+- [x] Graph / From `administracion@` 6/6
+- [x] DNS MX/SPF/DKIM/DMARC 6/6 (sin cambios)
+- [x] Permisos usuario operacional (no admin global)
+- [x] Motor fiscal instalado; 0 rangos
+- [x] Guardia de posteo sin rango NCF
+- [x] Factura borrador muestra Pendiente de NCF
+- [x] Websites vacíos ocultos
+- [x] Smoke post-deploy
+- [x] Rollback documentado (comandos listos; no ejecutado)
 
-## Falta decisión / dato humano (bloquea PROD)
+## Pendiente humano (bloquea solo facturación fiscal)
 
-- [ ] Rangos NCF reales de producción (hoy solo QA DEV; no cargar DGII PROD)
-- [ ] Tasa USD (`res.currency.rate` = 0)
-- [ ] Términos legales definitivos por empresa
-- [ ] Websites (si no hay, el PDF los oculta)
-- [ ] Permisos usuario operacional (hoy no puede ni imprimir SO)
-- [ ] Bancos confirmados por tesorería (hoy Banreservas QA)
-- [ ] Primera factura controlada en PROD
-- [ ] Primera NC controlada en PROD
-- [ ] Primer pago controlado en PROD
-- [ ] Primer email controlado en PROD
-- [ ] Smoke test PROD post-deploy
-- [ ] Backup PROD verificado
-- [ ] Plan de deploy (solo reportes; no módulos congelados)
-- [ ] Plan de rollback
+- [ ] Rangos NCF reales DGII por empresa/tipo
+- [ ] Secuencias y vencimientos reales
+- [ ] Tasa USD si aplica
+- [ ] Términos legales definitivos
+- [ ] Primera factura / NC / pago controlados en PROD
 
-## Congelados PROD (no tocar)
+## Congelados (no instalados en este deploy)
 
 payments/withholding, multi invoice, margin control, sale-purchase trace.
-
-## Go-live (solo con autorización humana)
-
-1. Backup PROD.
-2. Cargar NCF reales **después** de aprobación.
-3. Confirmar correo Graph en PROD (FROM `administracion@`).
-4. Tasa USD si van a facturar en USD.
-5. Sustituir términos QA por legales.
-6. Desplegar **solo** reportes acordados.
-7. Smoke print A4 + recibo A5 + 1 email.
-8. Marcar `READY_TO_DEPLOY_PRODUCTION = YES` únicamente entonces.
