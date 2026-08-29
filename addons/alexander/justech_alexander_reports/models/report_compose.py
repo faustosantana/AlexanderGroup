@@ -88,7 +88,6 @@ def _dx_sign_space(lines, paper="A4", extra_mm=0):
     return {
         "spacer_mm": mm,
         "spacer_px": px,
-        "spacer_src": _DX_SPACER_GIF,
         "spacer_box_style": (
             "width:1px;font-size:0;line-height:0;overflow:hidden;"
             "border-top:%spx solid transparent;" % px
