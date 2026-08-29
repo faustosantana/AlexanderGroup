@@ -5,6 +5,11 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 
 ## Unreleased
 
+### Added
+- Auditoría Justgroup vs Doralex (stack): manifiestos, comparador
+  `tools/justgroup_doralex_stack_compare.py` y backup de preservación de
+  reportes. Cutover bloqueado hasta Enterprise propia.
+
 ### Changed
 - Correo saliente Doralex: un solo From por empresa (`administracion@` de
   `document.company_id`). Los aliases funcionales no se usan como remitente.

@@ -1,0 +1,257 @@
+{
+  "source": "justgroup.app / erp.justech.do",
+  "audited_at_ssh": "2026-08-27",
+  "audited_at_http": "2026-08-29",
+  "justgroup_write": "FORBIDDEN",
+  "full_module_list_complete": false,
+  "full_module_list_reason": "SSH key justgroup_vps_ed25519 absent on this agent; 360-module dump is from the 2026-08-27 read-only SSH audit, not a live ir.module.module export today.",
+  "odoo": {
+    "server_version": "19.0+e-20260324",
+    "server_serie": "19.0",
+    "edition": "enterprise",
+    "edition_flag": "e",
+    "database": "justech",
+    "postgres": "16.15",
+    "addons_path": "community + enterprise + /usr/lib/odoo/custom-addons",
+    "custom_on_disk": 44,
+    "wkhtmltopdf": "UNKNOWN_LIVE",
+    "python": "UNKNOWN_LIVE"
+  },
+  "counts": {
+    "installed": 360,
+    "community": 173,
+    "enterprise": 142,
+    "justech_custom": 41,
+    "cron": 84,
+    "server_actions": 311,
+    "automations": 15,
+    "groups": 189,
+    "acl": 2355,
+    "record_rules": 638,
+    "reports": 88,
+    "mail_templates": 80,
+    "sequences": 136,
+    "companies": 4
+  },
+  "custom_modules": [
+    {
+      "name": "l10n_do_accounting",
+      "installed_version": "19.0.1.0.1",
+      "source": "third_party",
+      "status": "installed"
+    },
+    {
+      "name": "justech_l10n_do_base",
+      "installed_version": "19.0.1.27.1",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_l10n_do_ncf",
+      "installed_version": "19.0.2.31.0",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_l10n_do_adel_freeze",
+      "installed_version": "19.0.1.0.0",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_accounting_recovery",
+      "installed_version": "19.0.1.4.0",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "bi_convert_purchase_from_sales",
+      "installed_version": "19.0.0.0",
+      "source": "third_party",
+      "status": "installed"
+    },
+    {
+      "name": "justech_sale_purchase_trace",
+      "installed_version": "19.0.1.2.10",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_purchase_sale_margin_control",
+      "installed_version": "19.0.8.29.38",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_approval_flow",
+      "installed_version": "19.0.1.3.8",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "multi_invoice_manual_payment_prod",
+      "installed_version": "19.0.1.5.4",
+      "source": "third_party",
+      "status": "installed"
+    },
+    {
+      "name": "justech_l10n_do_payments_withholding",
+      "installed_version": "19.0.1.7.2",
+      "source": "justech",
+      "enterprise_dep": true,
+      "status": "installed"
+    },
+    {
+      "name": "justech_l10n_do_reports",
+      "installed_version": "19.0.1.24.8",
+      "source": "justech",
+      "enterprise_dep": true,
+      "status": "installed"
+    },
+    {
+      "name": "justech_l10n_do_treasury",
+      "installed_version": "19.0.1.6.7",
+      "source": "justech",
+      "enterprise_dep": true,
+      "status": "installed"
+    },
+    {
+      "name": "justech_fiscal_admin",
+      "installed_version": "19.0.1.10.0",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_vendor_bill_po_control",
+      "installed_version": "19.0.3.6.2",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_warranty",
+      "installed_version": "19.0.1.9.1",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_core",
+      "installed_version": "19.0.1.0.0",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_global_audit_log",
+      "installed_version": "19.0.4.1.4",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_quotation_client_dedup",
+      "installed_version": "19.0.1.0.0",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_report_identity_guard",
+      "installed_version": "19.0.1.0.0",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_sale_terms_guard",
+      "installed_version": "19.0.1.0.0",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_modules",
+      "installed_version": "19.0.1.8.7",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_admin_center",
+      "installed_version": "19.0.2.12.1",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_security_ux",
+      "installed_version": "19.0.4.1.9",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_dgcp_bridge",
+      "installed_version": "19.0.1.3.1",
+      "source": "justech",
+      "status": "installed",
+      "doralex_action": "NOT_APPLICABLE"
+    },
+    {
+      "name": "justech_managed_services",
+      "installed_version": "19.0.2.1.3",
+      "source": "justech",
+      "status": "installed",
+      "doralex_action": "NOT_APPLICABLE"
+    },
+    {
+      "name": "justech_mail_outgoing_policy",
+      "installed_version": "19.0.1.2.0",
+      "source": "justech",
+      "status": "installed"
+    },
+    {
+      "name": "justech_recurring_fee",
+      "installed_version": "19.0.1.2.0",
+      "source": "justech",
+      "enterprise_dep": true,
+      "status": "installed"
+    },
+    {
+      "name": "studio_hotfix",
+      "installed_version": "19.0.1.0.2",
+      "source": "justech",
+      "enterprise_dep": true,
+      "status": "installed"
+    }
+  ],
+  "enterprise_apps_required_for_ux_match": [
+    "account_accountant",
+    "approvals",
+    "documents",
+    "helpdesk",
+    "industry_fsm",
+    "planning",
+    "sale_renting",
+    "sale_subscription",
+    "sign",
+    "stock_barcode",
+    "timesheet_grid",
+    "web_studio",
+    "knowledge",
+    "marketing_automation"
+  ],
+  "community_apps_observed_in_justgroup_ux": [
+    "mail",
+    "calendar",
+    "contacts",
+    "crm",
+    "sale_management",
+    "purchase",
+    "stock",
+    "account",
+    "project",
+    "hr",
+    "hr_holidays",
+    "hr_timesheet",
+    "maintenance",
+    "repair",
+    "survey",
+    "event",
+    "mass_mailing",
+    "im_livechat",
+    "website",
+    "base_automation"
+  ]
+}

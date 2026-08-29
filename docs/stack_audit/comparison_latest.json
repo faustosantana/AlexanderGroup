@@ -1,0 +1,509 @@
+{
+  "justgroup_odoo": "19.0+e-20260324",
+  "doralex_odoo": "19.0-20260817",
+  "justgroup_edition": "enterprise",
+  "doralex_edition": "community",
+  "justgroup_installed": 360,
+  "doralex_installed": 106,
+  "missing_custom": [
+    {
+      "module": "justech_l10n_do_adel_freeze",
+      "justgroup_version": "19.0.1.0.0",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_sale_purchase_trace",
+      "justgroup_version": "19.0.1.2.10",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_purchase_sale_margin_control",
+      "justgroup_version": "19.0.8.29.38",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_approval_flow",
+      "justgroup_version": "19.0.1.3.8",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "multi_invoice_manual_payment_prod",
+      "justgroup_version": "19.0.1.5.4",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_l10n_do_payments_withholding",
+      "justgroup_version": "19.0.1.7.2",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": "enterprise_dep"
+    },
+    {
+      "module": "justech_l10n_do_reports",
+      "justgroup_version": "19.0.1.24.8",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": "enterprise_dep"
+    },
+    {
+      "module": "justech_l10n_do_treasury",
+      "justgroup_version": "19.0.1.6.7",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": "enterprise_dep"
+    },
+    {
+      "module": "justech_vendor_bill_po_control",
+      "justgroup_version": "19.0.3.6.2",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_quotation_client_dedup",
+      "justgroup_version": "19.0.1.0.0",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_sale_terms_guard",
+      "justgroup_version": "19.0.1.0.0",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_admin_center",
+      "justgroup_version": "19.0.2.12.1",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_security_ux",
+      "justgroup_version": "19.0.4.1.9",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_mail_outgoing_policy",
+      "justgroup_version": "19.0.1.2.0",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_recurring_fee",
+      "justgroup_version": "19.0.1.2.0",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": "enterprise_dep"
+    },
+    {
+      "module": "studio_hotfix",
+      "justgroup_version": "19.0.1.0.2",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": "enterprise_dep"
+    }
+  ],
+  "version_mismatch": [],
+  "missing_enterprise": [
+    {
+      "module": "account_accountant",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "absent_from_community_image"
+    },
+    {
+      "module": "approvals",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "absent_from_community_image"
+    },
+    {
+      "module": "documents",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "absent_from_community_image"
+    },
+    {
+      "module": "helpdesk",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "uninstallable"
+    },
+    {
+      "module": "industry_fsm",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "uninstallable"
+    },
+    {
+      "module": "planning",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "uninstallable"
+    },
+    {
+      "module": "sale_renting",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "absent_from_community_image"
+    },
+    {
+      "module": "sale_subscription",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "uninstallable"
+    },
+    {
+      "module": "sign",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "uninstallable"
+    },
+    {
+      "module": "stock_barcode",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "uninstallable"
+    },
+    {
+      "module": "timesheet_grid",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "uninstallable"
+    },
+    {
+      "module": "web_studio",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "uninstallable"
+    },
+    {
+      "module": "knowledge",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "uninstallable"
+    },
+    {
+      "module": "marketing_automation",
+      "status": "UNINSTALLABLE",
+      "doralex_state": "uninstallable"
+    }
+  ],
+  "missing_community": [
+    {
+      "module": "project",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    },
+    {
+      "module": "hr",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    },
+    {
+      "module": "hr_holidays",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    },
+    {
+      "module": "hr_timesheet",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    },
+    {
+      "module": "maintenance",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    },
+    {
+      "module": "repair",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    },
+    {
+      "module": "survey",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    },
+    {
+      "module": "event",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    },
+    {
+      "module": "mass_mailing",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    },
+    {
+      "module": "im_livechat",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    },
+    {
+      "module": "base_automation",
+      "status": "MISSING",
+      "doralex_state": "uninstalled"
+    }
+  ],
+  "doralex_identity_extras": [
+    "justech_alexander_admin",
+    "justech_alexander_base",
+    "justech_alexander_microsoft_mail",
+    "justech_alexander_reports",
+    "justech_alexander_website"
+  ],
+  "custom_rows": [
+    {
+      "module": "l10n_do_accounting",
+      "justgroup_version": "19.0.1.0.1",
+      "doralex_version": "19.0.1.0.1",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "justech_l10n_do_base",
+      "justgroup_version": "19.0.1.27.1",
+      "doralex_version": "19.0.1.27.1",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "justech_l10n_do_ncf",
+      "justgroup_version": "19.0.2.31.0",
+      "doralex_version": "19.0.2.31.0",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "justech_l10n_do_adel_freeze",
+      "justgroup_version": "19.0.1.0.0",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_accounting_recovery",
+      "justgroup_version": "19.0.1.4.0",
+      "doralex_version": "19.0.1.4.0",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "bi_convert_purchase_from_sales",
+      "justgroup_version": "19.0.0.0",
+      "doralex_version": "19.0.0.0",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "justech_sale_purchase_trace",
+      "justgroup_version": "19.0.1.2.10",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_purchase_sale_margin_control",
+      "justgroup_version": "19.0.8.29.38",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_approval_flow",
+      "justgroup_version": "19.0.1.3.8",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "multi_invoice_manual_payment_prod",
+      "justgroup_version": "19.0.1.5.4",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_l10n_do_payments_withholding",
+      "justgroup_version": "19.0.1.7.2",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": "enterprise_dep"
+    },
+    {
+      "module": "justech_l10n_do_reports",
+      "justgroup_version": "19.0.1.24.8",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": "enterprise_dep"
+    },
+    {
+      "module": "justech_l10n_do_treasury",
+      "justgroup_version": "19.0.1.6.7",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": "enterprise_dep"
+    },
+    {
+      "module": "justech_fiscal_admin",
+      "justgroup_version": "19.0.1.10.0",
+      "doralex_version": "19.0.1.10.0",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "justech_vendor_bill_po_control",
+      "justgroup_version": "19.0.3.6.2",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_warranty",
+      "justgroup_version": "19.0.1.9.1",
+      "doralex_version": "19.0.1.9.1",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "justech_core",
+      "justgroup_version": "19.0.1.0.0",
+      "doralex_version": "19.0.1.0.0",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "justech_global_audit_log",
+      "justgroup_version": "19.0.4.1.4",
+      "doralex_version": "19.0.4.1.4",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "justech_quotation_client_dedup",
+      "justgroup_version": "19.0.1.0.0",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_report_identity_guard",
+      "justgroup_version": "19.0.1.0.0",
+      "doralex_version": "19.0.1.0.0",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "justech_sale_terms_guard",
+      "justgroup_version": "19.0.1.0.0",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_modules",
+      "justgroup_version": "19.0.1.8.7",
+      "doralex_version": "19.0.1.8.7",
+      "status": "SAME",
+      "note": ""
+    },
+    {
+      "module": "justech_admin_center",
+      "justgroup_version": "19.0.2.12.1",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_security_ux",
+      "justgroup_version": "19.0.4.1.9",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_dgcp_bridge",
+      "justgroup_version": "19.0.1.3.1",
+      "doralex_version": null,
+      "status": "NOT_APPLICABLE",
+      "note": "Justech-product specific; do not copy identity"
+    },
+    {
+      "module": "justech_managed_services",
+      "justgroup_version": "19.0.2.1.3",
+      "doralex_version": null,
+      "status": "NOT_APPLICABLE",
+      "note": "Justech-product specific; do not copy identity"
+    },
+    {
+      "module": "justech_mail_outgoing_policy",
+      "justgroup_version": "19.0.1.2.0",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": ""
+    },
+    {
+      "module": "justech_recurring_fee",
+      "justgroup_version": "19.0.1.2.0",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": "enterprise_dep"
+    },
+    {
+      "module": "studio_hotfix",
+      "justgroup_version": "19.0.1.0.2",
+      "doralex_version": null,
+      "status": "MISSING",
+      "note": "enterprise_dep"
+    }
+  ],
+  "flags": {
+    "ODOO_VERSION_MATCH": false,
+    "ODOO_EDITION_MATCH": false,
+    "MODULE_SET_MATCH": false,
+    "MODULE_VERSION_MATCH": true,
+    "CUSTOM_MODULES_MATCH": false,
+    "DEPENDENCIES_MATCH": false,
+    "FUNCTIONAL_ARCHITECTURE_MATCH": false,
+    "MENUS_MATCH": false,
+    "QWEB_INFRASTRUCTURE_MATCH": false,
+    "DORALEX_REPORTS_PRESERVED": true,
+    "SPANISH_UI": false,
+    "JUSTGROUP_TRANSACTIONS_COPIED": false,
+    "JUSTGROUP_PRODUCTION_TOUCHED": false,
+    "DORALEX_OPERATIONAL_DATA_CLEAN": false,
+    "QA_COMPLETE": false,
+    "CUTOVER_ALLOWED": false,
+    "FULL_JUSTGROUP_MODULE_LIST": false
+  },
+  "live": {
+    "justgroup": {
+      "server_version": "19.0+e-20260324",
+      "server_version_info": [
+        19,
+        0,
+        0,
+        "final",
+        0,
+        "e"
+      ],
+      "edition": "enterprise"
+    },
+    "doralex": {
+      "server_version": "19.0-20260817",
+      "server_version_info": [
+        19,
+        0,
+        0,
+        "final",
+        0,
+        ""
+      ],
+      "edition": "community"
+    }
+  }
+}

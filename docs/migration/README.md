@@ -19,5 +19,8 @@ Justgroup hacia Doralex. **No** se copia nada a ciegas.
    `REQUIRES_ADAPTATION` / `BLOCKED`.
 3. Migrar solo lo clasificado y aprobado, primero a **Dev**, con pruebas.
 
+Auditoría de stack 2026-08-29 (Justgroup Enterprise vs Doralex Community):
+[`../stack_audit/JUSTGROUP_DORALEX_STACK_AUDIT.md`](../stack_audit/JUSTGROUP_DORALEX_STACK_AUDIT.md).
+
 Relacionado: [`../05_REUSE_ASSESSMENT.md`](../05_REUSE_ASSESSMENT.md) y
 [`../04_MODULE_INVENTORY.md`](../04_MODULE_INVENTORY.md).

@@ -1,0 +1,1907 @@
+{
+  "installed_count": 106,
+  "installed": [
+    {
+      "name": "account",
+      "version": "19.0.1.4",
+      "shortdesc": "Invoicing",
+      "author": "Odoo S.A.",
+      "application": true
+    },
+    {
+      "name": "account_add_gln",
+      "version": "19.0.1.0",
+      "shortdesc": "Add Partner GLN",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "account_debit_note",
+      "version": "19.0.1.0",
+      "shortdesc": "Debit Notes",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "account_edi_ubl_cii",
+      "version": "19.0.1.0",
+      "shortdesc": "Import/Export electronic invoices with UBL/CII",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "account_payment",
+      "version": "19.0.2.0",
+      "shortdesc": "Payment - Account",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "account_qr_code_sepa",
+      "version": "19.0.0.1",
+      "shortdesc": "Account SEPA QR Code",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "analytic",
+      "version": "19.0.1.2",
+      "shortdesc": "Analytic Accounting",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "api_doc",
+      "version": "19.0.1.0",
+      "shortdesc": "API Documentation",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "auth_passkey",
+      "version": "19.0.1.1",
+      "shortdesc": "Passkeys",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "auth_passkey_portal",
+      "version": "19.0.1.0",
+      "shortdesc": "Passkeys Portal",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "auth_signup",
+      "version": "19.0.1.0",
+      "shortdesc": "Signup",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "auth_totp",
+      "version": "19.0.1.0",
+      "shortdesc": "Two-Factor Authentication (TOTP)",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "auth_totp_mail",
+      "version": "19.0.1.0",
+      "shortdesc": "2FA Invite mail",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "auth_totp_portal",
+      "version": "19.0.1.0",
+      "shortdesc": "TOTPortal",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "barcodes",
+      "version": "19.0.2.0",
+      "shortdesc": "Barcode",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "barcodes_gs1_nomenclature",
+      "version": "19.0.1.0",
+      "shortdesc": "Barcode - GS1 Nomenclature",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "base",
+      "version": "19.0.1.3",
+      "shortdesc": "Base",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "base_iban",
+      "version": "19.0.1.0",
+      "shortdesc": "IBAN Bank Accounts",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "base_import",
+      "version": "19.0.2.0",
+      "shortdesc": "Base import",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "base_import_module",
+      "version": "19.0.1.0",
+      "shortdesc": "Base import module",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "base_install_request",
+      "version": "19.0.1.0",
+      "shortdesc": "Base - Module Install Request",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "base_setup",
+      "version": "19.0.1.0",
+      "shortdesc": "Initial Setup Tools",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "bi_convert_purchase_from_sales",
+      "version": "19.0.0.0",
+      "shortdesc": "Crear orden de compra desde orden de venta",
+      "author": "DynamicsPM",
+      "application": false
+    },
+    {
+      "name": "bus",
+      "version": "19.0.1.0",
+      "shortdesc": "IM Bus",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "calendar",
+      "version": "19.0.1.1",
+      "shortdesc": "Calendar",
+      "author": "Odoo S.A.",
+      "application": true
+    },
+    {
+      "name": "calendar_sms",
+      "version": "19.0.1.1",
+      "shortdesc": "Calendar - SMS",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "contacts",
+      "version": "19.0.1.0",
+      "shortdesc": "Contacts",
+      "author": "Odoo S.A.",
+      "application": true
+    },
+    {
+      "name": "crm",
+      "version": "19.0.1.9",
+      "shortdesc": "CRM",
+      "author": "Odoo S.A.",
+      "application": true
+    },
+    {
+      "name": "crm_iap_enrich",
+      "version": "19.0.1.1",
+      "shortdesc": "Lead Enrichment",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "crm_iap_mine",
+      "version": "19.0.1.2",
+      "shortdesc": "Lead Generation",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "crm_sms",
+      "version": "19.0.1.1",
+      "shortdesc": "SMS in CRM",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "digest",
+      "version": "19.0.1.1",
+      "shortdesc": "KPI Digests",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "google_gmail",
+      "version": "19.0.1.2",
+      "shortdesc": "Google Gmail",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "google_recaptcha",
+      "version": "19.0.1.0",
+      "shortdesc": "Google reCAPTCHA integration",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "html_builder",
+      "version": "19.0.0.1",
+      "shortdesc": "HTML Builder",
+      "author": "Odoo",
+      "application": false
+    },
+    {
+      "name": "html_editor",
+      "version": "19.0.1.0",
+      "shortdesc": "HTML Editor",
+      "author": "odoo",
+      "application": false
+    },
+    {
+      "name": "http_routing",
+      "version": "19.0.1.0",
+      "shortdesc": "Web Routing",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "iap",
+      "version": "19.0.1.1",
+      "shortdesc": "In-App Purchases",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "iap_crm",
+      "version": "19.0.1.0",
+      "shortdesc": "IAP / CRM",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "iap_mail",
+      "version": "19.0.1.0",
+      "shortdesc": "IAP / Mail",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "justech_accounting_recovery",
+      "version": "19.0.1.4.0",
+      "shortdesc": "Justech Contabilidad — Recuperación Contable (SoD)",
+      "author": "Justech",
+      "application": false
+    },
+    {
+      "name": "justech_alexander_admin",
+      "version": "19.0.1.0.1",
+      "shortdesc": "Administración Doralex",
+      "author": "Justech",
+      "application": true
+    },
+    {
+      "name": "justech_alexander_base",
+      "version": "19.0.1.0.3",
+      "shortdesc": "Doralex Base",
+      "author": "Justech",
+      "application": false
+    },
+    {
+      "name": "justech_alexander_microsoft_mail",
+      "version": "19.0.1.0.4",
+      "shortdesc": "Doralex Microsoft Mail",
+      "author": "Justech",
+      "application": false
+    },
+    {
+      "name": "justech_alexander_reports",
+      "version": "19.0.3.8.5",
+      "shortdesc": "Doralex Report Layout",
+      "author": "Justech",
+      "application": false
+    },
+    {
+      "name": "justech_alexander_website",
+      "version": "19.0.1.0.7",
+      "shortdesc": "Doralex Website Institucional",
+      "author": "Justech",
+      "application": true
+    },
+    {
+      "name": "justech_core",
+      "version": "19.0.1.0.0",
+      "shortdesc": "Justech Core",
+      "author": "Justech",
+      "application": false
+    },
+    {
+      "name": "justech_fiscal_admin",
+      "version": "19.0.1.10.0",
+      "shortdesc": "Justech Fiscal Administration Center",
+      "author": "Justech",
+      "application": true
+    },
+    {
+      "name": "justech_global_audit_log",
+      "version": "19.0.4.1.4",
+      "shortdesc": "Auditoría",
+      "author": "Justech",
+      "application": false
+    },
+    {
+      "name": "justech_l10n_do_base",
+      "version": "19.0.1.27.1",
+      "shortdesc": "Justech Dominican Fiscal Base",
+      "author": "Justech",
+      "application": false
+    },
+    {
+      "name": "justech_l10n_do_ncf",
+      "version": "19.0.2.31.0",
+      "shortdesc": "Justech Dominican NCF",
+      "author": "Justech",
+      "application": false
+    },
+    {
+      "name": "justech_modules",
+      "version": "19.0.1.8.7",
+      "shortdesc": "Justech Modules",
+      "author": "Justech",
+      "application": false
+    },
+    {
+      "name": "justech_report_identity_guard",
+      "version": "19.0.1.0.0",
+      "shortdesc": "Justech Report Identity Guard",
+      "author": "Justech",
+      "application": false
+    },
+    {
+      "name": "justech_warranty",
+      "version": "19.0.1.9.1",
+      "shortdesc": "Justech Garantías",
+      "author": "Justech",
+      "application": true
+    },
+    {
+      "name": "l10n_do",
+      "version": "19.0.2.0",
+      "shortdesc": "Dominican Republic - Accounting",
+      "author": "Gustavo Valverde - iterativo | Consultores de Odoo (http://iterativo.do)",
+      "application": false
+    },
+    {
+      "name": "l10n_do_accounting",
+      "version": "19.0.1.0.1",
+      "shortdesc": "Fiscal Accounting (Rep. Dominicana)",
+      "author": "Adel Networks S,R,L",
+      "application": false
+    },
+    {
+      "name": "mail",
+      "version": "19.0.1.19",
+      "shortdesc": "Discuss",
+      "author": "Odoo S.A.",
+      "application": true
+    },
+    {
+      "name": "mail_bot",
+      "version": "19.0.1.2",
+      "shortdesc": "OdooBot",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "microsoft_outlook",
+      "version": "19.0.1.1",
+      "shortdesc": "Microsoft Outlook",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "onboarding",
+      "version": "19.0.1.2",
+      "shortdesc": "Onboarding Toolbox",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "partner_autocomplete",
+      "version": "19.0.1.1",
+      "shortdesc": "Partner Autocomplete",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "payment",
+      "version": "19.0.2.0",
+      "shortdesc": "Payment Engine",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "phone_validation",
+      "version": "19.0.2.1",
+      "shortdesc": "Phone Numbers Validation",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "portal",
+      "version": "19.0.1.0",
+      "shortdesc": "Customer Portal",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "privacy_lookup",
+      "version": "19.0.1.0",
+      "shortdesc": "Privacy",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "product",
+      "version": "19.0.1.2",
+      "shortdesc": "Products & Pricelists",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "purchase",
+      "version": "19.0.1.2",
+      "shortdesc": "Purchase",
+      "author": "Odoo S.A.",
+      "application": true
+    },
+    {
+      "name": "purchase_edi_ubl_bis3",
+      "version": "19.0.1.0",
+      "shortdesc": "Import/Export electronic orders with UBL",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "purchase_stock",
+      "version": "19.0.1.2",
+      "shortdesc": "Purchase Stock",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "resource",
+      "version": "19.0.1.1",
+      "shortdesc": "Resource",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "resource_mail",
+      "version": "19.0.1.0",
+      "shortdesc": "Resource Mail",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "rpc",
+      "version": "19.0.1.0",
+      "shortdesc": "RPC endpoints",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "sale",
+      "version": "19.0.1.2",
+      "shortdesc": "Sales",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "sale_crm",
+      "version": "19.0.1.0",
+      "shortdesc": "Opportunity to Quotation",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "sale_edi_ubl",
+      "version": "19.0.1.0",
+      "shortdesc": "Import electronic orders with UBL",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "sale_management",
+      "version": "19.0.1.0",
+      "shortdesc": "Sales",
+      "author": "Odoo S.A.",
+      "application": true
+    },
+    {
+      "name": "sale_pdf_quote_builder",
+      "version": "19.0.1.0",
+      "shortdesc": "Sales PDF Quotation Builder",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "sale_purchase",
+      "version": "19.0.1.0",
+      "shortdesc": "Sale Purchase",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "sale_purchase_stock",
+      "version": "19.0.1.0",
+      "shortdesc": "MTO Sale <-> Purchase",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "sale_sms",
+      "version": "19.0.1.0",
+      "shortdesc": "Sale - SMS",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "sales_team",
+      "version": "19.0.1.1",
+      "shortdesc": "Sales Teams",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "sale_stock",
+      "version": "19.0.1.0",
+      "shortdesc": "Sales and Warehouse Management",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "sms",
+      "version": "19.0.3.0",
+      "shortdesc": "SMS gateway",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "snailmail",
+      "version": "19.0.0.4",
+      "shortdesc": "Snail Mail",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "snailmail_account",
+      "version": "19.0.0.1",
+      "shortdesc": "Snail Mail - Account",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "social_media",
+      "version": "19.0.0.1",
+      "shortdesc": "Social Media",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "spreadsheet",
+      "version": "19.0.1.0",
+      "shortdesc": "Spreadsheet",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "spreadsheet_account",
+      "version": "19.0.1.0",
+      "shortdesc": "Spreadsheet Accounting Formulas",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "spreadsheet_dashboard",
+      "version": "19.0.1.0",
+      "shortdesc": "Spreadsheet dashboard",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "spreadsheet_dashboard_account",
+      "version": "19.0.1.0",
+      "shortdesc": "Spreadsheet dashboard for accounting",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "spreadsheet_dashboard_sale",
+      "version": "19.0.1.0",
+      "shortdesc": "Spreadsheet dashboard for sales",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "spreadsheet_dashboard_stock_account",
+      "version": "19.0.1.0",
+      "shortdesc": "Spreadsheet dashboard for stock",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "stock",
+      "version": "19.0.1.1",
+      "shortdesc": "Inventory",
+      "author": "Odoo S.A.",
+      "application": true
+    },
+    {
+      "name": "stock_account",
+      "version": "19.0.1.1",
+      "shortdesc": "WMS Accounting",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "stock_sms",
+      "version": "19.0.1.0",
+      "shortdesc": "Stock - SMS",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "uom",
+      "version": "19.0.1.0",
+      "shortdesc": "Units of measure",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "utm",
+      "version": "19.0.1.1",
+      "shortdesc": "UTM Trackers",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "web",
+      "version": "19.0.1.0",
+      "shortdesc": "Web",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "website",
+      "version": "19.0.1.0",
+      "shortdesc": "Website",
+      "author": "Odoo S.A.",
+      "application": true
+    },
+    {
+      "name": "website_crm",
+      "version": "19.0.2.1",
+      "shortdesc": "Contact Form",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "website_crm_sms",
+      "version": "19.0.1.0",
+      "shortdesc": "Send SMS to Visitor with leads",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "website_mail",
+      "version": "19.0.0.1",
+      "shortdesc": "Website Mail",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "website_payment",
+      "version": "19.0.1.0",
+      "shortdesc": "Website Payment",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "website_sms",
+      "version": "19.0.1.0",
+      "shortdesc": "Send SMS to Visitor",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "web_tour",
+      "version": "19.0.1.0",
+      "shortdesc": "Tours",
+      "author": "Odoo S.A.",
+      "application": false
+    },
+    {
+      "name": "web_unsplash",
+      "version": "19.0.1.1",
+      "shortdesc": "Unsplash Image Library",
+      "author": "Odoo S.A.",
+      "application": false
+    }
+  ],
+  "justech_all": [
+    {
+      "name": "justech_accounting_recovery",
+      "state": "installed",
+      "version": "19.0.1.4.0"
+    },
+    {
+      "name": "justech_alexander_admin",
+      "state": "installed",
+      "version": "19.0.1.0.1"
+    },
+    {
+      "name": "justech_alexander_base",
+      "state": "installed",
+      "version": "19.0.1.0.3"
+    },
+    {
+      "name": "justech_alexander_microsoft_mail",
+      "state": "installed",
+      "version": "19.0.1.0.4"
+    },
+    {
+      "name": "justech_alexander_reports",
+      "state": "installed",
+      "version": "19.0.3.8.5"
+    },
+    {
+      "name": "justech_alexander_website",
+      "state": "installed",
+      "version": "19.0.1.0.7"
+    },
+    {
+      "name": "justech_core",
+      "state": "installed",
+      "version": "19.0.1.0.0"
+    },
+    {
+      "name": "justech_fiscal_admin",
+      "state": "installed",
+      "version": "19.0.1.10.0"
+    },
+    {
+      "name": "justech_global_audit_log",
+      "state": "installed",
+      "version": "19.0.4.1.4"
+    },
+    {
+      "name": "justech_l10n_do_base",
+      "state": "installed",
+      "version": "19.0.1.27.1"
+    },
+    {
+      "name": "justech_l10n_do_ncf",
+      "state": "installed",
+      "version": "19.0.2.31.0"
+    },
+    {
+      "name": "justech_modules",
+      "state": "installed",
+      "version": "19.0.1.8.7"
+    },
+    {
+      "name": "justech_report_identity_guard",
+      "state": "installed",
+      "version": "19.0.1.0.0"
+    },
+    {
+      "name": "justech_warranty",
+      "state": "installed",
+      "version": "19.0.1.9.1"
+    }
+  ],
+  "wanted_states": [
+    {
+      "name": "base_automation",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "board",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "event",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "fleet",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "helpdesk",
+      "state": "uninstallable",
+      "version": false
+    },
+    {
+      "name": "hr",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "hr_holidays",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "hr_timesheet",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "im_livechat",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "industry_fsm",
+      "state": "uninstallable",
+      "version": false
+    },
+    {
+      "name": "knowledge",
+      "state": "uninstallable",
+      "version": false
+    },
+    {
+      "name": "maintenance",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "marketing_automation",
+      "state": "uninstallable",
+      "version": false
+    },
+    {
+      "name": "mass_mailing",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "mrp",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "planning",
+      "state": "uninstallable",
+      "version": false
+    },
+    {
+      "name": "project",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "quality_control",
+      "state": "uninstallable",
+      "version": false
+    },
+    {
+      "name": "repair",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "sale_subscription",
+      "state": "uninstallable",
+      "version": false
+    },
+    {
+      "name": "sign",
+      "state": "uninstallable",
+      "version": false
+    },
+    {
+      "name": "spreadsheet_dashboard",
+      "state": "installed",
+      "version": "19.0.1.0"
+    },
+    {
+      "name": "stock_barcode",
+      "state": "uninstallable",
+      "version": false
+    },
+    {
+      "name": "survey",
+      "state": "uninstalled",
+      "version": false
+    },
+    {
+      "name": "timesheet_grid",
+      "state": "uninstallable",
+      "version": false
+    },
+    {
+      "name": "web_studio",
+      "state": "uninstallable",
+      "version": false
+    }
+  ],
+  "wanted_absent": [
+    "approvals",
+    "documents",
+    "sale_renting",
+    "account_accountant",
+    "whatsapp"
+  ],
+  "reports": [
+    {
+      "id": 606,
+      "name": "Certificado de Garantía",
+      "report_name": "justech_alexander_reports.report_warranty_document",
+      "model": "justech.warranty",
+      "type": "qweb-pdf",
+      "paperformat": "Doralex A4"
+    },
+    {
+      "id": 358,
+      "name": "Count Sheet",
+      "report_name": "stock.report_inventory",
+      "model": "stock.quant",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 356,
+      "name": "Delivery Slip",
+      "report_name": "stock.report_deliveryslip",
+      "model": "stock.picking",
+      "type": "qweb-pdf",
+      "paperformat": "Doralex A4"
+    },
+    {
+      "id": 607,
+      "name": "Estado de cuenta",
+      "report_name": "justech_alexander_reports.report_partner_statement_document",
+      "model": "res.partner",
+      "type": "qweb-pdf",
+      "paperformat": "Doralex A4"
+    },
+    {
+      "id": 242,
+      "name": "Hash integrity result PDF",
+      "report_name": "account.report_hash_integrity",
+      "model": "res.company",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 237,
+      "name": "Invoice PDF",
+      "report_name": "account.report_invoice_with_payments",
+      "model": "account.move",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 452,
+      "name": "Invoice report generated by Odoo",
+      "report_name": "account_edi_ubl_cii.account_invoices_generated_by_odoo",
+      "model": "account.move",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 363,
+      "name": "Location Barcode",
+      "report_name": "stock.report_location_barcode",
+      "model": "stock.location",
+      "type": "qweb-pdf",
+      "paperformat": "A4 Label Sheet"
+    },
+    {
+      "id": 364,
+      "name": "Lot/Serial Number (PDF)",
+      "report_name": "stock.report_lot_label",
+      "model": "stock.lot",
+      "type": "qweb-pdf",
+      "paperformat": "A4 Label Sheet"
+    },
+    {
+      "id": 368,
+      "name": "Lot/Serial Number (ZPL)",
+      "report_name": "stock.label_lot_template_view",
+      "model": "stock.lot",
+      "type": "qweb-text",
+      "paperformat": null
+    },
+    {
+      "id": 37,
+      "name": "Model Overview",
+      "report_name": "base.report_irmodeloverview",
+      "model": "ir.model",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 365,
+      "name": "Operation type (PDF)",
+      "report_name": "stock.report_picking_type_label",
+      "model": "stock.picking.type",
+      "type": "qweb-pdf",
+      "paperformat": "A4 Label Sheet"
+    },
+    {
+      "id": 372,
+      "name": "Operation type (ZPL)",
+      "report_name": "stock.label_picking_type_view",
+      "model": "stock.picking.type",
+      "type": "qweb-text",
+      "paperformat": null
+    },
+    {
+      "id": 238,
+      "name": "Original Bills",
+      "report_name": "account.report_original_vendor_bill",
+      "model": "account.move",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 361,
+      "name": "Package Barcode (PDF)",
+      "report_name": "stock.report_package_barcode_small",
+      "model": "stock.package",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 362,
+      "name": "Package Barcode (PDF)",
+      "report_name": "stock.report_package_history_barcode_small",
+      "model": "stock.package.history",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 359,
+      "name": "Package Barcode with Contents",
+      "report_name": "stock.report_package_barcode",
+      "model": "stock.package",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 360,
+      "name": "Package Barcode with Contents",
+      "report_name": "stock.report_package_history_barcode",
+      "model": "stock.package.history",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 369,
+      "name": "Package Barcode (ZPL)",
+      "report_name": "stock.label_package_template_view",
+      "model": "stock.package",
+      "type": "qweb-text",
+      "paperformat": null
+    },
+    {
+      "id": 370,
+      "name": "Package Barcode (ZPL)",
+      "report_name": "stock.label_package_history_template_view",
+      "model": "stock.package.history",
+      "type": "qweb-text",
+      "paperformat": null
+    },
+    {
+      "id": 357,
+      "name": "Packages",
+      "report_name": "stock.report_picking_packages",
+      "model": "stock.picking",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 202,
+      "name": "Packaging Barcodes (PDF)",
+      "report_name": "product.report_packagingbarcode",
+      "model": "product.uom",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 371,
+      "name": "Packaging Barcodes (ZPL)",
+      "report_name": "stock.label_packaging_barcode_view",
+      "model": "product.uom",
+      "type": "qweb-text",
+      "paperformat": null
+    },
+    {
+      "id": 240,
+      "name": "Payment Receipt",
+      "report_name": "account.report_payment_receipt",
+      "model": "account.payment",
+      "type": "qweb-pdf",
+      "paperformat": "Doralex A5 Recibo"
+    },
+    {
+      "id": 486,
+      "name": "PDF Quote",
+      "report_name": "sale.report_saleorder",
+      "model": "sale.order",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 239,
+      "name": "PDF without Payment",
+      "report_name": "account.report_invoice",
+      "model": "account.move",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 355,
+      "name": "Picking Operations",
+      "report_name": "stock.report_picking",
+      "model": "stock.picking",
+      "type": "qweb-pdf",
+      "paperformat": "Doralex A4"
+    },
+    {
+      "id": 79,
+      "name": "Preview External Report",
+      "report_name": "web.preview_externalreport",
+      "model": "res.company",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 78,
+      "name": "Preview Internal Report",
+      "report_name": "web.preview_internalreport",
+      "model": "res.company",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 203,
+      "name": "Pricelist",
+      "report_name": "product.report_pricelist",
+      "model": "product.product",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 198,
+      "name": "Product Label 2x7 (PDF)",
+      "report_name": "product.report_producttemplatelabel2x7",
+      "model": "product.template",
+      "type": "qweb-pdf",
+      "paperformat": "A4 Label Sheet"
+    },
+    {
+      "id": 201,
+      "name": "Product Label 4x12 No Price (PDF)",
+      "report_name": "product.report_producttemplatelabel4x12noprice",
+      "model": "product.template",
+      "type": "qweb-pdf",
+      "paperformat": "A4 Label Sheet"
+    },
+    {
+      "id": 200,
+      "name": "Product Label 4x12 (PDF)",
+      "report_name": "product.report_producttemplatelabel4x12",
+      "model": "product.template",
+      "type": "qweb-pdf",
+      "paperformat": "A4 Label Sheet"
+    },
+    {
+      "id": 199,
+      "name": "Product Label 4x7 (PDF)",
+      "report_name": "product.report_producttemplatelabel4x7",
+      "model": "product.template",
+      "type": "qweb-pdf",
+      "paperformat": "A4 Label Sheet"
+    },
+    {
+      "id": 204,
+      "name": "Product Label (PDF)",
+      "report_name": "product.report_producttemplatelabel_dymo",
+      "model": "product.template",
+      "type": "qweb-pdf",
+      "paperformat": "Dymo Label Sheet"
+    },
+    {
+      "id": 367,
+      "name": "Product Label (ZPL)",
+      "report_name": "stock.label_product_product_view",
+      "model": "product.product",
+      "type": "qweb-text",
+      "paperformat": null
+    },
+    {
+      "id": 366,
+      "name": "Product Routes Report",
+      "report_name": "stock.report_stock_rule",
+      "model": "product.template",
+      "type": "qweb-html",
+      "paperformat": null
+    },
+    {
+      "id": 487,
+      "name": "PRO-FORMA Invoice",
+      "report_name": "sale.report_saleorder_pro_forma",
+      "model": "sale.order",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 458,
+      "name": "Purchase Order",
+      "report_name": "purchase.report_purchaseorder",
+      "model": "purchase.order",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 530,
+      "name": "Quotation / Order",
+      "report_name": "sale.report_saleorder_raw",
+      "model": "sale.order",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 353,
+      "name": "Reception Report",
+      "report_name": "stock.report_reception",
+      "model": "stock.picking",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 373,
+      "name": "Reception Report Label",
+      "report_name": "stock.report_reception_report_label",
+      "model": "stock.move",
+      "type": "qweb-pdf",
+      "paperformat": "Dymo Label Sheet"
+    },
+    {
+      "id": 80,
+      "name": "Report Layout Preview",
+      "report_name": "web.preview_layout_report",
+      "model": "res.company",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 459,
+      "name": "Request for Quotation",
+      "report_name": "purchase.report_purchasequotation",
+      "model": "purchase.order",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 374,
+      "name": "Return slip",
+      "report_name": "stock.report_return_document",
+      "model": "stock.picking",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 241,
+      "name": "Statement",
+      "report_name": "account.report_statement",
+      "model": "account.bank.statement",
+      "type": "qweb-pdf",
+      "paperformat": "A4 - statement"
+    },
+    {
+      "id": 42,
+      "name": "Technical guide",
+      "report_name": "base.report_irmodulereference",
+      "model": "ir.module.module",
+      "type": "qweb-pdf",
+      "paperformat": null
+    },
+    {
+      "id": 605,
+      "name": "Vista previa Doralex",
+      "report_name": "justech_alexander_reports.report_preview_document",
+      "model": "doralex.report.preview",
+      "type": "qweb-pdf",
+      "paperformat": "Doralex A4"
+    }
+  ],
+  "paperformats": [
+    {
+      "id": 1,
+      "name": "A4",
+      "format": "A4"
+    },
+    {
+      "id": 2,
+      "name": "US Letter",
+      "format": "Letter"
+    },
+    {
+      "id": 3,
+      "name": "US Batch Deposit",
+      "format": "Letter"
+    },
+    {
+      "id": 4,
+      "name": "A4 Label Sheet",
+      "format": "A4"
+    },
+    {
+      "id": 5,
+      "name": "Dymo Label Sheet",
+      "format": "custom"
+    },
+    {
+      "id": 6,
+      "name": "A4 - statement",
+      "format": "A4"
+    },
+    {
+      "id": 7,
+      "name": "Doralex A4",
+      "format": "A4"
+    },
+    {
+      "id": 8,
+      "name": "Doralex A5 Recibo",
+      "format": "A5"
+    }
+  ],
+  "qweb_doralex": [
+    {
+      "id": 1636,
+      "name": "Bloques extra Doralex",
+      "key": "justech_alexander_reports.dx_report_extras",
+      "xml_id": "justech_alexander_reports.dx_report_extras",
+      "inherit": null,
+      "arch_len": 1409
+    },
+    {
+      "id": 1642,
+      "name": "delivery_document_dx",
+      "key": "justech_alexander_reports.delivery_document_dx",
+      "xml_id": "justech_alexander_reports.delivery_document_dx",
+      "inherit": "stock.report_delivery_document",
+      "arch_len": 507
+    },
+    {
+      "id": 1613,
+      "name": "Doralex",
+      "key": "justech_alexander_reports.external_layout_doralex",
+      "xml_id": "justech_alexander_reports.external_layout_doralex",
+      "inherit": null,
+      "arch_len": 5660
+    },
+    {
+      "id": 2441,
+      "name": "Doralex contacto",
+      "key": "justech_alexander_website.doralex_contactus",
+      "xml_id": "justech_alexander_website.doralex_contactus",
+      "inherit": "website.contactus",
+      "arch_len": 1517
+    },
+    {
+      "id": 2442,
+      "name": "doralex_copyright",
+      "key": "justech_alexander_website.doralex_copyright",
+      "xml_id": "justech_alexander_website.doralex_copyright",
+      "inherit": "website.footer_copyright_company_name",
+      "arch_len": 256
+    },
+    {
+      "id": 2443,
+      "name": "Doralex CTA",
+      "key": "justech_alexander_website.doralex_header_cta",
+      "xml_id": "justech_alexander_website.doralex_header_cta",
+      "inherit": "website.header_call_to_action",
+      "arch_len": 257
+    },
+    {
+      "id": 2444,
+      "name": "Doralex ERP login",
+      "key": "justech_alexander_website.doralex_sign_in",
+      "xml_id": "justech_alexander_website.doralex_sign_in",
+      "inherit": "portal.user_sign_in",
+      "arch_len": 217
+    },
+    {
+      "id": 2440,
+      "name": "Doralex footer institucional",
+      "key": "justech_alexander_website.doralex_footer",
+      "xml_id": "justech_alexander_website.doralex_footer",
+      "inherit": "website.footer_custom",
+      "arch_len": 2499
+    },
+    {
+      "id": 2439,
+      "name": "Doralex header contact",
+      "key": "justech_alexander_website.doralex_header_text",
+      "xml_id": "justech_alexander_website.doralex_header_text",
+      "inherit": "website.header_text_element",
+      "arch_len": 1066
+    },
+    {
+      "id": 2438,
+      "name": "Doralex Home",
+      "key": "justech_alexander_website.doralex_homepage",
+      "xml_id": "justech_alexander_website.doralex_homepage",
+      "inherit": "website.homepage",
+      "arch_len": 6810
+    },
+    {
+      "id": 2446,
+      "name": "Doralex Home",
+      "key": "justech_alexander_website.doralex_homepage",
+      "xml_id": "",
+      "inherit": "website.homepage",
+      "arch_len": 6810
+    },
+    {
+      "id": 1622,
+      "name": "dx_banks_text",
+      "key": "justech_alexander_reports.dx_banks_text",
+      "xml_id": "justech_alexander_reports.dx_banks_text",
+      "inherit": null,
+      "arch_len": 538
+    },
+    {
+      "id": 1615,
+      "name": "dx_commercial_meta",
+      "key": "justech_alexander_reports.dx_commercial_meta",
+      "xml_id": "justech_alexander_reports.dx_commercial_meta",
+      "inherit": null,
+      "arch_len": 2996
+    },
+    {
+      "id": 1614,
+      "name": "dx_customer_card",
+      "key": "justech_alexander_reports.dx_customer_card",
+      "xml_id": "justech_alexander_reports.dx_customer_card",
+      "inherit": null,
+      "arch_len": 539
+    },
+    {
+      "id": 1619,
+      "name": "dx_document_end",
+      "key": "justech_alexander_reports.dx_document_end",
+      "xml_id": "justech_alexander_reports.dx_document_end",
+      "inherit": null,
+      "arch_len": 2633
+    },
+    {
+      "id": 1610,
+      "name": "dx_footer_blueelite",
+      "key": "justech_alexander_reports.dx_footer_blueelite",
+      "xml_id": "justech_alexander_reports.dx_footer_blueelite",
+      "inherit": null,
+      "arch_len": 704
+    },
+    {
+      "id": 1607,
+      "name": "dx_footer_dominion",
+      "key": "justech_alexander_reports.dx_footer_dominion",
+      "xml_id": "justech_alexander_reports.dx_footer_dominion",
+      "inherit": null,
+      "arch_len": 557
+    },
+    {
+      "id": 1605,
+      "name": "dx_footer_doralex",
+      "key": "justech_alexander_reports.dx_footer_doralex",
+      "xml_id": "justech_alexander_reports.dx_footer_doralex",
+      "inherit": null,
+      "arch_len": 716
+    },
+    {
+      "id": 1608,
+      "name": "dx_footer_mayuma",
+      "key": "justech_alexander_reports.dx_footer_mayuma",
+      "xml_id": "justech_alexander_reports.dx_footer_mayuma",
+      "inherit": null,
+      "arch_len": 714
+    },
+    {
+      "id": 1606,
+      "name": "dx_footer_pinaria",
+      "key": "justech_alexander_reports.dx_footer_pinaria",
+      "xml_id": "justech_alexander_reports.dx_footer_pinaria",
+      "inherit": null,
+      "arch_len": 371
+    },
+    {
+      "id": 1609,
+      "name": "dx_footer_rempart",
+      "key": "justech_alexander_reports.dx_footer_rempart",
+      "xml_id": "justech_alexander_reports.dx_footer_rempart",
+      "inherit": null,
+      "arch_len": 683
+    },
+    {
+      "id": 1604,
+      "name": "dx_header_blueelite",
+      "key": "justech_alexander_reports.dx_header_blueelite",
+      "xml_id": "justech_alexander_reports.dx_header_blueelite",
+      "inherit": null,
+      "arch_len": 1244
+    },
+    {
+      "id": 1601,
+      "name": "dx_header_dominion",
+      "key": "justech_alexander_reports.dx_header_dominion",
+      "xml_id": "justech_alexander_reports.dx_header_dominion",
+      "inherit": null,
+      "arch_len": 1255
+    },
+    {
+      "id": 1599,
+      "name": "dx_header_doralex",
+      "key": "justech_alexander_reports.dx_header_doralex",
+      "xml_id": "justech_alexander_reports.dx_header_doralex",
+      "inherit": null,
+      "arch_len": 2842
+    },
+    {
+      "id": 1602,
+      "name": "dx_header_mayuma",
+      "key": "justech_alexander_reports.dx_header_mayuma",
+      "xml_id": "justech_alexander_reports.dx_header_mayuma",
+      "inherit": null,
+      "arch_len": 1212
+    },
+    {
+      "id": 1600,
+      "name": "dx_header_pinaria",
+      "key": "justech_alexander_reports.dx_header_pinaria",
+      "xml_id": "justech_alexander_reports.dx_header_pinaria",
+      "inherit": null,
+      "arch_len": 919
+    },
+    {
+      "id": 1603,
+      "name": "dx_header_rempart",
+      "key": "justech_alexander_reports.dx_header_rempart",
+      "xml_id": "justech_alexander_reports.dx_header_rempart",
+      "inherit": null,
+      "arch_len": 1305
+    },
+    {
+      "id": 1632,
+      "name": "dx_invoice_composition",
+      "key": "justech_alexander_reports.dx_invoice_composition",
+      "xml_id": "justech_alexander_reports.dx_invoice_composition",
+      "inherit": null,
+      "arch_len": 2923
+    },
+    {
+      "id": 1616,
+      "name": "dx_line_table",
+      "key": "justech_alexander_reports.dx_line_table",
+      "xml_id": "justech_alexander_reports.dx_line_table",
+      "inherit": null,
+      "arch_len": 1603
+    },
+    {
+      "id": 1633,
+      "name": "dx_payment_composition",
+      "key": "justech_alexander_reports.dx_payment_composition",
+      "xml_id": "justech_alexander_reports.dx_payment_composition",
+      "inherit": null,
+      "arch_len": 4031
+    },
+    {
+      "id": 1635,
+      "name": "dx_picking_composition",
+      "key": "justech_alexander_reports.dx_picking_composition",
+      "xml_id": "justech_alexander_reports.dx_picking_composition",
+      "inherit": null,
+      "arch_len": 1927
+    },
+    {
+      "id": 1617,
+      "name": "dx_picking_lines",
+      "key": "justech_alexander_reports.dx_picking_lines",
+      "xml_id": "justech_alexander_reports.dx_picking_lines",
+      "inherit": null,
+      "arch_len": 1198
+    },
+    {
+      "id": 1618,
+      "name": "dx_pin_doc_title",
+      "key": "justech_alexander_reports.dx_pin_doc_title",
+      "xml_id": "justech_alexander_reports.dx_pin_doc_title",
+      "inherit": null,
+      "arch_len": 588
+    },
+    {
+      "id": 1634,
+      "name": "dx_purchase_composition",
+      "key": "justech_alexander_reports.dx_purchase_composition",
+      "xml_id": "justech_alexander_reports.dx_purchase_composition",
+      "inherit": null,
+      "arch_len": 1939
+    },
+    {
+      "id": 1630,
+      "name": "dx_sale_blueelite",
+      "key": "justech_alexander_reports.dx_sale_blueelite",
+      "xml_id": "justech_alexander_reports.dx_sale_blueelite",
+      "inherit": null,
+      "arch_len": 1996
+    },
+    {
+      "id": 1631,
+      "name": "dx_sale_composition",
+      "key": "justech_alexander_reports.dx_sale_composition",
+      "xml_id": "justech_alexander_reports.dx_sale_composition",
+      "inherit": null,
+      "arch_len": 810
+    },
+    {
+      "id": 1627,
+      "name": "dx_sale_dominion",
+      "key": "justech_alexander_reports.dx_sale_dominion",
+      "xml_id": "justech_alexander_reports.dx_sale_dominion",
+      "inherit": null,
+      "arch_len": 1907
+    },
+    {
+      "id": 1625,
+      "name": "dx_sale_doralex",
+      "key": "justech_alexander_reports.dx_sale_doralex",
+      "xml_id": "justech_alexander_reports.dx_sale_doralex",
+      "inherit": null,
+      "arch_len": 1515
+    },
+    {
+      "id": 1628,
+      "name": "dx_sale_mayuma",
+      "key": "justech_alexander_reports.dx_sale_mayuma",
+      "xml_id": "justech_alexander_reports.dx_sale_mayuma",
+      "inherit": null,
+      "arch_len": 1848
+    },
+    {
+      "id": 1626,
+      "name": "dx_sale_pinaria",
+      "key": "justech_alexander_reports.dx_sale_pinaria",
+      "xml_id": "justech_alexander_reports.dx_sale_pinaria",
+      "inherit": null,
+      "arch_len": 2995
+    },
+    {
+      "id": 1629,
+      "name": "dx_sale_rempart",
+      "key": "justech_alexander_reports.dx_sale_rempart",
+      "xml_id": "justech_alexander_reports.dx_sale_rempart",
+      "inherit": null,
+      "arch_len": 2227
+    },
+    {
+      "id": 1624,
+      "name": "dx_signature_panel",
+      "key": "justech_alexander_reports.dx_signature_panel",
+      "xml_id": "justech_alexander_reports.dx_signature_panel",
+      "inherit": null,
+      "arch_len": 1001
+    },
+    {
+      "id": 1623,
+      "name": "dx_terms_panel",
+      "key": "justech_alexander_reports.dx_terms_panel",
+      "xml_id": "justech_alexander_reports.dx_terms_panel",
+      "inherit": null,
+      "arch_len": 186
+    },
+    {
+      "id": 1621,
+      "name": "dx_terms_text",
+      "key": "justech_alexander_reports.dx_terms_text",
+      "xml_id": "justech_alexander_reports.dx_terms_text",
+      "inherit": null,
+      "arch_len": 354
+    },
+    {
+      "id": 1620,
+      "name": "dx_totals_panel",
+      "key": "justech_alexander_reports.dx_totals_panel",
+      "xml_id": "justech_alexander_reports.dx_totals_panel",
+      "inherit": null,
+      "arch_len": 502
+    },
+    {
+      "id": 2445,
+      "name": "Empresa Doralex",
+      "key": "justech_alexander_website.company_detail",
+      "xml_id": "justech_alexander_website.company_detail",
+      "inherit": null,
+      "arch_len": 1259
+    },
+    {
+      "id": 1611,
+      "name": "external_layout_force_document_company",
+      "key": "justech_alexander_reports.external_layout_force_document_company",
+      "xml_id": "justech_alexander_reports.external_layout_force_document_company",
+      "inherit": "web.external_layout",
+      "arch_len": 456
+    },
+    {
+      "id": 1612,
+      "name": "internal_layout_force_document_company",
+      "key": "justech_alexander_reports.internal_layout_force_document_company",
+      "xml_id": "justech_alexander_reports.internal_layout_force_document_company",
+      "inherit": "web.internal_layout",
+      "arch_len": 456
+    },
+    {
+      "id": 1639,
+      "name": "invoice_document_dx",
+      "key": "justech_alexander_reports.invoice_document_dx",
+      "xml_id": "justech_alexander_reports.invoice_document_dx",
+      "inherit": "account.report_invoice_document",
+      "arch_len": 508
+    },
+    {
+      "id": 1643,
+      "name": "payment_receipt_dx",
+      "key": "justech_alexander_reports.payment_receipt_dx",
+      "xml_id": "justech_alexander_reports.payment_receipt_dx",
+      "inherit": "account.report_payment_receipt_document",
+      "arch_len": 516
+    },
+    {
+      "id": 1644,
+      "name": "picking_document_dx",
+      "key": "justech_alexander_reports.picking_document_dx",
+      "xml_id": "justech_alexander_reports.picking_document_dx",
+      "inherit": "stock.report_picking",
+      "arch_len": 497
+    },
+    {
+      "id": 1640,
+      "name": "purchase_order_dx",
+      "key": "justech_alexander_reports.purchase_order_dx",
+      "xml_id": "justech_alexander_reports.purchase_order_dx",
+      "inherit": "purchase.report_purchaseorder_document",
+      "arch_len": 517
+    },
+    {
+      "id": 1641,
+      "name": "purchase_rfq_dx",
+      "key": "justech_alexander_reports.purchase_rfq_dx",
+      "xml_id": "justech_alexander_reports.purchase_rfq_dx",
+      "inherit": "purchase.report_purchasequotation_document",
+      "arch_len": 521
+    },
+    {
+      "id": 1647,
+      "name": "report_partner_statement_document",
+      "key": "justech_alexander_reports.report_partner_statement_document",
+      "xml_id": "justech_alexander_reports.report_partner_statement_document",
+      "inherit": null,
+      "arch_len": 6086
+    },
+    {
+      "id": 1637,
+      "name": "report_preview_document",
+      "key": "justech_alexander_reports.report_preview_document",
+      "xml_id": "justech_alexander_reports.report_preview_document",
+      "inherit": null,
+      "arch_len": 3363
+    },
+    {
+      "id": 1646,
+      "name": "report_warranty_document",
+      "key": "justech_alexander_reports.report_warranty_document",
+      "xml_id": "justech_alexander_reports.report_warranty_document",
+      "inherit": null,
+      "arch_len": 1736
+    },
+    {
+      "id": 1645,
+      "name": "return_document_dx",
+      "key": "justech_alexander_reports.return_document_dx",
+      "xml_id": "justech_alexander_reports.return_document_dx",
+      "inherit": "stock.report_return_slip",
+      "arch_len": 501
+    },
+    {
+      "id": 1638,
+      "name": "sale_document_dx",
+      "key": "justech_alexander_reports.sale_document_dx",
+      "xml_id": "justech_alexander_reports.sale_document_dx",
+      "inherit": "sale.report_saleorder_document",
+      "arch_len": 503
+    }
+  ],
+  "langs": [
+    {
+      "code": "en_US",
+      "name": "English (US)",
+      "active": true
+    }
+  ],
+  "user_langs": [
+    {
+      "login": "admin",
+      "lang": "en_US"
+    },
+    {
+      "login": "inversionesdoralex@gmail.com",
+      "lang": "en_US"
+    },
+    {
+      "login": "dx.test.security@justech.do",
+      "lang": "en_US"
+    },
+    {
+      "login": "fausto@justech.do",
+      "lang": "en_US"
+    }
+  ],
+  "company_langs": [
+    {
+      "name": "BLUE ELITE, S.R.L.",
+      "lang": "en_US"
+    },
+    {
+      "name": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "lang": "en_US"
+    },
+    {
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "lang": "en_US"
+    },
+    {
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "lang": "en_US"
+    },
+    {
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "lang": "en_US"
+    },
+    {
+      "name": "REMPART GROUP S.R.L.",
+      "lang": "en_US"
+    },
+    {
+      "name": "Plantilla técnica (no operativa)",
+      "lang": "en_US"
+    }
+  ]
+}

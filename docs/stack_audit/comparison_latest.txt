@@ -1,0 +1,101 @@
+JUSTGROUP vs DORALEX — stack compare
+
+Odoo version:
+  JUSTGROUP = 19.0+e-20260324
+  DORALEX   = 19.0-20260817
+  FAIL
+
+Edition:
+  JUSTGROUP = enterprise
+  DORALEX   = community
+  FAIL
+
+Installed modules:
+  JUSTGROUP = 360
+  DORALEX   = 106
+  Missing custom = 16
+  Version mismatch = 0
+  Missing Enterprise apps = 14
+  Missing Community apps (UX set) = 11
+  Doralex identity extras = 5
+
+Custom modules:
+  FAIL
+QWeb reports (Doralex identity):
+  PASS
+Languages / Spanish UI:
+  FAIL
+Critical configuration:
+  FAIL
+
+Acceptance:
+  ODOO_VERSION_MATCH = NO
+  ODOO_EDITION_MATCH = NO
+  MODULE_SET_MATCH = NO
+  MODULE_VERSION_MATCH = YES
+  CUSTOM_MODULES_MATCH = NO
+  DEPENDENCIES_MATCH = NO
+  FUNCTIONAL_ARCHITECTURE_MATCH = NO
+  MENUS_MATCH = NO
+  QWEB_INFRASTRUCTURE_MATCH = NO
+  DORALEX_REPORTS_PRESERVED = YES
+  SPANISH_UI = NO
+  JUSTGROUP_TRANSACTIONS_COPIED = NO
+  JUSTGROUP_PRODUCTION_TOUCHED = NO
+  DORALEX_OPERATIONAL_DATA_CLEAN = NO
+  QA_COMPLETE = NO
+  CUTOVER_ALLOWED = NO
+  FULL_JUSTGROUP_MODULE_LIST = NO
+
+Missing custom:
+  - justech_l10n_do_adel_freeze  JG=19.0.1.0.0
+  - justech_sale_purchase_trace  JG=19.0.1.2.10
+  - justech_purchase_sale_margin_control  JG=19.0.8.29.38
+  - justech_approval_flow  JG=19.0.1.3.8
+  - multi_invoice_manual_payment_prod  JG=19.0.1.5.4
+  - justech_l10n_do_payments_withholding  JG=19.0.1.7.2 (enterprise_dep)
+  - justech_l10n_do_reports  JG=19.0.1.24.8 (enterprise_dep)
+  - justech_l10n_do_treasury  JG=19.0.1.6.7 (enterprise_dep)
+  - justech_vendor_bill_po_control  JG=19.0.3.6.2
+  - justech_quotation_client_dedup  JG=19.0.1.0.0
+  - justech_sale_terms_guard  JG=19.0.1.0.0
+  - justech_admin_center  JG=19.0.2.12.1
+  - justech_security_ux  JG=19.0.4.1.9
+  - justech_mail_outgoing_policy  JG=19.0.1.2.0
+  - justech_recurring_fee  JG=19.0.1.2.0 (enterprise_dep)
+  - studio_hotfix  JG=19.0.1.0.2 (enterprise_dep)
+Missing Enterprise:
+  - account_accountant  UNINSTALLABLE (absent_from_community_image)
+  - approvals  UNINSTALLABLE (absent_from_community_image)
+  - documents  UNINSTALLABLE (absent_from_community_image)
+  - helpdesk  UNINSTALLABLE (uninstallable)
+  - industry_fsm  UNINSTALLABLE (uninstallable)
+  - planning  UNINSTALLABLE (uninstallable)
+  - sale_renting  UNINSTALLABLE (absent_from_community_image)
+  - sale_subscription  UNINSTALLABLE (uninstallable)
+  - sign  UNINSTALLABLE (uninstallable)
+  - stock_barcode  UNINSTALLABLE (uninstallable)
+  - timesheet_grid  UNINSTALLABLE (uninstallable)
+  - web_studio  UNINSTALLABLE (uninstallable)
+  - knowledge  UNINSTALLABLE (uninstallable)
+  - marketing_automation  UNINSTALLABLE (uninstallable)
+Missing Community (UX set):
+  - project  uninstalled
+  - hr  uninstalled
+  - hr_holidays  uninstalled
+  - hr_timesheet  uninstalled
+  - maintenance  uninstalled
+  - repair  uninstalled
+  - survey  uninstalled
+  - event  uninstalled
+  - mass_mailing  uninstalled
+  - im_livechat  uninstalled
+  - base_automation  uninstalled
+Doralex identity extras (keep; not Justgroup copies):
+  - justech_alexander_admin
+  - justech_alexander_base
+  - justech_alexander_microsoft_mail
+  - justech_alexander_reports
+  - justech_alexander_website
+
+DORALEX_CLONE_STATUS = REJECTED
