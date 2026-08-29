@@ -37,6 +37,34 @@
         <t t-set="dx_street" t-value="company._dx_street_display()"/>
         <t t-set="dx_city" t-value="company._dx_city_display()"/>
         <div t-attf-class="header o_company_#{company.id}_layout dx-report-header dx-theme-#{dx_theme['code']} dx-layout-#{dx_theme.get('layout') or 'dor'}">
+            <script>
+                (function () {
+                    var query = {};
+                    var search = document.location.search || "";
+                    if (search.charAt(0) === "?") { search = search.substring(1); }
+                    var parts = search.split(String.fromCharCode(38));
+                    var i;
+                    for (i = 0; i &lt; parts.length; i++) {
+                        var bits = parts[i].split("=");
+                        if (bits[0]) {
+                            query[decodeURIComponent(bits[0])] = decodeURIComponent(bits[1] || "");
+                        }
+                    }
+                    var page = parseInt(query.page || "1", 10);
+                    if (page &gt; 1) {
+                        var full = document.querySelector(".dx-h-full");
+                        var cont = document.querySelector(".dx-h-continue");
+                        if (full) { full.style.display = "none"; }
+                        if (cont) { cont.style.display = "block"; }
+                    }
+                })();
+            </script>
+            <div class="dx-h-continue" style="display:none;">
+                <span t-out="company.dx_trade_name or dx_legal"/>
+                <t t-if="dx_ident"> · <t t-out="dx_ident.get('title')"/> · <t t-out="dx_ident.get('number')"/></t>
+                <t t-if="report_type == 'pdf'"> · Página <span class="page"/> / <span class="topage"/></t>
+            </div>
+            <div class="dx-h-full">
             <t t-if="dx_theme.get('layout') == 'pin'">
                 <t t-call="justech_alexander_reports.dx_header_pinaria"/>
             </t>
@@ -55,6 +83,7 @@
             <t t-else="">
                 <t t-call="justech_alexander_reports.dx_header_doralex"/>
             </t>
+            </div>
         </div>
         <div t-attf-class="article o_company_#{company.id}_layout dx-report-body dx-theme-#{dx_theme['code']} #{'dx-is-refund' if o and o._name == 'account.move' and o.move_type in ('out_refund', 'in_refund') else ''} #{'dx-doc-payment' if o and o._name == 'account.payment' else ''} #{'dx-doc-purchase' if o and o._name == 'purchase.order' else ''} #{'dx-doc-stock' if o and o._name == 'stock.picking' else ''}"
              t-att-data-oe-model="o and o._name"

@@ -408,7 +408,7 @@ class AccountMoveCompose(models.Model):
             "credited": (
                 _dx_money(self.env, self.amount_total, currency) if refund else ""
             ),
-            "show_signature": bool(company.dx_report_show_signature),
+            "show_signature": False,
             "sign_left": sign_left,
             "sign_right": sign_right,
             "is_refund": refund,

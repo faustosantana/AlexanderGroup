@@ -617,3 +617,17 @@ div.footer td {
 .dx-warranty-row { margin: 0 0 8px; }
 .dx-warranty-k { font-size: 7.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6a6a; }
 .dx-warranty-v { font-size: 11pt; font-weight: 600; }
+.dx-h-continue {
+  display: none;
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 0 6px;
+  border-bottom: 1px solid #1a1a1a;
+}
+.dx-theme-DOR .dx-h-continue { border-bottom-color: #E46018; }
+.dx-theme-PIN .dx-h-continue { border-bottom-color: #30A83C; }
+.dx-theme-DOM .dx-h-continue { border-bottom-color: #50B0B0; }
+.dx-theme-MAY .dx-h-continue { border-bottom-color: #54B4A8; }
+.dx-theme-REM .dx-h-continue { border-bottom-color: #3048A8; }
+.dx-theme-BLU .dx-h-continue { border-bottom-color: #18B4F0; }

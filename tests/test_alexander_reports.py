@@ -210,3 +210,43 @@ def test_invoice_title_is_factura_not_borrador():
     warranty = (REPORTS / "reports" / "warranty_report.xml").read_text(encoding="utf-8")
     assert "CERTIFICADO DE GARANTÍA" in warranty
     assert "Certificado de Garantía" in warranty
+    assert '"show_signature": False' in py
+    assert '"Solicitado por"' in py
+    assert '"Entregado por proveedor"' in py
+    assert '"Recibido por"' in py
+
+
+def test_layout_forces_document_company_and_continue_header():
+    layout = (REPORTS / "reports" / "layout.xml").read_text(encoding="utf-8")
+    assert "o.company_id.sudo()" in layout
+    assert "dx-h-continue" in layout
+    assert "dx-h-full" in layout
+    assert "query.page" in layout
+    css = (REPORTS / "static" / "src" / "css" / "report.css").read_text(encoding="utf-8")
+    assert ".dx-h-continue" in css
+
+
+def test_mail_from_is_administracion_not_alias():
+    mail = (
+        REPO
+        / "addons"
+        / "alexander"
+        / "justech_alexander_microsoft_mail"
+        / "models"
+        / "res_company.py"
+    ).read_text(encoding="utf-8")
+    assert "def _dx_outgoing_address" in mail
+    assert "administracion@%s" in mail
+    assert "_OUTGOING_SKIP_LOCALS" in mail
+    assert '"ventas"' in mail
+    assert '"facturacion"' in mail
+    client = (
+        REPO
+        / "addons"
+        / "alexander"
+        / "justech_alexander_microsoft_mail"
+        / "models"
+        / "graph_client.py"
+    ).read_text(encoding="utf-8")
+    assert "sentitems" in client
+    assert "sendMail" in client
