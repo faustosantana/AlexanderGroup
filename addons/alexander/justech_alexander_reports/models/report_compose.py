@@ -85,12 +85,23 @@ def _dx_money(env, amount, currency):
 def _dx_sign_space(lines, paper="A4", extra_mm=0):
     mm = spacer_mm(count_body_lines(lines), paper, extra_mm)
     px = max(0, int(round(mm * 96.0 / 25.4)))
+    chunks = []
+    remain = px
+    while remain > 0:
+        piece = min(48, remain)
+        chunks.append(
+            {
+                "src": white_png_data_uri(piece),
+                "h": piece,
+                "style": "display:block;width:2px;height:%spx;max-height:none;border:0;"
+                % piece,
+            }
+        )
+        remain -= piece
     return {
         "spacer_mm": mm,
         "spacer_px": px,
-        "spacer_src": white_png_data_uri(px) if px else "",
-        "spacer_style": "display:block;width:2px;height:%spx;max-height:none;border:0;"
-        % px,
+        "spacer_chunks": chunks,
     }
 
 

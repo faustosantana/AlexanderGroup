@@ -143,12 +143,14 @@
 
     <template id="dx_signature_panel">
         <t t-if="dx.get('show_signature')">
-            <div t-if="dx.get('spacer_px')" class="dx-sign-spacer">
-                <img t-att-src="dx.get('spacer_src')"
-                     t-att-width="2"
-                     t-att-height="dx.get('spacer_px')"
-                     t-att-style="dx.get('spacer_style')"
-                     alt=""/>
+            <div t-if="dx.get('spacer_chunks')" class="dx-sign-spacer">
+                <t t-foreach="dx['spacer_chunks']" t-as="chunk">
+                    <img t-att-src="chunk['src']"
+                         t-att-width="2"
+                         t-att-height="chunk['h']"
+                         t-att-style="chunk['style']"
+                         alt=""/>
+                </t>
             </div>
             <table class="dx-sign-table">
                 <tr>
