@@ -1,0 +1,30 @@
+Wave 2 strategy correction — 2026-08-29. Prod untouched.
+
+GITHUB_BLOCKER = REMOVE
+ENTERPRISE_PACKAGE_ROUTE = PRIMARY
+CUTOVER_ALLOWED = NO
+
+Audit (live server):
+  host = Ubuntu 24.04.4 LTS
+  staging container = Ubuntu 24.04.4 LTS, image odoo:19
+  dpkg odoo = 19.0.20260817 (Community)
+  web_enterprise in image = NO (expected until official .deb)
+  archive drop-path = empty
+  nightly +e URLs = 404 (not a public substitute)
+  odoo.com/page/download Enterprise = subscriber login required
+
+Staging 127.0.0.1:8269 health=pass
+PROD https://doralexgroup.cloud/web/health = pass
+justech_alexander_reports=19.0.3.8.5 qweb=58
+DORALEX_REPORTS_PRESERVED=YES
+DORALEX_PROD_TOUCHED=NO
+
+Official Linux installer path (docs 19.0 community_to_enterprise):
+  backup → stop → dpkg -i <enterprise.deb> → -i web_enterprise --stop-after-init
+Docker adaptation: derived image doralex-odoo-enterprise:19 (FROM odoo:19 + official .deb)
+Same staging DB + filestore + custom-addons. No rebuild from scratch.
+
+If package is absent, the only action required from the subscriber is:
+  download Odoo 19 Ubuntu/Debian Enterprise .deb from odoo.com/page/download
+  place at /opt/doralex/secrets/odoo_enterprise/archive/
+GitHub is not requested.

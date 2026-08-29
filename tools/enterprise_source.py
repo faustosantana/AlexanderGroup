@@ -1,10 +1,11 @@
-"""Detecta el árbol de addons Enterprise 19 a partir de un clon o un archive oficial."""
+"""Detecta addons Enterprise 19 desde clon, archive oficial o .deb extraído."""
 
 from __future__ import annotations
 
 from pathlib import Path
 
-REQUIRED_SIBLINGS = ("web_enterprise",)
+# Ubuntu/Debian official installer (odoo.com → Odoo 19 → Ubuntu • Debian → Enterprise).
+# Community nightlies look like odoo_19.0.YYYYMMDD_all.deb (no +e) and are rejected.
 
 
 def manifest_version(module_dir: Path) -> str:
@@ -15,6 +16,38 @@ def manifest_version(module_dir: Path) -> str:
         if "version" in line and "19." in line:
             return line.strip()
     return ""
+
+
+def is_official_enterprise_package_name(name: str) -> bool:
+    """True only for official Odoo 19 Enterprise artifacts (not Community nightly)."""
+    n = Path(name).name.lower()
+    if n.endswith(".deb"):
+        if "19.0+" in n and "e" in n:
+            return True
+        if "19.0e" in n:
+            return True
+        if "enterprise" in n and "19" in n:
+            return True
+        return False
+    if n.endswith((".zip", ".tar.gz", ".tgz", ".tar")):
+        return any(m in n for m in ("+e", "enterprise", "19.0e"))
+    return False
+
+
+def find_official_enterprise_deb(archive_dir: Path) -> Path:
+    if not archive_dir.is_dir():
+        raise FileNotFoundError(f"No existe el directorio de archive: {archive_dir}")
+    debs = sorted(
+        p
+        for p in archive_dir.iterdir()
+        if p.is_file() and is_official_enterprise_package_name(p.name)
+    )
+    if not debs:
+        raise FileNotFoundError(
+            "No hay .deb Enterprise 19 oficial en el archive "
+            "(se espera odoo_19.0+e.*_all.deb)."
+        )
+    return debs[-1]
 
 
 def find_enterprise_addons_root(extract_dir: Path) -> Path:

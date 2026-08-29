@@ -1,0 +1,31 @@
+# Doralex ENTERPRISE STAGING — imagen derivada.
+# Parte de la misma Community odoo:19 que ya corre staging (Ubuntu 24.04,
+# paquete dpkg `odoo`) e instala ENCIMA el .deb oficial Enterprise 19.
+# No reconstruye la base funcional: mismos volúmenes/DB/filestore/custom-addons.
+#
+# Build (en el servidor, contexto = directorio temporal con el .deb renombrado):
+#   docker build -f Dockerfile.enterprise -t doralex-odoo-enterprise:19 <context>
+#
+# NUNCA construir esto contra producción. NUNCA etiquetar como odoo:19.
+
+FROM odoo:19
+
+USER root
+
+COPY odoo-enterprise.deb /tmp/odoo-enterprise.deb
+
+# El .deb oficial se llama `odoo` y sustituye Community. Debian compara
+# `19.0+e.YYYYMMDD` como más antiguo que `19.0.YYYYMMDD`, así que se permite
+# downgrade controlado (ruta documentada: dpkg -i <enterprise.deb>).
+RUN set -eux; \
+    apt-get update; \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        --allow-downgrades /tmp/odoo-enterprise.deb \
+    || dpkg -i --force-downgrade /tmp/odoo-enterprise.deb; \
+    apt-get -y -f install --no-install-recommends; \
+    rm -f /tmp/odoo-enterprise.deb; \
+    rm -rf /var/lib/apt/lists/*; \
+    python3 -c "from pathlib import Path; hits=list(Path('/usr/lib/python3').rglob('web_enterprise/__manifest__.py')); \
+assert hits, 'web_enterprise ausente tras instalar el .deb oficial'"
+
+USER odoo

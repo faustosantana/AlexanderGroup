@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Obtiene addons Odoo Enterprise 19 por vía oficial:
-#   A) git clone github.com/odoo/enterprise @ 19.0
-#   B) archive/ZIP oficial depositado en secrets (cuenta/suscripción Doralex)
+# Ruta PRIMARIA: paquete oficial Odoo 19 Enterprise (cuenta Doralex en odoo.com).
+#   1) .deb Ubuntu/Debian  → validar (la imagen derivada lo instala)
+#   2) ZIP/tarball Sources → extraer web_enterprise a enterprise-staging
+# GitHub odoo/enterprise es OPCIONAL y secundario. No es requisito.
 # NO escribe en /opt/doralex/enterprise (Prod Community monta ese path).
 # NO copia addons Enterprise de Justgroup.
-# Nunca imprime credenciales.
+# Nunca imprime credenciales ni el nombre del archivo depositado.
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=/dev/null
@@ -19,6 +20,8 @@ ARCHIVE_DIR="${SECRET_DIR}/archive"
 FINDER=""
 for candidate in \
   "${SCRIPT_DIR}/../../../tools/enterprise_source.py" \
+  "${DORALEX_BASE}/tools/enterprise_source.py" \
+  "${SCRIPT_DIR}/enterprise_source.py" \
   "/opt/doralex/repository/tools/enterprise_source.py" \
   "/workspace/tools/enterprise_source.py"; do
   if [ -f "$candidate" ]; then
@@ -27,6 +30,19 @@ for candidate in \
   fi
 done
 [ -n "$FINDER" ] || FINDER="${SCRIPT_DIR}/../../../tools/enterprise_source.py"
+
+print_official_drop_instructions() {
+  err "ENTERPRISE_PACKAGE_SOURCE = OFFICIAL"
+  err "ENTERPRISE_PACKAGE_INSTALLED = NO"
+  err "GITHUB_BLOCKER = REMOVE"
+  err "Descargue el instalador oficial (sesión de la suscripción Doralex):"
+  err "  https://www.odoo.com/page/download"
+  err "  Odoo 19  →  Ubuntu • Debian  →  Enterprise  →  Download"
+  err "Archivo esperado: odoo_19.0+e.*_all.deb"
+  err "NO Community. NO nightly. NO Windows. NO RPM."
+  err "Colóquelo en: ${ARCHIVE_DIR}/"
+  err "Justgroup no se usa como fuente. Prod no se toca."
+}
 
 if [ -d "${SHARED}" ] && [ ! -f "${SHARED}/ENTERPRISE_SOURCE_PENDING" ]; then
   log "AVISO: ${SHARED} ya tiene contenido; este script no lo modifica."
@@ -46,24 +62,22 @@ install_from_tree() {
   log "Prod ${SHARED} NO fue modificado."
 }
 
-try_git() {
-  local token="${ODOO_ENTERPRISE_GITHUB_TOKEN:-}"
-  if [ -z "$token" ] && [ -f "$TOKEN_FILE" ]; then
-    token="$(tr -d '[:space:]' < "$TOKEN_FILE")"
-  fi
-  [ -n "$token" ] || return 1
+try_deb() {
+  local deb
+  deb="$(python3 -c "from pathlib import Path; import sys; sys.path.insert(0, '${FINDER%/*}'); from enterprise_source import find_official_enterprise_deb; print(find_official_enterprise_deb(Path('${ARCHIVE_DIR}')))" 2>/dev/null || true)"
+  [ -n "$deb" ] || return 1
+  command -v dpkg-deb >/dev/null 2>&1 || die "dpkg-deb no está disponible para validar el .deb."
   local tmp
   tmp="$(mktemp -d)"
-  log "Intentando vía A: git 19.0 (credencial presente, no se imprime)."
-  if ! GIT_TERMINAL_PROMPT=0 git clone --depth 1 --branch "$BRANCH" \
-      "https://x-access-token:${token}@github.com/odoo/enterprise.git" \
-      "${tmp}/enterprise" >/dev/null 2>"${tmp}/git.err"; then
-    err "GitHub odoo/enterprise rechazó la credencial (vía A)."
+  log "Validando .deb oficial Enterprise 19 (nombre omitido)."
+  if ! dpkg-deb -x "$deb" "$tmp"; then
     rm -rf "$tmp"
-    return 1
+    die "El archivo .deb no se pudo extraer. ¿Es el instalador oficial Ubuntu/Debian?"
   fi
-  install_from_tree "${tmp}/enterprise"
+  python3 -c "from pathlib import Path; import sys; sys.path.insert(0, '${FINDER%/*}'); from enterprise_source import find_enterprise_addons_root; print(find_enterprise_addons_root(Path('${tmp}')))" >/dev/null
   rm -rf "$tmp"
+  log "ENTERPRISE_PACKAGE_SOURCE = OFFICIAL"
+  log "WEB_ENTERPRISE_DISCOVERED = YES (dentro del .deb)"
   return 0
 }
 
@@ -75,7 +89,7 @@ try_archive() {
   [ -n "$archive" ] || return 1
   local tmp
   tmp="$(mktemp -d)"
-  log "Intentando vía B: archive oficial (nombre omitido en logs)."
+  log "Intentando archive oficial Sources (nombre omitido)."
   case "$archive" in
     *.zip) unzip -q "$archive" -d "$tmp" ;;
     *.tar.gz|*.tgz) tar xzf "$archive" -C "$tmp" ;;
@@ -89,20 +103,39 @@ try_archive() {
   return 0
 }
 
-if try_git; then
-  log "ENTERPRISE_SOURCE = PASS (git 19.0)"
+try_git() {
+  local token="${ODOO_ENTERPRISE_GITHUB_TOKEN:-}"
+  if [ -z "$token" ] && [ -f "$TOKEN_FILE" ]; then
+    token="$(tr -d '[:space:]' < "$TOKEN_FILE")"
+  fi
+  [ -n "$token" ] || return 1
+  local tmp
+  tmp="$(mktemp -d)"
+  log "Vía secundaria git 19.0 (credencial presente, no se imprime)."
+  if ! GIT_TERMINAL_PROMPT=0 git clone --depth 1 --branch "$BRANCH" \
+      "https://x-access-token:${token}@github.com/odoo/enterprise.git" \
+      "${tmp}/enterprise" >/dev/null 2>"${tmp}/git.err"; then
+    rm -rf "$tmp"
+    return 1
+  fi
+  install_from_tree "${tmp}/enterprise"
+  rm -rf "$tmp"
+  return 0
+}
+
+if try_deb; then
+  log "ENTERPRISE_SOURCE = PASS (paquete .deb oficial)"
   exit 0
 fi
 if try_archive; then
   log "ENTERPRISE_SOURCE = PASS (archive oficial)"
   exit 0
 fi
+if try_git; then
+  log "ENTERPRISE_SOURCE = PASS (git 19.0, vía secundaria)"
+  exit 0
+fi
 
 err "ENTERPRISE_SOURCE = PENDING_OFFICIAL_PACKAGE"
-err "Vía A: coloque la credencial de lectura de github.com/odoo/enterprise"
-err "  en ${TOKEN_FILE} (chmod 600). Cuenta GitHub vinculada en odoo.com."
-err "Vía B: descargue el ZIP/tarball Enterprise 19 desde odoo.com"
-err "  (login de la suscripción Doralex o enlace del correo de compra)"
-err "  y déjelo en ${ARCHIVE_DIR}/"
-err "Justgroup no se usa como fuente. Prod no se toca."
+print_official_drop_instructions
 exit 2

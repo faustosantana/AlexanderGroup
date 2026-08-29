@@ -1,4 +1,5 @@
 ENTERPRISE_SOURCE_PENDING=TRUE
-# Coloque addons oficiales odoo/enterprise (rama 19.0) SOLO aquí.
-# No copiar el árbol Enterprise de Justgroup.
+# Ruta primaria: .deb oficial Odoo 19 Enterprise (Ubuntu/Debian) en
+# /opt/doralex/secrets/odoo_enterprise/archive/
+# GitHub odoo/enterprise es opcional. No copiar Enterprise de Justgroup.
 # No escribir en /opt/doralex/enterprise mientras Prod Community lo monta.
