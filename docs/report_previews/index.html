@@ -2,239 +2,67 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"/>
-  <title>Doralex — REPORT_DESIGN_V2 checkpoint</title>
+  <title>Alexander Group — suite documental V5.3</title>
   <style>
     body { font-family: Georgia, serif; margin: 24px; background: #f4f4f1; color: #1a1a1a; }
     h1 { font-size: 28px; }
-    h2 { margin-top: 28px; }
-    table { border-collapse: collapse; width: 100%; background: #fff; margin-bottom: 28px; }
-    th, td { border: 1px solid #ddd; padding: 8px; font-size: 13px; vertical-align: top; }
-    th { background: #111; color: #fff; text-align: left; }
-    img.full { width: 100%; max-width: 720px; height: auto; border: 1px solid #ccc; background: #fff; }
-    img.thumb { max-width: 280px; height: auto; border: 1px solid #ccc; }
+    h2 { margin-top: 36px; border-top: 2px solid #111; padding-top: 16px; }
     .meta { color: #555; font-size: 14px; margin-bottom: 18px; }
-    .rej { color: #9b1c1c; font-weight: 700; }
-    .pend { color: #8a5a00; font-weight: 700; }
-    .pair { display: table; width: 100%; margin-bottom: 24px; }
-    .col { display: table-cell; width: 50%; padding-right: 12px; vertical-align: top; }
+    .pass { color: #1b6b2a; font-weight: 700; }
+    .block { color: #8a5a00; font-weight: 700; }
+    img.full { width: 100%; max-width: 1100px; height: auto; border: 1px solid #ccc; background: #fff; }
+    img.thumb { max-width: 100%; height: auto; border: 1px solid #ccc; }
+    a { color: #1a1a1a; }
+    ul { line-height: 1.5; }
   </style>
 </head>
 <body>
-  <h1>Checkpoint visual Doralex V2</h1>
+  <h1>Suite documental V5.3 — DEV</h1>
   <p class="meta">
-    <span class="rej">REPORT_DESIGN_V1 = REJECTED</span> ·
-    DORALEX_DESIGN_V2_CHECKPOINT = PENDING (auditoría objetiva, no autoaprobación) ·
-    REPORT_SUITE_COMPLETE = NO · PROD_UNTOUCHED = YES<br/>
-    Motor: wkhtmltopdf 0.12.6.1 · A4 · <code>document.company_id</code> · DEV only.<br/>
-    Paleta Doralex (logo real): primary <code>#E86A12</code> · secondary <code>#1A1A1A</code> · accent <code>#E86A12</code> · neutral <code>#5C5C5C</code>.
+    <span class="pass">VISUAL_V5_2 = APPROVED_AS_DESIGN_BASE</span> ·
+    <span class="pass">VISUAL_V5_3 = FINAL_POLISH</span> ·
+    VISUAL_V4 = REJECTED · VISUAL_V5 / V5.1 = SUPERSEDED<br/>
+    Módulo <code>justech_alexander_reports</code> 19.0.3.7.1 · DEV only ·
+    <span class="pass">PROD_UNTOUCHED = YES</span><br/>
+    Motor: wkhtmltopdf 0.12.6.1 · A4 / A5 recibos · <code>document.company_id</code>.
   </p>
 
-  <h2>WHAT_WAS_WRONG_V1</h2>
-  <p class="meta">
-    Header 46 mm + esqueleto Bootstrap de Odoo. Título “Borrador” / “Quotation #”.
-    Tablas pequeñas, totales flotando, recibo y estado casi vacíos, scores 8.8–9.3 inválidos.
-    PDF_RENDER=PASS no implica DESIGN=PASS.
-  </p>
-  <h2>WHAT_CHANGED_V2</h2>
-  <p class="meta">
-    Paperformat compacto (32/28/16). Header con logo + empresa + título/número.
-    Composición propia por documento (no el layout técnico de Odoo).
-    FACTURA/COTIZACIÓN/RECIBO/ESTADO como título; BORRADOR es badge.
-    Tabla a ancho completo, totales junto a términos, firmas profesionales.
-  </p>
+  <h2>Cotizaciones V5.3</h2>
+  <p class="meta">Misma identidad V5.2. Microajustes: vendedor Doralex en una línea; totales Piñaria más compactos; firmas Dominion más largas; TOTAL Blue Elite apilado (no <code>TotalRD$</code>).</p>
+  <p><a href="v53/six_company_quotation_v53_comparison.png"><img class="full" src="v53/six_company_quotation_v53_comparison.png" alt="Comparativo cotizaciones V5.3"/></a></p>
+  <ul>
+    <li><a href="v53/quotation_doralex_v53.png">Doralex</a> · <a href="v53/pdf/quotation_doralex_v53.pdf">PDF</a> · <a href="v53/quotation_doralex_v53_1line.png">1 línea</a> · <a href="v53/quotation_doralex_v53_40line-1.png">40 líneas p1</a> · <a href="v53/quotation_doralex_v53_40line-3.png">firmas p3</a></li>
+    <li><a href="v53/quotation_pinaria_v53.png">Piñaria</a> · <a href="v53/pdf/quotation_pinaria_v53.pdf">PDF</a></li>
+    <li><a href="v53/quotation_dominion_v53.png">Dominion</a> · <a href="v53/pdf/quotation_dominion_v53.pdf">PDF</a></li>
+    <li><a href="v53/quotation_mayuma_v53.png">El Mayuma</a> · <a href="v53/pdf/quotation_mayuma_v53.pdf">PDF</a></li>
+    <li><a href="v53/quotation_rempart_v53.png">Rempart</a> · <a href="v53/pdf/quotation_rempart_v53.pdf">PDF</a></li>
+    <li><a href="v53/quotation_blueelite_v53.png">Blue Elite</a> · <a href="v53/pdf/quotation_blueelite_v53.pdf">PDF</a></li>
+  </ul>
 
-  <h2>Before / After — Doralex</h2>
-  <div class="pair">
-    <div class="col">
-      <h3>Cotización V1 (rechazada)</h3>
-      <a href="v1/doralex/quotation.png"><img class="thumb" src="v1/doralex/quotation.png" alt="V1 cotización"/></a>
-    </div>
-    <div class="col">
-      <h3>Cotización V2</h3>
-      <a href="doralex/quotation.png"><img class="full" src="doralex/quotation.png" alt="V2 cotización"/></a>
-    </div>
-  </div>
-  <div class="pair">
-    <div class="col">
-      <h3>Factura V1 (rechazada)</h3>
-      <a href="v1/doralex/invoice.png"><img class="thumb" src="v1/doralex/invoice.png" alt="V1 factura"/></a>
-    </div>
-    <div class="col">
-      <h3>Factura V2</h3>
-      <a href="doralex/invoice.png"><img class="full" src="doralex/invoice.png" alt="V2 factura"/></a>
-    </div>
-  </div>
-  <div class="pair">
-    <div class="col">
-      <h3>Recibo V1 (rechazada)</h3>
-      <a href="v1/doralex/payment_receipt.png"><img class="thumb" src="v1/doralex/payment_receipt.png" alt="V1 recibo"/></a>
-    </div>
-    <div class="col">
-      <h3>Recibo V2</h3>
-      <a href="doralex/payment_receipt.png"><img class="full" src="doralex/payment_receipt.png" alt="V2 recibo"/></a>
-    </div>
-  </div>
-  <div class="pair">
-    <div class="col">
-      <h3>Estado de cuenta V1 (rechazada)</h3>
-      <a href="v1/doralex/statement.png"><img class="thumb" src="v1/doralex/statement.png" alt="V1 estado"/></a>
-    </div>
-    <div class="col">
-      <h3>Estado de cuenta V2</h3>
-      <a href="doralex/statement.png"><img class="full" src="doralex/statement.png" alt="V2 estado"/></a>
-    </div>
-  </div>
-  <p class="meta">PNG a 150 dpi (página completa). Los previews de las otras empresas siguen siendo V1 y no forman parte de este checkpoint.</p>
+  <h2>DORALEX</h2>
+  <p><a href="v53/overview_doralex_final.png"><img class="full" src="v53/overview_doralex_final.png" alt="Overview Doralex"/></a></p>
 
-  <h2>V2.3 fiscal QA (NCF motor real, DEV)</h2>
-  <p class="meta">
-    Factura posteada <code>B0199000001</code> · NC <code>B0499000123</code> afectada <code>B0199000005</code> ·
-    Recibo A5 (875×1240) · Estado con invariantes cuadradas · DESIGN = PENDING.
-  </p>
-  <p>
-    <a href="v23/quotation.png">Cotización</a> ·
-    <a href="v23/invoice_draft.png">Factura borrador</a> ·
-    <a href="v23/invoice_posted.png">Factura NCF</a> ·
-    <a href="v23/credit_note.png">Nota crédito</a> ·
-    <a href="v23/receipt_advance.png">Recibo anticipo A5</a> ·
-    <a href="v23/receipt_applied.png">Recibo aplicado A5</a> ·
-    <a href="v23/statement.png">Estado de cuenta</a> ·
-    <a href="v23/purchase.png">Orden de compra</a>
-  </p>
-  <p>
-    Otras empresas (factura posteada NCF QA):
-    <a href="v23/pin_invoice.png">PIN</a> ·
-    <a href="v23/dom_invoice.png">DOM</a> ·
-    <a href="v23/may_invoice.png">MAY</a> ·
-    <a href="v23/rem_invoice.png">REM</a> ·
-    <a href="v23/blu_invoice.png">BLU</a>
-  </p>
-  <p>
-    <img class="full" src="v23/invoice_posted.png" alt="Factura Doralex posteada NCF QA"/>
-  </p>
-  <p>
-    <img class="full" src="v23/credit_note.png" alt="Nota de crédito Doralex NCF QA"/>
-  </p>
-  <p>
-    <img class="full" src="v23/statement.png" alt="Estado de cuenta Doralex cuadrado"/>
-  </p>
+  <h2>PIÑARIA</h2>
+  <p><a href="v53/overview_pinaria_final.png"><img class="full" src="v53/overview_pinaria_final.png" alt="Overview Piñaria"/></a></p>
 
-  <h2>V3.2 — firmas al fondo + 6 empresas</h2>
-  <p class="meta">
-    <span class="pend">REPORT_SUITE_COMPLETE = NO</span> ·
-    DORALEX_DESIGN / PINARIA / DOMINION / MAYUMA / REMPART / BLUEELITE = PENDING (hay PNG, no autoaprobado) ·
-    SIGNATURE_POSITION = revisar 1 línea · PROD_UNTOUCHED = YES<br/>
-    Paletas reales: <a href="../report_brand_colors.md">report_brand_colors.md</a>
-  </p>
-    <h3>Comparativos</h3>
-  <p><img class="full" src="v32_overview/all_companies_quotation_comparison.png" alt="6 cotizaciones"/></p>
-  <p><img class="full" src="v32_overview/all_companies_invoice_comparison.png" alt="6 facturas"/></p>
-  <p>
-    Overviews:
-    <a href="v32_overview/overview_doralex.png">Doralex</a> ·
-    <a href="v32_overview/overview_pinaria.png">Piñaria</a> ·
-    <a href="v32_overview/overview_dominion.png">Dominion</a> ·
-    <a href="v32_overview/overview_mayuma.png">El Mayuma</a> ·
-    <a href="v32_overview/overview_rempart.png">Rempart</a> ·
-    <a href="v32_overview/overview_blueelite.png">Blue Elite</a>
-  </p>
+  <h2>DOMINION</h2>
+  <p><a href="v53/overview_dominion_final.png"><img class="full" src="v53/overview_dominion_final.png" alt="Overview Dominion"/></a></p>
 
-  <h3>Doralex</h3>
-  <p>
-    <a href="v32/doralex_quotation_1line-1.png">Cotización 1 línea</a> ·
-    <a href="v32/doralex_invoice_posted-1.png">Factura NCF</a> ·
-    <a href="v32/doralex_invoice_draft-1.png">Factura draft</a> ·
-    <a href="v32/doralex_credit_note-1.png">NC</a> ·
-    <a href="v32/doralex_po-1.png">OC</a> ·
-    <a href="v32/doralex_receipt_applied-1.png">Recibo A5</a> ·
-    <a href="v32/doralex_receipt_advance-1.png">Anticipo</a> ·
-    <a href="v32/doralex_statement-1.png">Estado</a> ·
-    <a href="v32/doralex_delivery-1.png">Entrega</a>
-  </p>
-  <p><img class="thumb" src="v32/doralex_quotation_1line-1.png" alt="Doralex cotización 1 línea"/></p>
+  <h2>EL MAYUMA</h2>
+  <p><a href="v53/overview_mayuma_final.png"><img class="full" src="v53/overview_mayuma_final.png" alt="Overview El Mayuma"/></a></p>
 
-  <h3>Piñaria</h3>
-  <p>
-    <a href="v32/pinaria_quotation-1.png">Cotización</a> ·
-    <a href="v32/pinaria_invoice_posted-1.png">Factura B0199001001</a> ·
-    <a href="v32/pinaria_credit_note-1.png">NC</a> ·
-    <a href="v32/pinaria_po-1.png">OC</a> ·
-    <a href="v32/pinaria_delivery-1.png">Entrega</a> ·
-    <a href="v32/pinaria_statement-1.png">Estado</a>
-  </p>
-  <p><img class="thumb" src="v32/pinaria_quotation-1.png" alt="Piñaria cotización"/></p>
+  <h2>REMPART</h2>
+  <p><a href="v53/overview_rempart_final.png"><img class="full" src="v53/overview_rempart_final.png" alt="Overview Rempart"/></a></p>
 
-  <h3>Dominion</h3>
-  <p>
-    <a href="v32/dominion_quotation-1.png">Cotización</a> ·
-    <a href="v32/dominion_invoice_posted-1.png">Factura B0199002001</a> ·
-    <a href="v32/dominion_credit_note-1.png">NC</a> ·
-    <a href="v32/dominion_po-1.png">OC</a> ·
-    <a href="v32/dominion_delivery-1.png">Entrega</a> ·
-    <a href="v32/dominion_statement-1.png">Estado</a>
-  </p>
-  <p><img class="thumb" src="v32/dominion_quotation-1.png" alt="Dominion cotización"/></p>
+  <h2>BLUE ELITE</h2>
+  <p><a href="v53/overview_blueelite_final.png"><img class="full" src="v53/overview_blueelite_final.png" alt="Overview Blue Elite"/></a></p>
 
-  <h3>El Mayuma</h3>
-  <p>
-    <a href="v32/mayuma_quotation-1.png">Cotización</a> ·
-    <a href="v32/mayuma_invoice_posted-1.png">Factura B0199003001</a> ·
-    <a href="v32/mayuma_credit_note-1.png">NC</a> ·
-    <a href="v32/mayuma_po-1.png">OC</a> ·
-    <a href="v32/mayuma_delivery-1.png">Entrega</a> ·
-    <a href="v32/mayuma_statement-1.png">Estado</a>
-  </p>
-  <p><img class="thumb" src="v32/mayuma_quotation-1.png" alt="El Mayuma cotización"/></p>
-
-  <h3>Rempart</h3>
-  <p>
-    <a href="v32/rempart_quotation-1.png">Cotización</a> ·
-    <a href="v32/rempart_invoice_posted-1.png">Factura B0199004001</a> ·
-    <a href="v32/rempart_credit_note-1.png">NC</a> ·
-    <a href="v32/rempart_po-1.png">OC</a> ·
-    <a href="v32/rempart_delivery-1.png">Entrega</a> ·
-    <a href="v32/rempart_statement-1.png">Estado</a>
-  </p>
-  <p><img class="thumb" src="v32/rempart_invoice_posted-1.png" alt="Rempart factura"/></p>
-
-  <h2>V4 — editorial (PENDING, no autoaprobado)</h2>
-  <p class="meta">
-    <span class="pend">VISUAL_V4 = PENDING</span> ·
-    LOGO_ASSET_OK DOM/MAY = PASS (PNG oficial sobre blanco, sin placa) ·
-    REPORT_SUITE_COMPLETE = NO · PROD_UNTOUCHED = YES<br/>
-    Menos bordes, metadata apilada, tabla sin grid vertical, totales abiertos, firmas sin caja.
-  </p>
-  <p>
-    <img class="full" src="v4_overview/all_companies_quotation_comparison_v4.png" alt="V4 comparativo cotizaciones"/>
-  </p>
-  <p>
-    <img class="full" src="v4_overview/all_companies_invoice_comparison_v4.png" alt="V4 comparativo facturas"/>
-  </p>
-  <p>
-    Full-size:
-    <a href="v4/pin_quotation.png">PIN cotización</a> ·
-    <a href="v4/pin_invoice.png">PIN factura</a> ·
-    <a href="v4/dom_quotation.png">DOM cotización</a> ·
-    <a href="v4/dom_invoice.png">DOM factura</a> ·
-    <a href="v4/may_quotation.png">MAY cotización</a> ·
-    <a href="v4/may_invoice.png">MAY factura</a> ·
-    <a href="v4/rem_quotation.png">REM cotización</a> ·
-    <a href="v4/rem_invoice.png">REM factura</a> ·
-    <a href="v4/blu_quotation.png">BLU cotización</a> ·
-    <a href="v4/blu_invoice.png">BLU factura</a> ·
-    <a href="v4/dor_quotation.png">DOR cotización</a> ·
-    <a href="v4/dor_invoice.png">DOR factura</a>
-  </p>
-
-  <h3>Blue Elite</h3>
-  <p>
-    <a href="v32/blueelite_quotation-1.png">Cotización</a> ·
-    <a href="v32/blueelite_invoice_posted-1.png">Factura B0199005001</a> ·
-    <a href="v32/blueelite_credit_note-1.png">NC</a> ·
-    <a href="v32/blueelite_po-1.png">OC</a> ·
-    <a href="v32/blueelite_delivery-1.png">Entrega</a> ·
-    <a href="v32/blueelite_statement-1.png">Estado</a>
-  </p>
-  <p><img class="thumb" src="v32/blueelite_quotation-1.png" alt="Blue Elite cotización"/></p>
+  <h2>Comparativo por documento</h2>
+  <p><a href="v53/all_companies_invoice_final.png"><img class="full" src="v53/all_companies_invoice_final.png" alt="Facturas"/></a></p>
+  <p><a href="v53/all_companies_credit_note_final.png"><img class="full" src="v53/all_companies_credit_note_final.png" alt="Notas de crédito"/></a></p>
+  <p><a href="v53/all_companies_purchase_order_final.png"><img class="full" src="v53/all_companies_purchase_order_final.png" alt="Órdenes de compra"/></a></p>
+  <p><a href="v53/all_companies_receipt_final.png"><img class="full" src="v53/all_companies_receipt_final.png" alt="Recibos"/></a></p>
+  <p><a href="v53/all_companies_statement_final.png"><img class="full" src="v53/all_companies_statement_final.png" alt="Estados de cuenta"/></a></p>
+  <p class="meta">Recibo anticipo Doralex: <a href="v53/receipt_advance_doralex_final.png">PNG</a>. PDFs de toda la suite en <a href="v53/pdf/">v53/pdf/</a>.</p>
 </body>
 </html>
