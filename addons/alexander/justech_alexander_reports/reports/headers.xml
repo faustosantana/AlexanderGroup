@@ -33,19 +33,17 @@
                                 <div class="dx-meta-v" t-out="dx_header_meta.get('date') or '—'"/>
                             </div>
                             <div class="dx-h-dor-col">
-                                <div class="dx-meta-k">Validez</div>
+                                <div class="dx-meta-k" t-out="dx_header_meta.get('date2_label') or 'Validez'"/>
                                 <div class="dx-meta-v" t-out="dx_header_meta.get('validity') or '—'"/>
                             </div>
                         </div>
-                        <div class="dx-h-dor-pair">
-                            <div class="dx-h-dor-col">
-                                <div class="dx-meta-k">Vendedor</div>
-                                <div class="dx-meta-v" t-out="dx_header_meta.get('salesperson') or '—'"/>
-                            </div>
-                            <div class="dx-h-dor-col">
-                                <div class="dx-meta-k">Moneda</div>
-                                <div class="dx-meta-v" t-out="dx_header_meta.get('currency') or '—'"/>
-                            </div>
+                        <div class="dx-h-dor-vendor">
+                            <div class="dx-meta-k">Vendedor</div>
+                            <div class="dx-meta-v" t-out="dx_header_meta.get('salesperson') or '—'"/>
+                        </div>
+                        <div class="dx-h-dor-currency">
+                            <div class="dx-meta-k">Moneda</div>
+                            <div class="dx-meta-v" t-out="dx_header_meta.get('currency') or '—'"/>
                         </div>
                     </div>
                 </td>

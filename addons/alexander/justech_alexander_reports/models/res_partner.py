@@ -218,6 +218,7 @@ class ResPartner(models.Model):
                     ),
                     "balance": net,
                     "kpis": kpis,
+                    "layout": co._dx_report_theme().get("layout") or "dor",
                 }
             )
         return bundles

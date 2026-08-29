@@ -124,6 +124,7 @@ class ResCompany(models.Model):
             "date": "—",
             "validity": "—",
             "due": "—",
+            "date2_label": "Validez",
             "salesperson": "—",
             "currency": "",
             "ncf": "",
@@ -138,7 +139,11 @@ class ResCompany(models.Model):
                 value = value.date()
             return format_date(self.env, value)
 
-        user = record.user_id if "user_id" in record._fields else False
+        user = False
+        if record._name == "account.move" and "invoice_user_id" in record._fields:
+            user = record.invoice_user_id
+        elif "user_id" in record._fields:
+            user = record.user_id
         name = (user.name or "").strip() if user else ""
         if name in ("OdooBot", "Administrator", "Public user", "Public User", ""):
             name = "Equipo comercial" if name else "—"
@@ -148,13 +153,23 @@ class ResCompany(models.Model):
         if record._name == "sale.order":
             meta["date"] = _fmt(record.date_order)
             meta["validity"] = _fmt(record.validity_date)
+            meta["date2_label"] = "Validez"
         elif record._name == "account.move":
             meta["date"] = _fmt(record.invoice_date or record.date)
             meta["due"] = _fmt(record.invoice_date_due)
+            meta["validity"] = meta["due"]
+            meta["date2_label"] = "Vencimiento"
             if "justech_do_ncf" in record._fields:
                 meta["ncf"] = record.justech_do_ncf or ""
         elif record._name == "purchase.order":
             meta["date"] = _fmt(record.date_order)
+            planned = record.date_planned if "date_planned" in record._fields else False
+            meta["validity"] = _fmt(planned) if planned else "—"
+            meta["date2_label"] = "Entrega"
+        elif record._name == "stock.picking":
+            meta["date"] = _fmt(record.scheduled_date or record.date_done)
+            meta["date2_label"] = "Origen"
+            meta["validity"] = record.origin or "—"
         return meta
 
     def _dx_header_identity_for(self, record):

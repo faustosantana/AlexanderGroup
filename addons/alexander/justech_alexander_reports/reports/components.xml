@@ -109,12 +109,17 @@
     </template>
 
     <template id="dx_picking_lines">
-        <table class="dx-lines">
+        <table t-attf-class="dx-lines dx-table-{{ dx.get('layout') or 'dor' }}" border="0" cellpadding="0" cellspacing="0" frame="void" rules="none">
             <thead>
-                <tr>
+                <tr t-if="dx.get('incoming')">
                     <th class="dx-col-desc">Producto</th>
-                    <th class="dx-col-qty">Demandado</th>
-                    <th class="dx-col-qty">Hecho</th>
+                    <th class="dx-col-qty">Esperada</th>
+                    <th class="dx-col-qty">Recibida</th>
+                    <th class="dx-col-uom">Ud.</th>
+                </tr>
+                <tr t-else="">
+                    <th class="dx-col-desc">Producto</th>
+                    <th class="dx-col-qty">Cantidad</th>
                     <th class="dx-col-uom">Ud.</th>
                 </tr>
             </thead>
@@ -122,11 +127,90 @@
                 <tr t-foreach="dx['lines']" t-as="line">
                     <td class="dx-col-desc" t-out="line['name']"/>
                     <td class="dx-col-qty" t-out="line['qty']"/>
-                    <td class="dx-col-qty" t-out="line.get('done')"/>
+                    <td t-if="dx.get('incoming')" class="dx-col-qty" t-out="line.get('done')"/>
                     <td class="dx-col-uom" t-out="line['uom']"/>
                 </tr>
             </tbody>
         </table>
+    </template>
+
+    <template id="dx_pin_doc_title">
+        <t t-if="dx.get('layout') == 'pin'">
+            <div class="dx-pin-split">
+                <div class="dx-pin-titlecell">
+                    <div class="dx-head-title" t-out="dx['ident'].get('title')"/>
+                    <div class="dx-head-number">
+                        <span t-if="dx['ident'].get('badge')" class="dx-badge" t-out="dx['ident'].get('badge')"/>
+                        <span t-out="dx['ident'].get('number')"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="dx_document_end">
+        <t t-if="dx.get('layout') == 'pin'">
+            <div class="dx-pin-terms-full">
+                <t t-call="justech_alexander_reports.dx_terms_text"/>
+            </div>
+            <div class="dx-end-clear dx-pin-end">
+                <div class="dx-pin-bank">
+                    <t t-call="justech_alexander_reports.dx_banks_text"/>
+                </div>
+                <div class="dx-pin-totals-wrap">
+                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                </div>
+            </div>
+        </t>
+        <t t-elif="dx.get('layout') == 'dom'">
+            <div class="dx-dom-terms">
+                <t t-call="justech_alexander_reports.dx_terms_panel"/>
+            </div>
+            <div class="dx-dom-totals-shift">
+                <t t-call="justech_alexander_reports.dx_totals_panel"/>
+            </div>
+        </t>
+        <t t-elif="dx.get('layout') == 'may'">
+            <div class="dx-may-terms-wide">
+                <t t-call="justech_alexander_reports.dx_terms_panel"/>
+            </div>
+            <div class="dx-may-totals">
+                <t t-call="justech_alexander_reports.dx_totals_panel"/>
+            </div>
+        </t>
+        <t t-elif="dx.get('layout') == 'rem'">
+            <div class="dx-end-clear dx-rem-end">
+                <div class="dx-rem-terms">
+                    <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                </div>
+                <div class="dx-rem-totals-box">
+                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                </div>
+            </div>
+        </t>
+        <t t-elif="dx.get('layout') == 'blu'">
+            <div class="dx-end-clear dx-blu-end">
+                <div class="dx-blu-terms">
+                    <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                </div>
+                <div class="dx-blu-totals-box">
+                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                </div>
+            </div>
+        </t>
+        <t t-else="">
+            <div class="dx-end-clear dx-dor-end">
+                <div class="dx-dor-terms">
+                    <t t-call="justech_alexander_reports.dx_terms_text"/>
+                    <div class="dx-dor-bank">
+                        <t t-call="justech_alexander_reports.dx_banks_text"/>
+                    </div>
+                </div>
+                <div class="dx-dor-totals">
+                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                </div>
+            </div>
+        </t>
     </template>
 
     <template id="dx_totals_panel">
@@ -458,178 +542,190 @@
     </template>
 
     <template id="dx_invoice_composition">
-        <div t-attf-class="dx-composition dx-comp-invoice dx-page-stack #{'dx-comp-refund' if dx.get('is_refund') else ''}">
-            <table class="dx-zone-party">
-                <tr>
-                    <td class="dx-zone-customer">
-                        <t t-call="justech_alexander_reports.dx_customer_card"/>
-                        <div t-if="dx.get('reason')" class="dx-reason">
-                            <div class="dx-block-title">Motivo</div>
-                            <div t-out="dx['reason']"/>
-                        </div>
-                    </td>
-                    <td class="dx-zone-meta">
-                        <t t-call="justech_alexander_reports.dx_commercial_meta"/>
-                    </td>
-                </tr>
-            </table>
-            <table t-if="dx.get('is_refund')" class="dx-refund-banner">
-                <tr>
-                    <td>
-                        <div class="dx-block-title">Importe acreditado</div>
-                        <div class="dx-credited" t-out="dx.get('credited')"/>
-                    </td>
-                    <td>
-                        <div class="dx-block-title">Documento afectado</div>
-                        <div t-if="dx.get('origin_ncf')">NCF <t t-out="dx['origin_ncf']"/></div>
-                        <div t-if="dx.get('origin_move')" t-out="dx['origin_move']"/>
-                    </td>
-                </tr>
-            </table>
+        <div t-attf-class="dx-composition dx-comp-invoice dx-comp-{{ dx.get('layout') or 'dor' }} dx-page-stack #{'dx-comp-refund' if dx.get('is_refund') else ''}">
+            <t t-call="justech_alexander_reports.dx_pin_doc_title"/>
+            <div class="dx-ncf-hero">
+                <div class="dx-ncf-k">NCF</div>
+                <div t-if="dx.get('ncf')" class="dx-ncf-v" t-out="dx['ncf']"/>
+                <div t-else="" class="dx-ncf-pending">Pendiente de NCF</div>
+            </div>
+            <div t-if="dx.get('is_refund')" class="dx-refund-open">
+                <div class="dx-refund-col">
+                    <div class="dx-block-title">Total acreditado</div>
+                    <div class="dx-credited" t-out="dx.get('credited')"/>
+                </div>
+                <div class="dx-refund-col">
+                    <div class="dx-block-title">Documento afectado</div>
+                    <div t-if="dx.get('origin_ncf')">NCF afectado · <t t-out="dx['origin_ncf']"/></div>
+                    <div t-if="dx.get('origin_move')" t-out="dx['origin_move']"/>
+                    <div t-if="dx.get('origin')">Factura · <t t-out="dx['origin']"/></div>
+                </div>
+            </div>
+            <div class="dx-inv-top">
+                <div t-attf-class="dx-inv-party dx-inv-party-{{ dx.get('layout') or 'dor' }}">
+                    <t t-call="justech_alexander_reports.dx_customer_card"/>
+                    <div t-if="dx.get('reason')" class="dx-inv-reason">
+                        <div class="dx-block-title">Motivo</div>
+                        <div t-out="dx['reason']"/>
+                    </div>
+                </div>
+                <div class="dx-inv-meta">
+                    <div class="dx-inv-meta-col">
+                        <div class="dx-meta-k">Fecha</div>
+                        <div class="dx-meta-v" t-out="dx['date']"/>
+                    </div>
+                    <div class="dx-inv-meta-col">
+                        <div class="dx-meta-k">Vencimiento</div>
+                        <div class="dx-meta-v" t-out="dx.get('due') or '—'"/>
+                    </div>
+                    <div class="dx-inv-meta-col">
+                        <div class="dx-meta-k">Moneda</div>
+                        <div class="dx-meta-v" t-out="dx.get('currency') or '—'"/>
+                    </div>
+                    <div class="dx-inv-meta-col" t-if="dx.get('payment_term')">
+                        <div class="dx-meta-k">Condición</div>
+                        <div class="dx-meta-v" t-out="dx['payment_term']"/>
+                    </div>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_line_table"/>
-            <table class="dx-zone-bottom dx-keep-end" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-zone-terms">
-                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                    </td>
-                    <td class="dx-zone-totals">
-                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
-                    </td>
-                </tr>
-            </table>
+            <t t-call="justech_alexander_reports.dx_document_end"/>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 
     <template id="dx_payment_composition">
-        <div class="dx-composition dx-comp-payment dx-page-stack">
-                        <table class="dx-amount-box">
-                            <tr>
-                                <td>
-                                    <div class="dx-amount-label">Monto recibido</div>
-                                    <div class="dx-amount-hero" t-out="dx['amount']"/>
-                                    <div t-if="dx.get('amount_words')" class="dx-amount-words">Son: <t t-out="dx['amount_words']"/></div>
-                                </td>
-                            </tr>
-                        </table>
-                        <table class="dx-zone-party">
-                            <tr>
-                                <td class="dx-zone-customer">
-                                    <div class="dx-card-title">Recibido de</div>
-                                    <div class="dx-card-name" t-out="dx['partner']['name']"/>
-                                    <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
-                                    <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
-                                </td>
-                                <td class="dx-zone-meta">
-                                    <div class="dx-card-title">Detalle del pago</div>
-                                    <table class="dx-meta-grid">
-                                        <tr>
-                                            <td>
-                                                <div class="dx-meta-k">Fecha</div>
-                                                <div class="dx-meta-v" t-out="dx['date']"/>
-                                            </td>
-                                            <td>
-                                                <div class="dx-meta-k">Método</div>
-                                                <div class="dx-meta-v" t-out="dx['method']"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="dx-meta-k">Banco / diario</div>
-                                                <div class="dx-meta-v" t-out="dx['bank']"/>
-                                            </td>
-                                            <td>
-                                                <div class="dx-meta-k">Moneda</div>
-                                                <div class="dx-meta-v" t-out="dx['currency']"/>
-                                            </td>
-                                        </tr>
-                                        <tr t-if="dx.get('reference')">
-                                            <td colspan="2">
-                                                <div class="dx-meta-k">Referencia</div>
-                                                <div class="dx-meta-v" t-out="dx['reference']"/>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                        <t t-if="dx.get('unapplied')">
-                            <div class="dx-unapplied">PAGO NO APLICADO / ANTICIPO</div>
-                            <p class="dx-unapplied-help">Este cobro no está aplicado a facturas. Queda como anticipo a favor del cliente.</p>
-                        </t>
-                        <t t-else="">
-                            <div class="dx-block-title">Facturas aplicadas</div>
-                            <table class="dx-lines dx-applied">
-                                <thead>
-                                    <tr>
-                                        <th>Documento</th>
-                                        <th>NCF</th>
-                                        <th>Fecha</th>
-                                        <th class="dx-col-amt">Monto factura</th>
-                                        <th class="dx-col-amt">Monto aplicado</th>
-                                        <th class="dx-col-amt">Saldo restante</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr t-foreach="dx['applied']" t-as="row">
-                                        <td t-out="row['document']"/>
-                                        <td t-out="row['ncf']"/>
-                                        <td t-out="row['date']"/>
-                                        <td class="dx-money" t-out="row['invoice_amount']"/>
-                                        <td class="dx-money" t-out="row['applied']"/>
-                                        <td class="dx-money" t-out="row['residual']"/>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </t>
-                        <t t-if="dx.get('banks') or dx.get('terms')">
-                            <div class="dx-receipt-note">
-                                <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                            </div>
-                        </t>
+        <div t-attf-class="dx-composition dx-comp-payment dx-comp-{{ dx.get('layout') or 'dor' }} dx-page-stack">
+            <t t-call="justech_alexander_reports.dx_pin_doc_title"/>
+            <div class="dx-amount-hero-wrap">
+                <div class="dx-amount-label">Monto recibido</div>
+                <div class="dx-amount-hero" t-out="dx['amount']"/>
+                <div t-if="dx.get('amount_words')" class="dx-amount-words">Son: <t t-out="dx['amount_words']"/></div>
+            </div>
+            <div class="dx-pay-detail">
+                <div class="dx-pay-who">
+                    <div class="dx-card-title">Recibido de</div>
+                    <div class="dx-card-name" t-out="dx['partner']['name']"/>
+                    <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
+                    <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                </div>
+                <div class="dx-pay-meta">
+                    <div class="dx-pay-meta-col">
+                        <div class="dx-meta-k">Fecha</div>
+                        <div class="dx-meta-v" t-out="dx['date']"/>
+                    </div>
+                    <div class="dx-pay-meta-col">
+                        <div class="dx-meta-k">Método</div>
+                        <div class="dx-meta-v" t-out="dx['method']"/>
+                    </div>
+                    <div class="dx-pay-meta-col">
+                        <div class="dx-meta-k">Banco / diario</div>
+                        <div class="dx-meta-v" t-out="dx['bank']"/>
+                    </div>
+                    <div class="dx-pay-meta-col">
+                        <div class="dx-meta-k">Moneda</div>
+                        <div class="dx-meta-v" t-out="dx['currency']"/>
+                    </div>
+                    <div class="dx-pay-meta-col" t-if="dx.get('reference')">
+                        <div class="dx-meta-k">Referencia</div>
+                        <div class="dx-meta-v" t-out="dx['reference']"/>
+                    </div>
+                </div>
+            </div>
+            <t t-if="dx.get('unapplied')">
+                <div class="dx-unapplied">PAGO NO APLICADO / ANTICIPO</div>
+                <p class="dx-unapplied-help">Este cobro no está aplicado a facturas. Queda como anticipo a favor del cliente.</p>
+            </t>
+            <t t-else="">
+                <div class="dx-block-title">Facturas aplicadas</div>
+                <table t-attf-class="dx-lines dx-applied dx-table-{{ dx.get('layout') or 'dor' }}" border="0" cellpadding="0" cellspacing="0" frame="void" rules="none">
+                    <thead>
+                        <tr>
+                            <th>Factura</th>
+                            <th>NCF</th>
+                            <th>Fecha</th>
+                            <th class="dx-col-amt">Monto factura</th>
+                            <th class="dx-col-amt">Monto aplicado</th>
+                            <th class="dx-col-amt">Saldo restante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="dx['applied']" t-as="row">
+                            <td t-out="row['document']"/>
+                            <td t-out="row['ncf']"/>
+                            <td t-out="row['date']"/>
+                            <td class="dx-money" t-out="row['invoice_amount']"/>
+                            <td class="dx-money" t-out="row['applied']"/>
+                            <td class="dx-money" t-out="row['residual']"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </t>
+            <t t-if="dx.get('terms')">
+                <div class="dx-receipt-note">
+                    <t t-call="justech_alexander_reports.dx_terms_text"/>
+                </div>
+            </t>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 
     <template id="dx_purchase_composition">
-        <div class="dx-composition dx-comp-purchase dx-page-stack">
-            <table class="dx-zone-party">
-                <tr>
-                    <td class="dx-zone-customer">
-                        <t t-call="justech_alexander_reports.dx_customer_card"/>
-                    </td>
-                    <td class="dx-zone-meta">
-                        <t t-call="justech_alexander_reports.dx_commercial_meta"/>
-                    </td>
-                </tr>
-            </table>
+        <div t-attf-class="dx-composition dx-comp-purchase dx-comp-{{ dx.get('layout') or 'dor' }} dx-page-stack">
+            <t t-call="justech_alexander_reports.dx_pin_doc_title"/>
+            <div class="dx-inv-top">
+                <div t-attf-class="dx-inv-party dx-inv-party-{{ dx.get('layout') or 'dor' }}">
+                    <t t-call="justech_alexander_reports.dx_customer_card"/>
+                </div>
+                <div class="dx-inv-meta">
+                    <div class="dx-inv-meta-col">
+                        <div class="dx-meta-k">Fecha</div>
+                        <div class="dx-meta-v" t-out="dx['date']"/>
+                    </div>
+                    <div class="dx-inv-meta-col" t-if="dx.get('salesperson')">
+                        <div class="dx-meta-k">Responsable</div>
+                        <div class="dx-meta-v" t-out="dx['salesperson']"/>
+                    </div>
+                    <div class="dx-inv-meta-col" t-if="dx.get('client_ref')">
+                        <div class="dx-meta-k">Referencia</div>
+                        <div class="dx-meta-v" t-out="dx['client_ref']"/>
+                    </div>
+                    <div class="dx-inv-meta-col">
+                        <div class="dx-meta-k">Moneda</div>
+                        <div class="dx-meta-v" t-out="dx.get('currency') or '—'"/>
+                    </div>
+                    <div class="dx-inv-meta-col" t-if="dx.get('due')">
+                        <div class="dx-meta-k">Entrega prevista</div>
+                        <div class="dx-meta-v" t-out="dx['due']"/>
+                    </div>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_line_table"/>
-            <table class="dx-zone-bottom dx-keep-end" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="dx-zone-terms">
-                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                    </td>
-                    <td class="dx-zone-totals">
-                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
-                    </td>
-                </tr>
-            </table>
+            <t t-call="justech_alexander_reports.dx_document_end"/>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 
     <template id="dx_picking_composition">
-        <div class="dx-composition dx-comp-picking dx-page-stack">
-            <table class="dx-zone-party">
-                <tr>
-                    <td class="dx-zone-customer">
-                        <t t-call="justech_alexander_reports.dx_customer_card"/>
-                    </td>
-                    <td class="dx-zone-meta">
-                        <t t-call="justech_alexander_reports.dx_commercial_meta"/>
-                    </td>
-                </tr>
-            </table>
+        <div t-attf-class="dx-composition dx-comp-picking dx-comp-{{ dx.get('layout') or 'dor' }} dx-page-stack">
+            <t t-call="justech_alexander_reports.dx_pin_doc_title"/>
+            <div class="dx-pick-top">
+                <div t-attf-class="dx-pick-party dx-inv-party-{{ dx.get('layout') or 'dor' }}">
+                    <t t-call="justech_alexander_reports.dx_customer_card"/>
+                    <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                    <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
+                </div>
+                <div class="dx-pick-meta">
+                    <div class="dx-inv-meta-col">
+                        <div class="dx-meta-k">Fecha</div>
+                        <div class="dx-meta-v" t-out="dx['date']"/>
+                    </div>
+                    <div class="dx-inv-meta-col" t-if="dx.get('origin')">
+                        <div class="dx-meta-k">Pedido</div>
+                        <div class="dx-meta-v" t-out="dx['origin']"/>
+                    </div>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_picking_lines"/>
             <t t-if="dx.get('note')">
                 <div class="dx-terms" t-out="dx['note']"/>

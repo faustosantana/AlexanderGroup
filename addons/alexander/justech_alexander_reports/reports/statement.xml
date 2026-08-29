@@ -10,30 +10,24 @@
                     <t t-set="dx_header_identity" t-value="{'title': 'ESTADO DE CUENTA', 'number': bundle['cutoff'], 'badge': ''}"/>
                     <t t-call="web.external_layout">
                         <div class="page dx-page">
-                            <table class="dx-zone-party">
-                                <tr>
-                                    <td class="dx-zone-customer">
-                                        <div class="dx-card-title">Cliente</div>
-                                        <div class="dx-card-name" t-out="bundle['partner_name']"/>
-                                        <div t-if="bundle.get('partner_vat')">RNC <t t-out="bundle['partner_vat']"/></div>
-                                    </td>
-                                    <td class="dx-zone-meta">
-                                        <table class="dx-meta-grid">
-                                            <tr>
-                                                <td>
-                                                    <div class="dx-meta-k">Fecha de corte</div>
-                                                    <div class="dx-meta-v" t-out="bundle['cutoff']"/>
-                                                </td>
-                                                <td>
-                                                    <div class="dx-meta-k">Moneda</div>
-                                                    <div class="dx-meta-v" t-out="bundle['currency']"/>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                            <table class="dx-kpi">
+                            <div class="dx-stmt-top">
+                                <div class="dx-stmt-party">
+                                    <div class="dx-card-title">Cliente</div>
+                                    <div class="dx-card-name" t-out="bundle['partner_name']"/>
+                                    <div t-if="bundle.get('partner_vat')">RNC <t t-out="bundle['partner_vat']"/></div>
+                                </div>
+                                <div class="dx-stmt-meta">
+                                    <div class="dx-stmt-meta-col">
+                                        <div class="dx-meta-k">Fecha de corte</div>
+                                        <div class="dx-meta-v" t-out="bundle['cutoff']"/>
+                                    </div>
+                                    <div class="dx-stmt-meta-col">
+                                        <div class="dx-meta-k">Moneda</div>
+                                        <div class="dx-meta-v" t-out="bundle['currency']"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="dx-kpi" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td t-foreach="bundle['kpis']" t-as="kpi" t-attf-class="dx-kpi-#{kpi['tone']}">
                                         <div class="dx-kpi-label" t-out="kpi['label']"/>
@@ -41,7 +35,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <table class="dx-lines dx-statement-lines">
+                            <table t-attf-class="dx-lines dx-statement-lines dx-table-{{ bundle.get('layout') or 'dor' }}" border="0" cellpadding="0" cellspacing="0" frame="void" rules="none">
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>

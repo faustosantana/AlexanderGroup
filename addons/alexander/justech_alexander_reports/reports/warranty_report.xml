@@ -5,36 +5,28 @@
             <t t-foreach="docs" t-as="doc">
                 <t t-set="o" t-value="doc"/>
                 <t t-set="company" t-value="doc.company_id"/>
-                <t t-set="layout_document_title">Certificado de Garantía</t>
+                <t t-set="dx_header_identity" t-value="{'title': 'CERTIFICADO DE GARANTÍA', 'number': doc.name or '', 'badge': ''}"/>
                 <t t-call="web.external_layout">
-                    <h2>Certificado de Garantía</h2>
-                    <div class="dx-block">
-                        <strong t-field="doc.name"/>
+                    <div class="page dx-page">
+                        <div class="dx-composition dx-warranty">
+                            <div class="dx-warranty-row">
+                                <div class="dx-warranty-k">Cliente</div>
+                                <div class="dx-warranty-v"><span t-field="doc.partner_id"/></div>
+                            </div>
+                            <div class="dx-warranty-row">
+                                <div class="dx-warranty-k">Producto</div>
+                                <div class="dx-warranty-v"><span t-field="doc.product_id"/></div>
+                            </div>
+                            <div class="dx-warranty-row">
+                                <div class="dx-warranty-k">Inicio</div>
+                                <div class="dx-warranty-v"><span t-field="doc.date_start"/></div>
+                            </div>
+                            <div class="dx-warranty-row">
+                                <div class="dx-warranty-k">Cobertura</div>
+                                <div class="dx-warranty-v"><span t-field="doc.warranty_months"/> meses</div>
+                            </div>
+                        </div>
                     </div>
-                    <table class="dx-lines">
-                        <tbody>
-                            <tr>
-                                <td><strong>Cliente</strong></td>
-                                <td><span t-field="doc.partner_id"/></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Producto</strong></td>
-                                <td><span t-field="doc.product_id"/></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Inicio</strong></td>
-                                <td><span t-field="doc.date_start"/></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Cobertura</strong></td>
-                                <td><span t-field="doc.warranty_months"/> meses</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <t t-call="justech_alexander_reports.dx_report_extras">
-                        <t t-set="company" t-value="doc.company_id"/>
-                        <t t-set="dx_extras_mode" t-value="'signs'"/>
-                    </t>
                 </t>
             </t>
         </t>

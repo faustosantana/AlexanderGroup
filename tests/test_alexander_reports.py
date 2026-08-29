@@ -1,4 +1,4 @@
-"""Pruebas estructurales V5.2: bodies con geometría distinta, sin cajas."""
+"""Pruebas estructurales V5.3: pulido + suite documental por identidad."""
 
 from __future__ import annotations
 
@@ -17,6 +17,9 @@ def test_six_company_themes_in_css():
         assert f"dx-theme-{code}" in css
     assert "dx-h-dor-rail" in css
     assert "dx-h-dor-col" in css
+    assert "dx-h-dor-vendor" in css
+    assert "dx-ncf-hero" in css
+    assert "dx-ncf-pending" in css
     assert "padding-top: 0 !important" in css
     assert "dx-h-pin-c" in css
     assert "dx-h-dom-rail" in css
@@ -91,7 +94,14 @@ def test_six_real_headers_and_sale_compositions():
     assert "dx-blu-asym" in comps
     assert "dx-pin-titlecell" in comps
     assert "dx-dor-client" in comps
+    assert "dx-h-dor-vendor" in headers
+    assert "dx_document_end" in comps
+    assert "dx-ncf-hero" in comps
+    assert "Pendiente de NCF" in comps
     assert "dx-sign-table" not in comps
+    assert "dx-zone-bottom" not in comps
+    assert "PAGO NO APLICADO / ANTICIPO" in comps
+    assert "Esperada" in comps
     assert "dx-h-rem-id" in headers
     assert "dx-rem-mast" not in comps
     assert 'border="0"' in headers
@@ -143,6 +153,9 @@ def test_statement_uses_python_rows():
     xml = (REPORTS / "reports" / "statement.xml").read_text(encoding="utf-8")
     assert "bundle['rows']" in xml
     assert "ESTADO DE CUENTA" in xml
+    assert "dx-stmt-top" in xml
+    assert "dx-meta-grid" not in xml
+    assert "bundle.get('layout')" in xml
     py = (REPORTS / "models" / "res_partner.py").read_text(encoding="utf-8")
     assert "_dx_statement_bundles" in py
     assert "Saldo a favor" in py
@@ -173,6 +186,9 @@ def test_invoice_title_is_factura_not_borrador():
     assert '"NOTA DE CRÉDITO"' in py
     assert '"COTIZACIÓN"' in py
     assert '"Pendiente"' in py
+    assert "Pendiente de NCF" not in py
+    assert "ncf_pending" in py
+    assert "_dx_layout" in py
     assert "justech_do_ncf" in py
     assert "background:#ffffff" in py
     assert "#f7f7f7" not in py
@@ -188,3 +204,7 @@ def test_invoice_title_is_factura_not_borrador():
     assert "Aceptado por el cliente" in py
     assert "_dx_purchase_compose" in py
     assert "_dx_picking_compose" in py
+    assert "_dx_payment_compose" in py
+    warranty = (REPORTS / "reports" / "warranty_report.xml").read_text(encoding="utf-8")
+    assert "CERTIFICADO DE GARANTÍA" in warranty
+    assert "Certificado de Garantía" in warranty

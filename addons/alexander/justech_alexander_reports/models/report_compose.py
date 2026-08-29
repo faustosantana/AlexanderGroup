@@ -144,6 +144,20 @@ def _dx_terms(company, fallback):
     return (company.dx_report_terms or company.invoice_terms or fallback or "").strip()
 
 
+def _dx_layout(company):
+    return company._dx_report_theme().get("layout") or "dor"
+
+
+_DX_PICKING_BADGE = {
+    "draft": "BORRADOR",
+    "waiting": "ESPERANDO",
+    "confirmed": "CONFIRMADO",
+    "assigned": "LISTO",
+    "done": "",
+    "cancel": "ANULADA",
+}
+
+
 class SaleOrderCompose(models.Model):
     _inherit = "sale.order"
 
@@ -220,10 +234,9 @@ class SaleOrderCompose(models.Model):
                 "grand": True,
             }
         )
-        theme = company._dx_report_theme()
         return {
             "ident": ident,
-            "layout": theme.get("layout") or "dor",
+            "layout": _dx_layout(company),
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.date_order),
             "validity": _dx_date(self.env, self.validity_date),
@@ -366,8 +379,14 @@ class AccountMoveCompose(models.Model):
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.invoice_date or self.date),
             "due": _dx_date(self.env, self.invoice_date_due),
-            "ncf": ncf or "Pendiente",
+            "layout": _dx_layout(company),
+            "salesperson": _dx_salesperson(
+                self.invoice_user_id if "invoice_user_id" in self._fields else False,
+                company,
+            ),
+            "ncf": ncf,
             "ncf_missing": not bool(ncf),
+            "ncf_pending": not bool(ncf),
             "origin_ncf": origin_ncf,
             "origin_move": origin_move,
             "origin": self.invoice_origin or "",
@@ -487,6 +506,7 @@ class AccountPaymentCompose(models.Model):
             amount_words = ""
         return {
             "ident": self._dx_doc_identity(),
+            "layout": _dx_layout(company),
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.date),
             "amount": _dx_money(self.env, self.amount, currency),
@@ -579,6 +599,7 @@ class PurchaseOrderCompose(models.Model):
             dest = self.dest_address_id.display_name or ""
         return {
             "ident": self._dx_doc_identity(),
+            "layout": _dx_layout(company),
             "partner": _dx_partner_lines(self.partner_id),
             "party_title": "Proveedor",
             "date": _dx_date(self.env, self.date_order),
@@ -615,7 +636,7 @@ class StockPickingCompose(models.Model):
         return {
             "title": "RECEPCIÓN" if incoming else "ENTREGA",
             "number": self.name or "—",
-            "badge": (self.state or "").upper(),
+            "badge": _DX_PICKING_BADGE.get(self.state or "", ""),
             "kicker": self.company_id.dx_trade_name or self.company_id.name,
         }
 
@@ -659,6 +680,7 @@ class StockPickingCompose(models.Model):
             party_title = "Cliente"
         return {
             "ident": self._dx_doc_identity(),
+            "layout": _dx_layout(company),
             "partner": _dx_partner_lines(partner) if partner else {"name": "—"},
             "party_title": party_title,
             "date": _dx_date(self.env, self.scheduled_date or self.date_done),
