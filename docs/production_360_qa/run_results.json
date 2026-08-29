@@ -1,0 +1,340 @@
+{
+  "steps": [
+    {
+      "step": "module_inventory",
+      "status": "PASS",
+      "detail": "17 custom installed"
+    },
+    {
+      "step": "qa_masters",
+      "status": "PASS",
+      "detail": "partners+products"
+    },
+    {
+      "step": "ncf_test_ranges",
+      "status": "PASS",
+      "detail": "B01+B04 x6 AUTH=DX-TEST-NO-DGII-360"
+    },
+    {
+      "step": "dgii_external",
+      "status": "DISABLED_FOR_TEST",
+      "detail": "no exporter models"
+    },
+    {
+      "step": "flow_DOR_sale",
+      "status": "REUSED",
+      "detail": "INV/2026/00001 B0199100001"
+    },
+    {
+      "step": "flow_DOR",
+      "status": "PASS",
+      "detail": "INV INV/2026/00001 NCF B0199100001 BILL BILL/2026/08/0001"
+    },
+    {
+      "step": "flow_PIN_sale",
+      "status": "REUSED",
+      "detail": "INV/2026/00001 B0199100101"
+    },
+    {
+      "step": "flow_PIN",
+      "status": "PASS",
+      "detail": "INV INV/2026/00001 NCF B0199100101 BILL BILL/2026/08/0001"
+    },
+    {
+      "step": "flow_DOM_sale",
+      "status": "REUSED",
+      "detail": "INV/2026/00001 B0199100201"
+    },
+    {
+      "step": "flow_DOM",
+      "status": "PASS",
+      "detail": "INV INV/2026/00001 NCF B0199100201 BILL BILL/2026/08/0001"
+    },
+    {
+      "step": "flow_MAY_sale",
+      "status": "REUSED",
+      "detail": "INV/2026/00001 B0199100301"
+    },
+    {
+      "step": "flow_MAY",
+      "status": "PASS",
+      "detail": "INV INV/2026/00001 NCF B0199100301 BILL BILL/2026/08/0001"
+    },
+    {
+      "step": "flow_REM_sale",
+      "status": "REUSED",
+      "detail": "INV/2026/00001 B0199100401"
+    },
+    {
+      "step": "flow_REM",
+      "status": "PASS",
+      "detail": "INV INV/2026/00001 NCF B0199100401 BILL BILL/2026/08/0001"
+    },
+    {
+      "step": "flow_BLU_sale",
+      "status": "REUSED",
+      "detail": "INV/2026/00001 B0199100501"
+    },
+    {
+      "step": "flow_BLU",
+      "status": "PASS",
+      "detail": "INV INV/2026/00001 NCF B0199100501 BILL BILL/2026/08/0001"
+    },
+    {
+      "step": "partial_and_advance",
+      "status": "PASS",
+      "detail": "0.0"
+    },
+    {
+      "step": "void_608",
+      "status": "PASS",
+      "detail": "{'move_id': 85, 'ncf': 'B0199100104', 'voided': True, 'reused': True}"
+    },
+    {
+      "step": "crm",
+      "status": "PASS",
+      "detail": "DX TEST LEAD DOR \u2014 NO FISCAL REAL"
+    },
+    {
+      "step": "warranty",
+      "status": "PASS",
+      "detail": "GAR/2026/00005"
+    },
+    {
+      "step": "accounting_recovery",
+      "status": "PASS",
+      "detail": "{'admin': True, 'operational': False, 'fausto_user': False, 'admin_companies': ['BLU', 'PIN', 'DOM', 'DOR', 'MAY', 'REM']}"
+    },
+    {
+      "step": "identity_guard",
+      "status": "PASS",
+      "detail": "{'cross_pdf': 45377, 'hellenia_blocked': True}"
+    },
+    {
+      "step": "bi_convert",
+      "status": "PASS",
+      "detail": "DOR/OC/00010"
+    },
+    {
+      "step": "security_acl",
+      "status": "PASS",
+      "detail": "{'blu_user_sees_dor_invoice': False}"
+    },
+    {
+      "step": "audit_log",
+      "status": "NOT_APPLICABLE",
+      "detail": "0"
+    },
+    {
+      "step": "cxp",
+      "status": "PASS",
+      "detail": "{'bills': 6, 'residual': 0.0, 'companies': ['BLU', 'REM', 'MAY', 'DOM', 'PIN', 'DOR']}"
+    },
+    {
+      "step": "statements",
+      "status": "PASS",
+      "detail": "6/6"
+    },
+    {
+      "step": "cross_company",
+      "status": "PASS",
+      "detail": "[('PIN', 'DOR'), ('REM', 'BLU'), ('DOM', 'MAY')]"
+    },
+    {
+      "step": "email_invoices",
+      "status": "PASS",
+      "detail": "[{'code': 'DOR', 'from': 'administracion@inversionesdoralex.com', 'sent': True, 'err': '', 'ncf': 'B0199100001'}, {'code': 'PIN', 'from': 'administracion@pinariagroup.com', 'sent': True, 'err': '', 'ncf': 'B0199100101'}, {'code': 'DOM', 'from': 'administracion@dominion-business.com', 'sent': True, 'err': '', 'ncf': 'B0199100201'}, {'code': 'MAY', 'from': 'administracion@elmayuma.com', 'sent': True, 'err': '', 'ncf': 'B0199100301'}, {'code': 'REM', 'from': 'administracion@rempartgroup.com', 'sent"
+    },
+    {
+      "step": "fiscal_extract",
+      "status": "PASS",
+      "detail": "{'607': 20, '606': 6, '608': 2}"
+    },
+    {
+      "step": "operational_user",
+      "status": "PASS",
+      "detail": "{'exists': True, 'system': False, 'companies': ['BLU', 'PIN', 'DOM', 'DOR', 'MAY', 'REM'], 'can_read_qa_so': 5}"
+    },
+    {
+      "step": "crons",
+      "status": "PASS",
+      "detail": "4"
+    }
+  ],
+  "fails": [],
+  "ncf_used": [
+    {
+      "company": "DOR",
+      "type": "B01",
+      "ncf": "B0199100002",
+      "move_id": 67,
+      "case": "overdue"
+    },
+    {
+      "company": "PIN",
+      "type": "B01",
+      "ncf": "B0199100103",
+      "move_id": 70,
+      "case": "overdue"
+    },
+    {
+      "company": "DOM",
+      "type": "B01",
+      "ncf": "B0199100202",
+      "move_id": 73,
+      "case": "overdue"
+    },
+    {
+      "company": "MAY",
+      "type": "B01",
+      "ncf": "B0199100302",
+      "move_id": 76,
+      "case": "overdue"
+    },
+    {
+      "company": "REM",
+      "type": "B01",
+      "ncf": "B0199100402",
+      "move_id": 79,
+      "case": "overdue"
+    },
+    {
+      "company": "BLU",
+      "type": "B01",
+      "ncf": "B0199100502",
+      "move_id": 82,
+      "case": "overdue"
+    }
+  ],
+  "dgii_exporter_models": [],
+  "dgii_external_submission": "DISABLED_FOR_TEST",
+  "partial_delivery_remaining": 0.0,
+  "void_608": {
+    "move_id": 85,
+    "ncf": "B0199100104",
+    "voided": true,
+    "reused": true
+  },
+  "recovery": {
+    "admin": true,
+    "operational": false,
+    "fausto_user": false,
+    "admin_companies": [
+      "BLU",
+      "PIN",
+      "DOM",
+      "DOR",
+      "MAY",
+      "REM"
+    ]
+  },
+  "identity_guard": {
+    "cross_pdf": 45377,
+    "hellenia_blocked": true
+  },
+  "security_isolation": {
+    "blu_user_sees_dor_invoice": false
+  },
+  "audit_log_count": 0,
+  "cxp": {
+    "bills": 6,
+    "residual": 0.0,
+    "companies": [
+      "BLU",
+      "REM",
+      "MAY",
+      "DOM",
+      "PIN",
+      "DOR"
+    ]
+  },
+  "email": [
+    {
+      "code": "DOR",
+      "from": "administracion@inversionesdoralex.com",
+      "sent": true,
+      "err": "",
+      "ncf": "B0199100001"
+    },
+    {
+      "code": "PIN",
+      "from": "administracion@pinariagroup.com",
+      "sent": true,
+      "err": "",
+      "ncf": "B0199100101"
+    },
+    {
+      "code": "DOM",
+      "from": "administracion@dominion-business.com",
+      "sent": true,
+      "err": "",
+      "ncf": "B0199100201"
+    },
+    {
+      "code": "MAY",
+      "from": "administracion@elmayuma.com",
+      "sent": true,
+      "err": "",
+      "ncf": "B0199100301"
+    },
+    {
+      "code": "REM",
+      "from": "administracion@rempartgroup.com",
+      "sent": true,
+      "err": "",
+      "ncf": "B0199100401"
+    },
+    {
+      "code": "BLU",
+      "from": "administracion@blueelite.net",
+      "sent": true,
+      "err": "",
+      "ncf": "B0199100501"
+    }
+  ],
+  "fiscal_extract": {
+    "607": 20,
+    "606": 6,
+    "608": 2
+  },
+  "official_exporter": "NOT_INSTALLED",
+  "operational": {
+    "exists": true,
+    "system": false,
+    "companies": [
+      "BLU",
+      "PIN",
+      "DOM",
+      "DOR",
+      "MAY",
+      "REM"
+    ],
+    "can_read_qa_so": 5
+  },
+  "crons": [
+    {
+      "name": "Doralex: recibir correo Microsoft Graph",
+      "active": true,
+      "last": "2026-08-29 15:36:27",
+      "next": "2026-08-29 15:41:13"
+    },
+    {
+      "name": "Garant\u00edas: marcar vencidas",
+      "active": true,
+      "last": "2026-08-29 14:57:41",
+      "next": "2026-08-30 14:55:48"
+    },
+    {
+      "name": "Justech Audit: limpieza por retenci\u00f3n",
+      "active": true,
+      "last": "2026-08-29 14:57:41",
+      "next": "2026-08-30 14:55:17"
+    },
+    {
+      "name": "Justech NCF: alertas internas consolidadas (multiempresa)",
+      "active": true,
+      "last": "2026-08-29 14:57:41",
+      "next": "2026-08-30 14:55:35"
+    }
+  ]
+}

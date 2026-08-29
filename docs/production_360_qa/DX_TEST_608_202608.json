@@ -1,0 +1,20 @@
+[
+  {
+    "company": "PIN",
+    "period": "202608",
+    "ncf": "B0199100104",
+    "void_date": "2026-08-29",
+    "cancel_type": "04",
+    "reason": "DX TEST 608 \u2014 anulaci\u00f3n QA \u2014 NO ENVIAR DGII",
+    "NO_ENVIAR_DGII": true
+  },
+  {
+    "company": "PIN",
+    "period": "202608",
+    "ncf": "B0199100102",
+    "void_date": "2026-08-29",
+    "cancel_type": "04",
+    "reason": "DX TEST 608 \u2014 anulaci\u00f3n QA \u2014 NO ENVIAR DGII",
+    "NO_ENVIAR_DGII": true
+  }
+]

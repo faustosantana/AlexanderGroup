@@ -1,0 +1,1592 @@
+{
+  "partners": [
+    {
+      "model": "res.partner",
+      "id": 45,
+      "name": "DX TEST CLIENTE BLU \u2014 NO FISCAL REAL",
+      "vat": "101990006",
+      "email": "dx.test.blu.cliente@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 39,
+      "name": "DX TEST CLIENTE DOM \u2014 NO FISCAL REAL",
+      "vat": "101990003",
+      "email": "dx.test.dom.cliente@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 35,
+      "name": "DX TEST CLIENTE DOR \u2014 NO FISCAL REAL",
+      "vat": "101990001",
+      "email": "dx.test.dor.cliente@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 41,
+      "name": "DX TEST CLIENTE MAY \u2014 NO FISCAL REAL",
+      "vat": "101990004",
+      "email": "dx.test.may.cliente@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 37,
+      "name": "DX TEST CLIENTE PIN \u2014 NO FISCAL REAL",
+      "vat": "101990002",
+      "email": "dx.test.pin.cliente@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 43,
+      "name": "DX TEST CLIENTE REM \u2014 NO FISCAL REAL",
+      "vat": "101990005",
+      "email": "dx.test.rem.cliente@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 46,
+      "name": "DX TEST PROVEEDOR BLU \u2014 NO FISCAL REAL",
+      "vat": "201990006",
+      "email": "dx.test.blu.prov@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 40,
+      "name": "DX TEST PROVEEDOR DOM \u2014 NO FISCAL REAL",
+      "vat": "201990003",
+      "email": "dx.test.dom.prov@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 36,
+      "name": "DX TEST PROVEEDOR DOR \u2014 NO FISCAL REAL",
+      "vat": "201990001",
+      "email": "dx.test.dor.prov@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 42,
+      "name": "DX TEST PROVEEDOR MAY \u2014 NO FISCAL REAL",
+      "vat": "201990004",
+      "email": "dx.test.may.prov@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 38,
+      "name": "DX TEST PROVEEDOR PIN \u2014 NO FISCAL REAL",
+      "vat": "201990002",
+      "email": "dx.test.pin.prov@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 44,
+      "name": "DX TEST PROVEEDOR REM \u2014 NO FISCAL REAL",
+      "vat": "201990005",
+      "email": "dx.test.rem.prov@justech.do"
+    },
+    {
+      "model": "res.partner",
+      "id": 48,
+      "name": "DX TEST USER SECURITY BLU",
+      "vat": false,
+      "email": false
+    }
+  ],
+  "products": [
+    {
+      "model": "product.product",
+      "id": 12,
+      "name": "[DX-TEST-EQP] DX TEST PRODUCTO EQUIPO \u2014 NO FISCAL REAL",
+      "code": "DX-TEST-EQP"
+    },
+    {
+      "model": "product.product",
+      "id": 11,
+      "name": "[DX-TEST-STK] DX TEST PRODUCTO INVENTARIABLE \u2014 NO FISCAL REAL",
+      "code": "DX-TEST-STK"
+    },
+    {
+      "model": "product.product",
+      "id": 10,
+      "name": "[DX-TEST-SVC] DX TEST PRODUCTO SERVICIO \u2014 NO FISCAL REAL",
+      "code": "DX-TEST-SVC"
+    }
+  ],
+  "ncf_ranges": [
+    {
+      "model": "justech.do.ncf.range",
+      "id": 15,
+      "name": "DX TEST B01 PIN \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "PIN",
+      "prefix": "B01",
+      "start": 99100101,
+      "end": 99100150,
+      "next": 99100105,
+      "used": 4,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 13,
+      "name": "DX TEST B01 DOR \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "DOR",
+      "prefix": "B01",
+      "start": 99100001,
+      "end": 99100050,
+      "next": 99100003,
+      "used": 2,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 17,
+      "name": "DX TEST B01 DOM \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "DOM",
+      "prefix": "B01",
+      "start": 99100201,
+      "end": 99100250,
+      "next": 99100203,
+      "used": 2,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 19,
+      "name": "DX TEST B01 MAY \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "MAY",
+      "prefix": "B01",
+      "start": 99100301,
+      "end": 99100350,
+      "next": 99100303,
+      "used": 2,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 21,
+      "name": "DX TEST B01 REM \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "REM",
+      "prefix": "B01",
+      "start": 99100401,
+      "end": 99100450,
+      "next": 99100403,
+      "used": 2,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 23,
+      "name": "DX TEST B01 BLU \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "BLU",
+      "prefix": "B01",
+      "start": 99100501,
+      "end": 99100550,
+      "next": 99100503,
+      "used": 2,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 24,
+      "name": "DX TEST B04 BLU \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "BLU",
+      "prefix": "B04",
+      "start": 99110501,
+      "end": 99110550,
+      "next": 99110502,
+      "used": 1,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 22,
+      "name": "DX TEST B04 REM \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "REM",
+      "prefix": "B04",
+      "start": 99110401,
+      "end": 99110450,
+      "next": 99110402,
+      "used": 1,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 16,
+      "name": "DX TEST B04 PIN \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "PIN",
+      "prefix": "B04",
+      "start": 99110101,
+      "end": 99110150,
+      "next": 99110102,
+      "used": 1,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 18,
+      "name": "DX TEST B04 DOM \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "DOM",
+      "prefix": "B04",
+      "start": 99110201,
+      "end": 99110250,
+      "next": 99110202,
+      "used": 1,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 14,
+      "name": "DX TEST B04 DOR \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "DOR",
+      "prefix": "B04",
+      "start": 99110001,
+      "end": 99110050,
+      "next": 99110002,
+      "used": 1,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    },
+    {
+      "model": "justech.do.ncf.range",
+      "id": 20,
+      "name": "DX TEST B04 MAY \u2014 DX-TEST-NO-DGII-360 \u2014 NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "company": "MAY",
+      "prefix": "B04",
+      "start": 99110301,
+      "end": 99110350,
+      "next": 99110302,
+      "used": 1,
+      "state": "active",
+      "auth": "DX-TEST-NO-DGII-360"
+    }
+  ],
+  "sale_orders": [
+    {
+      "model": "sale.order",
+      "id": 41,
+      "name": "DOR/SO/00012",
+      "company": "DOR",
+      "state": "sale"
+    },
+    {
+      "model": "sale.order",
+      "id": 40,
+      "name": "DOR/SO/00011",
+      "company": "DOR",
+      "state": "sale"
+    },
+    {
+      "model": "sale.order",
+      "id": 39,
+      "name": "DOR/SO/00010",
+      "company": "DOR",
+      "state": "sale"
+    },
+    {
+      "model": "sale.order",
+      "id": 38,
+      "name": "DOR/SO/00009",
+      "company": "DOR",
+      "state": "sale"
+    },
+    {
+      "model": "sale.order",
+      "id": 37,
+      "name": "BLU/SO/00006",
+      "company": "BLU",
+      "state": "sale"
+    },
+    {
+      "model": "sale.order",
+      "id": 36,
+      "name": "REM/SO/00006",
+      "company": "REM",
+      "state": "sale"
+    },
+    {
+      "model": "sale.order",
+      "id": 35,
+      "name": "MAY/SO/00006",
+      "company": "MAY",
+      "state": "sale"
+    },
+    {
+      "model": "sale.order",
+      "id": 34,
+      "name": "DOM/SO/00006",
+      "company": "DOM",
+      "state": "sale"
+    },
+    {
+      "model": "sale.order",
+      "id": 33,
+      "name": "PIN/SO/00006",
+      "company": "PIN",
+      "state": "sale"
+    },
+    {
+      "model": "sale.order",
+      "id": 32,
+      "name": "DOR/SO/00008",
+      "company": "DOR",
+      "state": "sale"
+    }
+  ],
+  "purchase_orders": [
+    {
+      "model": "purchase.order",
+      "id": 29,
+      "name": "DOR/OC/00010",
+      "company": "DOR",
+      "state": "draft",
+      "origin": "DOR/SO/00008",
+      "ref": false
+    },
+    {
+      "model": "purchase.order",
+      "id": 28,
+      "name": "BLU/OC/00004 (DX TEST RFQ/PO BLU NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "BLU",
+      "state": "purchase",
+      "origin": false,
+      "ref": "DX TEST RFQ/PO BLU NO FISCAL REAL \u2014 NO ENVIAR DGII"
+    },
+    {
+      "model": "purchase.order",
+      "id": 27,
+      "name": "REM/OC/00004 (DX TEST RFQ/PO REM NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "REM",
+      "state": "purchase",
+      "origin": false,
+      "ref": "DX TEST RFQ/PO REM NO FISCAL REAL \u2014 NO ENVIAR DGII"
+    },
+    {
+      "model": "purchase.order",
+      "id": 26,
+      "name": "MAY/OC/00004 (DX TEST RFQ/PO MAY NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "MAY",
+      "state": "purchase",
+      "origin": false,
+      "ref": "DX TEST RFQ/PO MAY NO FISCAL REAL \u2014 NO ENVIAR DGII"
+    },
+    {
+      "model": "purchase.order",
+      "id": 25,
+      "name": "DOM/OC/00004 (DX TEST RFQ/PO DOM NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "DOM",
+      "state": "purchase",
+      "origin": false,
+      "ref": "DX TEST RFQ/PO DOM NO FISCAL REAL \u2014 NO ENVIAR DGII"
+    },
+    {
+      "model": "purchase.order",
+      "id": 24,
+      "name": "PIN/OC/00009 (DX TEST RFQ/PO PIN NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "PIN",
+      "state": "purchase",
+      "origin": false,
+      "ref": "DX TEST RFQ/PO PIN NO FISCAL REAL \u2014 NO ENVIAR DGII"
+    },
+    {
+      "model": "purchase.order",
+      "id": 23,
+      "name": "DOR/OC/00009 (DX TEST RFQ/PO DOR NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "DOR",
+      "state": "purchase",
+      "origin": false,
+      "ref": "DX TEST RFQ/PO DOR NO FISCAL REAL \u2014 NO ENVIAR DGII"
+    },
+    {
+      "model": "purchase.order",
+      "id": 22,
+      "name": "DOR/OC/00008",
+      "company": "DOR",
+      "state": "draft",
+      "origin": "DOR/SO/00008",
+      "ref": false
+    },
+    {
+      "model": "purchase.order",
+      "id": 15,
+      "name": "DOR/OC/00006",
+      "company": "DOR",
+      "state": "draft",
+      "origin": "DOR/SO/00008",
+      "ref": false
+    },
+    {
+      "model": "purchase.order",
+      "id": 8,
+      "name": "DOR/OC/00004",
+      "company": "DOR",
+      "state": "draft",
+      "origin": "DOR/SO/00008",
+      "ref": false
+    }
+  ],
+  "account_moves": [
+    {
+      "model": "account.move",
+      "id": 81,
+      "name": "RINV/2026/00001 (Reversal of: INV/2026/00001, DX TEST NC B04 [...])",
+      "company": "BLU",
+      "type": "out_refund",
+      "state": "posted",
+      "ncf": "B0499110501",
+      "vendor_ncf": false,
+      "ref": "Reversal of: INV/2026/00001, DX TEST NC B04 BLU NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 2159.4,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 78,
+      "name": "RINV/2026/00001 (Reversal of: INV/2026/00001, DX TEST NC B04 [...])",
+      "company": "REM",
+      "type": "out_refund",
+      "state": "posted",
+      "ncf": "B0499110401",
+      "vendor_ncf": false,
+      "ref": "Reversal of: INV/2026/00001, DX TEST NC B04 REM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 2159.4,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 75,
+      "name": "RINV/2026/00001 (Reversal of: INV/2026/00001, DX TEST NC B04 [...])",
+      "company": "MAY",
+      "type": "out_refund",
+      "state": "posted",
+      "ncf": "B0499110301",
+      "vendor_ncf": false,
+      "ref": "Reversal of: INV/2026/00001, DX TEST NC B04 MAY NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 2159.4,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 72,
+      "name": "RINV/2026/00001 (Reversal of: INV/2026/00001, DX TEST NC B04 [...])",
+      "company": "DOM",
+      "type": "out_refund",
+      "state": "posted",
+      "ncf": "B0499110201",
+      "vendor_ncf": false,
+      "ref": "Reversal of: INV/2026/00001, DX TEST NC B04 DOM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 2159.4,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 69,
+      "name": "RINV/2026/00001 (Reversal of: INV/2026/00001, DX TEST NC B04 [...])",
+      "company": "PIN",
+      "type": "out_refund",
+      "state": "posted",
+      "ncf": "B0499110101",
+      "vendor_ncf": false,
+      "ref": "Reversal of: INV/2026/00001, DX TEST NC B04 PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 2159.4,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 66,
+      "name": "RINV/2026/00001 (Reversal of: INV/2026/00001, DX TEST NC B04 [...])",
+      "company": "DOR",
+      "type": "out_refund",
+      "state": "posted",
+      "ncf": "B0499110001",
+      "vendor_ncf": false,
+      "ref": "Reversal of: INV/2026/00001, DX TEST NC B04 DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 2159.4,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 111,
+      "name": "PBNK1/2026/00007 (DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOR",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 75.0,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 100,
+      "name": "PBNK1/2026/00006 (DX TEST PAGO PROV DOR NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOR",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PROV DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 98,
+      "name": "PBNK1/2026/00005 (DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOR",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 75.0,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 84,
+      "name": "PBNK1/2026/00004 (DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOR",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 75.0,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 110,
+      "name": "PBNK1/2026/00003 (DX TEST PAGO PROV BLU NO FISCAL REAL \u2014 NO [...])",
+      "company": "BLU",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PROV BLU NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 108,
+      "name": "PBNK1/2026/00003 (DX TEST PAGO PROV REM NO FISCAL REAL \u2014 NO [...])",
+      "company": "REM",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PROV REM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 106,
+      "name": "PBNK1/2026/00003 (DX TEST PAGO PROV MAY NO FISCAL REAL \u2014 NO [...])",
+      "company": "MAY",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PROV MAY NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 104,
+      "name": "PBNK1/2026/00003 (DX TEST PAGO PROV DOM NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOM",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PROV DOM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 102,
+      "name": "PBNK1/2026/00003 (DX TEST PAGO PROV PIN NO FISCAL REAL \u2014 NO [...])",
+      "company": "PIN",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PROV PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 64,
+      "name": "PBNK1/2026/00003 (DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOR",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 75.0,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 61,
+      "name": "PBNK1/2026/00002 (DX TEST PAGO TOTAL BLU NO FISCAL REAL \u2014 NO [...])",
+      "company": "BLU",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO TOTAL BLU NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 1295.64,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 56,
+      "name": "PBNK1/2026/00002 (DX TEST PAGO TOTAL REM NO FISCAL REAL \u2014 NO [...])",
+      "company": "REM",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO TOTAL REM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 1295.64,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 51,
+      "name": "PBNK1/2026/00002 (DX TEST PAGO TOTAL MAY NO FISCAL REAL \u2014 NO [...])",
+      "company": "MAY",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO TOTAL MAY NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 1295.64,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 46,
+      "name": "PBNK1/2026/00002 (DX TEST PAGO TOTAL DOM NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOM",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO TOTAL DOM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 1295.64,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 41,
+      "name": "PBNK1/2026/00002 (DX TEST PAGO TOTAL PIN NO FISCAL REAL \u2014 NO [...])",
+      "company": "PIN",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO TOTAL PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 1295.64,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 36,
+      "name": "PBNK1/2026/00002 (DX TEST PAGO TOTAL DOR NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOR",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO TOTAL DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 1295.64,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 60,
+      "name": "PBNK1/2026/00001 (DX TEST PAGO PARCIAL BLU NO FISCAL REAL \u2014 NO [...])",
+      "company": "BLU",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PARCIAL BLU NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 863.76,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 55,
+      "name": "PBNK1/2026/00001 (DX TEST PAGO PARCIAL REM NO FISCAL REAL \u2014 NO [...])",
+      "company": "REM",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PARCIAL REM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 863.76,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 50,
+      "name": "PBNK1/2026/00001 (DX TEST PAGO PARCIAL MAY NO FISCAL REAL \u2014 NO [...])",
+      "company": "MAY",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PARCIAL MAY NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 863.76,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 45,
+      "name": "PBNK1/2026/00001 (DX TEST PAGO PARCIAL DOM NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOM",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PARCIAL DOM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 863.76,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 40,
+      "name": "PBNK1/2026/00001 (DX TEST PAGO PARCIAL PIN NO FISCAL REAL \u2014 NO [...])",
+      "company": "PIN",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PARCIAL PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 863.76,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 35,
+      "name": "PBNK1/2026/00001 (DX TEST PAGO PARCIAL DOR NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOR",
+      "type": "entry",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": false,
+      "ref": "DX TEST PAGO PARCIAL DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 863.76,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": true
+    },
+    {
+      "model": "account.move",
+      "id": 85,
+      "name": "INV/2026/00004 (DX TEST ANULACION 608 PIN NO FISCAL REAL \u2014 [...])",
+      "company": "PIN",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100104",
+      "vendor_ncf": false,
+      "ref": "DX TEST ANULACION 608 PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 106.2,
+      "residual": 106.2,
+      "voided": true,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 65,
+      "name": "INV/2026/00002 (DX TEST ANULACION 608 PIN NO FISCAL REAL \u2014 [...])",
+      "company": "PIN",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100102",
+      "vendor_ncf": false,
+      "ref": "DX TEST ANULACION 608 PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 106.2,
+      "residual": 106.2,
+      "voided": true,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 59,
+      "name": "INV/2026/00001 (DX TEST FACTURA B01 BLU NO FISCAL REAL \u2014 NO [...])",
+      "company": "BLU",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100501",
+      "vendor_ncf": false,
+      "ref": "DX TEST FACTURA B01 BLU NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 54,
+      "name": "INV/2026/00001 (DX TEST FACTURA B01 REM NO FISCAL REAL \u2014 NO [...])",
+      "company": "REM",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100401",
+      "vendor_ncf": false,
+      "ref": "DX TEST FACTURA B01 REM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 49,
+      "name": "INV/2026/00001 (DX TEST FACTURA B01 MAY NO FISCAL REAL \u2014 NO [...])",
+      "company": "MAY",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100301",
+      "vendor_ncf": false,
+      "ref": "DX TEST FACTURA B01 MAY NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 44,
+      "name": "INV/2026/00001 (DX TEST FACTURA B01 DOM NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOM",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100201",
+      "vendor_ncf": false,
+      "ref": "DX TEST FACTURA B01 DOM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 39,
+      "name": "INV/2026/00001 (DX TEST FACTURA B01 PIN NO FISCAL REAL \u2014 NO [...])",
+      "company": "PIN",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100101",
+      "vendor_ncf": false,
+      "ref": "DX TEST FACTURA B01 PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 34,
+      "name": "INV/2026/00001 (DX TEST FACTURA B01 DOR NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOR",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100001",
+      "vendor_ncf": false,
+      "ref": "DX TEST FACTURA B01 DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 2159.4,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 109,
+      "name": "BILL/2026/08/0001 (DX TEST BILL BLU NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "BLU",
+      "type": "in_invoice",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": "B0199200501",
+      "ref": "DX TEST BILL BLU NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 107,
+      "name": "BILL/2026/08/0001 (DX TEST BILL REM NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "REM",
+      "type": "in_invoice",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": "B0199200401",
+      "ref": "DX TEST BILL REM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 105,
+      "name": "BILL/2026/08/0001 (DX TEST BILL MAY NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "MAY",
+      "type": "in_invoice",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": "B0199200301",
+      "ref": "DX TEST BILL MAY NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 103,
+      "name": "BILL/2026/08/0001 (DX TEST BILL DOM NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "DOM",
+      "type": "in_invoice",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": "B0199200201",
+      "ref": "DX TEST BILL DOM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 101,
+      "name": "BILL/2026/08/0001 (DX TEST BILL PIN NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "PIN",
+      "type": "in_invoice",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": "B0199200101",
+      "ref": "DX TEST BILL PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 99,
+      "name": "BILL/2026/08/0001 (DX TEST BILL DOR NO FISCAL REAL \u2014 NO ENVIAR DGII)",
+      "company": "DOR",
+      "type": "in_invoice",
+      "state": "posted",
+      "ncf": false,
+      "vendor_ncf": "B0199200001",
+      "ref": "DX TEST BILL DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 188.8,
+      "residual": 0.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 70,
+      "name": "INV/2026/00003 (DX TEST VENCIDA PIN NO FISCAL REAL \u2014 NO [...])",
+      "company": "PIN",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100103",
+      "vendor_ncf": false,
+      "ref": "DX TEST VENCIDA PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 472.0,
+      "residual": 472.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 82,
+      "name": "INV/2026/00002 (DX TEST VENCIDA BLU NO FISCAL REAL \u2014 NO [...])",
+      "company": "BLU",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100502",
+      "vendor_ncf": false,
+      "ref": "DX TEST VENCIDA BLU NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 472.0,
+      "residual": 472.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 79,
+      "name": "INV/2026/00002 (DX TEST VENCIDA REM NO FISCAL REAL \u2014 NO [...])",
+      "company": "REM",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100402",
+      "vendor_ncf": false,
+      "ref": "DX TEST VENCIDA REM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 472.0,
+      "residual": 472.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 76,
+      "name": "INV/2026/00002 (DX TEST VENCIDA MAY NO FISCAL REAL \u2014 NO [...])",
+      "company": "MAY",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100302",
+      "vendor_ncf": false,
+      "ref": "DX TEST VENCIDA MAY NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 472.0,
+      "residual": 472.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 73,
+      "name": "INV/2026/00002 (DX TEST VENCIDA DOM NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOM",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100202",
+      "vendor_ncf": false,
+      "ref": "DX TEST VENCIDA DOM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 472.0,
+      "residual": 472.0,
+      "voided": false,
+      "include_dgii": false
+    },
+    {
+      "model": "account.move",
+      "id": 67,
+      "name": "INV/2026/00002 (DX TEST VENCIDA DOR NO FISCAL REAL \u2014 NO [...])",
+      "company": "DOR",
+      "type": "out_invoice",
+      "state": "posted",
+      "ncf": "B0199100002",
+      "vendor_ncf": false,
+      "ref": "DX TEST VENCIDA DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "total": 472.0,
+      "residual": 472.0,
+      "voided": false,
+      "include_dgii": false
+    }
+  ],
+  "account_payments": [
+    {
+      "model": "account.payment",
+      "id": 41,
+      "name": "PBNK1/2026/00007",
+      "company": "DOR",
+      "amount": 75.0,
+      "memo": "DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "in_process"
+    },
+    {
+      "model": "account.payment",
+      "id": 35,
+      "name": "PBNK1/2026/00006",
+      "company": "DOR",
+      "amount": 188.8,
+      "memo": "DX TEST PAGO PROV DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 34,
+      "name": "PBNK1/2026/00005",
+      "company": "DOR",
+      "amount": 75.0,
+      "memo": "DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "in_process"
+    },
+    {
+      "model": "account.payment",
+      "id": 27,
+      "name": "PBNK1/2026/00004",
+      "company": "DOR",
+      "amount": 75.0,
+      "memo": "DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "in_process"
+    },
+    {
+      "model": "account.payment",
+      "id": 40,
+      "name": "PBNK1/2026/00003",
+      "company": "BLU",
+      "amount": 188.8,
+      "memo": "DX TEST PAGO PROV BLU NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 36,
+      "name": "PBNK1/2026/00003",
+      "company": "PIN",
+      "amount": 188.8,
+      "memo": "DX TEST PAGO PROV PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 39,
+      "name": "PBNK1/2026/00003",
+      "company": "REM",
+      "amount": 188.8,
+      "memo": "DX TEST PAGO PROV REM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 38,
+      "name": "PBNK1/2026/00003",
+      "company": "MAY",
+      "amount": 188.8,
+      "memo": "DX TEST PAGO PROV MAY NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 26,
+      "name": "PBNK1/2026/00003",
+      "company": "DOR",
+      "amount": 75.0,
+      "memo": "DX TEST ANTICIPO DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "in_process"
+    },
+    {
+      "model": "account.payment",
+      "id": 37,
+      "name": "PBNK1/2026/00003",
+      "company": "DOM",
+      "amount": 188.8,
+      "memo": "DX TEST PAGO PROV DOM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 21,
+      "name": "PBNK1/2026/00002",
+      "company": "MAY",
+      "amount": 1295.64,
+      "memo": "DX TEST PAGO TOTAL MAY NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 17,
+      "name": "PBNK1/2026/00002",
+      "company": "PIN",
+      "amount": 1295.64,
+      "memo": "DX TEST PAGO TOTAL PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 19,
+      "name": "PBNK1/2026/00002",
+      "company": "DOM",
+      "amount": 1295.64,
+      "memo": "DX TEST PAGO TOTAL DOM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 23,
+      "name": "PBNK1/2026/00002",
+      "company": "REM",
+      "amount": 1295.64,
+      "memo": "DX TEST PAGO TOTAL REM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 15,
+      "name": "PBNK1/2026/00002",
+      "company": "DOR",
+      "amount": 1295.64,
+      "memo": "DX TEST PAGO TOTAL DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 25,
+      "name": "PBNK1/2026/00002",
+      "company": "BLU",
+      "amount": 1295.64,
+      "memo": "DX TEST PAGO TOTAL BLU NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 16,
+      "name": "PBNK1/2026/00001",
+      "company": "PIN",
+      "amount": 863.76,
+      "memo": "DX TEST PAGO PARCIAL PIN NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 14,
+      "name": "PBNK1/2026/00001",
+      "company": "DOR",
+      "amount": 863.76,
+      "memo": "DX TEST PAGO PARCIAL DOR NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 24,
+      "name": "PBNK1/2026/00001",
+      "company": "BLU",
+      "amount": 863.76,
+      "memo": "DX TEST PAGO PARCIAL BLU NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 20,
+      "name": "PBNK1/2026/00001",
+      "company": "MAY",
+      "amount": 863.76,
+      "memo": "DX TEST PAGO PARCIAL MAY NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 22,
+      "name": "PBNK1/2026/00001",
+      "company": "REM",
+      "amount": 863.76,
+      "memo": "DX TEST PAGO PARCIAL REM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    },
+    {
+      "model": "account.payment",
+      "id": 18,
+      "name": "PBNK1/2026/00001",
+      "company": "DOM",
+      "amount": 863.76,
+      "memo": "DX TEST PAGO PARCIAL DOM NO FISCAL REAL \u2014 NO ENVIAR DGII",
+      "state": "paid"
+    }
+  ],
+  "stock_pickings": [
+    {
+      "model": "stock.picking",
+      "id": 15,
+      "name": "DOR/OUT/00005",
+      "company": "DOR",
+      "code": "outgoing",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 16,
+      "name": "PIN/OUT/00004",
+      "company": "PIN",
+      "code": "outgoing",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 17,
+      "name": "DOM/OUT/00002",
+      "company": "DOM",
+      "code": "outgoing",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 18,
+      "name": "MAY/OUT/00002",
+      "company": "MAY",
+      "code": "outgoing",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 19,
+      "name": "REM/OUT/00002",
+      "company": "REM",
+      "code": "outgoing",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 20,
+      "name": "BLU/OUT/00002",
+      "company": "BLU",
+      "code": "outgoing",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 22,
+      "name": "DOR/OUT/00007",
+      "company": "DOR",
+      "code": "outgoing",
+      "state": "confirmed"
+    },
+    {
+      "model": "stock.picking",
+      "id": 21,
+      "name": "DOR/OUT/00006",
+      "company": "DOR",
+      "code": "outgoing",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 31,
+      "name": "DOR/OUT/00009",
+      "company": "DOR",
+      "code": "outgoing",
+      "state": "confirmed"
+    },
+    {
+      "model": "stock.picking",
+      "id": 30,
+      "name": "DOR/OUT/00008",
+      "company": "DOR",
+      "code": "outgoing",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 40,
+      "name": "DOR/OUT/00011",
+      "company": "DOR",
+      "code": "outgoing",
+      "state": "confirmed"
+    },
+    {
+      "model": "stock.picking",
+      "id": 39,
+      "name": "DOR/OUT/00010",
+      "company": "DOR",
+      "code": "outgoing",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 42,
+      "name": "DOR/IN/00007",
+      "company": "DOR",
+      "code": "incoming",
+      "state": "assigned"
+    },
+    {
+      "model": "stock.picking",
+      "id": 41,
+      "name": "DOR/IN/00006",
+      "company": "DOR",
+      "code": "incoming",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 43,
+      "name": "PIN/IN/00006",
+      "company": "PIN",
+      "code": "incoming",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 44,
+      "name": "DOM/IN/00003",
+      "company": "DOM",
+      "code": "incoming",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 45,
+      "name": "MAY/IN/00003",
+      "company": "MAY",
+      "code": "incoming",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 46,
+      "name": "REM/IN/00003",
+      "company": "REM",
+      "code": "incoming",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 47,
+      "name": "BLU/IN/00003",
+      "company": "BLU",
+      "code": "incoming",
+      "state": "done"
+    },
+    {
+      "model": "stock.picking",
+      "id": 49,
+      "name": "DOR/OUT/00013",
+      "company": "DOR",
+      "code": "outgoing",
+      "state": "confirmed"
+    },
+    {
+      "model": "stock.picking",
+      "id": 48,
+      "name": "DOR/OUT/00012",
+      "company": "DOR",
+      "code": "outgoing",
+      "state": "done"
+    }
+  ],
+  "crm_leads": [
+    {
+      "model": "crm.lead",
+      "id": 20,
+      "name": "DX TEST LEAD DOR \u2014 NO FISCAL REAL",
+      "type": "opportunity"
+    },
+    {
+      "model": "crm.lead",
+      "id": 19,
+      "name": "DX TEST LEAD DOR \u2014 NO FISCAL REAL",
+      "type": "opportunity"
+    },
+    {
+      "model": "crm.lead",
+      "id": 18,
+      "name": "DX TEST LEAD DOR \u2014 NO FISCAL REAL",
+      "type": "opportunity"
+    },
+    {
+      "model": "crm.lead",
+      "id": 17,
+      "name": "DX TEST LEAD DOR \u2014 NO FISCAL REAL",
+      "type": "opportunity"
+    }
+  ],
+  "warranties": [
+    {
+      "model": "justech.warranty",
+      "id": 5,
+      "name": "GAR/2026/00005",
+      "state": "draft"
+    },
+    {
+      "model": "justech.warranty",
+      "id": 4,
+      "name": "GAR/2026/00004",
+      "state": "draft"
+    },
+    {
+      "model": "justech.warranty",
+      "id": 3,
+      "name": "GAR/2026/00003",
+      "state": "draft"
+    },
+    {
+      "model": "justech.warranty",
+      "id": 2,
+      "name": "GAR/2026/00002",
+      "state": "draft"
+    }
+  ],
+  "users": [
+    {
+      "model": "res.users",
+      "id": 7,
+      "name": "DX TEST USER SECURITY BLU",
+      "login": "dx.test.security@justech.do",
+      "companies": [
+        "BLU"
+      ]
+    }
+  ]
+}

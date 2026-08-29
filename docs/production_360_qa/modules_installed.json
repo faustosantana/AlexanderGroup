@@ -1,0 +1,87 @@
+[
+  {
+    "name": "bi_convert_purchase_from_sales",
+    "version": "19.0.0.0",
+    "installed": true
+  },
+  {
+    "name": "justech_accounting_recovery",
+    "version": "19.0.1.4.0",
+    "installed": true
+  },
+  {
+    "name": "justech_alexander_admin",
+    "version": "19.0.1.0.1",
+    "installed": true
+  },
+  {
+    "name": "justech_alexander_base",
+    "version": "19.0.1.0.3",
+    "installed": true
+  },
+  {
+    "name": "justech_alexander_microsoft_mail",
+    "version": "19.0.1.0.4",
+    "installed": true
+  },
+  {
+    "name": "justech_alexander_reports",
+    "version": "19.0.3.8.5",
+    "installed": true
+  },
+  {
+    "name": "justech_alexander_website",
+    "version": "19.0.1.0.7",
+    "installed": true
+  },
+  {
+    "name": "justech_core",
+    "version": "19.0.1.0.0",
+    "installed": true
+  },
+  {
+    "name": "justech_fiscal_admin",
+    "version": "19.0.1.10.0",
+    "installed": true
+  },
+  {
+    "name": "justech_global_audit_log",
+    "version": "19.0.4.1.4",
+    "installed": true
+  },
+  {
+    "name": "justech_l10n_do_base",
+    "version": "19.0.1.27.1",
+    "installed": true
+  },
+  {
+    "name": "justech_l10n_do_ncf",
+    "version": "19.0.2.31.0",
+    "installed": true
+  },
+  {
+    "name": "justech_modules",
+    "version": "19.0.1.8.7",
+    "installed": true
+  },
+  {
+    "name": "justech_report_identity_guard",
+    "version": "19.0.1.0.0",
+    "installed": true
+  },
+  {
+    "name": "justech_warranty",
+    "version": "19.0.1.9.1",
+    "installed": true
+  },
+  {
+    "name": "l10n_do",
+    "version": "19.0.2.0",
+    "installed": true
+  },
+  {
+    "name": "l10n_do_accounting",
+    "version": "19.0.1.0.1",
+    "installed": true
+  }
+]
