@@ -28,3 +28,14 @@ If package is absent, the only action required from the subscriber is:
   download Odoo 19 Ubuntu/Debian Enterprise .deb from odoo.com/page/download
   place at /opt/doralex/secrets/odoo_enterprise/archive/
 GitHub is not requested.
+
+
+Live verify after script deploy (2026-08-29 13:43 EDT):
+  WAVE_0_BACKUP = PASS (production_20260829_131434 checksums OK)
+  WAVE_1_STAGING = PASS (127.0.0.1:8269 health=pass, login HTTP 200)
+  DORALEX_PROD_TOUCHED = NO (odoo:19 healthy, reports 19.0.3.8.5 / 58)
+  DORALEX_REPORTS_PRESERVED = YES
+  QWEB_DORALEX = 58
+  fetch_odoo_enterprise.sh exit=2 → drop-path only, GITHUB_BLOCKER=REMOVE
+  convert without CONFIRM = abort
+  CUTOVER_ALLOWED = NO
