@@ -36,6 +36,7 @@ def test_six_company_themes_in_css():
     assert "white-space: nowrap" in css
     assert "position:absolute" not in css
     assert "position: absolute" not in css
+    assert "border: 0 !important" in css
     assert "dx-logo-panel" not in css
     assert "dx-blu-slab" not in css
     assert "dx-may-accent" not in css

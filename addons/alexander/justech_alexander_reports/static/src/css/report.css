@@ -26,21 +26,24 @@
 .dx-pin-title-row {
   width: 100%;
   border-collapse: collapse;
-  border: none;
+  border: 0 !important;
 }
 
-.dx-head-table td,
-.dx-foot-table td,
-.dx-sign-table td,
-.dx-zone-party td,
-.dx-zone-bottom td,
-.dx-meta-table th,
-.dx-meta-table td,
-.dx-meta-grid td,
-.dx-amount-box td,
-.dx-refund-banner td,
-.dx-kpi td {
-  border: none;
+/* Qt4 + Bootstrap de Odoo pintan bordes de td. Anularlos todos y reponer solo hairlines. */
+.dx-report-header table,
+.dx-report-header th,
+.dx-report-header td,
+.dx-report-body table,
+.dx-report-body th,
+.dx-report-body td,
+.dx-report-footer table,
+.dx-report-footer th,
+.dx-report-footer td,
+.dx-composition table,
+.dx-composition th,
+.dx-composition td {
+  border: 0 !important;
+  outline: none;
 }
 
 /* ---- Header editorial ---- */
@@ -189,14 +192,13 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  border: none;
-  border-bottom: none;
+  border: 0 !important;
 }
 .dx-lines td {
   padding: 8px 6px;
   vertical-align: top;
-  border: none;
-  border-bottom: 1px solid #ececec;
+  border: 0 !important;
+  border-bottom: 1px solid #ececec !important;
   line-height: 1.32;
 }
 .dx-lines tbody tr { page-break-inside: avoid; }
@@ -224,7 +226,7 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-size: 8pt;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc !important;
   padding-top: 12px;
 }
 .dx-line-note td {
@@ -264,7 +266,7 @@
   font-weight: 400;
   color: #555;
   padding: 4px 10px 4px 0;
-  border: none;
+  border: 0 !important;
 }
 .dx-totals td {
   text-align: right;
@@ -272,7 +274,7 @@
   font-weight: 500;
   padding: 4px 0;
   white-space: nowrap;
-  border: none;
+  border: 0 !important;
 }
 .dx-totals .dx-total-grand th,
 .dx-totals .dx-total-grand td {
@@ -280,7 +282,7 @@
   font-weight: 700;
   color: #111;
   padding-top: 8px;
-  border-top: 1.5px solid #1a1a1a;
+  border-top: 1.5px solid #1a1a1a !important;
 }
 
 /* ---- Signatures: lines only ---- */
@@ -344,8 +346,8 @@
 .dx-amount-box { margin: 2px 0 14px; page-break-inside: avoid; }
 .dx-amount-box td {
   padding: 4px 0 10px;
-  border-top: none;
-  border-bottom: 1px solid #ddd;
+  border-top: 0 !important;
+  border-bottom: 1px solid #ddd !important;
 }
 .dx-amount-label {
   font-size: 7.5pt;
@@ -434,14 +436,14 @@
   text-align: center;
   padding: 6px 4px;
   font-size: 9pt;
-  border: none;
+  border: 0 !important;
 }
 .dx-aging th {
   font-size: 7.5pt;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #6a6a6a;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc !important;
 }
 .dx-aging td {
   font-weight: 700;
