@@ -30,6 +30,9 @@ bash backup.sh production
 
 ## Convenciones
 
-- `ENV` válido: `production` o `dev`.
+- `ENV` válido: `production`, `dev` o `enterprise-staging`.
+- Conversión Community → Enterprise: `clone_prod_to_enterprise_staging.sh`,
+  `fetch_odoo_enterprise.sh`, `convert_community_to_enterprise.sh`,
+  `install_enterprise_waves.sh`. Nunca `-u all`. Nunca cutover sin aprobación.
 - Variable `DORALEX_BASE` (por defecto `/opt/doralex`) permite pruebas en otra ruta.
 - Ningún script publica PostgreSQL ni imprime secretos.

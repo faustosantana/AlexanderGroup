@@ -6,6 +6,9 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 ## Unreleased
 
 ### Added
+- Conversión Community → Enterprise en staging aislado
+  (`deployment/doralex/enterprise-staging/`, scripts de clon/fetch/convert).
+  Cutover a producción bloqueado.
 - Auditoría Justgroup vs Doralex (stack): manifiestos, comparador
   `tools/justgroup_doralex_stack_compare.py` y backup de preservación de
   reportes. Cutover bloqueado hasta Enterprise propia.

@@ -1,0 +1,71 @@
+# Doralex — Odoo 19 · ENTORNO: ENTERPRISE STAGING
+# ==============================================================================
+# Clon técnico de Producción para convertir Community → Enterprise.
+# AISLADO de Prod y Dev (red, volúmenes, DB, puertos).
+# NUNCA montar volúmenes doralex_prod_* aquí.
+# NUNCA escribir addons Enterprise en /opt/doralex/enterprise (Prod lo monta).
+# Cutover a doralexgroup.cloud: prohibido hasta aprobación explícita.
+# ==============================================================================
+name: doralex-enterprise-staging
+
+services:
+  db:
+    image: postgres:16
+    container_name: doralex-enterprise-staging-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?define POSTGRES_DB en .env}
+      POSTGRES_USER: ${POSTGRES_USER:?define POSTGRES_USER en .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  odoo:
+    image: ${ODOO_IMAGE:-odoo:19}
+    container_name: doralex-enterprise-staging-odoo
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    environment:
+      HOST: db
+      PORT: 5432
+      USER: ${POSTGRES_USER:?define POSTGRES_USER en .env}
+      PASSWORD: ${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env}
+    volumes:
+      - odoo_data:/var/lib/odoo
+      - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
+      # Fuente Enterprise SOLO de este staging (no el dir compartido de Prod).
+      - ${ENTERPRISE_SRC:-./enterprise-addons}:/mnt/enterprise:ro
+      - ${CUSTOM_ADDONS_SRC:-./custom-addons}:/mnt/custom-addons:ro
+      - ./logs:/var/log/odoo
+    ports:
+      - "127.0.0.1:${ODOO_HTTP_PORT:-8269}:8069"
+      - "127.0.0.1:${ODOO_LONGPOLLING_PORT:-8272}:8072"
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8069/web/health', timeout=5).getcode()==200 else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+volumes:
+  db_data:
+    name: doralex_ent_staging_db_data
+  odoo_data:
+    name: doralex_ent_staging_odoo_data
+
+networks:
+  internal:
+    name: doralex_ent_staging_net
+    driver: bridge
