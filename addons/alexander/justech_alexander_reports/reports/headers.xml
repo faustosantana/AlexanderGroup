@@ -3,7 +3,7 @@
     <!-- V5: 6 mastheads distintos. Qt4 = tables. No [logo|empresa|título] compartido. -->
 
     <template id="dx_header_doralex">
-        <table class="dx-h-dor">
+        <table class="dx-h-dor" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-h-dor-rail"/>
                 <td class="dx-h-dor-brand">
@@ -27,7 +27,7 @@
                         <span t-out="dx_ident.get('number')"/>
                     </div>
                     <div class="dx-h-dor-meta">
-                        <table class="dx-h-dor-meta-row">
+                        <table class="dx-h-dor-meta-row" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td>
                                     <div class="dx-meta-k">Fecha</div>
@@ -39,7 +39,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <table class="dx-h-dor-meta-row">
+                        <table class="dx-h-dor-meta-row" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td>
                                     <div class="dx-meta-k">Vendedor</div>
@@ -60,7 +60,7 @@
 
     <template id="dx_header_pinaria">
         <div class="dx-h-pin-leaf"/>
-        <table class="dx-h-pin">
+        <table class="dx-h-pin" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-h-pin-c">
                     <img t-if="company.dx_report_show_logo and company.logo"
@@ -80,7 +80,7 @@
     </template>
 
     <template id="dx_header_dominion">
-        <table class="dx-h-dom">
+        <table class="dx-h-dom" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-h-dom-left">
                     <img t-if="company.dx_report_show_logo and company.logo"
@@ -106,7 +106,7 @@
     </template>
 
     <template id="dx_header_mayuma">
-        <table class="dx-h-may">
+        <table class="dx-h-may" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-h-may-logo">
                     <img t-if="company.dx_report_show_logo and company.logo"
@@ -132,7 +132,7 @@
     </template>
 
     <template id="dx_header_rempart">
-        <table class="dx-h-rem">
+        <table class="dx-h-rem" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-h-rem-logo">
                     <img t-if="company.dx_report_show_logo and company.logo"
@@ -159,7 +159,7 @@
     </template>
 
     <template id="dx_header_blueelite">
-        <table class="dx-h-blu">
+        <table class="dx-h-blu" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-h-blu-doc" t-if="dx_ident">
                     <div class="dx-head-title" t-out="dx_ident.get('title')"/>
@@ -185,7 +185,7 @@
 
     <template id="dx_footer_doralex">
         <div class="dx-f-dor-rule"/>
-        <table class="dx-foot-table">
+        <table class="dx-foot-table" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-foot-text">
                     <t t-if="company.vat">RNC <t t-out="company._dx_vat_display()"/></t>
@@ -209,7 +209,7 @@
     </template>
 
     <template id="dx_footer_dominion">
-        <table class="dx-foot-table dx-f-dom">
+        <table class="dx-foot-table dx-f-dom" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-foot-text">
                     <t t-out="dx_legal"/>
@@ -224,7 +224,7 @@
 
     <template id="dx_footer_mayuma">
         <div class="dx-f-may-geo"/>
-        <table class="dx-foot-table">
+        <table class="dx-foot-table" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-foot-text">
                     <t t-if="company.vat">RNC <t t-out="company._dx_vat_display()"/></t>
@@ -240,7 +240,7 @@
 
     <template id="dx_footer_rempart">
         <div class="dx-f-rem-rule"/>
-        <table class="dx-foot-table">
+        <table class="dx-foot-table" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-foot-text">
                     <t t-out="dx_legal"/>
@@ -256,7 +256,7 @@
 
     <template id="dx_footer_blueelite">
         <div class="dx-f-blu-rule"/>
-        <table class="dx-foot-table">
+        <table class="dx-foot-table" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="dx-foot-text">
                     <t t-if="company.email" t-out="company.email"/>

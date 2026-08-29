@@ -78,6 +78,8 @@ def test_six_real_headers_and_sale_compositions():
     assert "dx-dor-client" in comps
     assert "dx-h-rem-id" in headers
     assert "dx-rem-mast" not in comps
+    assert 'border="0"' in headers
+    assert 'border="0"' in comps
 
 
 def test_layout_uses_document_company():
