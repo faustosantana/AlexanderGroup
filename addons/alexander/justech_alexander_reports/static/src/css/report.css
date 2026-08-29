@@ -279,12 +279,14 @@
   page-break-inside: avoid;
   page-break-after: avoid;
 }
-.dx-sign-spacer {
-  width: 1px;
-  overflow: hidden;
-  line-height: 0;
-  font-size: 0;
+.dx-sign-spacer,
+.dx-sign-spacer img {
   max-height: none !important;
+  max-width: none !important;
+}
+.dx-sign-spacer img {
+  display: block;
+  border: 0;
 }
 
 /* ---- Signatures ---- */

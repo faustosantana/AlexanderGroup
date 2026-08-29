@@ -1,13 +1,39 @@
 """Layout helpers for wkhtmltopdf 0.12.6 (Qt4).
 
-min-height on tables is ignored by this engine. A single computed spacer
-height is the stable way to park signatures in the lower third on short
-documents without position:absolute.
+min-height, transparent borders and stretched 1x1 GIFs are ignored or
+collapsed. A real white PNG with intrinsic height is the stable spacer.
 """
+
+import base64
+import struct
+import zlib
 
 _DX_SPACER_GIF = (
     "data:image/gif;base64," "R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 )
+
+
+def white_png_data_uri(height_px, width_px=2):
+    """Tiny true-size white PNG so Qt4 cannot collapse the spacer."""
+    h = max(1, int(height_px or 1))
+    w = max(1, int(width_px or 2))
+
+    def chunk(tag, data):
+        return (
+            struct.pack(">I", len(data))
+            + tag
+            + data
+            + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF)
+        )
+
+    raw = b"".join(b"\x00" + (b"\xff" * (w * 3)) for _ in range(h))
+    png = (
+        b"\x89PNG\r\n\x1a\n"
+        + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 2, 0, 0, 0))
+        + chunk(b"IDAT", zlib.compress(raw, 9))
+        + chunk(b"IEND", b"")
+    )
+    return "data:image/png;base64," + base64.b64encode(png).decode("ascii")
 
 
 def count_body_lines(lines):

@@ -1,7 +1,7 @@
 from odoo import models
 from odoo.tools.misc import format_amount, format_date
 
-from .report_layout import count_body_lines, spacer_mm
+from .report_layout import count_body_lines, spacer_mm, white_png_data_uri
 
 
 def _dx_qty(qty):
@@ -88,10 +88,9 @@ def _dx_sign_space(lines, paper="A4", extra_mm=0):
     return {
         "spacer_mm": mm,
         "spacer_px": px,
-        "spacer_box_style": (
-            "width:100%%;font-size:0;line-height:0;border-top:%spx solid #ffffff;"
-            % px
-        ),
+        "spacer_src": white_png_data_uri(px) if px else "",
+        "spacer_style": "display:block;width:2px;height:%spx;max-height:none;border:0;"
+        % px,
     }
 
 

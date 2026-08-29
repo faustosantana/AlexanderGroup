@@ -14,7 +14,7 @@ MATH = (
 if str(MATH) not in sys.path:
     sys.path.insert(0, str(MATH))
 
-from report_layout import spacer_mm  # noqa: E402
+from report_layout import spacer_mm, white_png_data_uri  # noqa: E402
 from statement_math import (  # noqa: E402
     aging_bucket,
     assert_balance_invariants,
@@ -92,6 +92,12 @@ def test_signature_spacer_grows_on_short_docs_and_collapses_on_long():
     a5_many = spacer_mm(20, paper="A5", extra_mm=10)
     assert a5_one >= 20
     assert a5_many == 0
+
+
+def test_white_png_spacer_has_intrinsic_size():
+    uri = white_png_data_uri(40)
+    assert uri.startswith("data:image/png;base64,")
+    assert len(uri) > 80
 
 
 def test_invariants_fail_on_mismatch():
