@@ -1,10 +1,16 @@
+import base64
+import logging
 import re
+from io import BytesIO
 
 from odoo import api, models
+from odoo.tools.image import image_data_uri
 from odoo.tools.misc import format_date
 
-# Paleta V4: DOR/PIN/REM/BLU de logos DEV; DOM/MAY de PNG oficiales 2026-08-29.
-# No recolorear logos. DOM/MAY van sobre papel blanco (logo_on_dark False).
+_logger = logging.getLogger(__name__)
+
+# V5.1: mismos hex. Logos +15–35% vs V5, por proporción (no un tamaño fijo).
+# No recolorear. DOM/MAY sobre papel blanco (logo_on_dark False).
 _DX_THEMES = {
     "DOR": {
         "code": "DOR",
@@ -13,8 +19,8 @@ _DX_THEMES = {
         "secondary": "#1A1A1A",
         "accent": "#E46018",
         "neutral": "#5C5C5C",
-        "logo_h": 34,
-        "logo_w": 38,
+        "logo_h": 38,
+        "logo_w": 44,
         "logo_on_dark": False,
         "logo_source": "res.company.logo DOR.png",
     },
@@ -25,8 +31,8 @@ _DX_THEMES = {
         "secondary": "#C00000",
         "accent": "#C00000",
         "neutral": "#5C5C5C",
-        "logo_h": 26,
-        "logo_w": 28,
+        "logo_h": 34,
+        "logo_w": 36,
         "logo_on_dark": False,
         "logo_source": "res.company.logo PIN.png",
     },
@@ -37,8 +43,8 @@ _DX_THEMES = {
         "secondary": "#F09040",
         "accent": "#F09040",
         "neutral": "#5C5C5C",
-        "logo_h": 24,
-        "logo_w": 26,
+        "logo_h": 34,
+        "logo_w": 40,
         "logo_on_dark": False,
         "logo_source": "user PNG Dominion Business 2026-08-29",
     },
@@ -49,8 +55,8 @@ _DX_THEMES = {
         "secondary": "#54B4A8",
         "accent": "#54B4A8",
         "neutral": "#5C5C5C",
-        "logo_h": 20,
-        "logo_w": 56,
+        "logo_h": 26,
+        "logo_w": 68,
         "logo_on_dark": False,
         "logo_source": "user PNG El Mayuma 2026-08-29",
     },
@@ -61,8 +67,8 @@ _DX_THEMES = {
         "secondary": "#3048A8",
         "accent": "#3048A8",
         "neutral": "#5C5C5C",
-        "logo_h": 36,
-        "logo_w": 42,
+        "logo_h": 44,
+        "logo_w": 54,
         "logo_on_dark": False,
         "logo_source": "res.company.logo REM.png",
     },
@@ -73,8 +79,8 @@ _DX_THEMES = {
         "secondary": "#18B4F0",
         "accent": "#18B4F0",
         "neutral": "#5C5C5C",
-        "logo_h": 30,
-        "logo_w": 34,
+        "logo_h": 38,
+        "logo_w": 44,
         "logo_on_dark": False,
         "logo_source": "res.company.logo BLU.png",
     },
@@ -188,6 +194,69 @@ class ResCompany(models.Model):
             height,
             width,
         )
+
+    def _dx_logo_content_bbox(self, image, pad_ratio=0.02):
+        """Bounding box del contenido real (alpha + no-blanco), sin deformar."""
+        image = image.convert("RGBA")
+        width, height = image.size
+        red, green, blue, alpha = image.split()
+        gray = image.convert("L")
+        dark = gray.point(lambda pixel: 255 if pixel < 245 else 0)
+        opaque = alpha.point(lambda pixel: 255 if pixel > 10 else 0)
+        try:
+            from PIL import ImageChops
+
+            mask = ImageChops.multiply(dark, opaque)
+            box = mask.getbbox()
+        except Exception:
+            box = opaque.getbbox()
+        if not box:
+            box = opaque.getbbox() or (0, 0, width, height)
+        pad = max(2, int(min(width, height) * pad_ratio))
+        left, top, right, bottom = box
+        return (
+            max(0, left - pad),
+            max(0, top - pad),
+            min(width, right + pad),
+            min(height, bottom + pad),
+        )
+
+    def _dx_crop_logo_payload(self, raw):
+        """Recorta whitespace interno del PNG. No recolorea. Si falla, original."""
+        if not raw:
+            return raw
+        try:
+            from PIL import Image
+        except ImportError:
+            return raw
+        try:
+            blob = base64.b64decode(raw)
+            if b"<svg" in blob[:500].lower():
+                return raw
+            image = Image.open(BytesIO(blob))
+        except Exception:
+            return raw
+        try:
+            box = self._dx_logo_content_bbox(image)
+            cropped = image.convert("RGBA").crop(box)
+            if cropped.size[0] < 8 or cropped.size[1] < 8:
+                return raw
+            out = BytesIO()
+            cropped.save(out, format="PNG")
+            return base64.b64encode(out.getvalue())
+        except Exception:
+            _logger.debug("dx logo crop skipped for company %s", self.id, exc_info=True)
+            return raw
+
+    def _dx_report_logo_src(self):
+        self.ensure_one()
+        if not self.logo:
+            return ""
+        payload = self._dx_crop_logo_payload(self.logo)
+        try:
+            return image_data_uri(payload)
+        except Exception:
+            return image_data_uri(self.logo)
 
     def _dx_report_missing_fields(self):
         self.ensure_one()

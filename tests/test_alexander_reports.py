@@ -1,4 +1,4 @@
-"""Pruebas estructurales V5: 6 composiciones distintas."""
+"""Pruebas estructurales V5.1: 6 composiciones completas distintas."""
 
 from __future__ import annotations
 
@@ -20,7 +20,12 @@ def test_six_company_themes_in_css():
     assert "dx-h-dom-rail" in css
     assert "dx-h-may-title" in css
     assert "dx-h-rem-rule" in css
+    assert "dx-h-rem-logo" in css
     assert "dx-h-blu-logo" in css
+    for layout in ("dor", "pin", "dom", "may", "rem", "blu"):
+        assert f"dx-table-{layout}" in css
+        assert f"dx-totals-{layout}" in css
+    assert "dx-sign-pin" in css
     assert "background: #ffffff !important" in css
     assert "#f7f7f7" not in css
     assert "position:absolute" not in css
@@ -65,10 +70,14 @@ def test_six_real_headers_and_sale_compositions():
         assert name in comps
     assert "chunk['src']" in comps
     assert "dx-may-meta" in comps
-    assert "dx-rem-mast" in comps
+    assert "dx-table-{{ dx.get('layout')" in comps
+    assert "dx-totals-{{ dx.get('layout')" in comps
+    assert "dx-pin-terms-full" in comps
     assert "dx-blu-asym" in comps
     assert "dx-pin-titlecell" in comps
     assert "dx-dor-client" in comps
+    assert "dx-h-rem-id" in headers
+    assert "dx-rem-mast" not in comps
 
 
 def test_layout_uses_document_company():
@@ -132,10 +141,10 @@ def test_payment_receipt_has_hero_and_anticipo():
 
 def test_paperformat_is_compact():
     xml = (REPORTS / "reports" / "paperformat.xml").read_text(encoding="utf-8")
-    assert ">42</field>" in xml
-    assert ">38</field>" in xml
+    assert ">52</field>" in xml
+    assert ">48</field>" in xml
     assert ">16</field>" in xml
-    assert ">46</field>" not in xml
+    assert ">42</field>" not in xml
     assert "paperformat_doralex_a5" in xml
     assert "action_report_payment_receipt" in xml
 
@@ -151,9 +160,13 @@ def test_invoice_title_is_factura_not_borrador():
     assert "#f7f7f7" not in py
     assert '"layout"' in py
     company = (REPORTS / "models" / "res_company.py").read_text(encoding="utf-8")
-    assert '"logo_h": 34' in company
+    assert '"logo_h": 38' in company
+    assert '"logo_h": 44' in company
+    assert '"logo_w": 68' in company
     assert '"layout": "pin"' in company
     assert "def _dx_header_meta_for" in company
+    assert "def _dx_report_logo_src" in company
+    assert "def _dx_logo_content_bbox" in company
     assert "Aceptado por el cliente" in py
     assert "_dx_purchase_compose" in py
     assert "_dx_picking_compose" in py

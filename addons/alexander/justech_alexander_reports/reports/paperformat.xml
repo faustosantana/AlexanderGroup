@@ -4,12 +4,12 @@
         <field name="name">Doralex A4</field>
         <field name="format">A4</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">42</field>
+        <field name="margin_top">52</field>
         <field name="margin_bottom">16</field>
         <field name="margin_left">12</field>
         <field name="margin_right">12</field>
         <field name="header_line" eval="False"/>
-        <field name="header_spacing">38</field>
+        <field name="header_spacing">48</field>
         <field name="dpi">96</field>
     </record>
 

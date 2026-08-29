@@ -1,9 +1,9 @@
 {
     "name": "Doralex Report Layout",
-    "version": "19.0.3.4.0",
+    "version": "19.0.3.5.0",
     "category": "Reporting",
-    "summary": "V5: 6 sistemas de composición distintos para cotizaciones",
-    "description": "Seis mastheads y composiciones QWeb distintas. No cambia fiscalidad ni rebinda acciones oficiales.",
+    "summary": "V5.1: dirección de arte sobre V5 — body distinto por empresa",
+    "description": "Refina las 6 composiciones V5: tablas, totales, firmas y logos. No cambia fiscalidad ni rebinda acciones oficiales.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",
     "license": "LGPL-3",

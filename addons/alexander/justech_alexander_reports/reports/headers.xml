@@ -8,11 +8,13 @@
                 <td class="dx-h-dor-rail"/>
                 <td class="dx-h-dor-brand">
                     <img t-if="company.dx_report_show_logo and company.logo"
-                         t-att-src="image_data_uri(company.logo)"
+                         t-att-src="company._dx_report_logo_src()"
                          t-att-style="company._dx_report_logo_style()"
                          t-att-alt="dx_legal"/>
-                    <div class="dx-legal" t-out="dx_legal"/>
-                    <div t-if="company.vat" class="dx-rnc">RNC <t t-out="company._dx_vat_display()"/></div>
+                    <div class="dx-legal">
+                        <t t-out="dx_legal"/>
+                        <t t-if="company.vat"> · RNC <t t-out="company._dx_vat_display()"/></t>
+                    </div>
                     <div class="dx-contact">
                         <t t-if="company.email" t-out="company.email"/>
                         <t t-if="company.phone"> · <t t-out="company.phone"/></t>
@@ -24,28 +26,32 @@
                         <span t-if="dx_ident.get('badge')" class="dx-badge" t-out="dx_ident.get('badge')"/>
                         <span t-out="dx_ident.get('number')"/>
                     </div>
-                    <table class="dx-h-dor-meta">
-                        <tr>
-                            <td>
-                                <div class="dx-meta-k">Fecha</div>
-                                <div class="dx-meta-v" t-out="dx_header_meta.get('date') or '—'"/>
-                            </td>
-                            <td>
-                                <div class="dx-meta-k">Validez</div>
-                                <div class="dx-meta-v" t-out="dx_header_meta.get('validity') or '—'"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="dx-meta-k">Vendedor</div>
-                                <div class="dx-meta-v" t-out="dx_header_meta.get('salesperson') or '—'"/>
-                            </td>
-                            <td>
-                                <div class="dx-meta-k">Moneda</div>
-                                <div class="dx-meta-v" t-out="dx_header_meta.get('currency') or '—'"/>
-                            </td>
-                        </tr>
-                    </table>
+                    <div class="dx-h-dor-meta">
+                        <table class="dx-h-dor-meta-row">
+                            <tr>
+                                <td>
+                                    <div class="dx-meta-k">Fecha</div>
+                                    <div class="dx-meta-v" t-out="dx_header_meta.get('date') or '—'"/>
+                                </td>
+                                <td>
+                                    <div class="dx-meta-k">Validez</div>
+                                    <div class="dx-meta-v" t-out="dx_header_meta.get('validity') or '—'"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="dx-h-dor-meta-row">
+                            <tr>
+                                <td>
+                                    <div class="dx-meta-k">Vendedor</div>
+                                    <div class="dx-meta-v" t-out="dx_header_meta.get('salesperson') or '—'"/>
+                                </td>
+                                <td>
+                                    <div class="dx-meta-k">Moneda</div>
+                                    <div class="dx-meta-v" t-out="dx_header_meta.get('currency') or '—'"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -58,7 +64,7 @@
             <tr>
                 <td class="dx-h-pin-c">
                     <img t-if="company.dx_report_show_logo and company.logo"
-                         t-att-src="image_data_uri(company.logo)"
+                         t-att-src="company._dx_report_logo_src()"
                          t-att-style="company._dx_report_logo_style()"
                          t-att-alt="dx_legal"/>
                     <div class="dx-h-pin-legal" t-out="dx_legal"/>
@@ -78,7 +84,7 @@
             <tr>
                 <td class="dx-h-dom-left">
                     <img t-if="company.dx_report_show_logo and company.logo"
-                         t-att-src="image_data_uri(company.logo)"
+                         t-att-src="company._dx_report_logo_src()"
                          t-att-style="company._dx_report_logo_style()"
                          t-att-alt="dx_legal"/>
                     <div class="dx-h-dom-legal" t-out="dx_legal"/>
@@ -104,7 +110,7 @@
             <tr>
                 <td class="dx-h-may-logo">
                     <img t-if="company.dx_report_show_logo and company.logo"
-                         t-att-src="image_data_uri(company.logo)"
+                         t-att-src="company._dx_report_logo_src()"
                          t-att-style="company._dx_report_logo_style()"
                          t-att-alt="dx_legal"/>
                     <div class="dx-h-may-line1" t-out="dx_legal"/>
@@ -128,13 +134,24 @@
     <template id="dx_header_rempart">
         <table class="dx-h-rem">
             <tr>
-                <td class="dx-h-rem-brand">
+                <td class="dx-h-rem-logo">
                     <img t-if="company.dx_report_show_logo and company.logo"
-                         t-att-src="image_data_uri(company.logo)"
+                         t-att-src="company._dx_report_logo_src()"
                          t-att-style="company._dx_report_logo_style()"
                          t-att-alt="dx_legal"/>
+                </td>
+                <td class="dx-h-rem-id">
                     <div class="dx-h-rem-legal" t-out="dx_legal"/>
                     <div t-if="company.vat" class="dx-rnc">RNC <t t-out="company._dx_vat_display()"/></div>
+                    <div class="dx-contact" t-if="company.email" t-out="company.email"/>
+                    <div class="dx-contact" t-if="company.phone" t-out="company.phone"/>
+                </td>
+                <td class="dx-h-rem-doc" t-if="dx_ident">
+                    <div class="dx-head-title" t-out="dx_ident.get('title')"/>
+                    <div class="dx-head-number">
+                        <span t-if="dx_ident.get('badge')" class="dx-badge" t-out="dx_ident.get('badge')"/>
+                        <span t-out="dx_ident.get('number')"/>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -157,7 +174,7 @@
                 </td>
                 <td class="dx-h-blu-logo">
                     <img t-if="company.dx_report_show_logo and company.logo"
-                         t-att-src="image_data_uri(company.logo)"
+                         t-att-src="company._dx_report_logo_src()"
                          t-att-style="company._dx_report_logo_style()"
                          t-att-alt="dx_legal"/>
                 </td>
