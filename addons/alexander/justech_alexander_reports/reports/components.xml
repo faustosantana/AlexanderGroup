@@ -143,15 +143,7 @@
 
     <template id="dx_signature_panel">
         <t t-if="dx.get('show_signature')">
-            <table t-if="dx.get('spacer_px')" class="dx-sign-spacer">
-                <tr>
-                    <td t-att-height="dx.get('spacer_px')" t-att-style="dx.get('spacer_td_style')">
-                        <img t-att-src="dx.get('spacer_src')"
-                             t-att-style="dx.get('spacer_style')"
-                             alt=""/>
-                    </td>
-                </tr>
-            </table>
+            <div t-if="dx.get('spacer_px')" class="dx-sign-spacer" t-att-style="dx.get('spacer_box_style')"/>
             <table class="dx-sign-table">
                 <tr>
                     <td>

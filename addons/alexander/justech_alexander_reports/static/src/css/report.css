@@ -284,6 +284,7 @@
   overflow: hidden;
   line-height: 0;
   font-size: 0;
+  max-height: none !important;
 }
 
 /* ---- Signatures ---- */
