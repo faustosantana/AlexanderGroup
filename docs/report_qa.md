@@ -15,8 +15,8 @@ Módulo `justech_alexander_reports` **19.0.3.3.0**. DEV only. PROD no tocado.
 | BLUEELITE_DESIGN | PENDING |
 | LOGO_ASSET_OK_DOR | PASS |
 | LOGO_ASSET_OK_PIN | PASS |
-| LOGO_ASSET_OK_DOM | PASS solo tras PNG oficial + header blanco |
-| LOGO_ASSET_OK_MAY | PASS solo tras PNG oficial + header blanco |
+| LOGO_ASSET_OK_DOM | PASS (PNG oficial en `res.company.logo`, header blanco, sin placa) |
+| LOGO_ASSET_OK_MAY | PASS (PNG oficial recortado, header blanco, sin placa) |
 | LOGO_ASSET_OK_REM | PASS |
 | LOGO_ASSET_OK_BLU | PASS |
 | SIGNATURE_POSITION | PASS técnico (spacer 48px). Checkpoint humano. |
