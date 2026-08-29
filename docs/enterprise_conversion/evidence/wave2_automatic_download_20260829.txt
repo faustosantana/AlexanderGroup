@@ -1,0 +1,40 @@
+Wave 2 automatic official download — 2026-08-29. Prod untouched.
+
+Inspected https://www.odoo.com/page/download (live HTML + assets_frontend_lazy):
+  Community Ubuntu/Debian 19 = form button platform_version=deb_19
+  Enterprise Ubuntu/Debian 19 = modal #oe_download_modal
+    data-platform-version=deb_19e
+    field: subscription_code (placeholder M012345678901)
+  JS DownloadWidget:
+    rpc POST /download/check_subscription {code}
+    on success: GET /thanks/download?code=...&platform_version=deb_19e
+  CSRF exists on the Community lead form only; Enterprise modal does not use it.
+  GitHub is not part of this flow.
+
+Live probe FROM the Doralex server (no contract file present):
+  AUTOMATIC_DOWNLOAD = BLOCKED
+  BLOCKED_BY = SUBSCRIPTION_CODE
+  HTTP_STATUS = 200
+  FINAL_URL = https://www.odoo.com/thanks/download?platform_version=deb_19e
+  AUTH_REQUIRED = False
+  SUBSCRIPTION_REQUIRED = True
+  DOWNLOAD_ENDPOINT = https://www.odoo.com/download/check_subscription
+  REASON = oe_download_invalid_code
+  THANKS_BODY = html (not a .deb)
+  Dummy code M000000000000 → same oe_download_invalid_code
+  No enterprise_code in doralex_ent_staging / doralex_prod / doralex_dev
+  archive/ remains empty (no HTML saved as .deb)
+  nightly +e URLs previously 404 — not used
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+justech_alexander_reports = 19.0.3.8.5
+STAGING_HEALTH = PASS
+PROD health = PASS
+CUTOVER_ALLOWED = NO
+
+WHAT_IS_MISSING = Doralex Enterprise contract code (M...)
+Simplest unblock (no .deb upload, no Prod, no GitHub):
+  /opt/doralex/secrets/odoo_enterprise/subscription_code  (chmod 600)
+  then bash /opt/doralex/scripts/download_odoo_enterprise.sh
+  then CONFIRM=yes bash /opt/doralex/scripts/convert_community_to_enterprise.sh

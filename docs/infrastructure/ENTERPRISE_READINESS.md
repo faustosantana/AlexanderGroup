@@ -21,12 +21,16 @@ Arquitectura de paths (sin cambiar):
 - `/opt/doralex/enterprise` lo monta **Prod Community**: no escribir Enterprise ahí.
 - Drop-path del instalador: `/opt/doralex/secrets/odoo_enterprise/archive/`
 
-## Paquete a depositar
+## Desbloqueo de la descarga automática
 
-1. https://www.odoo.com/page/download (sesión de la suscripción Doralex)
-2. **Odoo 19 → Ubuntu • Debian → Enterprise → Download**
-3. Archivo: `odoo_19.0+e.*_all.deb` (no Community, no nightly)
-4. Ruta: `/opt/doralex/secrets/odoo_enterprise/archive/`
-5. `CONFIRM=yes bash /opt/doralex/scripts/convert_community_to_enterprise.sh`
+El instalador oficial no pide login de GitHub. Pide el **código de contrato**
+y el servidor baja el `.deb` (`deb_19e`).
+
+1. Escribir el código (una línea) en
+   `/opt/doralex/secrets/odoo_enterprise/subscription_code` (`chmod 600`)
+2. `bash /opt/doralex/scripts/download_odoo_enterprise.sh`
+3. `CONFIRM=yes bash /opt/doralex/scripts/convert_community_to_enterprise.sh`
+
+No subir el `.deb` a mano. No usar nightly/Community. Prod no se toca.
 
 Detalle vivo: [`../enterprise_conversion/STATUS.md`](../enterprise_conversion/STATUS.md).
