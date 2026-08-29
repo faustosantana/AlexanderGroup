@@ -1,6 +1,7 @@
 import re
 
 from odoo import api, models
+from odoo.tools.misc import format_date
 
 # Paleta V4: DOR/PIN/REM/BLU de logos DEV; DOM/MAY de PNG oficiales 2026-08-29.
 # No recolorear logos. DOM/MAY van sobre papel blanco (logo_on_dark False).
@@ -12,8 +13,8 @@ _DX_THEMES = {
         "secondary": "#1A1A1A",
         "accent": "#E46018",
         "neutral": "#5C5C5C",
-        "logo_h": 28,
-        "logo_w": 32,
+        "logo_h": 34,
+        "logo_w": 38,
         "logo_on_dark": False,
         "logo_source": "res.company.logo DOR.png",
     },
@@ -24,8 +25,8 @@ _DX_THEMES = {
         "secondary": "#C00000",
         "accent": "#C00000",
         "neutral": "#5C5C5C",
-        "logo_h": 30,
-        "logo_w": 32,
+        "logo_h": 26,
+        "logo_w": 28,
         "logo_on_dark": False,
         "logo_source": "res.company.logo PIN.png",
     },
@@ -36,8 +37,8 @@ _DX_THEMES = {
         "secondary": "#F09040",
         "accent": "#F09040",
         "neutral": "#5C5C5C",
-        "logo_h": 30,
-        "logo_w": 32,
+        "logo_h": 24,
+        "logo_w": 26,
         "logo_on_dark": False,
         "logo_source": "user PNG Dominion Business 2026-08-29",
     },
@@ -110,6 +111,45 @@ class ResCompany(models.Model):
         if city and city == city.upper():
             city = city.title()
         return city
+
+    def _dx_header_meta_for(self, record):
+        self.ensure_one()
+        meta = {
+            "date": "—",
+            "validity": "—",
+            "due": "—",
+            "salesperson": "—",
+            "currency": "",
+            "ncf": "",
+        }
+        if not record:
+            return meta
+
+        def _fmt(value):
+            if not value:
+                return "—"
+            if hasattr(value, "date"):
+                value = value.date()
+            return format_date(self.env, value)
+
+        user = record.user_id if "user_id" in record._fields else False
+        name = (user.name or "").strip() if user else ""
+        if name in ("OdooBot", "Administrator", "Public user", "Public User", ""):
+            name = "Equipo comercial" if name else "—"
+        meta["salesperson"] = name
+        if "currency_id" in record._fields and record.currency_id:
+            meta["currency"] = record.currency_id.name or ""
+        if record._name == "sale.order":
+            meta["date"] = _fmt(record.date_order)
+            meta["validity"] = _fmt(record.validity_date)
+        elif record._name == "account.move":
+            meta["date"] = _fmt(record.invoice_date or record.date)
+            meta["due"] = _fmt(record.invoice_date_due)
+            if "justech_do_ncf" in record._fields:
+                meta["ncf"] = record.justech_do_ncf or ""
+        elif record._name == "purchase.order":
+            meta["date"] = _fmt(record.date_order)
+        return meta
 
     def _dx_header_identity_for(self, record):
         self.ensure_one()

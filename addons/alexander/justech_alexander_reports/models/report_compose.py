@@ -93,11 +93,13 @@ def _dx_sign_space(lines, paper="A4", extra_mm=0):
             {
                 "src": white_png_data_uri(piece),
                 "h": piece,
-                "style": "display:block;width:2px;height:%spx;max-height:none;border:0;"
-                % piece,
+                "style": (
+                    "display:block;width:8px;height:%spx;max-height:none;"
+                    "border:0;background:#ffffff;" % piece
+                ),
                 "tick_style": (
                     "display:block;height:%spx;min-height:%spx;line-height:%spx;"
-                    "font-size:16px;background:#f7f7f7;color:#f7f7f7;"
+                    "font-size:16px;background:#ffffff;color:#ffffff;"
                     "padding:0;margin:0;border:0;" % (piece, piece, piece)
                 ),
             }
@@ -218,8 +220,10 @@ class SaleOrderCompose(models.Model):
                 "grand": True,
             }
         )
+        theme = company._dx_report_theme()
         return {
             "ident": ident,
+            "layout": theme.get("layout") or "dor",
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.date_order),
             "validity": _dx_date(self.env, self.validity_date),

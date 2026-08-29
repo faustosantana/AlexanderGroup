@@ -162,7 +162,7 @@
         <t t-if="dx.get('show_signature')">
             <div t-if="dx.get('spacer_chunks')" class="dx-sign-spacer">
                 <t t-foreach="dx['spacer_chunks']" t-as="chunk">
-                    <div class="dx-sign-tick" t-att-style="chunk['tick_style']">&#160;</div>
+                    <img t-att-src="chunk['src']" t-att-style="chunk['style']" alt=""/>
                 </t>
             </div>
             <table class="dx-sign-table">
@@ -180,15 +180,119 @@
         </t>
     </template>
 
-    <template id="dx_sale_composition">
-        <div class="dx-composition dx-comp-sale dx-page-stack">
-            <table class="dx-zone-party">
+    <template id="dx_sale_doralex">
+        <div class="dx-composition dx-comp-sale dx-comp-dor dx-page-stack">
+            <div class="dx-dor-client">
+                <div class="dx-card-title">Cliente</div>
+                <div class="dx-card-name" t-out="dx['partner']['name']"/>
+                <div class="dx-dor-client-line">
+                    <t t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></t>
+                    <t t-if="dx['partner'].get('street')"> · <t t-out="dx['partner']['street']"/></t>
+                    <t t-if="dx['partner'].get('city')"> · <t t-out="dx['partner']['city']"/></t>
+                    <t t-if="dx['partner'].get('phone')"> · <t t-out="dx['partner']['phone']"/></t>
+                </div>
+            </div>
+            <t t-call="justech_alexander_reports.dx_line_table"/>
+            <table class="dx-zone-bottom dx-keep-end">
                 <tr>
-                    <td class="dx-zone-customer">
-                        <t t-call="justech_alexander_reports.dx_customer_card"/>
+                    <td class="dx-zone-terms">
+                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
                     </td>
-                    <td class="dx-zone-meta">
-                        <t t-call="justech_alexander_reports.dx_commercial_meta"/>
+                    <td class="dx-zone-totals">
+                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_signature_panel"/>
+        </div>
+    </template>
+
+    <template id="dx_sale_pinaria">
+        <div class="dx-composition dx-comp-sale dx-comp-pin dx-page-stack">
+            <table class="dx-pin-split">
+                <tr>
+                    <td class="dx-pin-titlecell">
+                        <div class="dx-head-title" t-out="dx['ident'].get('title')"/>
+                        <div class="dx-head-number">
+                            <span t-if="dx['ident'].get('badge')" class="dx-badge" t-out="dx['ident'].get('badge')"/>
+                            <span t-out="dx['ident'].get('number')"/>
+                        </div>
+                    </td>
+                    <td class="dx-pin-metacell">
+                        <table class="dx-meta-grid">
+                            <tr>
+                                <td>
+                                    <div class="dx-meta-k">Fecha</div>
+                                    <div class="dx-meta-v" t-out="dx['date']"/>
+                                </td>
+                                <td>
+                                    <div class="dx-meta-k">Validez</div>
+                                    <div class="dx-meta-v" t-out="dx['validity']"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="dx-meta-k">Vendedor</div>
+                                    <div class="dx-meta-v" t-out="dx['salesperson']"/>
+                                </td>
+                                <td>
+                                    <div class="dx-meta-k">Moneda</div>
+                                    <div class="dx-meta-v" t-out="dx['currency']"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <div class="dx-pin-client">
+                <div class="dx-card-title">Cliente</div>
+                <div class="dx-card-name" t-out="dx['partner']['name']"/>
+                <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
+                <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
+            </div>
+            <t t-call="justech_alexander_reports.dx_line_table"/>
+            <table class="dx-zone-bottom dx-keep-end">
+                <tr>
+                    <td class="dx-zone-terms">
+                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                    </td>
+                    <td class="dx-zone-totals">
+                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_signature_panel"/>
+        </div>
+    </template>
+
+    <template id="dx_sale_dominion">
+        <div class="dx-composition dx-comp-sale dx-comp-dom dx-page-stack">
+            <table class="dx-dom-float">
+                <tr>
+                    <td class="dx-dom-client">
+                        <div class="dx-card-title">Cliente</div>
+                        <div class="dx-card-name" t-out="dx['partner']['name']"/>
+                        <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
+                        <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                    </td>
+                    <td class="dx-dom-meta">
+                        <div class="dx-meta-item">
+                            <div class="dx-meta-k">Fecha</div>
+                            <div class="dx-meta-v" t-out="dx['date']"/>
+                        </div>
+                        <div class="dx-meta-item">
+                            <div class="dx-meta-k">Validez</div>
+                            <div class="dx-meta-v" t-out="dx['validity']"/>
+                        </div>
+                        <div class="dx-meta-item">
+                            <div class="dx-meta-k">Vendedor</div>
+                            <div class="dx-meta-v" t-out="dx['salesperson']"/>
+                        </div>
+                        <div class="dx-meta-item">
+                            <div class="dx-meta-k">Moneda</div>
+                            <div class="dx-meta-v" t-out="dx['currency']"/>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -205,6 +309,168 @@
             </table>
             <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
+    </template>
+
+    <template id="dx_sale_mayuma">
+        <div class="dx-composition dx-comp-sale dx-comp-may dx-page-stack">
+            <div class="dx-may-client">
+                <div class="dx-card-title">Cliente</div>
+                <div class="dx-card-name" t-out="dx['partner']['name']"/>
+                <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
+                <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
+            </div>
+            <table class="dx-may-meta">
+                <tr>
+                    <td>
+                        <div class="dx-meta-k">Fecha</div>
+                        <div class="dx-meta-v" t-out="dx['date']"/>
+                    </td>
+                    <td>
+                        <div class="dx-meta-k">Validez</div>
+                        <div class="dx-meta-v" t-out="dx['validity']"/>
+                    </td>
+                    <td>
+                        <div class="dx-meta-k">Vendedor</div>
+                        <div class="dx-meta-v" t-out="dx['salesperson']"/>
+                    </td>
+                    <td>
+                        <div class="dx-meta-k">Moneda</div>
+                        <div class="dx-meta-v" t-out="dx['currency']"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_line_table"/>
+            <table class="dx-zone-bottom dx-keep-end">
+                <tr>
+                    <td class="dx-zone-terms">
+                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                    </td>
+                    <td class="dx-zone-totals">
+                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_signature_panel"/>
+        </div>
+    </template>
+
+    <template id="dx_sale_rempart">
+        <div class="dx-composition dx-comp-sale dx-comp-rem dx-page-stack">
+            <table class="dx-rem-mast">
+                <tr>
+                    <td class="dx-rem-mast-left"/>
+                    <td class="dx-rem-mast-right">
+                        <div class="dx-head-title" t-out="dx['ident'].get('title')"/>
+                        <div class="dx-head-number" t-out="dx['ident'].get('number')"/>
+                    </td>
+                </tr>
+            </table>
+            <table class="dx-rem-split">
+                <tr>
+                    <td class="dx-rem-client">
+                        <div class="dx-card-title">Cliente</div>
+                        <div class="dx-card-name" t-out="dx['partner']['name']"/>
+                        <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
+                        <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                        <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
+                        <div t-if="dx['partner'].get('phone')" t-out="dx['partner']['phone']"/>
+                    </td>
+                    <td class="dx-rem-meta">
+                        <div class="dx-meta-item">
+                            <div class="dx-meta-k">Fecha</div>
+                            <div class="dx-meta-v dx-meta-big" t-out="dx['date']"/>
+                        </div>
+                        <div class="dx-meta-item">
+                            <div class="dx-meta-k">Validez</div>
+                            <div class="dx-meta-v dx-meta-big" t-out="dx['validity']"/>
+                        </div>
+                        <div class="dx-meta-item">
+                            <div class="dx-meta-k">Vendedor</div>
+                            <div class="dx-meta-v dx-meta-big" t-out="dx['salesperson']"/>
+                        </div>
+                        <div class="dx-meta-item">
+                            <div class="dx-meta-k">Moneda</div>
+                            <div class="dx-meta-v dx-meta-big" t-out="dx['currency']"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_line_table"/>
+            <table class="dx-zone-bottom dx-keep-end">
+                <tr>
+                    <td class="dx-zone-terms">
+                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                    </td>
+                    <td class="dx-zone-totals">
+                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_signature_panel"/>
+        </div>
+    </template>
+
+    <template id="dx_sale_blueelite">
+        <div class="dx-composition dx-comp-sale dx-comp-blu dx-page-stack">
+            <table class="dx-blu-asym">
+                <tr>
+                    <td class="dx-blu-client" rowspan="2">
+                        <div class="dx-card-title">Cliente</div>
+                        <div class="dx-card-name" t-out="dx['partner']['name']"/>
+                        <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
+                        <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                    </td>
+                    <td class="dx-blu-meta">
+                        <div class="dx-meta-k">Fecha</div>
+                        <div class="dx-meta-v" t-out="dx['date']"/>
+                        <div class="dx-meta-k">Validez</div>
+                        <div class="dx-meta-v" t-out="dx['validity']"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="dx-blu-meta2">
+                        <div class="dx-meta-k">Vendedor</div>
+                        <div class="dx-meta-v" t-out="dx['salesperson']"/>
+                        <div class="dx-meta-k">Moneda</div>
+                        <div class="dx-meta-v" t-out="dx['currency']"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_line_table"/>
+            <table class="dx-zone-bottom dx-keep-end">
+                <tr>
+                    <td class="dx-zone-terms">
+                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                    </td>
+                    <td class="dx-zone-totals">
+                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_signature_panel"/>
+        </div>
+    </template>
+
+    <template id="dx_sale_composition">
+        <t t-if="dx.get('layout') == 'pin'">
+            <t t-call="justech_alexander_reports.dx_sale_pinaria"/>
+        </t>
+        <t t-elif="dx.get('layout') == 'dom'">
+            <t t-call="justech_alexander_reports.dx_sale_dominion"/>
+        </t>
+        <t t-elif="dx.get('layout') == 'may'">
+            <t t-call="justech_alexander_reports.dx_sale_mayuma"/>
+        </t>
+        <t t-elif="dx.get('layout') == 'rem'">
+            <t t-call="justech_alexander_reports.dx_sale_rempart"/>
+        </t>
+        <t t-elif="dx.get('layout') == 'blu'">
+            <t t-call="justech_alexander_reports.dx_sale_blueelite"/>
+        </t>
+        <t t-else="">
+            <t t-call="justech_alexander_reports.dx_sale_doralex"/>
+        </t>
     </template>
 
     <template id="dx_invoice_composition">

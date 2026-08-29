@@ -1,9 +1,9 @@
 {
     "name": "Doralex Report Layout",
-    "version": "19.0.3.3.0",
+    "version": "19.0.3.4.0",
     "category": "Reporting",
-    "summary": "V4 editorial: menos bordes, metadata apilada y logos Dominion/Mayuma correctos",
-    "description": "Refinamiento visual V4 sobre el motor multiempresa por company_id. No cambia fiscalidad ni rebinda acciones oficiales.",
+    "summary": "V5: 6 sistemas de composición distintos para cotizaciones",
+    "description": "Seis mastheads y composiciones QWeb distintas. No cambia fiscalidad ni rebinda acciones oficiales.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",
     "license": "LGPL-3",
@@ -21,6 +21,7 @@
     "data": [
         "security/ir.model.access.csv",
         "reports/paperformat.xml",
+        "reports/headers.xml",
         "reports/layout.xml",
         "reports/components.xml",
         "reports/brand_sync.xml",
