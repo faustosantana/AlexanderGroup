@@ -715,6 +715,8 @@
                     <t t-if="dx.get('company_mail')" t-out="dx['company_mail']"/>
                     <t t-if="dx.get('company_phone')"> · <t t-out="dx['company_phone']"/></t>
                 </div>
+                <div class="dx-pick-ident-title" t-out="dx['ident'].get('title')"/>
+                <div class="dx-pick-ident-num" t-out="dx['ident'].get('number')"/>
             </div>
             <t t-call="justech_alexander_reports.dx_pin_doc_title"/>
             <div class="dx-pick-top">

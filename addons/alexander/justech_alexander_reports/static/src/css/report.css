@@ -613,6 +613,8 @@ div.footer td {
 .dx-pick-top { overflow: hidden; margin: 0 0 14px; }
 .dx-pick-ident { margin: 0 0 12px; padding: 0 0 8px; border-bottom: 2px solid #1a1a1a; }
 .dx-pick-ident-name { font-size: 12pt; font-weight: 700; letter-spacing: 0.02em; }
+.dx-pick-ident-title { font-size: 16pt; font-weight: 700; margin-top: 8px; letter-spacing: 0.04em; }
+.dx-pick-ident-num { font-size: 10pt; font-weight: 700; }
 .dx-pick-party { display: inline-block; width: 56%; vertical-align: top; }
 .dx-pick-meta { display: inline-block; width: 40%; vertical-align: top; }
 .dx-warranty { margin: 8px 0; }

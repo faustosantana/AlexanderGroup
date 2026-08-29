@@ -235,6 +235,7 @@ def test_picking_uses_external_layout_and_unique_address():
     comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
     pick = comps.split('id="dx_picking_composition"')[1].split("</template>")[0]
     assert "embed_masthead" in pick
+    assert "dx-pick-ident-title" in pick
     assert pick.count("dx['partner']['street']") == 0
     paper = (REPORTS / "reports" / "paperformat.xml").read_text(encoding="utf-8")
     assert "stock.action_report_picking" in paper
