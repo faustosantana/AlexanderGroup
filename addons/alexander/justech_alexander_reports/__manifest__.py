@@ -1,8 +1,8 @@
 {
     "name": "Doralex Report Layout",
-    "version": "19.0.3.1.0",
+    "version": "19.0.3.2.0",
     "category": "Reporting",
-    "summary": "Sistema visual V2.3 + estado de cuenta cuadrado + recibo A5",
+    "summary": "Firmas al fondo, 6 temas reales y estado de cuenta con saldo a favor",
     "description": "Capa visual reconstruida (componentes + composición por documento) sobre el motor multiempresa por company_id. No rebinda acciones oficiales.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",

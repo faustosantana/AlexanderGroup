@@ -44,19 +44,32 @@ def aging_bucket(days_past_due):
 
 
 def classify_open_amount(amount, due, cutoff):
-    """Split one open residual into overdue/current and an aging key."""
+    """Split one open residual into overdue/current AR or a credit."""
     residual = float(amount or 0.0)
     if abs(residual) < 0.00001:
-        return 0.0, 0.0, "current", 0.0
+        return 0.0, 0.0, "current", 0.0, 0.0
     if residual < 0:
-        # Unapplied credit / payment: keep in current so totals still square.
-        return 0.0, residual, "current", residual
+        return 0.0, 0.0, "credit", 0.0, residual
     delta = days_overdue(due, cutoff) if due else 0
     overdue_days = delta if delta > 0 else 0
     bucket = aging_bucket(overdue_days)
     if bucket == "current":
-        return 0.0, residual, bucket, residual
-    return residual, 0.0, bucket, residual
+        return 0.0, residual, bucket, residual, 0.0
+    return residual, 0.0, bucket, residual, 0.0
+
+
+def assert_receivable_invariants(receivable, overdue, current, aging, net, credits):
+    """AR buckets square; net = receivable + credits."""
+    assert_balance_invariants(receivable, overdue, current, aging)
+    if (
+        abs(float(net or 0.0) - (float(receivable or 0.0) + float(credits or 0.0)))
+        >= 0.01
+    ):
+        raise AssertionError(
+            "statement net mismatch: net=%.4f receivable=%.4f credits=%.4f"
+            % (net, receivable, credits)
+        )
+    return True
 
 
 def assert_balance_invariants(total, overdue, current, aging):

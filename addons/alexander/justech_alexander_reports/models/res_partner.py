@@ -2,7 +2,7 @@ from odoo import fields, models
 from odoo.tools.misc import format_amount
 
 from .statement_math import (
-    assert_balance_invariants,
+    assert_receivable_invariants,
     classify_open_amount,
     days_status_label,
     residual_after_partials,
@@ -94,6 +94,7 @@ class ResPartner(models.Model):
             running = 0.0
             overdue = 0.0
             current = 0.0
+            credits = 0.0
             aging = {
                 "current": 0.0,
                 "d30": 0.0,
@@ -132,10 +133,14 @@ class ResPartner(models.Model):
                 else:
                     label = raw_name
                 running += debit - credit
-                ov, cur, bucket, aged = classify_open_amount(residual, due, cutoff)
+                ov, cur, bucket, aged, cred = classify_open_amount(
+                    residual, due, cutoff
+                )
                 overdue += ov
                 current += cur
-                aging[bucket] += aged
+                credits += cred
+                if bucket != "credit":
+                    aging[bucket] += aged
                 rows.append(
                     {
                         "date": date.strftime("%d/%m/%Y") if date else "—",
@@ -150,8 +155,47 @@ class ResPartner(models.Model):
                         "balance": self._dx_fmt_money(running, currency),
                     }
                 )
-            total = overdue + current
-            assert_balance_invariants(total, overdue, current, aging)
+            receivable = overdue + current
+            net = receivable + credits
+            assert_receivable_invariants(
+                receivable, overdue, current, aging, net, credits
+            )
+            if net < -0.005:
+                kpis = [
+                    {
+                        "label": "Saldo a favor",
+                        "value": self._dx_fmt_money(abs(net), currency),
+                        "tone": "credit",
+                    },
+                    {
+                        "label": "Por cobrar",
+                        "value": self._dx_fmt_money(receivable, currency),
+                        "tone": "overdue" if overdue else "total",
+                    },
+                    {
+                        "label": "Créditos / anticipos",
+                        "value": self._dx_fmt_money(abs(credits), currency),
+                        "tone": "current",
+                    },
+                ]
+            else:
+                kpis = [
+                    {
+                        "label": "Saldo total",
+                        "value": self._dx_fmt_money(net, currency),
+                        "tone": "total",
+                    },
+                    {
+                        "label": "Saldo vencido",
+                        "value": self._dx_fmt_money(overdue, currency),
+                        "tone": "overdue",
+                    },
+                    {
+                        "label": "Saldo no vencido",
+                        "value": self._dx_fmt_money(current, currency),
+                        "tone": "current",
+                    },
+                ]
             bundles.append(
                 {
                     "company": co,
@@ -163,29 +207,17 @@ class ResPartner(models.Model):
                     "partner_vat": commercial.vat or self.vat or "",
                     "overdue": self._dx_fmt_money(overdue, currency),
                     "current": self._dx_fmt_money(current, currency),
+                    "credits": self._dx_fmt_money(abs(credits), currency),
+                    "has_credits": abs(credits) >= 0.01,
                     "age_30": self._dx_fmt_money(aging["d30"], currency),
                     "age_60": self._dx_fmt_money(aging["d60"], currency),
                     "age_90": self._dx_fmt_money(aging["d90"], currency),
                     "age_90p": self._dx_fmt_money(aging["d90p"], currency),
-                    "balance_disp": self._dx_fmt_money(total, currency),
-                    "balance": total,
-                    "kpis": [
-                        {
-                            "label": "Saldo total",
-                            "value": self._dx_fmt_money(total, currency),
-                            "tone": "total",
-                        },
-                        {
-                            "label": "Saldo vencido",
-                            "value": self._dx_fmt_money(overdue, currency),
-                            "tone": "overdue",
-                        },
-                        {
-                            "label": "Saldo no vencido",
-                            "value": self._dx_fmt_money(current, currency),
-                            "tone": "current",
-                        },
-                    ],
+                    "balance_disp": self._dx_fmt_money(
+                        abs(net) if net < 0 else net, currency
+                    ),
+                    "balance": net,
+                    "kpis": kpis,
                 }
             )
         return bundles

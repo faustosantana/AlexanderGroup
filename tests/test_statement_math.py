@@ -17,6 +17,7 @@ if str(MATH) not in sys.path:
 from statement_math import (  # noqa: E402
     aging_bucket,
     assert_balance_invariants,
+    assert_receivable_invariants,
     classify_open_amount,
     days_status_label,
     residual_after_partials,
@@ -51,16 +52,21 @@ def test_kpi_equals_overdue_plus_current_and_aging():
         (400.0, date(2026, 9, 10)),  # current
         (-150.0, date(2026, 8, 1)),  # unapplied credit -> current
     ]
-    overdue = current = 0.0
+    overdue = current = credits = 0.0
     aging = {"current": 0.0, "d30": 0.0, "d60": 0.0, "d90": 0.0, "d90p": 0.0}
     for amount, due in items:
-        ov, cur, bucket, aged = classify_open_amount(amount, due, cutoff)
+        ov, cur, bucket, aged, cred = classify_open_amount(amount, due, cutoff)
         overdue += ov
         current += cur
-        aging[bucket] += aged
-    total = overdue + current
-    assert abs(total - 1500.0) < 0.01
-    assert_balance_invariants(total, overdue, current, aging)
+        credits += cred
+        if bucket != "credit":
+            aging[bucket] += aged
+    receivable = overdue + current
+    net = receivable + credits
+    assert abs(receivable - 1650.0) < 0.01
+    assert abs(credits + 150.0) < 0.01
+    assert abs(net - 1500.0) < 0.01
+    assert_receivable_invariants(receivable, overdue, current, aging, net, credits)
 
 
 def test_historical_residual_ignores_later_application():

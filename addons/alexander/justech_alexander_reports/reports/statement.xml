@@ -59,7 +59,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="dx-block-title">Antigüedad de saldo</div>
+                            <div class="dx-block-title">Antigüedad de cuentas por cobrar</div>
                             <table class="dx-aging">
                                 <tr>
                                     <th>Corriente</th>
@@ -76,6 +76,11 @@
                                     <td class="dx-money" t-out="bundle['age_90p']"/>
                                 </tr>
                             </table>
+                            <p t-if="bundle.get('has_credits')" class="dx-credit-note">
+                                Créditos y anticipos no aplicados:
+                                <span class="dx-money" t-out="bundle['credits']"/>
+                                (saldo a favor del cliente; no forma parte de la antigüedad).
+                            </p>
                         </div>
                     </t>
                 </t>

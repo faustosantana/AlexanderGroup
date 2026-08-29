@@ -1,72 +1,83 @@
+import re
+
 from odoo import api, models
 
-# Paleta extraída de los PNG reales (no inventada).
-# DOR: naranja del engranaje (232,104,24) + negro del isotipo.
-# PIN: rojo del sello + verde de la hoja.
-# DOM: teal del wordmark + naranja del acento (logo sobre negro).
-# MAY: teal sobre carbón.
-# REM: negro institucional + azul de la figura.
-# BLU: azul real + cyan.
+# Colores muestreados de los PNG de logo en DEV (2026-08-29).
+# DOR #E46018 engranaje · PIN #C00000 sello + #30A83C hoja
+# DOM #54B4A8 wordmark + #FC9048 acento · MAY #54B4A8
+# REM #1A1A1A + #3048A8 figura · BLU #243C9C + #18B4F0
 _DX_THEMES = {
     "DOR": {
         "code": "DOR",
-        "primary": "#E86A12",
+        "layout": "dor",
+        "primary": "#E46018",
         "secondary": "#1A1A1A",
-        "accent": "#E86A12",
+        "accent": "#E46018",
         "neutral": "#5C5C5C",
         "logo_h": 28,
         "logo_w": 32,
         "logo_on_dark": False,
+        "logo_source": "res.company.logo DOR.png",
     },
     "PIN": {
         "code": "PIN",
-        "primary": "#C41E3A",
-        "secondary": "#2E7D32",
-        "accent": "#C41E3A",
+        "layout": "pin",
+        "primary": "#30A83C",
+        "secondary": "#C00000",
+        "accent": "#C00000",
         "neutral": "#5C5C5C",
-        "logo_h": 26,
-        "logo_w": 36,
+        "logo_h": 30,
+        "logo_w": 32,
         "logo_on_dark": False,
+        "logo_source": "res.company.logo PIN.png",
     },
     "DOM": {
         "code": "DOM",
-        "primary": "#2AA8A4",
-        "secondary": "#F08A3C",
-        "accent": "#F08A3C",
+        "layout": "dom",
+        "primary": "#54B4A8",
+        "secondary": "#FC9048",
+        "accent": "#FC9048",
         "neutral": "#5C5C5C",
         "logo_h": 26,
-        "logo_w": 30,
+        "logo_w": 26,
         "logo_on_dark": True,
+        "logo_source": "res.company.logo DOM.png",
     },
     "MAY": {
         "code": "MAY",
-        "primary": "#2EC4B6",
-        "secondary": "#111111",
-        "accent": "#2EC4B6",
+        "layout": "may",
+        "primary": "#54B4A8",
+        "secondary": "#1A1A1A",
+        "accent": "#54B4A8",
         "neutral": "#5C5C5C",
-        "logo_h": 24,
-        "logo_w": 58,
+        "logo_h": 18,
+        "logo_w": 52,
         "logo_on_dark": True,
+        "logo_source": "res.company.logo MAY.png",
     },
     "REM": {
         "code": "REM",
+        "layout": "rem",
         "primary": "#1A1A1A",
-        "secondary": "#3D7AB5",
-        "accent": "#3D7AB5",
+        "secondary": "#3048A8",
+        "accent": "#3048A8",
         "neutral": "#5C5C5C",
-        "logo_h": 28,
-        "logo_w": 36,
+        "logo_h": 36,
+        "logo_w": 42,
         "logo_on_dark": False,
+        "logo_source": "res.company.logo REM.png",
     },
     "BLU": {
         "code": "BLU",
-        "primary": "#0A3D91",
-        "secondary": "#00AEEF",
-        "accent": "#00AEEF",
+        "layout": "blu",
+        "primary": "#243C9C",
+        "secondary": "#18B4F0",
+        "accent": "#18B4F0",
         "neutral": "#5C5C5C",
-        "logo_h": 26,
+        "logo_h": 30,
         "logo_w": 34,
         "logo_on_dark": False,
+        "logo_source": "res.company.logo BLU.png",
     },
 }
 
@@ -81,6 +92,27 @@ class ResCompany(models.Model):
             return "%s-%s-%s-%s" % (raw[0], raw[1:3], raw[3:8], raw[8])
         return self.vat or ""
 
+    def _dx_legal_display(self):
+        self.ensure_one()
+        name = re.sub(r"\s+", " ", (self.name or "").strip())
+        name = re.sub(r",\s*", ", ", name)
+        name = re.sub(r"S\.?\s*R\.?\s*L\.?", "S.R.L.", name, flags=re.I)
+        return name
+
+    def _dx_street_display(self):
+        self.ensure_one()
+        street = (self.street or "").strip()
+        if street and street == street.upper():
+            street = street.title().replace("S.R.L.", "S.R.L.")
+        return street
+
+    def _dx_city_display(self):
+        self.ensure_one()
+        city = (self.city or "").strip()
+        if city and city == city.upper():
+            city = city.title()
+        return city
+
     def _dx_header_identity_for(self, record):
         self.ensure_one()
         if record and hasattr(record, "_dx_doc_identity"):
@@ -93,12 +125,13 @@ class ResCompany(models.Model):
     def _dx_report_theme(self):
         self.ensure_one()
         code = (self.dx_short_code or "").upper()
-        theme = dict(_DX_THEMES.get(code) or {"code": code or "DX"})
+        theme = dict(_DX_THEMES.get(code) or {"code": code or "DX", "layout": "dor"})
         theme.setdefault("primary", self.primary_color or "#1A1A1A")
         theme.setdefault("secondary", self.secondary_color or "#555555")
         theme.setdefault("logo_h", self.dx_report_logo_height or 20)
         theme.setdefault("logo_w", 48)
         theme.setdefault("logo_on_dark", False)
+        theme.setdefault("layout", "dor")
         theme["trade"] = self.dx_trade_name or self.name
         return theme
 

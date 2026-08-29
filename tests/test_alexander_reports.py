@@ -17,14 +17,20 @@ def test_six_company_themes_in_css():
         assert f"dx-theme-{code}" in css
     assert "DejaVu Sans" in css
     assert "page-break-inside: avoid" in css
-    assert "#E86A12" in css
-    assert "#C41E3A" in css
-    assert "#2AA8A4" in css
-    assert "#2EC4B6" in css
-    assert "#3D7AB5" in css
-    assert "#0A3D91" in css
+    assert "#E46018" in css
+    assert "#30A83C" in css
+    assert "#C00000" in css
+    assert "#54B4A8" in css
+    assert "#FC9048" in css
+    assert "#3048A8" in css
+    assert "#243C9C" in css
+    assert "#18B4F0" in css
     assert "dx-composition" in css
+    assert "dx-page-stack" in css
+    assert "min-height: 200mm" in css
     assert "white-space: nowrap" in css
+    assert "position:absolute" not in css
+    assert "position: absolute" not in css
 
 
 def test_layout_uses_document_company():
@@ -35,12 +41,24 @@ def test_layout_uses_document_company():
     assert "external_layout_force_document_company" in layout
     assert "_dx_header_identity_for" in layout
     assert "dx-head-doc" in layout
+    assert "dx-pin-titleband" in layout
+    assert "dx-dom-titlebox" in layout
+    assert "dx-may-accent" in layout
+    assert "dx-rem-logo" in layout
+    assert "dx-blu-slab" in layout
+    assert "RNC" in layout
+    assert "dx_report_footer_text" not in layout
     extras = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
     assert "dx_extras_mode" in extras
     assert "dx_sale_composition" in extras
     assert "dx_invoice_composition" in extras
     assert "dx_payment_composition" in extras
+    assert "dx_purchase_composition" in extras
+    assert "dx_picking_composition" in extras
+    assert "dx-page-stack" in extras
     assert "dx-amount-hero" in extras
+    assert "Importe acreditado" in extras
+    assert "<br" not in extras or extras.count("<br") == 0
 
 
 def test_official_report_names_not_rebound():
@@ -52,6 +70,8 @@ def test_official_report_names_not_rebound():
     assert "_dx_sale_compose" in inherits
     assert "_dx_invoice_compose" in inherits
     assert "_dx_payment_compose" in inherits
+    assert "_dx_purchase_compose" in inherits
+    assert "_dx_picking_compose" in inherits
     assert "dx-composition-wrap" in inherits
     assert 'position="replace"' not in inherits
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
@@ -75,7 +95,9 @@ def test_statement_uses_python_rows():
     assert "_dx_statement_bundles" in py
     assert "invoice_date or move.date" in py
     assert "_dx_line_residual_at_cutoff" in py
-    assert "assert_balance_invariants" in py
+    assert "assert_receivable_invariants" in py
+    assert "Saldo a favor" in py
+    assert "Créditos / anticipos" in py
     assert "moves[0]" in py
     assert "dx_statement_cutoff" in py
     assert "asset_receivable" in py
@@ -85,9 +107,8 @@ def test_payment_receipt_has_hero_and_anticipo():
     comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
     assert "dx-amount-hero" in comps
     assert "PAGO NO APLICADO" in comps
-    inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
-    assert "dx_extras_mode" in inherits
-    assert "'purchase'" in inherits
+    comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    assert "dx_purchase_composition" in comps
     catalog = (BASE / "models" / "catalog.py").read_text(encoding="utf-8")
     assert '"color": "#E86A12"' in catalog
     assert '"color": "#C41E3A"' in catalog
@@ -99,8 +120,8 @@ def test_payment_receipt_has_hero_and_anticipo():
 
 def test_paperformat_is_compact():
     xml = (REPORTS / "reports" / "paperformat.xml").read_text(encoding="utf-8")
+    assert ">36</field>" in xml
     assert ">32</field>" in xml
-    assert ">28</field>" in xml
     assert ">16</field>" in xml
     assert ">46</field>" not in xml
     assert "paperformat_doralex_a5" in xml
@@ -123,5 +144,14 @@ def test_invoice_title_is_factura_not_borrador():
     assert "Pago manual" in py
     company = (REPORTS / "models" / "res_company.py").read_text(encoding="utf-8")
     assert '"logo_h": 28' in company
+    assert '"layout": "pin"' in company
     assert "def _dx_report_theme" in company
     assert "def _dx_header_identity_for" in company
+    assert "def _dx_legal_display" in company
+    assert "Aceptado por el cliente" in py
+    assert "Solicitado por" in py
+    assert "Entregado por proveedor" in py
+    assert "Preparado por" in py
+    assert "Recibido conforme" in py
+    assert "_dx_purchase_compose" in py
+    assert "_dx_picking_compose" in py

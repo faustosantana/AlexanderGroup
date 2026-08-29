@@ -48,16 +48,32 @@ def _dx_partner_lines(partner):
 
 def _dx_banks(company):
     rows = []
+    holder = company._dx_legal_display()
     for bank in company._dx_report_banks():
         rows.append(
             {
                 "bank": bank.bank_id.name if bank.bank_id else "Banco",
                 "account": bank.acc_number or "",
                 # Customer-facing titular is the company, not a personal holder.
-                "holder": company.name,
+                "holder": holder,
             }
         )
     return rows
+
+
+def _dx_line_taxes(line):
+    if "tax_ids" in line._fields:
+        return line.tax_ids
+    if "taxes_id" in line._fields:
+        return line.taxes_id
+    return line.env["account.tax"]
+
+
+def _dx_line_uom(line):
+    for fname in ("product_uom_id", "product_uom"):
+        if fname in line._fields and line[fname]:
+            return line[fname].display_name
+    return ""
 
 
 def _dx_money(env, amount, currency):
@@ -186,9 +202,10 @@ class SaleOrderCompose(models.Model):
             "note": self.note or "",
             "terms": _dx_terms(company, fallback),
             "banks": _dx_banks(company) if company.dx_report_show_bank else [],
+            "party_title": "Cliente",
             "show_signature": bool(company.dx_report_show_signature),
             "sign_left": "Elaborado por",
-            "sign_right": "Aceptado por el cliente",
+            "sign_right": ("Aceptado por el cliente" if quote else "Aprobado por"),
         }
 
 
@@ -305,6 +322,10 @@ class AccountMoveCompose(models.Model):
         reason = ""
         if refund:
             reason = self.ref or self.narration or ""
+        if refund:
+            sign_left, sign_right = "Preparado por", "Aprobado por"
+        else:
+            sign_left, sign_right = "Elaborado por", "Recibido conforme"
         return {
             "ident": ident,
             "partner": _dx_partner_lines(self.partner_id),
@@ -329,9 +350,13 @@ class AccountMoveCompose(models.Model):
             "banks": (
                 _dx_banks(company) if company.dx_report_show_bank and not refund else []
             ),
+            "party_title": "Cliente",
+            "credited": (
+                _dx_money(self.env, self.amount_total, currency) if refund else ""
+            ),
             "show_signature": bool(company.dx_report_show_signature),
-            "sign_left": "Elaborado por",
-            "sign_right": "Recibido conforme",
+            "sign_left": sign_left,
+            "sign_right": sign_right,
             "is_refund": refund,
         }
 
@@ -441,6 +466,7 @@ class AccountPaymentCompose(models.Model):
                 "Este documento es un comprobante de ingreso. "
                 "No sustituye factura con NCF."
             ),
+            "party_title": "Recibido de",
             "show_signature": bool(company.dx_report_show_signature),
             "sign_left": "Recibido por",
             "sign_right": "Entregado por",
@@ -460,6 +486,87 @@ class PurchaseOrderCompose(models.Model):
             "kicker": self.company_id.dx_trade_name or self.company_id.name,
         }
 
+    def _dx_purchase_compose(self):
+        self.ensure_one()
+        company = self.company_id
+        currency = self.currency_id
+        lines = []
+        for line in self.order_line:
+            if line.display_type == "line_section":
+                lines.append({"kind": "section", "name": line.name or ""})
+                continue
+            if line.display_type == "line_note":
+                lines.append({"kind": "note", "name": line.name or ""})
+                continue
+            if line.display_type:
+                continue
+            qty = line.product_qty if "product_qty" in line._fields else 0.0
+            name = line.name or (
+                line.product_id.display_name if line.product_id else ""
+            )
+            lines.append(
+                {
+                    "kind": "line",
+                    "name": name,
+                    "qty": _dx_qty(qty),
+                    "uom": _dx_line_uom(line),
+                    "price": _dx_money(self.env, line.price_unit, currency),
+                    "tax": _dx_tax_label(_dx_line_taxes(line)),
+                    "amount": _dx_money(self.env, line.price_subtotal, currency),
+                }
+            )
+        totals = [
+            {
+                "label": "Subtotal",
+                "value": _dx_money(self.env, self.amount_untaxed, currency),
+                "grand": False,
+            },
+        ]
+        if self.amount_tax:
+            totals.append(
+                {
+                    "label": "ITBIS",
+                    "value": _dx_money(self.env, self.amount_tax, currency),
+                    "grand": False,
+                }
+            )
+        totals.append(
+            {
+                "label": "Total",
+                "value": _dx_money(self.env, self.amount_total, currency),
+                "grand": True,
+            }
+        )
+        dest = ""
+        if self.dest_address_id:
+            dest = self.dest_address_id.display_name or ""
+        return {
+            "ident": self._dx_doc_identity(),
+            "partner": _dx_partner_lines(self.partner_id),
+            "party_title": "Proveedor",
+            "date": _dx_date(self.env, self.date_order),
+            "validity": "",
+            "due": _dx_date(self.env, self.date_planned) if self.date_planned else "",
+            "salesperson": _dx_salesperson(self.user_id, company),
+            "payment_term": (
+                self.payment_term_id.name if self.payment_term_id else "—"
+            ),
+            "currency": currency.name if currency else "",
+            "client_ref": self.partner_ref or "",
+            "origin": dest,
+            "lines": lines,
+            "totals": totals,
+            "note": getattr(self, "notes", None) or getattr(self, "note", None) or "",
+            "terms": (
+                "Documento de compra. No es una factura. "
+                "Confirmar cantidades y condiciones al recibir."
+            ),
+            "banks": [],
+            "show_signature": bool(company.dx_report_show_signature),
+            "sign_left": "Solicitado por",
+            "sign_right": "Aprobado por",
+        }
+
 
 class StockPickingCompose(models.Model):
     _inherit = "stock.picking"
@@ -472,4 +579,58 @@ class StockPickingCompose(models.Model):
             "number": self.name or "—",
             "badge": (self.state or "").upper(),
             "kicker": self.company_id.dx_trade_name or self.company_id.name,
+        }
+
+    def _dx_move_done_qty(self, move):
+        if "quantity" in move._fields:
+            return move.quantity
+        if "quantity_done" in move._fields:
+            return move.quantity_done
+        return 0.0
+
+    def _dx_picking_compose(self):
+        self.ensure_one()
+        company = self.company_id
+        incoming = self.picking_type_code == "incoming"
+        partner = self.partner_id
+        lines = []
+        moves = self.move_ids if "move_ids" in self._fields else self.move_lines
+        for move in moves:
+            name = (
+                move.product_id.display_name if move.product_id else (move.name or "")
+            )
+            uom = ""
+            if "product_uom" in move._fields and move.product_uom:
+                uom = move.product_uom.display_name
+            elif "product_uom_id" in move._fields and move.product_uom_id:
+                uom = move.product_uom_id.display_name
+            lines.append(
+                {
+                    "kind": "line",
+                    "name": name,
+                    "qty": _dx_qty(move.product_uom_qty),
+                    "done": _dx_qty(self._dx_move_done_qty(move)),
+                    "uom": uom,
+                }
+            )
+        if incoming:
+            sign_left, sign_right = "Entregado por proveedor", "Recibido por"
+            party_title = "Proveedor"
+        else:
+            sign_left, sign_right = "Entregado por", "Recibido por"
+            party_title = "Cliente"
+        return {
+            "ident": self._dx_doc_identity(),
+            "partner": _dx_partner_lines(partner) if partner else {"name": "—"},
+            "party_title": party_title,
+            "date": _dx_date(self.env, self.scheduled_date or self.date_done),
+            "origin": self.origin or "",
+            "lines": lines,
+            "note": self.note or "",
+            "terms": "",
+            "banks": [],
+            "show_signature": bool(company.dx_report_show_signature),
+            "sign_left": sign_left,
+            "sign_right": sign_right,
+            "incoming": incoming,
         }
