@@ -41,7 +41,7 @@ def _dx_partner_lines(partner):
         "vat": partner.vat or "",
         "street": street,
         "city": city,
-        "phone": partner.phone or partner.mobile or "",
+        "phone": partner.phone or getattr(partner, "mobile", None) or "",
         "email": partner.email or "",
     }
 
