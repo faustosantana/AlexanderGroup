@@ -1,38 +1,43 @@
-# Report QA — V2.3
+# Report QA — V3.2
 
-Módulo `justech_alexander_reports` **19.0.3.1.0**.
+Módulo `justech_alexander_reports` **19.0.3.2.0**. DEV only. PROD no tocado.
 
-## Separación
+## Estado de este ciclo
 
-| Dimensión | Estado |
+| Clave | Valor |
 | --- | --- |
-| PDF_RENDER | PASS (cotización, factura draft/posted, NC, recibos, estado, PO, facturas 5 empresas) |
-| DESIGN | PENDING — checkpoint humano. No autoaprobado |
-| FUNCTION | PASS — `document.company_id`, NCF del modelo, Pendiente en borrador, A5 recibo |
-| FISCAL en PDF | PASS — NCF / NCF afectado leídos de `justech_do_ncf` |
-| Delivery / picking PDF | NOT_TESTED |
-| Multipágina 20/40/60 | NOT_TESTED esta corrida |
+| DORALEX_DESIGN | PENDING (hay PNG) |
+| PINARIA_DESIGN | PENDING (hay PNG) |
+| DOMINION_DESIGN | PENDING (hay PNG) |
+| MAYUMA_DESIGN | PENDING (hay PNG) |
+| REMPART_DESIGN | PENDING (hay PNG) |
+| BLUEELITE_DESIGN | PENDING (hay PNG) |
+| SIGNATURE_POSITION | PASS técnico en 1 línea / A5 (spacer en bloques 48px). Checkpoint humano. |
+| EMAIL_PDF_MATCH | 0/6 NOT_TESTED este ciclo |
+| PURCHASE_FLOW | 6/6 PDF render (OC existentes) |
+| DELIVERY_FLOW | 6/6 PDF render (albaranes existentes) |
+| NCF_QA_ENGINE | PASS |
+| MULTICOMPANY_FISCAL_ISOLATION | PASS (ciclo previo; NCF por empresa en estas facturas) |
+| PROD_UNTOUCHED | YES (`StartedAt` 2026-08-27T20:12:21.681221743Z) |
+| REPORT_SUITE_COMPLETE | NO |
+| MONDAY_OPERATIONAL_READY | NO |
+| USD | BLOCKED_BY_CONFIGURATION (sin `res.currency.rate`) |
 
-## Recibo
+## Firmas
 
-Paperformat `Doralex A5 Recibo` (875×1240 px @ 150 dpi vs A4 1240×1755).  
-Anticipo: bloque **PAGO NO APLICADO / ANTICIPO** (no finge factura).  
-Aplicado: tabla de facturas cuando hay `account.partial.reconcile`.
+wkhtmltopdf 0.12.6 Qt4 ignora `min-height`, `position` peligroso, GIF 1×1 y bordes transparentes.  
+El spacer es una pila de `div` de 48px (`nbsp` + `min-height`) calculada por número de líneas: 1–8 sí, 15+ colapsa.
 
-## Estado de cuenta
+Etiquetas: cotización Elaborado/Aceptado por el cliente · factura Elaborado/Recibido conforme (operativo, no requisito fiscal) · NC Preparado/Aprobado · OC Solicitado/Aprobado · entrega Entregado/Recibido · recibo Recibido/Entregado · estado **sin** firma.
 
-Corte: `account.move.line.date <= cutoff`, solo posted, cuenta receivable.  
-Residual histórico: descuenta parciales con `max_date <= cutoff`.  
-Invariantes (ejecutadas al renderizar):
+## Footer
 
-- `abs(total - (vencido + no vencido)) < 0.01`
-- `abs(total - suma aging) < 0.01`
+`{marca} · RNC · email · teléfono · web?` + `Página X / Y`. Sin país duplicado.
 
-Días: `Vencido N` / `Por vencer N` / `0`. Sin negativos.
+## Paleta
 
-PNG: [`docs/report_previews/v23/`](report_previews/v23/).
+Ver [`report_brand_colors.md`](report_brand_colors.md).
 
-## Titular banco
+## PNG
 
-`res.partner.bank.acc_holder_name` sigue siendo nombre personal (dato maestro).  
-El PDF muestra **razón social de la compañía**. Confirmación humana pendiente si la cuenta es corporativa.
+[`docs/report_previews/v32/`](report_previews/v32/) y overviews en [`report_previews/v32_overview/`](report_previews/v32_overview/).
