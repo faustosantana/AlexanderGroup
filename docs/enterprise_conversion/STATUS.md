@@ -5,24 +5,28 @@
 **Justgroup:** solo lectura. Transacciones Justgroup: no copiadas.
 
 ```
-COMMUNITY_TO_ENTERPRISE     = IN_PROGRESS (ruta nativa, no rebuild)
+COMMUNITY_TO_ENTERPRISE     = IN_PROGRESS (ruta nativa; staging clonado)
 ODOO_ENTERPRISE             = NO   (falta fuente odoo/enterprise)
 WEB_ENTERPRISE              = NO
-DORALEX_REPORTS_PRESERVED   = YES  (Git + backup + clon)
-DORALEX_DATA_PRESERVED      = YES  (staging = restore de Prod)
+DORALEX_REPORTS_PRESERVED   = YES  (19.0.3.8.5 / 58 QWeb en el clon)
+DORALEX_DATA_PRESERVED      = YES  (106 módulos, misma DB que Prod)
 JUSTGROUP_TRANSACTIONS_COPIED = NO
 CUSTOM_MODULES_ALIGNED      = NO
 SPANISH_UI                  = NO
 QA_COMPLETE                 = NO
 ```
 
+Staging loopback: `http://127.0.0.1:8269` (`{"status":"pass"}`).  
+Versión staging = `19.0-20260817` Community (idéntica a Prod).  
+Justgroup (solo lectura) = `19.0+e-20260324`.
+
 ## Waves
 
 | Wave | Qué | Estado |
 | --- | --- | --- |
-| 0 | Backup Prod completo | ver evidencia en servidor |
-| 1 | Clon `enterprise-staging` | script listo / ejecutar en host |
-| 2 | Fuente Enterprise + `web_enterprise` | **BLOQUEADO** sin token `odoo/enterprise` |
+| 0 | Backup Prod completo | PASS `production_20260829_131434` |
+| 1 | Clon `enterprise-staging` | PASS (aislado, neutralize mail/cron) |
+| 2 | Fuente Enterprise + `web_enterprise` | **BLOQUEADO** sin acceso a `odoo/enterprise` |
 | 3 | Apps Enterprise | pendiente Wave 2 |
 | 4 | Community faltantes | pendiente Wave 2 |
 | 5 | Custom Justech aplicables | pendiente revisión de identidad |

@@ -1,0 +1,29 @@
+Wave 0 + Wave 1 — 2026-08-29. Prod not modified.
+
+WAVE0_BACKUP=/opt/doralex/backups/production/production_20260829_131434
+db.dump              acbb56a5e64f638deb1b1bd65ec35b4e802c8fa685352f15942ca34aba3a49db
+filestore.tar.gz     549e1257b1000a245fb05c26eeef64aa9d854ab4cf2940e8fa5fcbce3be58245
+custom-addons.tar.gz dfe395051af5b6c4b0a2d4dac4adb234248a893156ed874af69649bfe14c42c5
+justech_alexander_reports XML copied into doralex_reports_xml/
+nginx_doralex.conf copied
+PROD_HEALTH after backup = 200
+
+WAVE1_STAGING
+containers: doralex-enterprise-staging-{db,odoo} healthy
+ports: 127.0.0.1:8269 / 8272
+db: doralex_ent_staging
+installed modules: 106 (same as Prod Community)
+justech_alexander_reports: 19.0.3.8.5
+qweb justech_alexander_*: 58
+web.base.url: https://enterprise.doralexgroup.cloud
+filestore dir: /var/lib/odoo/filestore/doralex_ent_staging
+enterprise mount: /opt/doralex/enterprise-staging/enterprise-addons (NOT /opt/doralex/enterprise)
+ISOLATION: PASS
+PROD=200 DEV=200 after clone
+odoo version staging = 19.0-20260817 (Community, same as Prod)
+justgroup = 19.0+e-20260324 (untouched)
+
+WAVE2
+fetch_odoo_enterprise.sh = MISSING credential for github.com/odoo/enterprise
+WEB_ENTERPRISE = NO
+CUTOVER_ALLOWED = NO

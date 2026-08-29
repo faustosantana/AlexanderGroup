@@ -106,11 +106,11 @@ log "Módulos instalados en el clon: ${mod_count}"
 [ "${mod_count:-0}" -ge 50 ] || die "Restore incompleto (ir_module_module=${mod_count})."
 
 log "Restaurando filestore (rename doralex_prod → doralex_ent_staging)..."
-docker run --rm \
+docker run --rm --user 0 \
   -v doralex_ent_staging_odoo_data:/var/lib/odoo \
   -v "${BACKUP_DIR}:/backup:ro" \
   "${ODOO_IMAGE:-odoo:19}" \
-  sh -c 'rm -rf /var/lib/odoo/filestore && mkdir -p /var/lib/odoo && tar xzf /backup/filestore.tar.gz -C /var/lib/odoo && if [ -d /var/lib/odoo/filestore/doralex_prod ]; then mv /var/lib/odoo/filestore/doralex_prod /var/lib/odoo/filestore/doralex_ent_staging; fi; chown -R 101:101 /var/lib/odoo || true'
+  sh -c 'mkdir -p /var/lib/odoo && tar xzf /backup/filestore.tar.gz -C /var/lib/odoo && if [ -d /var/lib/odoo/filestore/doralex_prod ]; then rm -rf /var/lib/odoo/filestore/doralex_ent_staging; mv /var/lib/odoo/filestore/doralex_prod /var/lib/odoo/filestore/doralex_ent_staging; fi; chown -R 101:101 /var/lib/odoo/filestore || true'
 
 log "Neutralizando correo/cron (SQL nativo; no enviar mail de Prod)..."
 docker exec -i doralex-enterprise-staging-db \
@@ -134,6 +134,12 @@ log "Esperando /web/health en 127.0.0.1:8269..."
 for _ in $(seq 1 40); do
   if curl -fsS "http://127.0.0.1:8269/web/health" >/dev/null 2>&1; then
     log "Staging HTTP healthy."
+    break
+  fi
+  sleep 3
+done
+for _ in $(seq 1 20); do
+  if docker inspect --format '{{.State.Health.Status}}' doralex-enterprise-staging-odoo 2>/dev/null | grep -qx healthy; then
     break
   fi
   sleep 3
