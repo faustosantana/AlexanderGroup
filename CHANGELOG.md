@@ -6,6 +6,10 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 ## Unreleased
 
 ### Added
+- Staging Doralex: canal temporal `doralex-core-transfer` cerrado e instalación
+  del stack custom Justech (fiscal, NCF, e-CF, tesorería, márgenes, aprobaciones,
+  auditoría, garantías, guards, nómina RD). Overlay `justech_alexander_*` y QWeb
+  58 intactos. Cutover y Prod siguen bloqueados.
 - Auditoría del export Justgroup en Doralex (extracto aislado, QWeb 58,
   custom-addons comparado, core 19.0.20260324 pendiente). Usuario SSH
   temporal de transferencia cerrado. Cutover sigue bloqueado.

@@ -99,6 +99,26 @@ def test_status_doc_blocks_cutover() -> None:
     assert "EXPORT_FINAL_HASH_MATCH = YES" in status
     assert "WAIT_EXACT_CORE_PACKAGE" in status
     assert "odoo_19.0.20260324_all.deb" in status
-    assert "CLOSE_TRANSFER_CHANNEL = NO" in status
+    assert "CLOSE_TRANSFER_CHANNEL = YES" in status
+    assert "TRANSFER_CHANNEL_CLOSED = YES" in status
     assert "WEB_ENTERPRISE_INSTALLED = YES" in status
+    assert "CUSTOM_COMMON_MISSING = 0" in status
+    assert "FISCAL_ENGINE_INSTALLED = YES" in status
     assert "CUTOVER_ALLOWED = NO" in status
+
+
+def test_wave4_custom_stack_evidence_blocks_cutover() -> None:
+    ev = (
+        REPO / "docs/enterprise_conversion/evidence/"
+        "wave4_justech_custom_stack_20260829.txt"
+    ).read_text(encoding="utf-8")
+    assert "TRANSFER_CHANNEL_CLOSED = YES" in ev
+    assert "CUSTOM_COMMON_MISSING = 0" in ev
+    assert "CUSTOM_COMMON_VERSION_MISMATCH = 0" in ev
+    assert "FISCAL_ENGINE_INSTALLED = YES" in ev
+    assert "QWEB_AFTER = 58" in ev
+    assert "QWEB_HASH_MISMATCH_UNEXPECTED = 0" in ev
+    assert "SECRETS_FOUND = none" in ev
+    assert "DORALEX_PROD_TOUCHED = NO" in ev
+    assert "CUTOVER_ALLOWED = NO" in ev
+    assert "JUSTGROUP_DATA_COPIED = NO" in ev

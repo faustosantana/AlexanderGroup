@@ -42,7 +42,10 @@ COPY odoo /usr/bin/odoo
 COPY enterprise /usr/lib/odoo/enterprise
 COPY justgroup-custom /usr/lib/odoo/custom-addons
 RUN chmod 755 /usr/bin/odoo \
+ && python3 -m pip install --break-system-packages --no-cache-dir \
+      pyqrcode xmltodict simplejson pycountry "signxml==3.2.2" \
  && python3 -c "import odoo.release; assert odoo.release.version=='19.0-20260324', odoo.release.version" \
+ && python3 -c "import pyqrcode, xmltodict, simplejson, pycountry, signxml" \
  && test -f /usr/lib/odoo/enterprise/web_enterprise/__manifest__.py \
  && ! ls -d /usr/lib/odoo/custom-addons/justech_alexander_* >/dev/null 2>&1
 USER odoo

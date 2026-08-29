@@ -47,6 +47,9 @@ def test_build_image_not_mutable_odoo19() -> None:
         or "No usaré odoo:19 latest" in build
     )
     assert "justech_alexander_reports" in build
+    assert "pyqrcode" in build
+    assert "signxml==3.2.2" in build
+    assert "docker tag" not in build or "odoo:19" not in build.split("docker tag")[-1]
 
 
 def test_apply_only_web_enterprise_on_staging() -> None:
