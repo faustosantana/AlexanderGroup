@@ -277,7 +277,6 @@
 }
 .dx-keep-end {
   page-break-inside: avoid;
-  page-break-after: avoid;
 }
 .dx-sign-spacer,
 .dx-sign-spacer img {
@@ -295,7 +294,6 @@
   margin-top: 4px;
   margin-bottom: 0;
   page-break-inside: avoid;
-  page-break-before: avoid;
 }
 .dx-sign-table td {
   width: 50%;
