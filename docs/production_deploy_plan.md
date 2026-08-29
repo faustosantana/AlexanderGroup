@@ -29,6 +29,9 @@ Fecha: 2026-08-29. Autorización humana explícita para deploy controlado.
 | PROD_DELIVERY_LAYOUT | PASS |
 | PROD_MULTIPAGE | PASS |
 | FISCAL_POSTING_GUARD | PASS |
+| PROD_360_BACKUP | PASS (`production_20260829_112927`) |
+| PROD_360_AUDIT | PASS (stack instalado; ver `docs/production_360_qa/`) |
+| FISCAL_REAL_GO_LIVE_READY | NO |
 
 ## Backup
 

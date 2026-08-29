@@ -1,0 +1,68 @@
+[
+  {
+    "company": "BLU",
+    "period": "202608",
+    "vendor_rnc": "201990006",
+    "vendor_ncf": "B0199200501",
+    "date": "2026-08-29",
+    "untaxed": 160.0,
+    "tax": 28.8,
+    "total": 188.8,
+    "NO_ENVIAR_DGII": true
+  },
+  {
+    "company": "REM",
+    "period": "202608",
+    "vendor_rnc": "201990005",
+    "vendor_ncf": "B0199200401",
+    "date": "2026-08-29",
+    "untaxed": 160.0,
+    "tax": 28.8,
+    "total": 188.8,
+    "NO_ENVIAR_DGII": true
+  },
+  {
+    "company": "MAY",
+    "period": "202608",
+    "vendor_rnc": "201990004",
+    "vendor_ncf": "B0199200301",
+    "date": "2026-08-29",
+    "untaxed": 160.0,
+    "tax": 28.8,
+    "total": 188.8,
+    "NO_ENVIAR_DGII": true
+  },
+  {
+    "company": "DOM",
+    "period": "202608",
+    "vendor_rnc": "201990003",
+    "vendor_ncf": "B0199200201",
+    "date": "2026-08-29",
+    "untaxed": 160.0,
+    "tax": 28.8,
+    "total": 188.8,
+    "NO_ENVIAR_DGII": true
+  },
+  {
+    "company": "PIN",
+    "period": "202608",
+    "vendor_rnc": "201990002",
+    "vendor_ncf": "B0199200101",
+    "date": "2026-08-29",
+    "untaxed": 160.0,
+    "tax": 28.8,
+    "total": 188.8,
+    "NO_ENVIAR_DGII": true
+  },
+  {
+    "company": "DOR",
+    "period": "202608",
+    "vendor_rnc": "201990001",
+    "vendor_ncf": "B0199200001",
+    "date": "2026-08-29",
+    "untaxed": 160.0,
+    "tax": 28.8,
+    "total": 188.8,
+    "NO_ENVIAR_DGII": true
+  }
+]
