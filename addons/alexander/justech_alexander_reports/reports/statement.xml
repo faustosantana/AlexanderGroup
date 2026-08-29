@@ -5,8 +5,8 @@
             <t t-foreach="docs" t-as="partner">
                 <t t-set="bundles" t-value="partner._dx_statement_bundles(company)"/>
                 <t t-foreach="bundles" t-as="bundle">
-                    <t t-set="o" t-value="bundle['anchor']"/>
                     <t t-set="company" t-value="bundle['company']"/>
+                    <t t-set="o" t-value="False"/>
                     <t t-set="dx_header_identity" t-value="{'title': 'ESTADO DE CUENTA', 'number': bundle['cutoff'], 'badge': ''}"/>
                     <t t-call="web.external_layout">
                         <div class="page dx-page">

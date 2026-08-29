@@ -28,22 +28,22 @@
                     </div>
                     <div class="dx-h-dor-meta">
                         <div class="dx-h-dor-pair">
-                            <div class="dx-h-dor-col">
+                            <div class="dx-h-dor-col" t-if="dx_header_meta.get('date') and dx_header_meta.get('date') != '—'">
                                 <div class="dx-meta-k">Fecha</div>
-                                <div class="dx-meta-v" t-out="dx_header_meta.get('date') or '—'"/>
+                                <div class="dx-meta-v" t-out="dx_header_meta.get('date')"/>
                             </div>
-                            <div class="dx-h-dor-col">
+                            <div class="dx-h-dor-col" t-if="dx_header_meta.get('validity') and dx_header_meta.get('validity') != '—'">
                                 <div class="dx-meta-k" t-out="dx_header_meta.get('date2_label') or 'Validez'"/>
-                                <div class="dx-meta-v" t-out="dx_header_meta.get('validity') or '—'"/>
+                                <div class="dx-meta-v" t-out="dx_header_meta.get('validity')"/>
                             </div>
                         </div>
-                        <div class="dx-h-dor-vendor">
+                        <div class="dx-h-dor-vendor" t-if="dx_header_meta.get('salesperson') and dx_header_meta.get('salesperson') != '—'">
                             <div class="dx-meta-k">Vendedor</div>
-                            <div class="dx-meta-v" t-out="dx_header_meta.get('salesperson') or '—'"/>
+                            <div class="dx-meta-v" t-out="dx_header_meta.get('salesperson')"/>
                         </div>
-                        <div class="dx-h-dor-currency">
+                        <div class="dx-h-dor-currency" t-if="dx_header_meta.get('currency')">
                             <div class="dx-meta-k">Moneda</div>
-                            <div class="dx-meta-v" t-out="dx_header_meta.get('currency') or '—'"/>
+                            <div class="dx-meta-v" t-out="dx_header_meta.get('currency')"/>
                         </div>
                     </div>
                 </td>

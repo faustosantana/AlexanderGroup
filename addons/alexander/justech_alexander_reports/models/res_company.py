@@ -170,6 +170,16 @@ class ResCompany(models.Model):
             meta["date"] = _fmt(record.scheduled_date or record.date_done)
             meta["date2_label"] = "Origen"
             meta["validity"] = record.origin or "—"
+        elif record._name == "account.payment":
+            meta["date"] = _fmt(record.date)
+            meta["validity"] = ""
+            meta["salesperson"] = ""
+            meta["date2_label"] = ""
+        elif record._name == "res.partner":
+            meta["date"] = ""
+            meta["validity"] = ""
+            meta["salesperson"] = ""
+            meta["date2_label"] = ""
         return meta
 
     def _dx_header_identity_for(self, record):

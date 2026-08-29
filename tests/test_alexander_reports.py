@@ -177,6 +177,8 @@ def test_paperformat_is_compact():
     assert ">16</field>" in xml
     assert ">42</field>" not in xml
     assert "paperformat_doralex_a5" in xml
+    assert ">44</field>" in xml
+    assert ">40</field>" in xml
     assert "action_report_payment_receipt" in xml
 
 
