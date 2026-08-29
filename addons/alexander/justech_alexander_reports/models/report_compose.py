@@ -1,6 +1,8 @@
 from odoo import models
 from odoo.tools.misc import format_amount, format_date
 
+from .report_layout import _DX_SPACER_GIF, count_body_lines, spacer_mm
+
 
 def _dx_qty(qty):
     try:
@@ -78,6 +80,15 @@ def _dx_line_uom(line):
 
 def _dx_money(env, amount, currency):
     return format_amount(env, amount or 0.0, currency)
+
+
+def _dx_sign_space(lines, paper="A4", extra_mm=0):
+    mm = spacer_mm(count_body_lines(lines), paper, extra_mm)
+    return {
+        "spacer_mm": mm,
+        "spacer_src": _DX_SPACER_GIF,
+        "spacer_style": "display:block;width:1px;height:%smm;border:0;" % mm,
+    }
 
 
 def _dx_date(env, value):
@@ -206,6 +217,7 @@ class SaleOrderCompose(models.Model):
             "show_signature": bool(company.dx_report_show_signature),
             "sign_left": "Elaborado por",
             "sign_right": ("Aceptado por el cliente" if quote else "Aprobado por"),
+            **_dx_sign_space(lines),
         }
 
 
@@ -358,6 +370,7 @@ class AccountMoveCompose(models.Model):
             "sign_left": sign_left,
             "sign_right": sign_right,
             "is_refund": refund,
+            **_dx_sign_space(lines, extra_mm=18 if refund else 0),
         }
 
 
@@ -470,6 +483,7 @@ class AccountPaymentCompose(models.Model):
             "show_signature": bool(company.dx_report_show_signature),
             "sign_left": "Recibido por",
             "sign_right": "Entregado por",
+            **_dx_sign_space(applied, paper="A5", extra_mm=10),
         }
 
 
@@ -565,6 +579,7 @@ class PurchaseOrderCompose(models.Model):
             "show_signature": bool(company.dx_report_show_signature),
             "sign_left": "Solicitado por",
             "sign_right": "Aprobado por",
+            **_dx_sign_space(lines),
         }
 
 
@@ -633,4 +648,5 @@ class StockPickingCompose(models.Model):
             "sign_left": sign_left,
             "sign_right": sign_right,
             "incoming": incoming,
+            **_dx_sign_space(lines),
         }

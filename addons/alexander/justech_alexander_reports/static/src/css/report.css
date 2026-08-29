@@ -257,11 +257,10 @@
   border-top: 2px solid #1a1a1a;
 }
 
-/* ---- Page stack: content top, signatures last-page bottom (tables only) ---- */
+/* ---- Page stack: content top, computed spacer, signatures (no absolute) ---- */
 .dx-page-stack {
   width: 100%;
   border-collapse: collapse;
-  min-height: 200mm;
 }
 .dx-page-stack > tbody > tr > td,
 .dx-page-stack > tr > td {
@@ -269,11 +268,10 @@
 }
 .dx-stack-main {
   vertical-align: top;
-  min-height: 168mm;
 }
 .dx-stack-sign {
   vertical-align: bottom;
-  padding-top: 6px;
+  padding-top: 4px;
   page-break-inside: avoid;
   page-break-before: avoid;
 }
@@ -281,11 +279,11 @@
   page-break-inside: avoid;
   page-break-after: avoid;
 }
-.dx-doc-payment .dx-page-stack {
-  min-height: 128mm;
-}
-.dx-doc-payment .dx-stack-main {
-  min-height: 100mm;
+.dx-sign-spacer {
+  width: 1px;
+  overflow: hidden;
+  line-height: 0;
+  font-size: 0;
 }
 
 /* ---- Signatures ---- */

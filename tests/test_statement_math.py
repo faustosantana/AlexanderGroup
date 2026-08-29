@@ -14,6 +14,7 @@ MATH = (
 if str(MATH) not in sys.path:
     sys.path.insert(0, str(MATH))
 
+from report_layout import spacer_mm  # noqa: E402
 from statement_math import (  # noqa: E402
     aging_bucket,
     assert_balance_invariants,
@@ -74,6 +75,23 @@ def test_historical_residual_ignores_later_application():
     applied_until_cutoff = 200.0
     assert residual_after_partials(original, applied_until_cutoff) == 800.0
     assert residual_after_partials(-500.0, 200.0) == -300.0
+
+
+def test_signature_spacer_grows_on_short_docs_and_collapses_on_long():
+    one = spacer_mm(1)
+    three = spacer_mm(3)
+    eight = spacer_mm(8)
+    fifteen = spacer_mm(15)
+    thirty = spacer_mm(30)
+    assert one >= 80
+    assert three > eight
+    assert eight > 0
+    assert fifteen == 0
+    assert thirty == 0
+    a5_one = spacer_mm(1, paper="A5", extra_mm=10)
+    a5_many = spacer_mm(20, paper="A5", extra_mm=10)
+    assert a5_one >= 20
+    assert a5_many == 0
 
 
 def test_invariants_fail_on_mismatch():

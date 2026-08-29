@@ -27,7 +27,7 @@ def test_six_company_themes_in_css():
     assert "#18B4F0" in css
     assert "dx-composition" in css
     assert "dx-page-stack" in css
-    assert "min-height: 200mm" in css
+    assert "dx-sign-spacer" in css
     assert "white-space: nowrap" in css
     assert "position:absolute" not in css
     assert "position: absolute" not in css
@@ -56,6 +56,7 @@ def test_layout_uses_document_company():
     assert "dx_purchase_composition" in extras
     assert "dx_picking_composition" in extras
     assert "dx-page-stack" in extras
+    assert "dx-sign-spacer" in extras
     assert "dx-amount-hero" in extras
     assert "Importe acreditado" in extras
     assert "<br" not in extras or extras.count("<br") == 0

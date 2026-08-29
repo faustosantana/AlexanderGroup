@@ -142,18 +142,25 @@
     </template>
 
     <template id="dx_signature_panel">
-        <table t-if="dx.get('show_signature')" class="dx-sign-table">
-            <tr>
-                <td>
-                    <div class="dx-sign-space"/>
-                    <div class="dx-sign-line" t-out="dx.get('sign_left') or 'Elaborado por'"/>
-                </td>
-                <td>
-                    <div class="dx-sign-space"/>
-                    <div class="dx-sign-line" t-out="dx.get('sign_right') or 'Aceptado'"/>
-                </td>
-            </tr>
-        </table>
+        <t t-if="dx.get('show_signature')">
+            <div t-if="dx.get('spacer_mm')" class="dx-sign-spacer">
+                <img t-att-src="dx.get('spacer_src')"
+                     t-att-style="dx.get('spacer_style')"
+                     alt=""/>
+            </div>
+            <table class="dx-sign-table">
+                <tr>
+                    <td>
+                        <div class="dx-sign-space"/>
+                        <div class="dx-sign-line" t-out="dx.get('sign_left') or 'Elaborado por'"/>
+                    </td>
+                    <td>
+                        <div class="dx-sign-space"/>
+                        <div class="dx-sign-line" t-out="dx.get('sign_right') or 'Aceptado'"/>
+                    </td>
+                </tr>
+            </table>
+        </t>
     </template>
 
     <template id="dx_sale_composition">
