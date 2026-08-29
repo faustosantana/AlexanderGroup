@@ -38,26 +38,38 @@
         <t t-set="dx_city" t-value="company._dx_city_display()"/>
         <div t-attf-class="header o_company_#{company.id}_layout dx-report-header dx-theme-#{dx_theme['code']} dx-layout-#{dx_theme.get('layout') or 'dor'}">
             <script>
-                (function () {
-                    var query = {};
+                function dxApplyContinueHeader() {
+                    var page = 1;
                     var search = document.location.search || "";
                     if (search.charAt(0) === "?") { search = search.substring(1); }
                     var parts = search.split(String.fromCharCode(38));
                     var i;
                     for (i = 0; i &lt; parts.length; i++) {
                         var bits = parts[i].split("=");
-                        if (bits[0]) {
-                            query[decodeURIComponent(bits[0])] = decodeURIComponent(bits[1] || "");
+                        if (bits[0] === "page" &amp;&amp; bits[1]) {
+                            page = parseInt(decodeURIComponent(bits[1]), 10) || page;
                         }
                     }
-                    var page = parseInt(query.page || "1", 10);
+                    var marks = document.getElementsByClassName("page");
+                    for (i = 0; i &lt; marks.length; i++) {
+                        var txt = (marks[i].textContent || "").replace(/^\s+|\s+$/g, "");
+                        if (/^[0-9]+$/.test(txt)) {
+                            page = parseInt(txt, 10) || page;
+                        }
+                    }
                     if (page &gt; 1) {
                         var full = document.querySelector(".dx-h-full");
                         var cont = document.querySelector(".dx-h-continue");
                         if (full) { full.style.display = "none"; }
                         if (cont) { cont.style.display = "block"; }
                     }
-                })();
+                }
+                dxApplyContinueHeader();
+                if (document.addEventListener) {
+                    document.addEventListener("DOMContentLoaded", dxApplyContinueHeader);
+                }
+                setTimeout(dxApplyContinueHeader, 50);
+                setTimeout(dxApplyContinueHeader, 250);
             </script>
             <div class="dx-h-continue" style="display:none;">
                 <span t-out="company.dx_trade_name or dx_legal"/>

@@ -141,6 +141,12 @@ class ResPartner(models.Model):
                 credits += cred
                 if bucket != "credit":
                     aging[bucket] += aged
+                if running < -0.005:
+                    balance_txt = "%s a favor" % self._dx_fmt_money(
+                        abs(running), currency
+                    )
+                else:
+                    balance_txt = self._dx_fmt_money(running, currency)
                 rows.append(
                     {
                         "date": date.strftime("%d/%m/%Y") if date else "—",
@@ -152,7 +158,7 @@ class ResPartner(models.Model):
                         "credit": (
                             self._dx_fmt_money(credit, currency) if credit else ""
                         ),
-                        "balance": self._dx_fmt_money(running, currency),
+                        "balance": balance_txt,
                     }
                 )
             receivable = overdue + current

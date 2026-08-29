@@ -712,8 +712,6 @@
             <div class="dx-pick-top">
                 <div t-attf-class="dx-pick-party dx-inv-party-{{ dx.get('layout') or 'dor' }}">
                     <t t-call="justech_alexander_reports.dx_customer_card"/>
-                    <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
-                    <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
                 </div>
                 <div class="dx-pick-meta">
                     <div class="dx-inv-meta-col">

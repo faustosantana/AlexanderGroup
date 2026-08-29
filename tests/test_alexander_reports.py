@@ -221,9 +221,53 @@ def test_layout_forces_document_company_and_continue_header():
     assert "o.company_id.sudo()" in layout
     assert "dx-h-continue" in layout
     assert "dx-h-full" in layout
-    assert "query.page" in layout
-    css = (REPORTS / "static" / "src" / "css" / "report.css").read_text(encoding="utf-8")
+    assert "dxApplyContinueHeader" in layout
+    assert 'bits[0] === "page"' in layout
+    css = (REPORTS / "static" / "src" / "css" / "report.css").read_text(
+        encoding="utf-8"
+    )
     assert ".dx-h-continue" in css
+
+
+def test_picking_uses_external_layout_and_unique_address():
+    inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
+    assert "picking_use_external_layout" in inherits
+    assert "web.external_layout" in inherits
+    comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    pick = comps.split('id="dx_picking_composition"')[1].split("</template>")[0]
+    assert pick.count("dx['partner']['street']") == 0
+    paper = (REPORTS / "reports" / "paperformat.xml").read_text(encoding="utf-8")
+    assert "stock.action_report_picking" in paper
+    assert "stock.action_report_delivery" in paper
+
+
+def test_statement_credit_balance_not_negative_total():
+    py = (REPORTS / "models" / "res_partner.py").read_text(encoding="utf-8")
+    assert "a favor" in py
+    assert "Saldo a favor" in py
+    assert "abs(running)" in py
+
+
+def test_mail_from_skips_aliases_and_uses_company():
+    mail = (
+        REPO
+        / "addons"
+        / "alexander"
+        / "justech_alexander_microsoft_mail"
+        / "models"
+        / "mail_mail.py"
+    ).read_text(encoding="utf-8")
+    assert "_dx_related_company" in mail
+    assert "company._dx_outgoing_address()" in mail
+    compose = (
+        REPO
+        / "addons"
+        / "alexander"
+        / "justech_alexander_microsoft_mail"
+        / "models"
+        / "mail_compose_message.py"
+    ).read_text(encoding="utf-8")
+    assert "_dx_outgoing_address" in compose
 
 
 def test_mail_from_is_administracion_not_alias():

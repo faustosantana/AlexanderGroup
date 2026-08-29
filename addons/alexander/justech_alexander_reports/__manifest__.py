@@ -1,6 +1,6 @@
 {
     "name": "Doralex Report Layout",
-    "version": "19.0.3.8.0",
+    "version": "19.0.3.8.1",
     "category": "Reporting",
     "summary": "V5.3: pulido de cotización y suite documental por identidad",
     "description": "Microajustes V5.3 sobre base V5.2. Misma identidad en factura, NC, OC, recibo, estado y picking. No cambia fiscalidad.",

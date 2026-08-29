@@ -72,6 +72,12 @@
         </xpath>
     </template>
 
+    <template id="picking_use_external_layout" inherit_id="stock.report_picking">
+        <xpath expr="//t[@t-call='web.report_layout']" position="attributes">
+            <attribute name="t-call">web.external_layout</attribute>
+        </xpath>
+    </template>
+
     <template id="picking_document_dx" inherit_id="stock.report_picking">
         <xpath expr="//div[hasclass('page')]" position="attributes">
             <attribute name="class">page dx-page dx-v2</attribute>
