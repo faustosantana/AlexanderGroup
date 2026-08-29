@@ -708,6 +708,14 @@
 
     <template id="dx_picking_composition">
         <div t-attf-class="dx-composition dx-comp-picking dx-comp-{{ dx.get('layout') or 'dor' }} dx-page-stack">
+            <div t-if="dx.get('embed_masthead')" class="dx-pick-ident">
+                <div class="dx-pick-ident-name" t-out="dx.get('company_name')"/>
+                <div t-if="dx.get('company_vat')">RNC <t t-out="dx['company_vat']"/></div>
+                <div>
+                    <t t-if="dx.get('company_mail')" t-out="dx['company_mail']"/>
+                    <t t-if="dx.get('company_phone')"> · <t t-out="dx['company_phone']"/></t>
+                </div>
+            </div>
             <t t-call="justech_alexander_reports.dx_pin_doc_title"/>
             <div class="dx-pick-top">
                 <div t-attf-class="dx-pick-party dx-inv-party-{{ dx.get('layout') or 'dor' }}">

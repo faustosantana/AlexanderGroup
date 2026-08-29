@@ -611,6 +611,8 @@ div.footer td {
 .dx-pay-meta-col { display: inline-block; width: 48%; vertical-align: top; margin: 0 0 8px; }
 .dx-amount-hero-wrap { margin: 2px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #ddd; }
 .dx-pick-top { overflow: hidden; margin: 0 0 14px; }
+.dx-pick-ident { margin: 0 0 12px; padding: 0 0 8px; border-bottom: 2px solid #1a1a1a; }
+.dx-pick-ident-name { font-size: 12pt; font-weight: 700; letter-spacing: 0.02em; }
 .dx-pick-party { display: inline-block; width: 56%; vertical-align: top; }
 .dx-pick-meta { display: inline-block; width: 40%; vertical-align: top; }
 .dx-warranty { margin: 8px 0; }

@@ -231,14 +231,16 @@ def test_layout_forces_document_company_and_continue_header():
 
 def test_picking_uses_external_layout_and_unique_address():
     inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
-    assert "picking_use_external_layout" in inherits
-    assert "web.external_layout" in inherits
+    assert "stock.report_picking" in inherits
     comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
     pick = comps.split('id="dx_picking_composition"')[1].split("</template>")[0]
+    assert "embed_masthead" in pick
     assert pick.count("dx['partner']['street']") == 0
     paper = (REPORTS / "reports" / "paperformat.xml").read_text(encoding="utf-8")
     assert "stock.action_report_picking" in paper
     assert "stock.action_report_delivery" in paper
+    py = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
+    assert '"embed_masthead": incoming' in py
 
 
 def test_statement_credit_balance_not_negative_total():

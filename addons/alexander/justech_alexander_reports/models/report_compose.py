@@ -681,6 +681,11 @@ class StockPickingCompose(models.Model):
         return {
             "ident": self._dx_doc_identity(),
             "layout": _dx_layout(company),
+            "embed_masthead": incoming,
+            "company_name": company._dx_legal_display(),
+            "company_vat": company.vat or "",
+            "company_mail": company.email or "",
+            "company_phone": company.phone or "",
             "partner": _dx_partner_lines(partner) if partner else {"name": "—"},
             "party_title": party_title,
             "date": _dx_date(self.env, self.scheduled_date or self.date_done),
