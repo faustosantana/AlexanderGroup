@@ -84,10 +84,14 @@ def _dx_money(env, amount, currency):
 
 def _dx_sign_space(lines, paper="A4", extra_mm=0):
     mm = spacer_mm(count_body_lines(lines), paper, extra_mm)
+    px = max(0, int(round(mm * 96.0 / 25.4)))
     return {
         "spacer_mm": mm,
+        "spacer_px": px,
         "spacer_src": _DX_SPACER_GIF,
-        "spacer_style": "display:block;width:1px;height:%smm;border:0;" % mm,
+        "spacer_style": "display:block;width:1px;height:%spx;border:0;" % px,
+        "spacer_td_style": "height:%spx;font-size:1px;line-height:1px;padding:0;margin:0;"
+        % px,
     }
 
 
