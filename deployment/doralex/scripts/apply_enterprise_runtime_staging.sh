@@ -51,9 +51,17 @@ print("ENTERPRISE_DISCOVERED_COUNT =", sum(1 for p in Path("/usr/lib/odoo/enterp
 print("CUSTOM_DISCOVERED_COUNT =", sum(1 for p in Path("/usr/lib/odoo/custom-addons").rglob("__manifest__.py")))
 PY
 
-log "Instalando SOLO web_enterprise..."
+# -i web_enterprise con TODO el árbol Enterprise instala el grafo auto-install
+# (account_accountant, spreadsheet_*, …). Usar ruta slim con SOLO web_enterprise.
+SLIM="$(env_dir enterprise-staging)/enterprise-slim"
+mkdir -p "$SLIM"
+rm -rf "${SLIM}/web_enterprise"
+cp -al "${ROOT}/enterprise/web_enterprise" "${SLIM}/web_enterprise"
+[ -f "${SLIM}/web_enterprise/__manifest__.py" ] || die "Falta slim web_enterprise"
+
+log "Instalando SOLO web_enterprise (addons slim)..."
 docker exec -u 100:101 doralex-enterprise-staging-odoo bash -c \
-  'python3 /usr/bin/odoo -d '"${POSTGRES_DB}"' --db_host="$HOST" --db_user="$USER" --db_password="$PASSWORD" --addons-path=/mnt/custom-addons,/usr/lib/odoo/enterprise,/usr/lib/odoo/custom-addons -i web_enterprise --stop-after-init --without-demo=all --no-http'
+  'python3 /usr/bin/odoo --database='"${POSTGRES_DB}"' --db_host="$HOST" --db_user="$USER" --db_password="$PASSWORD" --addons-path=/mnt/custom-addons,/mnt/enterprise-slim -i web_enterprise --stop-after-init --no-http'
 
 dc enterprise-staging up -d
 sleep 12

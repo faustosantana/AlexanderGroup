@@ -1,68 +1,55 @@
 #!/usr/bin/env bash
-# Construye doralex-odoo-enterprise:19.0.20260324 a partir del export + core Justgroup.
+# Construye doralex-odoo-enterprise:19.0.20260324 desde el core extraído + Enterprise.
 # No incluye DB, filestore, secretos ni código de suscripción.
+# No etiqueta como odoo:19. No usa odoo:19 latest como core final (solo OS/entrypoint).
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=/dev/null
 source "${SCRIPT_DIR}/lib.sh"
 
-ROOT="${DORALEX_BASE}/runtime-source/19.0-e-20260324"
+CORE_ROOT="${DORALEX_BASE}/core-source/19.0.20260324"
+RUNTIME_ROOT="${DORALEX_BASE}/runtime-source/19.0-e-20260324"
 IMAGE="${ENTERPRISE_RUNTIME_IMAGE:-doralex-odoo-enterprise:19.0.20260324}"
-CTX="$(mktemp -d)"
-cleanup() { rm -rf "$CTX"; }
-trap cleanup EXIT
+CTX="${DORALEX_BASE}/image-build/19.0.20260324"
 
-[ -d "${ROOT}/enterprise/web_enterprise" ] || \
-  die "Falta enterprise/web_enterprise en ${ROOT}. Extraiga el export primero."
+[ -f "${CORE_ROOT}/core/usr_lib_python_odoo/release.py" ] || \
+  die "Falta el árbol core en ${CORE_ROOT}. Extraiga doralex_core_export primero."
+[ -d "${RUNTIME_ROOT}/enterprise/web_enterprise" ] || \
+  die "Falta enterprise/web_enterprise en ${RUNTIME_ROOT}."
+grep -q "20260324" "${CORE_ROOT}/core/usr_lib_python_odoo/release.py" || \
+  die "CORE 19.0.20260324 no está en el extracto. No usaré odoo:19 latest ni otra nightly."
 
-# Core: 1) .deb en metadata  2) rsync Justgroup  3) STOP (no nightly distinta, no odoo:19 latest).
-CORE_DEB="$(find "${ROOT}/core-metadata" -name 'odoo_19.0.20260324*.deb' 2>/dev/null | head -1 || true)"
-if [ -z "$CORE_DEB" ] && ssh -o BatchMode=yes -o ConnectTimeout=10 justgroup-vps 'true' 2>/dev/null; then
-  log "Buscando .deb o árbol core 19.0.20260324 en Justgroup (solo lectura)..."
-  remote_deb="$(ssh justgroup-vps 'ls /var/cache/apt/archives/odoo_19.0.20260324*.deb 2>/dev/null | head -1' || true)"
-  if [ -n "$remote_deb" ]; then
-    mkdir -p "${ROOT}/core-metadata"
-    rsync -a "justgroup-vps:${remote_deb}" "${ROOT}/core-metadata/"
-    CORE_DEB="$(find "${ROOT}/core-metadata" -name 'odoo_19.0.20260324*.deb' | head -1)"
-  fi
-fi
-
-if [ -z "$CORE_DEB" ]; then
-  die "CORE 19.0.20260324 no está en el export ni en Justgroup. No usaré odoo:19 latest ni otra nightly."
-fi
-
-log "Core .deb oficial/infra: $(basename "$CORE_DEB")"
-cp "$CORE_DEB" "${CTX}/odoo-core.deb"
-# Enterprise + custom (sin reportes Doralex).
-mkdir -p "${CTX}/enterprise" "${CTX}/justgroup-custom"
-rsync -a --exclude '.git' "${ROOT}/enterprise/" "${CTX}/enterprise/"
-rsync -a --exclude '.git' --exclude 'justech_alexander_reports/' \
-  "${ROOT}/custom-addons/" "${CTX}/justgroup-custom/"
+require_cmd docker
+mkdir -p "${CTX}/justgroup-custom"
+rm -rf "${CTX}/odoo-core" "${CTX}/enterprise" "${CTX}/odoo"
+# Hardlinks: no duplicar 1.4G+ en disco.
+cp -al "${CORE_ROOT}/core/usr_lib_python_odoo" "${CTX}/odoo-core"
+cp -al "${CORE_ROOT}/bin/odoo" "${CTX}/odoo"
+cp -al "${RUNTIME_ROOT}/enterprise" "${CTX}/enterprise"
+rsync -a --delete --exclude '.git' --exclude 'justech_alexander_reports/' \
+  --exclude 'justech_alexander_admin/' --exclude 'justech_alexander_base/' \
+  --exclude 'justech_alexander_microsoft_mail/' --exclude 'justech_alexander_website/' \
+  "${RUNTIME_ROOT}/custom-addons/" "${CTX}/justgroup-custom/"
 
 cat > "${CTX}/Dockerfile" <<'DOCKER'
-FROM ubuntu:24.04
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends \
-      python3 python3-pip python3-wheel python3-setuptools \
-      python3-venv ca-certificates curl \
-      wkhtmltopdf fonts-dejavu-core fonts-liberation \
-      libpq5 libxml2 libxslt1.1 libsasl2-2 libldap-2.4-2 || \
-    apt-get install -y --no-install-recommends \
-      python3 python3-pip ca-certificates curl wkhtmltopdf fonts-dejavu-core \
-      libpq5 libxml2 libxslt1.1 libsasl2-2 libldap2
-COPY odoo-core.deb /tmp/odoo-core.deb
-RUN apt-get update && apt-get install -y --no-install-recommends /tmp/odoo-core.deb \
-    || dpkg -i --force-downgrade /tmp/odoo-core.deb \
-    && apt-get -y -f install --no-install-recommends \
-    && rm -f /tmp/odoo-core.deb && rm -rf /var/lib/apt/lists/*
+# Bootstrap OS/user/entrypoint/wkhtmltopdf from odoo:19, then REPLACE the core.
+# Running core must be 19.0.20260324, not 19.0.20260817.
+FROM odoo:19
+USER root
+RUN rm -rf /usr/lib/python3/dist-packages/odoo
+COPY odoo-core /usr/lib/python3/dist-packages/odoo
+COPY odoo /usr/bin/odoo
 COPY enterprise /usr/lib/odoo/enterprise
 COPY justgroup-custom /usr/lib/odoo/custom-addons
-RUN python3 -c "from pathlib import Path; assert (Path('/usr/lib/odoo/enterprise')/'web_enterprise'/'__manifest__.py').is_file()"
+RUN chmod 755 /usr/bin/odoo \
+ && python3 -c "import odoo.release; assert odoo.release.version=='19.0-20260324', odoo.release.version" \
+ && test -f /usr/lib/odoo/enterprise/web_enterprise/__manifest__.py \
+ && ! ls -d /usr/lib/odoo/custom-addons/justech_alexander_* >/dev/null 2>&1
 USER odoo
 DOCKER
 
-require_cmd docker
+log "Building ${IMAGE} (core tree 19.0.20260324 + Enterprise; no Justgroup DB/filestore/conf)"
 docker build -t "$IMAGE" "$CTX"
-docker tag "$IMAGE" doralex-odoo-enterprise:19.0.20260324
+# Never retag odoo:19.
 log "DORALEX_RUNTIME_IMAGE = ${IMAGE}"
-docker run --rm --user 0 "$IMAGE" dpkg-query -W odoo
+docker run --rm --user 0 "$IMAGE" python3 -c "import odoo.release; print(odoo.release.version)"

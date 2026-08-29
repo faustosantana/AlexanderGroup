@@ -45,6 +45,8 @@ services:
       - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
       # Fuente Enterprise SOLO de este staging (no el dir compartido de Prod).
       - ${ENTERPRISE_SRC:-./enterprise-addons}:/mnt/enterprise:ro
+      # Solo web_enterprise durante -i (evita auto-install del grafo Enterprise).
+      - ./enterprise-slim:/mnt/enterprise-slim:ro
       - ${CUSTOM_ADDONS_SRC:-./custom-addons}:/mnt/custom-addons:ro
       - ./logs:/var/log/odoo
     ports:
