@@ -32,65 +32,95 @@
         <t t-set="dx_theme" t-value="company._dx_report_theme()"/>
         <t t-set="dx_record" t-value="o if o else doc"/>
         <t t-set="dx_ident" t-value="dx_header_identity or company._dx_header_identity_for(dx_record)"/>
-        <div t-attf-class="header o_company_#{company.id}_layout dx-report-header dx-theme-#{dx_theme['code']}">
-            <table class="dx-head-table">
-                <tr>
-                    <td t-attf-class="dx-head-logo #{'dx-logo-panel' if dx_theme.get('logo_on_dark') else ''}">
-                        <img t-if="company.dx_report_show_logo and company.logo"
-                             t-att-src="image_data_uri(company.logo)"
-                             t-att-style="company._dx_report_logo_style()"
-                             t-att-alt="company.dx_trade_name or company.name"/>
-                    </td>
-                    <td class="dx-head-identity">
-                        <div class="dx-trade" t-out="company.dx_trade_name or company.name"/>
-                        <div t-if="company.dx_report_show_legal_name" class="dx-legal" t-out="company.name"/>
-                        <div t-if="company.dx_report_show_rnc and company.vat" class="dx-rnc">
-                            RNC <t t-out="company._dx_vat_display()"/>
-                        </div>
-                        <div t-if="company.dx_report_show_address" class="dx-meta">
-                            <t t-if="company.street" t-out="company.street"/>
-                            <t t-if="company.city">, <t t-out="company.city"/></t>
-                        </div>
-                        <div class="dx-meta">
-                            <t t-if="company.dx_report_show_phone and company.phone" t-out="company.phone"/>
-                            <t t-if="company.dx_report_show_email and company.email">
-                                <t t-if="company.phone"> · </t>
-                                <t t-out="company.email"/>
-                            </t>
-                        </div>
-                    </td>
-                    <td class="dx-head-doc" t-if="dx_ident">
-                        <div class="dx-head-title" t-out="dx_ident.get('title')"/>
-                        <div class="dx-head-number">
-                            <span t-if="dx_ident.get('badge')" class="dx-badge" t-out="dx_ident.get('badge')"/>
-                            <span t-out="dx_ident.get('number')"/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <div class="dx-head-rule"/>
+        <t t-set="dx_header_meta" t-value="company._dx_header_meta_for(dx_record)"/>
+        <t t-set="dx_legal" t-value="company._dx_legal_display()"/>
+        <t t-set="dx_street" t-value="company._dx_street_display()"/>
+        <t t-set="dx_city" t-value="company._dx_city_display()"/>
+        <div t-attf-class="header o_company_#{company.id}_layout dx-report-header dx-theme-#{dx_theme['code']} dx-layout-#{dx_theme.get('layout') or 'dor'}">
+            <script>
+                function dxApplyContinueHeader() {
+                    var page = 1;
+                    var search = document.location.search || "";
+                    if (search.charAt(0) === "?") { search = search.substring(1); }
+                    var parts = search.split(String.fromCharCode(38));
+                    var i;
+                    for (i = 0; i &lt; parts.length; i++) {
+                        var bits = parts[i].split("=");
+                        if (bits[0] === "page" &amp;&amp; bits[1]) {
+                            page = parseInt(decodeURIComponent(bits[1]), 10) || page;
+                        }
+                    }
+                    var marks = document.getElementsByClassName("page");
+                    for (i = 0; i &lt; marks.length; i++) {
+                        var txt = (marks[i].textContent || "").replace(/^\s+|\s+$/g, "");
+                        if (/^[0-9]+$/.test(txt)) {
+                            page = parseInt(txt, 10) || page;
+                        }
+                    }
+                    if (page &gt; 1) {
+                        var full = document.querySelector(".dx-h-full");
+                        var cont = document.querySelector(".dx-h-continue");
+                        if (full) { full.style.display = "none"; }
+                        if (cont) { cont.style.display = "block"; }
+                    }
+                }
+                dxApplyContinueHeader();
+                if (document.addEventListener) {
+                    document.addEventListener("DOMContentLoaded", dxApplyContinueHeader);
+                }
+                setTimeout(dxApplyContinueHeader, 50);
+                setTimeout(dxApplyContinueHeader, 250);
+            </script>
+            <div class="dx-h-continue" style="display:none;">
+                <span t-out="company.dx_trade_name or dx_legal"/>
+                <t t-if="dx_ident"> · <t t-out="dx_ident.get('title')"/> · <t t-out="dx_ident.get('number')"/></t>
+                <t t-if="report_type == 'pdf'"> · Página <span class="page"/> / <span class="topage"/></t>
+            </div>
+            <div class="dx-h-full">
+            <t t-if="dx_theme.get('layout') == 'pin'">
+                <t t-call="justech_alexander_reports.dx_header_pinaria"/>
+            </t>
+            <t t-elif="dx_theme.get('layout') == 'dom'">
+                <t t-call="justech_alexander_reports.dx_header_dominion"/>
+            </t>
+            <t t-elif="dx_theme.get('layout') == 'may'">
+                <t t-call="justech_alexander_reports.dx_header_mayuma"/>
+            </t>
+            <t t-elif="dx_theme.get('layout') == 'rem'">
+                <t t-call="justech_alexander_reports.dx_header_rempart"/>
+            </t>
+            <t t-elif="dx_theme.get('layout') == 'blu'">
+                <t t-call="justech_alexander_reports.dx_header_blueelite"/>
+            </t>
+            <t t-else="">
+                <t t-call="justech_alexander_reports.dx_header_doralex"/>
+            </t>
+            </div>
         </div>
-
         <div t-attf-class="article o_company_#{company.id}_layout dx-report-body dx-theme-#{dx_theme['code']} #{'dx-is-refund' if o and o._name == 'account.move' and o.move_type in ('out_refund', 'in_refund') else ''} #{'dx-doc-payment' if o and o._name == 'account.payment' else ''} #{'dx-doc-purchase' if o and o._name == 'purchase.order' else ''} #{'dx-doc-stock' if o and o._name == 'stock.picking' else ''}"
              t-att-data-oe-model="o and o._name"
              t-att-data-oe-id="o and o.id">
             <t t-out="0"/>
         </div>
-
-        <div t-attf-class="footer o_company_#{company.id}_layout dx-report-footer dx-theme-#{dx_theme['code']}">
-            <div class="dx-foot-rule"/>
-            <table class="dx-foot-table">
-                <tr>
-                    <td class="dx-foot-text">
-                        <t t-out="company.dx_report_footer_text or (company.dx_trade_name or company.name)"/>
-                        <t t-if="company.email"> · <t t-out="company.email"/></t>
-                        <t t-if="company.phone"> · <t t-out="company.phone"/></t>
-                    </td>
-                    <td class="dx-foot-page">
-                        <t t-if="report_type == 'pdf'">Página <span class="page"/> / <span class="topage"/></t>
-                    </td>
-                </tr>
-            </table>
+        <div t-attf-class="footer o_company_#{company.id}_layout dx-report-footer dx-theme-#{dx_theme['code']} dx-layout-#{dx_theme.get('layout') or 'dor'}">
+            <t t-if="dx_theme.get('layout') == 'pin'">
+                <t t-call="justech_alexander_reports.dx_footer_pinaria"/>
+            </t>
+            <t t-elif="dx_theme.get('layout') == 'dom'">
+                <t t-call="justech_alexander_reports.dx_footer_dominion"/>
+            </t>
+            <t t-elif="dx_theme.get('layout') == 'may'">
+                <t t-call="justech_alexander_reports.dx_footer_mayuma"/>
+            </t>
+            <t t-elif="dx_theme.get('layout') == 'rem'">
+                <t t-call="justech_alexander_reports.dx_footer_rempart"/>
+            </t>
+            <t t-elif="dx_theme.get('layout') == 'blu'">
+                <t t-call="justech_alexander_reports.dx_footer_blueelite"/>
+            </t>
+            <t t-else="">
+                <t t-call="justech_alexander_reports.dx_footer_doralex"/>
+            </t>
         </div>
     </template>
 

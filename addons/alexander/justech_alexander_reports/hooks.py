@@ -17,3 +17,4 @@ def post_init_hook(env):
             vals["paperformat_id"] = paper.id
         if vals:
             company.write(vals)
+    env["ir.actions.report"]._dx_attach_invoice_edi_pdf()

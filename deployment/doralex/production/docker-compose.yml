@@ -53,6 +53,7 @@ services:
       PORT: 5432
       USER: ${POSTGRES_USER:?define POSTGRES_USER en .env}
       PASSWORD: ${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env}
+      DX_MS_GRAPH_DIR: /mnt/ms-graph
     volumes:
       - odoo_data:/var/lib/odoo
       # odoo.conf se RENDERIZA desde config/odoo.conf.example con scripts/render_config.sh
@@ -66,6 +67,8 @@ services:
       - ${CUSTOM_ADDONS_SRC:-./custom-addons}:/mnt/custom-addons:ro
       # Logs de Odoo (observabilidad; docker logs + archivo).
       - ./logs:/var/log/odoo
+      # Certificado app-only Microsoft (host root:101, no va a Git).
+      - /opt/doralex/secrets/microsoft:/mnt/ms-graph:ro
     ports:
       # Solo loopback: el reverse proxy (host) termina TLS y hace proxy aquí.
       - "127.0.0.1:${ODOO_HTTP_PORT:-8069}:8069"

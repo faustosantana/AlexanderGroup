@@ -5,27 +5,29 @@
             <t t-foreach="docs" t-as="partner">
                 <t t-set="bundles" t-value="partner._dx_statement_bundles(company)"/>
                 <t t-foreach="bundles" t-as="bundle">
-                    <t t-set="o" t-value="bundle['anchor']"/>
                     <t t-set="company" t-value="bundle['company']"/>
+                    <t t-set="o" t-value="False"/>
                     <t t-set="dx_header_identity" t-value="{'title': 'ESTADO DE CUENTA', 'number': bundle['cutoff'], 'badge': ''}"/>
                     <t t-call="web.external_layout">
                         <div class="page dx-page">
-                            <table class="dx-zone-party">
-                                <tr>
-                                    <td class="dx-zone-customer">
-                                        <div class="dx-card-title">Cliente</div>
-                                        <div class="dx-card-name" t-out="bundle['partner_name']"/>
-                                        <div t-if="bundle.get('partner_vat')">RNC <t t-out="bundle['partner_vat']"/></div>
-                                    </td>
-                                    <td class="dx-zone-meta">
-                                        <table class="dx-meta-table">
-                                            <tr><th>Fecha de corte</th><td t-out="bundle['cutoff']"/></tr>
-                                            <tr><th>Moneda</th><td t-out="bundle['currency']"/></tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                            <table class="dx-kpi">
+                            <div class="dx-stmt-top">
+                                <div class="dx-stmt-party">
+                                    <div class="dx-card-title">Cliente</div>
+                                    <div class="dx-card-name" t-out="bundle['partner_name']"/>
+                                    <div t-if="bundle.get('partner_vat')">RNC <t t-out="bundle['partner_vat']"/></div>
+                                </div>
+                                <div class="dx-stmt-meta">
+                                    <div class="dx-stmt-meta-col">
+                                        <div class="dx-meta-k">Fecha de corte</div>
+                                        <div class="dx-meta-v" t-out="bundle['cutoff']"/>
+                                    </div>
+                                    <div class="dx-stmt-meta-col">
+                                        <div class="dx-meta-k">Moneda</div>
+                                        <div class="dx-meta-v" t-out="bundle['currency']"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="dx-kpi" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td t-foreach="bundle['kpis']" t-as="kpi" t-attf-class="dx-kpi-#{kpi['tone']}">
                                         <div class="dx-kpi-label" t-out="kpi['label']"/>
@@ -33,7 +35,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <table class="dx-lines dx-statement-lines">
+                            <table t-attf-class="dx-lines dx-statement-lines dx-table-{{ bundle.get('layout') or 'dor' }}" border="0" cellpadding="0" cellspacing="0" frame="void" rules="none">
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
@@ -59,7 +61,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="dx-block-title">Antigüedad de saldo</div>
+                            <div class="dx-block-title">Antigüedad de cuentas por cobrar</div>
                             <table class="dx-aging">
                                 <tr>
                                     <th>Corriente</th>
@@ -76,6 +78,11 @@
                                     <td class="dx-money" t-out="bundle['age_90p']"/>
                                 </tr>
                             </table>
+                            <p t-if="bundle.get('has_credits')" class="dx-credit-note">
+                                Créditos y anticipos no aplicados:
+                                <span class="dx-money" t-out="bundle['credits']"/>
+                                (saldo a favor del cliente; no forma parte de la antigüedad).
+                            </p>
                         </div>
                     </t>
                 </t>

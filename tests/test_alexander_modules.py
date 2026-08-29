@@ -105,9 +105,19 @@ def test_report_extras_receive_company() -> None:
     inherits = (
         ALEXANDER / "justech_alexander_reports" / "reports" / "report_inherits.xml"
     ).read_text(encoding="utf-8")
-    assert inherits.count('t-set="company"') >= 7
-    assert "doc.company_id" in inherits
-    assert "o.company_id" in inherits
+    compose = (
+        ALEXANDER / "justech_alexander_reports" / "models" / "report_compose.py"
+    ).read_text(encoding="utf-8")
+    layout = (
+        ALEXANDER / "justech_alexander_reports" / "reports" / "layout.xml"
+    ).read_text(encoding="utf-8")
+    assert "_dx_sale_compose()" in inherits
+    assert "_dx_invoice_compose()" in inherits
+    assert "_dx_purchase_compose()" in inherits
+    assert "_dx_picking_compose()" in inherits
+    assert "self.company_id" in compose
+    assert "o.company_id" in layout
+    assert "doc.company_id" in layout
 
 
 def test_no_vendor_edits_in_overlay() -> None:
@@ -115,3 +125,22 @@ def test_no_vendor_edits_in_overlay() -> None:
         text = path.read_text(encoding="utf-8")
         assert "justech_alexander_" in path.parent.name
         assert "LGPL-3" in text
+
+
+def test_ncf_guard_blocks_fiscal_post_without_real_range() -> None:
+    manifest = (ALEXANDER / "justech_alexander_base" / "__manifest__.py").read_text(
+        encoding="utf-8"
+    )
+    guard = (
+        ALEXANDER / "justech_alexander_base" / "models" / "ncf_assignment.py"
+    ).read_text(encoding="utf-8")
+    assert "justech_l10n_do_ncf" in manifest
+    assert "19.0.1.0.3" in manifest
+    assert "justech.do.ncf.assignment.service" in guard
+    assert "No crea rangos" in guard
+    assert (
+        "Debe configurar un rango NCF válido para esta compañía y tipo de "
+        "comprobante antes de contabilizar."
+    ) in guard
+    assert "99000001" not in guard
+    assert "consume_next" not in guard

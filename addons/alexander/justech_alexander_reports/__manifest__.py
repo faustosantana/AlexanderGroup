@@ -1,9 +1,9 @@
 {
     "name": "Doralex Report Layout",
-    "version": "19.0.3.0.0",
+    "version": "19.0.3.8.5",
     "category": "Reporting",
-    "summary": "Sistema visual V2 de reportes A4 por empresa",
-    "description": "Capa visual reconstruida (componentes + composición por documento) sobre el motor multiempresa por company_id. No rebinda acciones oficiales.",
+    "summary": "V5.3: pulido de cotización y suite documental por identidad",
+    "description": "Microajustes V5.3 sobre base V5.2. Misma identidad en factura, NC, OC, recibo, estado y picking. No cambia fiscalidad.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",
     "license": "LGPL-3",
@@ -21,6 +21,7 @@
     "data": [
         "security/ir.model.access.csv",
         "reports/paperformat.xml",
+        "reports/headers.xml",
         "reports/layout.xml",
         "reports/components.xml",
         "reports/brand_sync.xml",
@@ -28,6 +29,7 @@
         "reports/report_inherits.xml",
         "reports/warranty_report.xml",
         "reports/statement.xml",
+        "data/mail_templates.xml",
         "views/preview_views.xml",
         "views/menu.xml",
     ],
