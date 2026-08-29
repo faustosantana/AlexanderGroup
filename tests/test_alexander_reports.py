@@ -129,6 +129,14 @@ def test_layout_uses_document_company():
     assert "<br" not in extras or extras.count("<br") == 0
 
 
+def test_invoice_edi_template_attaches_pdf():
+    xml = (REPORTS / "data" / "mail_templates.xml").read_text(encoding="utf-8")
+    assert "account.email_template_edi_invoice" in xml
+    assert "account.account_invoices" in xml
+    manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
+    assert "data/mail_templates.xml" in manifest
+
+
 def test_official_report_names_not_rebound():
     inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
     assert "sale.report_saleorder_document" in inherits
