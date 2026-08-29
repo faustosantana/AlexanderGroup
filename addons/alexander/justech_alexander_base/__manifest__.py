@@ -1,6 +1,6 @@
 {
     "name": "Doralex Base",
-    "version": "19.0.1.0.2",
+    "version": "19.0.1.0.3",
     "category": "Administration",
     "summary": "Identidad multiempresa, nomenclatura y datos públicos de Doralex Group",
     "description": "Organización profesional de las seis compañías Doralex: códigos cortos, almacenes, secuencias, diarios y ficha pública (sin datos confidenciales en el website).",
@@ -14,6 +14,7 @@
         "sale",
         "purchase",
         "justech_l10n_do_base",
+        "justech_l10n_do_ncf",
     ],
     "data": [
         "data/bootstrap.xml",
