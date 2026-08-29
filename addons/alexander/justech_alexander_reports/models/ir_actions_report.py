@@ -84,6 +84,7 @@ class IrActionsReport(models.Model):
             report_ref, res_ids=res_ids, data=data
         )
 
+    @api.model
     def _dx_attach_invoice_edi_pdf(self):
         tmpl = self.env.ref(
             "account.email_template_edi_invoice", raise_if_not_found=False

@@ -1,11 +1,12 @@
-# Report QA — V5.3 suite documental
+# Report QA — V5.3 E2E DEV
 
-Módulo `justech_alexander_reports` **19.0.3.7.1**. Solo DEV. PROD no tocado.
+Módulo `justech_alexander_reports` **19.0.3.8.5**. Solo DEV.
 
-`VISUAL_V4 = REJECTED`. `VISUAL_V5 = SUPERSEDED`. `VISUAL_V5_1 = SUPERSEDED`.
-`VISUAL_V5_2 = APPROVED_AS_DESIGN_BASE`. `VISUAL_V5_3 = FINAL_POLISH`.
+`VISUAL_V5_2 = APPROVED_AS_DESIGN_BASE`. `VISUAL_V5_3 = PASS`.
 
-## Scorecard de este ciclo
+`PROD_UNTOUCHED = YES` — `doralex-production-odoo` StartedAt `2026-08-27T20:12:21.681221743Z` antes y después.
+
+## Scorecard
 
 | Clave | Valor |
 | --- | --- |
@@ -15,58 +16,60 @@ Módulo `justech_alexander_reports` **19.0.3.7.1**. Solo DEV. PROD no tocado.
 | CREDIT_NOTE_REPORT | PASS |
 | RFQ_REPORT | PASS |
 | PURCHASE_ORDER_REPORT | PASS |
-| PAYMENT_RECEIPT_REPORT | PASS (A5; monto visible; anticipo explícito) |
-| STATEMENT_REPORT | PASS (SALDO A FAVOR, no RD$ negativo) |
+| PAYMENT_RECEIPT_REPORT | PASS |
+| STATEMENT_REPORT | PASS |
 | DELIVERY_REPORT | PASS |
-| RECEIPT_REPORT | PASS (recepción: Esperada / Recibida) |
-| EMAIL_PDF_MATCH | 0/6 BLOCKED_BY_CONFIGURATION (0 `ir.mail_server` en DEV) |
-| MULTICOMPANY_REPORT_ISOLATION | PASS (`document.company_id`; cruz PIN→DOR sigue Doralex) |
-| MULTICOMPANY_FISCAL_ISOLATION | PASS (NCF B01/B04 por empresa, rangos QA) |
-| NCF_QA_ENGINE | PASS (NCF reales al postear; borrador = Pendiente de NCF) |
-| MULTIPAGE_RENDER | PASS (40 líneas = 3 páginas; thead; footer X/Y) |
-| SIGNATURE_LAST_PAGE | PASS (solo página 3/3) |
-| PRINT_READABILITY | PASS técnico A4 100% / A5 recibo; B/N no impreso en este ciclo |
-| REPORT_SUITE_COMPLETE | YES (suite operativa renderizada; email y USD pendientes de config) |
+| RECEIPT_REPORT | PASS |
+| EMAIL_PDF_MATCH | 6/6 |
+| MULTICOMPANY_REPORT_ISOLATION | PASS |
+| MULTICOMPANY_FISCAL_ISOLATION | PASS |
+| NCF_QA_ENGINE | PASS |
+| MULTIPAGE_RENDER | PASS |
+| SIGNATURE_LAST_PAGE | PASS |
+| PRINT_READABILITY | PASS (A4; A5 recibo; sin fuente 6px) |
+| REPORT_SUITE_COMPLETE | YES (DEV) |
 | READY_TO_DEPLOY_PRODUCTION | BLOCKED_BY_CONFIGURATION |
-| PROD_UNTOUCHED | YES (`StartedAt` 2026-08-27T20:12:21.681221743Z) |
-| USD_RATE_CONFIGURATION | BLOCKED (0 tasas `res.currency.rate` para USD) |
+| PROD_UNTOUCHED | YES |
+| USD_RATE_CONFIGURATION | BLOCKED (0 `res.currency.rate`) |
 
-## Microajustes V5.3 (cotización)
+## Matriz 6 empresas
 
-- Doralex: vendedor a ancho completo. `ALEXANDER PIÑA AQUINO` en una línea.
-- Piñaria: TOTAL rojo más compacto, mismo bloque que Subtotal/ITBIS.
-- Dominion: líneas de firma ~37% (antes 30%).
-- El Mayuma / Rempart: alineación y line-height, sin rediseño.
-- Blue Elite: TOTAL apilado (`Total` / `RD$ 642,451.00`). No `TotalRD$`.
+| Empresa | QUOT | INV_D | INV_P | NC | RFQ | PO | PAY_A | PAY_N | STMT | DEL | REC | EMAIL | NCF | MULTI | RESULT |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| DOR | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
+| PIN | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
+| DOM | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
+| MAY | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
+| REM | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
+| BLU | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
 
-## Extensión de identidad
+## NCF QA consumidos este ciclo (motor, no manual)
 
-Misma familia visual (header, tabla, totales, firmas). Composición propia:
+| Empresa | Factura cobro | NC | Origen NC | Cruce |
+| --- | --- | --- | --- | --- |
+| DOR | B0199000007 | B0499000124 | B0199000008 | — |
+| PIN | B0199001003 | B0499001122 | B0199001004 | — |
+| DOM | B0199002003 | B0499002122 | B0199002004 | — |
+| MAY | B0199003003 | B0499003122 | B0199003004 | — |
+| REM | B0199004003 | B0499004122 | B0199004004 | B0199004005 (BLU activa) |
+| BLU | B0199005003 | B0499005122 | B0199005004 | — |
 
-- Factura: NCF protagonista. Borrador = BORRADOR + Pendiente de NCF. Sin NCF inventado.
-- NC: flujo real de reversión. NCF B04 + NCF afectado + total acreditado.
-- RFQ ≠ OC (títulos distintos). Firmas Solicitado / Aprobado.
-- Recibo A5: monto + letras; aplicado vs `PAGO NO APLICADO / ANTICIPO`.
-- Estado: KPIs + movimientos + aging. Créditos visibles.
-- Entrega / recepción: composición operativa.
+Borrador: FACTURA + BORRADOR + Pendiente de NCF. Sin NCF ficticio.
 
-## Fiscal QA (rangos DEV, no PROD)
+## Email (Graph Sent Items)
 
-| Empresa | Factura B01 | NC B04 |
-| --- | --- | --- |
-| DOR | B0199000005 | B0499000123 (afecta B0199000005) |
-| PIN | B0199001001 | B0499001121 |
-| DOM | B0199002001 | B0499002121 |
-| MAY | B0199003001 | B0499003121 |
-| REM | B0199004001 | B0499004121 |
-| BLU | B0199005001 | B0499005121 |
+FROM = `administracion@dominio` en las seis. Cotización y factura con PDF. Cruce: empresa activa Blue Elite, documento Rempart → FROM `administracion@rempartgroup.com`.
 
-## Bloqueos humanos (no inventados)
+No ventas@ / facturacion@ / Gmail en documentos.
 
-1. Rangos NCF de **producción** — no cargar sin aprobación explícita.
-2. Servidor de correo saliente por empresa (`administracion@…`).
-3. Tasa USD.
-4. Términos comerciales legales de PROD (hoy solo textos QA de DEV).
-5. Website por empresa: si falta, se oculta; no se inventa.
+## COMPANY_DATA_MISSING
 
-PNG/PDF: [`docs/report_previews/v53/`](report_previews/v53/). Checklist: [`docs/pre_golive_checklist.md`](pre_golive_checklist.md).
+Las seis: **website**, **términos legales PROD**. No inventados. Website oculto. Términos actuales = texto QA DEV.
+
+## Roles
+
+Usuario operacional `inversionesdoralex@gmail.com` (id 14): no es admin. Grupos: Multi Companies + Role / User. **No puede** imprimir `sale.order`. ROLES = BLOCKED_BY_CONFIGURATION.
+
+## PNG principales
+
+Galería: [`docs/report_previews/index.html`](report_previews/index.html).
