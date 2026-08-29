@@ -6,7 +6,7 @@
 
 ```
 COMMUNITY_TO_ENTERPRISE = IN_PROGRESS (staging clonado; Wave 2 espera .deb)
-ENTERPRISE_PACKAGE_ROUTE = PRIMARY
+ENTERPRISE_PACKAGE_ROUTE = OFFICIAL_DEB
 GITHUB_BLOCKER = REMOVE
 ODOO_ENTERPRISE             = NO   (falta el .deb oficial en el drop-path)
 WEB_ENTERPRISE              = NO
@@ -51,13 +51,22 @@ Este staging es Docker (`odoo:19`). **No** se hace `dpkg` dentro del contenedor 
 
 GitHub `odoo/enterprise` es vía **secundaria**, no requisito.
 
-Si el servidor no puede descargar porque odoo.com pide login:
+Flujo real inspeccionado (no es login de GitHub):
 
-1. https://www.odoo.com/page/download
-2. **Odoo 19 → Ubuntu • Debian → Enterprise → Download**
-3. Archivo: `odoo_19.0+e.*_all.deb` (no Community, no nightly)
-4. Colocar en: `/opt/doralex/secrets/odoo_enterprise/archive/`
-5. `CONFIRM=yes bash /opt/doralex/scripts/convert_community_to_enterprise.sh`
+1. Modal Enterprise `data-platform-version="deb_19e"`
+2. JSON-RPC `POST /download/check_subscription` `{code}`
+3. Si `success`: `GET /thanks/download?code=…&platform_version=deb_19e`
+
+Automatización: `download_odoo_enterprise.sh`. Sin código de contrato el RPC
+responde `oe_download_invalid_code` y `/thanks/download` devuelve HTML.
+
+Para desbloquear (sin subir el .deb):
+
+```
+printf '%s\n' 'M........' > /opt/doralex/secrets/odoo_enterprise/subscription_code
+chmod 600 /opt/doralex/secrets/odoo_enterprise/subscription_code
+CONFIRM=yes bash /opt/doralex/scripts/convert_community_to_enterprise.sh
+```
 
 El aviso estándar de activación de suscripción en staging es aceptable.
 Instalable ≠ activado. La suscripción Doralex ya está comprada.

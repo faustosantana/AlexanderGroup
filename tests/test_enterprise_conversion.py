@@ -56,10 +56,12 @@ def test_scripts_forbid_u_all_and_justgroup_copy() -> None:
     assert "Justgroup" in fetch
     assert "archive" in fetch
     assert "try_deb" in fetch
+    assert "try_official_download" in fetch
     assert "PENDING_OFFICIAL_PACKAGE" in fetch
-    assert "odoo_19.0+e.*_all.deb" in fetch
-    assert "/page/download" in fetch
+    assert "AUTOMATIC_DOWNLOAD = BLOCKED" in fetch
+    assert "deb_19e" in fetch
     assert "GITHUB_BLOCKER = REMOVE" in fetch
+    assert (SCRIPTS / "download_odoo_enterprise.sh").is_file()
     drop_start = fetch.index("print_official_drop_instructions() {")
     drop_end = fetch.index("\n}", drop_start)
     assert "github.com" not in fetch[drop_start:drop_end]
@@ -71,6 +73,7 @@ def test_scripts_forbid_u_all_and_justgroup_copy() -> None:
 
 def test_fetch_tries_official_package_before_git() -> None:
     fetch = (SCRIPTS / "fetch_odoo_enterprise.sh").read_text()
+    assert fetch.index("if try_official_download;") < fetch.index("if try_deb;")
     assert fetch.index("if try_deb;") < fetch.index("if try_git;")
     assert fetch.index("if try_archive;") < fetch.index("if try_git;")
 
@@ -84,5 +87,8 @@ def test_status_doc_blocks_cutover() -> None:
     status = (REPO / "docs/enterprise_conversion/STATUS.md").read_text()
     assert "CUTOVER_ALLOWED = NO" in status
     assert "PENDING_OFFICIAL_PACKAGE" in status
-    assert "ENTERPRISE_PACKAGE_ROUTE = PRIMARY" in status
+    assert (
+        "ENTERPRISE_PACKAGE_ROUTE = OFFICIAL_DEB" in status
+        or "ENTERPRISE_PACKAGE_ROUTE = PRIMARY" in status
+    )
     assert "GITHUB_BLOCKER = REMOVE" in status

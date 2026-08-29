@@ -32,16 +32,23 @@ done
 [ -n "$FINDER" ] || FINDER="${SCRIPT_DIR}/../../../tools/enterprise_source.py"
 
 print_official_drop_instructions() {
-  err "ENTERPRISE_PACKAGE_SOURCE = OFFICIAL"
-  err "ENTERPRISE_PACKAGE_INSTALLED = NO"
+  err "ENTERPRISE_PACKAGE_ROUTE = OFFICIAL_DEB"
   err "GITHUB_BLOCKER = REMOVE"
-  err "Descargue el instalador oficial (sesión de la suscripción Doralex):"
-  err "  https://www.odoo.com/page/download"
-  err "  Odoo 19  →  Ubuntu • Debian  →  Enterprise  →  Download"
-  err "Archivo esperado: odoo_19.0+e.*_all.deb"
-  err "NO Community. NO nightly. NO Windows. NO RPM."
-  err "Colóquelo en: ${ARCHIVE_DIR}/"
-  err "Justgroup no se usa como fuente. Prod no se toca."
+  err "AUTOMATIC_DOWNLOAD = BLOCKED"
+  err "WHAT_IS_MISSING = código de contrato Enterprise Doralex (M...)"
+  err "El flujo oficial no pide login: pide el código y baja el .deb."
+  err "  POST https://www.odoo.com/download/check_subscription"
+  err "  GET  https://www.odoo.com/thanks/download?platform_version=deb_19e"
+  err "Escriba el código (una línea, chmod 600) en:"
+  err "  ${SECRET_DIR}/subscription_code"
+  err "Luego: bash ${SCRIPT_DIR}/download_odoo_enterprise.sh"
+  err "No hace falta subir el .deb a mano. Justgroup no se usa. Prod no se toca."
+}
+
+try_official_download() {
+  local dl="${SCRIPT_DIR}/download_odoo_enterprise.sh"
+  [ -x "$dl" ] || return 1
+  bash "$dl"
 }
 
 if [ -d "${SHARED}" ] && [ ! -f "${SHARED}/ENTERPRISE_SOURCE_PENDING" ]; then
@@ -123,6 +130,10 @@ try_git() {
   return 0
 }
 
+if try_official_download; then
+  log "ENTERPRISE_SOURCE = PASS (descarga oficial automatizada)"
+  exit 0
+fi
 if try_deb; then
   log "ENTERPRISE_SOURCE = PASS (paquete .deb oficial)"
   exit 0
