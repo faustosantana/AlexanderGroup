@@ -10,50 +10,67 @@
     </template>
 
     <template id="dx_commercial_meta">
-        <table class="dx-meta-table">
-            <tr t-if="dx.get('date')">
-                <th>Fecha</th>
-                <td t-out="dx['date']"/>
+        <table class="dx-meta-grid">
+            <tr t-if="dx.get('date') or dx.get('validity') or dx.get('due')">
+                <td t-if="dx.get('date')">
+                    <div class="dx-meta-k">Fecha</div>
+                    <div class="dx-meta-v" t-out="dx['date']"/>
+                </td>
+                <td t-if="dx.get('validity')">
+                    <div class="dx-meta-k">Validez</div>
+                    <div class="dx-meta-v" t-out="dx['validity']"/>
+                </td>
+                <td t-if="not dx.get('validity') and dx.get('due')">
+                    <div class="dx-meta-k">Vencimiento</div>
+                    <div class="dx-meta-v" t-out="dx['due']"/>
+                </td>
             </tr>
-            <tr t-if="dx.get('validity')">
-                <th>Validez</th>
-                <td t-out="dx['validity']"/>
+            <tr t-if="dx.get('validity') and dx.get('due')">
+                <td>
+                    <div class="dx-meta-k">Vencimiento</div>
+                    <div class="dx-meta-v" t-out="dx['due']"/>
+                </td>
+                <td/>
             </tr>
-            <tr t-if="dx.get('due')">
-                <th>Vencimiento</th>
-                <td t-out="dx['due']"/>
+            <tr t-if="dx.get('salesperson') or dx.get('payment_term')">
+                <td t-if="dx.get('salesperson')">
+                    <div class="dx-meta-k">Vendedor</div>
+                    <div class="dx-meta-v" t-out="dx['salesperson']"/>
+                </td>
+                <td t-if="dx.get('payment_term')">
+                    <div class="dx-meta-k">Condición</div>
+                    <div class="dx-meta-v" t-out="dx['payment_term']"/>
+                </td>
             </tr>
-            <tr t-if="dx.get('ncf')">
-                <th>NCF</th>
-                <td t-out="dx['ncf']"/>
+            <tr t-if="dx.get('currency') or dx.get('ncf')">
+                <td t-if="dx.get('currency')">
+                    <div class="dx-meta-k">Moneda</div>
+                    <div class="dx-meta-v" t-out="dx['currency']"/>
+                </td>
+                <td t-if="dx.get('ncf')">
+                    <div class="dx-meta-k">NCF</div>
+                    <div class="dx-meta-v" t-out="dx['ncf']"/>
+                </td>
             </tr>
-            <tr t-if="dx.get('origin_ncf')">
-                <th>NCF afectado</th>
-                <td t-out="dx['origin_ncf']"/>
+            <tr t-if="dx.get('origin_ncf') or dx.get('origin_move')">
+                <td t-if="dx.get('origin_ncf')">
+                    <div class="dx-meta-k">NCF afectado</div>
+                    <div class="dx-meta-v" t-out="dx['origin_ncf']"/>
+                </td>
+                <td t-if="dx.get('origin_move')">
+                    <div class="dx-meta-k">Factura afectada</div>
+                    <div class="dx-meta-v" t-out="dx['origin_move']"/>
+                </td>
             </tr>
-            <tr t-if="dx.get('origin_move')">
-                <th>Factura afectada</th>
-                <td t-out="dx['origin_move']"/>
-            </tr>
-            <tr t-if="dx.get('origin')">
-                <th>Origen</th>
-                <td t-out="dx['origin']"/>
-            </tr>
-            <tr t-if="dx.get('salesperson')">
-                <th>Vendedor</th>
-                <td t-out="dx['salesperson']"/>
-            </tr>
-            <tr t-if="dx.get('payment_term')">
-                <th>Condición</th>
-                <td t-out="dx['payment_term']"/>
-            </tr>
-            <tr t-if="dx.get('currency')">
-                <th>Moneda</th>
-                <td t-out="dx['currency']"/>
-            </tr>
-            <tr t-if="dx.get('client_ref')">
-                <th>Referencia</th>
-                <td t-out="dx['client_ref']"/>
+            <tr t-if="dx.get('origin') or dx.get('client_ref')">
+                <td t-if="dx.get('origin')">
+                    <div class="dx-meta-k">Origen</div>
+                    <div class="dx-meta-v" t-out="dx['origin']"/>
+                </td>
+                <td t-if="dx.get('client_ref')">
+                    <div class="dx-meta-k">Referencia</div>
+                    <div class="dx-meta-v" t-out="dx['client_ref']"/>
+                </td>
             </tr>
         </table>
     </template>
@@ -255,12 +272,33 @@
                                 </td>
                                 <td class="dx-zone-meta">
                                     <div class="dx-card-title">Detalle del pago</div>
-                                    <table class="dx-meta-table">
-                                        <tr><th>Fecha</th><td t-out="dx['date']"/></tr>
-                                        <tr><th>Método</th><td t-out="dx['method']"/></tr>
-                                        <tr><th>Banco / diario</th><td t-out="dx['bank']"/></tr>
-                                        <tr t-if="dx.get('reference')"><th>Referencia</th><td t-out="dx['reference']"/></tr>
-                                        <tr><th>Moneda</th><td t-out="dx['currency']"/></tr>
+                                    <table class="dx-meta-grid">
+                                        <tr>
+                                            <td>
+                                                <div class="dx-meta-k">Fecha</div>
+                                                <div class="dx-meta-v" t-out="dx['date']"/>
+                                            </td>
+                                            <td>
+                                                <div class="dx-meta-k">Método</div>
+                                                <div class="dx-meta-v" t-out="dx['method']"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="dx-meta-k">Banco / diario</div>
+                                                <div class="dx-meta-v" t-out="dx['bank']"/>
+                                            </td>
+                                            <td>
+                                                <div class="dx-meta-k">Moneda</div>
+                                                <div class="dx-meta-v" t-out="dx['currency']"/>
+                                            </td>
+                                        </tr>
+                                        <tr t-if="dx.get('reference')">
+                                            <td colspan="2">
+                                                <div class="dx-meta-k">Referencia</div>
+                                                <div class="dx-meta-v" t-out="dx['reference']"/>
+                                            </td>
+                                        </tr>
                                     </table>
                                 </td>
                             </tr>

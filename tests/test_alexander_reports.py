@@ -20,17 +20,25 @@ def test_six_company_themes_in_css():
     assert "#E46018" in css
     assert "#30A83C" in css
     assert "#C00000" in css
+    assert "#50B0B0" in css
+    assert "#F09040" in css
     assert "#54B4A8" in css
-    assert "#FC9048" in css
     assert "#3048A8" in css
+    assert "#1F4E79" in css
     assert "#243C9C" in css
     assert "#18B4F0" in css
+    assert "#0B1F3A" in css
     assert "dx-composition" in css
     assert "dx-page-stack" in css
     assert "dx-sign-spacer" in css
+    assert "dx-meta-k" in css
+    assert "dx-meta-v" in css
     assert "white-space: nowrap" in css
     assert "position:absolute" not in css
     assert "position: absolute" not in css
+    assert "dx-logo-panel" not in css
+    assert "dx-blu-slab" not in css
+    assert "dx-may-accent" not in css
 
 
 def test_layout_uses_document_company():
@@ -41,11 +49,15 @@ def test_layout_uses_document_company():
     assert "external_layout_force_document_company" in layout
     assert "_dx_header_identity_for" in layout
     assert "dx-head-doc" in layout
-    assert "dx-pin-titleband" in layout
-    assert "dx-dom-titlebox" in layout
-    assert "dx-may-accent" in layout
+    assert "dx-pin-rule" in layout
+    assert "dx-dom-rule" in layout
+    assert "dx-may-rule" in layout
     assert "dx-rem-logo" in layout
-    assert "dx-blu-slab" in layout
+    assert "dx-blu-cyan" in layout
+    assert "dx-logo-panel" not in layout
+    assert "dx-dom-titlebox" not in layout
+    assert "dx-may-accent" not in layout
+    assert "dx-blu-slab" not in layout
     assert "RNC" in layout
     assert "dx_report_footer_text" not in layout
     extras = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
@@ -53,13 +65,14 @@ def test_layout_uses_document_company():
     assert "dx_sale_composition" in extras
     assert "dx_invoice_composition" in extras
     assert "dx_payment_composition" in extras
-    assert "dx_purchase_composition" in extras
     assert "dx_picking_composition" in extras
     assert "dx-page-stack" in extras
     assert "dx-sign-spacer" in extras
     assert "spacer_chunks" in extras or "dx-sign-tick" in extras
     assert "dx-amount-hero" in extras
     assert "Importe acreditado" in extras
+    assert "dx-meta-k" in extras
+    assert "dx-meta-grid" in extras
     assert "<br" not in extras or extras.count("<br") == 0
 
 
@@ -147,6 +160,9 @@ def test_invoice_title_is_factura_not_borrador():
     company = (REPORTS / "models" / "res_company.py").read_text(encoding="utf-8")
     assert '"logo_h": 28' in company
     assert '"layout": "pin"' in company
+    assert '"#50B0B0"' in company
+    assert '"#F09040"' in company
+    assert 'logo_on_dark": True' not in company
     assert "def _dx_report_theme" in company
     assert "def _dx_header_identity_for" in company
     assert "def _dx_legal_display" in company

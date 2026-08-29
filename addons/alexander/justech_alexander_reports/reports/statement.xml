@@ -18,9 +18,17 @@
                                         <div t-if="bundle.get('partner_vat')">RNC <t t-out="bundle['partner_vat']"/></div>
                                     </td>
                                     <td class="dx-zone-meta">
-                                        <table class="dx-meta-table">
-                                            <tr><th>Fecha de corte</th><td t-out="bundle['cutoff']"/></tr>
-                                            <tr><th>Moneda</th><td t-out="bundle['currency']"/></tr>
+                                        <table class="dx-meta-grid">
+                                            <tr>
+                                                <td>
+                                                    <div class="dx-meta-k">Fecha de corte</div>
+                                                    <div class="dx-meta-v" t-out="bundle['cutoff']"/>
+                                                </td>
+                                                <td>
+                                                    <div class="dx-meta-k">Moneda</div>
+                                                    <div class="dx-meta-v" t-out="bundle['currency']"/>
+                                                </td>
+                                            </tr>
                                         </table>
                                     </td>
                                 </tr>

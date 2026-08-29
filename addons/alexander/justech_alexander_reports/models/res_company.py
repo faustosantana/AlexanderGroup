@@ -2,10 +2,8 @@ import re
 
 from odoo import api, models
 
-# Colores muestreados de los PNG de logo en DEV (2026-08-29).
-# DOR #E46018 engranaje · PIN #C00000 sello + #30A83C hoja
-# DOM #54B4A8 wordmark + #FC9048 acento · MAY #54B4A8
-# REM #1A1A1A + #3048A8 figura · BLU #243C9C + #18B4F0
+# Paleta V4: DOR/PIN/REM/BLU de logos DEV; DOM/MAY de PNG oficiales 2026-08-29.
+# No recolorear logos. DOM/MAY van sobre papel blanco (logo_on_dark False).
 _DX_THEMES = {
     "DOR": {
         "code": "DOR",
@@ -34,26 +32,26 @@ _DX_THEMES = {
     "DOM": {
         "code": "DOM",
         "layout": "dom",
-        "primary": "#54B4A8",
-        "secondary": "#FC9048",
-        "accent": "#FC9048",
+        "primary": "#50B0B0",
+        "secondary": "#F09040",
+        "accent": "#F09040",
         "neutral": "#5C5C5C",
-        "logo_h": 26,
-        "logo_w": 26,
-        "logo_on_dark": True,
-        "logo_source": "res.company.logo DOM.png",
+        "logo_h": 30,
+        "logo_w": 32,
+        "logo_on_dark": False,
+        "logo_source": "user PNG Dominion Business 2026-08-29",
     },
     "MAY": {
         "code": "MAY",
         "layout": "may",
-        "primary": "#54B4A8",
-        "secondary": "#1A1A1A",
+        "primary": "#1A1A1A",
+        "secondary": "#54B4A8",
         "accent": "#54B4A8",
         "neutral": "#5C5C5C",
-        "logo_h": 18,
-        "logo_w": 52,
-        "logo_on_dark": True,
-        "logo_source": "res.company.logo MAY.png",
+        "logo_h": 20,
+        "logo_w": 56,
+        "logo_on_dark": False,
+        "logo_source": "user PNG El Mayuma 2026-08-29",
     },
     "REM": {
         "code": "REM",

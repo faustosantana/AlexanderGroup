@@ -54,23 +54,22 @@
                                 <t t-if="dx_street" t-out="dx_street"/><t t-if="dx_city">, <t t-out="dx_city"/></t>
                             </div>
                         </td>
-                    </tr>
-                </table>
-                <table class="dx-pin-titleband" t-if="dx_ident">
-                    <tr>
-                        <td class="dx-pin-title" t-out="dx_ident.get('title')"/>
-                        <td class="dx-pin-number">
-                            <span t-if="dx_ident.get('badge')" class="dx-badge" t-out="dx_ident.get('badge')"/>
-                            <span t-out="dx_ident.get('number')"/>
+                        <td class="dx-head-doc" t-if="dx_ident">
+                            <div class="dx-pin-title" t-out="dx_ident.get('title')"/>
+                            <div class="dx-pin-number">
+                                <span t-if="dx_ident.get('badge')" class="dx-badge" t-out="dx_ident.get('badge')"/>
+                                <span t-out="dx_ident.get('number')"/>
+                            </div>
                         </td>
                     </tr>
                 </table>
+                <div class="dx-pin-rule"/>
             </t>
             <t t-elif="dx_theme.get('layout') == 'dom'">
                 <div class="dx-dom-top"/>
                 <table class="dx-head-table">
                     <tr>
-                        <td class="dx-head-logo dx-logo-panel">
+                        <td class="dx-head-logo">
                             <img t-if="company.dx_report_show_logo and company.logo"
                                  t-att-src="image_data_uri(company.logo)"
                                  t-att-style="company._dx_report_logo_style()"
@@ -81,7 +80,7 @@
                             <div class="dx-legal" t-out="dx_legal"/>
                             <div t-if="company.vat" class="dx-rnc">RNC <t t-out="company._dx_vat_display()"/></div>
                         </td>
-                        <td class="dx-dom-titlebox" t-if="dx_ident">
+                        <td class="dx-head-doc" t-if="dx_ident">
                             <div class="dx-head-title" t-out="dx_ident.get('title')"/>
                             <div class="dx-head-number">
                                 <span t-if="dx_ident.get('badge')" class="dx-badge" t-out="dx_ident.get('badge')"/>
@@ -90,12 +89,12 @@
                         </td>
                     </tr>
                 </table>
+                <div class="dx-dom-rule"/>
             </t>
             <t t-elif="dx_theme.get('layout') == 'may'">
                 <table class="dx-head-table dx-may-table">
                     <tr>
-                        <td class="dx-may-accent"/>
-                        <td class="dx-head-logo dx-logo-panel dx-may-logo">
+                        <td class="dx-head-logo">
                             <img t-if="company.dx_report_show_logo and company.logo"
                                  t-att-src="image_data_uri(company.logo)"
                                  t-att-style="company._dx_report_logo_style()"
@@ -116,7 +115,7 @@
                         </td>
                     </tr>
                 </table>
-                <div class="dx-may-baseline"/>
+                <div class="dx-may-rule"/>
             </t>
             <t t-elif="dx_theme.get('layout') == 'rem'">
                 <table class="dx-head-table">
@@ -133,7 +132,7 @@
                             <div t-if="company.vat" class="dx-rnc">RNC <t t-out="company._dx_vat_display()"/></div>
                             <div class="dx-meta"><t t-if="dx_street" t-out="dx_street"/><t t-if="dx_city"> · <t t-out="dx_city"/></t></div>
                         </td>
-                        <td class="dx-rem-doc" t-if="dx_ident">
+                        <td class="dx-head-doc dx-rem-doc" t-if="dx_ident">
                             <div class="dx-head-title" t-out="dx_ident.get('title')"/>
                             <div class="dx-head-number">
                                 <span t-if="dx_ident.get('badge')" class="dx-badge" t-out="dx_ident.get('badge')"/>
@@ -159,7 +158,7 @@
                             <div class="dx-legal" t-out="dx_legal"/>
                             <div t-if="company.vat" class="dx-rnc">RNC <t t-out="company._dx_vat_display()"/></div>
                         </td>
-                        <td class="dx-blu-slab" t-if="dx_ident">
+                        <td class="dx-head-doc" t-if="dx_ident">
                             <div class="dx-head-title" t-out="dx_ident.get('title')"/>
                             <div class="dx-head-number">
                                 <span t-if="dx_ident.get('badge')" class="dx-badge" t-out="dx_ident.get('badge')"/>
