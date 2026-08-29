@@ -1,6 +1,8 @@
-# Report QA — V4 editorial
+# Report QA — V5 composición
 
-Módulo `justech_alexander_reports` **19.0.3.3.0**. DEV only. PROD no tocado.
+Módulo `justech_alexander_reports` **19.0.3.4.0**. DEV only. PROD no tocado.
+
+`VISUAL_V4 = REJECTED`. `VISUAL_V5 = PENDING` (solo 6 cotizaciones).
 
 ## Estado de este ciclo
 
