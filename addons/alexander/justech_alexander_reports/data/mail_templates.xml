@@ -3,4 +3,5 @@
     <record id="account.email_template_edi_invoice" model="mail.template">
         <field name="report_template_ids" eval="[(4, ref('account.account_invoices'))]"/>
     </record>
+    <function model="ir.actions.report" name="_dx_attach_invoice_edi_pdf"/>
 </odoo>

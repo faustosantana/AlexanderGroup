@@ -133,6 +133,9 @@ def test_invoice_edi_template_attaches_pdf():
     xml = (REPORTS / "data" / "mail_templates.xml").read_text(encoding="utf-8")
     assert "account.email_template_edi_invoice" in xml
     assert "account.account_invoices" in xml
+    assert "_dx_attach_invoice_edi_pdf" in xml
+    py = (REPORTS / "models" / "ir_actions_report.py").read_text(encoding="utf-8")
+    assert "def _dx_attach_invoice_edi_pdf" in py
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     assert "data/mail_templates.xml" in manifest
 

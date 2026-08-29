@@ -1,4 +1,4 @@
-from odoo import models
+from odoo import api, models
 
 
 class IrActionsReport(models.Model):
@@ -83,3 +83,12 @@ class IrActionsReport(models.Model):
         return super(IrActionsReport, renderer)._render_qweb_pdf(
             report_ref, res_ids=res_ids, data=data
         )
+
+    def _dx_attach_invoice_edi_pdf(self):
+        tmpl = self.env.ref(
+            "account.email_template_edi_invoice", raise_if_not_found=False
+        )
+        report = self.env.ref("account.account_invoices", raise_if_not_found=False)
+        if tmpl and report and report not in tmpl.report_template_ids:
+            tmpl.sudo().write({"report_template_ids": [(4, report.id)]})
+        return True
