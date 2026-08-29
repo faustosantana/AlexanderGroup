@@ -96,8 +96,9 @@ def _dx_sign_space(lines, paper="A4", extra_mm=0):
                 "style": "display:block;width:2px;height:%spx;max-height:none;border:0;"
                 % piece,
                 "tick_style": (
-                    "height:%spx;line-height:%spx;font-size:11px;color:#ffffff;"
-                    "padding:0;margin:0;" % (piece, piece)
+                    "display:block;height:%spx;min-height:%spx;line-height:%spx;"
+                    "font-size:16px;background:#f7f7f7;color:#f7f7f7;"
+                    "padding:0;margin:0;border:0;" % (piece, piece, piece)
                 ),
             }
         )

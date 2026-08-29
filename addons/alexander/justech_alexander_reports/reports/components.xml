@@ -143,11 +143,11 @@
 
     <template id="dx_signature_panel">
         <t t-if="dx.get('show_signature')">
-            <table t-if="dx.get('spacer_chunks')" class="dx-sign-spacer">
-                <tr t-foreach="dx['spacer_chunks']" t-as="chunk">
-                    <td t-att-style="chunk['tick_style']">.</td>
-                </tr>
-            </table>
+            <div t-if="dx.get('spacer_chunks')" class="dx-sign-spacer">
+                <t t-foreach="dx['spacer_chunks']" t-as="chunk">
+                    <div class="dx-sign-tick" t-att-style="chunk['tick_style']">&#160;</div>
+                </t>
+            </div>
             <table class="dx-sign-table">
                 <tr>
                     <td>
