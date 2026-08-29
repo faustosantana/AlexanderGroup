@@ -20,6 +20,8 @@ log "Reiniciando Odoo staging para recargar addons Enterprise..."
 dc enterprise-staging up -d
 sleep 5
 
+bash "${SCRIPT_DIR}/check_staging_reports.sh" || die "Reportes no íntegros ANTES de web_enterprise."
+
 log "Instalando SOLO web_enterprise (--stop-after-init, sin -u all)..."
 docker exec -u 100:101 doralex-enterprise-staging-odoo bash -c \
   'python3 /usr/bin/odoo -d '"${POSTGRES_DB}"' --db_host="$HOST" --db_user="$USER" --db_password="$PASSWORD" --addons-path=/mnt/enterprise,/mnt/custom-addons -i web_enterprise --stop-after-init --without-demo=all --no-http'
@@ -28,4 +30,5 @@ log "Arrancando de nuevo el servicio..."
 dc enterprise-staging up -d
 sleep 8
 bash "${SCRIPT_DIR}/healthcheck.sh" enterprise-staging
-log "CONVERT web_enterprise: hecho. Active el código de suscripción Doralex en Ajustes."
+bash "${SCRIPT_DIR}/check_staging_reports.sh" || die "Reportes alterados DESPUÉS de web_enterprise. STOP."
+log "CONVERT web_enterprise: hecho. Vincule el código de suscripción Doralex cuando esté disponible."

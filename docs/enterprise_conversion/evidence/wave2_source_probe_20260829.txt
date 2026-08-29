@@ -1,0 +1,20 @@
+Wave 2 official-source probe — 2026-08-29. Prod untouched.
+
+github.com/odoo/enterprise via this agent: HTTP 404 / Repository not found
+nightly.odoo.com/19.0/nightly/src: Community tarballs only (0 enterprise/+e)
+odoo.com/page/download: no public Enterprise ZIP without login
+server drop-path /opt/doralex/secrets/odoo_enterprise/archive: empty
+server github_token file: absent
+Justgroup enterprise tree: NOT used
+
+staging 127.0.0.1:8269 health=pass
+PROD health=200
+check_staging_reports.sh: justech_alexander_reports=19.0.3.8.5 qweb=58
+DORALEX_REPORTS_PRESERVED=YES
+CUTOVER_ALLOWED=NO
+
+fetch_odoo_enterprise.sh now accepts:
+  A) secrets/odoo_enterprise/github_token
+  B) secrets/odoo_enterprise/archive/*.{zip,tar.gz}
+Then convert_community_to_enterprise.sh installs only -i web_enterprise
+and re-checks the 58 QWeb.

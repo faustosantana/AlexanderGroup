@@ -39,6 +39,8 @@ def test_scripts_forbid_u_all_and_justgroup_copy() -> None:
     assert " -i web_enterprise" in convert
     assert "github.com/odoo/enterprise" in fetch
     assert "Justgroup" in fetch
+    assert "archive" in fetch
+    assert "PENDING_OFFICIAL_PACKAGE" in fetch
     assert "neutralization" in clone
     assert "doralexgroup.cloud" in clone
     assert "CONFIRM=yes" in clone
@@ -52,4 +54,4 @@ def test_lib_accepts_enterprise_staging() -> None:
 def test_status_doc_blocks_cutover() -> None:
     status = (REPO / "docs/enterprise_conversion/STATUS.md").read_text()
     assert "CUTOVER_ALLOWED = NO" in status
-    assert "BLOQUEADO" in status
+    assert "PENDING_OFFICIAL_PACKAGE" in status
