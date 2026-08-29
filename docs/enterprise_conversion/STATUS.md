@@ -1,85 +1,78 @@
 # Conversión Community → Enterprise — estado
 
 **Fecha:** 2026-08-29  
-**Cutover:** `CUTOVER_ALLOWED = NO` (detenerse hasta aprobación).  
-**Justgroup:** solo lectura. Transacciones Justgroup: no copiadas.
+**Cutover:** `CUTOVER_ALLOWED = NO`  
+**Estrategia vigente:** runtime Enterprise desde Justgroup/Justech (**solo lectura**).  
+El `.deb` Doralex no bloquea: Odoo aún no habilita ese contrato para descarga.
 
 ```
-COMMUNITY_TO_ENTERPRISE = IN_PROGRESS (staging clonado; Wave 2 espera .deb)
-ENTERPRISE_PACKAGE_ROUTE = OFFICIAL_DEB
+ENTERPRISE_PACKAGE_ROUTE = JUSTGROUP_RUNTIME_COPY
 GITHUB_BLOCKER = REMOVE
-ODOO_ENTERPRISE             = NO   (falta el .deb oficial en el drop-path)
-WEB_ENTERPRISE              = NO
-ENTERPRISE_SOURCE           = PENDING_OFFICIAL_PACKAGE
-DORALEX_REPORTS_PRESERVED   = YES  (19.0.3.8.5 / 58 QWeb)
-DORALEX_DATA_PRESERVED      = YES
-JUSTGROUP_TRANSACTIONS_COPIED = NO
-CUSTOM_MODULES_ALIGNED      = NO
-SPANISH_UI                  = NO
-QA_COMPLETE                 = NO
-PROD_TOUCHED                = NO
-CUTOVER_ALLOWED             = NO
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+JUSTECH_DATA_COPIED = NO
+JUSTECH_SUBSCRIPTION_COPIED = NO
+JUSTECH_PROD_TOUCHED = NO
+DORALEX_PROD_TOUCHED = NO
+CUTOVER_ALLOWED = NO
 ```
 
-Staging loopback: `http://127.0.0.1:8269` (`{"status":"pass"}`).  
-Versión staging = `19.0-20260817` Community (idéntica a Prod).  
-Justgroup (solo lectura) = `19.0+e-20260324`.  
-Host y contenedor staging: Ubuntu 24.04, paquete dpkg `odoo 19.0.20260817`.  
-DNS no es requisito de Wave 2.
+## Fase 1 — source (HTTP vivo)
+
+| Sitio | IP | `server_version` | Edición |
+| --- | --- | --- | --- |
+| justgroup.app | 31.97.6.178 | `19.0+e-20260324` | Enterprise |
+| erp.justech.do | 207.244.242.58 | `19.0+e-20260324` | Enterprise |
+| doralexgroup.cloud | 2.25.121.111 | `19.0-20260817` | Community |
+| staging 127.0.0.1:8269 | mismo host Doralex | Community `odoo:19` | Community |
+
+Misma versión/edición pública Justgroup ↔ erp.justech.do. **Hosts distintos.**  
+Inventario SSH 2026-08-27 (solo lectura) está en **justgroup.app** (`/usr/lib/odoo/enterprise`, 360 módulos).  
+`erp.justech.do:22` está abierto, pero este agente **no tiene llave**.
+
+```
+ENTERPRISE_SOURCE_SELECTED = justgroup.app
+SOURCE_ODOO_VERSION = 19.0+e-20260324
+SOURCE_ODOO_EDITION = Enterprise
+SOURCE_RUNTIME_TYPE = host + addons /usr/lib/odoo/enterprise (no Docker en la auditoría 2026-08-27)
+SOURCE_IMAGE_DIGEST = N/A
+SOURCE_ENTERPRISE_PATH = /usr/lib/odoo/enterprise
+```
+
+## Fase 8 — QWeb Doralex (antes de cambiar staging)
+
+```
+QWEB_BEFORE = 58
+justech_alexander_reports = 19.0.3.8.5
+```
+
+Inventario + hashes: `docs/enterprise_conversion/evidence/qweb_doralex_before_20260829.json`  
+Copia en servidor: `/opt/doralex/backups/enterprise-staging/qweb_doralex_20260829_140443.*`
+
+## Bloqueo actual (no es el .deb)
+
+```
+ENTERPRISE_RUNTIME_COPIED = NO
+WEB_ENTERPRISE_INSTALLED = NO
+WHAT_IS_MISSING = JUSTGROUP_SSH_PRIVATE_KEY
+```
+
+Este entorno tiene SSH a Doralex, no a Justgroup (`justgroup_vps_ed25519` ausente; `Permission denied` a 31.97.6.178).  
+Scripts listos (solo lectura / rsync addons):
+
+- `justgroup_ssh_bootstrap.sh`
+- `audit_justgroup_readonly.sh`
+- `copy_justgroup_enterprise_runtime.sh` → `/opt/doralex/enterprise-addons/19/`
+- `inventory_staging_qweb.sh`
+
+No se copia DB, filestore, correos, clientes ni el código de suscripción Justech.
 
 ## Waves
 
-| Wave | Qué | Estado |
-| --- | --- | --- |
-| 0 | Backup Prod completo | PASS `production_20260829_131434` |
-| 1 | Clon `enterprise-staging` | PASS (aislado, neutralize mail/cron) |
-| 2 | Paquete oficial Enterprise + `web_enterprise` | **PENDING_OFFICIAL_PACKAGE** (drop-path vacío; GitHub no es bloqueo) |
-| 3 | Apps Enterprise | pendiente Wave 2 |
-| 4 | Community faltantes | pendiente Wave 2 |
-| 5 | Custom Justech aplicables | pendiente revisión de identidad |
-| 6 | Reportes Doralex | preservar / comparar |
-| 7 | Español `es_DO` / `es_ES` | pendiente (no dejarlo para el final) |
-| 8 | QA | pendiente |
-| Cutover | DNS/proxy a Prod | **NO** |
-
-## Wave 2 — paquete oficial (ruta primaria)
-
-Documentación Odoo 19 *Switch from Community to Enterprise* (Linux installer):
-backup → stop → `dpkg -i` del `.deb` Enterprise → `-i web_enterprise --stop-after-init` → restart → código de suscripción.
-
-Este staging es Docker (`odoo:19`). **No** se hace `dpkg` dentro del contenedor vivo ni en el host. Se construye una **imagen staging derivada** (`doralex-odoo-enterprise:19`) que instala el `.deb` oficial sobre la misma base, con los mismos volúmenes/filestore/custom-addons.
-
-GitHub `odoo/enterprise` es vía **secundaria**, no requisito.
-
-Flujo real inspeccionado (no es login de GitHub):
-
-1. Modal Enterprise `data-platform-version="deb_19e"`
-2. JSON-RPC `POST /download/check_subscription` `{code}`
-3. Si `success`: `GET /thanks/download?code=…&platform_version=deb_19e`
-
-Automatización: `download_odoo_enterprise.sh`. Sin código de contrato el RPC
-responde `oe_download_invalid_code` y `/thanks/download` devuelve HTML.
-
-Para desbloquear (sin subir el .deb):
-
-```
-printf '%s\n' 'M........' > /opt/doralex/secrets/odoo_enterprise/subscription_code
-chmod 600 /opt/doralex/secrets/odoo_enterprise/subscription_code
-CONFIRM=yes bash /opt/doralex/scripts/convert_community_to_enterprise.sh
-```
-
-El aviso estándar de activación de suscripción en staging es aceptable.
-Instalable ≠ activado. La suscripción Doralex ya está comprada.
-
-Justgroup no se usa como fuente. Prod no se toca. DNS no es requisito.
-
-## URL staging
-
-- Loopback: `http://127.0.0.1:8269`
-- Público previsto: `https://enterprise.doralexgroup.cloud` (hace falta A → `2.25.121.111` + certbot)
-
-## Rollback
-
-1. No hay cutover: Prod sigue en Community `odoo:19`.
-2. Staging: `ODOO_IMAGE=odoo:19` y `docker compose up -d`, o down + borrar volúmenes `doralex_ent_staging_*`.
-3. Restore Prod solo desde `production_*` backups (doble guarda `ALLOW_PROD`).
+| Wave | Estado |
+| --- | --- |
+| 0 Backup / 1 Staging | PASS |
+| QWeb inventory | PASS 58 |
+| Runtime Enterprise copy | **espera llave SSH Justgroup** |
+| `-i web_enterprise` | pendiente copia |
+| 3–8 módulos / español / QA | pendiente |
+| Cutover | **NO** |

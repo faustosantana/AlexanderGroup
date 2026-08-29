@@ -1,0 +1,32 @@
+Strategy shift 2026-08-29: Justgroup/Justech as read-only Enterprise runtime source.
+Doralex contract .deb download no longer blocks the project.
+
+HTTP common.version (live):
+  justgroup.app     19.0+e-20260324  e   A=31.97.6.178
+  erp.justech.do    19.0+e-20260324  e   A=207.244.242.58
+  doralexgroup.cloud 19.0-20260817   community
+
+SSH :22 open on both Justech hosts. This agent has only doralex_ed25519.
+justgroup-vps key missing → Permission denied (publickey).
+erp.justech.do not used for copy (no key; different IP).
+
+Prior read-only SSH audit 2026-08-27 (justgroup.app):
+  SOURCE_RUNTIME_TYPE = systemd odoo + /usr/lib/odoo/enterprise + custom-addons
+  360 installed / 142 enterprise / 41 justech custom
+  NOT Docker image
+
+QWEB_BEFORE = 58 (inventory + md5 of jsonb arch_db)
+justech_alexander_reports = 19.0.3.8.5
+STAGING_HEALTH = PASS
+PROD_HEALTH = PASS
+DORALEX_PROD_TOUCHED = NO
+JUSTECH_PROD_TOUCHED = NO
+JUSTECH_DATA_COPIED = NO
+JUSTECH_SUBSCRIPTION_COPIED = NO
+CUTOVER_ALLOWED = NO
+
+Scripts added; copy not executed (no SSH).
+WHAT_IS_MISSING = JUSTGROUP_SSH_PRIVATE_KEY
+Unblock: Cursor secret JUSTGROUP_SSH_PRIVATE_KEY (same key as 2026-08-27),
+then CONFIRM=yes bash copy_justgroup_enterprise_runtime.sh
+and CONFIRM=yes bash convert_community_to_enterprise.sh

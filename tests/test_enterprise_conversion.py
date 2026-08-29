@@ -86,9 +86,10 @@ def test_lib_accepts_enterprise_staging() -> None:
 def test_status_doc_blocks_cutover() -> None:
     status = (REPO / "docs/enterprise_conversion/STATUS.md").read_text()
     assert "CUTOVER_ALLOWED = NO" in status
-    assert "PENDING_OFFICIAL_PACKAGE" in status
+    assert "GITHUB_BLOCKER = REMOVE" in status
+    assert "JUSTECH_SUBSCRIPTION_COPIED = NO" in status
     assert (
         "ENTERPRISE_PACKAGE_ROUTE = OFFICIAL_DEB" in status
         or "ENTERPRISE_PACKAGE_ROUTE = PRIMARY" in status
+        or "ENTERPRISE_PACKAGE_ROUTE = JUSTGROUP_RUNTIME_COPY" in status
     )
-    assert "GITHUB_BLOCKER = REMOVE" in status
