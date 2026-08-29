@@ -8,6 +8,24 @@ REPO = Path(__file__).resolve().parent.parent
 SCRIPTS = REPO / "deployment/doralex/scripts"
 
 
+def test_export_import_evidence_keeps_reports_and_blocks_core_guess() -> None:
+    ev = (
+        REPO / "docs/enterprise_conversion/evidence/wave2_export_import_20260829.txt"
+    ).read_text()
+    assert "EXPORT_FINAL_HASH_MATCH = YES" in ev
+    assert "QWEB_BEFORE = 58" in ev
+    assert "ALEXANDER_REPORTS_ACTION = PRESERVE_DORALEX" in ev
+    assert "CORE_VERSION_MATCH = NO" in ev
+    assert "odoo_19.0.20260324_all.deb" in ev
+    assert "NO web_enterprise install" in ev
+    assert "CUTOVER_ALLOWED = NO" in ev
+    table = (
+        REPO / "docs/enterprise_conversion/evidence/custom_addons_compare_20260829.tsv"
+    ).read_text()
+    assert "justech_alexander_reports" in table
+    assert "DORALEX_ONLY" in table
+
+
 def test_expected_sha256_and_isolated_extract() -> None:
     xfer = (SCRIPTS / "transfer_justgroup_runtime_export.sh").read_text()
     imp = (SCRIPTS / "import_justgroup_runtime_export.sh").read_text()

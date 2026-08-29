@@ -93,3 +93,9 @@ def test_status_doc_blocks_cutover() -> None:
         or "ENTERPRISE_PACKAGE_ROUTE = PRIMARY" in status
         or "ENTERPRISE_PACKAGE_ROUTE = JUSTGROUP_RUNTIME_COPY" in status
     )
+    assert "CORE_VERSION_MATCH = NO" in status
+    assert "ALEXANDER_REPORTS_ACTION = PRESERVE_DORALEX" in status
+    assert "TEMP_TRANSFER_ACCESS_CLOSED = YES" in status
+    assert "EXPORT_FINAL_HASH_MATCH = YES" in status
+    assert "WAIT_EXACT_CORE_PACKAGE" in status
+    assert "odoo_19.0.20260324_all.deb" in status

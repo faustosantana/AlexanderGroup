@@ -6,6 +6,9 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 ## Unreleased
 
 ### Added
+- Auditoría del export Justgroup en Doralex (extracto aislado, QWeb 58,
+  custom-addons comparado, core 19.0.20260324 pendiente). Usuario SSH
+  temporal de transferencia cerrado. Cutover sigue bloqueado.
 - Conversión Community → Enterprise en staging aislado
   (`deployment/doralex/enterprise-staging/`, scripts de clon/fetch/convert).
   Cutover a producción bloqueado.
