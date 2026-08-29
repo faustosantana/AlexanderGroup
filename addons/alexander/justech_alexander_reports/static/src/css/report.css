@@ -24,6 +24,9 @@ div.footer,
   border-bottom: 0 none transparent !important;
   border-top: 0 none transparent !important;
   box-shadow: none !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
 }
 
 .dx-report-header,
@@ -283,9 +286,15 @@ div.footer td {
 .dx-h-dor-doc { width: 46%; vertical-align: top; text-align: right; }
 .dx-theme-DOR .dx-head-title { color: #1A1A1A; font-size: 22pt; }
 .dx-theme-DOR .dx-rnc { color: #E46018; }
-.dx-h-dor-meta { margin-top: 10px; width: 78%; margin-left: auto; }
-.dx-h-dor-meta-row { width: 100%; margin-bottom: 8px; }
-.dx-h-dor-meta-row td { width: 50%; text-align: left; padding: 0 0 0 12px; border: 0 !important; }
+.dx-h-dor-meta { margin-top: 10px; width: 78%; margin-left: auto; text-align: left; }
+.dx-h-dor-pair { margin: 0 0 10px; }
+.dx-h-dor-col {
+  display: inline-block;
+  width: 47%;
+  vertical-align: top;
+  padding: 0 0 0 8px;
+  border: 0 !important;
+}
 .dx-h-dor-rule { height: 2px; background: #1A1A1A; margin-top: 8px; }
 .dx-dor-client {
   margin: 10px 0 16px;

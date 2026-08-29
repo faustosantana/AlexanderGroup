@@ -16,6 +16,8 @@ def test_six_company_themes_in_css():
     for code in ("DOR", "PIN", "DOM", "MAY", "REM", "BLU"):
         assert f"dx-theme-{code}" in css
     assert "dx-h-dor-rail" in css
+    assert "dx-h-dor-col" in css
+    assert "padding-top: 0 !important" in css
     assert "dx-h-pin-c" in css
     assert "dx-h-dom-rail" in css
     assert "dx-h-may-title" in css
