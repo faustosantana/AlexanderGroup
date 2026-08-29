@@ -19,6 +19,16 @@ Fecha: 2026-08-29. Autorización humana explícita para deploy controlado.
 | NCF_PRODUCTION_SEQUENCES | PENDING |
 | FISCAL_POSTING_READY | NO |
 | SYSTEM_OPERATIONAL | YES |
+| PROD_VISUAL_AUDIT | PASS |
+| PROD_REPORTS_REAL_PNG | PASS (180 dpi desde PDF reales) |
+| PROD_CROSS_COMPANY | PASS |
+| PROD_EMAIL_ATTACHMENT_MATCH | 6/6 |
+| PROD_RFQ_TITLE | PASS |
+| PROD_PO_TITLE | PASS |
+| PROD_RECEIPT_LAYOUT | PASS |
+| PROD_DELIVERY_LAYOUT | PASS |
+| PROD_MULTIPAGE | PASS |
+| FISCAL_POSTING_GUARD | PASS |
 
 ## Backup
 
@@ -103,10 +113,63 @@ Posteo fiscal sin rango: bloqueado con
 - DNS MX/SPF/DKIM/DMARC 6/6 (sin cambios)
 - NCF_GUARD = PASS · rangos = 0
 
+## Cierre visual post-deploy (2026-08-29)
+
+Sin redesplegar. Sin rangos NCF. Sin posteo fiscal. PNG reales a 180 dpi
+desde los PDF de `doralex_prod` (no bytes `%PDF` / wkhtmltopdf).
+
+| Check | Resultado |
+| --- | --- |
+| Cotización 6/6 (logo, RNC, email, teléfono, banco, diseño V5.3) | PASS |
+| Factura borrador 6/6: FACTURA + BORRADOR + Pendiente de NCF | PASS · 0 posted |
+| Cruce BLU→REM, DOR→PIN, MAY→DOM | identidad del documento, no de la compañía activa |
+| Sent Items FROM `administracion@` + adjunto PDF misma empresa | 6/6 · sin Gmail |
+| RFQ = SOLICITUD DE COTIZACIÓN · PO = ORDEN DE COMPRA | PASS |
+| Recepción: título RECEPCIÓN, proveedor, OC (PIN), tabla, sin calle duplicada | PASS |
+| Entrega: ENTREGA, cliente, productos, Entregado por / Recibido por | PASS |
+| Multipágina DOR/SO/00001: p1/2 sin total/firma; p2 header compacto + total + firmas | PASS |
+| Guardia NCF sobre borrador QA | bloqueo claro · documento sigue draft · rangos = 0 |
+
+Recepción usa masthead de texto (sin logo gráfico) — mismo criterio que DEV;
+no se cambia a `external_layout` porque rompe `//main`.
+
+## Datos pendientes (PROD vivo)
+
+| COMPANY | WEBSITE | TERMS | USD RATE | BANK CONFIRMATION | NCF RANGES | NCF SEQUENCES | EXPIRATION | STATUS |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| DOR | EMPTY | EMPTY | NOT_CONFIGURED (USD.rate=1.0, 0 filas) | LOADED `9604436830` · pendiente confirmar humano | 0 | PENDING | PENDING | OPERATIONAL · NOT_FISCAL |
+| PIN | EMPTY | EMPTY | NOT_CONFIGURED | LOADED `9604097492` · pendiente confirmar humano | 0 | PENDING | PENDING | OPERATIONAL · NOT_FISCAL |
+| DOM | EMPTY | EMPTY | NOT_CONFIGURED | LOADED `9605588726` · pendiente confirmar humano | 0 | PENDING | PENDING | OPERATIONAL · NOT_FISCAL |
+| MAY | EMPTY | EMPTY | NOT_CONFIGURED | LOADED `9605543104` · pendiente confirmar humano | 0 | PENDING | PENDING | OPERATIONAL · NOT_FISCAL |
+| REM | EMPTY | EMPTY | NOT_CONFIGURED | LOADED `9608739498` · pendiente confirmar humano | 0 | PENDING | PENDING | OPERATIONAL · NOT_FISCAL |
+| BLU | EMPTY | EMPTY | NOT_CONFIGURED | LOADED `9608670542` · pendiente confirmar humano | 0 | PENDING | PENDING | OPERATIONAL · NOT_FISCAL |
+
+Website y términos vacíos a propósito (no inventados). Bancos ya salen en el PDF.
+
+## Checklist para empezar a facturar
+
+Orden exacto. No adelantar.
+
+1. Cargar rangos NCF reales por empresa
+2. Configurar secuencias
+3. Configurar vencimientos
+4. Validar tipo fiscal por journal
+5. Cargar tasa USD si aplica
+6. Confirmar términos
+7. Revisar banco
+8. Hacer primera factura controlada
+9. Validar NCF
+10. Validar PDF
+11. Validar email
+12. Registrar primer pago
+13. Validar recibo
+14. Hacer primera NC controlada
+
 ## Pendiente humano
 
 1. Cargar rangos NCF reales DGII (prefix, start, end, current, expiration, journal)
 2. Activar secuencias fiscales reales
 3. Tasa USD si van a facturar en USD
 4. Términos legales definitivos por empresa
-5. Primera factura / NC / pago reales (solo después de 1–2)
+5. Confirmar visualmente las cuentas Banreservas
+6. Primera factura / NC / pago reales (solo después de 1–4)

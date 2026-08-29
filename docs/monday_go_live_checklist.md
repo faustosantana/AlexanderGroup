@@ -35,6 +35,30 @@ Login: `inversionesdoralex@gmail.com`
 Grupos: ventas (todos los documentos), compras, facturación, inventario, multiempresa.  
 No es administrador global. Contraseña en el secret store del servidor.
 
+## Cierre visual PROD
+
+`PROD_VISUAL_AUDIT = PASS` · PNG 180 dpi desde PDF reales · sin redesplegar.
+
+Hoy se puede cotizar, comprar, recepcionar, entregar y enviar correo.
+Hoy **no** se factura con NCF. Facturas solo en borrador (Pendiente de NCF).
+
+## Checklist para empezar a facturar
+
+1. Cargar rangos NCF reales por empresa
+2. Configurar secuencias
+3. Configurar vencimientos
+4. Validar tipo fiscal por journal
+5. Cargar tasa USD si aplica
+6. Confirmar términos
+7. Revisar banco
+8. Hacer primera factura controlada
+9. Validar NCF
+10. Validar PDF
+11. Validar email
+12. Registrar primer pago
+13. Validar recibo
+14. Hacer primera NC controlada
+
 ## Si algo falla
 
 1. No forzar NCF a mano.
