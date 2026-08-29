@@ -1,0 +1,19 @@
+Doralex PROD preserve backup — 2026-08-29 (no stack change)
+
+path=/opt/doralex/backups/production/production_20260829_120319
+environment=production
+db=doralex_prod
+created_at=2026-08-29T16:03:21Z
+verify=PASS (scripts/backup.sh + extra custom-addons/nginx/report XML)
+
+sha256:
+  db.dump              cfaa2bb21c899235ff7fa32a54577eeacdb938a8a3752be0c4ceedec1d146d73
+  filestore.tar.gz     549e1257b1000a245fb05c26eeef64aa9d854ab4cf2940e8fa5fcbce3be58245
+  custom-addons.tar.gz dfe395051af5b6c4b0a2d4dac4adb234248a893156ed874af69649bfe14c42c5
+
+also stored on server:
+  odoo.conf, docker-compose.yml, env.backup (600)
+  nginx_doralex.conf, nginx-proxy.tar.gz
+  doralex_reports_xml/ (justech_alexander_reports reports/*.xml + manifest)
+
+JUSTGROUP was not written. Doralex containers were not restarted or upgraded.

@@ -5,7 +5,7 @@ PYTHON ?= python3
 
 .DEFAULT_GOAL := help
 
-.PHONY: help validate test lint format-check security-check structure
+.PHONY: help validate test lint format-check security-check structure stack-compare
 
 help: ## Muestra esta ayuda
 	@echo "Alexander Group — Odoo 19 (Fase 0)"
@@ -33,3 +33,6 @@ security-check: ## Ejecuta solo la validación de seguridad del repositorio
 structure: ## Muestra la estructura del repositorio
 	@find . -not -path './.git/*' -not -path '*/__pycache__/*' \
 		-not -path './.pytest_cache/*' | sort
+
+stack-compare: ## Compara manifiestos Justgroup vs Doralex (sin escribir en PROD)
+	$(PYTHON) tools/justgroup_doralex_stack_compare.py || test $$? -eq 1
