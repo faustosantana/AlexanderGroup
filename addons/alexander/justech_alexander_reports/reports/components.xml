@@ -160,101 +160,78 @@
     </template>
 
     <template id="dx_sale_composition">
-        <div class="dx-composition dx-comp-sale">
-            <table class="dx-page-stack">
+        <div class="dx-composition dx-comp-sale dx-page-stack">
+            <table class="dx-zone-party">
                 <tr>
-                    <td class="dx-stack-main" valign="top">
-                        <table class="dx-zone-party">
-                            <tr>
-                                <td class="dx-zone-customer">
-                                    <t t-call="justech_alexander_reports.dx_customer_card"/>
-                                </td>
-                                <td class="dx-zone-meta">
-                                    <t t-call="justech_alexander_reports.dx_commercial_meta"/>
-                                </td>
-                            </tr>
-                        </table>
-                        <t t-call="justech_alexander_reports.dx_line_table"/>
-                        <table class="dx-zone-bottom dx-keep-end">
-                            <tr>
-                                <td class="dx-zone-terms">
-                                    <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                                </td>
-                                <td class="dx-zone-totals">
-                                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
-                                </td>
-                            </tr>
-                        </table>
+                    <td class="dx-zone-customer">
+                        <t t-call="justech_alexander_reports.dx_customer_card"/>
                     </td>
-                </tr>
-                <tr>
-                    <td class="dx-stack-sign" valign="bottom">
-                        <t t-call="justech_alexander_reports.dx_signature_panel"/>
+                    <td class="dx-zone-meta">
+                        <t t-call="justech_alexander_reports.dx_commercial_meta"/>
                     </td>
                 </tr>
             </table>
+            <t t-call="justech_alexander_reports.dx_line_table"/>
+            <table class="dx-zone-bottom dx-keep-end">
+                <tr>
+                    <td class="dx-zone-terms">
+                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                    </td>
+                    <td class="dx-zone-totals">
+                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 
     <template id="dx_invoice_composition">
-        <div t-attf-class="dx-composition dx-comp-invoice #{'dx-comp-refund' if dx.get('is_refund') else ''}">
-            <table class="dx-page-stack">
+        <div t-attf-class="dx-composition dx-comp-invoice dx-page-stack #{'dx-comp-refund' if dx.get('is_refund') else ''}">
+            <table class="dx-zone-party">
                 <tr>
-                    <td class="dx-stack-main" valign="top">
-                        <table class="dx-zone-party">
-                            <tr>
-                                <td class="dx-zone-customer">
-                                    <t t-call="justech_alexander_reports.dx_customer_card"/>
-                                    <div t-if="dx.get('reason')" class="dx-reason">
-                                        <div class="dx-block-title">Motivo</div>
-                                        <div t-out="dx['reason']"/>
-                                    </div>
-                                </td>
-                                <td class="dx-zone-meta">
-                                    <t t-call="justech_alexander_reports.dx_commercial_meta"/>
-                                </td>
-                            </tr>
-                        </table>
-                        <table t-if="dx.get('is_refund')" class="dx-refund-banner">
-                            <tr>
-                                <td>
-                                    <div class="dx-block-title">Importe acreditado</div>
-                                    <div class="dx-credited" t-out="dx.get('credited')"/>
-                                </td>
-                                <td>
-                                    <div class="dx-block-title">Documento afectado</div>
-                                    <div t-if="dx.get('origin_ncf')">NCF <t t-out="dx['origin_ncf']"/></div>
-                                    <div t-if="dx.get('origin_move')" t-out="dx['origin_move']"/>
-                                </td>
-                            </tr>
-                        </table>
-                        <t t-call="justech_alexander_reports.dx_line_table"/>
-                        <table class="dx-zone-bottom dx-keep-end">
-                            <tr>
-                                <td class="dx-zone-terms">
-                                    <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                                </td>
-                                <td class="dx-zone-totals">
-                                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
-                                </td>
-                            </tr>
-                        </table>
+                    <td class="dx-zone-customer">
+                        <t t-call="justech_alexander_reports.dx_customer_card"/>
+                        <div t-if="dx.get('reason')" class="dx-reason">
+                            <div class="dx-block-title">Motivo</div>
+                            <div t-out="dx['reason']"/>
+                        </div>
                     </td>
-                </tr>
-                <tr>
-                    <td class="dx-stack-sign" valign="bottom">
-                        <t t-call="justech_alexander_reports.dx_signature_panel"/>
+                    <td class="dx-zone-meta">
+                        <t t-call="justech_alexander_reports.dx_commercial_meta"/>
                     </td>
                 </tr>
             </table>
+            <table t-if="dx.get('is_refund')" class="dx-refund-banner">
+                <tr>
+                    <td>
+                        <div class="dx-block-title">Importe acreditado</div>
+                        <div class="dx-credited" t-out="dx.get('credited')"/>
+                    </td>
+                    <td>
+                        <div class="dx-block-title">Documento afectado</div>
+                        <div t-if="dx.get('origin_ncf')">NCF <t t-out="dx['origin_ncf']"/></div>
+                        <div t-if="dx.get('origin_move')" t-out="dx['origin_move']"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_line_table"/>
+            <table class="dx-zone-bottom dx-keep-end">
+                <tr>
+                    <td class="dx-zone-terms">
+                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                    </td>
+                    <td class="dx-zone-totals">
+                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 
     <template id="dx_payment_composition">
-        <div class="dx-composition dx-comp-payment">
-            <table class="dx-page-stack">
-                <tr>
-                    <td class="dx-stack-main" valign="top">
+        <div class="dx-composition dx-comp-payment dx-page-stack">
                         <table class="dx-amount-box">
                             <tr>
                                 <td>
@@ -318,81 +295,54 @@
                                 <t t-call="justech_alexander_reports.dx_terms_panel"/>
                             </div>
                         </t>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="dx-stack-sign" valign="bottom">
-                        <t t-call="justech_alexander_reports.dx_signature_panel"/>
-                    </td>
-                </tr>
-            </table>
+            <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 
     <template id="dx_purchase_composition">
-        <div class="dx-composition dx-comp-purchase">
-            <table class="dx-page-stack">
+        <div class="dx-composition dx-comp-purchase dx-page-stack">
+            <table class="dx-zone-party">
                 <tr>
-                    <td class="dx-stack-main" valign="top">
-                        <table class="dx-zone-party">
-                            <tr>
-                                <td class="dx-zone-customer">
-                                    <t t-call="justech_alexander_reports.dx_customer_card"/>
-                                </td>
-                                <td class="dx-zone-meta">
-                                    <t t-call="justech_alexander_reports.dx_commercial_meta"/>
-                                </td>
-                            </tr>
-                        </table>
-                        <t t-call="justech_alexander_reports.dx_line_table"/>
-                        <table class="dx-zone-bottom dx-keep-end">
-                            <tr>
-                                <td class="dx-zone-terms">
-                                    <t t-call="justech_alexander_reports.dx_terms_panel"/>
-                                </td>
-                                <td class="dx-zone-totals">
-                                    <t t-call="justech_alexander_reports.dx_totals_panel"/>
-                                </td>
-                            </tr>
-                        </table>
+                    <td class="dx-zone-customer">
+                        <t t-call="justech_alexander_reports.dx_customer_card"/>
                     </td>
-                </tr>
-                <tr>
-                    <td class="dx-stack-sign" valign="bottom">
-                        <t t-call="justech_alexander_reports.dx_signature_panel"/>
+                    <td class="dx-zone-meta">
+                        <t t-call="justech_alexander_reports.dx_commercial_meta"/>
                     </td>
                 </tr>
             </table>
+            <t t-call="justech_alexander_reports.dx_line_table"/>
+            <table class="dx-zone-bottom dx-keep-end">
+                <tr>
+                    <td class="dx-zone-terms">
+                        <t t-call="justech_alexander_reports.dx_terms_panel"/>
+                    </td>
+                    <td class="dx-zone-totals">
+                        <t t-call="justech_alexander_reports.dx_totals_panel"/>
+                    </td>
+                </tr>
+            </table>
+            <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 
     <template id="dx_picking_composition">
-        <div class="dx-composition dx-comp-picking">
-            <table class="dx-page-stack">
+        <div class="dx-composition dx-comp-picking dx-page-stack">
+            <table class="dx-zone-party">
                 <tr>
-                    <td class="dx-stack-main" valign="top">
-                        <table class="dx-zone-party">
-                            <tr>
-                                <td class="dx-zone-customer">
-                                    <t t-call="justech_alexander_reports.dx_customer_card"/>
-                                </td>
-                                <td class="dx-zone-meta">
-                                    <t t-call="justech_alexander_reports.dx_commercial_meta"/>
-                                </td>
-                            </tr>
-                        </table>
-                        <t t-call="justech_alexander_reports.dx_picking_lines"/>
-                        <t t-if="dx.get('note')">
-                            <div class="dx-terms" t-out="dx['note']"/>
-                        </t>
+                    <td class="dx-zone-customer">
+                        <t t-call="justech_alexander_reports.dx_customer_card"/>
                     </td>
-                </tr>
-                <tr>
-                    <td class="dx-stack-sign" valign="bottom">
-                        <t t-call="justech_alexander_reports.dx_signature_panel"/>
+                    <td class="dx-zone-meta">
+                        <t t-call="justech_alexander_reports.dx_commercial_meta"/>
                     </td>
                 </tr>
             </table>
+            <t t-call="justech_alexander_reports.dx_picking_lines"/>
+            <t t-if="dx.get('note')">
+                <div class="dx-terms" t-out="dx['note']"/>
+            </t>
+            <t t-call="justech_alexander_reports.dx_signature_panel"/>
         </div>
     </template>
 

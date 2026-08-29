@@ -89,8 +89,8 @@ def _dx_sign_space(lines, paper="A4", extra_mm=0):
         "spacer_mm": mm,
         "spacer_px": px,
         "spacer_box_style": (
-            "width:1px;font-size:0;line-height:0;overflow:hidden;"
-            "border-top:%spx solid transparent;" % px
+            "width:100%%;font-size:0;line-height:0;border-top:%spx solid #ffffff;"
+            % px
         ),
     }
 
