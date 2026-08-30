@@ -200,7 +200,7 @@
                 <a href="/web">/web</a>.
             </p>
         </xpath>
-        <xpath expr="//h5[text()='My Company']/parent::div" position="replace">
+        <xpath expr="//h5[normalize-space()='My Company' or normalize-space()='Mi Empresa']/parent::div" position="replace">
             <div class="col-lg-4 offset-lg-1 mt-4 mt-lg-0">
                 <h5>Doralex Group</h5>
                 <ul class="list-unstyled mb-0 ps-2">

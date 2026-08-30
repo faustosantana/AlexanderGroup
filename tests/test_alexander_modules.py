@@ -96,6 +96,8 @@ def test_website_chrome_is_institutional() -> None:
         ALEXANDER / "justech_alexander_website" / "views" / "templates.xml"
     ).read_text(encoding="utf-8")
     assert "Contacto" in templates
+    assert "Mi Empresa" in templates
+    assert "My Company" in templates
     assert ">ERP<" in templates
     assert "+1 555" not in templates
     assert "yourcompany.example.com" not in templates
@@ -160,6 +162,6 @@ def test_spanish_ui_overlay_does_not_edit_crm_core() -> None:
     ).read_text(encoding="utf-8")
     assert "crm.crm_menu_leads" in overlay
     assert "Iniciativas" in overlay
-    assert "lang=\"es_DO\"" in overlay or "lang='es_DO'" in overlay
+    assert 'lang="es_DO"' in overlay or "lang='es_DO'" in overlay
     assert 'name="Tablero"' in warranty_menu
     assert "Estado de aprobación Justech" in sale
