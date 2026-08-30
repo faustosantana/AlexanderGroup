@@ -122,3 +122,27 @@ def test_wave4_custom_stack_evidence_blocks_cutover() -> None:
     assert "DORALEX_PROD_TOUCHED = NO" in ev
     assert "CUTOVER_ALLOWED = NO" in ev
     assert "JUSTGROUP_DATA_COPIED = NO" in ev
+
+
+def test_wave5_final_functional_qa_blocks_cutover() -> None:
+    ev = (
+        REPO / "docs/enterprise_conversion/evidence/"
+        "wave5_final_functional_qa_20260830.txt"
+    ).read_text(encoding="utf-8")
+    status = (REPO / "docs/enterprise_conversion/STATUS.md").read_text()
+    assert "FINAL_QA_BACKUP = PASS" in ev
+    assert "MARGIN_CONTROL_QA = PASS" in ev
+    assert "APPROVAL_QA = PASS" in ev
+    assert "AUDIT_QA = PASS" in ev
+    assert "QWEB_AFTER = 58" in ev
+    assert "QWEB_HASH_MISMATCH_UNEXPECTED = 0" in ev
+    assert "CRITICAL_ERRORS = 0" in ev
+    assert "HIGH_ERRORS = 0" in ev
+    assert "SECRETS_FOUND = none" in ev
+    assert "DORALEX_PROD_TOUCHED = NO" in ev
+    assert "CUTOVER_ALLOWED = NO" in ev
+    assert "READY_FOR_CUTOVER_REVIEW = NO" in ev
+    assert "ENTERPRISE_APPS_QA = FAIL" in ev
+    assert "DORALEX_SUBSCRIPTION_ACTIVATION = PENDING" in ev
+    assert "READY_FOR_CUTOVER_REVIEW = NO" in status
+    assert "CUTOVER_ALLOWED = NO" in status

@@ -1,6 +1,6 @@
 # Conversión Community → Enterprise — estado
 
-**Fecha:** 2026-08-29  
+**Fecha:** 2026-08-30  
 **Cutover:** `CUTOVER_ALLOWED = NO`
 
 ```
@@ -200,4 +200,52 @@ DORALEX_PROD_TOUCHED = NO
 CUTOVER_ALLOWED = NO
 ```
 
+## QA funcional final pre-cutover (solo staging)
+
+```
+FINAL_QA_BACKUP = PASS
+APP_LAUNCHER_QA = PASS
+FISCAL_UI = PASS
+NCF_ENGINE = PASS
+ECF_ENGINE = PASS
+DGII_OUTBOUND = DISABLED/SAFE
+ACCOUNTING_QA = PASS
+SALES_QA = PASS
+PURCHASE_QA = PASS
+TRACEABILITY_QA = PASS
+MARGIN_CONTROL_QA = PASS
+CXP_QA = PASS
+APPROVAL_QA = PASS
+WARRANTY_QA = PASS
+AUDIT_QA = PASS
+VENDOR_BILL_CONTROL_QA = PASS
+DGCP_BRIDGE_QA = PASS
+MANAGED_SERVICES_QA = PASS
+ENTERPRISE_APPS_QA = FAIL
+REPORT_QA = PASS
+MAIL_QA = PASS
+SPANISH_UI_FINAL = PASS
+SECURITY_QA = PASS
+MULTICOMPANY_QA = PASS
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+REPORTS_PRESERVED = YES
+CRITICAL_ERRORS = 0
+HIGH_ERRORS = 0
+READY_FOR_CUTOVER_REVIEW = NO
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+DORALEX_PROD_TOUCHED = NO
+CUTOVER_ALLOWED = NO
+```
+
+`ENTERPRISE_APPS_QA = FAIL`: no se instalaron a ciegas `documents`, `sign`,
+`planning`, `sale_renting`, `web_studio`. Helpdesk y Suscripciones sí abren.
+
+Caso margen UI: `DOR/SO/00013` venta 400 / costo 240 / margen 160 (40%)
+vinculado a `DOR/OC/00012`. Aprobación: `DOR/SO/00015` Aprobada.
+Auditoría: logs de `res.partner.phone` con usuario/fecha/valor anterior-nuevo.
+NCF no consumido. DGII no enviado. SMTP neutralizado.
+
 Evidencia: `docs/enterprise_conversion/evidence/wave4_justech_custom_stack_20260829.txt`
+Evidencia QA: `docs/enterprise_conversion/evidence/wave5_final_functional_qa_20260830.txt`
