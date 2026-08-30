@@ -8,7 +8,7 @@
               groups="group_warranty_user"/>
 
     <menuitem id="menu_justech_warranty_dashboard"
-              name="Dashboard"
+              name="Tablero"
               parent="menu_justech_warranty_root"
               action="action_justech_warranty_dashboard"
               sequence="5"/>
