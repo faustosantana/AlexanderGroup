@@ -1,6 +1,6 @@
 {
     "name": "Doralex UX — menús y catálogo",
-    "version": "19.0.1.1.0",
+    "version": "19.0.1.1.1",
     "category": "Hidden",
     "summary": "Launcher limpio, Fiscal Dominicana agrupada y e-CF apagado por defecto",
     "description": "Overlay Doralex: menús fiscales agrupados, e-CF/DGII ocultos hasta activar el switch, administración/aprobaciones/auditoría bajo Ajustes. No desinstala módulos ni cambia nombres técnicos.",

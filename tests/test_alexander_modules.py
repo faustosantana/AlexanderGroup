@@ -193,6 +193,9 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
+    settings = (ux / "models" / "res_config_settings.py").read_text(encoding="utf-8")
+    assert "def get_values" in settings
+    assert 'raw in ("True", "true", "1")' in settings
     assert '"application": False' in website
     assert '"application": False' in fiscal
     assert "UNINSTALL" not in hooks

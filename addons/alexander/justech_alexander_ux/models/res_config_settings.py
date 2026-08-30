@@ -16,6 +16,13 @@ class ResConfigSettings(models.TransientModel):
         ),
     )
 
+    def get_values(self):
+        res = super().get_values()
+        raw = self.env["ir.config_parameter"].sudo().get_param(ECF_PARAM, "")
+        # Odoo 19 converts config_parameter booleans with bool("False") → True.
+        res["justech_ecf_operational_enabled"] = raw in ("True", "true", "1")
+        return res
+
     def set_values(self):
         super().set_values()
         apply_ecf_operational_state(

@@ -83,9 +83,11 @@ def apply_ecf_operational_state(env, enabled=None):
     """Oculta o muestra e-CF/DGII y activa/detiene crons. No desinstala."""
     icp = env["ir.config_parameter"].sudo()
     if enabled is None:
-        enabled = icp.get_param(ECF_PARAM, "False") in ("True", "true", "1")
+        enabled = icp.get_param(ECF_PARAM, "") in ("True", "true", "1")
     else:
-        icp.set_param(ECF_PARAM, "True" if enabled else "False")
+        # Odoo 19 default_get does bool(stored_string). "False"/"0" become True.
+        # Store empty when off so the Settings checkbox stays unchecked.
+        icp.set_param(ECF_PARAM, "True" if enabled else "")
     for xmlid in ECF_MENU_XMLIDS:
         menu = env.ref(xmlid, raise_if_not_found=False)
         if not menu:
