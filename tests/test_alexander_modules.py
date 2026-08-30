@@ -184,7 +184,13 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "l10n_do_ecf_connector.ecf_documents_root" in menus
     assert "justech_l10n_do_base.menu_justech_do_fiscal_root" in menus
     assert "justech_l10n_do_reports.menu_justech_do_audit_root" in menus
+    assert "menu_fiscal_reports_dgii" in menus
+    assert "menu_fiscal_withholding" in menus
+    assert "menu_fiscal_regularization" in menus
+    assert "base.menu_administration" in menus
     assert "VISIBLE_APPS" in hooks
+    assert "justech_alexander_admin" not in hooks.split("VISIBLE_APPS", 1)[1][:400]
+    assert "apply_ecf_operational_state" in hooks
     assert '"application": False' in website
     assert '"application": False' in fiscal
     assert "UNINSTALL" not in hooks

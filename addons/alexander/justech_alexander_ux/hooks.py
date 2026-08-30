@@ -1,8 +1,22 @@
-"""Catálogo y banderas application. No desinstala ni cambia nombres técnicos."""
+"""Catálogo, menús y switch e-CF. No desinstala ni cambia nombres técnicos."""
+
+ECF_PARAM = "justech_alexander.ecf_operational_enabled"
+
+ECF_MENU_XMLIDS = (
+    "justech_ecf_core.menu_justech_ecf_root",
+    "l10n_do_ecf_connector.ecf_documents_root",
+)
+
+ECF_CRON_XMLIDS = (
+    "justech_ecf_queue.ir_cron_justech_ecf_queue",
+    "l10n_do_ecf_connector.ecf_cron_invoices_to_sent",
+    "l10n_do_ecf_connector.ecf_cron_invoices_delivered_pending",
+    "l10n_do_ecf_connector.acecf_cron_update_customer_decision",
+)
 
 # (technical_name, display_es, application)
 CATALOG = (
-    ("justech_alexander_admin", "Administración Doralex", True),
+    ("justech_alexander_admin", "Administración Doralex", False),
     ("justech_alexander_base", "Identidad Doralex", False),
     ("justech_alexander_microsoft_mail", "Correo Microsoft", False),
     ("justech_alexander_reports", "Diseño de reportes Doralex", False),
@@ -11,7 +25,7 @@ CATALOG = (
     ("justech_warranty", "Garantías", True),
     ("justech_purchase_sale_margin_control", "Costos y Márgenes", True),
     ("justech_managed_services", "Servicios Administrados", True),
-    ("justech_approval_flow", "Aprobaciones", True),
+    ("justech_approval_flow", "Aprobaciones Justech", False),
     ("justech_global_audit_log", "Auditoría", False),
     ("justech_fiscal_admin", "Administración Fiscal", False),
     ("l10n_do_ecf_connector", "Conector e-CF DGII", False),
@@ -59,12 +73,30 @@ CATALOG = (
 )
 
 VISIBLE_APPS = {
-    "justech_alexander_admin",
     "justech_warranty",
     "justech_purchase_sale_margin_control",
     "justech_managed_services",
-    "justech_approval_flow",
 }
+
+
+def apply_ecf_operational_state(env, enabled=None):
+    """Oculta o muestra e-CF/DGII y activa/detiene crons. No desinstala."""
+    icp = env["ir.config_parameter"].sudo()
+    if enabled is None:
+        enabled = icp.get_param(ECF_PARAM, "False") in ("True", "true", "1")
+    else:
+        icp.set_param(ECF_PARAM, "True" if enabled else "False")
+    for xmlid in ECF_MENU_XMLIDS:
+        menu = env.ref(xmlid, raise_if_not_found=False)
+        if not menu:
+            continue
+        menu.active = bool(enabled)
+        if not enabled:
+            menu.web_icon = False
+    for xmlid in ECF_CRON_XMLIDS:
+        cron = env.ref(xmlid, raise_if_not_found=False)
+        if cron:
+            cron.active = bool(enabled)
 
 
 def _apply_catalog(env):
@@ -92,14 +124,19 @@ def _apply_menu_names(env):
         "justech_warranty.menu_justech_warranty_root": "Garantías",
         "justech_l10n_do_base.menu_justech_do_fiscal_root": "Fiscal Dominicana",
         "justech_l10n_do_ncf.menu_justech_do_ncf_motor_root": "NCF",
-        "justech_l10n_do_reports.menu_justech_do_audit_root": "Reportes fiscales",
+        "justech_l10n_do_reports.menu_justech_do_fiscal_dashboard": "Panel fiscal",
+        "justech_l10n_do_reports.menu_justech_do_report_607": "607",
+        "justech_l10n_do_reports.menu_justech_do_report_608": "608",
         "justech_ecf_core.menu_justech_ecf_root": "e-CF",
+        "justech_ecf_core.menu_justech_ecf_documents": "Documentos electrónicos",
         "l10n_do_ecf_connector.ecf_documents_root": "DGII",
+        "l10n_do_ecf_connector.ecf_documents_main": "Comprobantes electrónicos",
         "justech_admin_center.menu_justech_admin_center_root": "Administración técnica",
         "justech_alexander_admin.menu_doralex_modules": "Módulos",
-        "justech_approval_flow.menu_justech_approval_root": "Aprobaciones",
+        "justech_alexander_admin.menu_doralex_root": "Administración Doralex",
+        "justech_approval_flow.menu_justech_approval_root": "Aprobaciones Justech",
+        "justech_global_audit_log.menu_justech_global_audit_root": "Auditoría",
     }
-    Menu = env["ir.ui.menu"].sudo()
     for xmlid, name in renames.items():
         menu = env.ref(xmlid, raise_if_not_found=False)
         if not menu:
@@ -111,3 +148,4 @@ def _apply_menu_names(env):
 def post_init_hook(env):
     _apply_catalog(env)
     _apply_menu_names(env)
+    apply_ecf_operational_state(env, enabled=False)
