@@ -85,6 +85,8 @@ def test_lib_accepts_enterprise_staging() -> None:
 
 def test_status_doc_blocks_cutover() -> None:
     status = (REPO / "docs/enterprise_conversion/STATUS.md").read_text()
+    assert "CUTOVER_AUTHORIZED = YES" in status
+    assert "CUTOVER_STATUS = SUCCESS" in status
     assert "CUTOVER_ALLOWED = NO" in status
     assert "GITHUB_BLOCKER = REMOVE" in status
     assert "JUSTECH_SUBSCRIPTION_COPIED = NO" in status
@@ -172,3 +174,35 @@ def test_wave6_standard_enterprise_parity_keeps_cutover_blocked() -> None:
     assert "READY_FOR_CUTOVER_REVIEW = YES" in status
     assert "CUTOVER_ALLOWED = NO" in status
     assert "ARTICLES_TECHNICAL_NAME = knowledge" in ev
+
+
+def test_wave7_prod_cutover_success() -> None:
+    ev = (
+        REPO / "docs/enterprise_conversion/evidence/" "wave7_prod_cutover_20260830.txt"
+    ).read_text(encoding="utf-8")
+    status = (REPO / "docs/enterprise_conversion/STATUS.md").read_text()
+    assert "CUTOVER_AUTHORIZED = YES" in ev
+    assert "PROD_PRE_CUTOVER_BACKUP = PASS" in ev
+    assert "STAGING_DB_RESTORED_OVER_PROD = NO" in ev
+    assert "JUSTGROUP_LICENSE_USED = NO" in ev
+    assert "STANDARD_COMMUNITY_MISSING = 0" in ev
+    assert "ENTERPRISE_MISSING = 0" in ev
+    assert "CUSTOM_COMMON_MISSING = 0" in ev
+    assert "MODULE_VERSION_MISMATCH = 0" in ev
+    assert "QWEB_PROD = 58" in ev
+    assert "QWEB_HASH_MISMATCH_UNEXPECTED = 0" in ev
+    assert "REPORTS_PROD = PASS" in ev
+    assert "PROD_MAIL_QA = PASS" in ev
+    assert "WEBSITE_PRODUCTION_PARITY = PASS" in ev
+    assert "SPANISH_UI_PROD = PASS" in ev
+    assert "CRITICAL_ERRORS = 0" in ev
+    assert "HIGH_ERRORS = 0" in ev
+    assert "SECRETS_FOUND = none" in ev
+    assert "STAGING_PRESERVED = YES" in ev
+    assert "CUTOVER_STATUS = SUCCESS" in ev
+    assert "ROLLBACK_REQUIRED = NO" in ev
+    assert "DORALEX_SUBSCRIPTION_ACTIVATION = PENDING" in ev
+    assert "LICENSE_ACTIVATION_PLANNED = MONDAY" in ev
+    assert "CUTOVER_AUTHORIZED = YES" in status
+    assert "CUTOVER_STATUS = SUCCESS" in status
+    assert "DORALEX_PROD_TOUCHED = YES" in status

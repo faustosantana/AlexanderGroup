@@ -1,0 +1,195 @@
+Doralex Enterprise — cutover producción — 2026-08-30.
+
+CUTOVER_AUTHORIZED = YES
+LICENSE_GATE = TEMPORARILY_ACCEPTED
+SECRETS_FOUND = none
+STAGING_DB_RESTORED_OVER_PROD = NO
+JUSTGROUP_DATA_COPIED = NO
+JUSTGROUP_SUBSCRIPTION_COPIED = NO
+JUSTGROUP_LICENSE_USED = NO
+LICENSE_BANNER_HIDDEN = NO
+STAGING_PRESERVED = YES
+BACKUPS_PRESERVED = YES
+
+CUTOVER_START_TIME = 2026-08-30T02:40:11Z
+PROD_PRE_CUTOVER_BACKUP = PASS
+PROD_BACKUP_PATH = /opt/doralex/backups/production/pre_enterprise_cutover_20260829_224011
+  db.dump + filestore.tar.gz + odoo.conf + custom-addons + compose
+  + nginx + inventories + SHA256SUMS
+  restore-test throwaway doralex_prod_restore_check then dropped
+
+OLD_PROD_RUNTIME = odoo:19
+  sha256:f99ffac95cb39a0924622ea4118481c95651d9c84187e5b30a21c2cc4419c7dd
+NEW_PROD_RUNTIME = doralex-odoo-enterprise:19.0.20260324
+  sha256:0dbd3bbfa9c5034dbf8b7e7ecbe4bf3b886660b0fc71b4e1a412b625d9d213cf
+  no rebuild during cutover
+
+PROD_ODOO_VERSION = 19.0+e-20260324
+PROD_ODOO_EDITION = Enterprise
+  package release.py = 19.0-20260324 (same as staging)
+  web_enterprise installed; image addons include /usr/lib/odoo/enterprise
+PROD_WORKERS = 4
+PROD_GEVENT_PORT = 8072
+NGINX_WEBSOCKET = 127.0.0.1:8072 PRESERVED
+
+PROD_MODULE_INSTALL_LIST =
+  web_enterprise
+  account_accountant
+  hr,hr_holidays
+  justech_sale_terms_guard,justech_quotation_client_dedup,justech_l10n_do_adel_freeze,justech_mail_outgoing_policy
+  justech_sale_purchase_trace,justech_purchase_sale_margin_control,justech_approval_flow,justech_vendor_bill_po_control,multi_invoice_manual_payment_prod
+  justech_l10n_do_reports,justech_l10n_do_payments_withholding,justech_l10n_do_treasury
+  justech_ecf_core + xml/signature/queue/dgii/admin + l10n_do_ecf_connector(+receptor)
+  justech_admin_center,justech_dgcp_bridge,justech_managed_services,justech_recurring_fee,studio_hotfix,justech_security_ux
+  hr_payroll + justech_l10n_do_hr_payroll (+ account/holidays/attendance/bank/reports/subsidies)
+  project,hr_timesheet,timesheet_grid
+  documents,sign
+  planning,industry_fsm,sale_renting,stock_barcode
+  maintenance,repair,mass_mailing,marketing_automation,event,survey,base_automation
+  web_studio,knowledge,board,approvals,im_livechat,mrp,fleet
+  helpdesk_sale,spreadsheet_dashboard_documents,spreadsheet_dashboard_edition
+
+PROD_MODULE_UPDATE_LIST =
+  website
+  account
+  justech_alexander_website
+
+NO -u all
+NO -i all
+justech_approval_flow NOT upgraded (mail template HTTPS); label via overlay
+
+INSTALLED_PROD = 374
+INSTALLED_STG = 371
+  extras vs staging: account_bank_statement_import, account_online_synchronization, digest_enterprise
+STANDARD_COMMUNITY_MISSING = 0
+ENTERPRISE_MISSING = 0
+CUSTOM_COMMON_MISSING = 0
+MODULE_VERSION_MISMATCH = 0
+  named SoT vs justgroup_reference.json + wave6 parents
+  vs staging unique-name versions after E5: 0
+OEEL = 144
+CUSTOMISH = 51
+DORALEX_ONLY_CUSTOM = 5 justech_alexander_*
+
+COMPANIES = 7 PRESERVED
+USERS = 8 (7 internal + 1 public share inactive)
+MAIL_SERVERS = 0 PRESERVED
+  no invalid:1025
+  neutralization params = 0
+  catchall = doralexgroup.cloud
+  company mail domains preserved (not staging)
+PROD_MAIL_QA = PASS
+  no outbound test sent: Graph/SMTP send not safe without an explicit
+  internal recipient in this window; config not overwritten by staging
+
+FISCAL_ENGINE_PROD = PASS
+NCF_ENGINE_PROD = PASS
+  12 active ranges (2 per operating company 8-13)
+  RNCs preserved on company partners
+  justech_do_fiscal_enabled = t
+ECF_ENGINE_PROD = PASS
+  modules + tables present; ecf_document count = 0
+  NETVUX cron ran with 0 pending; no DGII send
+ACCOUNTING_PROD = PASS
+  journals=63 taxes=232 moves=60 plan/sequences untouched
+MARGIN_CONTROL_PROD = PASS
+CXP_PROD = PASS
+APPROVAL_PROD = PASS
+AUDIT_PROD = PASS
+WARRANTY_PROD = PASS
+TRACEABILITY_PROD = PASS
+VENDOR_BILL_CONTROL_PROD = PASS
+  module name justech_vendor_bill_po_control
+DOCUMENTS_PROD = PASS
+SIGN_PROD = PASS
+PROJECT_PROD = PASS
+TIMESHEET_PROD = PASS
+PLANNING_PROD = PASS
+RENTAL_PROD = PASS
+BARCODE_PROD = PASS
+MAINTENANCE_PROD = PASS
+REPAIR_PROD = PASS
+MARKETING_PROD = PASS
+AUTOMATION_PROD = PASS
+EVENT_PROD = PASS
+SURVEY_PROD = PASS
+STUDIO_PROD = PASS
+ARTICLES_PROD = PASS
+  knowledge menu es_DO = Artículos
+
+QWEB_PROD = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+  only expected hash delta: justech_alexander_website.doralex_contactus
+  xpath now matches en_US My Company and es_DO Mi Empresa
+REPORTS_PROD = PASS
+justech_alexander_reports = 19.0.3.8.5
+PDF_QUOTATION / SALE = PASS
+  existing DOR/SO/00012 (rollback after render)
+  ITBIS 324.00 / total 2124.00 / Doralex bank footer
+PDF_INVOICE = PASS
+  existing INV/2026/00004
+  NCF B0199100104 / ITBIS 16.20 / Piñaria identity
+  no new NCF consumed
+
+WEBSITE_HOME = PASS
+WEBSITE_INTERNAL_PAGES = PASS
+  /empresas/DOR = 200
+WEBSITE_NAVIGATION = PASS
+WEBSITE_HEADER = PASS
+WEBSITE_FOOTER = PASS
+WEBSITE_RESPONSIVE = PASS
+  dx-site / dx-hero CSS from justech_alexander_website 19.0.1.0.8
+WEBSITE_ASSETS = PASS
+WEBSITE_FORMS = PASS
+  /contactus published on website 1 after xpath fix; form present
+WEBSITE_SEO = PASS
+  title Doralex Group | Alexander Group
+  meta description preserved
+  robots Allow + sitemap https://doralexgroup.cloud/sitemap.xml
+  no noindex
+  domain https://doralexgroup.cloud
+  web.base.url https://doralexgroup.cloud
+WEBSITE_HTTPS = PASS
+  certbot vhost preserved; /websocket -> 8072
+WEBSITE_PRODUCTION_PARITY = PASS
+  Alexander homepage/footer/header hashes matched staging
+  no 127.0.0.1 / 8269 in views
+  staging SMTP / QA partners not copied
+
+SPANISH_UI_PROD = PASS
+  CRM Leads es_DO = Iniciativas
+  warranty Dashboard = Tablero
+  justech_approval_state = Estado de aprobación Justech
+PUBLIC_LOGIN_SPANISH_PROD = PASS
+  Correo electrónico / Contraseña / Iniciar sesión
+
+PROD_HEALTH = PASS
+  127.0.0.1:8069/web/health = 200
+PROD_LOGIN = PASS
+APP_LAUNCHER_PROD = PASS
+  Spanish roots include Contabilidad, Documentos, Firma,
+  Proyecto, Registro de horas, Planeación, Alquiler, Código de barras,
+  Mantenimiento, Reparaciones, Marketing, Eventos, Encuestas,
+  Artículos, Aprobaciones, Garantías, Costos y Márgenes, DGII
+
+CRITICAL_ERRORS = 0
+HIGH_ERRORS = 0
+MEDIUM_ERRORS = 3
+  transient registry/contact 500 during install window (resolved)
+  _sql_constraints deprecation warnings on vendor Justech models
+  REQUEST_URI KeyError when hitting :8069 without nginx proxy
+LOW_ERRORS = 2
+  DORALEX_SUBSCRIPTION_ACTIVATION = PENDING (banner not hidden)
+  websocket raw :8072 without Upgrade = 500 (expected)
+
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+LICENSE_ACTIVATION_PLANNED = MONDAY
+
+QA_RECORDS_NOT_MIGRATED_FROM_STAGING = YES
+  DOR/SO/00013 DOR/SO/00014 DOR/SO/00015 DOR/OC/00012 not used as source
+
+STAGING = 127.0.0.1:8269 STILL RUNNING health=200
+odoo:19 image tag left intact
+
+CUTOVER_STATUS = SUCCESS
+ROLLBACK_REQUIRED = NO

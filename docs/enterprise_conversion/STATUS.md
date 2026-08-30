@@ -1,7 +1,7 @@
 # Conversión Community → Enterprise — estado
 
 **Fecha:** 2026-08-30  
-**Cutover:** `CUTOVER_ALLOWED = NO`
+**Cutover:** `CUTOVER_AUTHORIZED = YES` · `CUTOVER_STATUS = SUCCESS`
 
 ```
 ENTERPRISE_PACKAGE_ROUTE = JUSTGROUP_RUNTIME_COPY
@@ -11,11 +11,14 @@ SOURCE_ODOO_EDITION = Enterprise
 GITHUB_BLOCKER = REMOVE
 JUSTECH_SUBSCRIPTION_COPIED = NO
 DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+LICENSE_ACTIVATION_PLANNED = MONDAY
 JUSTGROUP_DATA_COPIED = NO
 JUSTGROUP_SUBSCRIPTION_COPIED = NO
 JUSTGROUP_PROD_TOUCHED = NO
-DORALEX_PROD_TOUCHED = NO
-CUTOVER_ALLOWED = NO
+DORALEX_PROD_TOUCHED = YES
+CUTOVER_AUTHORIZED = YES
+CUTOVER_STATUS = SUCCESS
+ROLLBACK_REQUIRED = NO
 ```
 
 ## Canal temporal de transferencia — CERRADO
@@ -320,3 +323,37 @@ Vacuum HR hub: helper `_search` en `justech_l10n_do_hr_payroll` sombreaba el
 ORM; renombrado a `_hub_search` en staging.
 
 Evidencia: `docs/enterprise_conversion/evidence/wave6_standard_enterprise_parity_20260830.txt`
+
+## Cutover producción (autorizado 2026-08-30)
+
+No se restauró la DB de staging sobre producción. Runtime
+`doralex-odoo-enterprise:19.0.20260324` contra `doralex_prod`. Staging
+`127.0.0.1:8269` se conserva. Licencia Justgroup no usada. Banner de
+suscripción Doralex no se oculta.
+
+```
+CUTOVER_START_TIME = 2026-08-30T02:40:11Z
+PROD_PRE_CUTOVER_BACKUP = PASS
+PROD_BACKUP_PATH = /opt/doralex/backups/production/pre_enterprise_cutover_20260829_224011
+OLD_PROD_RUNTIME = odoo:19
+NEW_PROD_RUNTIME = doralex-odoo-enterprise:19.0.20260324
+PROD_ODOO_VERSION = 19.0+e-20260324
+PROD_ODOO_EDITION = Enterprise
+STANDARD_COMMUNITY_MISSING = 0
+ENTERPRISE_MISSING = 0
+CUSTOM_COMMON_MISSING = 0
+MODULE_VERSION_MISMATCH = 0
+QWEB_PROD = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+REPORTS_PROD = PASS
+justech_alexander_reports = 19.0.3.8.5
+justech_alexander_website = 19.0.1.0.8
+STAGING_PRESERVED = YES
+BACKUPS_PRESERVED = YES
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+LICENSE_ACTIVATION_PLANNED = MONDAY
+CUTOVER_STATUS = SUCCESS
+ROLLBACK_REQUIRED = NO
+```
+
+Evidencia: `docs/enterprise_conversion/evidence/wave7_prod_cutover_20260830.txt`
