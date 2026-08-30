@@ -45,6 +45,12 @@ fi
 if [ -d "$(env_dir "$ENV_NAME")/addons" ]; then
   tar czf "${DEST}/addons.tar.gz" -C "$(env_dir "$ENV_NAME")" addons
 fi
+if [ -d "$(env_dir "$ENV_NAME")/custom-addons" ]; then
+  tar czf "${DEST}/custom-addons.tar.gz" -C "$(env_dir "$ENV_NAME")" custom-addons
+fi
+if [ -d "$(env_dir "$ENV_NAME")/config" ]; then
+  tar czf "${DEST}/config.tar.gz" -C "$(env_dir "$ENV_NAME")" config
+fi
 
 # 4) Metadata de compose/env (el .env se guarda con permisos 600 para DR).
 cp "$(compose_file "$ENV_NAME")" "${DEST}/docker-compose.yml"

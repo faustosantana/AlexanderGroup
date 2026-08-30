@@ -1,0 +1,128 @@
+Doralex Enterprise — cierre de canal + paridad custom Justech en staging — 2026-08-29.
+
+TRANSFER_CHANNEL_CLOSED = YES
+TEMP_TRANSFER_USER_REMOVED = YES
+TEMP_TRANSFER_AUTHORIZED_KEY_REMOVED = YES
+id doralex-core-transfer = FAIL (expected)
+core-incoming = empty 700 root
+sshd_config = NOT_MODIFIED
+archives kept = YES
+runtime-source kept = YES
+
+FULL_CUSTOM_STACK_BACKUP = PASS
+  /opt/doralex/backups/enterprise-staging/pre_full_justech_custom_stack_20260829_185151
+  db.dump + filestore.tar.gz + config + custom-addons + inventories
+
+SOURCE = /opt/doralex/runtime-source/19.0-e-20260324/custom-addons/
+DEST = /opt/doralex/enterprise-staging/custom-addons/
+justech_alexander_* = NOT overwritten
+AppleDouble / .DS_Store / __pycache__ ignored
+
+TOTAL_CUSTOM_SOURCE = 49
+TOTAL_CUSTOM_INSTALLED_JUSTGROUP = 44
+TOTAL_CUSTOM_INSTALLED_DORALEX = 50
+CUSTOM_SOURCE_INSTALLED = 44
+CUSTOM_DORALEX_INSTALLED = 50
+CUSTOM_COMMON_MISSING = 0
+CUSTOM_COMMON_VERSION_MISMATCH = 0
+CUSTOM_DIFFERENT_FUNCTIONAL = 2
+DORALEX_ONLY_CUSTOM = 5
+CUSTOM_CODE_SYNC = PASS
+CUSTOM_DISCOVERED = 52
+SECRETS_FOUND = none
+
+CUSTOM_DIFFERENT_FUNCTIONAL detail:
+  justech_l10n_do_treasury/views/menu_accounting_navigation.xml
+    REASON: orphan hide-menu records broke fresh install (ir_ui_menu.name NOT NULL)
+  justech_ecf_admin/views/ecf_api_inbound_views.xml
+    REASON: i18n Doralex API keys -> Claves API
+
+FISCAL_ENGINE_INSTALLED = YES
+  justech_l10n_do_base 19.0.1.27.1
+  justech_l10n_do_ncf 19.0.2.31.0
+  l10n_do_accounting 19.0.1.0.1
+  justech_fiscal_admin 19.0.1.10.0
+  justech_l10n_do_reports 19.0.1.24.8
+  justech_ecf_* + l10n_do_ecf_connector(+receptor) installed
+ACCOUNTING_CUSTOM_INSTALLED = YES
+  multi_invoice_manual_payment_prod 19.0.1.5.4
+  justech_accounting_recovery 19.0.1.4.0
+  justech_l10n_do_payments_withholding 19.0.1.7.2
+  justech_l10n_do_treasury 19.0.1.6.7
+MARGIN_CONTROL_INSTALLED = YES
+  justech_purchase_sale_margin_control 19.0.8.29.38
+APPROVAL_FLOW_INSTALLED = YES
+  justech_approval_flow 19.0.1.3.8
+AUDIT_INSTALLED = YES
+  justech_global_audit_log 19.0.4.1.4
+WARRANTY_INSTALLED = YES
+  justech_warranty 19.0.1.9.1
+TRACEABILITY_INSTALLED = YES
+  justech_sale_purchase_trace 19.0.1.2.11
+VENDOR_BILL_CONTROL_INSTALLED = YES
+  justech_vendor_bill_po_control 19.0.3.6.2
+
+WAVE_J1 = PASS
+WAVE_J2 = PASS
+WAVE_J3 = PASS
+WAVE_J4 = PASS
+WAVE_J5 = PASS
+WAVE_J6 = PASS
+WAVE_J7 = PASS
+WAVE_J8 = PASS
+
+J3b_ALIGN = -u account (not -u all) after Community nightly leftover field
+  is_exact_move_duplicate blocked account_reports view combine
+IMAGE_PYDEPS = pyqrcode xmltodict simplejson pycountry signxml==3.2.2
+  installed into doralex-odoo-enterprise:19.0.20260324 only
+  odoo:19 tag NOT retagged
+  CMD restored to ["odoo"] after an intermediate commit used sleep
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+REPORTS_PRESERVED = YES
+justech_alexander_reports = 19.0.3.8.5
+
+PDF_QUOTATION = PASS
+PDF_SALE_ORDER = PASS
+PDF_INVOICE = PASS
+  quotation: COTIZACIÓN / BLUE ELITE / ITBIS (no NCF consume)
+  sale_order: PEDIDO DE VENTA / INVERSIONES DORALEX / ITBIS
+  invoice: FACTURA / INVERSIONES DORALEX / NCF Pendiente de NCF / ITBIS
+  no DGII send; MAIL_SAFE_MODE = YES
+
+DORALEX_MAIL_CONFIG_PRESERVED = YES
+  neutralization - disable emails / invalid:1025
+DORALEX_CONFIG_PRESERVED = YES
+DORALEX_COMPANIES_PRESERVED = YES
+  7 companies including BLUE ELITE, INVERSIONES DORALEX, …
+DORALEX_USERS_PRESERVED = YES
+  users=8
+DORALEX_SYSTEM_PARAMETERS_PRESERVED = YES
+  web.base.url = https://enterprise.doralexgroup.cloud
+  mail.catchall.domain = doralexgroup.cloud
+  new keys only from installed modules
+DORALEX_ACCOUNTING_CONFIG_PRESERVED = YES
+  journals/taxes/accounts Doralex; no Justgroup chart copy
+DORALEX_FISCAL_CONFIG_PRESERVED = YES
+  no Justgroup RNC/NCF/DGII tokens copied
+
+MAIL_SAFE_MODE = YES
+SPANISH_UI = PASS
+PUBLIC_LOGIN_SPANISH = PASS
+  login HTML: Iniciar sesión, Contraseña
+  website default_lang_id = es_DO
+ENTERPRISE_UI = PASS
+STAGING_LOGIN = PASS
+STAGING_HEALTH = PASS
+INSTALLED_TOTAL = 202
+
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+JUSTGROUP_DATA_COPIED = NO
+JUSTGROUP_SUBSCRIPTION_COPIED = NO
+JUSTGROUP_PROD_TOUCHED = NO
+DORALEX_PROD_TOUCHED = NO
+CUTOVER_ALLOWED = NO
+PROD_IMAGE = odoo:19
+STAGING = 127.0.0.1:8269 doralex-odoo-enterprise:19.0.20260324

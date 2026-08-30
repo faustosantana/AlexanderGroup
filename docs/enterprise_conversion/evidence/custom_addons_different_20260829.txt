@@ -1,0 +1,28 @@
+DIFFERENT custom addons (source Justgroup vs Doralex staging) — 2026-08-29.
+No overwrite. Doralex-specific wins via addons_path.
+
+All five share the same manifest version and have 0 content-file hashes changed.
+Source-only extras are macOS AppleDouble (._*) / .DS_Store, not functional diffs.
+
+bi_convert_purchase_from_sales  19.0.0.0 = 19.0.0.0
+  manifest/version/python/xml/js/css/security/reports: unchanged
+  source_extra: .DS_Store, static/.DS_Store, static/src/.DS_Store
+
+justech_core  19.0.1.0.0 = 19.0.1.0.0
+  manifest/version/python/xml/js/css/security/reports: unchanged
+  source_extra: ._README.md, .___init__.py, .___manifest__.py, ._data, ._i18n, ._models, ._security, ._static (+ more AppleDouble)
+
+justech_global_audit_log  19.0.4.1.4 = 19.0.4.1.4
+  manifest/version/python/xml/js/css/security/reports: unchanged
+  source_extra: AppleDouble companions for py/xml/security (56 files)
+
+justech_modules  19.0.1.8.7 = 19.0.1.8.7
+  manifest/version/python/xml/js/css/security/reports: unchanged
+  source_extra: AppleDouble companions (61 files)
+
+justech_warranty  19.0.1.9.1 = 19.0.1.9.1
+  manifest/version/python/xml/js/css/security/reports: unchanged
+  source_extra: AppleDouble companions (72 files)
+
+justech_alexander_* = DORALEX_ONLY / PRESERVE_DORALEX
+justech_alexander_reports = 19.0.3.8.5

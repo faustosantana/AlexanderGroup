@@ -2,52 +2,35 @@
 
 ## Objetivo
 
-Desplegar **Odoo 19 Enterprise** para Doralex / Alexander Group.
+Convertir **Doralex Community → Enterprise** en `DORALEX_ENTERPRISE_STAGING`
+con el **paquete oficial** Odoo 19 (cuenta/suscripción Doralex).  
+Prod (`doralexgroup.cloud`) no se toca. `CUTOVER_ALLOWED = NO`.
 
-## Estado actual: `ENTERPRISE_SOURCE_PENDING=TRUE`
+## Estado: `ENTERPRISE_PACKAGE_ROUTE = PRIMARY`
 
-La suscripción/licencia Enterprise está **en trámite**. La arquitectura ya es
-**enterprise-ready**: no habrá que rehacerla cuando llegue la licencia.
+- Suscripción Enterprise Doralex: **comprada**.
+- Activación del código: **después** de instalar `web_enterprise` (no bloquea).
+- GitHub `odoo/enterprise`: **no es requisito** (`GITHUB_BLOCKER = REMOVE`).
+- Staging corre Docker `odoo:19` (Ubuntu 24.04, dpkg `odoo`). El `.deb` oficial
+  se instala en una **imagen derivada** `doralex-odoo-enterprise:19`, no con
+  `dpkg` ad-hoc en el contenedor vivo ni en el host.
 
-- `addons_path` **final** desde ya: `/mnt/enterprise,/mnt/custom-addons`.
-- El directorio `/opt/doralex/enterprise` **existe desde el inicio** (montado en
-  `/mnt/enterprise`, solo lectura), **vacío y protegido** (`chmod 700`) con un
-  marcador `ENTERPRISE_SOURCE_PENDING`.
-- Imagen actual: `odoo:19` (Community) como base; se cambiará a la imagen/paquetes
-  Enterprise cuando exista la fuente legítima. **No** se usan addons Enterprise de
-  fuentes no autorizadas ni de repositorios de terceros.
+Arquitectura de paths (sin cambiar):
 
-> Regla: cualquier dependencia real de Enterprise se marca
-> **`BLOCKED_BY_ENTERPRISE_SOURCE`**; el resto de la infraestructura avanza.
+- `addons_path` = `/mnt/enterprise,/mnt/custom-addons`
+- `/opt/doralex/enterprise` lo monta **Prod Community**: no escribir Enterprise ahí.
+- Drop-path del instalador: `/opt/doralex/secrets/odoo_enterprise/archive/`
 
-## Se debe confirmar antes de instalar Enterprise
+## Desbloqueo de la descarga automática
 
-- [ ] Versión exacta (p. ej. `19.0` + fecha/build).
-- [ ] Fuente legítima de Enterprise disponible (suscripción Odoo / repo `enterprise`
-      con acceso autorizado / imagen oficial Enterprise).
-- [ ] Dependencias del sistema y de Python.
-- [ ] Imagen o paquetes a usar (y cómo se construyen).
-- [ ] Método de actualización/parcheo.
-- [ ] Términos de licencia y número de usuarios contratados.
+El instalador oficial no pide login de GitHub. Pide el **código de contrato**
+y el servidor baja el `.deb` (`deb_19e`).
 
-## Si falta credencial / repo / licencia
+1. Escribir el código (una línea) en
+   `/opt/doralex/secrets/odoo_enterprise/subscription_code` (`chmod 600`)
+2. `bash /opt/doralex/scripts/download_odoo_enterprise.sh`
+3. `CONFIRM=yes bash /opt/doralex/scripts/convert_community_to_enterprise.sh`
 
-**Detenerse y reportar** (como aquí). No descargar ni empaquetar Enterprise sin
-autorización.
+No subir el `.deb` a mano. No usar nightly/Community. Prod no se toca.
 
-## Cuando llegue Enterprise (Fase 28 — sin reconstruir)
-
-1. Colocar/clonar los addons Enterprise en `/opt/doralex/enterprise` desde la
-   **fuente legítima**, con la **misma revisión** que Community (ver
-   [`../migration/JUSTGROUP_TECHNICAL_REFERENCE.md`](../migration/JUSTGROUP_TECHNICAL_REFERENCE.md)).
-2. Ajustar `ODOO_IMAGE` a la imagen Enterprise si corresponde (el `addons_path`
-   **no cambia**: ya es `/mnt/enterprise,/mnt/custom-addons`).
-3. Actualizar la lista de aplicaciones e instalar los módulos requeridos.
-4. Activar la suscripción/base por el procedimiento oficial.
-5. Ejecutar pruebas en **Dev** primero.
-6. **No** reconstruir el servidor ni recrear las bases de datos.
-
-## Credenciales pendientes
-
-- Suscripción/licencia Odoo Enterprise 19: **PENDIENTE**.
-- Acceso a la fuente de addons Enterprise: **PENDIENTE**.
+Detalle vivo: [`../enterprise_conversion/STATUS.md`](../enterprise_conversion/STATUS.md).

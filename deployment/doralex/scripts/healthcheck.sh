@@ -12,7 +12,14 @@ load_env "$ENV_NAME"
 
 DB_CT="$(db_container "$ENV_NAME")"
 ODOO_CT="$(odoo_container "$ENV_NAME")"
-PORT="${ODOO_HTTP_PORT:-$([ "$ENV_NAME" = production ] && echo 8069 || echo 8169)}"
+PORT="${ODOO_HTTP_PORT:-}"
+if [ -z "$PORT" ]; then
+  case "$ENV_NAME" in
+    production) PORT=8069 ;;
+    enterprise-staging) PORT=8269 ;;
+    *) PORT=8169 ;;
+  esac
+fi
 status=0
 
 check_health() {

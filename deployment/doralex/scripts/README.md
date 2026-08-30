@@ -30,6 +30,11 @@ bash backup.sh production
 
 ## Convenciones
 
-- `ENV` válido: `production` o `dev`.
+- `ENV` válido: `production`, `dev` o `enterprise-staging`.
+- Runtime Justgroup → staging: `transfer_justgroup_runtime_export.sh`,
+  `import_justgroup_runtime_export.sh`, `build_doralex_enterprise_image.sh`,
+  `apply_enterprise_runtime_staging.sh`. Hash fijo
+  `d406ccfd73225db88b83dfd07def618b2c48e1b1aeaebcc5877f76fa26b4cb86`.
+  Nunca `-u all`. Nunca cutover. Nunca Prod.
 - Variable `DORALEX_BASE` (por defecto `/opt/doralex`) permite pruebas en otra ruta.
 - Ningún script publica PostgreSQL ni imprime secretos.

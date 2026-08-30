@@ -68,6 +68,21 @@ if docker inspect doralex-dev-odoo doralex-dev-db >/dev/null 2>&1; then
   fi
 fi
 
+# 7) Enterprise staging, si existe, no monta volúmenes de Prod.
+if docker inspect doralex-enterprise-staging-odoo >/dev/null 2>&1; then
+  if docker inspect doralex-enterprise-staging-odoo doralex-enterprise-staging-db 2>/dev/null | grep -q 'doralex_prod_'; then
+    bad "Enterprise staging referencia un volumen de Produccion"
+  else
+    ok "Enterprise staging no monta volúmenes de Produccion"
+  fi
+  if docker inspect doralex-enterprise-staging-odoo --format '{{range .Mounts}}{{.Source}} {{end}}' \
+     | grep -q '/opt/doralex/enterprise$'; then
+    bad "Staging monta /opt/doralex/enterprise (riesgo de filtrar Enterprise a Prod)"
+  else
+    ok "Staging usa enterprise-addons propio"
+  fi
+fi
+
 if [ "$fail" -eq 0 ]; then
   log "ISOLATION: PASS"
   exit 0

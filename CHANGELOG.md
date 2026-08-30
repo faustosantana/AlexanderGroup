@@ -6,6 +6,16 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 ## Unreleased
 
 ### Added
+- Staging Doralex: canal temporal `doralex-core-transfer` cerrado e instalación
+  del stack custom Justech (fiscal, NCF, e-CF, tesorería, márgenes, aprobaciones,
+  auditoría, garantías, guards, nómina RD). Overlay `justech_alexander_*` y QWeb
+  58 intactos. Cutover y Prod siguen bloqueados.
+- Auditoría del export Justgroup en Doralex (extracto aislado, QWeb 58,
+  custom-addons comparado, core 19.0.20260324 pendiente). Usuario SSH
+  temporal de transferencia cerrado. Cutover sigue bloqueado.
+- Conversión Community → Enterprise en staging aislado
+  (`deployment/doralex/enterprise-staging/`, scripts de clon/fetch/convert).
+  Cutover a producción bloqueado.
 - Auditoría Justgroup vs Doralex (stack): manifiestos, comparador
   `tools/justgroup_doralex_stack_compare.py` y backup de preservación de
   reportes. Cutover bloqueado hasta Enterprise propia.

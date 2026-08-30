@@ -1,0 +1,59 @@
+id,module,xml_name,key,name,model,type,inherit_id,priority,active,arch_md5
+1642,justech_alexander_reports,delivery_document_dx,justech_alexander_reports.delivery_document_dx,delivery_document_dx,"",qweb,984,16,t,fafe285060575167cff11b3a0135c559
+1622,justech_alexander_reports,dx_banks_text,justech_alexander_reports.dx_banks_text,dx_banks_text,"",qweb,"",16,t,6acfaf410c146fa0f1f7436eb15d39ca
+1615,justech_alexander_reports,dx_commercial_meta,justech_alexander_reports.dx_commercial_meta,dx_commercial_meta,"",qweb,"",16,t,2ab2c426ee96049e7b7b4286dcce81ce
+1614,justech_alexander_reports,dx_customer_card,justech_alexander_reports.dx_customer_card,dx_customer_card,"",qweb,"",16,t,3e4f79f1c2b9d3be1e5490081678334b
+1619,justech_alexander_reports,dx_document_end,justech_alexander_reports.dx_document_end,dx_document_end,"",qweb,"",16,t,54309beee6e3dbcce6f562e9934398ad
+1610,justech_alexander_reports,dx_footer_blueelite,justech_alexander_reports.dx_footer_blueelite,dx_footer_blueelite,"",qweb,"",16,t,697860c170f746fc0e338c211de275f8
+1607,justech_alexander_reports,dx_footer_dominion,justech_alexander_reports.dx_footer_dominion,dx_footer_dominion,"",qweb,"",16,t,5abfde8d2f450ce6f8db6f7e72f9c9cc
+1605,justech_alexander_reports,dx_footer_doralex,justech_alexander_reports.dx_footer_doralex,dx_footer_doralex,"",qweb,"",16,t,c9883e0888d2c44d02b31221d01e19e1
+1608,justech_alexander_reports,dx_footer_mayuma,justech_alexander_reports.dx_footer_mayuma,dx_footer_mayuma,"",qweb,"",16,t,d554143ab5b73eb13ee714bb4e9e51c6
+1606,justech_alexander_reports,dx_footer_pinaria,justech_alexander_reports.dx_footer_pinaria,dx_footer_pinaria,"",qweb,"",16,t,dc5e3634cd1d68881bf0d6dec033e479
+1609,justech_alexander_reports,dx_footer_rempart,justech_alexander_reports.dx_footer_rempart,dx_footer_rempart,"",qweb,"",16,t,2723112c00a7f7a69b790cb727582340
+1604,justech_alexander_reports,dx_header_blueelite,justech_alexander_reports.dx_header_blueelite,dx_header_blueelite,"",qweb,"",16,t,5c4d2472b861d98b3b4685a0c328ce71
+1601,justech_alexander_reports,dx_header_dominion,justech_alexander_reports.dx_header_dominion,dx_header_dominion,"",qweb,"",16,t,94ed62937b91a0c6f0de68b614b67260
+1599,justech_alexander_reports,dx_header_doralex,justech_alexander_reports.dx_header_doralex,dx_header_doralex,"",qweb,"",16,t,23e2650d5c643201f67fc9f6117ab28e
+1602,justech_alexander_reports,dx_header_mayuma,justech_alexander_reports.dx_header_mayuma,dx_header_mayuma,"",qweb,"",16,t,06f6a621a3ed9fe0945c26d4aebc224a
+1600,justech_alexander_reports,dx_header_pinaria,justech_alexander_reports.dx_header_pinaria,dx_header_pinaria,"",qweb,"",16,t,66e1f5a8342d4418c65428497f38900a
+1603,justech_alexander_reports,dx_header_rempart,justech_alexander_reports.dx_header_rempart,dx_header_rempart,"",qweb,"",16,t,9b42b34bf03e195ba433fb9910af36ff
+1632,justech_alexander_reports,dx_invoice_composition,justech_alexander_reports.dx_invoice_composition,dx_invoice_composition,"",qweb,"",16,t,3b4296b7f7ceedb7646f250e2e26dadc
+1616,justech_alexander_reports,dx_line_table,justech_alexander_reports.dx_line_table,dx_line_table,"",qweb,"",16,t,da2b6bf7c6e95a07abb21a4f73b36eef
+1633,justech_alexander_reports,dx_payment_composition,justech_alexander_reports.dx_payment_composition,dx_payment_composition,"",qweb,"",16,t,2ac4a223409d6d499691694fcfb161fd
+1635,justech_alexander_reports,dx_picking_composition,justech_alexander_reports.dx_picking_composition,dx_picking_composition,"",qweb,"",16,t,61cf17187c646aac3a131172b9bfff49
+1617,justech_alexander_reports,dx_picking_lines,justech_alexander_reports.dx_picking_lines,dx_picking_lines,"",qweb,"",16,t,ad67740d7311ba071b7bfe67ab58d4c1
+1618,justech_alexander_reports,dx_pin_doc_title,justech_alexander_reports.dx_pin_doc_title,dx_pin_doc_title,"",qweb,"",16,t,4e405c18663f42be989ea4bf150bf059
+1634,justech_alexander_reports,dx_purchase_composition,justech_alexander_reports.dx_purchase_composition,dx_purchase_composition,"",qweb,"",16,t,e0d882f6f3df94f9dc1b34750908978b
+1636,justech_alexander_reports,dx_report_extras,justech_alexander_reports.dx_report_extras,Bloques extra Doralex,"",qweb,"",16,t,228a6d14945b2bde998edfcadba72db6
+1630,justech_alexander_reports,dx_sale_blueelite,justech_alexander_reports.dx_sale_blueelite,dx_sale_blueelite,"",qweb,"",16,t,51d08c1d77d07ae36404a4a36bb9e116
+1631,justech_alexander_reports,dx_sale_composition,justech_alexander_reports.dx_sale_composition,dx_sale_composition,"",qweb,"",16,t,66b807dde1cf9278d10eeb7a0d60abcc
+1627,justech_alexander_reports,dx_sale_dominion,justech_alexander_reports.dx_sale_dominion,dx_sale_dominion,"",qweb,"",16,t,58552d686c82d292c3a0ac0b799c3daa
+1625,justech_alexander_reports,dx_sale_doralex,justech_alexander_reports.dx_sale_doralex,dx_sale_doralex,"",qweb,"",16,t,495a6c9c180756a10339ea4a6294b0ed
+1628,justech_alexander_reports,dx_sale_mayuma,justech_alexander_reports.dx_sale_mayuma,dx_sale_mayuma,"",qweb,"",16,t,4bbdd5fc50fcde43b589ecee9b391190
+1626,justech_alexander_reports,dx_sale_pinaria,justech_alexander_reports.dx_sale_pinaria,dx_sale_pinaria,"",qweb,"",16,t,ef0b4ec9ad094af7e63a89ece8934df8
+1629,justech_alexander_reports,dx_sale_rempart,justech_alexander_reports.dx_sale_rempart,dx_sale_rempart,"",qweb,"",16,t,01c4e494becf0cd49826f95c3e140c4e
+1624,justech_alexander_reports,dx_signature_panel,justech_alexander_reports.dx_signature_panel,dx_signature_panel,"",qweb,"",16,t,d7c6b3f58d786dac489443ba8ad46fa1
+1623,justech_alexander_reports,dx_terms_panel,justech_alexander_reports.dx_terms_panel,dx_terms_panel,"",qweb,"",16,t,26280f9908c2d7d08ed572a08fe347ae
+1621,justech_alexander_reports,dx_terms_text,justech_alexander_reports.dx_terms_text,dx_terms_text,"",qweb,"",16,t,1b36f01b47da4f7bdbd99c8b0f175792
+1620,justech_alexander_reports,dx_totals_panel,justech_alexander_reports.dx_totals_panel,dx_totals_panel,"",qweb,"",16,t,434fcb7a238a0b2465afb9a89e826c0e
+1613,justech_alexander_reports,external_layout_doralex,justech_alexander_reports.external_layout_doralex,Doralex,"",qweb,"",16,t,2e634cc7c74b38f5329179ef08a8200d
+1611,justech_alexander_reports,external_layout_force_document_company,justech_alexander_reports.external_layout_force_document_company,external_layout_force_document_company,"",qweb,212,16,t,c6de3fd5459230948a8cb5ca7c6a626d
+1612,justech_alexander_reports,internal_layout_force_document_company,justech_alexander_reports.internal_layout_force_document_company,internal_layout_force_document_company,"",qweb,213,16,t,162f05e6a6f71136a58164c8522f5627
+1639,justech_alexander_reports,invoice_document_dx,justech_alexander_reports.invoice_document_dx,invoice_document_dx,"",qweb,842,16,t,7475381af9336d25fe300649f2a207d1
+1643,justech_alexander_reports,payment_receipt_dx,justech_alexander_reports.payment_receipt_dx,payment_receipt_dx,"",qweb,879,16,t,f4fbd30238c42424110d3407b9180843
+1644,justech_alexander_reports,picking_document_dx,justech_alexander_reports.picking_document_dx,picking_document_dx,"",qweb,982,16,t,fbb644746699b01bcdf067a8cc3085cc
+1640,justech_alexander_reports,purchase_order_dx,justech_alexander_reports.purchase_order_dx,purchase_order_dx,"",qweb,1235,16,t,f6f10587b7a9aec9fa4623ccd1d974be
+1641,justech_alexander_reports,purchase_rfq_dx,justech_alexander_reports.purchase_rfq_dx,purchase_rfq_dx,"",qweb,1238,16,t,8f97f9b5a5e627498d77ae755f277435
+1647,justech_alexander_reports,report_partner_statement_document,justech_alexander_reports.report_partner_statement_document,report_partner_statement_document,"",qweb,"",16,t,caa98777e7c8fb4cbce98bd0580158a2
+1637,justech_alexander_reports,report_preview_document,justech_alexander_reports.report_preview_document,report_preview_document,"",qweb,"",16,t,7831c80ee90827b09e685ffa1f915df2
+1646,justech_alexander_reports,report_warranty_document,justech_alexander_reports.report_warranty_document,report_warranty_document,"",qweb,"",16,t,4417a725acf353357ce4df0ae4d21df6
+1645,justech_alexander_reports,return_document_dx,justech_alexander_reports.return_document_dx,return_document_dx,"",qweb,1009,16,t,f5eebd42443995ebc7a55722d10ccb5f
+1638,justech_alexander_reports,sale_document_dx,justech_alexander_reports.sale_document_dx,sale_document_dx,"",qweb,1309,16,t,2d23b19226fa35666ea244e8a3431293
+2445,justech_alexander_website,company_detail,justech_alexander_website.company_detail,Empresa Doralex,"",qweb,"",16,t,2c0c51d69d16f517dcbcaa4060d420bd
+2441,justech_alexander_website,doralex_contactus,justech_alexander_website.doralex_contactus,Doralex contacto,"",qweb,1656,16,t,4ab28def9a24da2f8076f6bcd491a571
+2442,justech_alexander_website,doralex_copyright,justech_alexander_website.doralex_copyright,doralex_copyright,"",qweb,1747,16,t,b98537bfe8a7c1bee3c289d7795f11e5
+2440,justech_alexander_website,doralex_footer,justech_alexander_website.doralex_footer,Doralex footer institucional,"",qweb,1731,16,t,496557f58302f7fbbc1c383a7e8ee602
+2443,justech_alexander_website,doralex_header_cta,justech_alexander_website.doralex_header_cta,Doralex CTA,"",qweb,1764,16,t,5eb0e5218bcbafde46a3031331a03f40
+2439,justech_alexander_website,doralex_header_text,justech_alexander_website.doralex_header_text,Doralex header contact,"",qweb,1802,16,t,7b0e05eb23dfdf05f6cfb92dcc505df2
+2446,"","",justech_alexander_website.doralex_homepage,Doralex Home,"",qweb,1663,16,t,f3bd677f3e9171bed263292882da49c6
+2438,justech_alexander_website,doralex_homepage,justech_alexander_website.doralex_homepage,Doralex Home,"",qweb,1655,16,t,f3bd677f3e9171bed263292882da49c6
+2444,justech_alexander_website,doralex_sign_in,justech_alexander_website.doralex_sign_in,Doralex ERP login,"",qweb,626,16,t,472aaf1c0305168de893138a83922518

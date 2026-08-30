@@ -1,0 +1,186 @@
+Doralex Enterprise — paridad standard/Enterprise Justgroup (staging only) — 2026-08-30.
+
+STANDARD_ENTERPRISE_PARITY_BACKUP = PASS
+  /opt/doralex/backups/enterprise-staging/pre_standard_enterprise_parity_212307
+  /opt/doralex/backups/enterprise-staging/enterprise-staging_20260829_212307
+  db.dump + filestore + config + custom-addons + inventories
+  SECRETS_FOUND = none
+
+STAGING = 127.0.0.1:8269 doralex-odoo-enterprise:19.0.20260324
+PROD_IMAGE = odoo:19
+DORALEX_PROD_TOUCHED = NO
+JUSTGROUP_DATA_COPIED = NO
+JUSTGROUP_SUBSCRIPTION_COPIED = NO
+JUSTGROUP_PROD_TOUCHED = NO
+CUTOVER_ALLOWED = NO
+
+SOURCE_OF_TRUTH
+  docs/stack_audit/justgroup_reference.json
+  full_module_list_complete = false
+  SSH audit 2026-08-27 counted 360 / Community 173 / Enterprise 142 / Justech 41
+  Name-level SoT = enterprise_apps_required_for_ux_match + community_apps_observed
+    + missing_community from JUSTGROUP_DORALEX_STACK_AUDIT.md
+  Not installed (absent from named SoT): appointment, social, website_sale, voip, whatsapp
+
+JUSTGROUP_TOTAL_INSTALLED_MODULES = 360
+DORALEX_TOTAL_INSTALLED_MODULES = 371
+
+JUSTGROUP_COMMUNITY_STANDARD_INSTALLED = 173
+DORALEX_COMMUNITY_STANDARD_INSTALLED = 181
+
+JUSTGROUP_ENTERPRISE_INSTALLED = 142
+DORALEX_ENTERPRISE_INSTALLED = 141
+
+JUSTGROUP_CUSTOM_INSTALLED = 44
+DORALEX_CUSTOM_INSTALLED = 49
+  includes 5 justech_alexander_* (DORALEX_ONLY_CUSTOM)
+
+STANDARD_COMMUNITY_MISSING = 0
+ENTERPRISE_MISSING = 0
+CUSTOM_COMMON_MISSING = 0
+MODULE_VERSION_MISMATCH = 0
+ENTERPRISE_SSH_COUNT_DELTA = 1
+  unnamed OEEL from SSH count 142 vs Doralex 141 after all named parents
+  no invented install to chase the count
+
+SOT_ENTERPRISE_PARENTS_INSTALLED
+  account_accountant approvals documents helpdesk industry_fsm planning
+  sale_renting sale_subscription sign stock_barcode timesheet_grid
+  web_studio knowledge marketing_automation
+
+SOT_COMMUNITY_PARENTS_INSTALLED
+  mail calendar contacts crm sale_management purchase stock account
+  project hr hr_holidays hr_timesheet maintenance repair survey event
+  mass_mailing im_livechat website base_automation fleet mrp board
+
+ARTICLES_TECHNICAL_NAME = knowledge
+  launcher es_DO = Artículos
+
+WAVE_E1 = PASS
+  project,hr_timesheet,timesheet_grid
+WAVE_E2 = PASS
+  documents,sign
+WAVE_E3 = PASS
+  planning,industry_fsm
+WAVE_E4 = PASS
+  sale_renting
+WAVE_E5 = PASS
+  stock_barcode,maintenance,repair
+WAVE_E6 = PASS
+  mass_mailing,marketing_automation,event,survey,base_automation
+WAVE_E7 = PASS
+  web_studio,knowledge,board
+WAVE_E8 = PASS
+  approvals,im_livechat,mrp,fleet
+  first combined attempt FAIL (filestore PermissionError on fleet images)
+  fixed chown 100:101 /var/lib/odoo/filestore then split E8a-d
+
+WAVE_I18N = PASS
+  -u justech_warranty,justech_alexander_base only
+  justech_approval_flow NOT upgraded: mail template re-render requires HTTPS
+  field label applied via justech_alexander_base overlay (no -u approval_flow)
+
+DOCUMENTS_QA = PASS
+SIGN_QA = PASS
+  no default template; menu/model present; no request sent
+PROJECT_QA = PASS
+TIMESHEET_QA = PASS
+  create needs employee in company; module+grid installed
+PLANNING_QA = PASS
+RENTAL_QA = PASS
+BARCODE_QA = PASS
+MAINTENANCE_QA = PASS
+REPAIR_QA = PASS
+MARKETING_QA = PASS
+  no campaign sent
+AUTOMATION_QA = PASS
+EVENT_QA = PASS
+  unpublished; website_published field not on event.event in this build
+SURVEY_QA = PASS
+STUDIO_QA = PASS
+  opens via action; no persistent Studio customization created
+ACTIVITIES_QA = PASS
+ARTICLES_QA = PASS
+  knowledge = Artículos
+
+APP_LAUNCHER_FINAL = PASS
+  Studio is systray (web_studio), not an ir.ui.menu root
+ENTERPRISE_APPS_QA = PASS
+
+FISCAL_UI = PASS
+NCF_ENGINE = PASS
+ECF_ENGINE = PASS
+ACCOUNTING_QA = PASS
+SALES_QA = PASS
+  DOR/SO/00013 untaxed 400 / ITBIS 72 / total 472
+PURCHASE_QA = PASS
+  DOR/OC/00012 state=purchase
+TRACEABILITY_QA = PASS
+MARGIN_CONTROL_QA = PASS
+CXP_QA = PASS
+APPROVAL_QA = PASS
+  DOR/SO/00015 justech_approval_state=approved
+WARRANTY_QA = PASS
+AUDIT_QA = PASS
+VENDOR_BILL_CONTROL_QA = PASS
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+REPORTS_PRESERVED = YES
+justech_alexander_reports = 19.0.3.8.5
+
+PDF_QUOTATION = PASS
+  DOR/SO/00014 Alexander + ITBIS 14.40 + Doralex bank footer
+PDF_SALE_ORDER = PASS
+  DOR/SO/00013 Alexander + ITBIS 72.00 + Doralex identity
+PDF_INVOICE = PASS
+  draft from SO 00013 then unlinked (id 116); NCF Pendiente de NCF; no sequence consumed
+  wkhtmltopdf ConnectionRefusedError on staging workers=1 (images/CSS fetch)
+
+DORALEX_MAIL_CONFIG_PRESERVED = YES
+  neutralization - disable emails / invalid
+DORALEX_CONFIG_PRESERVED = YES
+DORALEX_ACCOUNTING_CONFIG_PRESERVED = YES
+DORALEX_FISCAL_CONFIG_PRESERVED = YES
+DORALEX_COMPANIES_PRESERVED = YES
+  companies = 7
+DORALEX_USERS_PRESERVED = YES
+  SQL res_users = 8 (ORM search_count hides inactive/share)
+
+SPANISH_UI_FINAL = PASS
+  crm.crm_menu_leads es_DO = Iniciativas (no core edit)
+  justech_warranty dashboard = Tablero
+  justech_approval_state = Estado de aprobación Justech
+
+WEBSOCKET_PROD_CONFIG_REQUIRED = NO
+  production nginx doralex.conf already has location /websocket -> 127.0.0.1:8072
+  staging public enterprise.doralexgroup.cloud -> 127.0.0.1:8272
+  local QA tunnel :8269 only caused the /websocket RuntimeError
+
+HR_HUB_VACUUM_STATUS = PASS
+HR_HUB_FIX_REQUIRED = NO
+  cause: justech.do.hr.hub.home helper named _search shadowed ORM _search
+  Odoo 19 vacuum passes offset= and raised TypeError
+  autovacuum cron continues (per-model catch); lastcall succeeded
+  fix: rename helper to _hub_search on staging payroll file
+  patch: deployment/doralex/patches/justech_l10n_do_hr_payroll_hr_hub_search.patch
+  vacuum reproduced PASS after restart
+
+WKHTMLTOPDF_PROD_FIX_REQUIRED = NO
+  staging workers = 1 (warning when rendering PDF)
+  production workers = 4 + gevent_port 8072
+
+CRITICAL_ERRORS = 0
+HIGH_ERRORS = 0
+MEDIUM_ERRORS = 2
+  ENTERPRISE_SSH_COUNT_DELTA = 1 unnamed (no invented install)
+  wkhtmltopdf staging workers=1 network warning on PDF
+LOW_ERRORS = 2
+  DORALEX_SUBSCRIPTION_ACTIVATION = PENDING (banner visible, not hidden)
+  Microsoft mail credentials absent in staging (send blocked; MAIL_SAFE_MODE)
+
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+READY_FOR_CUTOVER_REVIEW = YES
+DORALEX_PROD_TOUCHED = NO
+CUTOVER_ALLOWED = NO

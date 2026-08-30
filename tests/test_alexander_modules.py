@@ -135,7 +135,7 @@ def test_ncf_guard_blocks_fiscal_post_without_real_range() -> None:
         ALEXANDER / "justech_alexander_base" / "models" / "ncf_assignment.py"
     ).read_text(encoding="utf-8")
     assert "justech_l10n_do_ncf" in manifest
-    assert "19.0.1.0.3" in manifest
+    assert "19.0.1.0.4" in manifest
     assert "justech.do.ncf.assignment.service" in guard
     assert "No crea rangos" in guard
     assert (
@@ -144,3 +144,22 @@ def test_ncf_guard_blocks_fiscal_post_without_real_range() -> None:
     ) in guard
     assert "99000001" not in guard
     assert "consume_next" not in guard
+
+
+def test_spanish_ui_overlay_does_not_edit_crm_core() -> None:
+    overlay = (
+        ALEXANDER / "justech_alexander_base" / "models" / "spanish_ui.py"
+    ).read_text(encoding="utf-8")
+    warranty_menu = (
+        REPO_ROOT
+        / "addons/vendor/odoo-custom-addons/custom/justech/justech_warranty/views/menus.xml"
+    ).read_text(encoding="utf-8")
+    sale = (
+        REPO_ROOT
+        / "addons/vendor/odoo-custom-addons/custom/justech/justech_approval_flow/models/sale_order.py"
+    ).read_text(encoding="utf-8")
+    assert "crm.crm_menu_leads" in overlay
+    assert "Iniciativas" in overlay
+    assert "lang=\"es_DO\"" in overlay or "lang='es_DO'" in overlay
+    assert 'name="Tablero"' in warranty_menu
+    assert "Estado de aprobación Justech" in sale

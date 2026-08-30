@@ -11,6 +11,7 @@
 *.zip
 *.tar
 *.tar.gz
+*.deb
 
 # === Datos de Odoo RUNTIME (nunca en Git) ===
 # Scoped a raíz para NO excluir los `data/` de los módulos Odoo (addons/**/data/

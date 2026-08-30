@@ -19,8 +19,8 @@ require_cmd() {
 require_env_name() {
   local env="${1:-}"
   case "$env" in
-    production|dev) printf '%s' "$env" ;;
-    *) die "Entorno inválido: '${env}'. Use 'production' o 'dev'." ;;
+    production|dev|enterprise-staging) printf '%s' "$env" ;;
+    *) die "Entorno inválido: '${env}'. Use 'production', 'dev' o 'enterprise-staging'." ;;
   esac
 }
 

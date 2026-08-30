@@ -21,6 +21,7 @@ class AccountMove(models.Model):
             ("rejected", "Rechazada"),
             ("invalidated", "Invalidada"),
         ],
+        string="Estado de aprobación Justech",
         default="none",
         copy=False,
         index=True,

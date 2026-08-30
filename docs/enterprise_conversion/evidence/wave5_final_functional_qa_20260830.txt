@@ -1,0 +1,141 @@
+Doralex Enterprise — QA funcional final pre-cutover (staging only) — 2026-08-30.
+
+FINAL_QA_BACKUP = PASS
+  /opt/doralex/backups/enterprise-staging/pre_final_functional_qa_20260829_200812
+  /opt/doralex/backups/enterprise-staging/enterprise-staging_20260829_200812
+  db.dump + filestore.tar.gz + config + custom-addons + inventories
+  SECRETS_FOUND = none
+
+STAGING = 127.0.0.1:8269 doralex-odoo-enterprise:19.0.20260324
+PROD_IMAGE = odoo:19
+DORALEX_PROD_TOUCHED = NO
+JUSTGROUP_DATA_COPIED = NO
+JUSTGROUP_SUBSCRIPTION_COPIED = NO
+JUSTGROUP_PROD_TOUCHED = NO
+CUTOVER_ALLOWED = NO
+READY_FOR_CUTOVER_REVIEW = NO
+
+APP_LAUNCHER_QA = PASS
+  21 installed roots opened (lang=es_DO) without traceback
+  unexpected missing = none
+  Justgroup UX not installed (no blind install):
+  Alquiler, Documentos, Proyecto, Código de barras, Firma, Artículos,
+  Actividades, Registro de horas, Automatización, Marketing, Eventos,
+  Encuestas, Mantenimiento, Reparaciones
+
+FISCAL_UI = PASS
+NCF_ENGINE = PASS
+ECF_ENGINE = PASS
+DGII_OUTBOUND = DISABLED/SAFE
+  11 fiscal document types, 12 NCF ranges (DX TEST B01/B04 per company)
+  e-CF models present; justech.ecf.company.config count = 0
+  no active DGII crons
+  no NCF consumed; no DGII send
+  partner RNC label + l10n_do_dgii_tax_payer_type present
+
+ACCOUNTING_QA = PASS
+SALES_QA = PASS
+PURCHASE_QA = PASS
+TRACEABILITY_QA = PASS
+  DOR/SO/00013 confirmed: untaxed 400 / ITBIS 72 / total 472
+  DOR/OC/00012 confirmed: total 283.20
+  draft out_invoice 113, in_invoice 114, out_refund 115 created then unlinked
+  (still draft; no post; no NCF)
+
+MARGIN_CONTROL_QA = PASS
+CXP_QA = PASS
+  execute_po_to_sale_link SO 00013 <-> PO 00012
+  venta 400 / costo 240 / margen 160 / 40%
+  estado Costos confirmados; MTX count = 1
+  UI Operaciones + SO panel match
+  CxP menu Cuentas por Pagar opens; draft vendor bill linked then cleaned
+
+APPROVAL_QA = PASS
+  DOR/SO/00015 request id 1 pending -> approved by fausto@justech.do
+  activity Aprobar Cotización; chatter Aprobada
+  company justech_approval_sale_enabled restored after test
+  mail send attempted via Microsoft path and failed safely (no real send)
+
+WARRANTY_QA = PASS
+  justech.warranty id 6 DX-QA-FINAL garantia
+
+AUDIT_QA = PASS
+  rules active for res.partner / product.template / sale.order
+  no policy was active at start (engine off until temp DX-QA-FINAL policy)
+  after sync write: log 1 admin phone 809-222-0009 -> 809-333-0011
+  log 2 __system__ phone 809-333-0011 -> 809-444-0022
+  temp policy deactivated after proof
+
+VENDOR_BILL_CONTROL_QA = PASS
+  po_control_state / related_purchase_order_* / purchase_id present
+  bill 114 linked to DOR/OC/00012 then draft-unlinked
+
+DGCP_BRIDGE_QA = PASS
+MANAGED_SERVICES_QA = PASS
+  menus/search only; no external send
+
+ENTERPRISE_APPS_QA = FAIL
+  installed and opened: helpdesk, sale_subscription
+  not installed (no blind install): documents, sign, planning, sale_renting, web_studio
+
+REPORT_QA = PASS
+MAIL_QA = PASS
+MAIL_SAFE_MODE = YES
+  SMTP neutralization - disable emails / invalid:1025
+  web.base.url = https://enterprise.doralexgroup.cloud
+  mail.catchall.domain = doralexgroup.cloud
+  Microsoft MailDeliveryException on approval notify = no credentials (safe)
+
+SPANISH_UI_FINAL = PASS
+  public login HTML: Correo electrónico / Contraseña / Iniciar sesión
+  roots es_DO Spanish
+  leftover English: CRM/Leads; Justech Garantías/Dashboard; chatter field
+  Justech Approval State
+
+SECURITY_QA = PASS
+  admin has_group system+sale+purchase+account+stock
+  dx.test.security@justech.do system=False
+  inversionesdoralex@gmail.com system=False
+  fausto@justech.do system=True (privileged implementer, preserved user)
+  record rules count > 20
+  not everyone has Settings
+
+MULTICOMPANY_QA = PASS
+  7 companies; 9 journals each
+  NCF ranges isolated per company
+  UI company switcher BLU vs DOR prefixes do not mix documents
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+REPORTS_PRESERVED = YES
+justech_alexander_reports = 19.0.3.8.5
+
+CRITICAL_ERRORS = 0
+HIGH_ERRORS = 0
+MEDIUM_ERRORS = 4
+  enterprise UX apps not installed (authorized skip)
+  websocket /websocket on :8269 (evented 8072 not in HTTP tunnel)
+  justech.do.hr.hub.home transient vacuum
+  wkhtmltopdf worker warning during PDF
+LOW_ERRORS = 2
+  Microsoft mail credentials missing in staging (send blocked)
+  English leftovers listed under SPANISH_UI_FINAL
+
+CLEANUP
+  unlinked draft account.move 113 114 115
+  kept marked TEST: partners 78/79, product DX-QA-FINAL-STK,
+  DOR/SO/00013 sale, DOR/SO/00014 draft, DOR/SO/00015 sale approved,
+  DOR/OC/00012, warranty 6
+  no force-delete of confirmed SO/PO
+
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+DORALEX_CONFIG_PRESERVED = YES
+DORALEX_MAIL_CONFIG_PRESERVED = YES
+DORALEX_COMPANIES_PRESERVED = YES
+DORALEX_USERS_PRESERVED = YES
+DORALEX_ACCOUNTING_CONFIG_PRESERVED = YES
+DORALEX_FISCAL_CONFIG_PRESERVED = YES
+
+Cutover not proposed: ENTERPRISE_APPS_QA = FAIL and subscription PENDING.
+CUTOVER_ALLOWED remains NO until explicit authorization.
