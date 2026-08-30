@@ -1,5 +1,5 @@
 {
-    "name": "Doralex Base",
+    "name": "Identidad Doralex",
     "version": "19.0.1.0.4",
     "category": "Administration",
     "summary": "Identidad multiempresa, nomenclatura y datos públicos de Doralex Group",

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Justech Sale Purchase Inventory Traceability",
+    "name": "Trazabilidad ventas/compras",
     "version": "19.0.1.2.10",
     "category": "Sales/Sales",
     "summary": "Generar OC y relacionar compra existente (OC o factura proveedor)",

@@ -1,8 +1,8 @@
 {
-    "name": "Justech Core",
+    "name": "Utilidades internas",
     "version": "19.0.1.0.0",
     "category": "Hidden",
-    "summary": "Shared utilities for Justech Odoo modules",
+    "summary": "Utilidades compartidas de los módulos internos",
     "description": """
 Shared utilities for Justech Odoo modules
 

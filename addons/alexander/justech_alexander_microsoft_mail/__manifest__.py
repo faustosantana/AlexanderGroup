@@ -1,5 +1,5 @@
 {
-    "name": "Doralex Microsoft Mail",
+    "name": "Correo Microsoft",
     "version": "19.0.1.0.4",
     "category": "Communications",
     "summary": "Correo Microsoft 365 por empresa vía Graph (user mailbox y aliases)",

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Justech Contabilidad — Recuperación Contable (SoD)",
+    "name": "Recuperación contable",
     "version": "19.0.1.4.0",
     "category": "Accounting/Accounting",
     "summary": "Segregación de funciones: Recuperación Contable + autorización consolidada",

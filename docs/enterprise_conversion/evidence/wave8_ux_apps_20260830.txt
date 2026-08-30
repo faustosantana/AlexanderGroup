@@ -1,0 +1,80 @@
+# Wave 8 — UX Apps optimization (STAGING ONLY)
+# Date: 2026-08-30
+# PROD_TOUCHED = NO
+# PROD_PROMOTION_ALLOWED = NO
+
+PRE_UX_OPTIMIZATION_BACKUP = PASS
+PRE_UX_BACKUP_DIR = /opt/doralex/backups/enterprise-staging/pre_ux_optimization_20260830_002411
+
+TOTAL_CUSTOM_MODULES = 49
+CUSTOM_APPLICATION_TRUE_BEFORE = 8
+CUSTOM_APPLICATION_TRUE_AFTER = 5
+
+CUSTOM_ROOT_MENUS_BEFORE = 7
+CUSTOM_ROOT_MENUS_AFTER = 6
+
+TECHNICAL_MODULES_HIDDEN_FROM_APPS = 3
+# justech_alexander_website, justech_fiscal_admin, l10n_do_ecf_connector
+# (plus catalog shortdesc cleanup for ~40 justech_* already application=False)
+
+ROOT_APPS_CONSOLIDATED = DGII + Fiscal Admin + Website overlay
+
+DGII_ROOT_APP_BEFORE = YES
+DGII_ROOT_APP_AFTER = NO
+
+FISCAL_MENU_PARENT = Contabilidad → Fiscal Dominicana
+PAYROLL_MENU_PARENT = RRHH → Nómina
+
+UNINSTALL_COUNT = 0
+FUNCTIONALITY_LOST = 0
+INSTALLED_MODULE_COUNT_BEFORE = 371
+INSTALLED_MODULE_COUNT_AFTER = 372
+# +1 = justech_alexander_ux overlay (new). No uninstalls.
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+REPORTS_PRESERVED = YES
+REPORTS_MODULE = justech_alexander_reports 19.0.3.8.5
+REPORTS_UPGRADED = NO
+
+FISCAL_ENGINE_QA = PASS
+NCF_QA = PASS
+ECF_QA = PASS
+DGII_QA = PASS
+PAYROLL_QA = PASS
+MARGIN_QA = PASS
+APPROVAL_QA = PASS
+AUDIT_QA = PASS
+WARRANTY_QA = PASS
+
+WEBSITE_QA = PASS
+# Staging / = 200. /contactus unpublished on this clone (pre-existing). Prod contact not in scope.
+MAIL_CONFIG_PRESERVED = YES
+# Staging still 1 neutralized ir.mail_server (invalid:1025). Not copied to prod.
+
+SPANISH_UI = PASS
+STAGING_HEALTH = PASS
+STAGING_LOGIN = PASS
+# Login page Spanish (Iniciar sesión). No prod users/passwords used.
+
+VISIBLE_CUSTOM_APPS_AFTER =
+- Administración Doralex (justech_alexander_admin)
+- Aprobaciones (justech_approval_flow)
+- Servicios Administrados (justech_managed_services)
+- Costos y Márgenes (justech_purchase_sale_margin_control)
+- Garantías (justech_warranty)
+
+OVERLAY = justech_alexander_ux 19.0.1.0.1 (staging installed; prod absent)
+
+APPS_SEARCH_JUSTECH_FILTER_APPS = 5
+APPS_SEARCH_JUSTECH_ALL_MODULES = 44
+LAUNCHER_DGII_TILE = NO
+FISCAL_CHILDREN = NCF, e-CF, DGII, Reportes fiscales
+STAGING_QA_USER = ux.qa.staging@doralex.local (staging only; not on prod)
+
+PROD_UX_MODULE = absent
+PROD_DGII_STILL_ROOT = YES
+PROD_INSTALLED = 374
+PROD_PROMOTION_ALLOWED = NO
+NO_PROD_PROMOTION = YES

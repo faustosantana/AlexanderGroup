@@ -13,6 +13,7 @@ EXPECTED = {
     "justech_alexander_admin",
     "justech_alexander_reports",
     "justech_alexander_microsoft_mail",
+    "justech_alexander_ux",
 }
 
 CONFIDENTIAL_MARKERS = (
@@ -165,3 +166,25 @@ def test_spanish_ui_overlay_does_not_edit_crm_core() -> None:
     assert 'lang="es_DO"' in overlay or "lang='es_DO'" in overlay
     assert 'name="Tablero"' in warranty_menu
     assert "Estado de aprobación Justech" in sale
+
+
+def test_ux_overlay_hides_technical_apps() -> None:
+    ux = ALEXANDER / "justech_alexander_ux"
+    manifest = (ux / "__manifest__.py").read_text(encoding="utf-8")
+    menus = (ux / "views" / "menus.xml").read_text(encoding="utf-8")
+    hooks = (ux / "hooks.py").read_text(encoding="utf-8")
+    website = (ALEXANDER / "justech_alexander_website" / "__manifest__.py").read_text(
+        encoding="utf-8"
+    )
+    fiscal = (
+        REPO_ROOT
+        / "addons/vendor/odoo-custom-addons/custom/justech/justech_fiscal_admin/__manifest__.py"
+    ).read_text(encoding="utf-8")
+    assert '"application": False' in manifest
+    assert "l10n_do_ecf_connector.ecf_documents_root" in menus
+    assert "justech_l10n_do_base.menu_justech_do_fiscal_root" in menus
+    assert "justech_l10n_do_reports.menu_justech_do_audit_root" in menus
+    assert "VISIBLE_APPS" in hooks
+    assert '"application": False' in website
+    assert '"application": False' in fiscal
+    assert "UNINSTALL" not in hooks

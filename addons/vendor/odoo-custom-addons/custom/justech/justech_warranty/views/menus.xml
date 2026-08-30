@@ -2,7 +2,7 @@
 <odoo>
     <!-- Aplicación independiente en el launcher principal de Odoo -->
     <menuitem id="menu_justech_warranty_root"
-              name="Justech Garantías"
+              name="Garantías"
               web_icon="justech_warranty,static/description/icon.png"
               sequence="90"
               groups="group_warranty_user"/>

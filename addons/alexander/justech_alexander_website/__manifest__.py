@@ -1,5 +1,5 @@
 {
-    "name": "Doralex Website Institucional",
+    "name": "Sitio web institucional",
     "version": "19.0.1.0.8",
     "category": "Website",
     "summary": "Sitio institucional público de Doralex Group",
@@ -19,5 +19,5 @@
     },
     "post_init_hook": "post_init_hook",
     "installable": True,
-    "application": True,
+    "application": False,
 }

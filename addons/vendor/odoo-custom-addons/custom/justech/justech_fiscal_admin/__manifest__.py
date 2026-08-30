@@ -1,7 +1,7 @@
 {
-    "name": "Justech Fiscal Administration Center",
+    "name": "Administración Fiscal",
     "version": "19.0.1.10.0",
-    "summary": "Enterprise fiscal stack administration — roles, health, feature flags, padrón DGII",
+    "summary": "Roles, salud fiscal, banderas y padrón DGII",
     "description": """
 Centro de Administración Fiscal Justech (Enterprise).
 
@@ -35,7 +35,7 @@ Centro de Administración Fiscal Justech (Enterprise).
     },
     "post_init_hook": "post_init_hook",
     "installable": True,
-    "application": True,
+    "application": False,
     "license": "LGPL-3",
     "justech_register": {
         "module_code": "justech_fiscal_admin",

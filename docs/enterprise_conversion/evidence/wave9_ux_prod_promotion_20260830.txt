@@ -1,0 +1,93 @@
+# Wave 9 — UX Apps promotion to PRODUCTION
+# Date: 2026-08-30
+# PROD_TOUCHED = YES (UX overlay only; authorized)
+# NOT a Community→Enterprise cutover
+
+PROD_PRE_UX_BACKUP = PASS
+PROD_PRE_UX_BACKUP_DIR = /opt/doralex/backups/production/pre_ux_optimization_prod_20260830_071955
+  db.dump + filestore.tar.gz + custom-addons + config + inventories
+  (modules, menus, qweb hashes, reports, mail, website)
+  SHA256SUMS PASS
+  restore-test throwaway doralex_prod_ux_restore_check companies=7 then dropped
+
+UX_OVERLAY_INSTALLED = YES
+UX_OVERLAY_VERSION = 19.0.1.0.1
+UX_SOURCE = /opt/doralex/enterprise-staging/custom-addons/justech_alexander_ux
+  (same code that passed staging QA; not rewritten)
+
+CUSTOM_APPLICATION_TRUE_BEFORE = 8
+CUSTOM_APPLICATION_TRUE_AFTER = 5
+
+CUSTOM_ROOT_MENUS_BEFORE = 7
+CUSTOM_ROOT_MENUS_AFTER = 6
+
+APPS_VISIBLE_BEFORE = 8
+APPS_VISIBLE_AFTER = 5
+  Administración Doralex
+  Aprobaciones
+  Costos y Márgenes
+  Garantías
+  Servicios Administrados
+
+DGII_ROOT_APP_BEFORE = YES
+DGII_ROOT_APP_AFTER = NO
+
+FISCAL_MENU_PARENT = Contabilidad → Fiscal Dominicana
+  children: Regularización, NCF, Compras, e-CF, DGII, Reportes fiscales
+PAYROLL_MENU_PARENT = RRHH → Nómina
+TESORERIA_PARENT = Contabilidad → Pagos
+
+UNINSTALL_COUNT = 0
+FUNCTIONALITY_LOST = 0
+INSTALLED_BEFORE = 374
+INSTALLED_AFTER = 375
+  +1 justech_alexander_ux only
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+REPORTS_PRESERVED = YES
+REPORTS_MODULE = justech_alexander_reports 19.0.3.8.5
+REPORTS_UPGRADED = NO
+
+FISCAL_ENGINE_PROD = PASS
+NCF_PROD = PASS
+ECF_PROD = PASS
+DGII_PROD = PASS
+PAYROLL_UX_PROD = PASS
+MARGIN_PROD = PASS
+APPROVAL_PROD = PASS
+AUDIT_PROD = PASS
+WARRANTY_PROD = PASS
+MANAGED_SERVICES_PROD = PASS
+
+WEBSITE_PROD = PASS
+  home=200 contactus=200 robots=PASS
+MAIL_CONFIG_PRESERVED = YES
+  ir_mail_server count = 0 (Graph / Microsoft Mail; no SMTP added)
+  catchall = doralexgroup.cloud
+SPANISH_UI_PROD = PASS
+
+PROD_HEALTH = PASS
+PROD_LOGIN = PASS
+APP_LAUNCHER_PROD = PASS
+
+CRITICAL_ERRORS = 0
+HIGH_ERRORS = 0
+MEDIUM_ERRORS = 0
+LOW_ERRORS = 0
+  odoo.log around install: CRITICAL=0 ERROR=0; overlay loaded 0.82s
+
+ROLLBACK_REQUIRED = NO
+UX_PRODUCTION_PROMOTION = SUCCESS
+
+NO -u justech_alexander_reports
+NO -u justech_approval_flow
+NO -u all
+NO uninstall
+NO NCF consume
+NO e-CF send
+NO DGII send
+NO test mail
+NO license/UUID/subscription change
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING

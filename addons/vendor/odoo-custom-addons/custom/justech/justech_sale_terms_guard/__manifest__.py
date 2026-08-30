@@ -1,8 +1,8 @@
 {
-    "name": "Justech Sale Terms Company Guard",
+    "name": "Términos de venta por compañía",
     "version": "19.0.1.0.0",
     "category": "Sales",
-    "summary": "Fail-closed: no cross-company / Hellenia quotation terms contamination",
+    "summary": "Impide mezclar términos de cotización entre compañías",
     "description": """
 Protege términos y condiciones de cotización multiempresa.
 

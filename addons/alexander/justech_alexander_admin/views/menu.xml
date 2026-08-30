@@ -15,7 +15,7 @@
     />
     <menuitem
         id="menu_doralex_modules"
-        name="Módulos Justech"
+        name="Módulos"
         parent="menu_doralex_root"
         action="action_open_modules_protected"
         sequence="20"

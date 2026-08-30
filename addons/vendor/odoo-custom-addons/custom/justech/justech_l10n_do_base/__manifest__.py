@@ -1,8 +1,8 @@
 {
-    "name": "Justech Dominican Fiscal Base",
+    "name": "Base fiscal dominicana",
     "version": "19.0.1.27.1",
     "category": "Accounting/Localizations",
-    "summary": "Base fiscal configuration for Dominican Republic (Justech)",
+    "summary": "Base fiscal de República Dominicana: tipos de comprobante, RNC y padrón DGII",
     "description": """
 Dominican fiscal base layer for Justech localization.
 
