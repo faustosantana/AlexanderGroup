@@ -1,47 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Fiscal Dominicana visible bajo Contabilidad, no solo en Configuración. -->
     <record id="justech_l10n_do_base.menu_justech_do_fiscal_root" model="ir.ui.menu">
         <field name="parent_id" ref="accountant.menu_accounting"/>
         <field name="name">Fiscal Dominicana</field>
         <field name="sequence">35</field>
     </record>
 
-    <!-- DGII deja de ser app raíz; la funcionalidad queda bajo Fiscal Dominicana. -->
-    <record id="l10n_do_ecf_connector.ecf_documents_root" model="ir.ui.menu">
+    <!-- Panel fiscal (antes Dashboard Fiscal) al primer nivel. -->
+    <record id="justech_l10n_do_reports.menu_justech_do_fiscal_dashboard" model="ir.ui.menu">
         <field name="parent_id" ref="justech_l10n_do_base.menu_justech_do_fiscal_root"/>
-        <field name="name">DGII</field>
+        <field name="name">Panel fiscal</field>
+        <field name="sequence">5</field>
+    </record>
+
+    <menuitem
+        id="menu_fiscal_regularization"
+        name="Regularización"
+        parent="justech_l10n_do_base.menu_justech_do_fiscal_root"
+        sequence="10"
+    />
+    <record id="justech_l10n_do_ncf.menu_justech_do_fiscal_regularization_center" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_regularization"/>
+        <field name="name">Centro de regularización fiscal</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="justech_l10n_do_ncf.menu_justech_do_fiscal_regularization" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_regularization"/>
+        <field name="sequence">20</field>
+    </record>
+    <record id="justech_l10n_do_ncf.menu_justech_do_ncf_migration" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_regularization"/>
+        <field name="sequence">30</field>
+    </record>
+    <record id="justech_l10n_do_ncf.menu_justech_do_ncf_reconcile" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_regularization"/>
+        <field name="sequence">40</field>
+    </record>
+    <record id="justech_l10n_do_ncf.menu_justech_do_ncf_migration_log" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_regularization"/>
+        <field name="sequence">50</field>
+    </record>
+    <record id="justech_l10n_do_ncf.menu_justech_do_fiscal_regularization_log" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_regularization"/>
+        <field name="sequence">60</field>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_do_fiscal_historical_backfill" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_regularization"/>
+        <field name="sequence">70</field>
+    </record>
+    <!-- Mismo action que el centro NCF: ocultar duplicado. -->
+    <record id="justech_l10n_do_reports.menu_justech_do_fiscal_regularization_center_audit" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record id="justech_l10n_do_ncf.menu_justech_do_ncf_motor_root" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_l10n_do_base.menu_justech_do_fiscal_root"/>
+        <field name="name">NCF</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="justech_l10n_do_base.menu_justech_do_document_types" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_l10n_do_ncf.menu_justech_do_ncf_motor_root"/>
+        <field name="name">Tipos de comprobante</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="justech_l10n_do_ncf.menu_justech_do_ncf_ranges" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_l10n_do_ncf.menu_justech_do_ncf_motor_root"/>
+        <field name="name">Rangos</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_do_ncf_consumption_audit" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_l10n_do_ncf.menu_justech_do_ncf_motor_root"/>
+        <field name="name">Consumo</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_do_audit_voided" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_l10n_do_ncf.menu_justech_do_ncf_motor_root"/>
+        <field name="name">Anulados</field>
+        <field name="sequence">40</field>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_do_audit_history" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_l10n_do_ncf.menu_justech_do_ncf_motor_root"/>
+        <field name="name">Historial</field>
+        <field name="sequence">50</field>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_do_fiscal_review" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_l10n_do_ncf.menu_justech_do_ncf_motor_root"/>
+        <field name="name">Revisión</field>
+        <field name="sequence">60</field>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_do_fiscal_review_pending" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_l10n_do_ncf.menu_justech_do_ncf_motor_root"/>
+        <field name="sequence">70</field>
+    </record>
+    <!-- Mismo modelo que Consumo: ocultar duplicado. -->
+    <record id="justech_l10n_do_reports.menu_justech_do_audit_consumption" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+    <menuitem
+        id="menu_fiscal_reports_dgii"
+        name="Reportes DGII"
+        parent="justech_l10n_do_base.menu_justech_do_fiscal_root"
+        sequence="30"
+    />
+    <record id="justech_l10n_do_reports.menu_justech_do_report_606" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_reports_dgii"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_do_report_607" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_reports_dgii"/>
+        <field name="name">607</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_do_report_608" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_reports_dgii"/>
+        <field name="name">608</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_do_report_609" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_reports_dgii"/>
+        <field name="sequence">40</field>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_do_report_623" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_reports_dgii"/>
+        <field name="sequence">50</field>
+    </record>
+
+    <menuitem
+        id="menu_fiscal_withholding"
+        name="Retenciones"
+        parent="justech_l10n_do_base.menu_justech_do_fiscal_root"
+        sequence="40"
+    />
+    <record id="justech_l10n_do_reports.menu_justech_do_withholding_catalog" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_withholding"/>
+        <field name="name">Administrar retenciones</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="justech_l10n_do_payments_withholding.menu_justech_wh_company_config" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_withholding"/>
+        <field name="sequence">20</field>
+    </record>
+    <record id="justech_l10n_do_payments_withholding.menu_justech_wh_config_wizard" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_fiscal_withholding"/>
+        <field name="sequence">30</field>
+    </record>
+
+    <!-- Reportes fiscales ya no es un saco plano; queda solo para ítems residuales. -->
+    <record id="justech_l10n_do_reports.menu_justech_do_audit_root" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_l10n_do_base.menu_justech_do_fiscal_root"/>
+        <field name="name">Más</field>
+        <field name="sequence">90</field>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="justech_l10n_do_reports.menu_justech_fiscal_admin_center_audit" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_alexander_admin.menu_doralex_root"/>
+        <field name="name">Centro de Administración Fiscal</field>
         <field name="sequence">40</field>
     </record>
 
-    <!-- e-CF deja Facturación Community y entra al mismo área fiscal. -->
+    <!-- Tipos de costos: configuración de compras, no fiscal diario. -->
+    <record id="justech_l10n_do_base.menu_justech_do_dgii_expense_type" model="ir.ui.menu">
+        <field name="parent_id" ref="purchase.menu_purchase_config"/>
+        <field name="sequence">90</field>
+    </record>
+    <record id="justech_l10n_do_base.menu_justech_do_purchase_fiscal_root" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+    <!-- e-CF / DGII: parent fiscal; visibilidad la controla el switch (active). -->
     <record id="justech_ecf_core.menu_justech_ecf_root" model="ir.ui.menu">
         <field name="parent_id" ref="justech_l10n_do_base.menu_justech_do_fiscal_root"/>
         <field name="name">e-CF</field>
-        <field name="sequence">30</field>
+        <field name="sequence">80</field>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="justech_ecf_core.menu_justech_ecf_documents" model="ir.ui.menu">
+        <field name="name">Documentos electrónicos</field>
+    </record>
+    <record id="l10n_do_ecf_connector.ecf_documents_root" model="ir.ui.menu">
+        <field name="parent_id" ref="justech_l10n_do_base.menu_justech_do_fiscal_root"/>
+        <field name="name">DGII</field>
+        <field name="sequence">85</field>
+        <field name="active" eval="False"/>
+        <field name="web_icon" eval="False"/>
+    </record>
+    <record id="l10n_do_ecf_connector.ecf_documents_main" model="ir.ui.menu">
+        <field name="name">Comprobantes electrónicos</field>
+    </record>
+
+    <!-- Home: admin / aprobaciones / auditoría bajo Ajustes. -->
+    <record id="justech_alexander_admin.menu_doralex_root" model="ir.ui.menu">
+        <field name="parent_id" ref="base.menu_administration"/>
+        <field name="name">Administración Doralex</field>
+        <field name="sequence">3</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+    <record id="justech_approval_flow.menu_justech_approval_root" model="ir.ui.menu">
+        <field name="parent_id" ref="base.menu_administration"/>
+        <field name="name">Aprobaciones Justech</field>
+        <field name="sequence">4</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+    <record id="justech_global_audit_log.menu_justech_global_audit_root" model="ir.ui.menu">
+        <field name="parent_id" ref="base.menu_administration"/>
+        <field name="name">Auditoría</field>
+        <field name="sequence">6</field>
+        <field name="web_icon" eval="False"/>
     </record>
 
     <record id="justech_warranty.menu_justech_warranty_root" model="ir.ui.menu">
         <field name="name">Garantías</field>
     </record>
-
     <record id="justech_admin_center.menu_justech_admin_center_root" model="ir.ui.menu">
         <field name="name">Administración técnica</field>
     </record>
-
     <record id="justech_alexander_admin.menu_doralex_modules" model="ir.ui.menu">
         <field name="name">Módulos</field>
-    </record>
-
-    <record id="justech_l10n_do_ncf.menu_justech_do_ncf_motor_root" model="ir.ui.menu">
-        <field name="name">NCF</field>
-        <field name="sequence">20</field>
-    </record>
-
-    <!-- Reportes 606/607 y retenciones: misma área fiscal, no app suelta. -->
-    <record id="justech_l10n_do_reports.menu_justech_do_audit_root" model="ir.ui.menu">
-        <field name="parent_id" ref="justech_l10n_do_base.menu_justech_do_fiscal_root"/>
-        <field name="name">Reportes fiscales</field>
-        <field name="sequence">50</field>
     </record>
 </odoo>

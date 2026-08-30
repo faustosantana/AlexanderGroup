@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ir_config_ecf_operational_enabled" model="ir.config_parameter">
+        <field name="key">justech_alexander.ecf_operational_enabled</field>
+        <field name="value"></field>
+    </record>
+</odoo>

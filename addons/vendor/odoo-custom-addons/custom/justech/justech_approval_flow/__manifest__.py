@@ -59,6 +59,6 @@ Motor central de aprobaciones Justech (19.0.1.3.8)
     },
     "post_init_hook": "post_init_hook",
     "installable": True,
-    "application": True,
+    "application": False,
     "auto_install": False,
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_doralex_fiscal" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.doralex.fiscal</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Administración Doralex" string="Administración Doralex"
+                     name="doralex_admin" groups="base.group_system">
+                    <block title="Fiscal Dominicana" name="doralex_fiscal_block">
+                        <setting id="justech_ecf_operational_setting"
+                                 string="Activar facturación electrónica (e-CF)"
+                                 help="Off por defecto. No desinstala e-CF ni DGII; solo oculta menús y detiene colas.">
+                            <field name="justech_ecf_operational_enabled"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,108 @@
+# Wave 10 — NCF hotfix + Fiscal/home UX promotion to PRODUCTION
+# Date: 2026-08-30
+# Authorized. Not a Community→Enterprise cutover.
+
+PROD_PRE_HOTFIX_BACKUP = PASS
+PROD_PRE_HOTFIX_BACKUP_DIR = /opt/doralex/backups/production/pre_ncf_ux_final_prod_20260830_085137
+  db.dump + filestore.tar.gz + custom-addons.tar.gz + config + inventories
+  (modules, menus, qweb hashes, mail, website, fiscal param)
+  SHA256SUMS PASS
+  pg_restore -l PASS (TOC gzip archive)
+
+NCF_PYTHON_HOTFIX_APPLIED = YES
+# Copied from staging-validated files. No -u justech_l10n_do_ncf.
+# Restart via overlay upgrade reload.
+UX_OVERLAY_VERSION = 19.0.1.1.1
+UX_SOURCE = /opt/doralex/enterprise-staging/custom-addons/justech_alexander_ux
+NCF_MODULE_UPGRADED = NO
+REPORTS_UPGRADED = NO
+APPROVAL_FLOW_UPGRADED = NO
+
+CUSTOM_ROOT_APPS = 3
+CUSTOM_VISIBLE_APPLICATIONS = 3
+  Costos y Márgenes
+  Garantías
+  Servicios Administrados
+# Apps UI "Module: justech" exact filter showed Garantías only; launcher +
+# ir.module.module.application=True confirm the three custom apps.
+
+CUSTOM_APPROVAL_ROOT_APP = NO
+ADMIN_DORALEX_ROOT_APP = NO
+AUDIT_ROOT_APP = NO
+DGII_ROOT_APP = NO
+
+FISCAL_MENU_ITEMS = 5
+FISCAL_MENU_QA = PASS
+  Panel fiscal
+  Regularización
+  NCF
+  Reportes DGII
+  Retenciones
+FISCAL_MENU_PARENT = Contabilidad → Fiscal Dominicana
+PAYROLL_MENU_PARENT = RRHH → Nómina
+
+ECF_OPERATIONAL_ENABLED = NO
+ECF_VISIBLE_NORMAL_USER = NO
+ECF_CRONS_ACTIVE = 0
+# Param stored empty (not the string False). Settings checkbox OFF.
+
+NCF_MIGRATION_WIZARD_PROD = PASS
+NCF_RECONCILE_WIZARD_PROD = PASS
+PROD_PERMISSION_QA = PASS
+# Admin create/open PASS. Unauthorized AccessError, no traceback.
+# Temporary denied + screenshot users deactivated.
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+REPORTS_PRESERVED = YES
+REPORTS_MODULE = justech_alexander_reports 19.0.3.8.5
+REPORTS_PROD = PASS
+# sale_document_dx / invoice_document_dx / purchase_order_dx present
+
+FISCAL_ENGINE_PROD = PASS
+NCF_PROD = PASS
+ECF_PROD = PASS
+DGII_PROD = PASS
+PAYROLL_PROD = PASS
+MARGIN_PROD = PASS
+APPROVAL_PROD = PASS
+AUDIT_PROD = PASS
+WARRANTY_PROD = PASS
+
+WEBSITE_PROD = PASS
+  home=200 contactus=200 health=200 login=200 robots=200
+MAIL_CONFIG_PRESERVED = YES
+  ir_mail_server count = 0 (Graph / Microsoft Mail)
+  catchall = doralexgroup.cloud
+
+SPANISH_UI_PROD = PASS
+PROD_HEALTH = PASS
+PROD_LOGIN = PASS
+APP_LAUNCHER_PROD = PASS
+
+INSTALLED_BEFORE = 375
+INSTALLED_AFTER = 375
+UNINSTALL_COUNT = 0
+FUNCTIONALITY_LOST = 0
+
+CRITICAL_ERRORS = 0
+HIGH_ERRORS = 0
+MEDIUM_ERRORS = 0
+LOW_ERRORS = 0
+# odoo.log after 2026-08-30 12:52:00: CRITICAL=0 ERROR=0
+# Overlay loaded 0.99s; migrations 19.0.1.1.0 and 19.0.1.1.1 ran; Modules loaded.
+
+ROLLBACK_REQUIRED = NO
+FINAL_FISCAL_UX_PROMOTION = SUCCESS
+
+NO -u all
+NO -u justech_l10n_do_ncf
+NO -u justech_alexander_reports
+NO -u justech_approval_flow
+NO uninstall
+NO NCF consume
+NO e-CF send
+NO DGII send
+NO test mail
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING

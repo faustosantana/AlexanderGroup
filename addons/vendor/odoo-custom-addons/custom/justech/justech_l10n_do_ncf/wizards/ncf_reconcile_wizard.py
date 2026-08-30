@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Wizard: Reconciliar numeración fiscal tras sync de datos."""
+
 import json
 
 from odoo import _, api, fields, models
@@ -40,24 +41,39 @@ class JustechDoNcfReconcileWizard(models.TransientModel):
     company_ids = fields.Many2many("res.company", string="Empresas")
     line_ids = fields.One2many("justech.do.ncf.reconcile.line", "wizard_id")
     state = fields.Selection(
-        selection=[("draft", "Borrador"), ("preview", "Previsualización"), ("done", "Aplicado")],
+        selection=[
+            ("draft", "Borrador"),
+            ("preview", "Previsualización"),
+            ("done", "Aplicado"),
+        ],
         default="draft",
         readonly=True,
     )
     result_summary = fields.Text(readonly=True)
 
-    def _check_access(self):
+    def _check_access(self, operation: str):
+        """Odoo 19: BaseModel._check_access(self, operation) → None | (records, factory)."""
+        result = super()._check_access(operation)
+        if result:
+            return result
         if not (
             self.env.user.has_group("base.group_system")
-            or self.env.user.has_group("justech_l10n_do_base.group_justech_do_fiscal_manager")
-        ):
-            raise AccessError(
-                _("Solo Administrador del sistema o Administrador Fiscal.")
+            or self.env.user.has_group(
+                "justech_l10n_do_base.group_justech_do_fiscal_manager"
             )
+        ):
+
+            def _make_error():
+                return AccessError(
+                    _("Solo Administrador del sistema o Administrador Fiscal.")
+                )
+
+            return self, _make_error
+        return None
 
     def action_preview(self):
         self.ensure_one()
-        self._check_access()
+        self.check_access("write")
         self.line_ids.unlink()
         proposals = self.env["justech.do.ncf.reconcile.service"].build_proposals(
             self.company_ids or None
@@ -84,12 +100,14 @@ class JustechDoNcfReconcileWizard(models.TransientModel):
 
     def action_apply_selected(self):
         self.ensure_one()
-        self._check_access()
+        self.check_access("write")
         if self.state != "preview":
             raise UserError(_("Debe previsualizar antes de aplicar."))
         service = self.env["justech.do.ncf.reconcile.service"]
         applied = []
-        for line in self.line_ids.filtered(lambda l: l.selected and l.status == "advance"):
+        for line in self.line_ids.filtered(
+            lambda l: l.selected and l.status == "advance"
+        ):
             proposal = json.loads(line.proposal_json)
             result = service.apply_proposal(proposal)
             applied.append(

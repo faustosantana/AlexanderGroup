@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Wizard: Migrar numeración fiscal al Motor Justech (preview obligatorio)."""
+
 import json
 
 from odoo import _, api, fields, models
@@ -57,7 +58,11 @@ class JustechDoNcfMigrationWizard(models.TransientModel):
     )
     line_ids = fields.One2many("justech.do.ncf.migration.line", "wizard_id")
     state = fields.Selection(
-        selection=[("draft", "Borrador"), ("preview", "Previsualización"), ("done", "Aplicado")],
+        selection=[
+            ("draft", "Borrador"),
+            ("preview", "Previsualización"),
+            ("done", "Aplicado"),
+        ],
         default="draft",
         readonly=True,
     )
@@ -72,27 +77,42 @@ class JustechDoNcfMigrationWizard(models.TransientModel):
             wiz.ready_count = len(
                 wiz.line_ids.filtered(lambda l: l.status in ("ready", "reconcile"))
             )
-            wiz.blocked_count = len(wiz.line_ids.filtered(lambda l: l.status == "blocked"))
+            wiz.blocked_count = len(
+                wiz.line_ids.filtered(lambda l: l.status == "blocked")
+            )
             wiz.skip_count = len(wiz.line_ids.filtered(lambda l: l.status == "skip"))
 
-    def _check_access(self):
+    def _check_access(self, operation: str):
+        """Odoo 19: BaseModel._check_access(self, operation) → None | (records, factory)."""
+        result = super()._check_access(operation)
+        if result:
+            return result
         if not (
             self.env.user.has_group("base.group_system")
-            or self.env.user.has_group("justech_l10n_do_base.group_justech_do_fiscal_manager")
-        ):
-            raise AccessError(
-                _(
-                    "Solo Administrador del sistema o Administrador Fiscal "
-                    "pueden migrar la numeración NCF."
-                )
+            or self.env.user.has_group(
+                "justech_l10n_do_base.group_justech_do_fiscal_manager"
             )
+        ):
+
+            def _make_error():
+                return AccessError(
+                    _(
+                        "Solo Administrador del sistema o Administrador Fiscal "
+                        "pueden migrar la numeración NCF."
+                    )
+                )
+
+            return self, _make_error
+        return None
 
     def action_preview(self):
         self.ensure_one()
-        self._check_access()
+        self.check_access("write")
         self.line_ids.unlink()
         companies = self.company_ids or None
-        proposals = self.env["justech.do.ncf.migration.service"].build_proposals(companies)
+        proposals = self.env["justech.do.ncf.migration.service"].build_proposals(
+            companies
+        )
         Line = self.env["justech.do.ncf.migration.line"]
         for p in proposals:
             Line.create(
@@ -118,7 +138,7 @@ class JustechDoNcfMigrationWizard(models.TransientModel):
 
     def action_apply_selected(self):
         self.ensure_one()
-        self._check_access()
+        self.check_access("write")
         if self.state != "preview":
             raise UserError(_("Debe previsualizar antes de aplicar."))
         service = self.env["justech.do.ncf.migration.service"]
@@ -134,7 +154,9 @@ class JustechDoNcfMigrationWizard(models.TransientModel):
             )
             line.selected = False
             line.status = "skip"
-            line.block_reasons = (_("Aplicado.") + "\n" + (line.block_reasons or "")).strip()
+            line.block_reasons = (
+                _("Aplicado.") + "\n" + (line.block_reasons or "")
+            ).strip()
         self.result_summary = "\n".join(applied) or _("No se aplicó ninguna línea.")
         self.state = "done"
         return self._reopen()
