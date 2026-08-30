@@ -1,0 +1,118 @@
+# Wave 10 — NCF _check_access hotfix + Fiscal/home UX (STAGING ONLY)
+# Date: 2026-08-30
+# PROD_TOUCHED = NO
+# PROD_PROMOTION_ALLOWED = NO
+
+ROOT_CAUSE_CONFIRMED = YES
+ODOO19_CHECK_ACCESS_SIGNATURE = def _check_access(self, operation: str) -> tuple[Self, Callable] | None
+# check_access(self, operation) calls _check_access(operation) and raises the factory.
+# Custom wizards had _check_access(self) → TypeError: takes 1 positional argument but 2 were given.
+
+NCF_MIGRATION_WIZARD_STAGING = PASS
+NCF_RECONCILE_WIZARD_STAGING = PASS
+STAGING_PERMISSION_QA = PASS
+# Admin (odoo shell + UI): wizard create/open PASS, no RPC traceback.
+# Unauthorized internal user (wave10.ncf.denied@doralex.local, then deactivated):
+# AccessError naming groups Accounting/Responsable Fiscal + Administrator. No traceback.
+
+STAGING_BACKUP = PASS
+STAGING_BACKUP_DIR = /opt/doralex/backups/enterprise-staging/pre_final_ux_fiscal_cleanup_20260830_080047
+
+OVERLAY_STAGING = justech_alexander_ux 19.0.1.1.1
+OVERLAY_PROD = justech_alexander_ux 19.0.1.0.1
+REPORTS_MODULE = justech_alexander_reports 19.0.3.8.5
+REPORTS_UPGRADED = NO
+NCF_MODULE_UPGRADED = NO
+# Hotfix Python only (registry reload / container restart). No -u justech_l10n_do_ncf.
+
+CUSTOM_ROOT_APPS_BEFORE = Administración Doralex; Aprobaciones Justech; Auditoría de Cambios; Costos y Márgenes; Garantías; Servicios Administrados
+CUSTOM_ROOT_APPS_AFTER = Costos y Márgenes; Garantías; Servicios Administrados
+# Enterprise Aprobaciones remains as a launcher tile (not the custom module).
+
+CUSTOM_APPROVAL_ROOT_APP = NO
+ADMIN_DORALEX_ROOT_APP = NO
+AUDIT_ROOT_APP = NO
+DGII_ROOT_APP = NO
+WARRANTY_ROOT_APP = YES
+MARGIN_ROOT_APP = YES
+MANAGED_SERVICES_ROOT_APP = YES
+
+FISCAL_MENU_ITEMS_BEFORE = 7
+# L1 activo pre-upgrade: Centro de regularización; Documentos pendientes; NCF; Compras; e-CF; DGII; Reportes fiscales
+FISCAL_MENU_ITEMS_AFTER = 5
+# L1 activo: Panel fiscal; Regularización; NCF; Reportes DGII; Retenciones
+
+FISCAL_MENU_PARENT = Contabilidad → Fiscal Dominicana
+PAYROLL_MENU_PARENT = RRHH → Nómina
+
+ECF_OPERATIONAL_ENABLED = NO
+ECF_VISIBLE_NORMAL_USER = NO
+DGII_VISIBLE_NORMAL_USER = NO
+# Param justech_alexander.ecf_operational_enabled stored empty when OFF
+# (Odoo 19 bool("False") would show the Settings checkbox as ON).
+# e-CF/DGII menus active=False; four e-CF crons active=False.
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+# Compared to enterprise-staging/qweb_doralex_20260829_142222.tsv: missing=0 extra=0 mismatch=0
+REPORTS_PRESERVED = YES
+
+FISCAL_ENGINE_QA = PASS
+NCF_QA = PASS
+ECF_QA = PASS
+# Hidden while disabled; modules still installed; switch OFF in Ajustes.
+DGII_QA = PASS
+PAYROLL_QA = PASS
+MARGIN_QA = PASS
+APPROVAL_QA = PASS
+# Custom under Ajustes → Aprobaciones Justech. Enterprise tile kept.
+AUDIT_QA = PASS
+# Under Ajustes → Auditoría
+WARRANTY_QA = PASS
+
+WEBSITE_QA = PASS
+# Staging / = 200, /web/health = 200, /web/login = 200
+# Prod (read-only, not changed): / = 200, /contactus = 200
+MAIL_CONFIG_PRESERVED = YES
+# Staging still 1 ir.mail_server (pre-existing neutralized). No Microsoft/catchall edits.
+
+SPANISH_UI = PASS
+STAGING_HEALTH = PASS
+STAGING_LOGIN = PASS
+
+UNINSTALL_COUNT = 0
+FUNCTIONALITY_LOST = 0
+INSTALLED_BEFORE = 372
+INSTALLED_AFTER = 372
+
+MENU_LABEL_FIXES = Dashboard Fiscal → Panel fiscal; Documentos electrónico → Documentos electrónicos
+MENU_DUPLICATES_FOUND = Centro de regularización fiscal (NCF) vs center_audit (mismo action, audit oculto); Consumo NCF vs Consumo auditoría (mismo modelo, audit oculto). Un solo Centro de regularización fiscal bajo Regularización.
+
+COST_TYPES_PARENT = Compras → Configuración → Tipos de costos y gastos
+# justech_l10n_do_base.menu_justech_do_dgii_expense_type reparented to purchase.menu_purchase_config
+
+PROD_UX_MODULE = 19.0.1.0.1
+PROD_TOUCHED = NO
+PROD_PROMOTION_ALLOWED = NO
+
+JUSTGROUP_SSH = UNAVAILABLE
+# Comparación menú a menú (referencia visual Justgroup, sin copiar datos):
+#
+# MENU_DORALEX | MENU_JUSTGROUP_EQUIVALENT | USED_OPERATIONALLY | TECHNICAL | FUTURE_ONLY | RECOMMENDATION
+# Panel fiscal | Auditoría Fiscal / dashboard | YES | NO | NO | KEEP visible
+# Regularización (centro, pendientes, migración, reconciliar, auditorías) | no hay equivalente diario en JG | YES (admin fiscal) | partial | NO | KEEP grouped
+# NCF tipos/rangos/consumo/anulados/historial/revisión | Auditoría Fiscal NCF | YES | NO | NO | KEEP grouped
+# Reportes DGII 606/607/608/609/623 | Auditoría Fiscal 606–623 | YES | NO | NO | KEEP grouped
+# Retenciones (admin/cuentas/asistente) | retenciones bajo fiscal/pagos | YES | NO | NO | KEEP L1 (columna 4 del megamenú)
+# e-CF documentos/cola/eventos/certificados | e-CF Justgroup si operativo | NO hoy | NO | YES | HIDDEN until switch
+# DGII comprobantes electrónicos | DGII app/tile Justgroup evitado | NO hoy | NO | YES | HIDDEN, not root
+# Compras / Tipos de costos | Compras configuración | YES compras | NO | NO | MOVED to Compras
+# Padrón RNC | técnico | NO diario | YES | NO | stays hidden
+# Centro Administración Fiscal | consola admin | admin | YES | NO | under Administración Doralex
+#
+# HOME: Justgroup más limpio (menos tiles custom). Doralex staging ahora solo
+# Costos y Márgenes + Garantías + Servicios Administrados como custom roots.
+# Aprobaciones que queda en el launcher es la app Enterprise, no justech_approval_flow.
+
+SECRETS_SCAN = CLEAN
