@@ -1,5 +1,5 @@
 {
-    "name": "Justech Quotation Client Dedup",
+    "name": "Evitar clientes duplicados en cotización",
     "version": "19.0.1.0.0",
     "category": "Sales/Sales",
     "summary": "Elimina el bloque duplicado de cliente en el encabezado de cotizaciones",

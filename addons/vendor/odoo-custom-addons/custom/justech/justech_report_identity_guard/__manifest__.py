@@ -1,8 +1,8 @@
 {
-    "name": "Justech Report Identity Guard",
+    "name": "Identidad de reportes",
     "version": "19.0.1.0.0",
     "category": "Reporting",
-    "summary": "Fail-closed: no cross-company / Hellenia report template substitution",
+    "summary": "Impide sustituir plantillas de reporte entre compañías",
     "description": """
 Guarda permanente de identidad gráfica multiempresa (Justgroup ERP).
 

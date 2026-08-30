@@ -1,5 +1,5 @@
 {
-    "name": "Doralex Report Layout",
+    "name": "Diseño de reportes Doralex",
     "version": "19.0.3.8.5",
     "category": "Reporting",
     "summary": "V5.3: pulido de cotización y suite documental por identidad",

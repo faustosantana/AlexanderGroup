@@ -1,8 +1,8 @@
 {
-    "name": "Justech Dominican NCF",
+    "name": "NCF",
     "version": "19.0.2.31.0",
     "category": "Accounting/Localizations",
-    "summary": "NCF ranges, assignment and validation (Dominican Republic)",
+    "summary": "Rangos NCF, asignación y validación (República Dominicana)",
     "description": """
 NCF management for Dominican Republic — Justech Enterprise layer.
 

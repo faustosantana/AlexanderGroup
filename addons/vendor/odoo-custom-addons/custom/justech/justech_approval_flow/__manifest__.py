@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Justech Simple Approval Flow",
+    "name": "Aprobaciones",
     "version": "19.0.1.3.8",
     "category": "Hidden",
     "summary": "Aprobación simple de OC, cotizaciones y facturas cliente",

@@ -1,8 +1,8 @@
 {
-    "name": "Justech Admin Center",
+    "name": "Centro de administración técnica",
     "version": "19.0.2.12.1",
     "category": "Administration",
-    "summary": "Consola Enterprise Settings → Administración Justech",
+    "summary": "Consola técnica en Ajustes: productos, diagnóstico y auditoría",
     "description": """
 Consola Enterprise multiempresa: productos, submódulos, activación por empresa,
 reautenticación segura, diagnóstico y auditoría.

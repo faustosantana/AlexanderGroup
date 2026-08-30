@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Justech Garantías",
+    "name": "Garantías",
     "summary": "Gestión profesional de garantías: registro por unidad (RC6.2), "
     "cobertura cliente vs. proveedor, reclamos (RMA) y configuración pre-venta.",
     "description": """

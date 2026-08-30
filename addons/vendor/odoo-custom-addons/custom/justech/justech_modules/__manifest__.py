@@ -1,5 +1,5 @@
 {
-    "name": "Justech Modules",
+    "name": "Registro de módulos",
     "version": "19.0.1.8.7",
     "category": "Justech/Platform",
     "summary": "Motor de licencias y catálogo comercial Justech",

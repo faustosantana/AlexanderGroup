@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Justech Control OC en Facturas Proveedor",
+    "name": "Control de facturas proveedor / OC",
     "version": "19.0.3.6.2",
     "category": "Accounting/Localizations",
     "summary": "OC automática o aprobación; contabilización al aprobar; bandeja única",

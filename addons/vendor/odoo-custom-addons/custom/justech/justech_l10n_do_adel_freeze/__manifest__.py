@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Justech Adel Freeze (Dual-Engine Gate)",
+    "name": "Candado de motor fiscal",
     "version": "19.0.1.0.0",
     "category": "Accounting/Localizations",
-    "summary": "Freeze Adel NCF emission when Justech fiscal motor is enabled",
+    "summary": "Bloquea la emisión NCF Adel cuando el motor fiscal está activo",
     "description": """
 Bridge module: keeps l10n_do_accounting installed for historical read (FDP)
 but blocks Adel sequence consumption and auto-assignment on new documents
