@@ -151,10 +151,14 @@ WEBSITE_SEO = PASS
   web.base.url https://doralexgroup.cloud
 WEBSITE_HTTPS = PASS
   certbot vhost preserved; /websocket -> 8072
+  public https://doralexgroup.cloud/web/health = 200 {"status":"pass"}
 WEBSITE_PRODUCTION_PARITY = PASS
   Alexander homepage/footer/header hashes matched staging
   no 127.0.0.1 / 8269 in views
   staging SMTP / QA partners not copied
+  public website langs = es_DO only (en_US removed from website_lang_rel)
+  auto_redirect_lang = false; workers restarted so registry matches
+  Chrome en-US first hit = 200 homepage + frontend_lang=es_DO
 
 SPANISH_UI_PROD = PASS
   CRM Leads es_DO = Iniciativas
@@ -162,6 +166,7 @@ SPANISH_UI_PROD = PASS
   justech_approval_state = Estado de aprobación Justech
 PUBLIC_LOGIN_SPANISH_PROD = PASS
   Correo electrónico / Contraseña / Iniciar sesión
+  verified via curl Accept-Language en-US and Incognito Chrome
 
 PROD_HEALTH = PASS
   127.0.0.1:8069/web/health = 200
