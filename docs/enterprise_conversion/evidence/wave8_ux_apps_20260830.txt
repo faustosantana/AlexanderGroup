@@ -65,6 +65,16 @@ VISIBLE_CUSTOM_APPS_AFTER =
 - Costos y Márgenes (justech_purchase_sale_margin_control)
 - Garantías (justech_warranty)
 
-OVERLAY = justech_alexander_ux 19.0.1.0.0 (staging installed; prod absent)
+OVERLAY = justech_alexander_ux 19.0.1.0.1 (staging installed; prod absent)
 
+APPS_SEARCH_JUSTECH_FILTER_APPS = 5
+APPS_SEARCH_JUSTECH_ALL_MODULES = 44
+LAUNCHER_DGII_TILE = NO
+FISCAL_CHILDREN = NCF, e-CF, DGII, Reportes fiscales
+STAGING_QA_USER = ux.qa.staging@doralex.local (staging only; not on prod)
+
+PROD_UX_MODULE = absent
+PROD_DGII_STILL_ROOT = YES
+PROD_INSTALLED = 374
+PROD_PROMOTION_ALLOWED = NO
 NO_PROD_PROMOTION = YES
