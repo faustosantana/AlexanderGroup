@@ -1,0 +1,20 @@
+--- a/justech_l10n_do_hr_payroll/models/hr_hub_area.py
++++ b/justech_l10n_do_hr_payroll/models/hr_hub_area.py
+@@
+-    def _search(self, model, domain, order=None, limit=None):
++    def _hub_search(self, model, domain, order=None, limit=None):
+         if model not in self.env:
+             return self.env["ir.ui.menu"].browse()
+         try:
+             return self.env[model].search(domain, order=order, limit=limit)
+         except (AccessError, UserError, ValueError):
+             return self.env[model].browse()
+@@
+-        slips = self._search("hr.payslip", slip_domain)
++        slips = self._hub_search("hr.payslip", slip_domain)
+@@
+ All other self._search(...) calls in this file were renamed to self._hub_search(...).
+ Reason: the helper shadowed TransientModel._search. Odoo 19 autovacuum calls
+ _search(domain, offset=..., limit=..., order=...) and raised
+ TypeError: unexpected keyword argument 'offset'. Cron itself continues (caught
+ per model) but HR hub vacuum failed. Applied on Doralex enterprise-staging only.

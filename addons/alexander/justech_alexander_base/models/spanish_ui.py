@@ -6,6 +6,13 @@ CRM_LEAD_MENU_XMLIDS = (
     "crm.crm_opportunity_report_menu_lead",
 )
 
+APPROVAL_STATE_MODELS = (
+    "sale.order",
+    "purchase.order",
+    "account.move",
+    "account.bank.statement.line",
+)
+
 
 class IrUiMenu(models.Model):
     _inherit = "ir.ui.menu"
@@ -20,3 +27,16 @@ class IrUiMenu(models.Model):
             menu = self.env.ref(xmlid, raise_if_not_found=False)
             if menu:
                 menu.with_context(lang="es_DO").name = "Iniciativas"
+        fields = self.env["ir.model.fields"].sudo().search(
+            [
+                ("name", "=", "justech_approval_state"),
+                ("model", "in", list(APPROVAL_STATE_MODELS)),
+            ]
+        )
+        for field in fields:
+            field.with_context(lang="es_DO").field_description = (
+                "Estado de aprobación Justech"
+            )
+            field.with_context(lang="en_US").field_description = (
+                "Estado de aprobación Justech"
+            )

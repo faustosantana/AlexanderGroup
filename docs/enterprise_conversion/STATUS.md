@@ -239,8 +239,9 @@ DORALEX_PROD_TOUCHED = NO
 CUTOVER_ALLOWED = NO
 ```
 
-`ENTERPRISE_APPS_QA = FAIL`: no se instalaron a ciegas `documents`, `sign`,
-`planning`, `sale_renting`, `web_studio`. Helpdesk y Suscripciones sí abren.
+`ENTERPRISE_APPS_QA` quedó FAIL en el QA pre-paridad: no se instalaron a
+ciegas Documents / Sign / Planning / Rental / Studio. Esa fase se cerró
+con `READY_FOR_CUTOVER_REVIEW = NO`.
 
 Caso margen UI: `DOR/SO/00013` venta 400 / costo 240 / margen 160 (40%)
 vinculado a `DOR/OC/00012`. Aprobación: `DOR/SO/00015` Aprobada.
@@ -249,3 +250,73 @@ NCF no consumido. DGII no enviado. SMTP neutralizado.
 
 Evidencia: `docs/enterprise_conversion/evidence/wave4_justech_custom_stack_20260829.txt`
 Evidencia QA: `docs/enterprise_conversion/evidence/wave5_final_functional_qa_20260830.txt`
+
+## Paridad standard / Enterprise (solo staging)
+
+Fuente de verdad = inventarios/documentos Justgroup ya traídos
+(`justgroup_reference.json` + auditoría de stack). No se instaló “todo
+Enterprise”. No se copiaron datos Justgroup.
+
+```
+STANDARD_ENTERPRISE_PARITY_BACKUP = PASS
+  /opt/doralex/backups/enterprise-staging/pre_standard_enterprise_parity_212307
+JUSTGROUP_TOTAL_INSTALLED_MODULES = 360
+DORALEX_TOTAL_INSTALLED_MODULES = 371
+JUSTGROUP_COMMUNITY_STANDARD_INSTALLED = 173
+DORALEX_COMMUNITY_STANDARD_INSTALLED = 181
+JUSTGROUP_ENTERPRISE_INSTALLED = 142
+DORALEX_ENTERPRISE_INSTALLED = 141
+JUSTGROUP_CUSTOM_INSTALLED = 44
+DORALEX_CUSTOM_INSTALLED = 49
+STANDARD_COMMUNITY_MISSING = 0
+ENTERPRISE_MISSING = 0
+CUSTOM_COMMON_MISSING = 0
+MODULE_VERSION_MISMATCH = 0
+WAVE_E1 = PASS
+WAVE_E2 = PASS
+WAVE_E3 = PASS
+WAVE_E4 = PASS
+WAVE_E5 = PASS
+WAVE_E6 = PASS
+WAVE_E7 = PASS
+WAVE_E8 = PASS
+DOCUMENTS_QA = PASS
+SIGN_QA = PASS
+PROJECT_QA = PASS
+TIMESHEET_QA = PASS
+PLANNING_QA = PASS
+RENTAL_QA = PASS
+BARCODE_QA = PASS
+MAINTENANCE_QA = PASS
+REPAIR_QA = PASS
+MARKETING_QA = PASS
+AUTOMATION_QA = PASS
+EVENT_QA = PASS
+SURVEY_QA = PASS
+STUDIO_QA = PASS
+ACTIVITIES_QA = PASS
+ARTICLES_QA = PASS
+APP_LAUNCHER_FINAL = PASS
+ENTERPRISE_APPS_QA = PASS
+SPANISH_UI_FINAL = PASS
+WEBSOCKET_PROD_CONFIG_REQUIRED = NO
+HR_HUB_VACUUM_STATUS = PASS
+HR_HUB_FIX_REQUIRED = NO
+WKHTMLTOPDF_PROD_FIX_REQUIRED = NO
+CRITICAL_ERRORS = 0
+HIGH_ERRORS = 0
+READY_FOR_CUTOVER_REVIEW = YES
+DORALEX_SUBSCRIPTION_ACTIVATION = PENDING
+DORALEX_PROD_TOUCHED = NO
+CUTOVER_ALLOWED = NO
+```
+
+371 vs 360: extras Doralex = `justech_alexander_*` + auto_install de padres
+instalados. 141 vs 142 OEEL: un módulo Enterprise del conteo SSH 2026-08-27
+sigue sin nombre (lista 360 no exportada). No se inventó instalación.
+
+Artículos = `knowledge`. CRM/Leads → Iniciativas (overlay, sin editar core).
+Vacuum HR hub: helper `_search` en `justech_l10n_do_hr_payroll` sombreaba el
+ORM; renombrado a `_hub_search` en staging.
+
+Evidencia: `docs/enterprise_conversion/evidence/wave6_standard_enterprise_parity_20260830.txt`

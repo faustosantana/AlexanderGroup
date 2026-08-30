@@ -144,5 +144,31 @@ def test_wave5_final_functional_qa_blocks_cutover() -> None:
     assert "READY_FOR_CUTOVER_REVIEW = NO" in ev
     assert "ENTERPRISE_APPS_QA = FAIL" in ev
     assert "DORALEX_SUBSCRIPTION_ACTIVATION = PENDING" in ev
-    assert "READY_FOR_CUTOVER_REVIEW = NO" in status
     assert "CUTOVER_ALLOWED = NO" in status
+
+
+def test_wave6_standard_enterprise_parity_keeps_cutover_blocked() -> None:
+    ev = (
+        REPO / "docs/enterprise_conversion/evidence/"
+        "wave6_standard_enterprise_parity_20260830.txt"
+    ).read_text(encoding="utf-8")
+    status = (REPO / "docs/enterprise_conversion/STATUS.md").read_text()
+    assert "STANDARD_ENTERPRISE_PARITY_BACKUP = PASS" in ev
+    assert "STANDARD_COMMUNITY_MISSING = 0" in ev
+    assert "ENTERPRISE_MISSING = 0" in ev
+    assert "CUSTOM_COMMON_MISSING = 0" in ev
+    assert "MODULE_VERSION_MISMATCH = 0" in ev
+    assert "ENTERPRISE_APPS_QA = PASS" in ev
+    assert "APP_LAUNCHER_FINAL = PASS" in ev
+    assert "QWEB_AFTER = 58" in ev
+    assert "QWEB_HASH_MISMATCH_UNEXPECTED = 0" in ev
+    assert "SPANISH_UI_FINAL = PASS" in ev
+    assert "SECRETS_FOUND = none" in ev
+    assert "READY_FOR_CUTOVER_REVIEW = YES" in ev
+    assert "CUTOVER_ALLOWED = NO" in ev
+    assert "DORALEX_PROD_TOUCHED = NO" in ev
+    assert "DORALEX_SUBSCRIPTION_ACTIVATION = PENDING" in ev
+    assert "ENTERPRISE_APPS_QA = PASS" in status
+    assert "READY_FOR_CUTOVER_REVIEW = YES" in status
+    assert "CUTOVER_ALLOWED = NO" in status
+    assert "ARTICLES_TECHNICAL_NAME = knowledge" in ev
