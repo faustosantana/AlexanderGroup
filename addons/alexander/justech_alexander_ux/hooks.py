@@ -145,7 +145,33 @@ def _apply_menu_names(env):
         menu.with_context(lang="es_DO").name = name
 
 
+def _hide_fiscal_leftovers(env):
+    """Keep only the operational Fiscal Dominicana groups at the first level."""
+    keep = {
+        "justech_l10n_do_reports.menu_justech_do_fiscal_dashboard",
+        "justech_alexander_ux.menu_fiscal_regularization",
+        "justech_l10n_do_ncf.menu_justech_do_ncf_motor_root",
+        "justech_alexander_ux.menu_fiscal_reports_dgii",
+        "justech_alexander_ux.menu_fiscal_withholding",
+        # Shown only when e-CF switch is ON.
+        "justech_ecf_core.menu_justech_ecf_root",
+        "l10n_do_ecf_connector.ecf_documents_root",
+    }
+    fiscal = env.ref(
+        "justech_l10n_do_base.menu_justech_do_fiscal_root",
+        raise_if_not_found=False,
+    )
+    if not fiscal:
+        return
+    leftovers = env["ir.ui.menu"].search([("parent_id", "=", fiscal.id)])
+    for menu in leftovers:
+        xmlid = menu.get_external_id().get(menu.id)
+        if xmlid not in keep:
+            menu.write({"active": False, "web_icon": False})
+
+
 def post_init_hook(env):
     _apply_catalog(env)
     _apply_menu_names(env)
     apply_ecf_operational_state(env, enabled=False)
+    _hide_fiscal_leftovers(env)

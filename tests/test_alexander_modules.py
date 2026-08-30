@@ -191,6 +191,8 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "VISIBLE_APPS" in hooks
     assert "justech_alexander_admin" not in hooks.split("VISIBLE_APPS", 1)[1][:400]
     assert "apply_ecf_operational_state" in hooks
+    assert "_hide_fiscal_leftovers" in hooks
+    assert "justech_alexander.ecf_operational_enabled" in hooks
     assert '"application": False' in website
     assert '"application": False' in fiscal
     assert "UNINSTALL" not in hooks

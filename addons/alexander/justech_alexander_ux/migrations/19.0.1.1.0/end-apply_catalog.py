@@ -4,6 +4,7 @@ def migrate(cr, version):
     from odoo.addons.justech_alexander_ux.hooks import (
         _apply_catalog,
         _apply_menu_names,
+        _hide_fiscal_leftovers,
         apply_ecf_operational_state,
     )
 
@@ -11,3 +12,4 @@ def migrate(cr, version):
     _apply_catalog(env)
     _apply_menu_names(env)
     apply_ecf_operational_state(env, enabled=False)
+    _hide_fiscal_leftovers(env)
