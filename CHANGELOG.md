@@ -5,6 +5,11 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 
 ## Unreleased
 
+### Changed
+- Recibo multi-factura (`multi_invoice_manual_payment_prod` 19.0.1.5.5): un
+  solo PDF por `account.payment` con tabla completa (NCF, saldos, pie). No
+  modifica `justech_alexander_reports` (QWeb 58). Solo staging Doralex.
+
 ### Added
 - Staging Doralex: canal temporal `doralex-core-transfer` cerrado e instalación
   del stack custom Justech (fiscal, NCF, e-CF, tesorería, márgenes, aprobaciones,

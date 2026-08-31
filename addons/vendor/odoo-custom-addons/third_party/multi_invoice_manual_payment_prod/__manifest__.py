@@ -1,6 +1,6 @@
 {
     "name": "Multi Invoice Manual Payment",
-    "version": "19.0.1.5.4",
+    "version": "19.0.1.5.5",
     "summary": "Una transferencia → un account.payment → N conciliaciones → un recibo.",
     "category": "Accounting/Accounting",
     "author": "DynamicsPM / Justech",
