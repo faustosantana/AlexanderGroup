@@ -50,3 +50,24 @@ def test_module_version_bumped_without_new_alexander_qweb():
     text = MANIFEST.read_text()
     assert "19.0.1.5.5" in text
     assert "justech_alexander_reports" not in text
+
+
+def test_cost_link_wizard_reloads_lines_on_po_write():
+    root = Path(__file__).resolve().parents[1]
+    py = (
+        root
+        / "addons/vendor/odoo-custom-addons/custom/justech/justech_purchase_sale_margin_control/wizard/cost_ops_wizards.py"
+    ).read_text()
+    xml = (
+        root
+        / "addons/vendor/odoo-custom-addons/custom/justech/justech_purchase_sale_margin_control/wizard/cost_ops_wizard_views.xml"
+    ).read_text()
+    manifest = (
+        root
+        / "addons/vendor/odoo-custom-addons/custom/justech/justech_purchase_sale_margin_control/__manifest__.py"
+    ).read_text()
+    assert "def _reload_document_lines" in py
+    assert "justech_skip_link_reload" in py
+    assert 'string="Cargar artículos"' in xml
+    assert 'invisible="not purchase_order_id"' not in xml
+    assert "19.0.8.29.39" in manifest

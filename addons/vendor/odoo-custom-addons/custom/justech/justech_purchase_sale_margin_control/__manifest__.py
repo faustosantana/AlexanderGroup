@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 {
     "name": "Costos y Márgenes",
-    "version": "19.0.8.29.38",
+    "version": "19.0.8.29.39",
     "category": "Sales/Sales",
     "summary": "App independiente + trazabilidad cruzada Ventas/Compras/Facturas",
     "description": """
-Justech Purchase Sale Margin Control 19.0.8.29.37
+Justech Purchase Sale Margin Control 19.0.8.29.39
 ================================================
 
+- 8.29.39: Al seleccionar OC en Vincular compra, OWL persiste las líneas (write/create);
+  botón Cargar artículos siempre visible en modo OC
 - 8.29.37: Integridad cobertura — upsert idempotente (no 3+3=6); refresh post-apply;
   cancel/unlink libera cobertura; gate docs cancelados solo si activos; precio 0 bloqueado;
   UX PO vincular/desvincular; vendedor = usuario actual al crear SO

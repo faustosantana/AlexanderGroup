@@ -409,6 +409,37 @@ class PurchaseSaleCostLinkWizard(models.TransientModel):
     )
     sale_line_ids = fields.Many2many("sale.order.line", string="Líneas venta")
 
+    def _reload_document_lines(self, reload_po=False, reload_bill=False):
+        """OWL writes Many2one via RPC; onchange One2many does not persist in the dialog."""
+        if self.env.context.get("justech_skip_link_reload"):
+            return
+        for rec in self:
+            updates = {}
+            if reload_po:
+                updates["pol_line_ids"] = [(5, 0, 0)] + rec._pol_line_cmds()
+            if reload_bill:
+                updates["bill_line_ids"] = [(5, 0, 0)] + rec._bill_line_cmds()
+            if updates:
+                rec.with_context(justech_skip_link_reload=True).write(updates)
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        recs = super().create(vals_list)
+        for rec, vals in zip(recs, vals_list):
+            rec._reload_document_lines(
+                reload_po=bool(vals.get("purchase_order_id")),
+                reload_bill=bool(vals.get("vendor_bill_id")),
+            )
+        return recs
+
+    def write(self, vals):
+        reload_po = "purchase_order_id" in vals and "pol_line_ids" not in vals
+        reload_bill = "vendor_bill_id" in vals and "bill_line_ids" not in vals
+        res = super().write(vals)
+        if reload_po or reload_bill:
+            self._reload_document_lines(reload_po=reload_po, reload_bill=reload_bill)
+        return res
+
     def _selected_products(self):
         return self.sale_line_ids.mapped("product_id")
 

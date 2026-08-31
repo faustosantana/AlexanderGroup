@@ -1526,6 +1526,14 @@ class PurchaseSaleManagePurchasesWizardLine(models.TransientModel):
             )
         self.pol_pick_ids = cmds
 
+    def write(self, vals):
+        reload_picks = "purchase_order_id" in vals and "pol_pick_ids" not in vals
+        res = super().write(vals)
+        if reload_picks and not self.env.context.get("justech_skip_pol_reload"):
+            for rec in self:
+                rec.with_context(justech_skip_pol_reload=True)._onchange_purchase_order_id()
+        return res
+
     def action_reload_pol_picks(self):
         self.ensure_one()
         self._onchange_purchase_order_id()
