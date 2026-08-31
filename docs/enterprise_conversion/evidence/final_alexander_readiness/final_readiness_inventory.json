@@ -1,0 +1,874 @@
+{
+  "started": "2026-08-31T16:47:16Z",
+  "database": "doralex_ent_staging",
+  "prod_touched": false,
+  "qweb_alexander": 58,
+  "qweb_keys": [
+    "justech_alexander_reports.dx_report_extras",
+    "justech_alexander_reports.delivery_document_dx",
+    "justech_alexander_reports.external_layout_doralex",
+    "justech_alexander_website.doralex_contactus",
+    "justech_alexander_website.doralex_copyright",
+    "justech_alexander_website.doralex_header_cta",
+    "justech_alexander_website.doralex_sign_in",
+    "justech_alexander_website.doralex_footer",
+    "justech_alexander_website.doralex_header_text",
+    "justech_alexander_website.doralex_homepage",
+    "justech_alexander_website.doralex_homepage",
+    "justech_alexander_reports.dx_banks_text",
+    "justech_alexander_reports.dx_commercial_meta",
+    "justech_alexander_reports.dx_customer_card",
+    "justech_alexander_reports.dx_document_end",
+    "justech_alexander_reports.dx_footer_blueelite",
+    "justech_alexander_reports.dx_footer_dominion",
+    "justech_alexander_reports.dx_footer_doralex",
+    "justech_alexander_reports.dx_footer_mayuma",
+    "justech_alexander_reports.dx_footer_pinaria",
+    "justech_alexander_reports.dx_footer_rempart",
+    "justech_alexander_reports.dx_header_blueelite",
+    "justech_alexander_reports.dx_header_dominion",
+    "justech_alexander_reports.dx_header_doralex",
+    "justech_alexander_reports.dx_header_mayuma",
+    "justech_alexander_reports.dx_header_pinaria",
+    "justech_alexander_reports.dx_header_rempart",
+    "justech_alexander_reports.dx_invoice_composition",
+    "justech_alexander_reports.dx_line_table",
+    "justech_alexander_reports.dx_payment_composition",
+    "justech_alexander_reports.dx_picking_composition",
+    "justech_alexander_reports.dx_picking_lines",
+    "justech_alexander_reports.dx_pin_doc_title",
+    "justech_alexander_reports.dx_purchase_composition",
+    "justech_alexander_reports.dx_sale_blueelite",
+    "justech_alexander_reports.dx_sale_composition",
+    "justech_alexander_reports.dx_sale_dominion",
+    "justech_alexander_reports.dx_sale_doralex",
+    "justech_alexander_reports.dx_sale_mayuma",
+    "justech_alexander_reports.dx_sale_pinaria",
+    "justech_alexander_reports.dx_sale_rempart",
+    "justech_alexander_reports.dx_signature_panel",
+    "justech_alexander_reports.dx_terms_panel",
+    "justech_alexander_reports.dx_terms_text",
+    "justech_alexander_reports.dx_totals_panel",
+    "justech_alexander_website.company_detail",
+    "justech_alexander_reports.external_layout_force_document_company",
+    "justech_alexander_reports.internal_layout_force_document_company",
+    "justech_alexander_reports.invoice_document_dx",
+    "justech_alexander_reports.payment_receipt_dx",
+    "justech_alexander_reports.picking_document_dx",
+    "justech_alexander_reports.purchase_order_dx",
+    "justech_alexander_reports.purchase_rfq_dx",
+    "justech_alexander_reports.report_partner_statement_document",
+    "justech_alexander_reports.report_preview_document",
+    "justech_alexander_reports.report_warranty_document",
+    "justech_alexander_reports.return_document_dx",
+    "justech_alexander_reports.sale_document_dx"
+  ],
+  "modules": {
+    "multi_invoice_manual_payment_prod": {
+      "state": "installed",
+      "version": "19.0.1.5.5"
+    },
+    "justech_alexander_reports": {
+      "state": "installed",
+      "version": "19.0.3.8.5"
+    },
+    "justech_purchase_sale_margin_control": {
+      "state": "installed",
+      "version": "19.0.8.29.38"
+    },
+    "justech_sale_purchase_trace": {
+      "state": "installed",
+      "version": "19.0.1.2.11"
+    },
+    "justech_global_audit_log": {
+      "state": "installed",
+      "version": "19.0.4.1.4"
+    },
+    "justech_l10n_do_reports": {
+      "state": "installed",
+      "version": "19.0.1.24.8"
+    },
+    "justech_approval_flow": {
+      "state": "installed",
+      "version": "19.0.1.3.8"
+    }
+  },
+  "companies": [
+    {
+      "id": 1,
+      "name": "Plantilla t\u00e9cnica (no operativa)",
+      "vat": false,
+      "currency": "USD",
+      "fiscal_country": "US",
+      "banks": [
+        {
+          "journal_id": 6,
+          "journal": "Bank",
+          "journal_type": "bank",
+          "method_line_id": 1,
+          "method": "Manual Payment",
+          "payment_type": "inbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        },
+        {
+          "journal_id": 6,
+          "journal": "Bank",
+          "journal_type": "bank",
+          "method_line_id": 2,
+          "method": "Manual Payment",
+          "payment_type": "outbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        }
+      ],
+      "existing_outstanding_accounts": [
+        {
+          "id": 50,
+          "code": "101403",
+          "name": "Outstanding Receipts",
+          "account_type": "asset_current"
+        },
+        {
+          "id": 51,
+          "code": "101404",
+          "name": "Outstanding Payments",
+          "account_type": "asset_current"
+        }
+      ],
+      "ncf_ranges": []
+    },
+    {
+      "id": 8,
+      "name": "BLUE ELITE, S.R.L.",
+      "vat": "133371261",
+      "currency": "DOP",
+      "fiscal_country": "DO",
+      "banks": [
+        {
+          "journal_id": 55,
+          "journal": "Banco Banreservas \u00b7 BLU",
+          "journal_type": "bank",
+          "method_line_id": 15,
+          "method": "Manual Payment",
+          "payment_type": "inbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        },
+        {
+          "journal_id": 55,
+          "journal": "Banco Banreservas \u00b7 BLU",
+          "journal_type": "bank",
+          "method_line_id": 16,
+          "method": "Manual Payment",
+          "payment_type": "outbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        }
+      ],
+      "existing_outstanding_accounts": [
+        {
+          "id": 2066,
+          "code": "11010203",
+          "name": "Outstanding Receipts",
+          "account_type": "asset_current"
+        },
+        {
+          "id": 2067,
+          "code": "11010204",
+          "name": "Outstanding Payments",
+          "account_type": "asset_current"
+        }
+      ],
+      "ncf_ranges": [
+        {
+          "prefix": "B01",
+          "state": "active",
+          "next_sequence": 99100543,
+          "sequence_end": 99100550,
+          "remaining": 8
+        },
+        {
+          "prefix": "B04",
+          "state": "active",
+          "next_sequence": 99110512,
+          "sequence_end": 99110550,
+          "remaining": 39
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "COMERCIALIZADORA DE ALIMENTOS PI\u00d1ARIA, S.R.L.",
+      "vat": "132271068",
+      "currency": "DOP",
+      "fiscal_country": "DO",
+      "banks": [
+        {
+          "journal_id": 62,
+          "journal": "Banco Banreservas \u00b7 PIN",
+          "journal_type": "bank",
+          "method_line_id": 17,
+          "method": "Manual Payment",
+          "payment_type": "inbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        },
+        {
+          "journal_id": 62,
+          "journal": "Banco Banreservas \u00b7 PIN",
+          "journal_type": "bank",
+          "method_line_id": 18,
+          "method": "Manual Payment",
+          "payment_type": "outbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        }
+      ],
+      "existing_outstanding_accounts": [
+        {
+          "id": 2354,
+          "code": "11010203",
+          "name": "Outstanding Receipts",
+          "account_type": "asset_current"
+        },
+        {
+          "id": 2355,
+          "code": "11010204",
+          "name": "Outstanding Payments",
+          "account_type": "asset_current"
+        }
+      ],
+      "ncf_ranges": [
+        {
+          "prefix": "B01",
+          "state": "active",
+          "next_sequence": 99100145,
+          "sequence_end": 99100150,
+          "remaining": 6
+        },
+        {
+          "prefix": "B04",
+          "state": "active",
+          "next_sequence": 99110112,
+          "sequence_end": 99110150,
+          "remaining": 39
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "vat": "132721502",
+      "currency": "DOP",
+      "fiscal_country": "DO",
+      "banks": [
+        {
+          "journal_id": 69,
+          "journal": "Banco Banreservas \u00b7 DOM",
+          "journal_type": "bank",
+          "method_line_id": 19,
+          "method": "Manual Payment",
+          "payment_type": "inbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        },
+        {
+          "journal_id": 69,
+          "journal": "Banco Banreservas \u00b7 DOM",
+          "journal_type": "bank",
+          "method_line_id": 20,
+          "method": "Manual Payment",
+          "payment_type": "outbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        }
+      ],
+      "existing_outstanding_accounts": [
+        {
+          "id": 2642,
+          "code": "11010203",
+          "name": "Outstanding Receipts",
+          "account_type": "asset_current"
+        },
+        {
+          "id": 2643,
+          "code": "11010204",
+          "name": "Outstanding Payments",
+          "account_type": "asset_current"
+        }
+      ],
+      "ncf_ranges": [
+        {
+          "prefix": "B01",
+          "state": "active",
+          "next_sequence": 99100243,
+          "sequence_end": 99100250,
+          "remaining": 8
+        },
+        {
+          "prefix": "B04",
+          "state": "active",
+          "next_sequence": 99110212,
+          "sequence_end": 99110250,
+          "remaining": 39
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "vat": "132220112",
+      "currency": "DOP",
+      "fiscal_country": "DO",
+      "banks": [
+        {
+          "journal_id": 76,
+          "journal": "Banco Banreservas \u00b7 DOR",
+          "journal_type": "bank",
+          "method_line_id": 21,
+          "method": "Manual Payment",
+          "payment_type": "inbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        },
+        {
+          "journal_id": 76,
+          "journal": "Banco Banreservas \u00b7 DOR",
+          "journal_type": "bank",
+          "method_line_id": 22,
+          "method": "Manual Payment",
+          "payment_type": "outbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        }
+      ],
+      "existing_outstanding_accounts": [
+        {
+          "id": 2930,
+          "code": "11010203",
+          "name": "Outstanding Receipts",
+          "account_type": "asset_current"
+        },
+        {
+          "id": 2931,
+          "code": "11010204",
+          "name": "Outstanding Payments",
+          "account_type": "asset_current"
+        }
+      ],
+      "ncf_ranges": [
+        {
+          "prefix": "B01",
+          "state": "active",
+          "next_sequence": 99100043,
+          "sequence_end": 99100050,
+          "remaining": 8
+        },
+        {
+          "prefix": "B04",
+          "state": "active",
+          "next_sequence": 99110017,
+          "sequence_end": 99110050,
+          "remaining": 34
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "vat": "132710152",
+      "currency": "DOP",
+      "fiscal_country": "DO",
+      "banks": [
+        {
+          "journal_id": 83,
+          "journal": "Banco Banreservas \u00b7 MAY",
+          "journal_type": "bank",
+          "method_line_id": 23,
+          "method": "Manual Payment",
+          "payment_type": "inbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        },
+        {
+          "journal_id": 83,
+          "journal": "Banco Banreservas \u00b7 MAY",
+          "journal_type": "bank",
+          "method_line_id": 24,
+          "method": "Manual Payment",
+          "payment_type": "outbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        }
+      ],
+      "existing_outstanding_accounts": [
+        {
+          "id": 3218,
+          "code": "11010203",
+          "name": "Outstanding Receipts",
+          "account_type": "asset_current"
+        },
+        {
+          "id": 3219,
+          "code": "11010204",
+          "name": "Outstanding Payments",
+          "account_type": "asset_current"
+        }
+      ],
+      "ncf_ranges": [
+        {
+          "prefix": "B01",
+          "state": "active",
+          "next_sequence": 99100343,
+          "sequence_end": 99100350,
+          "remaining": 8
+        },
+        {
+          "prefix": "B04",
+          "state": "active",
+          "next_sequence": 99110312,
+          "sequence_end": 99110350,
+          "remaining": 39
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "REMPART GROUP S.R.L.",
+      "vat": "132769155",
+      "currency": "DOP",
+      "fiscal_country": "DO",
+      "banks": [
+        {
+          "journal_id": 90,
+          "journal": "Banco Banreservas \u00b7 REM",
+          "journal_type": "bank",
+          "method_line_id": 25,
+          "method": "Manual Payment",
+          "payment_type": "inbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        },
+        {
+          "journal_id": 90,
+          "journal": "Banco Banreservas \u00b7 REM",
+          "journal_type": "bank",
+          "method_line_id": 26,
+          "method": "Manual Payment",
+          "payment_type": "outbound",
+          "outstanding_account_id": null,
+          "outstanding_account": null,
+          "status": "MISSING"
+        }
+      ],
+      "existing_outstanding_accounts": [
+        {
+          "id": 3506,
+          "code": "11010203",
+          "name": "Outstanding Receipts",
+          "account_type": "asset_current"
+        },
+        {
+          "id": 3507,
+          "code": "11010204",
+          "name": "Outstanding Payments",
+          "account_type": "asset_current"
+        }
+      ],
+      "ncf_ranges": [
+        {
+          "prefix": "B01",
+          "state": "active",
+          "next_sequence": 99100443,
+          "sequence_end": 99100450,
+          "remaining": 8
+        },
+        {
+          "prefix": "B04",
+          "state": "active",
+          "next_sequence": 99110412,
+          "sequence_end": 99110450,
+          "remaining": 39
+        }
+      ]
+    }
+  ],
+  "outstanding": [
+    {
+      "company_id": 1,
+      "company": "Plantilla t\u00e9cnica (no operativa)",
+      "bank_journal": "Bank",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "inbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 1,
+      "company": "Plantilla t\u00e9cnica (no operativa)",
+      "bank_journal": "Bank",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "outbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 8,
+      "company": "BLUE ELITE, S.R.L.",
+      "bank_journal": "Banco Banreservas \u00b7 BLU",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "inbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 8,
+      "company": "BLUE ELITE, S.R.L.",
+      "bank_journal": "Banco Banreservas \u00b7 BLU",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "outbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 9,
+      "company": "COMERCIALIZADORA DE ALIMENTOS PI\u00d1ARIA, S.R.L.",
+      "bank_journal": "Banco Banreservas \u00b7 PIN",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "inbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 9,
+      "company": "COMERCIALIZADORA DE ALIMENTOS PI\u00d1ARIA, S.R.L.",
+      "bank_journal": "Banco Banreservas \u00b7 PIN",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "outbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 10,
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "bank_journal": "Banco Banreservas \u00b7 DOM",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "inbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 10,
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "bank_journal": "Banco Banreservas \u00b7 DOM",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "outbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 11,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "bank_journal": "Banco Banreservas \u00b7 DOR",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "inbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 11,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "bank_journal": "Banco Banreservas \u00b7 DOR",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "outbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 12,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "bank_journal": "Banco Banreservas \u00b7 MAY",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "inbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 12,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "bank_journal": "Banco Banreservas \u00b7 MAY",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "outbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 13,
+      "company": "REMPART GROUP S.R.L.",
+      "bank_journal": "Banco Banreservas \u00b7 REM",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "inbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    },
+    {
+      "company_id": 13,
+      "company": "REMPART GROUP S.R.L.",
+      "bank_journal": "Banco Banreservas \u00b7 REM",
+      "payment_method_line": "Manual Payment",
+      "payment_type": "outbound",
+      "outstanding_account": null,
+      "current_status": "MISSING"
+    }
+  ],
+  "ncf_ranges": [
+    {
+      "company_id": 8,
+      "prefix": "B01",
+      "state": "active",
+      "remaining": 8
+    },
+    {
+      "company_id": 8,
+      "prefix": "B04",
+      "state": "active",
+      "remaining": 39
+    },
+    {
+      "company_id": 9,
+      "prefix": "B01",
+      "state": "active",
+      "remaining": 6
+    },
+    {
+      "company_id": 9,
+      "prefix": "B04",
+      "state": "active",
+      "remaining": 39
+    },
+    {
+      "company_id": 10,
+      "prefix": "B01",
+      "state": "active",
+      "remaining": 8
+    },
+    {
+      "company_id": 10,
+      "prefix": "B04",
+      "state": "active",
+      "remaining": 39
+    },
+    {
+      "company_id": 11,
+      "prefix": "B01",
+      "state": "active",
+      "remaining": 8
+    },
+    {
+      "company_id": 11,
+      "prefix": "B04",
+      "state": "active",
+      "remaining": 34
+    },
+    {
+      "company_id": 12,
+      "prefix": "B01",
+      "state": "active",
+      "remaining": 8
+    },
+    {
+      "company_id": 12,
+      "prefix": "B04",
+      "state": "active",
+      "remaining": 39
+    },
+    {
+      "company_id": 13,
+      "prefix": "B01",
+      "state": "active",
+      "remaining": 8
+    },
+    {
+      "company_id": 13,
+      "prefix": "B04",
+      "state": "active",
+      "remaining": 39
+    }
+  ],
+  "audit": {
+    "policies": [
+      {
+        "id": 1,
+        "name": "Pol\u00edtica global (desactivada)",
+        "active": false,
+        "company_id": null
+      },
+      {
+        "id": 2,
+        "name": "DX-QA-FINAL policy",
+        "active": false,
+        "company_id": null
+      },
+      {
+        "id": 3,
+        "name": "DX-QA-FINAL policy",
+        "active": false,
+        "company_id": null
+      }
+    ],
+    "rules": [
+      {
+        "id": 1,
+        "name": "Contactos",
+        "model": "res.partner",
+        "active": true,
+        "transient": false
+      },
+      {
+        "id": 4,
+        "name": "Facturas y asientos",
+        "model": "account.move",
+        "active": false,
+        "transient": false
+      },
+      {
+        "id": 5,
+        "name": "Pagos",
+        "model": "account.payment",
+        "active": false,
+        "transient": false
+      },
+      {
+        "id": 3,
+        "name": "Plantillas de producto",
+        "model": "product.template",
+        "active": true,
+        "transient": false
+      },
+      {
+        "id": 2,
+        "name": "Pedidos de venta",
+        "model": "sale.order",
+        "active": true,
+        "transient": false
+      },
+      {
+        "id": 7,
+        "name": "Movimientos de stock",
+        "model": "stock.move",
+        "active": false,
+        "transient": false
+      },
+      {
+        "id": 6,
+        "name": "Albaranes",
+        "model": "stock.picking",
+        "active": false,
+        "transient": false
+      }
+    ]
+  },
+  "margin_trace": {
+    "priority": [
+      {
+        "company_id": 8,
+        "methods": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ]
+      },
+      {
+        "company_id": 9,
+        "methods": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ]
+      },
+      {
+        "company_id": 10,
+        "methods": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ]
+      },
+      {
+        "company_id": 11,
+        "methods": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ]
+      },
+      {
+        "company_id": 12,
+        "methods": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ]
+      },
+      {
+        "company_id": 13,
+        "methods": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ]
+      },
+      {
+        "company_id": 1,
+        "methods": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ]
+      }
+    ]
+  },
+  "finished": "2026-08-31T16:47:16Z"
+}

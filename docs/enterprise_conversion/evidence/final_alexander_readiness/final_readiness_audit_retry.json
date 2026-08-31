@@ -1,0 +1,67 @@
+{
+  "AUDIT_LOG_MASS_QA": "PASS",
+  "checks": {
+    "res.partner": {
+      "result": "PASS",
+      "should_audit": true,
+      "record": 92,
+      "logs": 2,
+      "user": "OdooBot",
+      "datetime": "2026-08-31 16:55:18",
+      "company": "BLUE ELITE, S.R.L.",
+      "field": "phone",
+      "old": "809555165429",
+      "new": "809555165518"
+    },
+    "sale.order": {
+      "result": "PASS",
+      "should_audit": true,
+      "record": 124,
+      "logs": 1,
+      "user": "OdooBot",
+      "datetime": "2026-08-31 16:55:18",
+      "company": "BLUE ELITE, S.R.L.",
+      "field": "client_order_ref",
+      "old": "DXQA-AUD-165429",
+      "new": "DXQA-AUD-165518"
+    },
+    "purchase.order": {
+      "result": "PASS",
+      "should_audit": true,
+      "record": 87,
+      "logs": 1,
+      "user": "OdooBot",
+      "datetime": "2026-08-31 16:55:18",
+      "company": "BLUE ELITE, S.R.L.",
+      "field": "partner_ref",
+      "old": "DXQA-AUD-165429",
+      "new": "DXQA-AUD-165518"
+    },
+    "account.move": {
+      "result": "PASS",
+      "should_audit": true,
+      "record": 13,
+      "logs": 1,
+      "user": "OdooBot",
+      "datetime": "2026-08-31 16:55:18",
+      "company": "BLUE ELITE, S.R.L.",
+      "field": "ref",
+      "old": "DXQA-AUD-165429",
+      "new": "DXQA-AUD-165518"
+    },
+    "account.payment": {
+      "result": "PASS",
+      "should_audit": true,
+      "record": 40,
+      "logs": 1,
+      "user": "OdooBot",
+      "datetime": "2026-08-31 16:55:18",
+      "company": "BLUE ELITE, S.R.L.",
+      "field": "memo",
+      "old": "DXQA-AUD-165429",
+      "new": "DXQA-AUD-165518"
+    }
+  },
+  "transient_rules": [],
+  "policy_restored": true
+}

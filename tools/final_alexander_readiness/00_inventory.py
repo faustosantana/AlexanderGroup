@@ -82,15 +82,13 @@ for company in env["res.company"].search([("active", "=", True)], order="id"):
     ncf_left = []
     if "justech.do.ncf.range" in e:
         for rng in e["justech.do.ncf.range"].search([("company_id", "=", company.id)]):
-            left = None
-            if rng.number_next and rng.number_to:
-                left = rng.number_to - rng.number_next + 1
+            left = rng.remaining_count if "remaining_count" in rng._fields else None
             ncf_left.append(
                 {
                     "prefix": rng.prefix if "prefix" in rng._fields else None,
                     "state": rng.state,
-                    "number_next": rng.number_next,
-                    "number_to": rng.number_to,
+                    "next_sequence": getattr(rng, "next_sequence", None),
+                    "sequence_end": getattr(rng, "sequence_end", None),
                     "remaining": left,
                 }
             )

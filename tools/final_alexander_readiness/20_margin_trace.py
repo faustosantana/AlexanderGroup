@@ -110,7 +110,8 @@ def _create_so(e, company, partner, product, qty, price, ref, tax=None):
         "name": ref,
     }
     if tax:
-        line["tax_id"] = [(6, 0, tax.ids)]
+        tax_field = "tax_ids" if "tax_ids" in e["sale.order.line"]._fields else "tax_id"
+        line[tax_field] = [(6, 0, tax.ids)]
     so = (
         e["sale.order"]
         .with_company(company)
@@ -130,8 +131,10 @@ def _create_so(e, company, partner, product, qty, price, ref, tax=None):
 
 def _invoice_so(e, so, extra=None):
     invs = so._create_invoices()
+    base = {"invoice_date": INV_DATE, "invoice_date_due": "2026-09-30"}
     if extra:
-        invs.write(extra)
+        base.update(extra)
+    invs.write(base)
     for inv in invs:
         if inv.state == "draft":
             inv.action_post()
@@ -150,7 +153,14 @@ def _create_po(
     if sale_line and "sale_line_id" in e["purchase.order.line"]._fields:
         line["sale_line_id"] = sale_line.id
     if tax:
-        line["taxes_id"] = [(6, 0, tax.ids)]
+        pol_fields = e["purchase.order.line"]._fields
+        tax_field = (
+            "tax_ids"
+            if "tax_ids" in pol_fields
+            else "taxes_id" if "taxes_id" in pol_fields else None
+        )
+        if tax_field:
+            line[tax_field] = [(6, 0, tax.ids)]
     po = (
         e["purchase.order"]
         .with_company(company)
@@ -187,7 +197,11 @@ def _bill_po(e, company, po, qty=None, latam=None, expense=None):
         )
     if not bill:
         raise ValueError("no bill for PO %s" % po.name)
-    vals = {}
+    vals = {
+        "invoice_date": INV_DATE,
+        "date": INV_DATE,
+        "invoice_date_due": "2026-09-30",
+    }
     if "justech_do_purchase_registration_mode" in bill._fields:
         vals["justech_do_purchase_registration_mode"] = "received"
     if latam and "l10n_latam_document_type_id" in bill._fields:
@@ -268,8 +282,10 @@ def process_company(company):
         )
         left = 0
         for rng in ranges:
-            if rng.number_to and rng.number_next:
-                left += rng.number_to - rng.number_next + 1
+            if "remaining_count" in rng._fields:
+                left += rng.remaining_count or 0
+            elif rng.sequence_end and rng.next_sequence:
+                left += rng.sequence_end - rng.next_sequence + 1
         rec["ncf_remaining_b01"] = left
         if do_fiscal and left < 5:
             rec["errors"].append("NCF B01 remaining %s < 5" % left)
@@ -612,11 +628,21 @@ def process_company(company):
     rec["trace"]["so_to_invoice"] = (
         all(bool(so.invoice_ids) for so in sos) if sos else False
     )
-    rec["trace"]["so_to_po"] = all(
-        e["purchase.order"].search_count([("origin", "=", so.name)]) >= 1 for so in sos
+    rec["trace"]["so_to_po"] = (
+        all(
+            e["purchase.order"].search_count([("origin", "=", so.name)]) >= 1
+            for so in sos
+        )
+        if sos
+        else False
     )
-    rec["trace"]["multi_po"] = any(
-        e["purchase.order"].search_count([("origin", "=", so.name)]) >= 2 for so in sos
+    rec["trace"]["multi_po"] = (
+        any(
+            e["purchase.order"].search_count([("origin", "=", so.name)]) >= 2
+            for so in sos
+        )
+        if sos
+        else False
     )
     rec["trace"]["po_to_bill"] = (
         all(bool(po.invoice_ids) for po in pos) if pos else False

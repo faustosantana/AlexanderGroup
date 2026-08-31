@@ -1,0 +1,1355 @@
+{
+  "started": "2026-08-31T16:47:33Z",
+  "prod_touched": false,
+  "alexander_confirmation_required": true,
+  "force_payment_move_used": false,
+  "companies": {
+    "1": {
+      "name": "Plantilla t\u00e9cnica (no operativa)",
+      "assigned": [
+        {
+          "line": 1,
+          "account": 50,
+          "direction": "inbound"
+        },
+        {
+          "line": 2,
+          "account": 51,
+          "direction": "outbound"
+        }
+      ],
+      "native": {
+        "customer_full": {
+          "payment_id": 505,
+          "move": true,
+          "before": 4600.0,
+          "applied": 4600.0,
+          "after": 0.0,
+          "result": "PASS"
+        },
+        "customer_partial": {
+          "payment_id": 506,
+          "move": true,
+          "before": 4600.0,
+          "applied": 1840.0,
+          "after": 2760.0,
+          "match": true,
+          "result": "PASS"
+        },
+        "customer_multi_2": {
+          "payment_id": 507,
+          "invoices": 2,
+          "amount": 7360.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 32409,
+          "pdf_path": "/tmp/final_readiness_files/C1_receipt_multi2.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_3": {
+          "payment_id": 508,
+          "invoices": 3,
+          "amount": 11270.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 32589,
+          "pdf_path": "/tmp/final_readiness_files/C1_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_4": {
+          "payment_id": 509,
+          "invoices": 4,
+          "amount": 8280.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 32835,
+          "pdf_path": "/tmp/final_readiness_files/C1_receipt_multi4.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_5": {
+          "payment_id": 510,
+          "invoices": 5,
+          "amount": 11730.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 33209,
+          "pdf_path": "/tmp/final_readiness_files/C1_receipt_multi5.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "vendor_multi_3": {
+          "payment_id": 511,
+          "invoices": 3,
+          "amount": 8280.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 31953,
+          "pdf_path": "/tmp/final_readiness_files/C1_vendor_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        }
+      },
+      "receipts": [
+        {
+          "payment_id": 264,
+          "invoices": 4,
+          "amount": 11500.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 32273,
+          "pdf_path": "/tmp/final_readiness_files/C1_existing_264.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 263,
+          "invoices": 5,
+          "amount": 23000.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 32349,
+          "pdf_path": "/tmp/final_readiness_files/C1_existing_263.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 262,
+          "invoices": 3,
+          "amount": 13800.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 31855,
+          "pdf_path": "/tmp/final_readiness_files/C1_existing_262.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 261,
+          "invoices": 2,
+          "amount": 9200.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 31867,
+          "pdf_path": "/tmp/final_readiness_files/C1_existing_261.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 74,
+          "invoices": 4,
+          "amount": 13800.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 32731,
+          "pdf_path": "/tmp/final_readiness_files/C1_existing_74.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 73,
+          "invoices": 5,
+          "amount": 28750.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 32962,
+          "pdf_path": "/tmp/final_readiness_files/C1_existing_73.pdf",
+          "single_receipt": true
+        }
+      ],
+      "errors": [],
+      "confirmation_required": true,
+      "existing_accounts": {
+        "inbound": "101403 Outstanding Receipts",
+        "outbound": "101404 Outstanding Payments"
+      },
+      "inbound_configured": true,
+      "outbound_configured": true,
+      "open_sales": 16,
+      "open_bills": 16,
+      "ar_residual_invoices": 2760.0,
+      "ap_residual_invoices": 46000.0,
+      "ar_ledger": -7590.0,
+      "ap_ledger": -46000.0,
+      "unbalanced_qa": 0
+    },
+    "8": {
+      "name": "BLUE ELITE, S.R.L.",
+      "assigned": [
+        {
+          "line": 15,
+          "account": 2066,
+          "direction": "inbound"
+        },
+        {
+          "line": 16,
+          "account": 2067,
+          "direction": "outbound"
+        }
+      ],
+      "native": {
+        "customer_full": {
+          "payment_id": 512,
+          "move": true,
+          "before": 4720.0,
+          "applied": 4720.0,
+          "after": 0.0,
+          "result": "PASS"
+        },
+        "customer_partial": {
+          "payment_id": 513,
+          "move": true,
+          "before": 4720.0,
+          "applied": 1888.0,
+          "after": 2832.0,
+          "match": true,
+          "result": "PASS"
+        },
+        "customer_multi_2": {
+          "payment_id": 514,
+          "invoices": 2,
+          "amount": 7552.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 103534,
+          "pdf_path": "/tmp/final_readiness_files/C8_receipt_multi2.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_3": {
+          "payment_id": 515,
+          "invoices": 3,
+          "amount": 6372.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 103887,
+          "pdf_path": "/tmp/final_readiness_files/C8_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_4": {
+          "payment_id": 516,
+          "invoices": 4,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 103923,
+          "pdf_path": "/tmp/final_readiness_files/C8_receipt_multi4.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_5": {
+          "result": "SKIP",
+          "reason": "need 5 open sales, have 4"
+        },
+        "customer_partial_multi": {
+          "payment_id": 517,
+          "invoices": 2,
+          "amount": 1911.6,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 103466,
+          "pdf_path": "/tmp/final_readiness_files/C8_receipt_partial_multi.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "vendor_multi_3": {
+          "payment_id": 518,
+          "invoices": 3,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 102741,
+          "pdf_path": "/tmp/final_readiness_files/C8_vendor_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        }
+      },
+      "receipts": [
+        {
+          "payment_id": 300,
+          "invoices": 4,
+          "amount": 11800.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 102864,
+          "pdf_path": "/tmp/final_readiness_files/C8_existing_300.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 299,
+          "invoices": 5,
+          "amount": 23600.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 103026,
+          "pdf_path": "/tmp/final_readiness_files/C8_existing_299.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 298,
+          "invoices": 3,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 102942,
+          "pdf_path": "/tmp/final_readiness_files/C8_existing_298.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 297,
+          "invoices": 2,
+          "amount": 9440.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 102825,
+          "pdf_path": "/tmp/final_readiness_files/C8_existing_297.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 100,
+          "invoices": 4,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 103841,
+          "pdf_path": "/tmp/final_readiness_files/C8_existing_100.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 99,
+          "invoices": 5,
+          "amount": 29500.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 104008,
+          "pdf_path": "/tmp/final_readiness_files/C8_existing_99.pdf",
+          "single_receipt": true
+        }
+      ],
+      "errors": [],
+      "confirmation_required": true,
+      "existing_accounts": {
+        "inbound": "11010203 Outstanding Receipts",
+        "outbound": "11010204 Outstanding Payments"
+      },
+      "inbound_configured": true,
+      "outbound_configured": true,
+      "open_sales": 14,
+      "open_bills": 16,
+      "ar_residual_invoices": 18620.4,
+      "ap_residual_invoices": 47200.0,
+      "ar_ledger": 7528.4,
+      "ap_ledger": -47200.0,
+      "unbalanced_qa": 0
+    },
+    "9": {
+      "name": "COMERCIALIZADORA DE ALIMENTOS PI\u00d1ARIA, S.R.L.",
+      "assigned": [
+        {
+          "line": 17,
+          "account": 2354,
+          "direction": "inbound"
+        },
+        {
+          "line": 18,
+          "account": 2355,
+          "direction": "outbound"
+        }
+      ],
+      "native": {
+        "customer_full": {
+          "payment_id": 519,
+          "move": true,
+          "before": 4720.0,
+          "applied": 4720.0,
+          "after": 0.0,
+          "result": "PASS"
+        },
+        "customer_partial": {
+          "payment_id": 520,
+          "move": true,
+          "before": 4720.0,
+          "applied": 1888.0,
+          "after": 2832.0,
+          "match": true,
+          "result": "PASS"
+        },
+        "customer_multi_2": {
+          "payment_id": 521,
+          "invoices": 2,
+          "amount": 7552.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 98545,
+          "pdf_path": "/tmp/final_readiness_files/C9_receipt_multi2.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_3": {
+          "payment_id": 522,
+          "invoices": 3,
+          "amount": 6372.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 98539,
+          "pdf_path": "/tmp/final_readiness_files/C9_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_4": {
+          "payment_id": 523,
+          "invoices": 4,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 98774,
+          "pdf_path": "/tmp/final_readiness_files/C9_receipt_multi4.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_5": {
+          "result": "SKIP",
+          "reason": "need 5 open sales, have 4"
+        },
+        "customer_partial_multi": {
+          "payment_id": 524,
+          "invoices": 2,
+          "amount": 1911.6,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 98520,
+          "pdf_path": "/tmp/final_readiness_files/C9_receipt_partial_multi.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "vendor_multi_3": {
+          "payment_id": 525,
+          "invoices": 3,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 97529,
+          "pdf_path": "/tmp/final_readiness_files/C9_vendor_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        }
+      },
+      "receipts": [
+        {
+          "payment_id": 336,
+          "invoices": 4,
+          "amount": 11800.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 97716,
+          "pdf_path": "/tmp/final_readiness_files/C9_existing_336.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 335,
+          "invoices": 5,
+          "amount": 23600.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 97848,
+          "pdf_path": "/tmp/final_readiness_files/C9_existing_335.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 334,
+          "invoices": 3,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 97717,
+          "pdf_path": "/tmp/final_readiness_files/C9_existing_334.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 333,
+          "invoices": 2,
+          "amount": 9440.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 97669,
+          "pdf_path": "/tmp/final_readiness_files/C9_existing_333.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 126,
+          "invoices": 4,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 98724,
+          "pdf_path": "/tmp/final_readiness_files/C9_existing_126.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 125,
+          "invoices": 5,
+          "amount": 29500.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 98810,
+          "pdf_path": "/tmp/final_readiness_files/C9_existing_125.pdf",
+          "single_receipt": true
+        }
+      ],
+      "errors": [],
+      "confirmation_required": true,
+      "existing_accounts": {
+        "inbound": "11010203 Outstanding Receipts",
+        "outbound": "11010204 Outstanding Payments"
+      },
+      "inbound_configured": true,
+      "outbound_configured": true,
+      "open_sales": 14,
+      "open_bills": 16,
+      "ar_residual_invoices": 18832.8,
+      "ap_residual_invoices": 47200.0,
+      "ar_ledger": 7528.4,
+      "ap_ledger": -47200.0,
+      "unbalanced_qa": 0
+    },
+    "10": {
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "assigned": [
+        {
+          "line": 19,
+          "account": 2642,
+          "direction": "inbound"
+        },
+        {
+          "line": 20,
+          "account": 2643,
+          "direction": "outbound"
+        }
+      ],
+      "native": {
+        "customer_full": {
+          "payment_id": 526,
+          "move": true,
+          "before": 4720.0,
+          "applied": 4720.0,
+          "after": 0.0,
+          "result": "PASS"
+        },
+        "customer_partial": {
+          "payment_id": 527,
+          "move": true,
+          "before": 4720.0,
+          "applied": 1888.0,
+          "after": 2832.0,
+          "match": true,
+          "result": "PASS"
+        },
+        "customer_multi_2": {
+          "payment_id": 528,
+          "invoices": 2,
+          "amount": 7552.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 45435,
+          "pdf_path": "/tmp/final_readiness_files/C10_receipt_multi2.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_3": {
+          "payment_id": 529,
+          "invoices": 3,
+          "amount": 6372.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 45802,
+          "pdf_path": "/tmp/final_readiness_files/C10_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_4": {
+          "payment_id": 530,
+          "invoices": 4,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 45805,
+          "pdf_path": "/tmp/final_readiness_files/C10_receipt_multi4.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_5": {
+          "result": "SKIP",
+          "reason": "need 5 open sales, have 4"
+        },
+        "customer_partial_multi": {
+          "payment_id": 531,
+          "invoices": 2,
+          "amount": 1911.6,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 45393,
+          "pdf_path": "/tmp/final_readiness_files/C10_receipt_partial_multi.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "vendor_multi_3": {
+          "payment_id": 532,
+          "invoices": 3,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 44664,
+          "pdf_path": "/tmp/final_readiness_files/C10_vendor_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        }
+      },
+      "receipts": [
+        {
+          "payment_id": 372,
+          "invoices": 4,
+          "amount": 11800.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 44764,
+          "pdf_path": "/tmp/final_readiness_files/C10_existing_372.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 371,
+          "invoices": 5,
+          "amount": 23600.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 44915,
+          "pdf_path": "/tmp/final_readiness_files/C10_existing_371.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 370,
+          "invoices": 3,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 44848,
+          "pdf_path": "/tmp/final_readiness_files/C10_existing_370.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 369,
+          "invoices": 2,
+          "amount": 9440.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 44716,
+          "pdf_path": "/tmp/final_readiness_files/C10_existing_369.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 152,
+          "invoices": 4,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 45748,
+          "pdf_path": "/tmp/final_readiness_files/C10_existing_152.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 151,
+          "invoices": 5,
+          "amount": 29500.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 45892,
+          "pdf_path": "/tmp/final_readiness_files/C10_existing_151.pdf",
+          "single_receipt": true
+        }
+      ],
+      "errors": [],
+      "confirmation_required": true,
+      "existing_accounts": {
+        "inbound": "11010203 Outstanding Receipts",
+        "outbound": "11010204 Outstanding Payments"
+      },
+      "inbound_configured": true,
+      "outbound_configured": true,
+      "open_sales": 14,
+      "open_bills": 16,
+      "ar_residual_invoices": 18620.4,
+      "ap_residual_invoices": 47200.0,
+      "ar_ledger": 7528.4,
+      "ap_ledger": -47200.0,
+      "unbalanced_qa": 0
+    },
+    "11": {
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "assigned": [
+        {
+          "line": 21,
+          "account": 2930,
+          "direction": "inbound"
+        },
+        {
+          "line": 22,
+          "account": 2931,
+          "direction": "outbound"
+        }
+      ],
+      "native": {
+        "customer_full": {
+          "payment_id": 533,
+          "move": true,
+          "before": 4720.0,
+          "applied": 4720.0,
+          "after": 0.0,
+          "result": "PASS"
+        },
+        "customer_partial": {
+          "payment_id": 534,
+          "move": true,
+          "before": 4720.0,
+          "applied": 1888.0,
+          "after": 2832.0,
+          "match": true,
+          "result": "PASS"
+        },
+        "customer_multi_2": {
+          "payment_id": 535,
+          "invoices": 2,
+          "amount": 7552.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 33717,
+          "pdf_path": "/tmp/final_readiness_files/C11_receipt_multi2.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_3": {
+          "payment_id": 536,
+          "invoices": 3,
+          "amount": 6372.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 34042,
+          "pdf_path": "/tmp/final_readiness_files/C11_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_4": {
+          "payment_id": 537,
+          "invoices": 4,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 34158,
+          "pdf_path": "/tmp/final_readiness_files/C11_receipt_multi4.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_5": {
+          "result": "SKIP",
+          "reason": "need 5 open sales, have 4"
+        },
+        "customer_partial_multi": {
+          "payment_id": 538,
+          "invoices": 2,
+          "amount": 1274.4,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 33653,
+          "pdf_path": "/tmp/final_readiness_files/C11_receipt_partial_multi.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "vendor_multi_3": {
+          "payment_id": 539,
+          "invoices": 3,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 32915,
+          "pdf_path": "/tmp/final_readiness_files/C11_vendor_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        }
+      },
+      "receipts": [
+        {
+          "payment_id": 408,
+          "invoices": 4,
+          "amount": 11800.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 33018,
+          "pdf_path": "/tmp/final_readiness_files/C11_existing_408.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 407,
+          "invoices": 5,
+          "amount": 23600.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 33320,
+          "pdf_path": "/tmp/final_readiness_files/C11_existing_407.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 406,
+          "invoices": 3,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 32852,
+          "pdf_path": "/tmp/final_readiness_files/C11_existing_406.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 405,
+          "invoices": 2,
+          "amount": 9440.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 32904,
+          "pdf_path": "/tmp/final_readiness_files/C11_existing_405.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 178,
+          "invoices": 4,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 33897,
+          "pdf_path": "/tmp/final_readiness_files/C11_existing_178.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 177,
+          "invoices": 5,
+          "amount": 29500.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 34171,
+          "pdf_path": "/tmp/final_readiness_files/C11_existing_177.pdf",
+          "single_receipt": true
+        }
+      ],
+      "errors": [],
+      "confirmation_required": true,
+      "existing_accounts": {
+        "inbound": "11010203 Outstanding Receipts",
+        "outbound": "11010204 Outstanding Payments"
+      },
+      "inbound_configured": true,
+      "outbound_configured": true,
+      "open_sales": 14,
+      "open_bills": 16,
+      "ar_residual_invoices": 12885.6,
+      "ap_residual_invoices": 47200.0,
+      "ar_ledger": -8826.4,
+      "ap_ledger": -47200.0,
+      "unbalanced_qa": 0
+    },
+    "12": {
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "assigned": [
+        {
+          "line": 23,
+          "account": 3218,
+          "direction": "inbound"
+        },
+        {
+          "line": 24,
+          "account": 3219,
+          "direction": "outbound"
+        }
+      ],
+      "native": {
+        "customer_full": {
+          "payment_id": 540,
+          "move": true,
+          "before": 4720.0,
+          "applied": 4720.0,
+          "after": 0.0,
+          "result": "PASS"
+        },
+        "customer_partial": {
+          "payment_id": 541,
+          "move": true,
+          "before": 4720.0,
+          "applied": 1888.0,
+          "after": 2832.0,
+          "match": true,
+          "result": "PASS"
+        },
+        "customer_multi_2": {
+          "payment_id": 542,
+          "invoices": 2,
+          "amount": 7552.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 43137,
+          "pdf_path": "/tmp/final_readiness_files/C12_receipt_multi2.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_3": {
+          "payment_id": 543,
+          "invoices": 3,
+          "amount": 6372.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 43514,
+          "pdf_path": "/tmp/final_readiness_files/C12_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_4": {
+          "payment_id": 544,
+          "invoices": 4,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 43511,
+          "pdf_path": "/tmp/final_readiness_files/C12_receipt_multi4.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_5": {
+          "result": "SKIP",
+          "reason": "need 5 open sales, have 4"
+        },
+        "customer_partial_multi": {
+          "payment_id": 545,
+          "invoices": 2,
+          "amount": 1911.6,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 43089,
+          "pdf_path": "/tmp/final_readiness_files/C12_receipt_partial_multi.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "vendor_multi_3": {
+          "payment_id": 546,
+          "invoices": 3,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 42375,
+          "pdf_path": "/tmp/final_readiness_files/C12_vendor_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        }
+      },
+      "receipts": [
+        {
+          "payment_id": 444,
+          "invoices": 4,
+          "amount": 11800.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 42496,
+          "pdf_path": "/tmp/final_readiness_files/C12_existing_444.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 443,
+          "invoices": 5,
+          "amount": 23600.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 42658,
+          "pdf_path": "/tmp/final_readiness_files/C12_existing_443.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 442,
+          "invoices": 3,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 42579,
+          "pdf_path": "/tmp/final_readiness_files/C12_existing_442.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 441,
+          "invoices": 2,
+          "amount": 9440.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 42471,
+          "pdf_path": "/tmp/final_readiness_files/C12_existing_441.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 204,
+          "invoices": 4,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 43462,
+          "pdf_path": "/tmp/final_readiness_files/C12_existing_204.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 203,
+          "invoices": 5,
+          "amount": 29500.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 43626,
+          "pdf_path": "/tmp/final_readiness_files/C12_existing_203.pdf",
+          "single_receipt": true
+        }
+      ],
+      "errors": [],
+      "confirmation_required": true,
+      "existing_accounts": {
+        "inbound": "11010203 Outstanding Receipts",
+        "outbound": "11010204 Outstanding Payments"
+      },
+      "inbound_configured": true,
+      "outbound_configured": true,
+      "open_sales": 14,
+      "open_bills": 16,
+      "ar_residual_invoices": 18620.4,
+      "ap_residual_invoices": 47200.0,
+      "ar_ledger": 7528.4,
+      "ap_ledger": -47200.0,
+      "unbalanced_qa": 0
+    },
+    "13": {
+      "name": "REMPART GROUP S.R.L.",
+      "assigned": [
+        {
+          "line": 25,
+          "account": 3506,
+          "direction": "inbound"
+        },
+        {
+          "line": 26,
+          "account": 3507,
+          "direction": "outbound"
+        }
+      ],
+      "native": {
+        "customer_full": {
+          "payment_id": 547,
+          "move": true,
+          "before": 4720.0,
+          "applied": 4720.0,
+          "after": 0.0,
+          "result": "PASS"
+        },
+        "customer_partial": {
+          "payment_id": 548,
+          "move": true,
+          "before": 4720.0,
+          "applied": 1888.0,
+          "after": 2832.0,
+          "match": true,
+          "result": "PASS"
+        },
+        "customer_multi_2": {
+          "payment_id": 549,
+          "invoices": 2,
+          "amount": 7552.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 36253,
+          "pdf_path": "/tmp/final_readiness_files/C13_receipt_multi2.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_3": {
+          "payment_id": 550,
+          "invoices": 3,
+          "amount": 6372.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 36620,
+          "pdf_path": "/tmp/final_readiness_files/C13_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_4": {
+          "payment_id": 551,
+          "invoices": 4,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 36636,
+          "pdf_path": "/tmp/final_readiness_files/C13_receipt_multi4.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "customer_multi_5": {
+          "result": "SKIP",
+          "reason": "need 5 open sales, have 4"
+        },
+        "customer_partial_multi": {
+          "payment_id": 552,
+          "invoices": 2,
+          "amount": 1911.6,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 36205,
+          "pdf_path": "/tmp/final_readiness_files/C13_receipt_partial_multi.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        },
+        "vendor_multi_3": {
+          "payment_id": 553,
+          "invoices": 3,
+          "amount": 8496.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 35476,
+          "pdf_path": "/tmp/final_readiness_files/C13_vendor_receipt_multi3.pdf",
+          "single_receipt": true,
+          "result": "PASS"
+        }
+      },
+      "receipts": [
+        {
+          "payment_id": 480,
+          "invoices": 4,
+          "amount": 11800.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 35589,
+          "pdf_path": "/tmp/final_readiness_files/C13_existing_480.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 479,
+          "invoices": 5,
+          "amount": 23600.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 35754,
+          "pdf_path": "/tmp/final_readiness_files/C13_existing_479.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 478,
+          "invoices": 3,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 3,
+          "pdf_bytes": 35660,
+          "pdf_path": "/tmp/final_readiness_files/C13_existing_478.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 477,
+          "invoices": 2,
+          "amount": 9440.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 2,
+          "pdf_bytes": 35552,
+          "pdf_path": "/tmp/final_readiness_files/C13_existing_477.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 230,
+          "invoices": 4,
+          "amount": 14160.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 4,
+          "pdf_bytes": 36563,
+          "pdf_path": "/tmp/final_readiness_files/C13_existing_230.pdf",
+          "single_receipt": true
+        },
+        {
+          "payment_id": 229,
+          "invoices": 5,
+          "amount": 29500.0,
+          "has_move": true,
+          "html_missing": [],
+          "qweb_missing": [],
+          "payload_rows": 5,
+          "pdf_bytes": 36748,
+          "pdf_path": "/tmp/final_readiness_files/C13_existing_229.pdf",
+          "single_receipt": true
+        }
+      ],
+      "errors": [],
+      "confirmation_required": true,
+      "existing_accounts": {
+        "inbound": "11010203 Outstanding Receipts",
+        "outbound": "11010204 Outstanding Payments"
+      },
+      "inbound_configured": true,
+      "outbound_configured": true,
+      "open_sales": 14,
+      "open_bills": 16,
+      "ar_residual_invoices": 18620.4,
+      "ap_residual_invoices": 47200.0,
+      "ar_ledger": 7528.4,
+      "ap_ledger": -47200.0,
+      "unbalanced_qa": 0
+    }
+  },
+  "errors": [],
+  "OUTSTANDING_CONFIG_QA": "PASS",
+  "NATIVE_PAYMENT_FLOW_QA": "PASS",
+  "MULTI_INVOICE_RECEIPT_PDF": "PASS",
+  "VENDOR_MULTI_INVOICE_RECEIPT_QA": "PASS",
+  "ALEXANDER_CONFIRMATION_REQUIRED": true,
+  "finished": "2026-08-31T16:50:46Z"
+}

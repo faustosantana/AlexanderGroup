@@ -1,0 +1,1195 @@
+{
+  "started": "2026-08-31T16:52:43Z",
+  "prod_touched": false,
+  "companies": {
+    "8": {
+      "name": "BLUE ELITE, S.R.L.",
+      "ops": {
+        "A_one_so_one_po": {
+          "estimated_revenue": 12000.0,
+          "estimated_cost": 7000.0,
+          "estimated_margin": 5000.0,
+          "real_revenue": 12000.0,
+          "real_cost": 7000.0,
+          "real_margin": 5000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "BLU/SO/00024"
+          ],
+          "purchase_orders": [
+            "BLU/OC/00018"
+          ],
+          "customer_invoices": [
+            1682
+          ],
+          "vendor_bills": [
+            1683
+          ],
+          "so": "BLU/SO/00024",
+          "po": "BLU/OC/00018",
+          "inv": [
+            1682
+          ],
+          "bill": [
+            1683
+          ],
+          "wizard_lines_loaded": 1,
+          "wizard_lines_selected": 1,
+          "sale_line_on_po": true,
+          "result": "PASS"
+        },
+        "B_one_so_multi_po": {
+          "estimated_revenue": 18000.0,
+          "estimated_cost": 4000.0,
+          "estimated_margin": 14000.0,
+          "real_revenue": 18000.0,
+          "real_cost": 7500.0,
+          "real_margin": 10500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "BLU/SO/00025"
+          ],
+          "purchase_orders": [
+            "BLU/OC/00020",
+            "BLU/OC/00019"
+          ],
+          "customer_invoices": [
+            1684
+          ],
+          "vendor_bills": [
+            1686,
+            1685
+          ],
+          "so": "BLU/SO/00025",
+          "pos": [
+            "BLU/OC/00019",
+            "BLU/OC/00020"
+          ],
+          "inv": [
+            1684
+          ],
+          "bills": [
+            1685,
+            1686
+          ],
+          "wizard_lines_loaded": 2,
+          "wizard_lines_selected": 2,
+          "multi_po": true,
+          "result": "PASS"
+        },
+        "C_partial_bill": {
+          "estimated_revenue": 16000.0,
+          "estimated_cost": 6000.0,
+          "estimated_margin": 10000.0,
+          "real_revenue": 16000.0,
+          "real_cost": 6000.0,
+          "real_margin": 10000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "BLU/SO/00026"
+          ],
+          "purchase_orders": [
+            "BLU/OC/00021"
+          ],
+          "customer_invoices": [
+            1687
+          ],
+          "vendor_bills": [
+            1688
+          ],
+          "so": "BLU/SO/00026",
+          "po": "BLU/OC/00021",
+          "inv": [
+            1687
+          ],
+          "bill": [
+            1688
+          ],
+          "bill_qty": 2.0,
+          "po_qty": 2.0,
+          "partial_bill": false,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "D_partial_vendor_pay": {
+          "estimated_revenue": 11000.0,
+          "estimated_cost": 6500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 11000.0,
+          "real_cost": 6500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "BLU/SO/00027"
+          ],
+          "purchase_orders": [
+            "BLU/OC/00022"
+          ],
+          "customer_invoices": [
+            1689
+          ],
+          "vendor_bills": [
+            1690
+          ],
+          "so": "BLU/SO/00027",
+          "bill_before": 7670.0,
+          "applied": 3068.0,
+          "bill_after": 4602.0,
+          "payment_id": 554,
+          "payment_state": "partial",
+          "aux_id": 334,
+          "aux_residual": 4602.0,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "E_fully_paid": {
+          "estimated_revenue": 10000.0,
+          "estimated_cost": 5500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 10000.0,
+          "real_cost": 5500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "BLU/SO/00028"
+          ],
+          "purchase_orders": [
+            "BLU/OC/00023"
+          ],
+          "customer_invoices": [
+            1692
+          ],
+          "vendor_bills": [
+            1693
+          ],
+          "so": "BLU/SO/00028",
+          "inv_state": "in_payment",
+          "bill_state": "in_payment",
+          "pay_c": 555,
+          "pay_v": 556,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        }
+      },
+      "trace": {
+        "so_count": 5,
+        "po_count": 6,
+        "so_to_invoice": true,
+        "so_to_po": true,
+        "multi_po": true,
+        "po_to_bill": true,
+        "cross_company": 0,
+        "orphan_po": 0,
+        "invoice_rel": true,
+        "aml_purchase_line": true,
+        "sale_line_id": true,
+        "origin": true,
+        "manual_preserved": true,
+        "priority_order": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ],
+        "result": "PASS"
+      },
+      "errors": [],
+      "ncf_remaining_b01": 8
+    },
+    "9": {
+      "name": "COMERCIALIZADORA DE ALIMENTOS PI\u00d1ARIA, S.R.L.",
+      "ops": {
+        "A_one_so_one_po": {
+          "estimated_revenue": 12000.0,
+          "estimated_cost": 7000.0,
+          "estimated_margin": 5000.0,
+          "real_revenue": 12000.0,
+          "real_cost": 7000.0,
+          "real_margin": 5000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "PIN/SO/00024"
+          ],
+          "purchase_orders": [
+            "PIN/OC/00023"
+          ],
+          "customer_invoices": [
+            1696
+          ],
+          "vendor_bills": [
+            1697
+          ],
+          "so": "PIN/SO/00024",
+          "po": "PIN/OC/00023",
+          "inv": [
+            1696
+          ],
+          "bill": [
+            1697
+          ],
+          "wizard_lines_loaded": 1,
+          "wizard_lines_selected": 1,
+          "sale_line_on_po": true,
+          "result": "PASS"
+        },
+        "B_one_so_multi_po": {
+          "estimated_revenue": 18000.0,
+          "estimated_cost": 4000.0,
+          "estimated_margin": 14000.0,
+          "real_revenue": 18000.0,
+          "real_cost": 7500.0,
+          "real_margin": 10500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "PIN/SO/00025"
+          ],
+          "purchase_orders": [
+            "PIN/OC/00025",
+            "PIN/OC/00024"
+          ],
+          "customer_invoices": [
+            1698
+          ],
+          "vendor_bills": [
+            1700,
+            1699
+          ],
+          "so": "PIN/SO/00025",
+          "pos": [
+            "PIN/OC/00024",
+            "PIN/OC/00025"
+          ],
+          "inv": [
+            1698
+          ],
+          "bills": [
+            1699,
+            1700
+          ],
+          "wizard_lines_loaded": 2,
+          "wizard_lines_selected": 2,
+          "multi_po": true,
+          "result": "PASS"
+        },
+        "C_partial_bill": {
+          "estimated_revenue": 16000.0,
+          "estimated_cost": 6000.0,
+          "estimated_margin": 10000.0,
+          "real_revenue": 16000.0,
+          "real_cost": 6000.0,
+          "real_margin": 10000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "PIN/SO/00026"
+          ],
+          "purchase_orders": [
+            "PIN/OC/00026"
+          ],
+          "customer_invoices": [
+            1701
+          ],
+          "vendor_bills": [
+            1702
+          ],
+          "so": "PIN/SO/00026",
+          "po": "PIN/OC/00026",
+          "inv": [
+            1701
+          ],
+          "bill": [
+            1702
+          ],
+          "bill_qty": 2.0,
+          "po_qty": 2.0,
+          "partial_bill": false,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "D_partial_vendor_pay": {
+          "estimated_revenue": 11000.0,
+          "estimated_cost": 6500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 11000.0,
+          "real_cost": 6500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "PIN/SO/00027"
+          ],
+          "purchase_orders": [
+            "PIN/OC/00027"
+          ],
+          "customer_invoices": [
+            1703
+          ],
+          "vendor_bills": [
+            1704
+          ],
+          "so": "PIN/SO/00027",
+          "bill_before": 7670.0,
+          "applied": 3068.0,
+          "bill_after": 4602.0,
+          "payment_id": 557,
+          "payment_state": "partial",
+          "aux_id": 340,
+          "aux_residual": 4602.0,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "E_fully_paid": {
+          "estimated_revenue": 10000.0,
+          "estimated_cost": 5500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 10000.0,
+          "real_cost": 5500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "PIN/SO/00028"
+          ],
+          "purchase_orders": [
+            "PIN/OC/00028"
+          ],
+          "customer_invoices": [
+            1706
+          ],
+          "vendor_bills": [
+            1707
+          ],
+          "so": "PIN/SO/00028",
+          "inv_state": "in_payment",
+          "bill_state": "in_payment",
+          "pay_c": 558,
+          "pay_v": 559,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        }
+      },
+      "trace": {
+        "so_count": 5,
+        "po_count": 6,
+        "so_to_invoice": true,
+        "so_to_po": true,
+        "multi_po": true,
+        "po_to_bill": true,
+        "cross_company": 0,
+        "orphan_po": 0,
+        "invoice_rel": true,
+        "aml_purchase_line": true,
+        "sale_line_id": true,
+        "origin": true,
+        "manual_preserved": true,
+        "priority_order": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ],
+        "result": "PASS"
+      },
+      "errors": [],
+      "ncf_remaining_b01": 6
+    },
+    "10": {
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "ops": {
+        "A_one_so_one_po": {
+          "estimated_revenue": 12000.0,
+          "estimated_cost": 7000.0,
+          "estimated_margin": 5000.0,
+          "real_revenue": 12000.0,
+          "real_cost": 7000.0,
+          "real_margin": 5000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "DOM/SO/00024"
+          ],
+          "purchase_orders": [
+            "DOM/OC/00018"
+          ],
+          "customer_invoices": [
+            1710
+          ],
+          "vendor_bills": [
+            1711
+          ],
+          "so": "DOM/SO/00024",
+          "po": "DOM/OC/00018",
+          "inv": [
+            1710
+          ],
+          "bill": [
+            1711
+          ],
+          "wizard_lines_loaded": 1,
+          "wizard_lines_selected": 1,
+          "sale_line_on_po": true,
+          "result": "PASS"
+        },
+        "B_one_so_multi_po": {
+          "estimated_revenue": 18000.0,
+          "estimated_cost": 4000.0,
+          "estimated_margin": 14000.0,
+          "real_revenue": 18000.0,
+          "real_cost": 7500.0,
+          "real_margin": 10500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "DOM/SO/00025"
+          ],
+          "purchase_orders": [
+            "DOM/OC/00020",
+            "DOM/OC/00019"
+          ],
+          "customer_invoices": [
+            1712
+          ],
+          "vendor_bills": [
+            1714,
+            1713
+          ],
+          "so": "DOM/SO/00025",
+          "pos": [
+            "DOM/OC/00019",
+            "DOM/OC/00020"
+          ],
+          "inv": [
+            1712
+          ],
+          "bills": [
+            1713,
+            1714
+          ],
+          "wizard_lines_loaded": 2,
+          "wizard_lines_selected": 2,
+          "multi_po": true,
+          "result": "PASS"
+        },
+        "C_partial_bill": {
+          "estimated_revenue": 16000.0,
+          "estimated_cost": 6000.0,
+          "estimated_margin": 10000.0,
+          "real_revenue": 16000.0,
+          "real_cost": 6000.0,
+          "real_margin": 10000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "DOM/SO/00026"
+          ],
+          "purchase_orders": [
+            "DOM/OC/00021"
+          ],
+          "customer_invoices": [
+            1715
+          ],
+          "vendor_bills": [
+            1716
+          ],
+          "so": "DOM/SO/00026",
+          "po": "DOM/OC/00021",
+          "inv": [
+            1715
+          ],
+          "bill": [
+            1716
+          ],
+          "bill_qty": 2.0,
+          "po_qty": 2.0,
+          "partial_bill": false,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "D_partial_vendor_pay": {
+          "estimated_revenue": 11000.0,
+          "estimated_cost": 6500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 11000.0,
+          "real_cost": 6500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "DOM/SO/00027"
+          ],
+          "purchase_orders": [
+            "DOM/OC/00022"
+          ],
+          "customer_invoices": [
+            1717
+          ],
+          "vendor_bills": [
+            1718
+          ],
+          "so": "DOM/SO/00027",
+          "bill_before": 7670.0,
+          "applied": 3068.0,
+          "bill_after": 4602.0,
+          "payment_id": 560,
+          "payment_state": "partial",
+          "aux_id": 346,
+          "aux_residual": 4602.0,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "E_fully_paid": {
+          "estimated_revenue": 10000.0,
+          "estimated_cost": 5500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 10000.0,
+          "real_cost": 5500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "DOM/SO/00028"
+          ],
+          "purchase_orders": [
+            "DOM/OC/00023"
+          ],
+          "customer_invoices": [
+            1720
+          ],
+          "vendor_bills": [
+            1721
+          ],
+          "so": "DOM/SO/00028",
+          "inv_state": "in_payment",
+          "bill_state": "in_payment",
+          "pay_c": 561,
+          "pay_v": 562,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        }
+      },
+      "trace": {
+        "so_count": 5,
+        "po_count": 6,
+        "so_to_invoice": true,
+        "so_to_po": true,
+        "multi_po": true,
+        "po_to_bill": true,
+        "cross_company": 0,
+        "orphan_po": 0,
+        "invoice_rel": true,
+        "aml_purchase_line": true,
+        "sale_line_id": true,
+        "origin": true,
+        "manual_preserved": true,
+        "priority_order": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ],
+        "result": "PASS"
+      },
+      "errors": [],
+      "ncf_remaining_b01": 8
+    },
+    "11": {
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "ops": {
+        "A_one_so_one_po": {
+          "estimated_revenue": 12000.0,
+          "estimated_cost": 7000.0,
+          "estimated_margin": 5000.0,
+          "real_revenue": 12000.0,
+          "real_cost": 7000.0,
+          "real_margin": 5000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "DOR/SO/00034"
+          ],
+          "purchase_orders": [
+            "DOR/OC/00027"
+          ],
+          "customer_invoices": [
+            1724
+          ],
+          "vendor_bills": [
+            1725
+          ],
+          "so": "DOR/SO/00034",
+          "po": "DOR/OC/00027",
+          "inv": [
+            1724
+          ],
+          "bill": [
+            1725
+          ],
+          "wizard_lines_loaded": 1,
+          "wizard_lines_selected": 1,
+          "sale_line_on_po": true,
+          "result": "PASS"
+        },
+        "B_one_so_multi_po": {
+          "estimated_revenue": 18000.0,
+          "estimated_cost": 4000.0,
+          "estimated_margin": 14000.0,
+          "real_revenue": 18000.0,
+          "real_cost": 7500.0,
+          "real_margin": 10500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "DOR/SO/00035"
+          ],
+          "purchase_orders": [
+            "DOR/OC/00029",
+            "DOR/OC/00028"
+          ],
+          "customer_invoices": [
+            1726
+          ],
+          "vendor_bills": [
+            1728,
+            1727
+          ],
+          "so": "DOR/SO/00035",
+          "pos": [
+            "DOR/OC/00028",
+            "DOR/OC/00029"
+          ],
+          "inv": [
+            1726
+          ],
+          "bills": [
+            1727,
+            1728
+          ],
+          "wizard_lines_loaded": 2,
+          "wizard_lines_selected": 2,
+          "multi_po": true,
+          "result": "PASS"
+        },
+        "C_partial_bill": {
+          "estimated_revenue": 16000.0,
+          "estimated_cost": 6000.0,
+          "estimated_margin": 10000.0,
+          "real_revenue": 16000.0,
+          "real_cost": 6000.0,
+          "real_margin": 10000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "DOR/SO/00036"
+          ],
+          "purchase_orders": [
+            "DOR/OC/00030"
+          ],
+          "customer_invoices": [
+            1729
+          ],
+          "vendor_bills": [
+            1730
+          ],
+          "so": "DOR/SO/00036",
+          "po": "DOR/OC/00030",
+          "inv": [
+            1729
+          ],
+          "bill": [
+            1730
+          ],
+          "bill_qty": 2.0,
+          "po_qty": 2.0,
+          "partial_bill": false,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "D_partial_vendor_pay": {
+          "estimated_revenue": 11000.0,
+          "estimated_cost": 6500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 11000.0,
+          "real_cost": 6500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "DOR/SO/00037"
+          ],
+          "purchase_orders": [
+            "DOR/OC/00031"
+          ],
+          "customer_invoices": [
+            1731
+          ],
+          "vendor_bills": [
+            1732
+          ],
+          "so": "DOR/SO/00037",
+          "bill_before": 7670.0,
+          "applied": 3068.0,
+          "bill_after": 4602.0,
+          "payment_id": 563,
+          "payment_state": "partial",
+          "aux_id": 352,
+          "aux_residual": 4602.0,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "E_fully_paid": {
+          "estimated_revenue": 10000.0,
+          "estimated_cost": 5500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 10000.0,
+          "real_cost": 5500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "DOR/SO/00038"
+          ],
+          "purchase_orders": [
+            "DOR/OC/00032"
+          ],
+          "customer_invoices": [
+            1734
+          ],
+          "vendor_bills": [
+            1735
+          ],
+          "so": "DOR/SO/00038",
+          "inv_state": "in_payment",
+          "bill_state": "in_payment",
+          "pay_c": 564,
+          "pay_v": 565,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        }
+      },
+      "trace": {
+        "so_count": 5,
+        "po_count": 6,
+        "so_to_invoice": true,
+        "so_to_po": true,
+        "multi_po": true,
+        "po_to_bill": true,
+        "cross_company": 0,
+        "orphan_po": 0,
+        "invoice_rel": true,
+        "aml_purchase_line": true,
+        "sale_line_id": true,
+        "origin": true,
+        "manual_preserved": true,
+        "priority_order": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ],
+        "result": "PASS"
+      },
+      "errors": [],
+      "ncf_remaining_b01": 8
+    },
+    "12": {
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "ops": {
+        "A_one_so_one_po": {
+          "estimated_revenue": 12000.0,
+          "estimated_cost": 7000.0,
+          "estimated_margin": 5000.0,
+          "real_revenue": 12000.0,
+          "real_cost": 7000.0,
+          "real_margin": 5000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "MAY/SO/00024"
+          ],
+          "purchase_orders": [
+            "MAY/OC/00018"
+          ],
+          "customer_invoices": [
+            1738
+          ],
+          "vendor_bills": [
+            1739
+          ],
+          "so": "MAY/SO/00024",
+          "po": "MAY/OC/00018",
+          "inv": [
+            1738
+          ],
+          "bill": [
+            1739
+          ],
+          "wizard_lines_loaded": 1,
+          "wizard_lines_selected": 1,
+          "sale_line_on_po": true,
+          "result": "PASS"
+        },
+        "B_one_so_multi_po": {
+          "estimated_revenue": 18000.0,
+          "estimated_cost": 4000.0,
+          "estimated_margin": 14000.0,
+          "real_revenue": 18000.0,
+          "real_cost": 7500.0,
+          "real_margin": 10500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "MAY/SO/00025"
+          ],
+          "purchase_orders": [
+            "MAY/OC/00020",
+            "MAY/OC/00019"
+          ],
+          "customer_invoices": [
+            1740
+          ],
+          "vendor_bills": [
+            1742,
+            1741
+          ],
+          "so": "MAY/SO/00025",
+          "pos": [
+            "MAY/OC/00019",
+            "MAY/OC/00020"
+          ],
+          "inv": [
+            1740
+          ],
+          "bills": [
+            1741,
+            1742
+          ],
+          "wizard_lines_loaded": 2,
+          "wizard_lines_selected": 2,
+          "multi_po": true,
+          "result": "PASS"
+        },
+        "C_partial_bill": {
+          "estimated_revenue": 16000.0,
+          "estimated_cost": 6000.0,
+          "estimated_margin": 10000.0,
+          "real_revenue": 16000.0,
+          "real_cost": 6000.0,
+          "real_margin": 10000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "MAY/SO/00026"
+          ],
+          "purchase_orders": [
+            "MAY/OC/00021"
+          ],
+          "customer_invoices": [
+            1743
+          ],
+          "vendor_bills": [
+            1744
+          ],
+          "so": "MAY/SO/00026",
+          "po": "MAY/OC/00021",
+          "inv": [
+            1743
+          ],
+          "bill": [
+            1744
+          ],
+          "bill_qty": 2.0,
+          "po_qty": 2.0,
+          "partial_bill": false,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "D_partial_vendor_pay": {
+          "estimated_revenue": 11000.0,
+          "estimated_cost": 6500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 11000.0,
+          "real_cost": 6500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "MAY/SO/00027"
+          ],
+          "purchase_orders": [
+            "MAY/OC/00022"
+          ],
+          "customer_invoices": [
+            1745
+          ],
+          "vendor_bills": [
+            1746
+          ],
+          "so": "MAY/SO/00027",
+          "bill_before": 7670.0,
+          "applied": 3068.0,
+          "bill_after": 4602.0,
+          "payment_id": 566,
+          "payment_state": "partial",
+          "aux_id": 358,
+          "aux_residual": 4602.0,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "E_fully_paid": {
+          "estimated_revenue": 10000.0,
+          "estimated_cost": 5500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 10000.0,
+          "real_cost": 5500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "MAY/SO/00028"
+          ],
+          "purchase_orders": [
+            "MAY/OC/00023"
+          ],
+          "customer_invoices": [
+            1748
+          ],
+          "vendor_bills": [
+            1749
+          ],
+          "so": "MAY/SO/00028",
+          "inv_state": "in_payment",
+          "bill_state": "in_payment",
+          "pay_c": 567,
+          "pay_v": 568,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        }
+      },
+      "trace": {
+        "so_count": 5,
+        "po_count": 6,
+        "so_to_invoice": true,
+        "so_to_po": true,
+        "multi_po": true,
+        "po_to_bill": true,
+        "cross_company": 0,
+        "orphan_po": 0,
+        "invoice_rel": true,
+        "aml_purchase_line": true,
+        "sale_line_id": true,
+        "origin": true,
+        "manual_preserved": true,
+        "priority_order": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ],
+        "result": "PASS"
+      },
+      "errors": [],
+      "ncf_remaining_b01": 8
+    },
+    "13": {
+      "name": "REMPART GROUP S.R.L.",
+      "ops": {
+        "A_one_so_one_po": {
+          "estimated_revenue": 12000.0,
+          "estimated_cost": 7000.0,
+          "estimated_margin": 5000.0,
+          "real_revenue": 12000.0,
+          "real_cost": 7000.0,
+          "real_margin": 5000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "REM/SO/00024"
+          ],
+          "purchase_orders": [
+            "REM/OC/00018"
+          ],
+          "customer_invoices": [
+            1752
+          ],
+          "vendor_bills": [
+            1753
+          ],
+          "so": "REM/SO/00024",
+          "po": "REM/OC/00018",
+          "inv": [
+            1752
+          ],
+          "bill": [
+            1753
+          ],
+          "wizard_lines_loaded": 1,
+          "wizard_lines_selected": 1,
+          "sale_line_on_po": true,
+          "result": "PASS"
+        },
+        "B_one_so_multi_po": {
+          "estimated_revenue": 18000.0,
+          "estimated_cost": 4000.0,
+          "estimated_margin": 14000.0,
+          "real_revenue": 18000.0,
+          "real_cost": 7500.0,
+          "real_margin": 10500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "REM/SO/00025"
+          ],
+          "purchase_orders": [
+            "REM/OC/00020",
+            "REM/OC/00019"
+          ],
+          "customer_invoices": [
+            1754
+          ],
+          "vendor_bills": [
+            1756,
+            1755
+          ],
+          "so": "REM/SO/00025",
+          "pos": [
+            "REM/OC/00019",
+            "REM/OC/00020"
+          ],
+          "inv": [
+            1754
+          ],
+          "bills": [
+            1755,
+            1756
+          ],
+          "wizard_lines_loaded": 2,
+          "wizard_lines_selected": 2,
+          "multi_po": true,
+          "result": "PASS"
+        },
+        "C_partial_bill": {
+          "estimated_revenue": 16000.0,
+          "estimated_cost": 6000.0,
+          "estimated_margin": 10000.0,
+          "real_revenue": 16000.0,
+          "real_cost": 6000.0,
+          "real_margin": 10000.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "REM/SO/00026"
+          ],
+          "purchase_orders": [
+            "REM/OC/00021"
+          ],
+          "customer_invoices": [
+            1757
+          ],
+          "vendor_bills": [
+            1758
+          ],
+          "so": "REM/SO/00026",
+          "po": "REM/OC/00021",
+          "inv": [
+            1757
+          ],
+          "bill": [
+            1758
+          ],
+          "bill_qty": 2.0,
+          "po_qty": 2.0,
+          "partial_bill": false,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "D_partial_vendor_pay": {
+          "estimated_revenue": 11000.0,
+          "estimated_cost": 6500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 11000.0,
+          "real_cost": 6500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "REM/SO/00027"
+          ],
+          "purchase_orders": [
+            "REM/OC/00022"
+          ],
+          "customer_invoices": [
+            1759
+          ],
+          "vendor_bills": [
+            1760
+          ],
+          "so": "REM/SO/00027",
+          "bill_before": 7670.0,
+          "applied": 3068.0,
+          "bill_after": 4602.0,
+          "payment_id": 569,
+          "payment_state": "partial",
+          "aux_id": 364,
+          "aux_residual": 4602.0,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        },
+        "E_fully_paid": {
+          "estimated_revenue": 10000.0,
+          "estimated_cost": 5500.0,
+          "estimated_margin": 4500.0,
+          "real_revenue": 10000.0,
+          "real_cost": 5500.0,
+          "real_margin": 4500.0,
+          "additional_costs": 0.0,
+          "sale_orders": [
+            "REM/SO/00028"
+          ],
+          "purchase_orders": [
+            "REM/OC/00023"
+          ],
+          "customer_invoices": [
+            1762
+          ],
+          "vendor_bills": [
+            1763
+          ],
+          "so": "REM/SO/00028",
+          "inv_state": "in_payment",
+          "bill_state": "in_payment",
+          "pay_c": 570,
+          "pay_v": 571,
+          "wizard_lines_loaded": 1,
+          "result": "PASS"
+        }
+      },
+      "trace": {
+        "so_count": 5,
+        "po_count": 6,
+        "so_to_invoice": true,
+        "so_to_po": true,
+        "multi_po": true,
+        "po_to_bill": true,
+        "cross_company": 0,
+        "orphan_po": 0,
+        "invoice_rel": true,
+        "aml_purchase_line": true,
+        "sale_line_id": true,
+        "origin": true,
+        "manual_preserved": true,
+        "priority_order": [
+          "purchase_line",
+          "procurement",
+          "origin",
+          "product_qty_company",
+          "ref",
+          "analytic",
+          "heuristic"
+        ],
+        "result": "PASS"
+      },
+      "errors": [],
+      "ncf_remaining_b01": 8
+    }
+  },
+  "errors": [],
+  "MARGIN_QA_MASS": "PASS",
+  "MULTI_PO_RELATION_QA": "PASS",
+  "MARGIN_CXP_INTEGRATION_QA": "PASS",
+  "TRACEABILITY_QA_MASS": "PASS",
+  "TRACE_PRIORITY_QA": "PASS",
+  "finished": "2026-08-31T16:53:17Z"
+}
