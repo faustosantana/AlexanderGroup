@@ -77,8 +77,15 @@ UI operativa (staging, company 11, `DOR/SO/00040`): **Gestionar compras** →
 **Vincular compra existente**. OWL 19 no persistía el onchange One2many;
 `justech_purchase_sale_margin_control` **19.0.8.29.39** recarga líneas en
 `write()`/`create()` al elegir la OC y deja **Cargar artículos** visible.
-Verificación shell: `DOR/OC/00035` y `DOR/OC/00036` cargan 1 línea cada una
-(qty_available=1, qty_needed=2). QWeb Alexander sigue en 58.
+
+Validación de navegador (127.0.0.1:8269, no prod):
+- Sin cubrir 2 → vincular `DOR/OC/00035` (líneas cargadas) → Parcial 1
+- Vincular `DOR/OC/00036` (líneas cargadas) → Cubierto, En compra 2
+- Stat Órdenes de compra = 2
+- Un primer Aplicar falló con Necesito=0; **Cargar artículos** recalculó
+  Necesito/Usar y el segundo intento aplicó. No es bloqueo.
+
+QWeb Alexander sigue en 58. `justech_alexander_reports` 19.0.3.8.5 intacto.
 
 `MARGIN_QA_MASS = PASS`
 `MULTI_PO_RELATION_QA = PASS`
