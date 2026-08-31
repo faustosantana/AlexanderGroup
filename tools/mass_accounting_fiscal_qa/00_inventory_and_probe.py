@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Staging-only inventory + one-invoice probe. Prefix DXQA. No mail. No prod."""
+
 import json
 from collections import defaultdict
 
@@ -75,9 +76,9 @@ if "justech.do.ncf.range" in env:
                 "start": r.sequence_start,
                 "end": r.sequence_end,
                 "next": r.next_sequence,
-                "remaining": (r.sequence_end - r.next_sequence + 1)
-                if r.next_sequence
-                else None,
+                "remaining": (
+                    (r.sequence_end - r.next_sequence + 1) if r.next_sequence else None
+                ),
                 "state": r.state,
                 "date_from": str(r.date_from or ""),
                 "date_to": str(r.date_to or ""),
@@ -123,9 +124,7 @@ if "account.move.reversal" in env:
     ]
 
 for company in env["res.company"].search([("active", "=", True)], order="id"):
-    env_c = env(
-        context=dict(env.context, allowed_company_ids=[company.id], **ctx_mail)
-    )
+    env_c = env(context=dict(env.context, allowed_company_ids=[company.id], **ctx_mail))
     journals = env_c["account.journal"].search(
         [("company_id", "=", company.id), ("active", "=", True)]
     )
@@ -191,7 +190,9 @@ for company in env["res.company"].search([("active", "=", True)], order="id"):
             "ncf_configured": any(
                 r["company_id"] == company.id for r in data["ncf_ranges"]
             ),
-            "accounting_configured": bool(by_type.get("sale") and by_type.get("purchase")),
+            "accounting_configured": bool(
+                by_type.get("sale") and by_type.get("purchase")
+            ),
         }
     )
 

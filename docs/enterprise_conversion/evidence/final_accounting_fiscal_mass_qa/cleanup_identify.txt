@@ -1,0 +1,12 @@
+CLEANUP_EXECUTED = NO
+TAG = DXQA-MASS-20260831
+
+Identificar (no borrar hasta autorización):
+
+- account.move.ref LIKE DXQA-MASS-20260831% OR DXQA-PROBE%
+- account.payment.memo / payment_reference LIKE DXQA-MASS-20260831% OR DXQA%
+- res.partner.name LIKE DXQA %
+- product default_code LIKE DXQA-%
+- justech.do.fiscal.report.name LIKE DXQA %
+
+Script odoo-shell: tools/mass_accounting_fiscal_qa/03_cleanup_identify.py

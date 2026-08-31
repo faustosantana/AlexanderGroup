@@ -9,11 +9,19 @@ env = env(context=dict(env.context, **ctx))
 company = env["res.company"].browse(11)
 Move = env["account.move"].with_company(company)
 inv = Move.search([("ref", "like", "DXQA-MASS-20260831-C11-S-FULL01")], limit=1)
-print("INV", inv.id, inv.state, inv.amount_residual, inv.payment_state, inv.partner_id.id)
+print(
+    "INV", inv.id, inv.state, inv.amount_residual, inv.payment_state, inv.partner_id.id
+)
 print(
     "INV_LINES",
     [
-        (l.account_id.display_name, l.account_id.account_type, l.balance, l.amount_residual, l.reconciled)
+        (
+            l.account_id.display_name,
+            l.account_id.account_type,
+            l.balance,
+            l.amount_residual,
+            l.reconciled,
+        )
         for l in inv.line_ids
     ],
 )
@@ -24,9 +32,27 @@ method = env["account.payment.method.line"].search(
     [("journal_id", "=", bank.id), ("payment_method_id.payment_type", "=", "inbound")],
     limit=1,
 )
-print("BANK", bank.id, bank.name, "METHOD", method.id, method.name, method.payment_account_id)
-print("OUTSTANDING inbound", getattr(company, "account_journal_payment_debit_account_id", None))
-print("company fields", [f for f in company._fields if "outstanding" in f or "payment_debit" in f or "payment_credit" in f])
+print(
+    "BANK",
+    bank.id,
+    bank.name,
+    "METHOD",
+    method.id,
+    method.name,
+    method.payment_account_id,
+)
+print(
+    "OUTSTANDING inbound",
+    getattr(company, "account_journal_payment_debit_account_id", None),
+)
+print(
+    "company fields",
+    [
+        f
+        for f in company._fields
+        if "outstanding" in f or "payment_debit" in f or "payment_credit" in f
+    ],
+)
 
 # try payment.register
 Register = env["account.payment.register"].with_context(
@@ -40,7 +66,10 @@ wiz = Register.create(
         "communication": "DXQA-PAYPROBE-REG",
     }
 )
-print("REG fields payment_method", wiz.payment_method_line_id.id if wiz.payment_method_line_id else None)
+print(
+    "REG fields payment_method",
+    wiz.payment_method_line_id.id if wiz.payment_method_line_id else None,
+)
 try:
     action = wiz.action_create_payments()
     print("REG_ACTION", action)

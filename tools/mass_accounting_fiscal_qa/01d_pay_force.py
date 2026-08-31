@@ -71,7 +71,12 @@ try:
         print(
             "LINES",
             [
-                (l.account_id.display_name, l.account_id.account_type, l.balance, l.reconciled)
+                (
+                    l.account_id.display_name,
+                    l.account_id.account_type,
+                    l.balance,
+                    l.reconciled,
+                )
                 for l in pay.move_id.line_ids
             ],
         )

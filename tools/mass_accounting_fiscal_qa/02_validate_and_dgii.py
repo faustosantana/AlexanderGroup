@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Validate mass QA set + generate DGII 606/607/608 on STAGING. No prod. No e-CF."""
+
 import json
 import os
 import time
@@ -21,7 +22,9 @@ ctx_mail = {
 result = {
     "tag": TAG,
     "companies": {},
-    "qweb_before": env["ir.ui.view"].search_count([("key", "like", "justech_alexander%")]),
+    "qweb_before": env["ir.ui.view"].search_count(
+        [("key", "like", "justech_alexander%")]
+    ),
     "started": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
 }
 
@@ -82,7 +85,12 @@ def generate_dgii(company, report_type):
                 rec["export_%s" % ext] = str(type(action))
                 # persist binary fields if present
                 for fname in report._fields:
-                    if "file" in fname or "xlsx" in fname or "csv" in fname or "datas" in fname:
+                    if (
+                        "file" in fname
+                        or "xlsx" in fname
+                        or "csv" in fname
+                        or "datas" in fname
+                    ):
                         data = report[fname]
                         if data:
                             path = "/tmp/mass_qa_files/C%s_%s_%s.bin" % (
@@ -111,11 +119,7 @@ def generate_dgii(company, report_type):
 
 
 for company in env["res.company"].search([("active", "=", True)], order="id"):
-    e = env(
-        context=dict(
-            env.context, allowed_company_ids=[company.id], **ctx_mail
-        )
-    )
+    e = env(context=dict(env.context, allowed_company_ids=[company.id], **ctx_mail))
     sales = _moves(company, "out_invoice")
     bills = _moves(company, "in_invoice")
     refunds = _moves(company, "out_refund") | _moves(company, "in_refund")
@@ -132,12 +136,16 @@ for company in env["res.company"].search([("active", "=", True)], order="id"):
     for mv in qa_moves:
         if abs(sum(mv.line_ids.mapped("balance"))) > 0.05:
             unbalanced += 1
-    cross = e["account.move.line"].search_count(
-        [
-            ("move_id", "in", qa_moves.ids),
-            ("company_id", "!=", company.id),
-        ]
-    ) if qa_moves else 0
+    cross = (
+        e["account.move.line"].search_count(
+            [
+                ("move_id", "in", qa_moves.ids),
+                ("company_id", "!=", company.id),
+            ]
+        )
+        if qa_moves
+        else 0
+    )
     ar_open = sum(sales.mapped("amount_residual"))
     ap_open = sum(bills.mapped("amount_residual"))
     ar_total = sum(sales.mapped("amount_total"))
@@ -164,7 +172,12 @@ for company in env["res.company"].search([("active", "=", True)], order="id"):
             open(path, "wb").write(data)
             receipt_notes.append(
                 "pdf %s bytes=%s sec=%.2f invoices=%s"
-                % (p.id, len(data), time.time() - t0, len(p.justech_applied_invoice_ids))
+                % (
+                    p.id,
+                    len(data),
+                    time.time() - t0,
+                    len(p.justech_applied_invoice_ids),
+                )
             )
         except Exception as exc:
             receipt_ok = False
@@ -172,9 +185,11 @@ for company in env["res.company"].search([("active", "=", True)], order="id"):
 
     rec = {
         "name": company.name,
-        "fiscal_country": company.account_fiscal_country_id.code
-        if company.account_fiscal_country_id
-        else None,
+        "fiscal_country": (
+            company.account_fiscal_country_id.code
+            if company.account_fiscal_country_id
+            else None
+        ),
         "sales": len(sales),
         "bills": len(bills),
         "credit_notes": len(refunds),
@@ -190,9 +205,9 @@ for company in env["res.company"].search([("active", "=", True)], order="id"):
         "unbalanced_moves": unbalanced,
         "cross_company_lines": cross,
         "multi_invoice_payments": len(multi_pays),
-        "multi_invoice_single_receipt": "PASS"
-        if multi_pays and receipt_ok
-        else ("FAIL" if pays else "FAIL"),
+        "multi_invoice_single_receipt": (
+            "PASS" if multi_pays and receipt_ok else ("FAIL" if pays else "FAIL")
+        ),
         "receipt_notes": receipt_notes,
         "ncf_sales": [
             getattr(m, "justech_do_ncf", None)

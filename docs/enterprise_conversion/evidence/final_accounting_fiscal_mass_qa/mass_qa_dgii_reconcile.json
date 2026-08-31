@@ -1,0 +1,570 @@
+{
+  "companies": {
+    "1": {
+      "name": "Plantilla t\u00e9cnica (no operativa)",
+      "sales": 40,
+      "bills": 42,
+      "cn_out": 10,
+      "cn_in": 5,
+      "voids": 0,
+      "sales_total": 250150.0,
+      "sales_untaxed": 223000.0,
+      "sales_tax": 27150.0,
+      "bills_total": 210615.0,
+      "bills_untaxed": 188100.0,
+      "bills_tax": 22515.0,
+      "payment_states": {
+        "in_payment": 22,
+        "reversed": 2,
+        "partial": 11,
+        "not_paid": 5
+      },
+      "reports": {},
+      "608_june": {
+        "result": "NOT_APPLICABLE"
+      },
+      "606_lines_vs_bills": [
+        null,
+        47
+      ],
+      "607_lines_vs_sales": [
+        null,
+        50
+      ]
+    },
+    "8": {
+      "name": "BLUE ELITE, S.R.L.",
+      "sales": 40,
+      "bills": 42,
+      "cn_out": 10,
+      "cn_in": 5,
+      "voids": 2,
+      "sales_total": 255580.0,
+      "sales_untaxed": 223000.0,
+      "sales_tax": 32580.0,
+      "bills_total": 215118.0,
+      "bills_untaxed": 188100.0,
+      "bills_tax": 27018.0,
+      "payment_states": {
+        "in_payment": 22,
+        "reversed": 2,
+        "partial": 11,
+        "not_paid": 5
+      },
+      "reports": {
+        "623": {
+          "id": 5,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "609": {
+          "id": 4,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "608": {
+          "id": 3,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "607": {
+          "id": 2,
+          "state": "draft",
+          "lines": 45,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 265964.0,
+          "sum_itbis_guess": 265964.0
+        },
+        "606": {
+          "id": 1,
+          "state": "draft",
+          "lines": 47,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 229396.0,
+          "sum_itbis_guess": 229396.0
+        }
+      },
+      "608_june": {
+        "result": "PASS",
+        "lines": 2,
+        "voids": [
+          "B0199100527",
+          "B0199100526"
+        ],
+        "report_id": 31
+      },
+      "606_lines_vs_bills": [
+        47,
+        47
+      ],
+      "607_lines_vs_sales": [
+        45,
+        50
+      ]
+    },
+    "9": {
+      "name": "COMERCIALIZADORA DE ALIMENTOS PI\u00d1ARIA, S.R.L.",
+      "sales": 40,
+      "bills": 42,
+      "cn_out": 10,
+      "cn_in": 5,
+      "voids": 2,
+      "sales_total": 255580.0,
+      "sales_untaxed": 223000.0,
+      "sales_tax": 32580.0,
+      "bills_total": 215118.0,
+      "bills_untaxed": 188100.0,
+      "bills_tax": 27018.0,
+      "payment_states": {
+        "in_payment": 22,
+        "reversed": 2,
+        "partial": 11,
+        "not_paid": 5
+      },
+      "reports": {
+        "623": {
+          "id": 10,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "609": {
+          "id": 9,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "608": {
+          "id": 8,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "607": {
+          "id": 7,
+          "state": "draft",
+          "lines": 45,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 265964.0,
+          "sum_itbis_guess": 265964.0
+        },
+        "606": {
+          "id": 6,
+          "state": "draft",
+          "lines": 47,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 229396.0,
+          "sum_itbis_guess": 229396.0
+        }
+      },
+      "608_june": {
+        "result": "PASS",
+        "lines": 2,
+        "voids": [
+          "B0199100129",
+          "B0199100128"
+        ],
+        "report_id": 32
+      },
+      "606_lines_vs_bills": [
+        47,
+        47
+      ],
+      "607_lines_vs_sales": [
+        45,
+        50
+      ]
+    },
+    "10": {
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "sales": 40,
+      "bills": 42,
+      "cn_out": 10,
+      "cn_in": 5,
+      "voids": 2,
+      "sales_total": 255580.0,
+      "sales_untaxed": 223000.0,
+      "sales_tax": 32580.0,
+      "bills_total": 215118.0,
+      "bills_untaxed": 188100.0,
+      "bills_tax": 27018.0,
+      "payment_states": {
+        "in_payment": 22,
+        "reversed": 2,
+        "partial": 11,
+        "not_paid": 5
+      },
+      "reports": {
+        "623": {
+          "id": 15,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "609": {
+          "id": 14,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "608": {
+          "id": 13,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "607": {
+          "id": 12,
+          "state": "draft",
+          "lines": 45,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 265964.0,
+          "sum_itbis_guess": 265964.0
+        },
+        "606": {
+          "id": 11,
+          "state": "draft",
+          "lines": 47,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 229396.0,
+          "sum_itbis_guess": 229396.0
+        }
+      },
+      "608_june": {
+        "result": "PASS",
+        "lines": 2,
+        "voids": [
+          "B0199100227",
+          "B0199100226"
+        ],
+        "report_id": 33
+      },
+      "606_lines_vs_bills": [
+        47,
+        47
+      ],
+      "607_lines_vs_sales": [
+        45,
+        50
+      ]
+    },
+    "11": {
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "sales": 40,
+      "bills": 42,
+      "cn_out": 15,
+      "cn_in": 5,
+      "voids": 2,
+      "sales_total": 255580.0,
+      "sales_untaxed": 223000.0,
+      "sales_tax": 32580.0,
+      "bills_total": 215118.0,
+      "bills_untaxed": 188100.0,
+      "bills_tax": 27018.0,
+      "payment_states": {
+        "in_payment": 22,
+        "reversed": 2,
+        "partial": 11,
+        "not_paid": 5
+      },
+      "reports": {
+        "623": {
+          "id": 20,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "609": {
+          "id": 19,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "608": {
+          "id": 18,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "607": {
+          "id": 17,
+          "state": "draft",
+          "lines": 50,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 282956.0,
+          "sum_itbis_guess": 282956.0
+        },
+        "606": {
+          "id": 16,
+          "state": "draft",
+          "lines": 47,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 229396.0,
+          "sum_itbis_guess": 229396.0
+        }
+      },
+      "608_june": {
+        "result": "PASS",
+        "lines": 2,
+        "voids": [
+          "B0199100027",
+          "B0199100026"
+        ],
+        "report_id": 34
+      },
+      "606_lines_vs_bills": [
+        47,
+        47
+      ],
+      "607_lines_vs_sales": [
+        50,
+        55
+      ]
+    },
+    "12": {
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "sales": 40,
+      "bills": 42,
+      "cn_out": 10,
+      "cn_in": 5,
+      "voids": 2,
+      "sales_total": 255580.0,
+      "sales_untaxed": 223000.0,
+      "sales_tax": 32580.0,
+      "bills_total": 215118.0,
+      "bills_untaxed": 188100.0,
+      "bills_tax": 27018.0,
+      "payment_states": {
+        "in_payment": 22,
+        "reversed": 2,
+        "partial": 11,
+        "not_paid": 5
+      },
+      "reports": {
+        "623": {
+          "id": 25,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "609": {
+          "id": 24,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "608": {
+          "id": 23,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "607": {
+          "id": 22,
+          "state": "draft",
+          "lines": 45,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 265964.0,
+          "sum_itbis_guess": 265964.0
+        },
+        "606": {
+          "id": 21,
+          "state": "draft",
+          "lines": 47,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 229396.0,
+          "sum_itbis_guess": 229396.0
+        }
+      },
+      "608_june": {
+        "result": "PASS",
+        "lines": 2,
+        "voids": [
+          "B0199100327",
+          "B0199100326"
+        ],
+        "report_id": 35
+      },
+      "606_lines_vs_bills": [
+        47,
+        47
+      ],
+      "607_lines_vs_sales": [
+        45,
+        50
+      ]
+    },
+    "13": {
+      "name": "REMPART GROUP S.R.L.",
+      "sales": 40,
+      "bills": 42,
+      "cn_out": 10,
+      "cn_in": 5,
+      "voids": 2,
+      "sales_total": 255580.0,
+      "sales_untaxed": 223000.0,
+      "sales_tax": 32580.0,
+      "bills_total": 215118.0,
+      "bills_untaxed": 188100.0,
+      "bills_tax": 27018.0,
+      "payment_states": {
+        "in_payment": 22,
+        "reversed": 2,
+        "partial": 11,
+        "not_paid": 5
+      },
+      "reports": {
+        "623": {
+          "id": 30,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "609": {
+          "id": 29,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "608": {
+          "id": 28,
+          "state": "draft",
+          "lines": 0,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 0.0,
+          "sum_itbis_guess": 0.0
+        },
+        "607": {
+          "id": 27,
+          "state": "draft",
+          "lines": 45,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 265964.0,
+          "sum_itbis_guess": 265964.0
+        },
+        "606": {
+          "id": 26,
+          "state": "draft",
+          "lines": 47,
+          "period": "202608",
+          "date_from": "2026-08-01",
+          "date_to": "2026-08-31",
+          "sum_amount_guess": 229396.0,
+          "sum_itbis_guess": 229396.0
+        }
+      },
+      "608_june": {
+        "result": "PASS",
+        "lines": 2,
+        "voids": [
+          "B0199100427",
+          "B0199100426"
+        ],
+        "report_id": 36
+      },
+      "606_lines_vs_bills": [
+        47,
+        47
+      ],
+      "607_lines_vs_sales": [
+        45,
+        50
+      ]
+    }
+  }
+}

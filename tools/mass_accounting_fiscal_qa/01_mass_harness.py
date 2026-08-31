@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Mass accounting/fiscal QA on STAGING only. Prefix DXQA-MASS. No mail. No prod."""
+
 import json
 import os
 import time
@@ -73,8 +74,12 @@ def _tax_named(Tax, company, use, needle):
     )
 
 
-def ensure_partner(Partner, company, name, vat, supplier=False, doc=None, do_fiscal=True):
-    rec = Partner.search([("name", "=", name), ("company_id", "=", company.id)], limit=1)
+def ensure_partner(
+    Partner, company, name, vat, supplier=False, doc=None, do_fiscal=True
+):
+    rec = Partner.search(
+        [("name", "=", name), ("company_id", "=", company.id)], limit=1
+    )
     if not rec:
         rec = Partner.search([("name", "=", name), ("vat", "=", vat)], limit=1)
     vals = {
@@ -137,6 +142,9 @@ def create_move(
     doc=None,
     extra_line=None,
     expense_type=None,
+    latam_type=None,
+    registration_mode=None,
+    received_ncf=None,
 ):
     line = {
         "product_id": product.id,
@@ -167,9 +175,17 @@ def create_move(
             vals["justech_do_ncf"] = ncf
         if "l10n_latam_document_number" in Move._fields:
             vals["l10n_latam_document_number"] = ncf
+    if received_ncf and "l10n_latam_document_number" in Move._fields:
+        vals["l10n_latam_document_number"] = received_ncf
+    if latam_type and "l10n_latam_document_type_id" in Move._fields:
+        vals["l10n_latam_document_type_id"] = latam_type.id
+    if registration_mode and "justech_do_purchase_registration_mode" in Move._fields:
+        vals["justech_do_purchase_registration_mode"] = registration_mode
     if expense_type and "justech_do_expense_type_id" in Move._fields:
         vals["justech_do_expense_type_id"] = expense_type.id
-    existing = Move.search([("ref", "=", ref), ("company_id", "=", company.id)], limit=1)
+    existing = Move.search(
+        [("ref", "=", ref), ("company_id", "=", company.id)], limit=1
+    )
     if existing:
         if existing.state == "draft":
             if expense_type and "justech_do_expense_type_id" in Move._fields:
@@ -181,9 +197,13 @@ def create_move(
     return move
 
 
-def pay_moves(company, partner, partner_type, journal, method, moves_amounts, ref, received=None):
-    Wizard = env["multi.invoice.manual.payment.wizard"].with_company(company).with_context(
-        force_payment_move=True
+def pay_moves(
+    company, partner, partner_type, journal, method, moves_amounts, ref, received=None
+):
+    Wizard = (
+        env["multi.invoice.manual.payment.wizard"]
+        .with_company(company)
+        .with_context(force_payment_move=True)
     )
     lines = []
     total = 0.0
@@ -222,7 +242,7 @@ def pay_moves(company, partner, partner_type, journal, method, moves_amounts, re
     return pay
 
 
-def reverse_move(move, journal, reason, fraction=1.0):
+def reverse_move(move, journal, reason, fraction=1.0, vendor_cn_ncf=None):
     Reversal = env["account.move.reversal"]
     vals = {
         "reason": reason,
@@ -233,6 +253,9 @@ def reverse_move(move, journal, reason, fraction=1.0):
         vals["move_ids"] = [(6, 0, move.ids)]
     if "company_id" in Reversal._fields:
         vals["company_id"] = move.company_id.id
+    if vendor_cn_ncf and "justech_vendor_cn_ncf" in Reversal._fields:
+        vals["justech_vendor_cn_ncf"] = vendor_cn_ncf
+        vals["justech_vendor_cn_date"] = CN_DATE
     rev = Reversal.with_context(
         active_model="account.move",
         active_ids=move.ids,
@@ -278,9 +301,11 @@ def process_company(company):
     rec = {
         "name": company.name,
         "currency": company.currency_id.name,
-        "fiscal_country": company.account_fiscal_country_id.code
-        if company.account_fiscal_country_id
-        else None,
+        "fiscal_country": (
+            company.account_fiscal_country_id.code
+            if company.account_fiscal_country_id
+            else None
+        ),
         "sales": [],
         "bills": [],
         "payments": [],
@@ -302,7 +327,11 @@ def process_company(company):
         limit=1,
     )
     purch_j = Journal.search(
-        [("company_id", "=", company.id), ("type", "=", "purchase"), ("active", "=", True)],
+        [
+            ("company_id", "=", company.id),
+            ("type", "=", "purchase"),
+            ("active", "=", True),
+        ],
         limit=1,
     )
     bank_j = Journal.search(
@@ -359,7 +388,10 @@ def process_company(company):
         )
     )
 
-    slug = "".join(ch for ch in company.name if ch.isalnum())[:10].upper() or "C%s" % company.id
+    slug = (
+        "".join(ch for ch in company.name if ch.isalnum())[:10].upper()
+        or "C%s" % company.id
+    )
     cust = ensure_partner(
         Partner,
         company,
@@ -390,6 +422,11 @@ def process_company(company):
         exp_serv = e["justech.do.dgii.expense.type"].search(
             [("code", "=", "02")], limit=1
         )
+    latam_b01 = False
+    if "l10n_latam.document.type" in e:
+        latam_b01 = e["l10n_latam.document.type"].search(
+            [("doc_code_prefix", "=", "B01")], limit=1
+        )
     e.cr.commit()
 
     sales = {}
@@ -399,19 +436,19 @@ def process_company(company):
         try:
             with e.cr.savepoint():
                 inv = create_move(
-                Move,
-                company,
-                "out_invoice",
-                cust,
-                sale_j,
-                ref,
-                price,
-                prod,
-                taxes=tax,
-                invoice_date=invoice_date,
-                due=due,
-                doc=doc_b01 if rec["flags"]["ncf_configured"] else None,
-            )
+                    Move,
+                    company,
+                    "out_invoice",
+                    cust,
+                    sale_j,
+                    ref,
+                    price,
+                    prod,
+                    taxes=tax,
+                    invoice_date=invoice_date,
+                    due=due,
+                    doc=doc_b01 if rec["flags"]["ncf_configured"] else None,
+                )
             sales[key] = inv
             rec["sales"].append(
                 {
@@ -462,25 +499,24 @@ def process_company(company):
 
     def _bill(key, price, tax, ncf_seq, expense=None):
         ref = "%s-C%s-B-%s" % (TAG, company.id, key)
-        ncf = None
-        if rec["flags"]["ncf_configured"]:
-            ncf = "B01%02d%02d%04d" % (88, company.id, ncf_seq)
+        received = "B01%02d%02d%04d" % (88, company.id, ncf_seq)
         try:
             with e.cr.savepoint():
                 bill = create_move(
-                Move,
-                company,
-                "in_invoice",
-                vend,
-                purch_j,
-                ref,
-                price,
-                prod,
-                taxes=tax,
-                ncf=ncf,
-                doc=doc_b01 if rec["flags"]["ncf_configured"] else None,
-                expense_type=expense or exp_cost,
-            )
+                    Move,
+                    company,
+                    "in_invoice",
+                    vend,
+                    purch_j,
+                    ref,
+                    price,
+                    prod,
+                    taxes=tax,
+                    expense_type=expense or exp_cost,
+                    latam_type=latam_b01,
+                    registration_mode="received",
+                    received_ncf=received,
+                )
             bills[key] = bill
             rec["bills"].append(
                 {
@@ -540,7 +576,9 @@ def process_company(company):
             return None
         try:
             with e.cr.savepoint():
-                pay = pay_moves(company, partner, ptype, journal, method, pairs, ref, received)
+                pay = pay_moves(
+                    company, partner, ptype, journal, method, pairs, ref, received
+                )
             rec["payments"].append(
                 {
                     "label": label,
@@ -565,7 +603,10 @@ def process_company(company):
         "customer",
         bank_j,
         inbound,
-        [(fulls[0], fulls[0].amount_residual if fulls[0] else 0), (fulls[1], fulls[1].amount_residual if fulls[1] else 0)],
+        [
+            (fulls[0], fulls[0].amount_residual if fulls[0] else 0),
+            (fulls[1], fulls[1].amount_residual if fulls[1] else 0),
+        ],
         "%s-C%s-PAY-C-M2" % (TAG, company.id),
     )
     _safe_pay(
@@ -614,32 +655,90 @@ def process_company(company):
             )
     ladder = sales.get("LADDER")
     if ladder:
-        _safe_pay("cust_ladder1", cust, "customer", bank_j, inbound, [(ladder, 4000)], "%s-C%s-PAY-C-L1" % (TAG, company.id))
+        _safe_pay(
+            "cust_ladder1",
+            cust,
+            "customer",
+            bank_j,
+            inbound,
+            [(ladder, 4000)],
+            "%s-C%s-PAY-C-L1" % (TAG, company.id),
+        )
         ladder.invalidate_recordset()
         rec["flags"]["residual_after_4000"] = ladder.amount_residual
-        _safe_pay("cust_ladder2", cust, "customer", bank_j, inbound, [(ladder, 2500)], "%s-C%s-PAY-C-L2" % (TAG, company.id))
+        _safe_pay(
+            "cust_ladder2",
+            cust,
+            "customer",
+            bank_j,
+            inbound,
+            [(ladder, 2500)],
+            "%s-C%s-PAY-C-L2" % (TAG, company.id),
+        )
         ladder.invalidate_recordset()
         rec["flags"]["residual_after_2500"] = ladder.amount_residual
-        _safe_pay("cust_ladder3", cust, "customer", bank_j, inbound, [(ladder, 3500)], "%s-C%s-PAY-C-L3" % (TAG, company.id))
+        _safe_pay(
+            "cust_ladder3",
+            cust,
+            "customer",
+            bank_j,
+            inbound,
+            [(ladder, 3500)],
+            "%s-C%s-PAY-C-L3" % (TAG, company.id),
+        )
         ladder.invalidate_recordset()
         rec["flags"]["residual_after_3500"] = ladder.amount_residual
-        rec["flags"]["residual_ladder_ok"] = abs((ladder.amount_residual or 0) - 0) < 0.05
+        rec["flags"]["residual_ladder_ok"] = (
+            abs((ladder.amount_residual or 0) - 0) < 0.05
+        )
     for i in range(2, 6):
         inv = sales.get("MPART%02d" % i)
         if not inv:
             continue
         half = round(inv.amount_residual / 2.0, 2)
-        _safe_pay("cust_mpart_%02d_a" % i, cust, "customer", bank_j, inbound, [(inv, half)], "%s-C%s-PAY-C-MP%02da" % (TAG, company.id, i))
+        _safe_pay(
+            "cust_mpart_%02d_a" % i,
+            cust,
+            "customer",
+            bank_j,
+            inbound,
+            [(inv, half)],
+            "%s-C%s-PAY-C-MP%02da" % (TAG, company.id, i),
+        )
         inv.invalidate_recordset()
         rest = inv.amount_residual
-        _safe_pay("cust_mpart_%02d_b" % i, cust, "customer", bank_j, inbound, [(inv, rest)], "%s-C%s-PAY-C-MP%02db" % (TAG, company.id, i))
+        _safe_pay(
+            "cust_mpart_%02d_b" % i,
+            cust,
+            "customer",
+            bank_j,
+            inbound,
+            [(inv, rest)],
+            "%s-C%s-PAY-C-MP%02db" % (TAG, company.id, i),
+        )
     for i in range(1, 3):
         inv = sales.get("XFULL%02d" % i)
         if inv:
-            _safe_pay("cust_xfull_%02d" % i, cust, "customer", bank_j, inbound, [(inv, inv.amount_residual)], "%s-C%s-PAY-C-X%02d" % (TAG, company.id, i))
+            _safe_pay(
+                "cust_xfull_%02d" % i,
+                cust,
+                "customer",
+                bank_j,
+                inbound,
+                [(inv, inv.amount_residual)],
+                "%s-C%s-PAY-C-X%02d" % (TAG, company.id, i),
+            )
     spec = sales.get("SPECIAL")
     if spec:
-        _safe_pay("cust_special", cust, "customer", bank_j, inbound, [(spec, spec.amount_residual)], "%s-C%s-PAY-C-SP" % (TAG, company.id))
+        _safe_pay(
+            "cust_special",
+            cust,
+            "customer",
+            bank_j,
+            inbound,
+            [(spec, spec.amount_residual)],
+            "%s-C%s-PAY-C-SP" % (TAG, company.id),
+        )
 
     # Credit notes
     for i in range(1, 4):
@@ -701,24 +800,97 @@ def process_company(company):
 
     # Vendor payments (mirror)
     bfulls = [bills.get("FULL%02d" % i) for i in range(1, 11)]
-    _safe_pay("vend_multi2", vend, "supplier", bank_j, outbound, [(bfulls[0], bfulls[0].amount_residual if bfulls[0] else 0), (bfulls[1], bfulls[1].amount_residual if bfulls[1] else 0)], "%s-C%s-PAY-V-M2" % (TAG, company.id))
-    _safe_pay("vend_multi3", vend, "supplier", bank_j, outbound, [(bfulls[i], bfulls[i].amount_residual if bfulls[i] else 0) for i in range(2, 5)], "%s-C%s-PAY-V-M3" % (TAG, company.id))
-    _safe_pay("vend_multi5", vend, "supplier", bank_j, outbound, [(bfulls[i], bfulls[i].amount_residual if bfulls[i] else 0) for i in range(5, 10)], "%s-C%s-PAY-V-M5" % (TAG, company.id))
+    _safe_pay(
+        "vend_multi2",
+        vend,
+        "supplier",
+        bank_j,
+        outbound,
+        [
+            (bfulls[0], bfulls[0].amount_residual if bfulls[0] else 0),
+            (bfulls[1], bfulls[1].amount_residual if bfulls[1] else 0),
+        ],
+        "%s-C%s-PAY-V-M2" % (TAG, company.id),
+    )
+    _safe_pay(
+        "vend_multi3",
+        vend,
+        "supplier",
+        bank_j,
+        outbound,
+        [
+            (bfulls[i], bfulls[i].amount_residual if bfulls[i] else 0)
+            for i in range(2, 5)
+        ],
+        "%s-C%s-PAY-V-M3" % (TAG, company.id),
+    )
+    _safe_pay(
+        "vend_multi5",
+        vend,
+        "supplier",
+        bank_j,
+        outbound,
+        [
+            (bfulls[i], bfulls[i].amount_residual if bfulls[i] else 0)
+            for i in range(5, 10)
+        ],
+        "%s-C%s-PAY-V-M5" % (TAG, company.id),
+    )
     bmultis = [bills.get("MULTI%02d" % i) for i in range(1, 5)]
-    _safe_pay("vend_multi4", vend, "supplier", bank_j, outbound, [(m, m.amount_residual if m else 0) for m in bmultis], "%s-C%s-PAY-V-M4" % (TAG, company.id))
+    _safe_pay(
+        "vend_multi4",
+        vend,
+        "supplier",
+        bank_j,
+        outbound,
+        [(m, m.amount_residual if m else 0) for m in bmultis],
+        "%s-C%s-PAY-V-M4" % (TAG, company.id),
+    )
     for i in range(1, 9):
         bill = bills.get("PART%02d" % i)
         if bill:
-            _safe_pay("vend_partial_%02d" % i, vend, "supplier", bank_j, outbound, [(bill, round(bill.amount_residual * 0.4, 2))], "%s-C%s-PAY-V-P%02d" % (TAG, company.id, i))
+            _safe_pay(
+                "vend_partial_%02d" % i,
+                vend,
+                "supplier",
+                bank_j,
+                outbound,
+                [(bill, round(bill.amount_residual * 0.4, 2))],
+                "%s-C%s-PAY-V-P%02d" % (TAG, company.id, i),
+            )
     bl = bills.get("LADDER")
     if bl:
-        _safe_pay("vend_ladder1", vend, "supplier", bank_j, outbound, [(bl, 4000)], "%s-C%s-PAY-V-L1" % (TAG, company.id))
+        _safe_pay(
+            "vend_ladder1",
+            vend,
+            "supplier",
+            bank_j,
+            outbound,
+            [(bl, 4000)],
+            "%s-C%s-PAY-V-L1" % (TAG, company.id),
+        )
         bl.invalidate_recordset()
         rec["flags"]["ap_residual_after_4000"] = bl.amount_residual
-        _safe_pay("vend_ladder2", vend, "supplier", bank_j, outbound, [(bl, 2500)], "%s-C%s-PAY-V-L2" % (TAG, company.id))
+        _safe_pay(
+            "vend_ladder2",
+            vend,
+            "supplier",
+            bank_j,
+            outbound,
+            [(bl, 2500)],
+            "%s-C%s-PAY-V-L2" % (TAG, company.id),
+        )
         bl.invalidate_recordset()
         rec["flags"]["ap_residual_after_2500"] = bl.amount_residual
-        _safe_pay("vend_ladder3", vend, "supplier", bank_j, outbound, [(bl, 3500)], "%s-C%s-PAY-V-L3" % (TAG, company.id))
+        _safe_pay(
+            "vend_ladder3",
+            vend,
+            "supplier",
+            bank_j,
+            outbound,
+            [(bl, 3500)],
+            "%s-C%s-PAY-V-L3" % (TAG, company.id),
+        )
         bl.invalidate_recordset()
         rec["flags"]["ap_residual_after_3500"] = bl.amount_residual
     for i in range(2, 6):
@@ -726,17 +898,49 @@ def process_company(company):
         if not bill:
             continue
         half = round(bill.amount_residual / 2.0, 2)
-        _safe_pay("vend_mpart_%02d_a" % i, vend, "supplier", bank_j, outbound, [(bill, half)], "%s-C%s-PAY-V-MP%02da" % (TAG, company.id, i))
+        _safe_pay(
+            "vend_mpart_%02d_a" % i,
+            vend,
+            "supplier",
+            bank_j,
+            outbound,
+            [(bill, half)],
+            "%s-C%s-PAY-V-MP%02da" % (TAG, company.id, i),
+        )
         bill.invalidate_recordset()
-        _safe_pay("vend_mpart_%02d_b" % i, vend, "supplier", bank_j, outbound, [(bill, bill.amount_residual)], "%s-C%s-PAY-V-MP%02db" % (TAG, company.id, i))
+        _safe_pay(
+            "vend_mpart_%02d_b" % i,
+            vend,
+            "supplier",
+            bank_j,
+            outbound,
+            [(bill, bill.amount_residual)],
+            "%s-C%s-PAY-V-MP%02db" % (TAG, company.id, i),
+        )
     for i in range(1, 3):
         bill = bills.get("XFULL%02d" % i)
         if bill:
-            _safe_pay("vend_xfull_%02d" % i, vend, "supplier", bank_j, outbound, [(bill, bill.amount_residual)], "%s-C%s-PAY-V-X%02d" % (TAG, company.id, i))
+            _safe_pay(
+                "vend_xfull_%02d" % i,
+                vend,
+                "supplier",
+                bank_j,
+                outbound,
+                [(bill, bill.amount_residual)],
+                "%s-C%s-PAY-V-X%02d" % (TAG, company.id, i),
+            )
     for key in ("EXPGOOD", "EXPSERV", "SPECIAL"):
         bill = bills.get(key)
         if bill:
-            _safe_pay("vend_%s" % key, vend, "supplier", bank_j, outbound, [(bill, bill.amount_residual)], "%s-C%s-PAY-V-%s" % (TAG, company.id, key))
+            _safe_pay(
+                "vend_%s" % key,
+                vend,
+                "supplier",
+                bank_j,
+                outbound,
+                [(bill, bill.amount_residual)],
+                "%s-C%s-PAY-V-%s" % (TAG, company.id, key),
+            )
 
     for i in range(1, 4):
         bill = bills.get("CNPART%02d" % i)
@@ -744,7 +948,13 @@ def process_company(company):
             continue
         try:
             with e.cr.savepoint():
-                cn = reverse_move(bill, purch_j, "%s vendor partial CN" % TAG, fraction=0.3)
+                cn = reverse_move(
+                    bill,
+                    purch_j,
+                    "%s vendor partial CN" % TAG,
+                    fraction=0.3,
+                    vendor_cn_ncf="B04%02d%02d%04d" % (88, company.id, 100 + i),
+                )
             rec["credit_notes"].append(
                 {
                     "origin": bill.id,
@@ -762,7 +972,13 @@ def process_company(company):
             continue
         try:
             with e.cr.savepoint():
-                cn = reverse_move(bill, purch_j, "%s vendor full CN" % TAG, fraction=1.0)
+                cn = reverse_move(
+                    bill,
+                    purch_j,
+                    "%s vendor full CN" % TAG,
+                    fraction=1.0,
+                    vendor_cn_ncf="B04%02d%02d%04d" % (88, company.id, 200 + i),
+                )
             rec["credit_notes"].append(
                 {
                     "origin": bill.id,
@@ -780,23 +996,27 @@ def process_company(company):
     rec["flags"]["po_id"] = None
     try:
         if "sale.order" in e:
-            so = e["sale.order"].with_company(company).create(
-                {
-                    "partner_id": cust.id,
-                    "company_id": company.id,
-                    "client_order_ref": "%s-C%s-SO" % (TAG, company.id),
-                    "order_line": [
-                        (
-                            0,
-                            0,
-                            {
-                                "product_id": prod.id,
-                                "product_uom_qty": 1,
-                                "price_unit": 9000,
-                            },
-                        )
-                    ],
-                }
+            so = (
+                e["sale.order"]
+                .with_company(company)
+                .create(
+                    {
+                        "partner_id": cust.id,
+                        "company_id": company.id,
+                        "client_order_ref": "%s-C%s-SO" % (TAG, company.id),
+                        "order_line": [
+                            (
+                                0,
+                                0,
+                                {
+                                    "product_id": prod.id,
+                                    "product_uom_qty": 1,
+                                    "price_unit": 9000,
+                                },
+                            )
+                        ],
+                    }
+                )
             )
             so.action_confirm()
             rec["flags"]["so_id"] = so.id
@@ -805,24 +1025,28 @@ def process_company(company):
         rec["errors"].append("SO: %s: %s" % (type(exc).__name__, exc))
     try:
         if "purchase.order" in e:
-            po = e["purchase.order"].with_company(company).create(
-                {
-                    "partner_id": vend.id,
-                    "company_id": company.id,
-                    "partner_ref": "%s-C%s-PO" % (TAG, company.id),
-                    "order_line": [
-                        (
-                            0,
-                            0,
-                            {
-                                "product_id": prod.id,
-                                "name": "DXQA PO line",
-                                "product_qty": 1,
-                                "price_unit": 5400,
-                            },
-                        )
-                    ],
-                }
+            po = (
+                e["purchase.order"]
+                .with_company(company)
+                .create(
+                    {
+                        "partner_id": vend.id,
+                        "company_id": company.id,
+                        "partner_ref": "%s-C%s-PO" % (TAG, company.id),
+                        "order_line": [
+                            (
+                                0,
+                                0,
+                                {
+                                    "product_id": prod.id,
+                                    "name": "DXQA PO line",
+                                    "product_qty": 1,
+                                    "price_unit": 5400,
+                                },
+                            )
+                        ],
+                    }
+                )
             )
             po.button_confirm()
             rec["flags"]["po_id"] = po.id
@@ -864,7 +1088,9 @@ for company in companies:
         )
     except Exception as exc:
         env.cr.rollback()
-        report["errors"].append("COMPANY %s: %s: %s" % (company.id, type(exc).__name__, exc))
+        report["errors"].append(
+            "COMPANY %s: %s: %s" % (company.id, type(exc).__name__, exc)
+        )
         print("FAIL_COMPANY", company.id, type(exc).__name__, exc)
 
 report["finished"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
