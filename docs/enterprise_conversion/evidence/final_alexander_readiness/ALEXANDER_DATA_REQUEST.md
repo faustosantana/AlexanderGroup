@@ -1,142 +1,150 @@
-# Paquete definitivo de solicitud de datos a Alexander
+# Solicitud final a Alexander — solo lo que falta
 
-**No cargar todavía.** Staging ya está en
-`READY_FOR_ALEXANDER_DATA_LOAD = YES`. Esta lista es lo que hay que pedir
-antes de diseñar la carga real.
+**No cargar todavía.**  
+**No repetir** lo que ya está en
+`Levantamiento_Basico_Odoo_Alexander_Group.xlsx` y ya está (o se puede
+mapear) en Doralex.
 
-`ALEXANDER_CONFIRMATION_REQUIRED = YES` en tesorería (cuentas outstanding).
+Auditoría: `ALEXANDER_EXCEL_VS_ODOO_AUDIT.md`.  
+`FISCAL_ROWS_IN_SOURCE_EXCEL = 0` → NCF **no** vino en ese archivo.
 
-## 1. Empresas y legal
+`PROD_TOUCHED = NO`
 
-Por cada empresa operativa (6 DO + decisión sobre plantilla US):
+---
 
-- Razón social oficial (DGII) y nombre comercial
-- RNC y confirmación de que coincide con padrón
-- Dirección fiscal, teléfono, correo oficial
-- Actividad económica / código
-- ¿La plantilla USD (company 1) debe quedar inactiva / sin fiscal DO?
+## No volver a pedir
 
-## 2. NCF / DGII
+Razón social, RNC, dirección fiscal, actividad, teléfono, representante,
+cédula, moneda, fecha de inicio, BANRESERVAS, número de cuenta, tipo
+(corriente/ahorros), titular, cédula del titular, oficina principal.
 
-Por empresa DO, **solo lo que vayan a usar**:
+Esos 6+6+6 registros **ya los entregaron**.
 
-- Tipos autorizados reales (no asumir B02/B11/B13/B17)
-- Número de autorización DGII
-- Prefijo, rango inicio/fin, próximo a usar, vigencia
-- ¿Emiten B02, B11, B13, B15, B16, B17?
-- Secuencias B04
-- ¿e-CF en el día 1? (hoy switch operativo vacío / OFF)
+Correos Gmail/Hotmail del Excel vs `administracion@…` de Odoo: no
+reescribir; solo marcar en §2 cuál queda oficial.
+
+---
+
+## 1. NCF / DGII reales
+
+El Excel fiscal está **vacío**. Lo que hay en staging (B01/B04 series
+`9910xxxx`) es **QA**, creado el 2026-08-29 por el sistema. No usar eso
+en producción.
+
+Por empresa DO, **solo los tipos que vayan a emitir**:
+
+| Empresa | Tipo (B01/B02/B04/B11/B13/B14/B15/B16/B17/…) | Autorización DGII | Desde | Hasta | Próximo | Vence | ¿e-CF? |
+|---|---|---|---|---|---|---|---|
+| INVERSIONES DORALEX | | | | | | | |
+| PIÑARIA | | | | | | | |
+| DOMINION | | | | | | | |
+| EL MAYUMA | | | | | | | |
+| REMPART | | | | | | | |
+| BLUE ELITE | | | | | | | |
+
+También:
+
+- ¿e-CF el día 1? (hoy el switch operativo está vacío / OFF)
 - Primer período 606/607/608 a declarar en el sistema
+- 609/623: no inventar. 623 solo si hay retenciones del Estado.
 
-Hoy en staging los rangos emitidos activos son **solo B01 y B04**.
+---
 
-## 3. Bancos y tesorería (plantilla por cuenta real)
+## 2. Tesorería que el Excel no trae
 
-Completar una fila por cada cuenta bancaria real:
+Ya tenemos banco, número, tipo y titular. Falta lo **contable**:
 
-| Campo | Valor Alexander |
-|---|---|
-| Empresa | |
-| Banco | |
-| Número de cuenta | |
-| Moneda | |
-| Tipo de cuenta (corriente / ahorro / caja) | |
-| Cuenta contable banco | |
-| Cuenta transitoria de cobros (Outstanding Receipts) | |
-| Cuenta transitoria de pagos (Outstanding Payments) | |
-| Métodos de pago permitidos | |
-| Forma de pago DGII (01/02/03/…) | |
-| Diario Odoo a usar | |
+| Empresa | Diario ya creado | Cuenta GL banco (confirmar) | Outstanding cobros | Outstanding pagos | Formas DGII (01/02/03/…) | ¿Caja / chequera extra? |
+|---|---|---|---|---|---|---|
+| DORALEX | Banco Banreservas · DOR | | | | | |
+| PIÑARIA | Banco Banreservas · PIN | | | | | |
+| DOMINION | Banco Banreservas · DOM | | | | | |
+| EL MAYUMA | Banco Banreservas · MAY | | | | | |
+| REMPART | Banco Banreservas · REM | | | | | |
+| BLUE ELITE | Banco Banreservas · BLU | | | | | |
 
-### Propuesta QA vista en staging (NO definitiva)
+Propuesta QA (no definitiva): cobros `Outstanding Receipts` / pagos
+`Outstanding Payments` del plan.  
+`ALEXANDER_CONFIRMATION_REQUIRED = YES` — no crear otras cuentas sin el
+contador.
 
-El plan ya tiene estas cuentas. En QA se asignaron a las líneas de método
-del diario banco para que Odoo 19 cree el asiento **sin** `force_payment_move`.
-El contador debe confirmar o sustituir:
+Balances del Excel (no pedir el monto otra vez):
 
-| Empresa | Diario QA | Cobros (propuesta) | Pagos (propuesta) |
+- Doralex 5,000,000 · Piñaria 2,450,000 · Dominion 1,500,000 ·
+  Mayuma 3,000,000 · Rempart 4,600,000 · Blue Elite 1,250,000
+- Fecha escrita `05//08/2026` — **¿5 ago o 8 may 2026?**
+- ¿Autorizan el asiento de apertura con esos montos?
+
+Correo oficial por empresa (marcar uno; ya los tenemos ambos):
+
+| Empresa | Excel | Odoo UX | ¿Cuál usar? |
 |---|---|---|---|
-| Plantilla técnica | Bank | 101403 Outstanding Receipts | 101404 Outstanding Payments |
-| BLUE ELITE | Bank | 11010203 Outstanding Receipts | 11010204 Outstanding Payments |
-| PIÑARIA | Bank | 11010203 Outstanding Receipts | 11010204 Outstanding Payments |
-| DOMINION | Bank | 11010203 Outstanding Receipts | 11010204 Outstanding Payments |
-| INVERSIONES DORALEX | Bank | 11010203 Outstanding Receipts | 11010204 Outstanding Payments |
-| EL MAYUMA | Bank | 11010203 Outstanding Receipts | 11010204 Outstanding Payments |
-| REMPART | Bank | 11010203 Outstanding Receipts | 11010204 Outstanding Payments |
+| DORALEX | inversionesdoralex@gmail.com | administracion@inversionesdoralex.com | |
+| PIÑARIA | piñariascomercializadora@gmail.com | administracion@pinariagroup.com | |
+| DOMINION | dominionsrl@hotmail.com | administracion@dominion-business.com | |
+| EL MAYUMA | inversioneselmayuma@gmail.com | administracion@elmayuma.com | |
+| REMPART | rempartsrl@hotmail.com | administracion@rempartgroup.com | |
+| BLUE ELITE | bluelitesrl@hotmail.com | administracion@blueelite.net | |
 
-`ALEXANDER_CONFIRMATION_REQUIRED = YES`
+---
 
-No crear otras cuentas outstanding sin esa confirmación.
+## 3. Plan, impuestos, retenciones
 
-También pedir: chequeras, cajas, formas DGII reales (01 efectivo, 02 cheque,
-03 transferencia, etc.).
+- Visto bueno del plan ya instalado (l10n_do). No reenviar el catálogo.
+- ¿OC obligatoria en factura de proveedor? Hoy `disabled`.
+- Retenciones ISR/ITBIS: catálogo **solo si las usan**. Hoy 0 configs;
+  623 = N/A hasta que existan.
 
-## 4. Plan contable y diarios
+---
 
-- Confirmación del plan (CxC 11030201, ventas 41010100, ITBIS, etc.)
-- Diarios venta / compra / banco / caja / misceláneos
-- Cuentas de gasto 606 (códigos 01–11)
-- ¿OC obligatoria en facturas de proveedor? (hoy `vendor_bill_po_policy = disabled`)
+## 4. Maestros reales (cero en Odoo hoy)
 
-## 5. Impuestos
-
-- ITBIS 18% bienes / servicios / importaciones activos
-- Exentos / propina / restaurante si aplican
-- Retenciones ISR / ITBIS: catálogo, tasas, cuentas, vigencia.
-  **Hoy 0 configs.** Sin esto 623 y withholding en pagos siguen N/A.
-
-## 6. Clientes y proveedores
+Staging solo tiene DXQA / DX TEST. Eso **no** es Alexander.
 
 Plantilla mínima:
 
-- Tipo (empresa / persona)
-- RNC o cédula
-- Nombre oficial DGII
-- Dirección, correo **real** (no `DXQA*`)
-- Condición de pago
-- Tipo de comprobante default (B01 vs B02) **después** de validar RNC
-- Proveedores: NCF recibido (B01/B14/…) vs B11/B13/B17 emitido por Alexander
+**Clientes / proveedores:** tipo, RNC o cédula, nombre DGII, dirección,
+correo real, condición de pago, comprobante default (después de validar
+RNC). Proveedor: NCF recibido vs B11/B13/B17 emitido.
 
-## 7. Productos / tarifas
+**Productos / servicios:** nombre, precio, costo, impuesto, ¿stock o
+consumo?
 
-- Lista, precio, costo, impuestos, cuentas
-- ¿Inventario real o servicio/consumo?
+No enviar partners de prueba.
 
-## 8. Saldos de apertura
+---
 
-Si entran con historia:
+## 5. Saldos e historia (si aplican)
 
-- Trial balance por empresa a fecha de corte
-- CxC / CxP abiertas: socio, NCF, fechas, residual, moneda
-- Anticipos / créditos no aplicados
-- ¿Migran NCF históricos al 607/608 o solo saldos?
+Marcar sí/no. Si no migran historia, no hace falta el detalle.
 
-## 9. Usuarios y aprobaciones
+- Trial balance de corte por empresa  
+- CxC / CxP abiertas (socio, NCF, fechas, residual)  
+- Anticipos / créditos no aplicados  
+- Inventario real (el Excel no trajo almacenes extra; la oficina ya está)  
+- Activos fijos  
+- ¿NCF históricos al 607/608 o solo saldos?
 
-- Usuarios, correos, roles
-- ¿Sigue `justech_approval_flow` para publicar?
-- Quién anula NCF (608)
+---
 
-## 10. Correo y documentos
+## 6. Personas y plantilla USD
 
-- SMTP / Microsoft 365
-- Logos y textos legales (QWeb Alexander = 58, no tocar)
-- Cuentas bancarias que deben verse en factura/recibo
+- Alexander Piña Aquino **ya es 1 usuario** con las 6 empresas
+  (`inversionesdoralex@gmail.com`). No crear 6 usuarios.
+- Falta: rol/grupos (el Excel dejó cargo/nivel vacíos) y si hay **otras
+  personas**.
+- ¿Quién anula NCF (608)? ¿Sigue el flujo de aprobación para publicar?
+- Compañía 1 `Plantilla técnica (no operativa)` USD/US: **KEEP** por
+  ahora. ¿La dejan inactiva / sin fiscal DO?
 
-## 11. Márgenes y traza (si día 1)
+---
 
-- ¿Toda venta lleva OC?
-- Costos adicionales
-- Usuarios del módulo
+## 7. Fuera de esta solicitud
 
-El motor ya validó 1 venta ↔ varias OC (carga de líneas al seleccionar OC).
+- Re-pedir RNC, direcciones, bancos, números de cuenta  
+- Certificados e-CF / envío DGII  
+- Dump Justgroup  
+- Cargar maestros ahora  
+- Borrar `DXQA-MASS-20260831` (solo identificar)
 
-## 12. Lo que NO pedir / no hacer todavía
-
-- Datos de e-CF productivos, certificados, envío a DGII
-- Dump Justgroup
-- Carga de partners/productos reales
-- Limpieza de `DXQA-MASS-20260831` (solo identificación)
-
-Cuando entreguen 1–8 **y** confirmen el §3 outstanding, se diseña la carga.
-No antes.
+Cuando respondan §§1–6 se diseña la carga. No antes.

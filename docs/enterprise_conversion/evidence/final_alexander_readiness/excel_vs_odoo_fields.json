@@ -1,0 +1,703 @@
+{
+  "companies": [
+    {
+      "id": 8,
+      "name": "BLUE ELITE, S.R.L.",
+      "commercial_name": "",
+      "dx_trade_name": "Blue Elite",
+      "dx_legal_representative": "Geilin Rosario Suero",
+      "dx_legal_id_number": "402-1097505-4",
+      "account_representative_id": "",
+      "l10n_do_dgii_start_date": "",
+      "justech_do_rnc_economic_activity": "Comercio y servicios",
+      "justech_do_rnc_official_name": "BLUE ELITE, S.R.L.",
+      "justech_do_rnc_trade_name": "Blue Elite",
+      "l10n_do_dgii_tax_payer_type": "taxpayer",
+      "vat": "133371261",
+      "street": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "street2": "",
+      "city": "SANTO DOMINGO ESTE",
+      "state": "",
+      "state_code": "",
+      "country": "DO",
+      "phone": "809-614-1306",
+      "email": "administracion@blueelite.net",
+      "currency": "DOP"
+    },
+    {
+      "id": 9,
+      "name": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "commercial_name": "",
+      "dx_trade_name": "Piñaria",
+      "dx_legal_representative": "Alba Rafaelina Arias Mora",
+      "dx_legal_id_number": "280-103907-0",
+      "account_representative_id": "",
+      "l10n_do_dgii_start_date": "",
+      "justech_do_rnc_economic_activity": "Alimentos, distribución e importación",
+      "justech_do_rnc_official_name": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "justech_do_rnc_trade_name": "Piñaria",
+      "l10n_do_dgii_tax_payer_type": "taxpayer",
+      "vat": "132271068",
+      "street": "CALLE 8 NO. 8, LAS AMERICAS, SANTO DOMINGO ESTE",
+      "street2": "",
+      "city": "SANTO DOMINGO ESTE",
+      "state": "",
+      "state_code": "",
+      "country": "DO",
+      "phone": "849-207-5817",
+      "email": "administracion@pinariagroup.com",
+      "currency": "DOP"
+    },
+    {
+      "id": 10,
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "commercial_name": "",
+      "dx_trade_name": "Dominion",
+      "dx_legal_representative": "Arisleydi Contreras Suero",
+      "dx_legal_id_number": "402-4200332-1",
+      "account_representative_id": "",
+      "l10n_do_dgii_start_date": "",
+      "justech_do_rnc_economic_activity": "Comercio y servicios",
+      "justech_do_rnc_official_name": "DOMINION BUSINESS,S.R.L.",
+      "justech_do_rnc_trade_name": "Dominion",
+      "l10n_do_dgii_tax_payer_type": "taxpayer",
+      "vat": "132721502",
+      "street": "CALLE ESPAILLAT NO. 10, ZONA COLONIAL, DISTRITO NACIONAL",
+      "street2": "",
+      "city": "DISTRITO NACIONAL",
+      "state": "",
+      "state_code": "",
+      "country": "DO",
+      "phone": "829-941-5257",
+      "email": "administracion@dominion-business.com",
+      "currency": "DOP"
+    },
+    {
+      "id": 11,
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "commercial_name": "",
+      "dx_trade_name": "Doralex",
+      "dx_legal_representative": "Alexander Piña Aquino",
+      "dx_legal_id_number": "223-0157134-9",
+      "account_representative_id": "",
+      "l10n_do_dgii_start_date": "",
+      "justech_do_rnc_economic_activity": "Inversiones, comercio, agroindustria e industria",
+      "justech_do_rnc_official_name": "INVERSIONES DORALEX,S.RL.",
+      "justech_do_rnc_trade_name": "Doralex",
+      "l10n_do_dgii_tax_payer_type": "taxpayer",
+      "vat": "132220112",
+      "street": "AV. SAN VICENTE DE PAUL, NO. 115, LOS MINA",
+      "street2": "",
+      "city": "SANTO DOMINGO ESTE",
+      "state": "",
+      "state_code": "",
+      "country": "DO",
+      "phone": "849-207-5817",
+      "email": "administracion@inversionesdoralex.com",
+      "currency": "DOP"
+    },
+    {
+      "id": 12,
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "commercial_name": "",
+      "dx_trade_name": "El Mayuma",
+      "dx_legal_representative": "Eldris Marlenny Ramirez Minaya",
+      "dx_legal_id_number": "402-4218015-2",
+      "account_representative_id": "",
+      "l10n_do_dgii_start_date": "",
+      "justech_do_rnc_economic_activity": "Comercio, servicios e inversión",
+      "justech_do_rnc_official_name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "justech_do_rnc_trade_name": "El Mayuma",
+      "l10n_do_dgii_tax_payer_type": "taxpayer",
+      "vat": "132710152",
+      "street": "CALLE CLUB ACTIVO 20-30, NO.47, RESPALDO ALMA ROSA II",
+      "street2": "",
+      "city": "SANTO DOMINGO ESTE",
+      "state": "",
+      "state_code": "",
+      "country": "DO",
+      "phone": "829-696-1881",
+      "email": "administracion@elmayuma.com",
+      "currency": "DOP"
+    },
+    {
+      "id": 13,
+      "name": "REMPART GROUP S.R.L.",
+      "commercial_name": "",
+      "dx_trade_name": "Rempart",
+      "dx_legal_representative": "Agustin Ventura Alcantara",
+      "dx_legal_id_number": "402-2314668-5",
+      "account_representative_id": "",
+      "l10n_do_dgii_start_date": "",
+      "justech_do_rnc_economic_activity": "Comercio y servicios",
+      "justech_do_rnc_official_name": "REMPART GROUP S.R.L.",
+      "justech_do_rnc_trade_name": "Rempart",
+      "l10n_do_dgii_tax_payer_type": "taxpayer",
+      "vat": "132769155",
+      "street": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "street2": "",
+      "city": "SANTO DOMINGO ESTE",
+      "state": "",
+      "state_code": "",
+      "country": "DO",
+      "phone": "849-394-1927",
+      "email": "administracion@rempartgroup.com",
+      "currency": "DOP"
+    }
+  ],
+  "journals": [
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "cid": 8,
+      "id": 55,
+      "name": "Banco Banreservas · BLU",
+      "code": "BNK1",
+      "type": "bank",
+      "bank_acc": "",
+      "gl": false,
+      "gl_name": "Bank",
+      "inbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Receipts"
+        }
+      ],
+      "outbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Payments"
+        }
+      ]
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "cid": 13,
+      "id": 90,
+      "name": "Banco Banreservas · REM",
+      "code": "BNK1",
+      "type": "bank",
+      "bank_acc": "",
+      "gl": false,
+      "gl_name": "Bank",
+      "inbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Receipts"
+        }
+      ],
+      "outbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Payments"
+        }
+      ]
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "cid": 9,
+      "id": 62,
+      "name": "Banco Banreservas · PIN",
+      "code": "BNK1",
+      "type": "bank",
+      "bank_acc": "",
+      "gl": false,
+      "gl_name": "Bank",
+      "inbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Receipts"
+        }
+      ],
+      "outbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Payments"
+        }
+      ]
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "cid": 10,
+      "id": 69,
+      "name": "Banco Banreservas · DOM",
+      "code": "BNK1",
+      "type": "bank",
+      "bank_acc": "",
+      "gl": false,
+      "gl_name": "Bank",
+      "inbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Receipts"
+        }
+      ],
+      "outbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Payments"
+        }
+      ]
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "cid": 11,
+      "id": 76,
+      "name": "Banco Banreservas · DOR",
+      "code": "BNK1",
+      "type": "bank",
+      "bank_acc": "",
+      "gl": false,
+      "gl_name": "Bank",
+      "inbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Receipts"
+        }
+      ],
+      "outbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Payments"
+        }
+      ]
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "cid": 12,
+      "id": 83,
+      "name": "Banco Banreservas · MAY",
+      "code": "BNK1",
+      "type": "bank",
+      "bank_acc": "",
+      "gl": false,
+      "gl_name": "Bank",
+      "inbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Receipts"
+        }
+      ],
+      "outbound": [
+        {
+          "name": "Manual Payment",
+          "acc": false,
+          "acc_name": "Outstanding Payments"
+        }
+      ]
+    },
+    {
+      "company": "Plantilla técnica (no operativa)",
+      "cid": 1,
+      "id": 6,
+      "name": "Bank",
+      "code": "BNK1",
+      "type": "bank",
+      "bank_acc": "",
+      "gl": "101401",
+      "gl_name": "Bank",
+      "inbound": [
+        {
+          "name": "Manual Payment",
+          "acc": "101403",
+          "acc_name": "Outstanding Receipts"
+        }
+      ],
+      "outbound": [
+        {
+          "name": "Manual Payment",
+          "acc": "101404",
+          "acc_name": "Outstanding Payments"
+        }
+      ]
+    }
+  ],
+  "ncf": [
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "cid": 8,
+      "prefix": "B01",
+      "start": 99100501,
+      "end": 99100550,
+      "next": 99100548,
+      "left": 3,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "cid": 8,
+      "prefix": "B04",
+      "start": 99110501,
+      "end": 99110550,
+      "next": 99110512,
+      "left": 39,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "cid": 9,
+      "prefix": "B01",
+      "start": 99100101,
+      "end": 99100150,
+      "next": 99100150,
+      "left": 1,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "cid": 9,
+      "prefix": "B04",
+      "start": 99110101,
+      "end": 99110150,
+      "next": 99110112,
+      "left": 39,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "cid": 10,
+      "prefix": "B01",
+      "start": 99100201,
+      "end": 99100250,
+      "next": 99100248,
+      "left": 3,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "cid": 10,
+      "prefix": "B04",
+      "start": 99110201,
+      "end": 99110250,
+      "next": 99110212,
+      "left": 39,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "cid": 11,
+      "prefix": "B01",
+      "start": 99100001,
+      "end": 99100050,
+      "next": 99100048,
+      "left": 3,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "cid": 11,
+      "prefix": "B04",
+      "start": 99110001,
+      "end": 99110050,
+      "next": 99110017,
+      "left": 34,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "cid": 12,
+      "prefix": "B01",
+      "start": 99100301,
+      "end": 99100350,
+      "next": 99100348,
+      "left": 3,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "cid": 12,
+      "prefix": "B04",
+      "start": 99110301,
+      "end": 99110350,
+      "next": 99110312,
+      "left": 39,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "cid": 13,
+      "prefix": "B01",
+      "start": 99100401,
+      "end": 99100450,
+      "next": 99100448,
+      "left": 3,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "cid": 13,
+      "prefix": "B04",
+      "start": 99110401,
+      "end": 99110450,
+      "next": 99110412,
+      "left": 39,
+      "exp": "",
+      "state": "active",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683"
+    }
+  ],
+  "user5": {
+    "id": 5,
+    "login": "inversionesdoralex@gmail.com",
+    "name": "Alexander Piña Aquino",
+    "email": "inversionesdoralex@gmail.com",
+    "phone": false,
+    "default_company": [
+      11,
+      "INVERSIONES DORALEX,S.RL."
+    ],
+    "allowed": [
+      [
+        8,
+        "BLUE ELITE, S.R.L."
+      ],
+      [
+        9,
+        "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L."
+      ],
+      [
+        10,
+        "DOMINION BUSINESS,S.R.L."
+      ],
+      [
+        11,
+        "INVERSIONES DORALEX,S.RL."
+      ],
+      [
+        12,
+        "INVERSIONES EL MAYUMA, S.R.L."
+      ],
+      [
+        13,
+        "REMPART GROUP S.R.L."
+      ]
+    ],
+    "active": true
+  },
+  "outstanding_accounts": [
+    [
+      [
+        1
+      ],
+      "101403",
+      "Outstanding Receipts"
+    ],
+    [
+      [
+        1
+      ],
+      "101404",
+      "Outstanding Payments"
+    ],
+    [
+      [
+        8
+      ],
+      false,
+      "Outstanding Receipts"
+    ],
+    [
+      [
+        9
+      ],
+      false,
+      "Outstanding Receipts"
+    ],
+    [
+      [
+        10
+      ],
+      false,
+      "Outstanding Receipts"
+    ],
+    [
+      [
+        11
+      ],
+      false,
+      "Outstanding Receipts"
+    ],
+    [
+      [
+        12
+      ],
+      false,
+      "Outstanding Receipts"
+    ],
+    [
+      [
+        13
+      ],
+      false,
+      "Outstanding Receipts"
+    ],
+    [
+      [
+        8
+      ],
+      false,
+      "Outstanding Payments"
+    ],
+    [
+      [
+        9
+      ],
+      false,
+      "Outstanding Payments"
+    ],
+    [
+      [
+        10
+      ],
+      false,
+      "Outstanding Payments"
+    ],
+    [
+      [
+        11
+      ],
+      false,
+      "Outstanding Payments"
+    ],
+    [
+      [
+        12
+      ],
+      false,
+      "Outstanding Payments"
+    ],
+    [
+      [
+        13
+      ],
+      false,
+      "Outstanding Payments"
+    ]
+  ],
+  "real_customers": [
+    [
+      45,
+      "DX TEST CLIENTE BLU — NO FISCAL REAL",
+      false,
+      "dx.test.blu.cliente@justech.do"
+    ],
+    [
+      39,
+      "DX TEST CLIENTE DOM — NO FISCAL REAL",
+      false,
+      "dx.test.dom.cliente@justech.do"
+    ],
+    [
+      35,
+      "DX TEST CLIENTE DOR — NO FISCAL REAL",
+      false,
+      "dx.test.dor.cliente@justech.do"
+    ],
+    [
+      41,
+      "DX TEST CLIENTE MAY — NO FISCAL REAL",
+      false,
+      "dx.test.may.cliente@justech.do"
+    ],
+    [
+      37,
+      "DX TEST CLIENTE PIN — NO FISCAL REAL",
+      false,
+      "dx.test.pin.cliente@justech.do"
+    ],
+    [
+      43,
+      "DX TEST CLIENTE REM — NO FISCAL REAL",
+      false,
+      "dx.test.rem.cliente@justech.do"
+    ]
+  ],
+  "real_vendors": [
+    [
+      79,
+      "DX-QA-FINAL PROVEEDOR — DX QA FINAL — NO FISCAL REAL — NO ENVIAR DGII — NO MAIL REAL",
+      false,
+      "dx.qa.final.vendor@example.invalid"
+    ],
+    [
+      46,
+      "DX TEST PROVEEDOR BLU — NO FISCAL REAL",
+      false,
+      "dx.test.blu.prov@justech.do"
+    ],
+    [
+      40,
+      "DX TEST PROVEEDOR DOM — NO FISCAL REAL",
+      false,
+      "dx.test.dom.prov@justech.do"
+    ],
+    [
+      36,
+      "DX TEST PROVEEDOR DOR — NO FISCAL REAL",
+      false,
+      "dx.test.dor.prov@justech.do"
+    ],
+    [
+      42,
+      "DX TEST PROVEEDOR MAY — NO FISCAL REAL",
+      false,
+      "dx.test.may.prov@justech.do"
+    ],
+    [
+      38,
+      "DX TEST PROVEEDOR PIN — NO FISCAL REAL",
+      false,
+      "dx.test.pin.prov@justech.do"
+    ],
+    [
+      44,
+      "DX TEST PROVEEDOR REM — NO FISCAL REAL",
+      false,
+      "dx.test.rem.prov@justech.do"
+    ]
+  ]
+}

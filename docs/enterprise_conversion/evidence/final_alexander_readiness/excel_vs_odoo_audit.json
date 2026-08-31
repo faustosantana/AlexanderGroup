@@ -1,0 +1,2259 @@
+{
+  "started": "2026-08-31T19:23:02Z",
+  "database": "doralex_ent_staging",
+  "prod_touched": false,
+  "config_changed": false,
+  "excel_sheets": [
+    "Instrucciones",
+    "Empresas",
+    "Cuentas bancarias",
+    "Sucursales y almacenes",
+    "Usuarios",
+    "Datos fiscales"
+  ],
+  "fiscal_rows_in_source_excel": 0,
+  "companies": [
+    {
+      "excel_n": 1,
+      "excel_name": "INVERSIONES DORALEX,S.RL.",
+      "odoo_id": 11,
+      "odoo_name": "INVERSIONES DORALEX,S.RL.",
+      "fields": [
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "razón social",
+          "EXCEL_VALUE": "INVERSIONES DORALEX,S.RL.",
+          "ODOO_VALUE": "INVERSIONES DORALEX,S.RL.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "nombre comercial",
+          "EXCEL_VALUE": "INVERSIONES DORALEX,S.RL.",
+          "ODOO_VALUE": "INVERSIONES DORALEX,S.RL.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "RNC",
+          "EXCEL_VALUE": "1-32-22011-2",
+          "ODOO_VALUE": "132220112",
+          "STATUS": "MATCH_NORMALIZED"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "tipo de contribuyente",
+          "EXCEL_VALUE": "Persona jurídica",
+          "ODOO_VALUE": "Persona jurídica",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "actividad principal",
+          "EXCEL_VALUE": "SERVICIO, COMERCIO, AGRARIO, INDUSTRIAL",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "dirección fiscal",
+          "EXCEL_VALUE": "AV. SAN VICENTE DE PAUL, NO. 115, LOS MINA",
+          "ODOO_VALUE": "AV. SAN VICENTE DE PAUL, NO. 115, LOS MINA",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "provincia",
+          "EXCEL_VALUE": "SANTO DOMINGO",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "municipio",
+          "EXCEL_VALUE": "SANTO DOMINGO ESTE",
+          "ODOO_VALUE": "SANTO DOMINGO ESTE",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "teléfono",
+          "EXCEL_VALUE": "849-207-5817",
+          "ODOO_VALUE": "849-207-5817",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "correo",
+          "EXCEL_VALUE": "inversionesdoralex@gmail.com",
+          "ODOO_VALUE": "administracion@inversionesdoralex.com",
+          "STATUS": "DIFFERENT"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "representante legal",
+          "EXCEL_VALUE": "Alexander Piña Aquino",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "cédula representante",
+          "EXCEL_VALUE": "223-0157134-9",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "moneda",
+          "EXCEL_VALUE": "DOP",
+          "ODOO_VALUE": "DOP",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES DORALEX,S.RL.",
+          "FIELD": "fecha inicio operaciones",
+          "EXCEL_VALUE": "2020-11-02",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        }
+      ],
+      "matched": true
+    },
+    {
+      "excel_n": 2,
+      "excel_name": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "odoo_id": 9,
+      "odoo_name": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "fields": [
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "razón social",
+          "EXCEL_VALUE": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "ODOO_VALUE": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "nombre comercial",
+          "EXCEL_VALUE": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "ODOO_VALUE": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "RNC",
+          "EXCEL_VALUE": "1-32-27106-8",
+          "ODOO_VALUE": "132271068",
+          "STATUS": "MATCH_NORMALIZED"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "tipo de contribuyente",
+          "EXCEL_VALUE": "Persona jurídica",
+          "ODOO_VALUE": "Persona jurídica",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "actividad principal",
+          "EXCEL_VALUE": "SERVICIO, COMERCIO, DISTRIBUCION, IMPORTACION",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "dirección fiscal",
+          "EXCEL_VALUE": "CALLE 8 NO. 8, LAS AMERICAS, SANTO DOMINGO ESTE,",
+          "ODOO_VALUE": "CALLE 8 NO. 8, LAS AMERICAS, SANTO DOMINGO ESTE",
+          "STATUS": "MATCH_NORMALIZED"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "provincia",
+          "EXCEL_VALUE": "SANTO DOMINGO",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "municipio",
+          "EXCEL_VALUE": "SANTO DOMINGO ESTE",
+          "ODOO_VALUE": "SANTO DOMINGO ESTE",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "teléfono",
+          "EXCEL_VALUE": "849-207-5817",
+          "ODOO_VALUE": "849-207-5817",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "correo",
+          "EXCEL_VALUE": "piñariascomercializadora@gmail.com",
+          "ODOO_VALUE": "administracion@pinariagroup.com",
+          "STATUS": "DIFFERENT"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "representante legal",
+          "EXCEL_VALUE": "Alba Rafaelina Arias Mora",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "cédula representante",
+          "EXCEL_VALUE": "280-103907-0",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "moneda",
+          "EXCEL_VALUE": "DOP",
+          "ODOO_VALUE": "DOP",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+          "FIELD": "fecha inicio operaciones",
+          "EXCEL_VALUE": "2021-03-01",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        }
+      ],
+      "matched": true
+    },
+    {
+      "excel_n": 3,
+      "excel_name": "DOMINION BUSINESS,S.R.L.",
+      "odoo_id": 10,
+      "odoo_name": "DOMINION BUSINESS,S.R.L.",
+      "fields": [
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "razón social",
+          "EXCEL_VALUE": "DOMINION BUSINESS,S.R.L.",
+          "ODOO_VALUE": "DOMINION BUSINESS,S.R.L.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "nombre comercial",
+          "EXCEL_VALUE": "DOMINION BUSINESS,S.R.L.",
+          "ODOO_VALUE": "DOMINION BUSINESS,S.R.L.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "RNC",
+          "EXCEL_VALUE": "1-32-72150-2",
+          "ODOO_VALUE": "132721502",
+          "STATUS": "MATCH_NORMALIZED"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "tipo de contribuyente",
+          "EXCEL_VALUE": "Persona jurídica",
+          "ODOO_VALUE": "Persona jurídica",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "actividad principal",
+          "EXCEL_VALUE": "COMERCIO, SERVICIO",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "dirección fiscal",
+          "EXCEL_VALUE": "CALLE ESPAILLAT NO. 10, ZONA COLONIAL, DISTRITO NACIONAL",
+          "ODOO_VALUE": "CALLE ESPAILLAT NO. 10, ZONA COLONIAL, DISTRITO NACIONAL",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "provincia",
+          "EXCEL_VALUE": "SANTO DOMINGO",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "municipio",
+          "EXCEL_VALUE": "DISTRITO NACIONAL",
+          "ODOO_VALUE": "DISTRITO NACIONAL",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "teléfono",
+          "EXCEL_VALUE": "829-941-5257",
+          "ODOO_VALUE": "829-941-5257",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "correo",
+          "EXCEL_VALUE": "dominionsrl@hotmail.com",
+          "ODOO_VALUE": "administracion@dominion-business.com",
+          "STATUS": "DIFFERENT"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "representante legal",
+          "EXCEL_VALUE": "Arisleydi Contreras Suero",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "cédula representante",
+          "EXCEL_VALUE": "402-4200332-1",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "moneda",
+          "EXCEL_VALUE": "DOP",
+          "ODOO_VALUE": "DOP",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "DOMINION BUSINESS,S.R.L.",
+          "FIELD": "fecha inicio operaciones",
+          "EXCEL_VALUE": "2022-11-09",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        }
+      ],
+      "matched": true
+    },
+    {
+      "excel_n": 4,
+      "excel_name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "odoo_id": 12,
+      "odoo_name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "fields": [
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "razón social",
+          "EXCEL_VALUE": "INVERSIONES EL MAYUMA, S.R.L.",
+          "ODOO_VALUE": "INVERSIONES EL MAYUMA, S.R.L.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "nombre comercial",
+          "EXCEL_VALUE": "INVERSIONES EL MAYUMA, S.R.L.",
+          "ODOO_VALUE": "INVERSIONES EL MAYUMA, S.R.L.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "RNC",
+          "EXCEL_VALUE": "1-32-71015-2",
+          "ODOO_VALUE": "132710152",
+          "STATUS": "MATCH_NORMALIZED"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "tipo de contribuyente",
+          "EXCEL_VALUE": "Persona jurídica",
+          "ODOO_VALUE": "Persona jurídica",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "actividad principal",
+          "EXCEL_VALUE": "COMERCIO, SERVICIO",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "dirección fiscal",
+          "EXCEL_VALUE": "CALLE CLUB ACTIVO 20-30, NO.47, RESPALDO ALMA ROSA ll",
+          "ODOO_VALUE": "CALLE CLUB ACTIVO 20-30, NO.47, RESPALDO ALMA ROSA II",
+          "STATUS": "DIFFERENT"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "provincia",
+          "EXCEL_VALUE": "SANTO DOMINGO",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "municipio",
+          "EXCEL_VALUE": "SANTO DOMINGO ESTE",
+          "ODOO_VALUE": "SANTO DOMINGO ESTE",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "teléfono",
+          "EXCEL_VALUE": "829-696-1881",
+          "ODOO_VALUE": "829-696-1881",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "correo",
+          "EXCEL_VALUE": "inversioneselmayuma@gmail.com",
+          "ODOO_VALUE": "administracion@elmayuma.com",
+          "STATUS": "DIFFERENT"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "representante legal",
+          "EXCEL_VALUE": "Eldris Marlenny Ramirez Minaya",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "cédula representante",
+          "EXCEL_VALUE": "402-4218015-2",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "moneda",
+          "EXCEL_VALUE": "DOP",
+          "ODOO_VALUE": "DOP",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+          "FIELD": "fecha inicio operaciones",
+          "EXCEL_VALUE": "2022-09-14",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        }
+      ],
+      "matched": true
+    },
+    {
+      "excel_n": 5,
+      "excel_name": "REMPART GROUP S.R.L.",
+      "odoo_id": 13,
+      "odoo_name": "REMPART GROUP S.R.L.",
+      "fields": [
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "razón social",
+          "EXCEL_VALUE": "REMPART GROUP S.R.L.",
+          "ODOO_VALUE": "REMPART GROUP S.R.L.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "nombre comercial",
+          "EXCEL_VALUE": "REMPART GROUP S.R.L.",
+          "ODOO_VALUE": "REMPART GROUP S.R.L.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "RNC",
+          "EXCEL_VALUE": "1-32-76915-5",
+          "ODOO_VALUE": "132769155",
+          "STATUS": "MATCH_NORMALIZED"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "tipo de contribuyente",
+          "EXCEL_VALUE": "Persona jurídica",
+          "ODOO_VALUE": "Persona jurídica",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "actividad principal",
+          "EXCEL_VALUE": "COMERCIO, SERVICIO",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "dirección fiscal",
+          "EXCEL_VALUE": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+          "ODOO_VALUE": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "provincia",
+          "EXCEL_VALUE": "SANTO DOMINGO",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "municipio",
+          "EXCEL_VALUE": "SANTO DOMINGO ESTE",
+          "ODOO_VALUE": "SANTO DOMINGO ESTE",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "teléfono",
+          "EXCEL_VALUE": "849-394-1927",
+          "ODOO_VALUE": "849-394-1927",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "correo",
+          "EXCEL_VALUE": "rempartsrl@hotmail.com",
+          "ODOO_VALUE": "administracion@rempartgroup.com",
+          "STATUS": "DIFFERENT"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "representante legal",
+          "EXCEL_VALUE": "Agustin Ventura Alcantara",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "cédula representante",
+          "EXCEL_VALUE": "402-2314668-5",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "moneda",
+          "EXCEL_VALUE": "DOP",
+          "ODOO_VALUE": "DOP",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "REMPART GROUP S.R.L.",
+          "FIELD": "fecha inicio operaciones",
+          "EXCEL_VALUE": "2023-01-19",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        }
+      ],
+      "matched": true
+    },
+    {
+      "excel_n": 6,
+      "excel_name": "BLUE ELITE, S.R.L.",
+      "odoo_id": 8,
+      "odoo_name": "BLUE ELITE, S.R.L.",
+      "fields": [
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "razón social",
+          "EXCEL_VALUE": "BLUE ELITE, S.R.L.",
+          "ODOO_VALUE": "BLUE ELITE, S.R.L.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "nombre comercial",
+          "EXCEL_VALUE": "BLUE ELITE, S.R.L.",
+          "ODOO_VALUE": "BLUE ELITE, S.R.L.",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "RNC",
+          "EXCEL_VALUE": "1-33-37126-1",
+          "ODOO_VALUE": "133371261",
+          "STATUS": "MATCH_NORMALIZED"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "tipo de contribuyente",
+          "EXCEL_VALUE": "Persona jurídica",
+          "ODOO_VALUE": "Persona jurídica",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "actividad principal",
+          "EXCEL_VALUE": "COMERCIO, SERVICIO",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "dirección fiscal",
+          "EXCEL_VALUE": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+          "ODOO_VALUE": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "provincia",
+          "EXCEL_VALUE": "SANTO DOMINGO",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "municipio",
+          "EXCEL_VALUE": "SANTO DOMINGO ESTE",
+          "ODOO_VALUE": "SANTO DOMINGO ESTE",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "teléfono",
+          "EXCEL_VALUE": "809-614-1306",
+          "ODOO_VALUE": "809-614-1306",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "correo",
+          "EXCEL_VALUE": "bluelitesrl@hotmail.com",
+          "ODOO_VALUE": "administracion@blueelite.net",
+          "STATUS": "DIFFERENT"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "representante legal",
+          "EXCEL_VALUE": "Geilin Rosario Suero",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "cédula representante",
+          "EXCEL_VALUE": "402-1097505-4",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "moneda",
+          "EXCEL_VALUE": "DOP",
+          "ODOO_VALUE": "DOP",
+          "STATUS": "MATCH"
+        },
+        {
+          "COMPANY": "BLUE ELITE, S.R.L.",
+          "FIELD": "fecha inicio operaciones",
+          "EXCEL_VALUE": "2025-04-04",
+          "ODOO_VALUE": "",
+          "STATUS": "MISSING_IN_ODOO"
+        }
+      ],
+      "matched": true
+    }
+  ],
+  "company_field_rows": [
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "razón social",
+      "EXCEL_VALUE": "INVERSIONES DORALEX,S.RL.",
+      "ODOO_VALUE": "INVERSIONES DORALEX,S.RL.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "nombre comercial",
+      "EXCEL_VALUE": "INVERSIONES DORALEX,S.RL.",
+      "ODOO_VALUE": "INVERSIONES DORALEX,S.RL.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "RNC",
+      "EXCEL_VALUE": "1-32-22011-2",
+      "ODOO_VALUE": "132220112",
+      "STATUS": "MATCH_NORMALIZED"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "tipo de contribuyente",
+      "EXCEL_VALUE": "Persona jurídica",
+      "ODOO_VALUE": "Persona jurídica",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "actividad principal",
+      "EXCEL_VALUE": "SERVICIO, COMERCIO, AGRARIO, INDUSTRIAL",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "dirección fiscal",
+      "EXCEL_VALUE": "AV. SAN VICENTE DE PAUL, NO. 115, LOS MINA",
+      "ODOO_VALUE": "AV. SAN VICENTE DE PAUL, NO. 115, LOS MINA",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "provincia",
+      "EXCEL_VALUE": "SANTO DOMINGO",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "municipio",
+      "EXCEL_VALUE": "SANTO DOMINGO ESTE",
+      "ODOO_VALUE": "SANTO DOMINGO ESTE",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "teléfono",
+      "EXCEL_VALUE": "849-207-5817",
+      "ODOO_VALUE": "849-207-5817",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "correo",
+      "EXCEL_VALUE": "inversionesdoralex@gmail.com",
+      "ODOO_VALUE": "administracion@inversionesdoralex.com",
+      "STATUS": "DIFFERENT"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "representante legal",
+      "EXCEL_VALUE": "Alexander Piña Aquino",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "cédula representante",
+      "EXCEL_VALUE": "223-0157134-9",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "moneda",
+      "EXCEL_VALUE": "DOP",
+      "ODOO_VALUE": "DOP",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "FIELD": "fecha inicio operaciones",
+      "EXCEL_VALUE": "2020-11-02",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "razón social",
+      "EXCEL_VALUE": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "ODOO_VALUE": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "nombre comercial",
+      "EXCEL_VALUE": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "ODOO_VALUE": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "RNC",
+      "EXCEL_VALUE": "1-32-27106-8",
+      "ODOO_VALUE": "132271068",
+      "STATUS": "MATCH_NORMALIZED"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "tipo de contribuyente",
+      "EXCEL_VALUE": "Persona jurídica",
+      "ODOO_VALUE": "Persona jurídica",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "actividad principal",
+      "EXCEL_VALUE": "SERVICIO, COMERCIO, DISTRIBUCION, IMPORTACION",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "dirección fiscal",
+      "EXCEL_VALUE": "CALLE 8 NO. 8, LAS AMERICAS, SANTO DOMINGO ESTE,",
+      "ODOO_VALUE": "CALLE 8 NO. 8, LAS AMERICAS, SANTO DOMINGO ESTE",
+      "STATUS": "MATCH_NORMALIZED"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "provincia",
+      "EXCEL_VALUE": "SANTO DOMINGO",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "municipio",
+      "EXCEL_VALUE": "SANTO DOMINGO ESTE",
+      "ODOO_VALUE": "SANTO DOMINGO ESTE",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "teléfono",
+      "EXCEL_VALUE": "849-207-5817",
+      "ODOO_VALUE": "849-207-5817",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "correo",
+      "EXCEL_VALUE": "piñariascomercializadora@gmail.com",
+      "ODOO_VALUE": "administracion@pinariagroup.com",
+      "STATUS": "DIFFERENT"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "representante legal",
+      "EXCEL_VALUE": "Alba Rafaelina Arias Mora",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "cédula representante",
+      "EXCEL_VALUE": "280-103907-0",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "moneda",
+      "EXCEL_VALUE": "DOP",
+      "ODOO_VALUE": "DOP",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "FIELD": "fecha inicio operaciones",
+      "EXCEL_VALUE": "2021-03-01",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "razón social",
+      "EXCEL_VALUE": "DOMINION BUSINESS,S.R.L.",
+      "ODOO_VALUE": "DOMINION BUSINESS,S.R.L.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "nombre comercial",
+      "EXCEL_VALUE": "DOMINION BUSINESS,S.R.L.",
+      "ODOO_VALUE": "DOMINION BUSINESS,S.R.L.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "RNC",
+      "EXCEL_VALUE": "1-32-72150-2",
+      "ODOO_VALUE": "132721502",
+      "STATUS": "MATCH_NORMALIZED"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "tipo de contribuyente",
+      "EXCEL_VALUE": "Persona jurídica",
+      "ODOO_VALUE": "Persona jurídica",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "actividad principal",
+      "EXCEL_VALUE": "COMERCIO, SERVICIO",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "dirección fiscal",
+      "EXCEL_VALUE": "CALLE ESPAILLAT NO. 10, ZONA COLONIAL, DISTRITO NACIONAL",
+      "ODOO_VALUE": "CALLE ESPAILLAT NO. 10, ZONA COLONIAL, DISTRITO NACIONAL",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "provincia",
+      "EXCEL_VALUE": "SANTO DOMINGO",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "municipio",
+      "EXCEL_VALUE": "DISTRITO NACIONAL",
+      "ODOO_VALUE": "DISTRITO NACIONAL",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "teléfono",
+      "EXCEL_VALUE": "829-941-5257",
+      "ODOO_VALUE": "829-941-5257",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "correo",
+      "EXCEL_VALUE": "dominionsrl@hotmail.com",
+      "ODOO_VALUE": "administracion@dominion-business.com",
+      "STATUS": "DIFFERENT"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "representante legal",
+      "EXCEL_VALUE": "Arisleydi Contreras Suero",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "cédula representante",
+      "EXCEL_VALUE": "402-4200332-1",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "moneda",
+      "EXCEL_VALUE": "DOP",
+      "ODOO_VALUE": "DOP",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "FIELD": "fecha inicio operaciones",
+      "EXCEL_VALUE": "2022-11-09",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "razón social",
+      "EXCEL_VALUE": "INVERSIONES EL MAYUMA, S.R.L.",
+      "ODOO_VALUE": "INVERSIONES EL MAYUMA, S.R.L.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "nombre comercial",
+      "EXCEL_VALUE": "INVERSIONES EL MAYUMA, S.R.L.",
+      "ODOO_VALUE": "INVERSIONES EL MAYUMA, S.R.L.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "RNC",
+      "EXCEL_VALUE": "1-32-71015-2",
+      "ODOO_VALUE": "132710152",
+      "STATUS": "MATCH_NORMALIZED"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "tipo de contribuyente",
+      "EXCEL_VALUE": "Persona jurídica",
+      "ODOO_VALUE": "Persona jurídica",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "actividad principal",
+      "EXCEL_VALUE": "COMERCIO, SERVICIO",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "dirección fiscal",
+      "EXCEL_VALUE": "CALLE CLUB ACTIVO 20-30, NO.47, RESPALDO ALMA ROSA ll",
+      "ODOO_VALUE": "CALLE CLUB ACTIVO 20-30, NO.47, RESPALDO ALMA ROSA II",
+      "STATUS": "DIFFERENT"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "provincia",
+      "EXCEL_VALUE": "SANTO DOMINGO",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "municipio",
+      "EXCEL_VALUE": "SANTO DOMINGO ESTE",
+      "ODOO_VALUE": "SANTO DOMINGO ESTE",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "teléfono",
+      "EXCEL_VALUE": "829-696-1881",
+      "ODOO_VALUE": "829-696-1881",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "correo",
+      "EXCEL_VALUE": "inversioneselmayuma@gmail.com",
+      "ODOO_VALUE": "administracion@elmayuma.com",
+      "STATUS": "DIFFERENT"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "representante legal",
+      "EXCEL_VALUE": "Eldris Marlenny Ramirez Minaya",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "cédula representante",
+      "EXCEL_VALUE": "402-4218015-2",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "moneda",
+      "EXCEL_VALUE": "DOP",
+      "ODOO_VALUE": "DOP",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "FIELD": "fecha inicio operaciones",
+      "EXCEL_VALUE": "2022-09-14",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "razón social",
+      "EXCEL_VALUE": "REMPART GROUP S.R.L.",
+      "ODOO_VALUE": "REMPART GROUP S.R.L.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "nombre comercial",
+      "EXCEL_VALUE": "REMPART GROUP S.R.L.",
+      "ODOO_VALUE": "REMPART GROUP S.R.L.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "RNC",
+      "EXCEL_VALUE": "1-32-76915-5",
+      "ODOO_VALUE": "132769155",
+      "STATUS": "MATCH_NORMALIZED"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "tipo de contribuyente",
+      "EXCEL_VALUE": "Persona jurídica",
+      "ODOO_VALUE": "Persona jurídica",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "actividad principal",
+      "EXCEL_VALUE": "COMERCIO, SERVICIO",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "dirección fiscal",
+      "EXCEL_VALUE": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "ODOO_VALUE": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "provincia",
+      "EXCEL_VALUE": "SANTO DOMINGO",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "municipio",
+      "EXCEL_VALUE": "SANTO DOMINGO ESTE",
+      "ODOO_VALUE": "SANTO DOMINGO ESTE",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "teléfono",
+      "EXCEL_VALUE": "849-394-1927",
+      "ODOO_VALUE": "849-394-1927",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "correo",
+      "EXCEL_VALUE": "rempartsrl@hotmail.com",
+      "ODOO_VALUE": "administracion@rempartgroup.com",
+      "STATUS": "DIFFERENT"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "representante legal",
+      "EXCEL_VALUE": "Agustin Ventura Alcantara",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "cédula representante",
+      "EXCEL_VALUE": "402-2314668-5",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "moneda",
+      "EXCEL_VALUE": "DOP",
+      "ODOO_VALUE": "DOP",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "FIELD": "fecha inicio operaciones",
+      "EXCEL_VALUE": "2023-01-19",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "razón social",
+      "EXCEL_VALUE": "BLUE ELITE, S.R.L.",
+      "ODOO_VALUE": "BLUE ELITE, S.R.L.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "nombre comercial",
+      "EXCEL_VALUE": "BLUE ELITE, S.R.L.",
+      "ODOO_VALUE": "BLUE ELITE, S.R.L.",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "RNC",
+      "EXCEL_VALUE": "1-33-37126-1",
+      "ODOO_VALUE": "133371261",
+      "STATUS": "MATCH_NORMALIZED"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "tipo de contribuyente",
+      "EXCEL_VALUE": "Persona jurídica",
+      "ODOO_VALUE": "Persona jurídica",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "actividad principal",
+      "EXCEL_VALUE": "COMERCIO, SERVICIO",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "dirección fiscal",
+      "EXCEL_VALUE": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "ODOO_VALUE": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "provincia",
+      "EXCEL_VALUE": "SANTO DOMINGO",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "municipio",
+      "EXCEL_VALUE": "SANTO DOMINGO ESTE",
+      "ODOO_VALUE": "SANTO DOMINGO ESTE",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "teléfono",
+      "EXCEL_VALUE": "809-614-1306",
+      "ODOO_VALUE": "809-614-1306",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "correo",
+      "EXCEL_VALUE": "bluelitesrl@hotmail.com",
+      "ODOO_VALUE": "administracion@blueelite.net",
+      "STATUS": "DIFFERENT"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "representante legal",
+      "EXCEL_VALUE": "Geilin Rosario Suero",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "cédula representante",
+      "EXCEL_VALUE": "402-1097505-4",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "moneda",
+      "EXCEL_VALUE": "DOP",
+      "ODOO_VALUE": "DOP",
+      "STATUS": "MATCH"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "FIELD": "fecha inicio operaciones",
+      "EXCEL_VALUE": "2025-04-04",
+      "ODOO_VALUE": "",
+      "STATUS": "MISSING_IN_ODOO"
+    }
+  ],
+  "technical_template": {
+    "TECHNICAL_TEMPLATE_COMPANY": "Plantilla técnica (no operativa)",
+    "COMPANY_ID": 1,
+    "currency": "USD",
+    "country": "US",
+    "HAS_TRANSACTIONS": true,
+    "move_count": 166,
+    "posted_moves": 166,
+    "HAS_FISCAL_CONFIG": false,
+    "ncf_range_count": 0,
+    "HAS_USERS": true,
+    "user_count_with_company": 1,
+    "RECOMMENDATION": "KEEP"
+  },
+  "banks": [
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "BANK": "BANRESERVAS",
+      "ACCOUNT_NUMBER": "9604436830",
+      "ACCOUNT_TYPE": "Corriente",
+      "CURRENCY": "DOP",
+      "HOLDER": "Alexander Piña Aquino",
+      "INITIAL_BALANCE": 5000000,
+      "BALANCE_DATE": "05//08/2026",
+      "ODOO_JOURNAL": "Banco Banreservas · DOR",
+      "ODOO_ACCOUNT_NUMBER": "9604436830",
+      "ODOO_BANK": "BANRESERVAS",
+      "ODOO_HOLDER": "INVERSIONES DORALEX,S.RL.",
+      "ODOO_CURRENCY": "DOP",
+      "ODOO_TYPE": "bank",
+      "MATCH_STATUS": "MATCH",
+      "company_id": 11,
+      "journal_id": 76
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "BANK": "BANRESERVAS",
+      "ACCOUNT_NUMBER": "9604097492",
+      "ACCOUNT_TYPE": "Corriente",
+      "CURRENCY": "DOP",
+      "HOLDER": "Alba Rafaelina Arias Mora",
+      "INITIAL_BALANCE": 2450000,
+      "BALANCE_DATE": "05//08/2026",
+      "ODOO_JOURNAL": "Banco Banreservas · PIN",
+      "ODOO_ACCOUNT_NUMBER": "9604097492",
+      "ODOO_BANK": "BANRESERVAS",
+      "ODOO_HOLDER": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "ODOO_CURRENCY": "DOP",
+      "ODOO_TYPE": "bank",
+      "MATCH_STATUS": "MATCH",
+      "company_id": 9,
+      "journal_id": 62
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "BANK": "BANRESERVAS",
+      "ACCOUNT_NUMBER": "9605588726",
+      "ACCOUNT_TYPE": "Ahorros",
+      "CURRENCY": "DOP",
+      "HOLDER": "Arisleydi Contreras Suero",
+      "INITIAL_BALANCE": 1500000,
+      "BALANCE_DATE": "05//08/2026",
+      "ODOO_JOURNAL": "Banco Banreservas · DOM",
+      "ODOO_ACCOUNT_NUMBER": "9605588726",
+      "ODOO_BANK": "BANRESERVAS",
+      "ODOO_HOLDER": "DOMINION BUSINESS,S.R.L.",
+      "ODOO_CURRENCY": "DOP",
+      "ODOO_TYPE": "bank",
+      "MATCH_STATUS": "MATCH",
+      "company_id": 10,
+      "journal_id": 69
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "BANK": "BANRESERVAS",
+      "ACCOUNT_NUMBER": "9605543104",
+      "ACCOUNT_TYPE": "Corriente",
+      "CURRENCY": "DOP",
+      "HOLDER": "Eldris Marlenny Ramirez Minaya",
+      "INITIAL_BALANCE": 3000000,
+      "BALANCE_DATE": "05//08/2026",
+      "ODOO_JOURNAL": "Banco Banreservas · MAY",
+      "ODOO_ACCOUNT_NUMBER": "9605543104",
+      "ODOO_BANK": "BANRESERVAS",
+      "ODOO_HOLDER": "INVERSIONES EL MAYUMA, S.R.L.",
+      "ODOO_CURRENCY": "DOP",
+      "ODOO_TYPE": "bank",
+      "MATCH_STATUS": "MATCH",
+      "company_id": 12,
+      "journal_id": 83
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "BANK": "BANRESERVAS",
+      "ACCOUNT_NUMBER": "9608739498",
+      "ACCOUNT_TYPE": "Corriente",
+      "CURRENCY": "DOP",
+      "HOLDER": "Agustin Ventura Alcantara",
+      "INITIAL_BALANCE": 4600000,
+      "BALANCE_DATE": "05//08/2026",
+      "ODOO_JOURNAL": "Banco Banreservas · REM",
+      "ODOO_ACCOUNT_NUMBER": "9608739498",
+      "ODOO_BANK": "BANRESERVAS",
+      "ODOO_HOLDER": "REMPART GROUP S.R.L.",
+      "ODOO_CURRENCY": "DOP",
+      "ODOO_TYPE": "bank",
+      "MATCH_STATUS": "MATCH",
+      "company_id": 13,
+      "journal_id": 90
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "BANK": "BANRESERVAS",
+      "ACCOUNT_NUMBER": "9608670542",
+      "ACCOUNT_TYPE": "Corriente",
+      "CURRENCY": "DOP",
+      "HOLDER": "Geilin Rosario Suero",
+      "INITIAL_BALANCE": 1250000,
+      "BALANCE_DATE": "05//08/2026",
+      "ODOO_JOURNAL": "Banco Banreservas · BLU",
+      "ODOO_ACCOUNT_NUMBER": "9608670542",
+      "ODOO_BANK": "BANRESERVAS",
+      "ODOO_HOLDER": "BLUE ELITE, S.R.L.",
+      "ODOO_CURRENCY": "DOP",
+      "ODOO_TYPE": "bank",
+      "MATCH_STATUS": "MATCH",
+      "company_id": 8,
+      "journal_id": 55
+    }
+  ],
+  "bank_accounting": [
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "company_id": 8,
+      "BANK_ACCOUNT": "Banco Banreservas · BLU",
+      "journal": "Banco Banreservas · BLU",
+      "journal_type": "bank",
+      "BANK_GL_ACCOUNT": false,
+      "BANK_GL_NAME": "Bank",
+      "OUTSTANDING_RECEIPTS_ACCOUNT": "",
+      "OUTSTANDING_PAYMENTS_ACCOUNT": "",
+      "INBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "OUTBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "DGII_PAYMENT_METHOD": [],
+      "CLASSIFICATION": "MISSING"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "company_id": 9,
+      "BANK_ACCOUNT": "Banco Banreservas · PIN",
+      "journal": "Banco Banreservas · PIN",
+      "journal_type": "bank",
+      "BANK_GL_ACCOUNT": false,
+      "BANK_GL_NAME": "Bank",
+      "OUTSTANDING_RECEIPTS_ACCOUNT": "",
+      "OUTSTANDING_PAYMENTS_ACCOUNT": "",
+      "INBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "OUTBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "DGII_PAYMENT_METHOD": [],
+      "CLASSIFICATION": "MISSING"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "company_id": 10,
+      "BANK_ACCOUNT": "Banco Banreservas · DOM",
+      "journal": "Banco Banreservas · DOM",
+      "journal_type": "bank",
+      "BANK_GL_ACCOUNT": false,
+      "BANK_GL_NAME": "Bank",
+      "OUTSTANDING_RECEIPTS_ACCOUNT": "",
+      "OUTSTANDING_PAYMENTS_ACCOUNT": "",
+      "INBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "OUTBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "DGII_PAYMENT_METHOD": [],
+      "CLASSIFICATION": "MISSING"
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "company_id": 11,
+      "BANK_ACCOUNT": "Banco Banreservas · DOR",
+      "journal": "Banco Banreservas · DOR",
+      "journal_type": "bank",
+      "BANK_GL_ACCOUNT": false,
+      "BANK_GL_NAME": "Bank",
+      "OUTSTANDING_RECEIPTS_ACCOUNT": "",
+      "OUTSTANDING_PAYMENTS_ACCOUNT": "",
+      "INBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "OUTBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "DGII_PAYMENT_METHOD": [],
+      "CLASSIFICATION": "MISSING"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "company_id": 12,
+      "BANK_ACCOUNT": "Banco Banreservas · MAY",
+      "journal": "Banco Banreservas · MAY",
+      "journal_type": "bank",
+      "BANK_GL_ACCOUNT": false,
+      "BANK_GL_NAME": "Bank",
+      "OUTSTANDING_RECEIPTS_ACCOUNT": "",
+      "OUTSTANDING_PAYMENTS_ACCOUNT": "",
+      "INBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "OUTBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "DGII_PAYMENT_METHOD": [],
+      "CLASSIFICATION": "MISSING"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "company_id": 13,
+      "BANK_ACCOUNT": "Banco Banreservas · REM",
+      "journal": "Banco Banreservas · REM",
+      "journal_type": "bank",
+      "BANK_GL_ACCOUNT": false,
+      "BANK_GL_NAME": "Bank",
+      "OUTSTANDING_RECEIPTS_ACCOUNT": "",
+      "OUTSTANDING_PAYMENTS_ACCOUNT": "",
+      "INBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "OUTBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "DGII_PAYMENT_METHOD": [],
+      "CLASSIFICATION": "MISSING"
+    },
+    {
+      "COMPANY": "Plantilla técnica (no operativa)",
+      "company_id": 1,
+      "BANK_ACCOUNT": "Bank",
+      "journal": "Bank",
+      "journal_type": "bank",
+      "BANK_GL_ACCOUNT": "101401",
+      "BANK_GL_NAME": "Bank",
+      "OUTSTANDING_RECEIPTS_ACCOUNT": "101403",
+      "OUTSTANDING_PAYMENTS_ACCOUNT": "101404",
+      "INBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "OUTBOUND_PAYMENT_METHOD": [
+        "Manual Payment"
+      ],
+      "DGII_PAYMENT_METHOD": [],
+      "CLASSIFICATION": "NEEDS_ACCOUNTANT_CONFIRMATION"
+    }
+  ],
+  "branches": [],
+  "warehouses": [
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "odoo_id": 11,
+      "excel_local": "INVERSIONES DORALEX,S.RL.",
+      "excel_type": "Oficina principal",
+      "excel_street": "AV. SAN VICENTE DE PAUL, NO. 115, LOS MINA",
+      "excel_phone": "849-207-5817",
+      "excel_responsable": "Alexander Piña Aquino",
+      "odoo_company_street": "AV. SAN VICENTE DE PAUL, NO. 115, LOS MINA",
+      "odoo_warehouses": [
+        [
+          2,
+          "Almacén Principal",
+          "DOR"
+        ]
+      ],
+      "odoo_internal_locations": [
+        [
+          62,
+          "DOR/Existencias"
+        ]
+      ],
+      "office_address_match": "MATCH"
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "odoo_id": 9,
+      "excel_local": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "excel_type": "Oficina principal",
+      "excel_street": "CALLE 8 NO. 8, LAS AMERICAS, SANTO DOMINGO ESTE,",
+      "excel_phone": "849-207-5817",
+      "excel_responsable": "Alba Rafaelina Arias Mora",
+      "odoo_company_street": "CALLE 8 NO. 8, LAS AMERICAS, SANTO DOMINGO ESTE",
+      "odoo_warehouses": [
+        [
+          3,
+          "Almacén Principal",
+          "PIN"
+        ]
+      ],
+      "odoo_internal_locations": [
+        [
+          68,
+          "PIN/Existencias"
+        ]
+      ],
+      "office_address_match": "MATCH_NORMALIZED"
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "odoo_id": 10,
+      "excel_local": "DOMINION BUSINESS,S.R.L.",
+      "excel_type": "Oficina principal",
+      "excel_street": "CALLE ESPAILLAT NO. 10, ZONA COLONIAL, DISTRITO NACIONAL",
+      "excel_phone": "829-941-5257",
+      "excel_responsable": "Arisleydi Contreras Suero",
+      "odoo_company_street": "CALLE ESPAILLAT NO. 10, ZONA COLONIAL, DISTRITO NACIONAL",
+      "odoo_warehouses": [
+        [
+          4,
+          "Almacén Principal",
+          "DOM"
+        ]
+      ],
+      "odoo_internal_locations": [
+        [
+          74,
+          "DOM/Existencias"
+        ]
+      ],
+      "office_address_match": "MATCH"
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "odoo_id": 12,
+      "excel_local": "INVERSIONES EL MAYUMA, S.R.L.",
+      "excel_type": "Oficina principal",
+      "excel_street": "CALLE CLUB ACTIVO 20-30, NO.47, RESPALDO ALMA ROSA ll",
+      "excel_phone": "829-696-1881",
+      "excel_responsable": "Eldris Marlenny Ramirez Minaya",
+      "odoo_company_street": "CALLE CLUB ACTIVO 20-30, NO.47, RESPALDO ALMA ROSA II",
+      "odoo_warehouses": [
+        [
+          5,
+          "Almacén Principal",
+          "MAY"
+        ]
+      ],
+      "odoo_internal_locations": [
+        [
+          80,
+          "MAY/Existencias"
+        ]
+      ],
+      "office_address_match": "DIFFERENT"
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "odoo_id": 13,
+      "excel_local": "REMPART GROUP S.R.L.",
+      "excel_type": "Oficina principal",
+      "excel_street": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "excel_phone": "849-394-1927",
+      "excel_responsable": "Agustin Ventura Alcantara",
+      "odoo_company_street": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "odoo_warehouses": [
+        [
+          6,
+          "Almacén Principal",
+          "REM"
+        ]
+      ],
+      "odoo_internal_locations": [
+        [
+          86,
+          "REM/Existencias"
+        ]
+      ],
+      "office_address_match": "MATCH"
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "odoo_id": 8,
+      "excel_local": "BLUE ELITE, S.R.L.",
+      "excel_type": "Oficina principal",
+      "excel_street": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "excel_phone": "809-614-1306",
+      "excel_responsable": "Geilin Rosario Suero",
+      "odoo_company_street": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "odoo_warehouses": [
+        [
+          7,
+          "Almacén Principal",
+          "BLU"
+        ]
+      ],
+      "odoo_internal_locations": [
+        [
+          92,
+          "BLU/Existencias"
+        ]
+      ],
+      "office_address_match": "MATCH"
+    }
+  ],
+  "users": {
+    "EXCEL_ROWS": 6,
+    "excel_person": "ALEXANDER PIÑA AQUINO",
+    "excel_emails": [
+      "inversionesdoralex@gmail.com",
+      "piñariascomercializadora@gmail.com",
+      "dominionsrl@hotmail.com",
+      "inversioneselmayuma@gmail.com",
+      "rempartsrl@hotmail.com",
+      "bluelitesrl@hotmail.com"
+    ],
+    "ODOO_USER_COUNT": 5,
+    "ALEXANDER_USER_IDS": [
+      5
+    ],
+    "LOGINS": [
+      [
+        5,
+        "inversionesdoralex@gmail.com",
+        "Alexander Piña Aquino",
+        "inversionesdoralex@gmail.com"
+      ]
+    ],
+    "email_logins": [
+      [
+        5,
+        "inversionesdoralex@gmail.com",
+        "Alexander Piña Aquino"
+      ]
+    ],
+    "all_internal": [
+      {
+        "id": 2,
+        "login": "admin",
+        "name": "Administrator",
+        "email": false,
+        "default_company": "BLUE ELITE, S.R.L.",
+        "allowed": [
+          [
+            8,
+            "BLUE ELITE, S.R.L."
+          ],
+          [
+            9,
+            "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L."
+          ],
+          [
+            10,
+            "DOMINION BUSINESS,S.R.L."
+          ],
+          [
+            11,
+            "INVERSIONES DORALEX,S.RL."
+          ],
+          [
+            12,
+            "INVERSIONES EL MAYUMA, S.R.L."
+          ],
+          [
+            13,
+            "REMPART GROUP S.R.L."
+          ]
+        ]
+      },
+      {
+        "id": 5,
+        "login": "inversionesdoralex@gmail.com",
+        "name": "Alexander Piña Aquino",
+        "email": "inversionesdoralex@gmail.com",
+        "default_company": "INVERSIONES DORALEX,S.RL.",
+        "allowed": [
+          [
+            8,
+            "BLUE ELITE, S.R.L."
+          ],
+          [
+            9,
+            "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L."
+          ],
+          [
+            10,
+            "DOMINION BUSINESS,S.R.L."
+          ],
+          [
+            11,
+            "INVERSIONES DORALEX,S.RL."
+          ],
+          [
+            12,
+            "INVERSIONES EL MAYUMA, S.R.L."
+          ],
+          [
+            13,
+            "REMPART GROUP S.R.L."
+          ]
+        ]
+      },
+      {
+        "id": 7,
+        "login": "dx.test.security@justech.do",
+        "name": "DX TEST USER SECURITY BLU",
+        "email": false,
+        "default_company": "BLUE ELITE, S.R.L.",
+        "allowed": [
+          [
+            8,
+            "BLUE ELITE, S.R.L."
+          ]
+        ]
+      },
+      {
+        "id": 8,
+        "login": "fausto@justech.do",
+        "name": "Fausto Santana",
+        "email": "fausto@justech.do",
+        "default_company": "INVERSIONES DORALEX,S.RL.",
+        "allowed": [
+          [
+            8,
+            "BLUE ELITE, S.R.L."
+          ],
+          [
+            9,
+            "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L."
+          ],
+          [
+            10,
+            "DOMINION BUSINESS,S.R.L."
+          ],
+          [
+            11,
+            "INVERSIONES DORALEX,S.RL."
+          ],
+          [
+            12,
+            "INVERSIONES EL MAYUMA, S.R.L."
+          ],
+          [
+            13,
+            "REMPART GROUP S.R.L."
+          ]
+        ]
+      },
+      {
+        "id": 11,
+        "login": "ux.qa.staging@doralex.local",
+        "name": "UX QA Staging",
+        "email": false,
+        "default_company": "Plantilla técnica (no operativa)",
+        "allowed": [
+          [
+            8,
+            "BLUE ELITE, S.R.L."
+          ],
+          [
+            9,
+            "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L."
+          ],
+          [
+            10,
+            "DOMINION BUSINESS,S.R.L."
+          ],
+          [
+            11,
+            "INVERSIONES DORALEX,S.RL."
+          ],
+          [
+            12,
+            "INVERSIONES EL MAYUMA, S.R.L."
+          ],
+          [
+            13,
+            "REMPART GROUP S.R.L."
+          ],
+          [
+            1,
+            "Plantilla técnica (no operativa)"
+          ]
+        ]
+      }
+    ]
+  },
+  "ncf": [
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "company_id": 8,
+      "NCF_TYPE": "B01",
+      "RANGE_START": 99100501,
+      "RANGE_END": 99100550,
+      "CURRENT_NEXT": 99100548,
+      "remaining": 3,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 23
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "company_id": 12,
+      "NCF_TYPE": "B01",
+      "RANGE_START": 99100301,
+      "RANGE_END": 99100350,
+      "CURRENT_NEXT": 99100348,
+      "remaining": 3,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 19
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "company_id": 9,
+      "NCF_TYPE": "B01",
+      "RANGE_START": 99100101,
+      "RANGE_END": 99100150,
+      "CURRENT_NEXT": 99100150,
+      "remaining": 1,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 15
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "company_id": 13,
+      "NCF_TYPE": "B01",
+      "RANGE_START": 99100401,
+      "RANGE_END": 99100450,
+      "CURRENT_NEXT": 99100448,
+      "remaining": 3,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 21
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "company_id": 10,
+      "NCF_TYPE": "B01",
+      "RANGE_START": 99100201,
+      "RANGE_END": 99100250,
+      "CURRENT_NEXT": 99100248,
+      "remaining": 3,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 17
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "company_id": 11,
+      "NCF_TYPE": "B01",
+      "RANGE_START": 99100001,
+      "RANGE_END": 99100050,
+      "CURRENT_NEXT": 99100048,
+      "remaining": 3,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 13
+    },
+    {
+      "COMPANY": "DOMINION BUSINESS,S.R.L.",
+      "company_id": 10,
+      "NCF_TYPE": "B04",
+      "RANGE_START": 99110201,
+      "RANGE_END": 99110250,
+      "CURRENT_NEXT": 99110212,
+      "remaining": 39,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 18
+    },
+    {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "company_id": 12,
+      "NCF_TYPE": "B04",
+      "RANGE_START": 99110301,
+      "RANGE_END": 99110350,
+      "CURRENT_NEXT": 99110312,
+      "remaining": 39,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 20
+    },
+    {
+      "COMPANY": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "company_id": 9,
+      "NCF_TYPE": "B04",
+      "RANGE_START": 99110101,
+      "RANGE_END": 99110150,
+      "CURRENT_NEXT": 99110112,
+      "remaining": 39,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 16
+    },
+    {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "company_id": 11,
+      "NCF_TYPE": "B04",
+      "RANGE_START": 99110001,
+      "RANGE_END": 99110050,
+      "CURRENT_NEXT": 99110017,
+      "remaining": 34,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 14
+    },
+    {
+      "COMPANY": "BLUE ELITE, S.R.L.",
+      "company_id": 8,
+      "NCF_TYPE": "B04",
+      "RANGE_START": 99110501,
+      "RANGE_END": 99110550,
+      "CURRENT_NEXT": 99110512,
+      "remaining": 39,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 24
+    },
+    {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "company_id": 13,
+      "NCF_TYPE": "B04",
+      "RANGE_START": 99110401,
+      "RANGE_END": 99110450,
+      "CURRENT_NEXT": 99110412,
+      "remaining": 39,
+      "EXPIRATION": "2026-12-27",
+      "state": "active",
+      "SOURCE": "MANUAL_CONFIGURATION",
+      "create_uid": "__system__",
+      "create_date": "2026-08-29 15:34:03.156683",
+      "id": 22
+    }
+  ],
+  "qa_contamination": {
+    "dxqa_partners": 14,
+    "dxqa_products": 7,
+    "dxqa_sale_orders": 47,
+    "mass_tag_sos": 15,
+    "final_tag_sos": 31
+  },
+  "blocks": {
+    "NCF": {
+      "ALREADY_CONFIGURED": true,
+      "SOURCE": "QA_OR_MANUAL_NOT_EXCEL",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "note": "Excel fiscal sheet empty. Current B01/B04 must not be treated as Alexander-delivered."
+    },
+    "outstanding": {
+      "ALREADY_CONFIGURED": true,
+      "SOURCE": "QA_CONFIGURATION",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true
+    },
+    "coa": {
+      "ALREADY_CONFIGURED": true,
+      "SOURCE": "ODOO_L10N_DO / ENTERPRISE_TEMPLATE",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "account_count": 1779
+    },
+    "taxes": {
+      "ALREADY_CONFIGURED": true,
+      "SOURCE": "ODOO_L10N_DO",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "tax_count": 226,
+      "withholding_configs": 0
+    },
+    "customers": {
+      "ALREADY_CONFIGURED": false,
+      "SOURCE": "QA_ONLY_IF_DXQA",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "real_customer_rank": 6,
+      "dxqa_partners": 14
+    },
+    "vendors": {
+      "ALREADY_CONFIGURED": false,
+      "SOURCE": "QA_ONLY_IF_DXQA",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "real_vendor_rank": 7
+    },
+    "products": {
+      "ALREADY_CONFIGURED": false,
+      "SOURCE": "QA_DXQA_PRODUCTS",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "coded_non_dxqa": 6,
+      "dxqa_products": 7
+    },
+    "open_ar": {
+      "ALREADY_CONFIGURED": false,
+      "SOURCE": "QA_INVOICES_PRESENT_NOT_ALEXANDER",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "open_non_dxqa_ref": 8
+    },
+    "open_ap": {
+      "ALREADY_CONFIGURED": false,
+      "SOURCE": "QA_BILLS_PRESENT_NOT_ALEXANDER",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "open_non_dxqa_ref": 30
+    },
+    "advances": {
+      "ALREADY_CONFIGURED": false,
+      "SOURCE": null,
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true
+    },
+    "opening_balance": {
+      "ALREADY_CONFIGURED": false,
+      "SOURCE": "UNKNOWN_IF_ANY",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "moves_looking_like_opening": 0,
+      "excel_balances_posted": false
+    },
+    "inventory": {
+      "ALREADY_CONFIGURED": true,
+      "SOURCE": "UNKNOWN",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "nonzero_quants": 8
+    },
+    "assets": {
+      "ALREADY_CONFIGURED": false,
+      "SOURCE": null,
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true,
+      "asset_count": 0
+    },
+    "users_roles": {
+      "ALREADY_CONFIGURED": true,
+      "SOURCE": "ALEXANDER_EXCEL_PARTIAL",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true
+    },
+    "extra_warehouses": {
+      "ALREADY_CONFIGURED": false,
+      "SOURCE": "EXCEL_OFFICES_ONLY",
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true
+    },
+    "history": {
+      "ALREADY_CONFIGURED": false,
+      "SOURCE": null,
+      "COMPLETE": false,
+      "NEEDS_ALEXANDER": true
+    }
+  },
+  "odoo_company_count": 7,
+  "odoo_companies": [
+    {
+      "id": 8,
+      "name": "BLUE ELITE, S.R.L.",
+      "currency": "DOP"
+    },
+    {
+      "id": 9,
+      "name": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "currency": "DOP"
+    },
+    {
+      "id": 10,
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "currency": "DOP"
+    },
+    {
+      "id": 11,
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "currency": "DOP"
+    },
+    {
+      "id": 12,
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "currency": "DOP"
+    },
+    {
+      "id": 13,
+      "name": "REMPART GROUP S.R.L.",
+      "currency": "DOP"
+    },
+    {
+      "id": 1,
+      "name": "Plantilla técnica (no operativa)",
+      "currency": "USD"
+    }
+  ],
+  "sample_partner_comment": "",
+  "company_extra_fields": [
+    "account_display_representative_field",
+    "account_fiscal_country_group_codes",
+    "account_fiscal_country_id",
+    "account_purchase_receipt_fiscal_position_id",
+    "account_representative_id",
+    "commercial_name",
+    "domestic_fiscal_position_id",
+    "dx_legal_id_number",
+    "dx_legal_representative",
+    "dx_report_footer_text",
+    "dx_report_logo_height",
+    "dx_report_show_address",
+    "dx_report_show_bank",
+    "dx_report_show_email",
+    "dx_report_show_legal_name",
+    "dx_report_show_logo",
+    "dx_report_show_phone",
+    "dx_report_show_rnc",
+    "dx_report_show_salesperson",
+    "dx_report_show_signature",
+    "dx_report_terms",
+    "dx_trade_name",
+    "external_report_layout_id",
+    "fiscal_position_ids",
+    "fiscalyear_last_day",
+    "fiscalyear_last_month",
+    "fiscalyear_lock_date",
+    "justech_do_fiscal_enabled",
+    "justech_do_fiscal_regularization_user_id",
+    "l10n_do_dgii_start_date",
+    "prepayment_percent",
+    "report_footer",
+    "report_header",
+    "user_fiscalyear_lock_date"
+  ],
+  "partner_extra_fields": [
+    "activity_calendar_event_id",
+    "activity_date_deadline",
+    "activity_exception_decoration",
+    "activity_exception_icon",
+    "activity_ids",
+    "activity_state",
+    "activity_summary",
+    "activity_type_icon",
+    "activity_type_id",
+    "activity_user_id",
+    "avatar_1024",
+    "avatar_128",
+    "avatar_1920",
+    "avatar_256",
+    "avatar_512",
+    "comment",
+    "justech_do_rnc_contributor_state",
+    "justech_do_rnc_duplicate_info",
+    "justech_do_rnc_duplicate_partner_id",
+    "justech_do_rnc_economic_activity",
+    "justech_do_rnc_name_differs",
+    "justech_do_rnc_official_name",
+    "justech_do_rnc_padron_id",
+    "justech_do_rnc_source",
+    "justech_do_rnc_status",
+    "justech_do_rnc_trade_name",
+    "justech_do_rnc_valid",
+    "justech_do_rnc_validated_at",
+    "justech_do_show_rnc_validation",
+    "justech_do_vat_label",
+    "l10n_do_dgii_tax_payer_type",
+    "l10n_do_expense_type",
+    "my_activity_date_deadline",
+    "partner_vat_placeholder",
+    "same_vat_partner_id",
+    "vat",
+    "vat_label"
+  ]
+}
