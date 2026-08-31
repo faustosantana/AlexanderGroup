@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """UAT: multi-invoice → single payment (register + manual wizard)."""
+
 from odoo import fields
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
@@ -35,7 +36,9 @@ class TestMultiInvoiceSinglePayment(TransactionCase):
         )
 
     def _posted_invoice(self, partner, amount, move_type="out_invoice"):
-        journal = self.sale_journal if move_type.startswith("out_") else self.purchase_journal
+        journal = (
+            self.sale_journal if move_type.startswith("out_") else self.purchase_journal
+        )
         move = self.env["account.move"].create(
             {
                 "move_type": move_type,
@@ -81,16 +84,12 @@ class TestMultiInvoiceSinglePayment(TransactionCase):
         )
         payments = wiz._create_payments()
         self.assertEqual(len(payments), 1)
-        self.assertEqual(self.env["account.payment"].search_count([]) , before + 1)
+        self.assertEqual(self.env["account.payment"].search_count([]), before + 1)
         self.assertAlmostEqual(payments.amount, 13819.50, places=2)
         a.invalidate_recordset()
         b.invalidate_recordset()
-        self.assertEqual(
-            float_compare(a.amount_residual, 0.0, precision_digits=2), 0
-        )
-        self.assertEqual(
-            float_compare(b.amount_residual, 0.0, precision_digits=2), 0
-        )
+        self.assertEqual(float_compare(a.amount_residual, 0.0, precision_digits=2), 0)
+        self.assertEqual(float_compare(b.amount_residual, 0.0, precision_digits=2), 0)
 
     def test_different_partner_no_silent_group(self):
         a = self._posted_invoice(self.partner, 100.0)
@@ -127,9 +126,7 @@ class TestMultiInvoiceSinglePayment(TransactionCase):
         self.assertAlmostEqual(payment.amount, 10000.0, places=2)
         a.invalidate_recordset()
         b.invalidate_recordset()
-        self.assertEqual(
-            float_compare(a.amount_residual, 0.0, precision_digits=2), 0
-        )
+        self.assertEqual(float_compare(a.amount_residual, 0.0, precision_digits=2), 0)
         self.assertEqual(
             float_compare(b.amount_residual, 6000.0, precision_digits=2), 0
         )
@@ -157,3 +154,85 @@ class TestMultiInvoiceSinglePayment(TransactionCase):
             "multi_invoice_manual_payment_prod.menu_multi_invoice_manual_payment_root"
         )
         self.assertTrue(menu.active)
+
+    def _required_receipt_needles(self, vendor=False):
+        needles = [
+            "NCF",
+            "FECHA FACTURA",
+            "FECHA VENCIMIENTO",
+            "MONTO ORIGINAL",
+            "SALDO ANTES",
+            "MONTO APLICADO",
+            "SALDO RESULTANTE",
+            "TOTAL RECIBIDO",
+            "TOTAL APLICADO",
+            "SALDO NO APLICADO",
+            "FORMA DE PAGO",
+            "REFERENCIA",
+            "OBSERVACIONES",
+        ]
+        needles.append("FACTURA PROVEEDOR" if vendor else "FACTURA")
+        return needles
+
+    def test_receipt_html_two_invoices_one_payment(self):
+        a = self._posted_invoice(self.partner, 6000.0)
+        b = self._posted_invoice(self.partner, 4000.0)
+        manual = self.env["multi.invoice.manual.payment.wizard"].create(
+            {
+                "partner_type": "customer",
+                "partner_id": self.partner.id,
+                "company_id": self.company.id,
+                "journal_id": self.journal.id,
+                "payment_date": fields.Date.today(),
+                "amount_received": 10000.0,
+                "ref": "UAT-RECEIPT-2",
+            }
+        )
+        manual._onchange_journal_id()
+        manual._load_open_moves()
+        lines = {l.move_id.id: l for l in manual.line_ids}
+        lines[a.id].amount_to_apply = 6000.0
+        lines[b.id].amount_to_apply = 4000.0
+        action = manual.action_create_payment()
+        payment = self.env["account.payment"].browse(action["res_id"])
+        html = payment.justech_applied_invoice_html or ""
+        for needle in self._required_receipt_needles():
+            self.assertIn(needle, html)
+        payload = payment._justech_receipt_payload()
+        self.assertEqual(len(payload["rows"]), 2)
+        self.assertAlmostEqual(payload["total_applied"], 10000.0, places=2)
+        self.assertAlmostEqual(payload["unapplied"], 0.0, places=2)
+        self.assertEqual(len(payment.justech_applied_invoice_ids), 2)
+
+    def test_vendor_receipt_html_three_bills_one_payment(self):
+        bills = [
+            self._posted_invoice(self.vendor, 1000.0, "in_invoice"),
+            self._posted_invoice(self.vendor, 2000.0, "in_invoice"),
+            self._posted_invoice(self.vendor, 500.0, "in_invoice"),
+        ]
+        manual = self.env["multi.invoice.manual.payment.wizard"].create(
+            {
+                "partner_type": "supplier",
+                "partner_id": self.vendor.id,
+                "company_id": self.company.id,
+                "journal_id": self.journal.id,
+                "payment_date": fields.Date.today(),
+                "amount_received": 3500.0,
+                "ref": "UAT-VENDOR-RECEIPT-3",
+            }
+        )
+        manual._onchange_journal_id()
+        manual._load_open_moves()
+        lines = {l.move_id.id: l for l in manual.line_ids}
+        for bill in bills:
+            lines[bill.id].amount_to_apply = bill.amount_residual
+        action = manual.action_create_payment()
+        payment = self.env["account.payment"].browse(action["res_id"])
+        html = payment.justech_applied_invoice_html or ""
+        for needle in self._required_receipt_needles(vendor=True):
+            self.assertIn(needle, html)
+        payload = payment._justech_receipt_payload()
+        self.assertEqual(len(payload["rows"]), 3)
+        self.assertFalse(payload["is_vendor"] is False)
+        self.assertTrue(payload["is_vendor"])
+        self.assertAlmostEqual(payload["total_applied"], 3500.0, places=2)

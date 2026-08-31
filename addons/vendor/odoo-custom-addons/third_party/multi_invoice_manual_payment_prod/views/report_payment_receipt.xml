@@ -2,13 +2,200 @@
 <odoo>
     <template id="report_payment_receipt_document_justech_applied"
               inherit_id="account.report_payment_receipt_document">
-        <xpath expr="//div[hasclass('page')]" position="inside">
+        <!-- Extra header fields required by Alexander (one receipt, N invoices). -->
+        <xpath expr="//div[hasclass('mb-4')]" position="after">
             <t t-if="o.justech_applied_invoice_ids">
-                <div class="mt-4">
-                    <strong>Documentos aplicados</strong>
-                    <t t-out="o.justech_applied_invoice_html"/>
+                <t t-set="jr" t-value="o._justech_receipt_payload()"/>
+                <div class="mb-3 justech-receipt-meta">
+                    <div class="row">
+                        <div class="col-6">
+                            Empresa: <span t-out="jr['company_name']"/>
+                        </div>
+                        <div class="col-6">
+                            RNC: <span t-out="jr['company_vat']"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Número de recibo: <span t-out="jr['receipt_number']"/>
+                        </div>
+                        <div class="col-6">
+                            Fecha del pago: <span t-out="jr['payment_date']"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <t t-if="jr['is_vendor']">Proveedor:</t>
+                            <t t-else="">Cliente:</t>
+                            <span t-out="jr['partner_name']"/>
+                        </div>
+                        <div class="col-6">
+                            RNC/Cédula: <span t-out="jr['partner_vat']"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Moneda: <span t-out="jr['currency']"/>
+                        </div>
+                        <div class="col-6">
+                            Método de pago: <span t-out="jr['method']"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Banco/Caja: <span t-out="jr['journal']"/>
+                        </div>
+                        <div class="col-6">
+                            Referencia: <span t-out="jr['reference']"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Monto total recibido:
+                            <span t-out="jr['amount_received']"
+                                  t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        </div>
+                    </div>
                 </div>
             </t>
+        </xpath>
+        <!-- Replace the generic invoices table so a multi-invoice payment
+             still prints as ONE receipt with the Alexander columns. -->
+        <xpath expr="//table[@name='invoices']" position="replace">
+            <t t-if="o.justech_applied_invoice_ids">
+                <t t-set="jr" t-value="o._justech_receipt_payload()"/>
+                <table name="invoices" class="table table-sm table-bordered justech-receipt-applied">
+                    <thead>
+                        <tr>
+                            <th>
+                                <t t-if="jr['is_vendor']">FACTURA PROVEEDOR</t>
+                                <t t-else="">FACTURA</t>
+                            </th>
+                            <th>NCF</th>
+                            <th>FECHA FACTURA</th>
+                            <th>FECHA VENCIMIENTO</th>
+                            <th class="text-end">MONTO ORIGINAL</th>
+                            <th class="text-end">SALDO ANTES</th>
+                            <th class="text-end">MONTO APLICADO</th>
+                            <th class="text-end">SALDO RESULTANTE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="jr['rows']" t-as="row">
+                            <td><span t-out="row['name']"/></td>
+                            <td><span t-out="row['ncf']"/></td>
+                            <td><span t-out="row['invoice_date']"/></td>
+                            <td><span t-out="row['due_date']"/></td>
+                            <td class="text-end">
+                                <span t-out="row['amount_total']"
+                                      t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                            </td>
+                            <td class="text-end">
+                                <span t-out="row['balance_before']"
+                                      t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                            </td>
+                            <td class="text-end">
+                                <span t-out="row['applied']"
+                                      t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                            </td>
+                            <td class="text-end">
+                                <span t-out="row['balance_after']"
+                                      t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-sm justech-receipt-footer mt-3">
+                    <tr>
+                        <th>TOTAL RECIBIDO</th>
+                        <td class="text-end">
+                            <span t-out="jr['amount_received']"
+                                  t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>TOTAL APLICADO</th>
+                        <td class="text-end">
+                            <span t-out="jr['total_applied']"
+                                  t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>SALDO NO APLICADO</th>
+                        <td class="text-end">
+                            <span t-out="jr['unapplied']"
+                                  t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>FORMA DE PAGO</th>
+                        <td><span t-out="jr['method']"/></td>
+                    </tr>
+                    <tr>
+                        <th>REFERENCIA</th>
+                        <td><span t-out="jr['reference']"/></td>
+                    </tr>
+                    <tr>
+                        <th>OBSERVACIONES</th>
+                        <td><span t-out="jr['observations']"/></td>
+                    </tr>
+                </table>
+            </t>
+            <table name="invoices"
+                   t-elif="values['display_invoices']"
+                   class="table table-borderless">
+                <t t-set="invoices" t-value="o.reconciled_invoice_ids or o.reconciled_bill_ids"/>
+                <t t-foreach="invoices" t-as="inv">
+                    <t t-if="any(inv.currency_id != par[2].currency_id for par in inv._get_reconciled_invoices_partials()[0])" t-set="otherCurrency" t-value="True"/>
+                </t>
+                <thead>
+                    <tr>
+                        <th><span>Invoice Date</span></th>
+                        <th><span>Invoice Number</span></th>
+                        <th><span>Reference</span></th>
+                        <th t-if="otherCurrency" class="text-end"><span>Amount In Currency</span></th>
+                        <th class="text-end"><span>Amount</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="invoices" t-as="inv">
+                        <t t-if="inv.move_type != 'entry'">
+                            <tr>
+                                <td><span t-field="inv.invoice_date"/></td>
+                                <td><span t-field="inv.name"/></td>
+                                <td><span t-field="inv.ref"/></td>
+                                <td t-if="otherCurrency"/>
+                                <td class="text-end"><span t-field="inv.amount_total"/></td>
+                            </tr>
+                            <tr t-foreach="inv._get_reconciled_invoices_partials()[0]" t-as="par">
+                                <t t-set="payment" t-value="par[2]"/>
+                                <td><span t-field="payment.move_id.date"/></td>
+                                <td><span t-field="payment.move_id.name"/></td>
+                                <td><span t-field="payment.payment_id.memo"/></td>
+                                <t t-set="amountPayment" t-value="-(par[0].debit_amount_currency if par[2].debit > 0 else par[0].credit_amount_currency)"/>
+                                <t t-set="amountInvoice" t-value="-par[1]"/>
+                                <t t-set="currencyPayment" t-value="payment.currency_id"/>
+                                <t t-set="currencyInvoice" t-value="inv.currency_id"/>
+                                <td t-if="otherCurrency" class="text-end">
+                                    <span t-if="currencyPayment != currencyInvoice" t-out="amountPayment"
+                                          t-options="{'widget': 'monetary', 'display_currency': currencyPayment}"/>
+                                </td>
+                                <td class="text-end">
+                                    <span t-out="amountInvoice"
+                                          t-options="{'widget': 'monetary', 'display_currency': currencyInvoice}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td/>
+                                <td><strong>Due Amount for <span t-field="inv.name"/></strong></td>
+                                <td/>
+                                <td t-if="otherCurrency"/>
+                                <td class="text-end"><strong><span t-field="inv.amount_residual"/></strong></td>
+                            </tr>
+                        </t>
+                    </t>
+                </tbody>
+            </table>
         </xpath>
     </template>
 </odoo>

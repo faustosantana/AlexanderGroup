@@ -1,0 +1,64 @@
+{
+  "started": "2026-08-31T16:55:43Z",
+  "qweb": 58,
+  "reports_version": "19.0.3.8.5",
+  "companies": {
+    "1": {
+      "name": "Plantilla t\u00e9cnica (no operativa)",
+      "ar_residual": 2760.0,
+      "ap_residual": 46000.0,
+      "unbalanced": 0,
+      "cross_company": 0
+    },
+    "8": {
+      "name": "BLUE ELITE, S.R.L.",
+      "ar_residual": 85880.4,
+      "ap_residual": 75992.0,
+      "unbalanced": 0,
+      "cross_company": 0
+    },
+    "9": {
+      "name": "COMERCIALIZADORA DE ALIMENTOS PI\u00d1ARIA, S.R.L.",
+      "ar_residual": 86092.8,
+      "ap_residual": 75992.0,
+      "unbalanced": 0,
+      "cross_company": 0
+    },
+    "10": {
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "ar_residual": 85880.4,
+      "ap_residual": 75992.0,
+      "unbalanced": 0,
+      "cross_company": 0
+    },
+    "11": {
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "ar_residual": 80145.6,
+      "ap_residual": 75992.0,
+      "unbalanced": 0,
+      "cross_company": 0
+    },
+    "12": {
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "ar_residual": 85880.4,
+      "ap_residual": 75992.0,
+      "unbalanced": 0,
+      "cross_company": 0
+    },
+    "13": {
+      "name": "REMPART GROUP S.R.L.",
+      "ar_residual": 85880.4,
+      "ap_residual": 75992.0,
+      "unbalanced": 0,
+      "cross_company": 0
+    }
+  },
+  "unbalanced_moves": 0,
+  "cross_company": 0,
+  "AR_BALANCE_MATCH": "YES",
+  "AP_BALANCE_MATCH": "YES",
+  "UNBALANCED_MOVES": 0,
+  "MULTICOMPANY_ISOLATION": "PASS",
+  "QWEB_AFTER": 58,
+  "REPORTS_PRESERVED": true
+}

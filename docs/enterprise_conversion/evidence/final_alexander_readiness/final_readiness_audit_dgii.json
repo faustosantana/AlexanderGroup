@@ -1,0 +1,441 @@
+{
+  "started": "2026-08-31T16:53:33Z",
+  "prod_touched": false,
+  "audit": {
+    "checks": {
+      "res.partner": {
+        "result": "FAIL",
+        "before_count": 2,
+        "logs": 0,
+        "user": null,
+        "datetime": null,
+        "company": null,
+        "model": "res.partner",
+        "record": 92,
+        "field": null,
+        "old": null,
+        "new": null
+      },
+      "sale.order": {
+        "result": "FAIL",
+        "before_count": 0,
+        "logs": 0,
+        "user": null,
+        "datetime": null,
+        "company": null,
+        "model": "sale.order",
+        "record": 124,
+        "field": null,
+        "old": null,
+        "new": null
+      },
+      "purchase.order": {
+        "result": "PASS",
+        "before_count": 0,
+        "logs": 1,
+        "user": "OdooBot",
+        "datetime": "2026-08-31 16:53:33",
+        "company": "BLUE ELITE, S.R.L.",
+        "model": "purchase.order",
+        "record": 87,
+        "field": "partner_ref",
+        "old": "",
+        "new": "DXQA-FINAL-165333"
+      },
+      "account.move": {
+        "result": "FAIL",
+        "before_count": 0,
+        "logs": 0,
+        "user": null,
+        "datetime": null,
+        "company": null,
+        "model": "account.move",
+        "record": 13,
+        "field": null,
+        "old": null,
+        "new": null
+      },
+      "account.payment": {
+        "result": "FAIL",
+        "before_count": 0,
+        "logs": 0,
+        "user": null,
+        "datetime": null,
+        "company": null,
+        "model": "account.payment",
+        "record": 40,
+        "field": null,
+        "old": null,
+        "new": null
+      }
+    },
+    "transient_rules": 0,
+    "policy_restored": true,
+    "result": "FAIL"
+  },
+  "fiscal": {
+    "opened": [
+      {
+        "model": "justech.do.ncf.reconcile.wizard",
+        "fields": [
+          "id",
+          "display_name",
+          "company_ids",
+          "line_ids",
+          "state",
+          "result_summary",
+          "create_uid",
+          "create_date",
+          "write_uid",
+          "write_date"
+        ]
+      }
+    ],
+    "denied": [
+      {
+        "user": "public",
+        "result": "DENIED",
+        "error": "AccessError"
+      }
+    ],
+    "errors": [],
+    "migrated": false,
+    "ncf_consumed": false,
+    "result": "PASS"
+  },
+  "dgii": {
+    "1": {
+      "name": "Plantilla t\u00e9cnica (no operativa)",
+      "reports": {},
+      "606": {
+        "result": "NOT_APPLICABLE"
+      },
+      "607": {
+        "result": "NOT_APPLICABLE"
+      },
+      "608": {
+        "result": "NOT_APPLICABLE"
+      },
+      "609": {
+        "result": "NOT_APPLICABLE"
+      },
+      "623": {
+        "result": "NOT_APPLICABLE"
+      }
+    },
+    "8": {
+      "name": "BLUE ELITE, S.R.L.",
+      "reports": {},
+      "606": {
+        "type": "606",
+        "result": "PASS",
+        "lines": 53,
+        "errors": [],
+        "report_id": 37,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "607": {
+        "type": "607",
+        "result": "PASS",
+        "lines": 50,
+        "errors": [],
+        "report_id": 38,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "608": {
+        "type": "608",
+        "result": "PASS",
+        "lines": 2,
+        "errors": [],
+        "report_id": 39,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "609": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no B17 / exterior ops"
+      },
+      "623": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no state withholding configs"
+      }
+    },
+    "9": {
+      "name": "COMERCIALIZADORA DE ALIMENTOS PI\u00d1ARIA, S.R.L.",
+      "reports": {},
+      "606": {
+        "type": "606",
+        "result": "PASS",
+        "lines": 53,
+        "errors": [],
+        "report_id": 40,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "607": {
+        "type": "607",
+        "result": "PASS",
+        "lines": 50,
+        "errors": [],
+        "report_id": 41,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "608": {
+        "type": "608",
+        "result": "PASS",
+        "lines": 2,
+        "errors": [],
+        "report_id": 42,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "609": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no B17 / exterior ops"
+      },
+      "623": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no state withholding configs"
+      }
+    },
+    "10": {
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "reports": {},
+      "606": {
+        "type": "606",
+        "result": "PASS",
+        "lines": 53,
+        "errors": [],
+        "report_id": 43,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "607": {
+        "type": "607",
+        "result": "PASS",
+        "lines": 50,
+        "errors": [],
+        "report_id": 44,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "608": {
+        "type": "608",
+        "result": "PASS",
+        "lines": 2,
+        "errors": [],
+        "report_id": 45,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "609": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no B17 / exterior ops"
+      },
+      "623": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no state withholding configs"
+      }
+    },
+    "11": {
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "reports": {},
+      "606": {
+        "type": "606",
+        "result": "PASS",
+        "lines": 53,
+        "errors": [],
+        "report_id": 46,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "607": {
+        "type": "607",
+        "result": "PASS",
+        "lines": 55,
+        "errors": [],
+        "report_id": 47,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "608": {
+        "type": "608",
+        "result": "PASS",
+        "lines": 2,
+        "errors": [],
+        "report_id": 48,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "609": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no B17 / exterior ops"
+      },
+      "623": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no state withholding configs"
+      }
+    },
+    "12": {
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "reports": {},
+      "606": {
+        "type": "606",
+        "result": "PASS",
+        "lines": 53,
+        "errors": [],
+        "report_id": 49,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "607": {
+        "type": "607",
+        "result": "PASS",
+        "lines": 50,
+        "errors": [],
+        "report_id": 50,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "608": {
+        "type": "608",
+        "result": "PASS",
+        "lines": 2,
+        "errors": [],
+        "report_id": 51,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "609": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no B17 / exterior ops"
+      },
+      "623": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no state withholding configs"
+      }
+    },
+    "13": {
+      "name": "REMPART GROUP S.R.L.",
+      "reports": {},
+      "606": {
+        "type": "606",
+        "result": "PASS",
+        "lines": 53,
+        "errors": [],
+        "report_id": 52,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "607": {
+        "type": "607",
+        "result": "PASS",
+        "lines": 50,
+        "errors": [],
+        "report_id": 53,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "608": {
+        "type": "608",
+        "result": "PASS",
+        "lines": 2,
+        "errors": [],
+        "report_id": 54,
+        "state": "draft",
+        "payment_fields": {
+          "payment_id": "account.payment()",
+          "payment_method_code": false
+        },
+        "xlsx": true
+      },
+      "609": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no B17 / exterior ops"
+      },
+      "623": {
+        "result": "NOT_APPLICABLE",
+        "reason": "no state withholding configs"
+      }
+    }
+  },
+  "errors": [],
+  "DGII_606_FINAL": "PASS",
+  "DGII_607_FINAL": "PASS",
+  "DGII_608_FINAL": "PASS",
+  "DGII_609_FINAL": "NOT_APPLICABLE",
+  "DGII_623_FINAL": "NOT_APPLICABLE",
+  "AUDIT_LOG_MASS_QA": "FAIL",
+  "finished": "2026-08-31T16:53:36Z"
+}

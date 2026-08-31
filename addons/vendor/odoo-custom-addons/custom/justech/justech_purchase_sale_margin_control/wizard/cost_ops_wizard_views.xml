@@ -137,8 +137,7 @@
                              context="{'default_company_id': company_id}"/>
                     <div colspan="2">
                         <button name="action_load_po_lines" type="object"
-                                string="Cargar artículos" class="btn-link"
-                                invisible="not purchase_order_id"/>
+                                string="Cargar artículos" class="btn-primary btn-sm"/>
                         <button name="action_toggle_show_all_po_lines" type="object"
                                 string="Mostrar todos los artículos de esta OC"
                                 class="btn-link btn-sm text-muted"
