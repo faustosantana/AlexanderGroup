@@ -70,8 +70,15 @@ Se asignaron a las líneas de método de los diarios banco **solo en staging QA*
 
 6 empresas operativas DO. Por empresa: A 1SO/1PO, B 1SO/2PO, C PO
 parcialmente facturada, D bill parcialmente pagada, E venta+compra pagadas.
-Wizard `purchase.sale.add.purchase.wizard`: al seleccionar las OC carga
+Wizard API `purchase.sale.add.purchase.wizard`: al seleccionar las OC carga
 líneas (`wizard_lines_loaded` = 1 o 2). Márgenes estimados/reales no nulos.
+
+UI operativa (staging, company 11, `DOR/SO/00040`): **Gestionar compras** →
+**Vincular compra existente**. OWL 19 no persistía el onchange One2many;
+`justech_purchase_sale_margin_control` **19.0.8.29.39** recarga líneas en
+`write()`/`create()` al elegir la OC y deja **Cargar artículos** visible.
+Verificación shell: `DOR/OC/00035` y `DOR/OC/00036` cargan 1 línea cada una
+(qty_available=1, qty_needed=2). QWeb Alexander sigue en 58.
 
 `MARGIN_QA_MASS = PASS`
 `MULTI_PO_RELATION_QA = PASS`
