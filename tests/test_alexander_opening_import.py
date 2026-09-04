@@ -6,6 +6,7 @@ from pathlib import Path
 from tools.alexander_opening_import.import_helpers import (
     commercial_partner_fix_vals,
     commercial_partner_vals,
+    is_opening_clearing_account,
     resolve_pdf_path,
 )
 from tools.alexander_opening_import.match import match_invoices
@@ -122,3 +123,11 @@ def test_resolve_pdf_path_skips_directory_and_empty_source(tmp_path):
     assert resolve_pdf_path(tmp_path, "DORALEX", "B1300000016", None, None) is None
     # a directory named like the source must never be opened as the PDF
     assert resolve_pdf_path(tmp_path, "MAYUMA", "B1500000109", "pdfs", 1) is None
+
+
+def test_opening_clearing_account_uses_chart_not_bank():
+    assert is_opening_clearing_account("11030205", "Other Accounts Receivable")
+    assert is_opening_clearing_account("11030205", "Otras cuentas por cobrar")
+    assert not is_opening_clearing_account("11010100", "Banco Banreservas")
+    assert not is_opening_clearing_account("101401", "Outstanding Receipts")
+    assert not is_opening_clearing_account("11010101", "Caja general")

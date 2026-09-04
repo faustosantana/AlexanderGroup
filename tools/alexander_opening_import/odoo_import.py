@@ -19,9 +19,10 @@ def _load_import_helpers():
             commercial_partner_fix_vals as a,
             commercial_partner_vals as b,
             resolve_pdf_path as c,
+            is_opening_clearing_account as d,
         )
 
-        return a, b, c
+        return a, b, c, d
     except ImportError:
         pass
     import importlib.util
@@ -41,13 +42,17 @@ def _load_import_helpers():
                 mod.commercial_partner_fix_vals,
                 mod.commercial_partner_vals,
                 mod.resolve_pdf_path,
+                mod.is_opening_clearing_account,
             )
     raise ImportError("import_helpers.py no encontrado junto al importador")
 
 
-commercial_partner_fix_vals, commercial_partner_vals, resolve_pdf_path = (
-    _load_import_helpers()
-)
+(
+    commercial_partner_fix_vals,
+    commercial_partner_vals,
+    resolve_pdf_path,
+    is_opening_clearing_account,
+) = _load_import_helpers()
 
 PAYLOAD_PATH = os.environ.get("OPENING_PAYLOAD_JSON", "/tmp/opening_payload.json")
 PDF_DIR = os.environ.get("OPENING_PDF_DIR", "/tmp/alexander_opening_pdfs")
@@ -189,21 +194,14 @@ def find_clearing_account(env, company):
         ("company_ids", "in", [company.id]),
         ("company_ids", "=", False),
     ]
-    for term in ("migracion", "migración", "apertura", "transitoria", "opening"):
-        acc = Account.search(domain_company + [("name", "ilike", term)], limit=1)
-        if acc:
-            return acc
-    # otras cuentas por cobrar / diversas
-    acc = Account.search(domain_company + [("name", "ilike", "divers")], limit=5)
-    for a in acc:
-        if "cobrar" in (a.name or "").lower() or "receiv" in (a.name or "").lower():
+    by_code = Account.search(domain_company + [("code", "=", "11030205")], limit=1)
+    if by_code:
+        return by_code
+    accs = Account.search(domain_company)
+    for a in accs:
+        if is_opening_clearing_account(a.code, a.name):
             return a
-    acc = Account.search(
-        domain_company
-        + [("account_type", "=", "asset_current"), ("name", "ilike", "otra")],
-        limit=1,
-    )
-    return acc
+    return Account.browse()
 
 
 def find_itbis_tax(env, company):
@@ -506,8 +504,15 @@ def import_one(env, row):
     ncf = row["ncf"]
     existing = existing_move(env, company, ncf)
     if existing:
+        move = existing[0]
         REPORT["CUSTOMER_INVOICES_EXISTING"] += 1
-        return existing[0]
+        paid = _money(row.get("amount_paid") or 0)
+        expected_residual = _money(row.get("amount_residual") or 0)
+        if paid > 0 and abs(_money(move.amount_residual) - expected_residual) > Decimal(
+            "0.05"
+        ):
+            apply_migration_residual(env, company, move, paid, move.partner_id)
+        return move
     pdf = row.get("pdf") or {}
     if not row.get("balance_ok", True):
         REPORT["CUSTOMER_INVOICES_BLOCKED"] += 1

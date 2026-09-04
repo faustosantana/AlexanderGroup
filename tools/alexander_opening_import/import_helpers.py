@@ -109,3 +109,36 @@ def resolve_pdf_path(
 
 def _is_pdf_file(path: Path) -> bool:
     return path.is_file() and path.stat().st_size > 0
+
+
+CLEARING_CODE_CANDIDATES = ("11030205",)
+CLEARING_NAME_MARKERS = (
+    "other accounts receivable",
+    "otras cuentas por cobrar",
+    "cuentas por cobrar diversas",
+    "cuenta transitoria",
+    "cuentas transitorias",
+    "migracion",
+    "migración",
+    "apertura",
+)
+CLEARING_NAME_FORBIDDEN = (
+    "outstanding",
+    "banreservas",
+    "bank",
+    "banco",
+    "caja",
+    "cash",
+    "liquidity",
+)
+
+
+def is_opening_clearing_account(code: str | None, name: str | None) -> bool:
+    """True si la cuenta del plan sirve para pagos históricos sin evidencia bancaria."""
+    code_n = (code or "").strip()
+    name_n = (name or "").strip().lower()
+    if any(bad in name_n for bad in CLEARING_NAME_FORBIDDEN):
+        return False
+    if code_n in CLEARING_CODE_CANDIDATES:
+        return True
+    return any(marker in name_n for marker in CLEARING_NAME_MARKERS)
