@@ -3,6 +3,11 @@
 from decimal import Decimal
 from pathlib import Path
 
+from tools.alexander_opening_import.import_helpers import (
+    commercial_partner_fix_vals,
+    commercial_partner_vals,
+    resolve_pdf_path,
+)
 from tools.alexander_opening_import.match import match_invoices
 from tools.alexander_opening_import.normalize import money, norm_ncf, norm_vat
 from tools.alexander_opening_import.parse_excel import parse_workbook
@@ -57,3 +62,63 @@ def test_match_blocks_total_mismatch():
     ]
     result = match_invoices(cxc, pdf)
     assert result["blocked"][0]["EXCEL_PDF_MATCH"] == "FAIL"
+
+
+def test_commercial_partner_vals_satisfy_has_rnc_preconditions():
+    fields = {
+        "justech_do_partner_id_type",
+        "justech_do_fiscal_config_state",
+        "justech_do_fiscal_config_source",
+        "justech_do_default_document_type_id",
+        "l10n_do_dgii_tax_payer_type",
+    }
+    vals = commercial_partner_vals(
+        "DIRECCION DE INFRAESTRUCTURA ESCOLAR (DIE)",
+        "430410332",
+        62,
+        batch="ALEXANDER_OPENING_2026-09-04",
+        doc_type_id=3,
+        field_names=fields,
+    )
+    assert vals["is_company"] is True
+    assert vals["company_type"] == "company"
+    assert vals["vat"] == "430410332"
+    assert vals["country_id"] == 62
+    assert vals["justech_do_partner_id_type"] == "1"
+    assert "email" not in vals
+    assert "phone" not in vals
+    assert "street" not in vals
+
+
+def test_commercial_partner_fix_promotes_individual_to_company():
+    vals = commercial_partner_fix_vals(
+        {
+            "is_company": False,
+            "vat_digits": "430410332",
+            "justech_do_fiscal_config_state": "pending_new",
+            "justech_do_default_document_type_id": None,
+            "justech_do_partner_id_type": "2",
+            "_doc_type_id": 9,
+        },
+        {
+            "justech_do_fiscal_config_state",
+            "justech_do_default_document_type_id",
+            "justech_do_partner_id_type",
+        },
+    )
+    assert vals["is_company"] is True
+    assert vals["company_type"] == "company"
+    assert vals["justech_do_partner_id_type"] == "1"
+    assert vals["justech_do_fiscal_config_state"] == "confirmed_history"
+    assert vals["justech_do_default_document_type_id"] == 9
+
+
+def test_resolve_pdf_path_skips_directory_and_empty_source(tmp_path):
+    named = tmp_path / "DORALEX_B1500000147.pdf"
+    named.write_bytes(b"%PDF-1.4 fake")
+    (tmp_path / "pdfs").mkdir()
+    assert resolve_pdf_path(tmp_path, "DORALEX", "B1500000147", None, None) == named
+    assert resolve_pdf_path(tmp_path, "DORALEX", "B1300000016", "", None) is None
+    assert resolve_pdf_path(tmp_path, "DORALEX", "B1300000016", None, None) is None
+    # a directory named like the source must never be opened as the PDF
+    assert resolve_pdf_path(tmp_path, "MAYUMA", "B1500000109", "pdfs", 1) is None

@@ -12,6 +12,23 @@ from collections import defaultdict
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
+try:
+    from tools.alexander_opening_import.import_helpers import (
+        commercial_partner_fix_vals,
+        commercial_partner_vals,
+        resolve_pdf_path,
+    )
+except ImportError:  # odoo shell: archivo suelto en /tmp
+    import importlib.util
+
+    _helpers = Path(__file__).resolve().parent / "import_helpers.py"
+    _spec = importlib.util.spec_from_file_location("import_helpers", _helpers)
+    _mod = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(_mod)
+    commercial_partner_fix_vals = _mod.commercial_partner_fix_vals
+    commercial_partner_vals = _mod.commercial_partner_vals
+    resolve_pdf_path = _mod.resolve_pdf_path
+
 PAYLOAD_PATH = os.environ.get("OPENING_PAYLOAD_JSON", "/tmp/opening_payload.json")
 PDF_DIR = os.environ.get("OPENING_PDF_DIR", "/tmp/alexander_opening_pdfs")
 BATCH = os.environ.get("OPENING_BATCH", "ALEXANDER_OPENING_2026-09-04")
@@ -171,21 +188,21 @@ def find_clearing_account(env, company):
 
 def find_itbis_tax(env, company):
     Tax = env["account.tax"].with_company(company)
-    taxes = Tax.search(
-        [
-            ("type_tax_use", "=", "sale"),
-            ("amount", "=", 18),
-            "|",
-            ("company_id", "=", company.id),
-            ("company_ids", "in", [company.id]),
-        ]
+    taxes = Tax.search([("type_tax_use", "=", "sale"), ("amount", "=", 18)])
+    scoped = taxes.filtered(
+        lambda t: (
+            (getattr(t, "company_ids", False) and company in t.company_ids)
+            or getattr(t, "company_id", False) == company
+        )
+        and "reten" not in (t.name or "").lower()
+        and "restaurant" not in (t.name or "").lower()
+        and "withhold" not in (t.name or "").lower()
     )
-    if not taxes:
-        taxes = Tax.search([("type_tax_use", "=", "sale"), ("amount", "=", 18)])
-    # prefer non-withholding
+    if scoped:
+        return scoped[0]
     for t in taxes:
         name = (t.name or "").lower()
-        if "reten" in name or "withhold" in name:
+        if "reten" in name or "restaurant" in name:
             continue
         return t
     return taxes[:1]
@@ -197,46 +214,49 @@ def find_doc_type(env, prefix):
     return rec
 
 
+def _partner_field_names(Partner):
+    return set(Partner._fields)
+
+
 def find_or_create_partner(env, company, name, vat, doc_type):
     Partner = env["res.partner"].with_context(**_ctx())
     vat_n = _vat(vat)
     existing = Partner.search([("vat", "!=", False)])
     hits = existing.filtered(lambda p: _vat(p.vat) == vat_n)
+    country_id = env.ref("base.do").id
     if hits:
-        partner = hits.sorted(lambda p: (p.company_id.id or 0))[0]
-        REPORT["CUSTOMERS_REUSED"] += 1
-        vals = {}
-        if "justech_do_fiscal_config_state" in partner._fields:
-            if partner.justech_do_fiscal_config_state in (
-                False,
-                "pending_new",
-                "needs_review",
-            ):
-                vals["justech_do_fiscal_config_state"] = "confirmed_history"
-        if doc_type and "justech_do_default_document_type_id" in partner._fields:
-            if not partner.justech_do_default_document_type_id:
-                vals["justech_do_default_document_type_id"] = doc_type.id
+        partner = hits.sorted(lambda p: (not p.is_company, p.company_id.id or 0))[0]
+        snapshot = {
+            "is_company": partner.is_company,
+            "vat_digits": vat_n,
+            "justech_do_fiscal_config_state": getattr(
+                partner, "justech_do_fiscal_config_state", None
+            ),
+            "justech_do_default_document_type_id": getattr(
+                partner, "justech_do_default_document_type_id", None
+            )
+            and partner.justech_do_default_document_type_id.id,
+            "justech_do_partner_id_type": getattr(
+                partner, "justech_do_partner_id_type", None
+            ),
+            "_doc_type_id": doc_type.id if doc_type else None,
+        }
+        vals = commercial_partner_fix_vals(snapshot, _partner_field_names(Partner))
+        if not partner.country_id:
+            vals["country_id"] = country_id
         if vals:
             partner.with_context(**_ctx()).write(vals)
-        return partner
-    vals = {
-        "name": name,
-        "vat": vat_n,
-        "customer_rank": 1,
-        "company_id": False,
-        "country_id": env.ref("base.do").id,
-    }
-    if "justech_do_fiscal_config_state" in Partner._fields:
-        vals["justech_do_fiscal_config_state"] = "confirmed_history"
-    if "justech_do_fiscal_config_source" in Partner._fields:
-        vals["justech_do_fiscal_config_source"] = BATCH
-    if doc_type and "justech_do_default_document_type_id" in Partner._fields:
-        vals["justech_do_default_document_type_id"] = doc_type.id
-    if "l10n_do_dgii_tax_payer_type" in Partner._fields:
-        vals["l10n_do_dgii_tax_payer_type"] = "taxpayer"
+        return partner, False
+    vals = commercial_partner_vals(
+        name,
+        vat_n,
+        country_id,
+        batch=BATCH,
+        doc_type_id=doc_type.id if doc_type else None,
+        field_names=_partner_field_names(Partner),
+    )
     partner = Partner.create(vals)
-    REPORT["CUSTOMERS_CREATED"] += 1
-    return partner
+    return partner, True
 
 
 def find_or_create_product(env, company, desc, uom_name, is_service, price):
@@ -363,30 +383,11 @@ def is_service(desc):
 
 def attach_pdf(env, move, company_name, ncf, source_file, source_page):
     code = COMPANY_CODE.get(company_name, "CO")
-    # prefer renamed individual
-    candidates = [
-        Path(PDF_DIR) / f"{code}_{ncf}.pdf",
-        Path(PDF_DIR) / f"{source_file}",
-    ]
-    data = None
+    path = resolve_pdf_path(PDF_DIR, code, ncf, source_file, source_page)
     fname = f"{code}_{ncf}.pdf"
-    for c in candidates:
-        if c.exists() and c.stat().st_size > 0:
-            data = c.read_bytes()
-            break
-    if data is None:
-        # page split
-        stem = Path(source_file).stem
-        page = source_page or 1
-        for c in Path(PDF_DIR).glob(f"{stem}*_page_{int(page):02d}.pdf"):
-            data = c.read_bytes()
-            break
-        if data is None:
-            for c in Path(PDF_DIR).glob(f"*{ncf}*.pdf"):
-                data = c.read_bytes()
-                break
-    if not data:
+    if path is None:
         return False
+    data = path.read_bytes()
     env["ir.attachment"].with_context(**_ctx()).create(
         {
             "name": fname,
@@ -494,7 +495,7 @@ def import_one(env, row):
         return
     prefix = ncf[:3]
     doc = find_doc_type(env, prefix)
-    partner = find_or_create_partner(
+    partner, partner_created = find_or_create_partner(
         env, company, row.get("customer") or pdf.get("customer"), row.get("vat"), doc
     )
     journal = find_sale_journal(env, company)
@@ -635,6 +636,13 @@ def import_one(env, row):
         pdf.get("source_file") or "",
         pdf.get("source_page"),
     )
+    seen = REPORT.setdefault("_partner_ids_seen", set())
+    if partner.id not in seen:
+        seen.add(partner.id)
+        if partner_created:
+            REPORT["CUSTOMERS_CREATED"] += 1
+        else:
+            REPORT["CUSTOMERS_REUSED"] += 1
     REPORT["CUSTOMER_INVOICES_CREATED"] += 1
     REPORT["created_moves"].append(
         {
@@ -684,9 +692,11 @@ def run(env):
         )
     for row in to_import:
         try:
-            import_one(env, row)
+            with env.cr.savepoint():
+                import_one(env, row)
+            env.cr.commit()
         except Exception as exc:
-            env.cr.rollback()
+            env.invalidate_all()
             REPORT["CUSTOMER_INVOICES_BLOCKED"] += 1
             REPORT["errors"].append({"ncf": row.get("ncf"), "error": str(exc)})
             REPORT["blocked"].append({"ncf": row.get("ncf"), "reason": str(exc)})
@@ -725,16 +735,32 @@ def run(env):
     REPORT["AR_DIFFERENCE"] = str(
         _money(REPORT["ODOO_AR_TOTAL"]) - _money(REPORT["EXCEL_AR_TOTAL"])
     )
+    blocked_ncfs = {
+        (b.get("ncf"), b.get("company"))
+        for b in payload["match"]["blocked"]
+        if b.get("ncf")
+    }
+    excel_importable = Decimal("0")
+    for row in payload["cxc"]:
+        if (row["ncf"], row["company"]) in blocked_ncfs:
+            continue
+        excel_importable += _money(row["amount_residual"])
+    REPORT["EXCEL_AR_IMPORTABLE"] = str(excel_importable)
+    REPORT["AR_DIFFERENCE_IMPORTABLE"] = str(
+        _money(REPORT["ODOO_AR_TOTAL"]) - excel_importable
+    )
     REPORT["EXCEL_AP_TOTAL"] = "0.00"
     REPORT["ODOO_AP_TOTAL"] = "0.00"
     REPORT["AP_DIFFERENCE"] = "NOT_APPLICABLE"
+    REPORT.pop("_partner_ids_seen", None)
     out = Path("/tmp/opening_import_report.json")
     out.write_text(
         json.dumps(REPORT, indent=2, ensure_ascii=False, default=str), encoding="utf-8"
     )
+    skip_keys = {"products", "created_moves", "_partner_ids_seen"}
     print(
         json.dumps(
-            {k: REPORT[k] for k in REPORT if k not in ("products", "created_moves")},
+            {k: REPORT[k] for k in REPORT if k not in skip_keys},
             default=str,
             indent=2,
         )
@@ -742,4 +768,5 @@ def run(env):
     print("WROTE", out)
 
 
-run(env)
+if "env" in globals():
+    run(env)
