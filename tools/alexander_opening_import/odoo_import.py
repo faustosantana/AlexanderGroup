@@ -12,22 +12,42 @@ from collections import defaultdict
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
-try:
-    from tools.alexander_opening_import.import_helpers import (
-        commercial_partner_fix_vals,
-        commercial_partner_vals,
-        resolve_pdf_path,
-    )
-except ImportError:  # odoo shell: archivo suelto en /tmp
+
+def _load_import_helpers():
+    try:
+        from tools.alexander_opening_import.import_helpers import (
+            commercial_partner_fix_vals as a,
+            commercial_partner_vals as b,
+            resolve_pdf_path as c,
+        )
+
+        return a, b, c
+    except ImportError:
+        pass
     import importlib.util
 
-    _helpers = Path(__file__).resolve().parent / "import_helpers.py"
-    _spec = importlib.util.spec_from_file_location("import_helpers", _helpers)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    commercial_partner_fix_vals = _mod.commercial_partner_fix_vals
-    commercial_partner_vals = _mod.commercial_partner_vals
-    resolve_pdf_path = _mod.resolve_pdf_path
+    candidates = [
+        Path("/tmp/alexander_opening/import_helpers.py"),
+        Path("/tmp/import_helpers.py"),
+    ]
+    if "__file__" in globals():
+        candidates.insert(0, Path(__file__).resolve().parent / "import_helpers.py")
+    for helper in candidates:
+        if helper.is_file():
+            spec = importlib.util.spec_from_file_location("import_helpers", helper)
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            return (
+                mod.commercial_partner_fix_vals,
+                mod.commercial_partner_vals,
+                mod.resolve_pdf_path,
+            )
+    raise ImportError("import_helpers.py no encontrado junto al importador")
+
+
+commercial_partner_fix_vals, commercial_partner_vals, resolve_pdf_path = (
+    _load_import_helpers()
+)
 
 PAYLOAD_PATH = os.environ.get("OPENING_PAYLOAD_JSON", "/tmp/opening_payload.json")
 PDF_DIR = os.environ.get("OPENING_PDF_DIR", "/tmp/alexander_opening_pdfs")
