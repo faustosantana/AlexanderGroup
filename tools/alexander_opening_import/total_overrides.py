@@ -7,10 +7,15 @@ from __future__ import annotations
 # Excel había cargado 249,754.56 como monto original (ni el subtotal exacto).
 PDF_TOTAL_OVERRIDES = {
     ("INVERSIONES DORALEX,S.RL.", "B1500000150"): {
-        "reason": "USER_CONFIRMED_PDF_TOTAL_2026-09-05",
+        "reason": "PDF_SOURCE_DOCUMENT_OVERRIDES_EXCEL_TRANSCRIPTION_ERROR",
         "excel_original": "249754.56",
         "pdf_subtotal": "249792.00",
         "pdf_itbis": "44962.56",
         "pdf_total": "294754.56",
-    }
+    },
+    ("REMPART GROUP S.R.L.", "B1500000110"): {
+        "reason": "PDF_SOURCE_DOCUMENT_OVERRIDES_EXCEL_TRANSCRIPTION_ERROR",
+        "excel_original": "267250.53",
+        "pdf_total": "267250.52",
+    },
 }

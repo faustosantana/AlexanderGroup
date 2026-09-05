@@ -31,6 +31,7 @@ def match_invoices(cxc_rows: list[dict], pdf_invoices: list[dict]) -> dict:
         if not cands:
             rec = dict(row)
             rec["EXCEL_PDF_MATCH"] = "MISSING_PDF"
+            rec["SOURCE_DOCUMENT_STATUS"] = "MISSING_PDF"
             missing_pdf.append(rec)
             continue
         inv = cands[0]
@@ -42,18 +43,21 @@ def match_invoices(cxc_rows: list[dict], pdf_invoices: list[dict]) -> dict:
         status = "PASS"
         reasons = []
         override = PDF_TOTAL_OVERRIDES.get(key)
-        rec_override = False
+        override_target = money(override["pdf_total"]) if override else Decimal("0")
+        rec_override = bool(override and override_target)
+        if rec_override:
+            pdf_total = override_target
         if not row["balance_ok"]:
             status = "FAIL"
             reasons.append("EXCEL_BALANCE_EQUATION")
-        if pdf_total and excel_total and abs(pdf_total - excel_total) > Decimal("0.05"):
-            if override and abs(pdf_total - money(override["pdf_total"])) <= Decimal(
-                "0.05"
-            ):
-                rec_override = True
-            else:
-                status = "FAIL"
-                reasons.append(f"TOTAL_MISMATCH excel={excel_total} pdf={pdf_total}")
+        if (
+            pdf_total
+            and excel_total
+            and abs(pdf_total - excel_total) > Decimal("0.05")
+            and not rec_override
+        ):
+            status = "FAIL"
+            reasons.append(f"TOTAL_MISMATCH excel={excel_total} pdf={pdf_total}")
         if not vat_ok:
             status = "FAIL"
             reasons.append("RNC_CONTRADICTORY")

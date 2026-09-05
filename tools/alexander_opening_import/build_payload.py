@@ -15,6 +15,7 @@ if str(ROOT) not in sys.path:
 
 from tools.alexander_opening_import.b001_catalog import B001_INVOICES
 from tools.alexander_opening_import.match import match_invoices
+from tools.alexander_opening_import.ncf_reconstruct import reconstruct_row
 from tools.alexander_opening_import.normalize import money, ncf_prefix, ncf_seq
 from tools.alexander_opening_import.parse_excel import parse_workbook
 from tools.alexander_opening_import.scan_catalog import SCAN_INVOICES
@@ -43,24 +44,41 @@ def build(excel_path: Path, pdf_paths: list[Path], out_dir: Path) -> dict:
         if prev is None or seq > prev[0]:
             max_ncf[key] = (seq, row["ncf"])
 
+    historical = [row["ncf"] for row in excel["cxc"] if row.get("ncf")]
+    historical += [inv["ncf"] for inv in pdf_invoices if inv.get("ncf")]
     ncf_report = []
     for seq in excel["ncf_sequences"]:
-        key = (seq["company"], seq["declared_type"])
-        mx = max_ncf.get(key)
-        extra = []
-        if mx and seq["next"] and ncf_seq(seq["next"]) is not None:
-            if mx[0] >= ncf_seq(seq["next"]):
-                extra.append(f"DOCS_GE_DECLARED_NEXT max={mx[1]} next={seq['next']}")
-        rec = dict(seq)
-        rec["max_doc_ncf"] = mx[1] if mx else None
-        rec["conflicts"] = list(seq["conflicts"]) + extra
-        rec["status"] = "NCF_SEQUENCE_CONFLICT" if rec["conflicts"] else "CONSISTENT"
+        company_hist = [
+            row["ncf"]
+            for row in excel["cxc"]
+            if row.get("ncf") and row["company"] == seq["company"]
+        ]
+        company_hist += [
+            inv["ncf"]
+            for inv in pdf_invoices
+            if inv.get("ncf") and inv.get("company") == seq["company"]
+        ]
+        rec = reconstruct_row(seq, company_hist)
+        rec["max_doc_ncf"] = rec["max_historical_ncf_found"]
+        rec["conflicts"] = rec["notes"]
         ncf_report.append(rec)
 
     ar = {}
+    ar_corrected = {}
+    override_by_key = {
+        (r["company"], r["ncf"]): r
+        for r in matched["matched"]
+        if r.get("TOTAL_OVERRIDE") == "PDF"
+    }
     for row in excel["cxc"]:
         ar.setdefault(row["company"], Decimal("0"))
         ar[row["company"]] += money(row["amount_residual"])
+        residual = money(row["amount_residual"])
+        ov = override_by_key.get((row["company"], row["ncf"]))
+        if ov:
+            residual = money(ov["amount_residual"])
+        ar_corrected.setdefault(row["company"], Decimal("0"))
+        ar_corrected[row["company"]] += residual
 
     payload = {
         "batch": f"ALEXANDER_OPENING_{date.today().isoformat()}",
@@ -80,6 +98,8 @@ def build(excel_path: Path, pdf_paths: list[Path], out_dir: Path) -> dict:
             "pdf_not_in_excel": matched["pdf_not_in_excel"],
         },
         "excel_ar_totals": {k: str(v) for k, v in ar.items()},
+        "excel_ar_totals_corrected": {k: str(v) for k, v in ar_corrected.items()},
+        "excel_ar_total_corrected": str(sum(ar_corrected.values(), Decimal("0"))),
         "split": [
             {
                 "SOURCE_FILE": s["SOURCE_FILE"],

@@ -634,9 +634,9 @@ SCAN_INVOICES = [
         "customer_vat": "423002565",
         "invoice_date": "2026-08-21",
         "subtotal": "226483.49",
-        "itbis": "40767.04",
+        "itbis": "40767.03",
         "tax_exempt": False,
-        "total": "267250.53",
+        "total": "267250.52",
         "references": ["ASDE-2026-00095"],
         "lines": _lines(
             [

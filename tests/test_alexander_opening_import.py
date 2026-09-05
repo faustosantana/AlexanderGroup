@@ -154,6 +154,170 @@ def test_resolve_pdf_path_skips_directory_and_empty_source(tmp_path):
     assert resolve_pdf_path(tmp_path, "MAYUMA", "B1500000109", "pdfs", 1) is None
 
 
+def test_pdf_total_override_rempart_110_even_if_catalog_copied_excel():
+    cxc = [
+        {
+            "company": "REMPART GROUP S.R.L.",
+            "ncf": "B1500000110",
+            "vat": "423002565",
+            "amount_original": "267250.53",
+            "amount_paid": "0",
+            "amount_residual": "267250.53",
+            "balance_ok": True,
+        }
+    ]
+    pdf = [
+        {
+            "company": "REMPART GROUP S.R.L.",
+            "ncf": "B1500000110",
+            "customer_vat": "423002565",
+            "total": "267250.53",
+        }
+    ]
+    result = match_invoices(cxc, pdf)
+    rec = result["matched"][0]
+    assert rec["amount_original"] == "267250.52"
+    assert rec["amount_residual"] == "267250.52"
+
+
+def test_pdf_total_override_rempart_110():
+    cxc = [
+        {
+            "company": "REMPART GROUP S.R.L.",
+            "ncf": "B1500000110",
+            "vat": "430128368",
+            "amount_original": "267250.53",
+            "amount_paid": "0",
+            "amount_residual": "267250.53",
+            "balance_ok": True,
+        }
+    ]
+    pdf = [
+        {
+            "company": "REMPART GROUP S.R.L.",
+            "ncf": "B1500000110",
+            "customer_vat": "430128368",
+            "total": "267250.52",
+        }
+    ]
+    result = match_invoices(cxc, pdf)
+    assert result["blocked"] == []
+    rec = result["matched"][0]
+    assert rec["amount_original"] == "267250.52"
+    assert rec["amount_residual"] == "267250.52"
+    assert rec["override_reason"] == (
+        "PDF_SOURCE_DOCUMENT_OVERRIDES_EXCEL_TRANSCRIPTION_ERROR"
+    )
+
+
+def test_missing_pdf_is_not_blocked():
+    result = match_invoices(
+        [
+            {
+                "company": "INVERSIONES DORALEX,S.RL.",
+                "ncf": "B1300000016",
+                "vat": "401007363",
+                "amount_original": "100.00",
+                "amount_residual": "100.00",
+                "balance_ok": True,
+            }
+        ],
+        [],
+    )
+    assert result["matched"] == []
+    assert result["blocked"] == []
+    assert result["missing_pdf"][0]["SOURCE_DOCUMENT_STATUS"] == "MISSING_PDF"
+
+
+def test_ncf_reconstruct_next_is_max_plus_one_inside_range():
+    from tools.alexander_opening_import.ncf_reconstruct import reconstruct_row
+
+    rec = reconstruct_row(
+        {
+            "company": "INVERSIONES DORALEX,S.RL.",
+            "declared_type": "B15",
+            "range_from": "B1500000141",
+            "range_to": "B1500000160",
+            "last_used": "B1500000151",
+            "next": "B1500000151",
+            "authorization": "A1",
+            "expiration": "2026-12-31",
+        },
+        ["B1500000147", "B1500000151", "B1500000150"],
+    )
+    assert rec["max_historical_ncf_found"] == "B1500000151"
+    assert rec["calculated_next"] == "B1500000152"
+    assert rec["status"] == "SAFE_TO_ACTIVATE"
+    assert rec["activate"] is True
+
+
+def test_ncf_reconstruct_blocks_when_max_outside_range():
+    from tools.alexander_opening_import.ncf_reconstruct import reconstruct_row
+
+    rec = reconstruct_row(
+        {
+            "company": "INVERSIONES DORALEX,S.RL.",
+            "declared_type": "B13",
+            "range_from": "B1300000011",
+            "range_to": "B1300000015",
+            "last_used": "B1300000015",
+            "next": "B1300000016",
+            "authorization": "A1",
+            "expiration": "2026-12-31",
+        },
+        ["B1300000016"],
+    )
+    assert rec["max_historical_ncf_found"] == "B1300000016"
+    assert rec["calculated_next"] == "B1300000017"
+    assert rec["activate"] is False
+    assert rec["needs_fiscal_range_confirmation"] is True
+    assert rec["status"] == "MAX_OUTSIDE_DECLARED_RANGE"
+
+
+def test_ncf_reconstruct_ignores_planilla_and_qa_prefixes():
+    from tools.alexander_opening_import.ncf_reconstruct import reconstruct_row
+
+    rec = reconstruct_row(
+        {
+            "company": "INVERSIONES DORALEX,S.RL.",
+            "declared_type": "B01",
+            "range_from": "B0100000052",
+            "range_to": "B0100000087",
+            "last_used": "B1500000151",
+            "next": "B1500000152",
+            "authorization": "A1",
+            "expiration": "2026-12-31",
+        },
+        ["B0100000053", "B0199100100"],
+    )
+    assert rec["max_historical_ncf_found"] == "B0100000053"
+    assert rec["calculated_next"] == "B0100000054"
+    assert rec["activate"] is True
+    assert "PLANILLA_LAST_PREFIX_IGNORED" in rec["notes"]
+    assert "PLANILLA_NEXT_PREFIX_IGNORED" in rec["notes"]
+
+
+def test_ncf_reconstruct_no_historical_does_not_use_planilla_next():
+    from tools.alexander_opening_import.ncf_reconstruct import reconstruct_row
+
+    rec = reconstruct_row(
+        {
+            "company": "BLUE ELITE, S.R.L.",
+            "declared_type": "B15",
+            "range_from": "B1500000001",
+            "range_to": "B1500000020",
+            "last_used": "B1500000101",
+            "next": "B1500000102",
+            "authorization": "A1",
+            "expiration": "2026-12-31",
+        },
+        [],
+    )
+    assert rec["activate"] is False
+    assert rec["calculated_next"] is None
+    assert rec["status"] == "NO_HISTORICAL_NCF"
+
+
 def test_opening_clearing_account_uses_chart_not_bank():
     assert is_opening_clearing_account("11030205", "Other Accounts Receivable")
     assert is_opening_clearing_account("11030205", "Otras cuentas por cobrar")

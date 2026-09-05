@@ -405,6 +405,16 @@ def attach_pdf(env, move, company_name, ncf, source_file, source_page):
     fname = f"{code}_{ncf}.pdf"
     if path is None:
         return False
+    existing_att = env["ir.attachment"].search(
+        [
+            ("res_model", "=", "account.move"),
+            ("res_id", "=", move.id),
+            ("name", "=", fname),
+        ],
+        limit=1,
+    )
+    if existing_att:
+        return True
     data = path.read_bytes()
     env["ir.attachment"].with_context(**_ctx()).create(
         {
@@ -592,7 +602,11 @@ def import_one(env, row):
         "ref": ncf,
         "invoice_origin": BATCH,
         "payment_reference": " ".join(refs)[:128] if refs else ncf,
-        "narration": f"{BATCH} SOURCE_FILE={pdf.get('source_file')} SOURCE_PAGE={pdf.get('source_page')}",
+        "narration": (
+            f"{BATCH} SOURCE_FILE={pdf.get('source_file')} "
+            f"SOURCE_PAGE={pdf.get('source_page')} "
+            f"SOURCE_DOCUMENT_STATUS={row.get('SOURCE_DOCUMENT_STATUS') or 'PDF_ATTACHED'}"
+        ),
     }
     if "justech_do_ncf" in Move._fields:
         vals["justech_do_ncf"] = ncf
@@ -755,25 +769,7 @@ def run(env):
         }
         for k, v in ar.items()
     }
-    REPORT["EXCEL_AR_TOTAL"] = str(sum((v["excel"] for v in ar.values()), Decimal("0")))
-    REPORT["ODOO_AR_TOTAL"] = str(sum((v["odoo"] for v in ar.values()), Decimal("0")))
-    REPORT["AR_DIFFERENCE"] = str(
-        _money(REPORT["ODOO_AR_TOTAL"]) - _money(REPORT["EXCEL_AR_TOTAL"])
-    )
-    blocked_ncfs = {
-        (b.get("ncf"), b.get("company"))
-        for b in payload["match"]["blocked"]
-        if b.get("ncf")
-    }
-    excel_importable = Decimal("0")
-    for row in payload["cxc"]:
-        if (row["ncf"], row["company"]) in blocked_ncfs:
-            continue
-        excel_importable += _money(row["amount_residual"])
-    REPORT["EXCEL_AR_IMPORTABLE"] = str(excel_importable)
-    REPORT["AR_DIFFERENCE_IMPORTABLE"] = str(
-        _money(REPORT["ODOO_AR_TOTAL"]) - excel_importable
-    )
+    excel_declared = sum((v["excel"] for v in ar.values()), Decimal("0"))
     excel_after_overrides = Decimal("0")
     for row in payload["cxc"]:
         residual = _money(row["amount_residual"])
@@ -786,10 +782,58 @@ def run(env):
                 residual = _money(matched["amount_residual"])
                 break
         excel_after_overrides += residual
-    REPORT["EXCEL_AR_AFTER_PDF_TOTAL_OVERRIDES"] = str(excel_after_overrides)
-    REPORT["AR_DIFFERENCE_AFTER_OVERRIDES"] = str(
-        _money(REPORT["ODOO_AR_TOTAL"]) - excel_after_overrides
+        ar[row["company"]]["excel_corrected"] = (
+            ar[row["company"]].get("excel_corrected", Decimal("0")) + residual
+        )
+    REPORT["EXCEL_AR_DECLARED"] = str(excel_declared)
+    REPORT["EXCEL_AR_TOTAL_CORRECTED"] = str(excel_after_overrides)
+    REPORT["EXCEL_AR_TOTAL"] = str(excel_after_overrides)
+    REPORT["ODOO_AR_TOTAL"] = str(sum((v["odoo"] for v in ar.values()), Decimal("0")))
+    REPORT["AR_DIFFERENCE"] = str(
+        _money(REPORT["ODOO_AR_TOTAL"]) - _money(REPORT["EXCEL_AR_TOTAL"])
     )
+    REPORT["ar"] = {
+        k: {
+            "EXCEL_AR_TOTAL": str(v["excel"]),
+            "EXCEL_AR_CORRECTED": str(v.get("excel_corrected", v["excel"])),
+            "ODOO_AR_TOTAL": str(v["odoo"]),
+            "DIFFERENCE": str(v["odoo"] - v.get("excel_corrected", v["excel"])),
+            "count": v.get("count", 0),
+        }
+        for k, v in ar.items()
+    }
+    pdf_status = []
+    missing_pdf = 0
+    attached_pdf = 0
+    MoveAll = env["account.move"]
+    opening = MoveAll.search(
+        [("invoice_origin", "=", BATCH), ("move_type", "=", "out_invoice")]
+    )
+    for move in opening:
+        ncf = move.justech_do_ncf or move.ref
+        atts = env["ir.attachment"].search(
+            [
+                ("res_model", "=", "account.move"),
+                ("res_id", "=", move.id),
+                ("mimetype", "=", "application/pdf"),
+            ]
+        )
+        status = "PDF_ATTACHED" if atts else "MISSING_PDF"
+        if atts:
+            attached_pdf += 1
+        else:
+            missing_pdf += 1
+        pdf_status.append(
+            {
+                "INVOICE": move.name,
+                "COMPANY": move.company_id.name,
+                "NCF": ncf,
+                "PDF_STATUS": status,
+            }
+        )
+    REPORT["SOURCE_PDF_ATTACHMENTS"] = attached_pdf
+    REPORT["MISSING_PDF_INVOICES"] = missing_pdf
+    REPORT["PDF_STATUS_LIST"] = pdf_status
     REPORT["EXCEL_AP_TOTAL"] = "0.00"
     REPORT["ODOO_AP_TOTAL"] = "0.00"
     REPORT["AP_DIFFERENCE"] = "NOT_APPLICABLE"
