@@ -196,6 +196,8 @@ def run(env):
             report["blocked"].append(row)
             report["NCF_SEQUENCE_BLOCKED"] += 1
     cancel_remaining_qa(env, report)
+    if not DRY:
+        env.cr.commit()
     Path("/tmp/ncf_apply_report.json").write_text(
         json.dumps(report, indent=2, ensure_ascii=False, default=str), encoding="utf-8"
     )
