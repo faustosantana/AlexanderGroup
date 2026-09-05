@@ -1,0 +1,141 @@
+# Alexander opening import — corte final 2026-09-05
+
+BATCH = ALEXANDER_OPENING_2026-09-04
+STAGING = doralex_ent_staging @ doralex-enterprise-staging-odoo
+PROD = doralex_prod @ doralex-production-odoo / https://doralexgroup.cloud
+IMPORTADOR = mismo payload + mismos PDFs; no se restauró staging sobre prod
+
+PRE_FINAL_CUTOVER_BACKUP = PASS
+  /opt/doralex/backups/production/pre_final_opening_cutover_20260905_135703
+  -> /opt/doralex/backups/production/production_20260905_135703
+  db.dump 20002894 bytes
+  SHA256 2e9f9494ee79499089010728ba82b4b8244fdceff60574fbe784488485849ec0
+  pg_restore -l = 33990 TOC
+
+B1500000150_FINAL_AMOUNT = 294754.56
+  Excel 249754.56
+  PDF 249792.00 + ITBIS 44962.56 = 294754.56
+  DATA_CORRECTION_REASON = PDF_SOURCE_DOCUMENT_OVERRIDES_EXCEL_TRANSCRIPTION_ERROR
+  residual = 294754.56 (sin pagos históricos)
+  prod INV/2026/00006 id=116 company=11
+
+REMPART_B1500000110_FINAL_AMOUNT = 267250.52
+  Excel 267250.53
+  PDF impreso 267250.53 / ITBIS 40767.04
+  Odoo 18% sobre 226483.49 = 267250.52 (ITBIS 40767.03)
+  Se usa 267250.52. No se creó asiento de 0.01.
+  DATA_CORRECTION_REASON = PDF_SOURCE_DOCUMENT_OVERRIDES_EXCEL_TRANSCRIPTION_ERROR
+  prod INV/2026/00006 id=140 company=13
+
+B1300000016_PDF_STATUS = MISSING_PDF
+  Importada (empresa, cliente, RNC, NCF, fecha, monto, saldo completos)
+  SOURCE_DOCUMENT_STATUS = MISSING_PDF
+  línea: Apertura histórica B1300000016 (sin desglose PDF)
+  prod INV/2026/00021 id=141
+
+NCF_SEQUENCE_AUDIT_TOTAL = 34
+NCF_SEQUENCE_CORRECTED = 4
+NCF_SEQUENCE_BLOCKED = 30
+
+SAFE_TO_ACTIVATE (NEXT = MAX_HISTORICO + 1, dentro de rango real):
+  Doralex B01  max=B0100000053  next=B0100000054  range=52-87   auth=6005372487 ACTIVE
+  Doralex B15  max=B1500000151  next=B1500000152  range=141-160 auth=6005109381 ACTIVE
+  Mayuma  B15  max=B1500000110  next=B1500000111  range=109-118 auth=5004942280 ACTIVE
+  Rempart B15  max=B1500000110  next=B1500000111  range=106-113 auth=5004942351 ACTIVE
+
+DORALEX_B15_MAX_REAL = B1500000151
+DORALEX_B15_NEXT = B1500000152
+DORALEX_B15_ACTIVE = YES
+
+DORALEX_B13_MAX_REAL = B1300000016
+DORALEX_B13_NEXT = NOT_ACTIVATED
+DORALEX_B13_ACTIVE = NO
+DORALEX_B13_RANGE_CONFIRMATION_REQUIRED = YES
+  rango declarado B1300000011-B1300000015
+  existe histórico B1300000016
+  no se inventó ampliación DGII; factura histórica sí existe
+
+OTHER_NCF_CONFLICTS =
+  Doralex B01 planilla last/next con prefijo B15 (ignorados; next real B0100000054)
+  Doralex B01 facturas históricas 35-51 debajo del rango autorizado 52 (documentos sí; secuencia futura desde 54)
+  Doralex B04 last 0501 debajo del rango 0502-0502; sin histórico; NO activar
+  Piñaria B15 last 092 debajo del rango 93-103; sin histórico CxC; NO activar
+  Blue Elite B15 planilla last/next 101/102 encima del rango 1-20; sin histórico; NO activar
+  Resto de tipos (B02/B04/B11/B13/B15 sin CxC): NO_HISTORICAL_NCF; NO se usó próximo de planilla
+  Rangos QA 9910xxxx (DX-TEST-NO-DGII-360) cancelados en staging y prod; no son autorización DGII
+
+STAGING_AR_TOTAL = 27240211.80
+STAGING_ODOO_AR_TOTAL = 27240211.80
+STAGING_AR_DIFFERENCE = 0.00
+  Doralex 16491966.46 / Mayuma 2668855.73 / Rempart 8079389.61
+
+PROD_IMPORT_BACKUP = PASS (mismo pre_final_opening_cutover)
+PROD_IMPORT = PASS
+
+CUSTOMERS_CREATED = 5
+CUSTOMERS_REUSED = 0
+CUSTOMER_DUPLICATES_CREATED = 0
+  DIE 430410332, PROPEEP 430128368, ASDE 423002565,
+  AGRO WILSON 131201822, MINISTERIO DE TRABAJO 401007363
+
+PRODUCTS_CREATED = 152
+PRODUCTS_REUSED = 5
+PRODUCT_DUPLICATES_CREATED = 0
+
+CUSTOMER_INVOICES_CREATED = 27
+CUSTOMER_INVOICES_EXISTING = 0   # primera carga prod
+CUSTOMER_INVOICES_BLOCKED = 0
+
+SOURCE_PDF_ATTACHMENTS = 26
+MISSING_PDF_INVOICES = 1   # B1300000016
+
+MIGRATION_PAYMENT_APPLICATIONS = 2
+  B0100000035 paid 690950.00 via 11030205 + misc DOR; residual 2073020.00 PARTIAL
+  Mayuma B1500000109 paid 1298026.59 via 11030205 + misc MAY; residual 1412896.18 PARTIAL
+  no se inventó Banreservas ni fecha de banco
+
+PROD_AR_TOTAL = 27240211.80
+PROD_ODOO_AR_TOTAL = 27240211.80
+PROD_AR_DIFFERENCE = 0.00
+
+DGII_607_VALIDATION = PASS   # 27 movimientos, 10 períodos, NCF/RNC/fecha/monto/ITBIS; NO enviado
+DGII_606_VALIDATION = NOT_APPLICABLE
+DGII_608_VALIDATION = NO_CANCELLATIONS
+
+UNBALANCED_IMPORTED_MOVES = 0
+NCF_NEW_NUMBERS_CONSUMED_DURING_IMPORT = 0
+
+MAIL_SENT = 0
+ECF_SENT = 0
+DGII_SENT = 0
+ECF_OPERATIONAL = False
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+QWEB_HASH_MISMATCH_UNEXPECTED = 0
+REPORTS_PRESERVED = YES
+
+CRITICAL_ERRORS = 0
+HIGH_ERRORS = 0
+MEDIUM_ERRORS = 2
+  Doralex B13 secuencia futura bloqueada (rango declarado no cubre 0016/0017)
+  30 secuencias sin histórico/rango suficiente quedan BLOCKED a propósito
+LOW_ERRORS = 1
+  Rempart 110: PDF impreso 267250.53 vs Odoo 267250.52 (1 centavo; autorizado)
+
+SECOND_RUN_NEW_RECORDS = 0
+  dry-run prod: CREATED=0 EXISTING=27
+
+UI_QA_10 = PASS
+  B1500000150 294754.56 + PDF
+  B1500000151 27748.41 + PDF
+  B1300000016 44800.00 MISSING_PDF
+  Rempart B1500000110 267250.52 + PDF
+  B0100000035 parcial 2073020.00 + PDF
+  B0100000053 659150.00 + PDF
+  B1500000147 34232.27 + PDF
+  Mayuma B1500000109 parcial 1412896.18 + PDF
+  Rempart B1500000106 2292600.56 + PDF
+  B1300000015 52453.30 + PDF
+
+FINAL_OPENING_IMPORT_STATUS = SUCCESS
