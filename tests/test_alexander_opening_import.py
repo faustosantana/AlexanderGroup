@@ -47,9 +47,33 @@ def test_match_blocks_total_mismatch():
     cxc = [
         {
             "company": "INVERSIONES DORALEX,S.RL.",
+            "ncf": "B1500000999",
+            "vat": "430128368",
+            "amount_original": "249754.56",
+            "balance_ok": True,
+        }
+    ]
+    pdf = [
+        {
+            "company": "INVERSIONES DORALEX,S.RL.",
+            "ncf": "B1500000999",
+            "customer_vat": "430128368",
+            "total": "294754.56",
+        }
+    ]
+    result = match_invoices(cxc, pdf)
+    assert result["blocked"][0]["EXCEL_PDF_MATCH"] == "FAIL"
+
+
+def test_pdf_total_override_0150():
+    cxc = [
+        {
+            "company": "INVERSIONES DORALEX,S.RL.",
             "ncf": "B1500000150",
             "vat": "430128368",
             "amount_original": "249754.56",
+            "amount_paid": "0",
+            "amount_residual": "249754.56",
             "balance_ok": True,
         }
     ]
@@ -62,7 +86,12 @@ def test_match_blocks_total_mismatch():
         }
     ]
     result = match_invoices(cxc, pdf)
-    assert result["blocked"][0]["EXCEL_PDF_MATCH"] == "FAIL"
+    assert result["blocked"] == []
+    rec = result["matched"][0]
+    assert rec["TOTAL_OVERRIDE"] == "PDF"
+    assert rec["amount_original"] == "294754.56"
+    assert rec["amount_residual"] == "294754.56"
+    assert rec["excel_amount_original"] == "249754.56"
 
 
 def test_commercial_partner_vals_satisfy_has_rnc_preconditions():

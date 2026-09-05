@@ -5,6 +5,7 @@ from __future__ import annotations
 from decimal import Decimal
 
 from .normalize import money, norm_ncf, norm_vat
+from .total_overrides import PDF_TOTAL_OVERRIDES
 
 
 def match_invoices(cxc_rows: list[dict], pdf_invoices: list[dict]) -> dict:
@@ -40,12 +41,19 @@ def match_invoices(cxc_rows: list[dict], pdf_invoices: list[dict]) -> dict:
             vat_ok = norm_vat(row["vat"]) == norm_vat(inv["customer_vat"])
         status = "PASS"
         reasons = []
+        override = PDF_TOTAL_OVERRIDES.get(key)
+        rec_override = False
         if not row["balance_ok"]:
             status = "FAIL"
             reasons.append("EXCEL_BALANCE_EQUATION")
         if pdf_total and excel_total and abs(pdf_total - excel_total) > Decimal("0.05"):
-            status = "FAIL"
-            reasons.append(f"TOTAL_MISMATCH excel={excel_total} pdf={pdf_total}")
+            if override and abs(pdf_total - money(override["pdf_total"])) <= Decimal(
+                "0.05"
+            ):
+                rec_override = True
+            else:
+                status = "FAIL"
+                reasons.append(f"TOTAL_MISMATCH excel={excel_total} pdf={pdf_total}")
         if not vat_ok:
             status = "FAIL"
             reasons.append("RNC_CONTRADICTORY")
@@ -53,6 +61,17 @@ def match_invoices(cxc_rows: list[dict], pdf_invoices: list[dict]) -> dict:
         rec["pdf"] = inv
         rec["EXCEL_PDF_MATCH"] = status
         rec["match_reasons"] = reasons
+        if rec_override and status == "PASS":
+            rec["excel_amount_original"] = row["amount_original"]
+            rec["excel_amount_residual"] = row["amount_residual"]
+            rec["amount_original"] = str(pdf_total)
+            rec["amount_residual"] = str(pdf_total - money(row.get("amount_paid") or 0))
+            rec["TOTAL_OVERRIDE"] = "PDF"
+            rec["override_reason"] = override["reason"]
+            reasons.append(
+                f"TOTAL_OVERRIDE_PDF excel={excel_total} pdf={pdf_total} "
+                f"{override['reason']}"
+            )
         if status == "PASS":
             matched.append(rec)
         else:

@@ -738,7 +738,7 @@ def run(env):
             [
                 ("company_id", "=", company.id),
                 ("move_type", "=", "out_invoice"),
-                ("invoice_origin", "=", payload.get("batch", BATCH)),
+                ("invoice_origin", "=", BATCH),
                 ("state", "=", "posted"),
             ]
         )
@@ -773,6 +773,22 @@ def run(env):
     REPORT["EXCEL_AR_IMPORTABLE"] = str(excel_importable)
     REPORT["AR_DIFFERENCE_IMPORTABLE"] = str(
         _money(REPORT["ODOO_AR_TOTAL"]) - excel_importable
+    )
+    excel_after_overrides = Decimal("0")
+    for row in payload["cxc"]:
+        residual = _money(row["amount_residual"])
+        for matched in payload["match"]["matched"]:
+            if (
+                matched.get("ncf") == row["ncf"]
+                and matched.get("company") == row["company"]
+                and matched.get("TOTAL_OVERRIDE") == "PDF"
+            ):
+                residual = _money(matched["amount_residual"])
+                break
+        excel_after_overrides += residual
+    REPORT["EXCEL_AR_AFTER_PDF_TOTAL_OVERRIDES"] = str(excel_after_overrides)
+    REPORT["AR_DIFFERENCE_AFTER_OVERRIDES"] = str(
+        _money(REPORT["ODOO_AR_TOTAL"]) - excel_after_overrides
     )
     REPORT["EXCEL_AP_TOTAL"] = "0.00"
     REPORT["ODOO_AP_TOTAL"] = "0.00"
