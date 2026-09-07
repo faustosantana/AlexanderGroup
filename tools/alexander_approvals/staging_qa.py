@@ -83,8 +83,9 @@ def _create_po(user_env, company, partner, product, amount=2200):
 
 
 def _try_confirm(record):
+    method = "button_confirm" if record._name == "purchase.order" else "action_confirm"
     try:
-        result = record.with_context(justech_approval_force_wizard=True).action_confirm()
+        result = getattr(record.with_context(justech_approval_force_wizard=True), method)()
         if isinstance(result, dict):
             return "WIZARD"
         return "CONFIRMED"
