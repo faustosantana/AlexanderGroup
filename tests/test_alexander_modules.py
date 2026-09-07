@@ -193,6 +193,18 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
+    assert "19.0.1.2.0" in manifest
+    assert "web.assets_backend" in manifest
+    assert "navbar.scss" in manifest
+    assert "user_companies.js" in manifest
+    navbar_scss = (ux / "static/src/navbar/navbar.scss").read_text(encoding="utf-8")
+    navbar_xml = (ux / "static/src/navbar/navbar.xml").read_text(encoding="utf-8")
+    companies = (ux / "static/src/navbar/user_companies.js").read_text(encoding="utf-8")
+    assert "o_switch_company_menu" in navbar_scss
+    assert "o_menu_brand" in navbar_scss
+    assert "hm.toggle(true)" in navbar_xml
+    assert "activateCompanies" in companies
+    assert "plantilla técnica" in companies
     settings = (ux / "models" / "res_config_settings.py").read_text(encoding="utf-8")
     assert "def get_values" in settings
     assert 'raw in ("True", "true", "1")' in settings

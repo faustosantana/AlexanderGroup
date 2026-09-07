@@ -1,9 +1,9 @@
 {
     "name": "Doralex UX — menús y catálogo",
-    "version": "19.0.1.1.1",
+    "version": "19.0.1.2.0",
     "category": "Hidden",
-    "summary": "Launcher limpio, Fiscal Dominicana agrupada y e-CF apagado por defecto",
-    "description": "Overlay Doralex: menús fiscales agrupados, e-CF/DGII ocultos hasta activar el switch, administración/aprobaciones/auditoría bajo Ajustes. No desinstala módulos ni cambia nombres técnicos.",
+    "summary": "Launcher limpio, barra sin nombre de empresa y e-CF apagado por defecto",
+    "description": "Overlay Doralex: menús fiscales agrupados, e-CF/DGII ocultos hasta activar el switch, administración/aprobaciones/auditoría bajo Ajustes. La barra superior no muestra el nombre de empresa ni la marca de app; el grid abre el tablero. El cambio de empresa queda en el menú del usuario. No desinstala módulos ni cambia nombres técnicos.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",
     "license": "LGPL-3",
@@ -29,6 +29,13 @@
         "views/menus.xml",
         "views/res_config_settings_views.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "justech_alexander_ux/static/src/navbar/navbar.scss",
+            "justech_alexander_ux/static/src/navbar/navbar.xml",
+            "justech_alexander_ux/static/src/navbar/user_companies.js",
+        ],
+    },
     "post_init_hook": "post_init_hook",
     "installable": True,
     "application": False,

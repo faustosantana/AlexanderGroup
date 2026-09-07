@@ -1,0 +1,15 @@
+/* Quitar el nombre de empresa y la marca de app (p. ej. "Editor")
+   de la barra. El clic del grid abre el tablero de aplicaciones. */
+
+header.o_navbar .o_switch_company_menu {
+    display: none !important;
+}
+
+header.o_navbar .o_menu_brand,
+header.o_navbar .o_menu_brand_icon {
+    display: none !important;
+}
+
+header.o_navbar .o_menu_toggle.hasImage {
+    padding-inline-start: 0.75rem !important;
+}
