@@ -1,11 +1,5 @@
-/* Hide company name and current-app brand from the top bar.
-   Company switching lives in the user menu. The grid opens the apps dashboard. */
-
-.o_main_navbar .o_switch_company_menu,
-.o_navbar .o_switch_company_menu,
-.o_switch_company_menu {
-    display: none !important;
-}
+/* Hide the current-app brand. Keep the native multi-company switcher
+   with checkboxes in the header (same behavior as justgroup). */
 
 .o_main_navbar .o_menu_brand,
 .o_main_navbar .o_menu_brand_icon,

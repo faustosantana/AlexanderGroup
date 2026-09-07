@@ -37,3 +37,11 @@ def test_approval_guards_block_direct_state() -> None:
     assert "not self.env.su" in request
     assert "_mail_brand_label" in request
     assert "JUSTECH" not in request
+
+
+def test_company_switcher_keeps_native_checkboxes() -> None:
+    js = (UX / "static/src/navbar/user_companies.js").read_text(encoding="utf-8")
+    css = (UX / "static/src/navbar/navbar.css").read_text(encoding="utf-8")
+    assert "systray.remove" not in js
+    assert "SwitchCompanyMenu" in js
+    assert "o_switch_company_menu" not in css

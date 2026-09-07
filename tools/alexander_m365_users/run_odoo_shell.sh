@@ -21,4 +21,4 @@ esac
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 scp -q "$SRC" "doralex-server:/tmp/${NAME}"
 scp -q "$ROOT/catalog.py" "doralex-server:/tmp/catalog.py"
-ssh doralex-server "docker cp /tmp/${NAME} ${CT}:/tmp/${NAME} && docker cp /tmp/catalog.py ${CT}:/tmp/catalog.py && docker exec -u 100:101 -e ODOO_USER_APPLY=\"${ODOO_USER_APPLY:-}\" -e ODOO_TEMP_PASSWORD=\"${ODOO_TEMP_PASSWORD:-}\" -e ODOO_QA_LIVE_DOCS=\"${ODOO_QA_LIVE_DOCS:-}\" ${CT} bash -lc 'python3 /usr/bin/odoo shell --database=${DB} --db_host=\"\$HOST\" --db_user=\"\$USER\" --db_password=\"\$PASSWORD\" --no-http < /tmp/${NAME}'"
+ssh doralex-server "docker cp /tmp/${NAME} ${CT}:/tmp/${NAME} && docker cp /tmp/catalog.py ${CT}:/tmp/catalog.py && docker exec -u 100:101 -e ODOO_USER_APPLY=\"${ODOO_USER_APPLY:-}\" -e ODOO_TEMP_PASSWORD=\"${ODOO_TEMP_PASSWORD:-}\" -e ODOO_QA_LIVE_DOCS=\"${ODOO_QA_LIVE_DOCS:-}\" -e ODOO_DELETE_TEST_INVOICES=\"${ODOO_DELETE_TEST_INVOICES:-}\" ${CT} bash -lc 'python3 /usr/bin/odoo shell --database=${DB} --db_host=\"\$HOST\" --db_user=\"\$USER\" --db_password=\"\$PASSWORD\" --no-http < /tmp/${NAME}'"
