@@ -1,0 +1,108 @@
+# Mailcow gate — 2026-09-07 — NO INSTALADO
+
+MAIL_SERVER_PLATFORM = NOT_INSTALLED
+MAILCOW_VERSION = N/A
+MAILCOW_RESOURCE_STATUS = FAIL
+RESOURCE_CHECK = FAIL
+FINAL_MAIL_SERVER_STATUS = NOT_INSTALLED
+
+MAIL_DOMAIN = erp.doralexgroup.cloud
+MAIL_HOSTNAME = mail.erp.doralexgroup.cloud
+CURRENT_DNS = NONE (erp y mail.erp sin registros)
+CURRENT_MX_ERP = NONE
+CURRENT_PTR = srv1935521.hstgr.cloud.
+
+PUBLIC_IPV4 = 2.25.121.111
+PUBLIC_IPV6 = 2a02:4780:95:ec6::1
+PROVIDER = Hostinger (hstgr.cloud / dns-parking.com)
+
+OS = Ubuntu 24.04.4 LTS
+KERNEL = 6.8.0-138-generic
+VIRTUALIZATION = kvm
+CPU = 2
+RAM_TOTAL = 7.8Gi
+RAM_USED = 4.3Gi
+RAM_AVAILABLE = 3.4Gi
+SWAP = 0B
+DISK_TOTAL = 96G
+DISK_FREE = 84G
+LOAD = 0.07 / 0.09 / 0.08
+
+DOCKER_VERSION = 29.7.2
+DOCKER_COMPOSE_VERSION = v5.5.0
+RUNNING_CONTAINERS = 6
+  doralex-production-odoo   1.88Gi
+  doralex-enterprise-staging-odoo 530Mi
+  doralex-dev-odoo          520Mi
+  doralex-production-db     242Mi
+  doralex-enterprise-staging-db 264Mi
+  doralex-dev-db            177Mi
+CURRENT_REVERSE_PROXY = nginx (80/443 public)
+ODOO_PORTS = 127.0.0.1:8069,8269,8169
+POSTGRES_PORTS = docker-internal 5432 only
+WEB_PORTS = 80,443 nginx
+
+MAILCOW_OFFICIAL_MIN = 6Gi RAM + 1Gi swap (Mailcow solo)
+HEADROOM_IF_INSTALLED = 3.4Gi available, 0 swap, 3 stacks Odoo
+OOM_RISK = HIGH
+INSTALL_DECISION = NO
+
+PRE_MAIL_SERVER_BACKUP = PASS
+  /opt/doralex/backups/infrastructure/pre_mail_server_20260907_155122
+  (nginx, compose yml, ufw, iptables, ssl live names, systemd; sin .env)
+
+SMTP25_OUTBOUND = PASS (Gmail MX y Outlook MX responden 220)
+SMTP25_INBOUND = NOT_LISTENING
+  UFW allow only 22/80/443; nada escucha :25
+  inbound proveedor no medible sin listener
+PROVIDER_SMTP_BLOCK = NO (outbound 25 no está bloqueado)
+
+SMTP587 = N/A
+SMTPS465 = N/A
+IMAP143 = N/A
+IMAPS993 = N/A
+TLS_CERTIFICATE_VALID = N/A
+
+DNS_A_STATUS = MISSING
+DNS_MX_STATUS = MISSING
+PTR_STATUS = MISMATCH
+  PTR_CURRENT_VALUE = srv1935521.hstgr.cloud.
+  PTR_REQUIRED_VALUE = mail.erp.doralexgroup.cloud
+  PTR_CHANGE_REQUIRED = YES (panel Hostinger, IP del VPS de correo)
+SPF_STATUS = MISSING
+DKIM_STATUS = NOT_GENERATED (hace falta Mailcow)
+DMARC_STATUS = MISSING
+
+INTERNAL_MAIL = NOT_TESTED
+INBOUND_EXTERNAL = NOT_TESTED
+OUTBOUND_EXTERNAL = NOT_TESTED
+OPEN_RELAY = N/A
+
+ODOO_SMTP_READY = NO
+ODOO_IMAP_READY = NO
+ODOO_PASSWORD_RESET_EMAIL = NOT_TESTED
+MAILBOXES_CREATED = 0
+ALIASES_CREATED = 0
+
+CORPORATE_MX_TOUCHED = NO
+  6 dominios siguen en Outlook (mail.protection.outlook.com)
+ODOO_LOGINS_TOUCHED = NO
+WEBSITE_TOUCHED = NO
+SERVICES_RESTARTED = NO
+
+CRITICAL_ERRORS = 0
+HIGH_ERRORS = 1
+  VPS actual no soporta Mailcow junto a Odoo prod+staging+dev
+MEDIUM_ERRORS = 2
+  sin swap; PTR Hostinger por defecto
+LOW_ERRORS = 1
+  Spamhaus DNSBL public query = 127.255.255.254 (política, no listing)
+
+DNS_USER_ACTION_REQUIRED = YES (cuando exista VPS de correo)
+PTR_USER_ACTION_REQUIRED = YES (cuando exista VPS de correo)
+
+RECOMMENDED_MAIL_VPS =
+  KVM 2–4 vCPU / 8 GiB RAM / 2 GiB swap / 50+ GiB disco
+  IPv4 dedicada + control PTR
+  outbound e inbound TCP 25
+  NO compartir este VPS con Odoo
