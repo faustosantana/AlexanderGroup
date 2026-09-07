@@ -3,6 +3,12 @@
 import { _t } from "@web/core/l10n/translation";
 import { registry } from "@web/core/registry";
 import { user } from "@web/core/user";
+import "@web/webclient/switch_company_menu/switch_company_menu";
+
+const systray = registry.category("systray");
+if (systray.contains("SwitchCompanyMenu")) {
+    systray.remove("SwitchCompanyMenu");
+}
 
 function isTechnicalCompany(company) {
     const name = (company.name || "").toLowerCase();
@@ -31,9 +37,7 @@ if (companies.length > 1) {
                 return {
                     type: "item",
                     id: `dx_company_${company.id}`,
-                    description: active
-                        ? _t("%s (actual)", company.name)
-                        : company.name,
+                    description: active ? _t("%s (actual)", company.name) : company.name,
                     callback: () => {
                         user.activateCompanies([company.id], {
                             includeChildCompanies: false,

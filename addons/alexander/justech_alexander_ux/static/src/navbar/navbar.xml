@@ -4,5 +4,7 @@
         <xpath expr="//a[hasclass('o_menu_toggle')]" position="attributes">
             <attribute name="t-on-click.prevent">() => { env.isSmall ? this._openAppMenuSidebar() : this.hm.toggle(true) }</attribute>
         </xpath>
+        <xpath expr="//img[hasclass('o_menu_brand_icon')]" position="replace"/>
+        <xpath expr="//span[hasclass('o_menu_brand')]" position="replace"/>
     </t>
 </templates>
