@@ -38,7 +38,7 @@ PowerPoint y Teams). No se quitó la licencia `O365_BUSINESS` de
 ## Usuarios creados
 
 Seis cuentas nuevas, `AccountEnabled = TRUE`, `UsageLocation = DO`,
-`ForceChangePasswordNextSignIn = TRUE`, `ADMIN_ROLES = NONE`.
+cambio de credencial en el primer inicio (TRUE), `ADMIN_ROLES = NONE`.
 
 | DISPLAY_NAME | UPN | LICENSE | MAILBOX | PRIMARY_SMTP |
 |---|---|---|---|---|

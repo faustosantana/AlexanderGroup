@@ -15,7 +15,7 @@ Alexander confirmado: **Alexander Piña Aquino**, compañías 8–13, default 11
 (INVERSIONES DORALEX,S.RL.). No se creó un segundo `res.users`.
 `__system__` (id 1) no se tocó.
 
-`ir.mail_server = 0` → `ODOO_PASSWORD_RESET_READY = NO`. No bloquea la
+`ir.mail_server = 0` → `ODOO_RESET_MAIL_READY = NO`. No bloquea la
 creación.
 
 ## Perfiles (least privilege)
@@ -55,8 +55,23 @@ superuser. No recibe `group_self_approve`.
 Purchase User en Odoo 19 tiene ACL de create sobre `account.move` (facturas
 de proveedor). Los operadores **no pueden publicar** factura de cliente.
 
+## Producción
+
+| PERSON | ODOO_USER_ID | PARTNER_ID | LOGIN_QA |
+|---|---|---|---|
+| Luis | 13 | 89 | PASS |
+| Janny | 14 | 90 | PASS |
+| Elianny | 15 | 91 | PASS |
+| Leopordo | 16 | 92 | PASS |
+| Geilin | 17 | 93 | PASS |
+| Alexander | 5 | 18 | SKIPPED_KEEP_EXISTING_PASSWORD |
+
+`posted_out_invoices_ops = 27` (apertura intacta). NCF B1500000150 /
+B1500000110 / B1300000016 sin cambio. `__system__` no tocado.
+`alexander_login_rows = 1`.
+
 ## Login
 
-Los 5 usuarios nuevos validaron XML-RPC en staging. Alexander conserva su
-contraseña Odoo anterior (no se interrumpió su acceso). El login nuevo
-`alexander.pina@inversionesdoralex.com` queda en el mismo uid 5.
+Los 5 usuarios nuevos validaron XML-RPC en staging y producción. Alexander
+conserva su contraseña Odoo anterior (no se interrumpió su acceso). El
+login nuevo `alexander.pina@inversionesdoralex.com` queda en el mismo uid 5.

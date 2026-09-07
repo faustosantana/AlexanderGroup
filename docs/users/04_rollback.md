@@ -1,14 +1,17 @@
 # Backup y rollback de permisos
 
-## Antes de producción
+## Backup de producción (ejecutado)
 
-Crear backup con `deployment/doralex/scripts/backup.sh production` y
-etiquetar el directorio:
+```
+ODOO_USER_BACKUP = PASS
+NAME = pre_alexander_users_permissions_20260907_122013
+PATH = /opt/doralex/backups/production/production_20260907_122013
+verify_backup.sh = BACKUP VALIDO
+db.dump SHA256 = 2164e0f0626a93cfd33b6b180849bd22bac5607281a80419fe18db730cc08adc
+```
 
-`pre_alexander_users_permissions_<timestamp>`
-
-Debe incluir DB, filestore, config, custom addons. Validar con
-`verify_backup.sh`. Si falla: STOP.
+Incluye DB, filestore, config, custom-addons y la matriz
+`odoo_user_provision_matrix.json`.
 
 ## Matriz de reversión Odoo
 
