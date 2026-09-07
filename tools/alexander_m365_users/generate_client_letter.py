@@ -96,8 +96,8 @@ PEOPLE = [
         "mail": "alexander.pina@inversionesdoralex.com",
         "role": "Administrador general de Odoo",
         "can": "Las seis empresas, Ajustes, usuarios, ventas, compras, contabilidad e inventario.",
-        "cannot": "Es el mismo usuario de siempre. No se creó una segunda ficha.",
-        "odoo_pw": "La contraseña de Odoo que usted ya usa (no se cambió).",
+        "cannot": "Cámbiela después del primer acceso. No es el usuario técnico interno.",
+        "odoo_pw": ODOO_PW,
     },
 ]
 
@@ -205,7 +205,7 @@ def page_letter(c, total):
     bullets = [
         "Seis correos nuevos en @inversionesdoralex.com, con buzón activo.",
         "El mismo login sirve para Outlook (correo) y para Odoo.",
-        "Usted sigue siendo el administrador general de Odoo. Es el mismo usuario de siempre; solo cambió el correo de acceso. Su contraseña de Odoo no se tocó.",
+        "Usted es el administrador general de Odoo. Usuario: alexander.pina@inversionesdoralex.com. Contraseña temporal de Odoo en este documento; cámbiela después de entrar.",
         "Luis, Janny, Elianny y Leopordo pueden vender y comprar. No pueden facturar ni entrar a Ajustes.",
         "Geilin, además, es quien factura. No administra la contabilidad ni los NCF.",
         "Los seis pueden trabajar en las seis empresas del grupo. La empresa por defecto es Inversiones Doralex.",
@@ -281,7 +281,7 @@ def page_how(c, total):
             [
                 "Entre a https://doralexgroup.cloud",
                 "El usuario es el mismo correo @inversionesdoralex.com.",
-                "La contraseña de Odoo es otra, no la de Microsoft.",
+                "La contraseña de Odoo es otra, no la de Microsoft. Es temporal: cámbiela después de entrar.",
                 "En la esquina de la empresa puede cambiar entre las seis compañías del grupo.",
             ],
         ),
@@ -306,7 +306,7 @@ def page_how(c, total):
     y -= 18
     y = paragraph(
         c,
-        "Su correo nuevo es alexander.pina@inversionesdoralex.com. En Microsoft es una cuenta nueva: use la contraseña temporal y cámbiela al entrar. En Odoo no creamos un segundo usuario: actualizamos el que ya tenía (antes inversionesdoralex@gmail.com). Siguen sus documentos, empresas y permisos. La contraseña de Odoo es la que usted ya conocía.",
+        "Su correo es alexander.pina@inversionesdoralex.com. En Microsoft y en Odoo use las contraseñas temporales de este documento (son distintas). Microsoft le pide cambiar la suya al entrar. En Odoo cámbiela usted desde Preferencias después del primer acceso.",
         MARGIN,
         y,
         width=92,

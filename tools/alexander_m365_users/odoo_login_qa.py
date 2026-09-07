@@ -26,17 +26,6 @@ def main():
         try:
             uid = common.authenticate(db, person["upn"], password, {})
             success = bool(uid)
-            if person["key"] == "alexander" and not success:
-                rows.append(
-                    {
-                        "PERSON": person["display_name"],
-                        "LOGIN": person["upn"],
-                        "ODOO_USER_ID": None,
-                        "LOGIN_QA": "SKIPPED_KEEP_EXISTING_PASSWORD",
-                    }
-                )
-                ok += 1
-                continue
             if success:
                 ok += 1
             rows.append(

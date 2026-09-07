@@ -64,7 +64,7 @@ de proveedor). Los operadores **no pueden publicar** factura de cliente.
 | Elianny | 15 | 91 | PASS |
 | Leopordo | 16 | 92 | PASS |
 | Geilin | 17 | 93 | PASS |
-| Alexander | 5 | 18 | SKIPPED_KEEP_EXISTING_PASSWORD |
+| Alexander | 5 | 18 | PASS |
 
 `posted_out_invoices_ops = 27` (apertura intacta). NCF B1500000150 /
 B1500000110 / B1300000016 sin cambio. `__system__` no tocado.
@@ -72,6 +72,7 @@ B1500000110 / B1300000016 sin cambio. `__system__` no tocado.
 
 ## Login
 
-Los 5 usuarios nuevos validaron XML-RPC en staging y producción. Alexander
-conserva su contraseña Odoo anterior (no se interrumpió su acceso). El
-login nuevo `alexander.pina@inversionesdoralex.com` queda en el mismo uid 5.
+Los 6 usuarios validan XML-RPC con la contraseña temporal de Odoo.
+Alexander no tenía acceso Odoo previo (implementación nueva): se le asignó
+la misma temporal. Debe cambiarla después del primer acceso. El login
+`alexander.pina@inversionesdoralex.com` queda en el uid 5 (no se duplicó).

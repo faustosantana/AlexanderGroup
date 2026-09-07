@@ -1,8 +1,10 @@
 # ruff: noqa
 """Crea o actualiza los 6 usuarios Odoo. No imprime contraseñas.
 
-Alexander: UPDATE del usuario existente (gmail). No crea un segundo res.users.
-No toca __system__ (id 1). No envía email de reset.
+Alexander: UPDATE del usuario de implementación (gmail → UPN). No crea un
+segundo res.users. Asigna la contraseña temporal (implementación nueva;
+Alexander no tenía acceso Odoo previo). No toca __system__ (id 1).
+No envía email de reset.
 """
 
 from __future__ import annotations
@@ -143,6 +145,10 @@ def main():
                 user.partner_id.write(
                     {"email": person["upn"], "name": "Alexander Piña Aquino"}
                 )
+                if hasattr(user, "_change_password"):
+                    user._change_password(PASSWORD)
+                else:
+                    user.write({"password": PASSWORD})
             report["updated"].append(
                 {
                     "person": person["display_name"],

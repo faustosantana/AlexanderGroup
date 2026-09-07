@@ -107,7 +107,7 @@ ROWS = [
         "invoicing": "YES",
         "acct_admin": "YES",
         "odoo_admin": "YES",
-        "odoo_pw_mode": "keep",
+        "odoo_pw_mode": "temp",
     },
 ]
 
@@ -227,7 +227,7 @@ def write_xlsx(path: Path):
         ("Odoo", "https://doralexgroup.cloud"),
         ("Outlook web", "https://outlook.office.com"),
         ("Alexander Odoo", "Mismo usuario uid 5. No se duplico. Login nuevo."),
-        ("Alexander Odoo clave", "No se reseteo. Sigue su clave actual."),
+        ("Alexander Odoo clave", "Temporal, igual que el resto. Debe cambiarla."),
         ("No tocar", "admin@doralex.onmicrosoft.com / alex@doralex.onmicrosoft.com"),
         ("Backup Odoo", "pre_alexander_users_permissions_20260907_122013"),
         ("Empresas", "Las 6 operativas. Default: INVERSIONES DORALEX,S.RL."),
@@ -405,7 +405,7 @@ def write_pdf(path: Path):
         "Empresas: las 6 operativas. Default INVERSIONES DORALEX,S.RL.",
         "Luis, Janny, Elianny, Leopordo: ventas + compras. No publican facturas. No Settings.",
         "Geilin: facturacion operativa. No es Accounting Admin ni Settings.",
-        "Alexander: administrador general funcional de Odoo. No es superuser id 1.",
+        "Alexander: administrador general funcional de Odoo. No es superuser id 1. Contraseña Odoo temporal (implementación nueva); debe cambiarla.",
         "Backup: pre_alexander_users_permissions_20260907_122013.",
         "No se tocaron facturas historicas, NCF, apertura, reportes ni website.",
         "Cuando venza la prueba Standard, cambiar a Kiosk u otra licencia de correo.",

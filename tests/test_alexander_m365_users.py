@@ -38,6 +38,10 @@ def test_six_people_and_fixed_upns():
     assert all(u.endswith("@" + M365_DOMAIN) for u in upns)
     assert {p["key"] for p in PEOPLE if p["invoicing"]} == {"alexander", "geilin"}
     assert next(p for p in PEOPLE if p["key"] == "alexander")["odoo_admin"] is True
+    handoff = Path("tools/alexander_m365_users/generate_handoff_pack.py").read_text(
+        encoding="utf-8"
+    )
+    assert '"odoo_pw_mode": "keep"' not in handoff
 
 
 def test_kiosk_part_number_is_real_not_invented_id():
@@ -67,6 +71,23 @@ def test_docs_exist_and_record_standard_trial_gate():
     assert "STANDARD_SKU = O365_BUSINESS_PREMIUM" in score
     assert "MAILBOXES_READY = 6" in score
     assert "FINAL_USER_PROVISIONING_STATUS = SUCCESS_WITH_STANDARD_TRIAL" in score
+
+
+def test_letter_does_not_claim_alexander_had_odoo_password():
+    text = Path("tools/alexander_m365_users/generate_client_letter.py").read_text(
+        encoding="utf-8"
+    )
+    banned = (
+        "ya usa",
+        "ya conocía",
+        "contraseña de Odoo no se tocó",
+        "no se cambió",
+        "SKIPPED_KEEP_EXISTING",
+        "clave actual",
+        "que usted ya",
+    )
+    for token in banned:
+        assert token not in text, token
 
 
 def test_docs_and_catalog_have_no_secrets():
