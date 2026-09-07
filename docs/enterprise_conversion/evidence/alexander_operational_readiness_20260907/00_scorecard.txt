@@ -1,0 +1,116 @@
+# Alexander operational readiness — corte 2026-09-07
+
+PROD = doralex_prod @ doralex-production-odoo / https://doralexgroup.cloud
+STAGING = doralex_ent_staging @ doralex-enterprise-staging-odoo
+BATCH = ALEXANDER_OPENING_2026-09-04
+NO se reimportó apertura. NO se restauró staging sobre prod. NO se envió mail/e-CF/DGII.
+
+BASELINE_OPENING_IMPORT = SUCCESS
+PROD_AR_TOTAL = 27240211.80
+PROD_AR_DIFFERENCE = 0.00
+  Doralex 16491966.46 / Mayuma 2668855.73 / Rempart 8079389.61
+  B1500000150 = 294754.56 (sin cambio)
+  REMPART B1500000110 = 267250.52 (sin cambio)
+  B1300000016 = MISSING_PDF (INV/2026/00021 id=141)
+
+COMPANIES_AUDITED = 6
+COMPANIES_ACCOUNTING_READY = 6
+COMPANIES_SALES_READY = 6
+COMPANIES_PURCHASE_READY = 6
+COMPANIES_INVENTORY_READY = 6
+COMPANIES_FISCAL_READY = 6
+COMPANIES_BANK_READY = 0
+COMPANIES_USERS_READY = 1
+COMPANIES_REPORTS_READY = 6
+COMPANIES_GO_LIVE_READY = 0
+
+CROSS_COMPANY_DATA_LEAK = 0
+  user dx.test.security@justech.do company 8: seen=2 foreign=0
+  Alexander allowed_company_ids=[11]: seen=22 foreign=0
+AR_LEDGER_DIFFERENCE = 0.00
+  (lote de apertura; Aged operativo incluye residual QA aparte)
+SOURCE_PDF_ATTACHMENTS_FOUND = 26
+MISSING_PDF_INVOICES = 1
+  B1300000016
+
+NCF_TOTAL = 34
+NCF_SAFE_ACTIVE = 25
+NCF_EXPIRED_EXCEL = 9
+NCF_BLOCKED = 0
+NCF_QA_CANCELLED_RANGES = 12
+NCF_NEEDS_ALEXANDER = 0
+NCF_NEEDS_DGII_CONFIRMATION = 0
+  Vencimientos Excel 2024-12-31 / 2025-12-31 se guardan tal cual (state=expired).
+  Al facturar: "está vencido … No se puede facturar hasta validarlo."
+  N/A sigue date_to 2099 (sin vencimiento en la planilla).
+
+DORALEX_B15_MAX_REAL = B1500000151
+DORALEX_B15_NEXT = B1500000152
+DORALEX_B15_ACTIVE = YES
+DORALEX_B01_NEXT = B0100000054
+DORALEX_B01_ACTIVE = YES
+  auth=6005372487 range 52-87; Excel last/next B15 ignorado (typo)
+DORALEX_B13_ACTIVE = YES
+  next B1300000017 (0016 ya existe; Excel to 15 se amplió a 17)
+QA_NCF_CONSUMED_THIS_PHASE = 0
+STAGING_NCF_CONSUMED = 0
+
+DGII_607_VALIDATION = PASS
+  27 movimientos / 10 períodos / errors=0 / EXPORTER_CREATED=0
+DGII_606_VALIDATION = NOT_APPLICABLE
+DGII_608_VALIDATION = NO_CANCELLATIONS
+DGII_SENT = 0
+ECF_SENT = 0
+ECF_OPERATIONAL = False
+MAIL_SENT = 0
+
+QWEB_BEFORE = 58
+QWEB_AFTER = 58
+REPORTS_PRESERVED = YES
+
+QA_DATA_FOUND_IN_PROD = NO
+  limpieza 2026-09-07 autorizada; partners/user archivados; moves QA cancelados
+  stock operativo DX-TEST-STK = 0
+ARTIFICIAL_AP_RECORDS = 0
+  (lote apertura vendor bills = 0; bills QA BILL/2026/08/0001 residual 0 no son apertura)
+UNBALANCED_MOVES = 0
+CUSTOMER_DUPLICATES = 0
+PRODUCT_DUPLICATES = 0
+
+USERS_TOTAL = 3
+USERS_WITH_EXCESSIVE_PERMISSIONS = 0
+  dx.test.security@justech.do inactivo (limpieza QA)
+  admin + fausto@justech.do tienen Settings (cuentas de implementación; no se tocan)
+SECURITY_CRITICAL_FINDINGS = 0
+
+OPERATIONAL_READINESS_BACKUP = PASS
+BACKUP_VALIDATED = PASS
+  /opt/doralex/backups/production/pre_alexander_operational_readiness_20260907_093742
+  -> production_20260907_093742
+  db.dump SHA256 2390117899fac821d42170e03bd4b79ad37a69ed6de6003eb61d3e5a31d6639a
+  pg_restore -l = 33990 TOC (dbname doralex_prod, 33979 entries, gzip custom)
+  verify_backup.sh = BACKUP VALIDO
+RESTORE_VALIDATED = PARTIAL
+  TOC + checksum verificados; no se ejecutó restore destructivo sobre prod
+BACKUP_SCHEDULED = NO
+  no hay cron/timer de backup.sh; solo on-demand
+
+TECHNICAL_COMPANY_SAFE_TO_ARCHIVE = NO
+  company_id=1 Plantilla técnica (no operativa) USD/US
+  0 moves / 9 journals / 1 warehouse / fausto@justech.do aún la tiene
+  no se archivó
+
+DETERMINISTIC_FIXES_APPLIED =
+  l10n_do_dgii_start_date ×6 desde Excel
+  partner.state_id ×6 (Santo Domingo / Distrito Nacional)
+  bank_account_id de 6 diarios Banreservas (números no cambiados)
+
+CRITICAL_ERRORS = 0
+HIGH_ERRORS = 3
+  backup cron ausente / banco 18.8M sin postear / sin ir.mail_server
+MEDIUM_ERRORS = 4
+LOW_ERRORS = 3
+STILL_REQUIRED_FROM_ALEXANDER_COUNT = 2
+  banco fecha + PDF B1300000016 (usuarios extra cuando existan)
+
+FINAL_OPERATIONAL_READINESS_STATUS = READY_WITH_BUSINESS_PENDING

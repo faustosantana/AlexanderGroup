@@ -1,0 +1,133 @@
+{
+  "flows": [
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "cid": 8,
+      "so": "BLU/SO/00029",
+      "so_state": "sale",
+      "sale_invoice_ids": [
+        1821
+      ],
+      "sale_invoice_state": [
+        "draft"
+      ],
+      "sale_ncf": [
+        false
+      ],
+      "po": "BLU/OC/00024",
+      "po_state": "purchase",
+      "sale_ok": true,
+      "purchase_ok": true
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "cid": 9,
+      "so": "PIN/SO/00029",
+      "so_state": "sale",
+      "sale_invoice_ids": [
+        1822
+      ],
+      "sale_invoice_state": [
+        "draft"
+      ],
+      "sale_ncf": [
+        false
+      ],
+      "po": "PIN/OC/00029",
+      "po_state": "purchase",
+      "sale_ok": true,
+      "purchase_ok": true
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "cid": 10,
+      "so": "DOM/SO/00029",
+      "so_state": "sale",
+      "sale_invoice_ids": [
+        1823
+      ],
+      "sale_invoice_state": [
+        "draft"
+      ],
+      "sale_ncf": [
+        false
+      ],
+      "po": "DOM/OC/00024",
+      "po_state": "purchase",
+      "sale_ok": true,
+      "purchase_ok": true
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "cid": 11,
+      "so": "DOR/SO/00041",
+      "so_state": "sale",
+      "sale_invoice_ids": [
+        1824
+      ],
+      "sale_invoice_state": [
+        "draft"
+      ],
+      "sale_ncf": [
+        false
+      ],
+      "po": "DOR/OC/00037",
+      "po_state": "purchase",
+      "sale_ok": true,
+      "purchase_ok": true
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "cid": 12,
+      "so": "MAY/SO/00029",
+      "so_state": "sale",
+      "sale_invoice_ids": [
+        1825
+      ],
+      "sale_invoice_state": [
+        "draft"
+      ],
+      "sale_ncf": [
+        false
+      ],
+      "po": "MAY/OC/00024",
+      "po_state": "purchase",
+      "sale_ok": true,
+      "purchase_ok": true
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "cid": 13,
+      "so": "REM/SO/00029",
+      "so_state": "sale",
+      "sale_invoice_ids": [
+        1826
+      ],
+      "sale_invoice_state": [
+        "draft"
+      ],
+      "sale_ncf": [
+        false
+      ],
+      "po": "REM/OC/00024",
+      "po_state": "purchase",
+      "sale_ok": true,
+      "purchase_ok": true
+    }
+  ],
+  "MAIL_SENT": 0,
+  "NCF_CONSUMED": 0,
+  "posted_invoices": 0,
+  "ncf_before": {
+    "31": 111,
+    "32": 111,
+    "29": 54,
+    "30": 152
+  },
+  "ncf_after": {
+    "31": 111,
+    "32": 111,
+    "29": 54,
+    "30": 152
+  }
+}

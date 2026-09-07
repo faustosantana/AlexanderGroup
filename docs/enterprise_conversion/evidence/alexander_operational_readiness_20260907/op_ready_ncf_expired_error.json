@@ -1,0 +1,167 @@
+{
+  "expired_count": 9,
+  "expired_all_block": true,
+  "expired_checks": [
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "prefix": "B01",
+      "state": "expired",
+      "date_to": "2025-12-31",
+      "next": "B0100000009",
+      "auth": "4004196168",
+      "ok": false,
+      "error": "El rango B01 de COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L. está vencido. No se pueden emitir NCF para esta empresa.",
+      "expected_date": "2025-12-31",
+      "date_match": true,
+      "error_says_vencido": true
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "prefix": "B11",
+      "state": "expired",
+      "date_to": "2025-12-31",
+      "next": "B1100000001",
+      "auth": "4004017760",
+      "ok": false,
+      "error": "El rango B11 de COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L. está vencido. No se pueden emitir NCF para esta empresa.",
+      "expected_date": "2025-12-31",
+      "date_match": true,
+      "error_says_vencido": true
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "prefix": "B01",
+      "state": "expired",
+      "date_to": "2025-12-31",
+      "next": "B0100000094",
+      "auth": "4004196172",
+      "ok": false,
+      "error": "El rango B01 de DOMINION BUSINESS,S.R.L. está vencido. No se pueden emitir NCF para esta empresa.",
+      "expected_date": "2025-12-31",
+      "date_match": true,
+      "error_says_vencido": true
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "prefix": "B11",
+      "state": "expired",
+      "date_to": "2025-12-31",
+      "next": "B1100000001",
+      "auth": "4003974422",
+      "ok": false,
+      "error": "El rango B11 de DOMINION BUSINESS,S.R.L. está vencido. No se pueden emitir NCF para esta empresa.",
+      "expected_date": "2025-12-31",
+      "date_match": true,
+      "error_says_vencido": true
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "prefix": "B11",
+      "state": "expired",
+      "date_to": "2024-12-31",
+      "next": "B1100000001",
+      "auth": "3003703072",
+      "ok": false,
+      "error": "El rango B11 de INVERSIONES DORALEX,S.RL. está vencido. No se pueden emitir NCF para esta empresa.",
+      "expected_date": "2024-12-31",
+      "date_match": true,
+      "error_says_vencido": true
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "prefix": "B11",
+      "state": "expired",
+      "date_to": "2025-12-31",
+      "next": "B1100000001",
+      "auth": "4003974363",
+      "ok": false,
+      "error": "El rango B11 de INVERSIONES EL MAYUMA, S.R.L. está vencido. No se pueden emitir NCF para esta empresa.",
+      "expected_date": "2025-12-31",
+      "date_match": true,
+      "error_says_vencido": true
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "prefix": "B13",
+      "state": "expired",
+      "date_to": "2025-12-31",
+      "next": "B1300000001",
+      "auth": "4003974364",
+      "ok": false,
+      "error": "El rango B13 de INVERSIONES EL MAYUMA, S.R.L. está vencido. No se pueden emitir NCF para esta empresa.",
+      "expected_date": "2025-12-31",
+      "date_match": true,
+      "error_says_vencido": true
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "prefix": "B11",
+      "state": "expired",
+      "date_to": "2025-12-31",
+      "next": "B1100000001",
+      "auth": "4004004172",
+      "ok": false,
+      "error": "El rango B11 de REMPART GROUP S.R.L. está vencido. No se pueden emitir NCF para esta empresa.",
+      "expected_date": "2025-12-31",
+      "date_match": true,
+      "error_says_vencido": true
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "prefix": "B13",
+      "state": "expired",
+      "date_to": "2025-12-31",
+      "next": "B1300000006",
+      "auth": "4004004197",
+      "ok": false,
+      "error": "El rango B13 de REMPART GROUP S.R.L. está vencido. No se pueden emitir NCF para esta empresa.",
+      "expected_date": "2025-12-31",
+      "date_match": true,
+      "error_says_vencido": true
+    }
+  ],
+  "live_count": 3,
+  "live_all_ok": true,
+  "live_checks": [
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "prefix": "B01",
+      "state": "active",
+      "date_to": "2027-12-31",
+      "next": "B0100000001",
+      "auth": "6005109961",
+      "ok": true,
+      "error": "",
+      "expected_date": "2027-12-31"
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "prefix": "B01",
+      "state": "active",
+      "date_to": "2027-12-31",
+      "next": "B0100000054",
+      "auth": "6005372487",
+      "ok": true,
+      "error": "",
+      "expected_date": "2027-12-31"
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "prefix": "B15",
+      "state": "active",
+      "date_to": "2027-12-31",
+      "next": "B1500000152",
+      "auth": "6005109381",
+      "ok": true,
+      "error": "",
+      "expected_date": "2027-12-31"
+    }
+  ],
+  "opening": {
+    "invoices": 27,
+    "ar": 27240211.8,
+    "b150": 294754.56,
+    "rempart_110": 267250.52
+  },
+  "ncf_consumed": 0
+}

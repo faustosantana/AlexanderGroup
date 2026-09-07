@@ -1,0 +1,77 @@
+{
+  "pdfs": [
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "doc": "REM/SO/00029",
+      "bytes": 37219,
+      "file": "REM_REM-SO-00029_so.pdf"
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "doc": "MAY/SO/00029",
+      "bytes": 44192,
+      "file": "MAY_MAY-SO-00029_so.pdf"
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "doc": "DOR/SO/00041",
+      "bytes": 34681,
+      "file": "DOR_DOR-SO-00041_so.pdf"
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "doc": "DOM/SO/00029",
+      "bytes": 46279,
+      "file": "DOM_DOM-SO-00029_so.pdf"
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "doc": "PIN/SO/00029",
+      "bytes": 99248,
+      "file": "PIN_PIN-SO-00029_so.pdf"
+    },
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "doc": "BLU/SO/00029",
+      "bytes": 104365,
+      "file": "BLU_BLU-SO-00029_so.pdf"
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "doc": "REM/OC/00024",
+      "bytes": 39141,
+      "file": "REM_REM-OC-00024_po.pdf"
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "doc": "MAY/OC/00024",
+      "bytes": 45988,
+      "file": "MAY_MAY-OC-00024_po.pdf"
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "doc": "DOR/OC/00037",
+      "bytes": 36634,
+      "file": "DOR_DOR-OC-00037_po.pdf"
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "doc": "DOM/OC/00024",
+      "bytes": 48246,
+      "file": "DOM_DOM-OC-00024_po.pdf"
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "doc": "PIN/OC/00029",
+      "bytes": 101306,
+      "file": "PIN_PIN-OC-00029_po.pdf"
+    },
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "doc": "BLU/OC/00024",
+      "bytes": 106168,
+      "file": "BLU_BLU-OC-00024_po.pdf"
+    }
+  ],
+  "MAIL_SENT": 0
+}

@@ -1,0 +1,330 @@
+{
+  "count": 29,
+  "by_type": {
+    "out_invoice": 27,
+    "entry": 2
+  },
+  "ar_residual": 27240211.8,
+  "b150": {
+    "id": 116,
+    "company": "INVERSIONES DORALEX,S.RL.",
+    "name": "INV/2026/00006",
+    "ncf": "B1500000150",
+    "type": "out_invoice",
+    "state": "posted",
+    "residual": 294754.56,
+    "amount": 294754.56
+  },
+  "rempart_110": {
+    "id": 135,
+    "company": "INVERSIONES EL MAYUMA, S.R.L.",
+    "name": "INV/2026/00003",
+    "ncf": "B1500000110",
+    "type": "out_invoice",
+    "state": "posted",
+    "residual": 1255959.55,
+    "amount": 1255959.55
+  },
+  "b016": {
+    "id": 141,
+    "company": "INVERSIONES DORALEX,S.RL.",
+    "name": "INV/2026/00021",
+    "ncf": "B1300000016",
+    "type": "out_invoice",
+    "state": "posted",
+    "residual": 44800.0,
+    "amount": 44800.0
+  },
+  "rows": [
+    {
+      "id": 118,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2025/00001",
+      "ncf": "B0100000035",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 2073020.0,
+      "amount": 2763970.0
+    },
+    {
+      "id": 120,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00008",
+      "ncf": "B0100000037",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 1251766.6,
+      "amount": 1251766.6
+    },
+    {
+      "id": 121,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00009",
+      "ncf": "B0100000041",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 1457385.6,
+      "amount": 1457385.6
+    },
+    {
+      "id": 122,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00010",
+      "ncf": "B0100000043",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 1458940.0,
+      "amount": 1458940.0
+    },
+    {
+      "id": 123,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00011",
+      "ncf": "B0100000044",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 314500.0,
+      "amount": 314500.0
+    },
+    {
+      "id": 125,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00013",
+      "ncf": "B0100000048",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 5499600.0,
+      "amount": 5499600.0
+    },
+    {
+      "id": 126,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00014",
+      "ncf": "B0100000049",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 1105720.96,
+      "amount": 1105720.96
+    },
+    {
+      "id": 129,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00017",
+      "ncf": "B0100000050",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 719850.0,
+      "amount": 719850.0
+    },
+    {
+      "id": 130,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00018",
+      "ncf": "B0100000051",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 337710.86,
+      "amount": 337710.86
+    },
+    {
+      "id": 131,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00019",
+      "ncf": "B0100000052",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 488107.8,
+      "amount": 488107.8
+    },
+    {
+      "id": 132,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00020",
+      "ncf": "B0100000053",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 659150.0,
+      "amount": 659150.0
+    },
+    {
+      "id": 124,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00012",
+      "ncf": "B1300000012",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 42000.0,
+      "amount": 42000.0
+    },
+    {
+      "id": 127,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00015",
+      "ncf": "B1300000013",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 19800.0,
+      "amount": 19800.0
+    },
+    {
+      "id": 128,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00016",
+      "ncf": "B1300000015",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 52453.3,
+      "amount": 52453.3
+    },
+    {
+      "id": 141,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00021",
+      "ncf": "B1300000016",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 44800.0,
+      "amount": 44800.0
+    },
+    {
+      "id": 113,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00003",
+      "ncf": "B1500000147",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 34232.27,
+      "amount": 34232.27
+    },
+    {
+      "id": 114,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00004",
+      "ncf": "B1500000148",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 362497.95,
+      "amount": 362497.95
+    },
+    {
+      "id": 115,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00005",
+      "ncf": "B1500000149",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 247928.15,
+      "amount": 247928.15
+    },
+    {
+      "id": 116,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00006",
+      "ncf": "B1500000150",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 294754.56,
+      "amount": 294754.56
+    },
+    {
+      "id": 117,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "INV/2026/00007",
+      "ncf": "B1500000151",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 27748.41,
+      "amount": 27748.41
+    },
+    {
+      "id": 119,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "name": "MISC/2025/10/0001",
+      "ncf": false,
+      "type": "entry",
+      "state": "posted",
+      "residual": 0.0,
+      "amount": 690950.0
+    },
+    {
+      "id": 133,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "name": "INV/2025/00001",
+      "ncf": "B1500000109",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 1412896.18,
+      "amount": 2710922.77
+    },
+    {
+      "id": 135,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "name": "INV/2026/00003",
+      "ncf": "B1500000110",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 1255959.55,
+      "amount": 1255959.55
+    },
+    {
+      "id": 134,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "name": "MISC/2025/12/0001",
+      "ncf": false,
+      "type": "entry",
+      "state": "posted",
+      "residual": 0.0,
+      "amount": 1298026.59
+    },
+    {
+      "id": 136,
+      "company": "REMPART GROUP S.R.L.",
+      "name": "INV/2025/00001",
+      "ncf": "B1500000106",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 2292600.56,
+      "amount": 2292600.56
+    },
+    {
+      "id": 137,
+      "company": "REMPART GROUP S.R.L.",
+      "name": "INV/2026/00003",
+      "ncf": "B1500000107",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 758842.77,
+      "amount": 758842.77
+    },
+    {
+      "id": 138,
+      "company": "REMPART GROUP S.R.L.",
+      "name": "INV/2026/00004",
+      "ncf": "B1500000108",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 1788301.8,
+      "amount": 1788301.8
+    },
+    {
+      "id": 139,
+      "company": "REMPART GROUP S.R.L.",
+      "name": "INV/2026/00005",
+      "ncf": "B1500000109",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 2972393.96,
+      "amount": 2972393.96
+    },
+    {
+      "id": 140,
+      "company": "REMPART GROUP S.R.L.",
+      "name": "INV/2026/00006",
+      "ncf": "B1500000110",
+      "type": "out_invoice",
+      "state": "posted",
+      "residual": 267250.52,
+      "amount": 267250.52
+    }
+  ]
+}

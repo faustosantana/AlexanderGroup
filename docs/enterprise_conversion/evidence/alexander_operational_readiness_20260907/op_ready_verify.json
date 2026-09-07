@@ -1,0 +1,2155 @@
+{
+  "database": "doralex_prod",
+  "companies": [
+    {
+      "id": 8,
+      "name": "BLUE ELITE, S.R.L.",
+      "vat": "133371261",
+      "email": "administracion@blueelite.net",
+      "phone": "809-614-1306",
+      "street": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "city": "SANTO DOMINGO ESTE",
+      "state": "Santo Domingo",
+      "country": "DO",
+      "currency": "DOP",
+      "legal": "Geilin Rosario Suero",
+      "legal_id": "402-1097505-4",
+      "trade": "Blue Elite",
+      "start": "2025-04-04",
+      "logo": true,
+      "sale_journals": [
+        "Ventas · BLU"
+      ],
+      "purchase_journals": [
+        "Compras · BLU"
+      ],
+      "cash_journals": [],
+      "bank_journals": [
+        {
+          "journal": "Banco Banreservas · BLU",
+          "code": "BNK1",
+          "number": "9608670542",
+          "currency": "DOP",
+          "gl": "11010201",
+          "inbound": true,
+          "outbound": true,
+          "outstanding_receipts": [],
+          "outstanding_payments": []
+        }
+      ],
+      "posted_bank_gl": "0.00",
+      "opening_bank_entry": false,
+      "excel_bank": "9608670542",
+      "excel_bank_balance": "1250000.00",
+      "excel_bank_date": "05//08/2026",
+      "itbis18_sale": [
+        "18% ITBIS",
+        "Restaurant"
+      ],
+      "itbis18_purchase": [
+        "18% Cost Good",
+        "18% Cost Serv.",
+        "18% ITBIS",
+        "18% ITBIS Serv.",
+        "18% ITBIS Imp.",
+        "Telecom",
+        "10% Serv.",
+        "2% Serv P.",
+        "75%",
+        "2% Mat.",
+        "Restaurant"
+      ],
+      "warehouses": [
+        "Almacén Principal"
+      ],
+      "receivable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "payable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "opening_ar": "0",
+      "artificial_ap": 0,
+      "ncf_safe_active": [],
+      "stock_qty": "1.00",
+      "excel": {
+        "name": "BLUE ELITE, S.R.L.",
+        "trade": "Blue Elite",
+        "province": "SANTO DOMINGO",
+        "municipality": "SANTO DOMINGO ESTE",
+        "start": "2025-04-04",
+        "legal": "Geilin Rosario Suero",
+        "legal_id": "402-1097505-4",
+        "bank": "9608670542",
+        "bank_bal": "1250000.00",
+        "phone": "809-614-1306",
+        "email_excel": "bluelitesrl@hotmail.com"
+      },
+      "catchall": "catchall@blueelite.net"
+    },
+    {
+      "id": 9,
+      "name": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "vat": "132271068",
+      "email": "administracion@pinariagroup.com",
+      "phone": "849-207-5817",
+      "street": "CALLE 8 NO. 8, LAS AMERICAS, SANTO DOMINGO ESTE",
+      "city": "SANTO DOMINGO ESTE",
+      "state": "Santo Domingo",
+      "country": "DO",
+      "currency": "DOP",
+      "legal": "Alba Rafaelina Arias Mora",
+      "legal_id": "280-103907-0",
+      "trade": "Piñaria",
+      "start": "2021-03-01",
+      "logo": true,
+      "sale_journals": [
+        "Ventas · PIN"
+      ],
+      "purchase_journals": [
+        "Compras · PIN"
+      ],
+      "cash_journals": [],
+      "bank_journals": [
+        {
+          "journal": "Banco Banreservas · PIN",
+          "code": "BNK1",
+          "number": "9604097492",
+          "currency": "DOP",
+          "gl": "11010201",
+          "inbound": true,
+          "outbound": true,
+          "outstanding_receipts": [],
+          "outstanding_payments": []
+        }
+      ],
+      "posted_bank_gl": "0.00",
+      "opening_bank_entry": false,
+      "excel_bank": "9604097492",
+      "excel_bank_balance": "2450000.00",
+      "excel_bank_date": "05//08/2026",
+      "itbis18_sale": [
+        "18% ITBIS",
+        "Restaurant"
+      ],
+      "itbis18_purchase": [
+        "18% Cost Good",
+        "18% Cost Serv.",
+        "18% ITBIS",
+        "18% ITBIS Serv.",
+        "18% ITBIS Imp.",
+        "Telecom",
+        "10% Serv.",
+        "2% Serv P.",
+        "75%",
+        "2% Mat.",
+        "Restaurant"
+      ],
+      "warehouses": [
+        "Almacén Principal"
+      ],
+      "receivable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "payable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "opening_ar": "0",
+      "artificial_ap": 0,
+      "ncf_safe_active": [],
+      "stock_qty": "1.00",
+      "excel": {
+        "name": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "trade": "Piñaria",
+        "province": "SANTO DOMINGO",
+        "municipality": "SANTO DOMINGO ESTE",
+        "start": "2021-03-01",
+        "legal": "Alba Rafaelina Arias Mora",
+        "legal_id": "280-103907-0",
+        "bank": "9604097492",
+        "bank_bal": "2450000.00",
+        "phone": "849-207-5817",
+        "email_excel": "piñariascomercializadora@gmail.com"
+      },
+      "catchall": "catchall@pinariagroup.com"
+    },
+    {
+      "id": 10,
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "vat": "132721502",
+      "email": "administracion@dominion-business.com",
+      "phone": "829-941-5257",
+      "street": "CALLE ESPAILLAT NO. 10, ZONA COLONIAL, DISTRITO NACIONAL",
+      "city": "DISTRITO NACIONAL",
+      "state": "Distrito Nacional",
+      "country": "DO",
+      "currency": "DOP",
+      "legal": "Arisleydi Contreras Suero",
+      "legal_id": "402-4200332-1",
+      "trade": "Dominion",
+      "start": "2022-11-09",
+      "logo": true,
+      "sale_journals": [
+        "Ventas · DOM"
+      ],
+      "purchase_journals": [
+        "Compras · DOM"
+      ],
+      "cash_journals": [],
+      "bank_journals": [
+        {
+          "journal": "Banco Banreservas · DOM",
+          "code": "BNK1",
+          "number": "9605588726",
+          "currency": "DOP",
+          "gl": "11010201",
+          "inbound": true,
+          "outbound": true,
+          "outstanding_receipts": [],
+          "outstanding_payments": []
+        }
+      ],
+      "posted_bank_gl": "0.00",
+      "opening_bank_entry": false,
+      "excel_bank": "9605588726",
+      "excel_bank_balance": "1500000.00",
+      "excel_bank_date": "05//08/2026",
+      "itbis18_sale": [
+        "18% ITBIS",
+        "Restaurant"
+      ],
+      "itbis18_purchase": [
+        "18% Cost Good",
+        "18% Cost Serv.",
+        "18% ITBIS",
+        "18% ITBIS Serv.",
+        "18% ITBIS Imp.",
+        "Telecom",
+        "10% Serv.",
+        "2% Serv P.",
+        "75%",
+        "2% Mat.",
+        "Restaurant"
+      ],
+      "warehouses": [
+        "Almacén Principal"
+      ],
+      "receivable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "payable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "opening_ar": "0",
+      "artificial_ap": 0,
+      "ncf_safe_active": [],
+      "stock_qty": "1.00",
+      "excel": {
+        "name": "DOMINION BUSINESS,S.R.L.",
+        "trade": "Dominion",
+        "province": "DISTRITO NACIONAL",
+        "municipality": "DISTRITO NACIONAL",
+        "start": "2022-11-09",
+        "legal": "Arisleydi Contreras Suero",
+        "legal_id": "402-4200332-1",
+        "bank": "9605588726",
+        "bank_bal": "1500000.00",
+        "phone": "829-941-5257",
+        "email_excel": "dominionsrl@hotmail.com"
+      },
+      "catchall": "catchall@dominion-business.com"
+    },
+    {
+      "id": 11,
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "vat": "132220112",
+      "email": "administracion@inversionesdoralex.com",
+      "phone": "849-207-5817",
+      "street": "AV. SAN VICENTE DE PAUL, NO. 115, LOS MINA",
+      "city": "SANTO DOMINGO ESTE",
+      "state": "Santo Domingo",
+      "country": "DO",
+      "currency": "DOP",
+      "legal": "Alexander Piña Aquino",
+      "legal_id": "223-0157134-9",
+      "trade": "Doralex",
+      "start": "2020-11-02",
+      "logo": true,
+      "sale_journals": [
+        "Ventas · DOR"
+      ],
+      "purchase_journals": [
+        "Compras · DOR"
+      ],
+      "cash_journals": [],
+      "bank_journals": [
+        {
+          "journal": "Banco Banreservas · DOR",
+          "code": "BNK1",
+          "number": "9604436830",
+          "currency": "DOP",
+          "gl": "11010201",
+          "inbound": true,
+          "outbound": true,
+          "outstanding_receipts": [],
+          "outstanding_payments": []
+        }
+      ],
+      "posted_bank_gl": "0.00",
+      "opening_bank_entry": false,
+      "excel_bank": "9604436830",
+      "excel_bank_balance": "5000000.00",
+      "excel_bank_date": "05//08/2026",
+      "itbis18_sale": [
+        "18% ITBIS",
+        "Restaurant"
+      ],
+      "itbis18_purchase": [
+        "18% Cost Good",
+        "18% Cost Serv.",
+        "18% ITBIS",
+        "18% ITBIS Serv.",
+        "18% ITBIS Imp.",
+        "Telecom",
+        "10% Serv.",
+        "2% Serv P.",
+        "75%",
+        "2% Mat.",
+        "Restaurant"
+      ],
+      "warehouses": [
+        "Almacén Principal"
+      ],
+      "receivable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "payable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "opening_ar": "16491966.46",
+      "artificial_ap": 0,
+      "ncf_safe_active": [
+        {
+          "company": "INVERSIONES DORALEX,S.RL.",
+          "company_id": 11,
+          "ncf_type": "B01",
+          "from": 52,
+          "to": 87,
+          "next": 54,
+          "next_ncf": "B0100000054",
+          "state": "active",
+          "auth": "6005372487",
+          "max_historical": "B0100000053",
+          "status": "SAFE_ACTIVE",
+          "qa": false
+        },
+        {
+          "company": "INVERSIONES DORALEX,S.RL.",
+          "company_id": 11,
+          "ncf_type": "B15",
+          "from": 141,
+          "to": 160,
+          "next": 152,
+          "next_ncf": "B1500000152",
+          "state": "active",
+          "auth": "6005109381",
+          "max_historical": "B1500000151",
+          "status": "SAFE_ACTIVE",
+          "qa": false
+        }
+      ],
+      "stock_qty": "-23.00",
+      "excel": {
+        "name": "INVERSIONES DORALEX,S.RL.",
+        "trade": "Doralex",
+        "province": "SANTO DOMINGO",
+        "municipality": "SANTO DOMINGO ESTE",
+        "start": "2020-11-02",
+        "legal": "Alexander Piña Aquino",
+        "legal_id": "223-0157134-9",
+        "bank": "9604436830",
+        "bank_bal": "5000000.00",
+        "phone": "849-207-5817",
+        "email_excel": "inversionesdoralex@gmail.com"
+      },
+      "catchall": "catchall@inversionesdoralex.com"
+    },
+    {
+      "id": 12,
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "vat": "132710152",
+      "email": "administracion@elmayuma.com",
+      "phone": "829-696-1881",
+      "street": "CALLE CLUB ACTIVO 20-30, NO.47, RESPALDO ALMA ROSA II",
+      "city": "SANTO DOMINGO ESTE",
+      "state": "Santo Domingo",
+      "country": "DO",
+      "currency": "DOP",
+      "legal": "Eldris Marlenny Ramirez Minaya",
+      "legal_id": "402-4218015-2",
+      "trade": "El Mayuma",
+      "start": "2022-09-14",
+      "logo": true,
+      "sale_journals": [
+        "Ventas · MAY"
+      ],
+      "purchase_journals": [
+        "Compras · MAY"
+      ],
+      "cash_journals": [],
+      "bank_journals": [
+        {
+          "journal": "Banco Banreservas · MAY",
+          "code": "BNK1",
+          "number": "9605543104",
+          "currency": "DOP",
+          "gl": "11010201",
+          "inbound": true,
+          "outbound": true,
+          "outstanding_receipts": [],
+          "outstanding_payments": []
+        }
+      ],
+      "posted_bank_gl": "0.00",
+      "opening_bank_entry": false,
+      "excel_bank": "9605543104",
+      "excel_bank_balance": "3000000.00",
+      "excel_bank_date": "05//08/2026",
+      "itbis18_sale": [
+        "18% ITBIS",
+        "Restaurant"
+      ],
+      "itbis18_purchase": [
+        "18% Cost Good",
+        "18% Cost Serv.",
+        "18% ITBIS",
+        "18% ITBIS Serv.",
+        "18% ITBIS Imp.",
+        "Telecom",
+        "10% Serv.",
+        "2% Serv P.",
+        "75%",
+        "2% Mat.",
+        "Restaurant"
+      ],
+      "warehouses": [
+        "Almacén Principal"
+      ],
+      "receivable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "payable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "opening_ar": "2668855.73",
+      "artificial_ap": 0,
+      "ncf_safe_active": [
+        {
+          "company": "INVERSIONES EL MAYUMA, S.R.L.",
+          "company_id": 12,
+          "ncf_type": "B15",
+          "from": 109,
+          "to": 118,
+          "next": 111,
+          "next_ncf": "B1500000111",
+          "state": "active",
+          "auth": "5004942280",
+          "max_historical": "B1500000110",
+          "status": "SAFE_ACTIVE",
+          "qa": false
+        }
+      ],
+      "stock_qty": "1.00",
+      "excel": {
+        "name": "INVERSIONES EL MAYUMA, S.R.L.",
+        "trade": "El Mayuma",
+        "province": "SANTO DOMINGO",
+        "municipality": "SANTO DOMINGO ESTE",
+        "start": "2022-09-14",
+        "legal": "Eldris Marlenny Ramirez Minaya",
+        "legal_id": "402-4218015-2",
+        "bank": "9605543104",
+        "bank_bal": "3000000.00",
+        "phone": "829-696-1881",
+        "email_excel": "inversioneselmayuma@gmail.com"
+      },
+      "catchall": "catchall@elmayuma.com"
+    },
+    {
+      "id": 13,
+      "name": "REMPART GROUP S.R.L.",
+      "vat": "132769155",
+      "email": "administracion@rempartgroup.com",
+      "phone": "849-394-1927",
+      "street": "AV. SAN VICENTE DE PAUL, NO. 122, LOS MINA",
+      "city": "SANTO DOMINGO ESTE",
+      "state": "Santo Domingo",
+      "country": "DO",
+      "currency": "DOP",
+      "legal": "Agustin Ventura Alcantara",
+      "legal_id": "402-2314668-5",
+      "trade": "Rempart",
+      "start": "2023-01-19",
+      "logo": true,
+      "sale_journals": [
+        "Ventas · REM"
+      ],
+      "purchase_journals": [
+        "Compras · REM"
+      ],
+      "cash_journals": [],
+      "bank_journals": [
+        {
+          "journal": "Banco Banreservas · REM",
+          "code": "BNK1",
+          "number": "9608739498",
+          "currency": "DOP",
+          "gl": "11010201",
+          "inbound": true,
+          "outbound": true,
+          "outstanding_receipts": [],
+          "outstanding_payments": []
+        }
+      ],
+      "posted_bank_gl": "0.00",
+      "opening_bank_entry": false,
+      "excel_bank": "9608739498",
+      "excel_bank_balance": "4600000.00",
+      "excel_bank_date": "05//08/2026",
+      "itbis18_sale": [
+        "18% ITBIS",
+        "Restaurant"
+      ],
+      "itbis18_purchase": [
+        "18% Cost Good",
+        "18% Cost Serv.",
+        "18% ITBIS",
+        "18% ITBIS Serv.",
+        "18% ITBIS Imp.",
+        "Telecom",
+        "10% Serv.",
+        "2% Serv P.",
+        "75%",
+        "2% Mat.",
+        "Restaurant"
+      ],
+      "warehouses": [
+        "Almacén Principal"
+      ],
+      "receivable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "payable_accounts": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "opening_ar": "8079389.61",
+      "artificial_ap": 0,
+      "ncf_safe_active": [
+        {
+          "company": "REMPART GROUP S.R.L.",
+          "company_id": 13,
+          "ncf_type": "B15",
+          "from": 106,
+          "to": 113,
+          "next": 111,
+          "next_ncf": "B1500000111",
+          "state": "active",
+          "auth": "5004942351",
+          "max_historical": "B1500000110",
+          "status": "SAFE_ACTIVE",
+          "qa": false
+        }
+      ],
+      "stock_qty": "1.00",
+      "excel": {
+        "name": "REMPART GROUP S.R.L.",
+        "trade": "Rempart",
+        "province": "SANTO DOMINGO",
+        "municipality": "SANTO DOMINGO ESTE",
+        "start": "2023-01-19",
+        "legal": "Agustin Ventura Alcantara",
+        "legal_id": "402-2314668-5",
+        "bank": "9608739498",
+        "bank_bal": "4600000.00",
+        "phone": "849-394-1927",
+        "email_excel": "rempartsrl@hotmail.com"
+      },
+      "catchall": "catchall@rempartgroup.com"
+    }
+  ],
+  "ncf": [
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "company_id": 11,
+      "ncf_type": "B01",
+      "from": 99100001,
+      "to": 99100050,
+      "next": 99100003,
+      "next_ncf": "B0199100003",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": "B0100000053",
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "company_id": 9,
+      "ncf_type": "B01",
+      "from": 99100101,
+      "to": 99100150,
+      "next": 99100105,
+      "next_ncf": "B0199100105",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "company_id": 10,
+      "ncf_type": "B01",
+      "from": 99100201,
+      "to": 99100250,
+      "next": 99100203,
+      "next_ncf": "B0199100203",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "company_id": 12,
+      "ncf_type": "B01",
+      "from": 99100301,
+      "to": 99100350,
+      "next": 99100303,
+      "next_ncf": "B0199100303",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "company_id": 13,
+      "ncf_type": "B01",
+      "from": 99100401,
+      "to": 99100450,
+      "next": 99100403,
+      "next_ncf": "B0199100403",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "company_id": 8,
+      "ncf_type": "B01",
+      "from": 99100501,
+      "to": 99100550,
+      "next": 99100503,
+      "next_ncf": "B0199100503",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "company_id": 9,
+      "ncf_type": "B04",
+      "from": 99110101,
+      "to": 99110150,
+      "next": 99110102,
+      "next_ncf": "B0499110102",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "company_id": 10,
+      "ncf_type": "B04",
+      "from": 99110201,
+      "to": 99110250,
+      "next": 99110202,
+      "next_ncf": "B0499110202",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "company_id": 11,
+      "ncf_type": "B04",
+      "from": 99110001,
+      "to": 99110050,
+      "next": 99110002,
+      "next_ncf": "B0499110002",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "company_id": 12,
+      "ncf_type": "B04",
+      "from": 99110301,
+      "to": 99110350,
+      "next": 99110302,
+      "next_ncf": "B0499110302",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "company_id": 8,
+      "ncf_type": "B04",
+      "from": 99110501,
+      "to": 99110550,
+      "next": 99110502,
+      "next_ncf": "B0499110502",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "company_id": 13,
+      "ncf_type": "B04",
+      "from": 99110401,
+      "to": 99110450,
+      "next": 99110402,
+      "next_ncf": "B0499110402",
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "max_historical": null,
+      "status": "QA_CANCELLED",
+      "qa": true
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "company_id": 12,
+      "ncf_type": "B15",
+      "from": 109,
+      "to": 118,
+      "next": 111,
+      "next_ncf": "B1500000111",
+      "state": "active",
+      "auth": "5004942280",
+      "max_historical": "B1500000110",
+      "status": "SAFE_ACTIVE",
+      "qa": false
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "company_id": 13,
+      "ncf_type": "B15",
+      "from": 106,
+      "to": 113,
+      "next": 111,
+      "next_ncf": "B1500000111",
+      "state": "active",
+      "auth": "5004942351",
+      "max_historical": "B1500000110",
+      "status": "SAFE_ACTIVE",
+      "qa": false
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "company_id": 11,
+      "ncf_type": "B01",
+      "from": 52,
+      "to": 87,
+      "next": 54,
+      "next_ncf": "B0100000054",
+      "state": "active",
+      "auth": "6005372487",
+      "max_historical": "B0100000053",
+      "status": "SAFE_ACTIVE",
+      "qa": false
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "company_id": 11,
+      "ncf_type": "B15",
+      "from": 141,
+      "to": 160,
+      "next": 152,
+      "next_ncf": "B1500000152",
+      "state": "active",
+      "auth": "6005109381",
+      "max_historical": "B1500000151",
+      "status": "SAFE_ACTIVE",
+      "qa": false
+    }
+  ],
+  "users": [
+    {
+      "id": 2,
+      "login": "admin",
+      "name": "Administrator",
+      "active": true,
+      "default_company": "BLUE ELITE, S.R.L.",
+      "allowed": [
+        "BLUE ELITE, S.R.L.",
+        "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "DOMINION BUSINESS,S.R.L.",
+        "INVERSIONES DORALEX,S.RL.",
+        "INVERSIONES EL MAYUMA, S.R.L.",
+        "REMPART GROUP S.R.L."
+      ],
+      "allowed_ids": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "admin": true,
+      "sales": true,
+      "purchase": true,
+      "accounting": true,
+      "inventory": true,
+      "portal": false
+    },
+    {
+      "id": 5,
+      "login": "inversionesdoralex@gmail.com",
+      "name": "Alexander Piña Aquino",
+      "active": true,
+      "default_company": "INVERSIONES DORALEX,S.RL.",
+      "allowed": [
+        "BLUE ELITE, S.R.L.",
+        "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "DOMINION BUSINESS,S.R.L.",
+        "INVERSIONES DORALEX,S.RL.",
+        "INVERSIONES EL MAYUMA, S.R.L.",
+        "REMPART GROUP S.R.L."
+      ],
+      "allowed_ids": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "admin": false,
+      "sales": true,
+      "purchase": true,
+      "accounting": true,
+      "inventory": true,
+      "portal": false
+    },
+    {
+      "id": 7,
+      "login": "dx.test.security@justech.do",
+      "name": "DX TEST USER SECURITY BLU",
+      "active": true,
+      "default_company": "BLUE ELITE, S.R.L.",
+      "allowed": [
+        "BLUE ELITE, S.R.L."
+      ],
+      "allowed_ids": [
+        8
+      ],
+      "admin": false,
+      "sales": true,
+      "purchase": false,
+      "accounting": false,
+      "inventory": false,
+      "portal": false
+    },
+    {
+      "id": 8,
+      "login": "fausto@justech.do",
+      "name": "Fausto Santana",
+      "active": true,
+      "default_company": "INVERSIONES DORALEX,S.RL.",
+      "allowed": [
+        "BLUE ELITE, S.R.L.",
+        "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "DOMINION BUSINESS,S.R.L.",
+        "INVERSIONES DORALEX,S.RL.",
+        "INVERSIONES EL MAYUMA, S.R.L.",
+        "REMPART GROUP S.R.L.",
+        "Plantilla técnica (no operativa)"
+      ],
+      "allowed_ids": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        1
+      ],
+      "admin": true,
+      "sales": true,
+      "purchase": true,
+      "accounting": true,
+      "inventory": true,
+      "portal": false
+    }
+  ],
+  "qa": {
+    "partners": [
+      {
+        "id": 45,
+        "name": "DX TEST CLIENTE BLU — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 39,
+        "name": "DX TEST CLIENTE DOM — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 35,
+        "name": "DX TEST CLIENTE DOR — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 41,
+        "name": "DX TEST CLIENTE MAY — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 37,
+        "name": "DX TEST CLIENTE PIN — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 43,
+        "name": "DX TEST CLIENTE REM — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 46,
+        "name": "DX TEST PROVEEDOR BLU — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 40,
+        "name": "DX TEST PROVEEDOR DOM — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 36,
+        "name": "DX TEST PROVEEDOR DOR — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 42,
+        "name": "DX TEST PROVEEDOR MAY — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 38,
+        "name": "DX TEST PROVEEDOR PIN — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 44,
+        "name": "DX TEST PROVEEDOR REM — NO FISCAL REAL",
+        "company": false
+      },
+      {
+        "id": 48,
+        "name": "DX TEST USER SECURITY BLU",
+        "company": false
+      }
+    ],
+    "products": [],
+    "moves": [
+      {
+        "id": 81,
+        "name": "RINV/2026/00001",
+        "ncf": "B0499110501",
+        "company": "BLUE ELITE, S.R.L.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 2159.4,
+        "origin": "BLU/SO/00006"
+      },
+      {
+        "id": 78,
+        "name": "RINV/2026/00001",
+        "ncf": "B0499110401",
+        "company": "REMPART GROUP S.R.L.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 2159.4,
+        "origin": "REM/SO/00006"
+      },
+      {
+        "id": 75,
+        "name": "RINV/2026/00001",
+        "ncf": "B0499110301",
+        "company": "INVERSIONES EL MAYUMA, S.R.L.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 2159.4,
+        "origin": "MAY/SO/00006"
+      },
+      {
+        "id": 72,
+        "name": "RINV/2026/00001",
+        "ncf": "B0499110201",
+        "company": "DOMINION BUSINESS,S.R.L.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 2159.4,
+        "origin": "DOM/SO/00006"
+      },
+      {
+        "id": 69,
+        "name": "RINV/2026/00001",
+        "ncf": "B0499110101",
+        "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 2159.4,
+        "origin": "PIN/SO/00006"
+      },
+      {
+        "id": 66,
+        "name": "RINV/2026/00001",
+        "ncf": "B0499110001",
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 2159.4,
+        "origin": "DOR/SO/00008"
+      },
+      {
+        "id": 111,
+        "name": "PBNK1/2026/00007",
+        "ncf": false,
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 75.0,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 100,
+        "name": "PBNK1/2026/00006",
+        "ncf": false,
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 98,
+        "name": "PBNK1/2026/00005",
+        "ncf": false,
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 75.0,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 84,
+        "name": "PBNK1/2026/00004",
+        "ncf": false,
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 75.0,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 110,
+        "name": "PBNK1/2026/00003",
+        "ncf": false,
+        "company": "BLUE ELITE, S.R.L.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 108,
+        "name": "PBNK1/2026/00003",
+        "ncf": false,
+        "company": "REMPART GROUP S.R.L.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 106,
+        "name": "PBNK1/2026/00003",
+        "ncf": false,
+        "company": "INVERSIONES EL MAYUMA, S.R.L.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 104,
+        "name": "PBNK1/2026/00003",
+        "ncf": false,
+        "company": "DOMINION BUSINESS,S.R.L.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 102,
+        "name": "PBNK1/2026/00003",
+        "ncf": false,
+        "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 64,
+        "name": "PBNK1/2026/00003",
+        "ncf": false,
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 75.0,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 61,
+        "name": "PBNK1/2026/00002",
+        "ncf": false,
+        "company": "BLUE ELITE, S.R.L.",
+        "state": "posted",
+        "total": 1295.64,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 56,
+        "name": "PBNK1/2026/00002",
+        "ncf": false,
+        "company": "REMPART GROUP S.R.L.",
+        "state": "posted",
+        "total": 1295.64,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 51,
+        "name": "PBNK1/2026/00002",
+        "ncf": false,
+        "company": "INVERSIONES EL MAYUMA, S.R.L.",
+        "state": "posted",
+        "total": 1295.64,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 46,
+        "name": "PBNK1/2026/00002",
+        "ncf": false,
+        "company": "DOMINION BUSINESS,S.R.L.",
+        "state": "posted",
+        "total": 1295.64,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 41,
+        "name": "PBNK1/2026/00002",
+        "ncf": false,
+        "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "state": "posted",
+        "total": 1295.64,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 36,
+        "name": "PBNK1/2026/00002",
+        "ncf": false,
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 1295.64,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 60,
+        "name": "PBNK1/2026/00001",
+        "ncf": false,
+        "company": "BLUE ELITE, S.R.L.",
+        "state": "posted",
+        "total": 863.76,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 55,
+        "name": "PBNK1/2026/00001",
+        "ncf": false,
+        "company": "REMPART GROUP S.R.L.",
+        "state": "posted",
+        "total": 863.76,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 50,
+        "name": "PBNK1/2026/00001",
+        "ncf": false,
+        "company": "INVERSIONES EL MAYUMA, S.R.L.",
+        "state": "posted",
+        "total": 863.76,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 45,
+        "name": "PBNK1/2026/00001",
+        "ncf": false,
+        "company": "DOMINION BUSINESS,S.R.L.",
+        "state": "posted",
+        "total": 863.76,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 40,
+        "name": "PBNK1/2026/00001",
+        "ncf": false,
+        "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "state": "posted",
+        "total": 863.76,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 35,
+        "name": "PBNK1/2026/00001",
+        "ncf": false,
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 863.76,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 85,
+        "name": "INV/2026/00004",
+        "ncf": "B0199100104",
+        "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "state": "posted",
+        "total": 106.2,
+        "residual": 106.2,
+        "origin": false
+      },
+      {
+        "id": 65,
+        "name": "INV/2026/00002",
+        "ncf": "B0199100102",
+        "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "state": "posted",
+        "total": 106.2,
+        "residual": 106.2,
+        "origin": false
+      },
+      {
+        "id": 59,
+        "name": "INV/2026/00001",
+        "ncf": "B0199100501",
+        "company": "BLUE ELITE, S.R.L.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 0.0,
+        "origin": "BLU/SO/00006"
+      },
+      {
+        "id": 54,
+        "name": "INV/2026/00001",
+        "ncf": "B0199100401",
+        "company": "REMPART GROUP S.R.L.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 0.0,
+        "origin": "REM/SO/00006"
+      },
+      {
+        "id": 49,
+        "name": "INV/2026/00001",
+        "ncf": "B0199100301",
+        "company": "INVERSIONES EL MAYUMA, S.R.L.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 0.0,
+        "origin": "MAY/SO/00006"
+      },
+      {
+        "id": 44,
+        "name": "INV/2026/00001",
+        "ncf": "B0199100201",
+        "company": "DOMINION BUSINESS,S.R.L.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 0.0,
+        "origin": "DOM/SO/00006"
+      },
+      {
+        "id": 39,
+        "name": "INV/2026/00001",
+        "ncf": "B0199100101",
+        "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 0.0,
+        "origin": "PIN/SO/00006"
+      },
+      {
+        "id": 34,
+        "name": "INV/2026/00001",
+        "ncf": "B0199100001",
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 2159.4,
+        "residual": 0.0,
+        "origin": "DOR/SO/00008"
+      },
+      {
+        "id": 109,
+        "name": "BILL/2026/08/0001",
+        "ncf": false,
+        "company": "BLUE ELITE, S.R.L.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 107,
+        "name": "BILL/2026/08/0001",
+        "ncf": false,
+        "company": "REMPART GROUP S.R.L.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 105,
+        "name": "BILL/2026/08/0001",
+        "ncf": false,
+        "company": "INVERSIONES EL MAYUMA, S.R.L.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 103,
+        "name": "BILL/2026/08/0001",
+        "ncf": false,
+        "company": "DOMINION BUSINESS,S.R.L.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 101,
+        "name": "BILL/2026/08/0001",
+        "ncf": false,
+        "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 99,
+        "name": "BILL/2026/08/0001",
+        "ncf": false,
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 188.8,
+        "residual": 0.0,
+        "origin": false
+      },
+      {
+        "id": 70,
+        "name": "INV/2026/00003",
+        "ncf": "B0199100103",
+        "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+        "state": "posted",
+        "total": 472.0,
+        "residual": 472.0,
+        "origin": false
+      },
+      {
+        "id": 82,
+        "name": "INV/2026/00002",
+        "ncf": "B0199100502",
+        "company": "BLUE ELITE, S.R.L.",
+        "state": "posted",
+        "total": 472.0,
+        "residual": 472.0,
+        "origin": false
+      },
+      {
+        "id": 79,
+        "name": "INV/2026/00002",
+        "ncf": "B0199100402",
+        "company": "REMPART GROUP S.R.L.",
+        "state": "posted",
+        "total": 472.0,
+        "residual": 472.0,
+        "origin": false
+      },
+      {
+        "id": 76,
+        "name": "INV/2026/00002",
+        "ncf": "B0199100302",
+        "company": "INVERSIONES EL MAYUMA, S.R.L.",
+        "state": "posted",
+        "total": 472.0,
+        "residual": 472.0,
+        "origin": false
+      },
+      {
+        "id": 73,
+        "name": "INV/2026/00002",
+        "ncf": "B0199100202",
+        "company": "DOMINION BUSINESS,S.R.L.",
+        "state": "posted",
+        "total": 472.0,
+        "residual": 472.0,
+        "origin": false
+      },
+      {
+        "id": 67,
+        "name": "INV/2026/00002",
+        "ncf": "B0199100002",
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "state": "posted",
+        "total": 472.0,
+        "residual": 472.0,
+        "origin": false
+      }
+    ],
+    "users": [
+      {
+        "id": 7,
+        "login": "dx.test.security@justech.do",
+        "active": true
+      }
+    ],
+    "residual_sum": "16000.80"
+  },
+  "crons": [
+    {
+      "id": 38,
+      "name": "Account: Journal online sync",
+      "model": "account.journal",
+      "interval": "12 hours",
+      "risky_name": false
+    },
+    {
+      "id": 41,
+      "name": "Account: Journal online sync cleanup unused connections",
+      "model": "account.online.link",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 40,
+      "name": "Account: Journal online sync reminder",
+      "model": "account.journal",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 17,
+      "name": "Account: Post draft entries with auto_post enabled and accounting date up to today",
+      "model": "account.move",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 66,
+      "name": "Account Report Followup; Execute followup",
+      "model": "res.partner",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 46,
+      "name": "Accrual Time Off: Updates the number of time off",
+      "model": "hr.leave.allocation",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 79,
+      "name": "Attendance: Automatically check-out employees",
+      "model": "hr.attendance",
+      "interval": "4 hours",
+      "risky_name": false
+    },
+    {
+      "id": 80,
+      "name": "Attendance: Detect Absences for employees",
+      "model": "hr.attendance",
+      "interval": "4 hours",
+      "risky_name": false
+    },
+    {
+      "id": 1,
+      "name": "Base: Auto-vacuum internal data",
+      "model": "ir.autovacuum",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 2,
+      "name": "Base: Portal Users Deletion",
+      "model": "res.users.deletion",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 12,
+      "name": "Calendar: Event Reminder",
+      "model": "calendar.alarm_manager",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 24,
+      "name": "CRM: enrich leads (IAP)",
+      "model": "crm.lead",
+      "interval": "24 hours",
+      "risky_name": false
+    },
+    {
+      "id": 15,
+      "name": "Digest Emails",
+      "model": "digest.digest",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 35,
+      "name": "Disable unused snippets assets",
+      "model": "website",
+      "interval": "1 weeks",
+      "risky_name": false
+    },
+    {
+      "id": 10,
+      "name": "Discuss: channel member unmute",
+      "model": "discuss.channel.member",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 85,
+      "name": "Documents: Access Tracking",
+      "model": "documents.access.tracking",
+      "interval": "1 months",
+      "risky_name": false
+    },
+    {
+      "id": 34,
+      "name": "Doralex: recibir correo Microsoft Graph",
+      "model": "dx.ms.inbound.message",
+      "interval": "5 minutes",
+      "risky_name": false
+    },
+    {
+      "id": 93,
+      "name": "Event CRM: Generate Leads based on Rules",
+      "model": "event.lead.request",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 89,
+      "name": "Event: Mail Scheduler",
+      "model": "event.mail",
+      "interval": "24 hours",
+      "risky_name": false
+    },
+    {
+      "id": 27,
+      "name": "FISCAL SEQUENCE: Expire sequences",
+      "model": "account.fiscal.sequence",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 96,
+      "name": "Fleet: Generate contracts costs based on costs frequency",
+      "model": "fleet.vehicle.log.contract",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 87,
+      "name": "Gamification: Goal Challenge Check",
+      "model": "gamification.challenge",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 88,
+      "name": "Gamification: Karma tracking consolidation",
+      "model": "gamification.karma.tracking",
+      "interval": "1 months",
+      "risky_name": false
+    },
+    {
+      "id": 33,
+      "name": "Garantías: marcar vencidas",
+      "model": "justech.warranty",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 76,
+      "name": "Generate Missing Work Entries",
+      "model": "hr.version",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 65,
+      "name": "Generate or refresh account return for every companies",
+      "model": "account.return.type",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 44,
+      "name": "HR Employee: Notify Expiring Contract or Work Permit",
+      "model": "hr.employee",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 45,
+      "name": "HR Employee: Update Current Version",
+      "model": "hr.employee",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 30,
+      "name": "Justech Audit: limpieza por retención",
+      "model": "justech.audit.retention",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 75,
+      "name": "Justech Fees: generar documentos vencidos",
+      "model": "justech.recurring.fee",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 32,
+      "name": "Justech NCF: alertas internas consolidadas (multiempresa)",
+      "model": "justech.do.ncf.range",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 3,
+      "name": "Mail: Email Queue Manager",
+      "model": "mail.mail",
+      "interval": "1 hours",
+      "risky_name": false
+    },
+    {
+      "id": 91,
+      "name": "Mail Marketing: Process queue",
+      "model": "mailing.mailing",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 7,
+      "name": "Mail: Post scheduled messages",
+      "model": "mail.scheduled.message",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 9,
+      "name": "Mail: send web push notification",
+      "model": "mail.push",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 95,
+      "name": "Marketing Automation: execute activities",
+      "model": "marketing.campaign",
+      "interval": "1 hours",
+      "risky_name": false
+    },
+    {
+      "id": 94,
+      "name": "Marketing Automation: sync participants",
+      "model": "marketing.campaign",
+      "interval": "12 hours",
+      "risky_name": false
+    },
+    {
+      "id": 5,
+      "name": "Notification: Delete Notifications older than 6 Months",
+      "model": "mail.notification",
+      "interval": "1 months",
+      "risky_name": false
+    },
+    {
+      "id": 8,
+      "name": "Notification: Notify scheduled messages",
+      "model": "mail.message.schedule",
+      "interval": "1 hours",
+      "risky_name": false
+    },
+    {
+      "id": 78,
+      "name": "Payroll: Generate pdfs",
+      "model": "hr.payslip",
+      "interval": "1 hours",
+      "risky_name": false
+    },
+    {
+      "id": 77,
+      "name": "Payroll: Update data",
+      "model": "hr.payslip",
+      "interval": "1 weeks",
+      "risky_name": false
+    },
+    {
+      "id": 86,
+      "name": "Planning: generate next recurring shifts",
+      "model": "planning.recurrency",
+      "interval": "1 weeks",
+      "risky_name": false
+    },
+    {
+      "id": 21,
+      "name": "Procurement: run scheduler",
+      "model": "stock.rule",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 81,
+      "name": "Project Stage: Send rating",
+      "model": "project.task.type",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 4,
+      "name": "Publisher: Update Notification",
+      "model": "publisher_warranty.contract",
+      "interval": "1 weeks",
+      "risky_name": false
+    },
+    {
+      "id": 22,
+      "name": "Purchase reminder",
+      "model": "purchase.order",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 28,
+      "name": "Sale Pdf Quote Builder: assign form fields to documents post upgrade",
+      "model": "sale.pdf.form.field",
+      "interval": "9999 months",
+      "risky_name": false
+    },
+    {
+      "id": 72,
+      "name": "Sale Subscription: generate recurring invoices and payments",
+      "model": "sale.order",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 73,
+      "name": "Sale Subscription: send reminder for subscriptions with no token",
+      "model": "sale.order",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 71,
+      "name": "Sale Subscription: subscriptions expiration",
+      "model": "sale.order",
+      "interval": "1 weeks",
+      "risky_name": false
+    },
+    {
+      "id": 74,
+      "name": "Sale Subscription: Update KPI",
+      "model": "sale.order",
+      "interval": "1 weeks",
+      "risky_name": false
+    },
+    {
+      "id": 64,
+      "name": "Send account reports automatically",
+      "model": "account.report",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 18,
+      "name": "Send invoices automatically",
+      "model": "account.move",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 84,
+      "name": "Sign: Send mail reminder",
+      "model": "sign.request",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 48,
+      "name": "Skills: Add an activity to employees with missing or expiring certifications",
+      "model": "hr.employee",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 13,
+      "name": "SMS: SMS Queue Manager",
+      "model": "sms.sms",
+      "interval": "24 hours",
+      "risky_name": false
+    },
+    {
+      "id": 14,
+      "name": "Snailmail: process letters queue",
+      "model": "snailmail.letter",
+      "interval": "24 hours",
+      "risky_name": false
+    },
+    {
+      "id": 23,
+      "name": "Stock Account: Inventory Valuation Closing",
+      "model": "res.company",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 47,
+      "name": "Time Off: Cancel invalid leaves",
+      "model": "hr.leave",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 83,
+      "name": "Timesheet: Approvers Email Reminder",
+      "model": "res.company",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 82,
+      "name": "Timesheet: Employees Email Reminder",
+      "model": "res.company",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 37,
+      "name": "Try to reconcile automatically your statement lines",
+      "model": "account.bank.statement.line",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 11,
+      "name": "Users: Notify About Unregistered Users",
+      "model": "res.users",
+      "interval": "1 days",
+      "risky_name": false
+    },
+    {
+      "id": 36,
+      "name": "Website Visitor : clean inactive visitors",
+      "model": "website.visitor",
+      "interval": "1 days",
+      "risky_name": false
+    }
+  ],
+  "tech_company": {
+    "id": 1,
+    "name": "Plantilla técnica (no operativa)",
+    "currency": "USD",
+    "country": "US",
+    "active": true,
+    "moves": 0,
+    "journals": 9,
+    "warehouses": 1,
+    "users_with_access": [
+      {
+        "login": "fausto@justech.do",
+        "default": 11
+      }
+    ],
+    "TECHNICAL_COMPANY_SAFE_TO_ARCHIVE": "NO"
+  },
+  "opening": {
+    "count": 27,
+    "ar_total": "27240211.80",
+    "ar_by_company": {
+      "INVERSIONES DORALEX,S.RL.": "16491966.46",
+      "REMPART GROUP S.R.L.": "8079389.61",
+      "INVERSIONES EL MAYUMA, S.R.L.": "2668855.73"
+    },
+    "pdfs": 26,
+    "missing_pdf": [
+      {
+        "ncf": "B1300000016",
+        "id": 141,
+        "name": "INV/2026/00021",
+        "company": "INVERSIONES DORALEX,S.RL."
+      }
+    ],
+    "vendor_bills_opening": 0,
+    "unbalanced": 0,
+    "0150": {
+      "id": 116,
+      "name": "INV/2026/00006",
+      "total": 294754.56,
+      "residual": 294754.56
+    },
+    "rempart_110": {
+      "id": 140,
+      "name": "INV/2026/00006",
+      "total": 267250.52,
+      "residual": 267250.52,
+      "company": "REMPART GROUP S.R.L."
+    }
+  },
+  "leaks": {
+    "restricted_user": {
+      "login": "dx.test.security@justech.do",
+      "active": true,
+      "allowed": [
+        8
+      ],
+      "seen": 2,
+      "foreign": 0
+    },
+    "alexander_doralex_only": {
+      "seen": 22,
+      "foreign": 0
+    },
+    "alexander_allowed": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "alexander_default": 11
+  },
+  "email": [
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "odoo_email": "administracion@blueelite.net",
+      "excel_email": "bluelitesrl@hotmail.com",
+      "catchall": "catchall@blueelite.net"
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "odoo_email": "administracion@pinariagroup.com",
+      "excel_email": "piñariascomercializadora@gmail.com",
+      "catchall": "catchall@pinariagroup.com"
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "odoo_email": "administracion@dominion-business.com",
+      "excel_email": "dominionsrl@hotmail.com",
+      "catchall": "catchall@dominion-business.com"
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "odoo_email": "administracion@inversionesdoralex.com",
+      "excel_email": "inversionesdoralex@gmail.com",
+      "catchall": "catchall@inversionesdoralex.com"
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "odoo_email": "administracion@elmayuma.com",
+      "excel_email": "inversioneselmayuma@gmail.com",
+      "catchall": "catchall@elmayuma.com"
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "odoo_email": "administracion@rempartgroup.com",
+      "excel_email": "rempartsrl@hotmail.com",
+      "catchall": "catchall@rempartgroup.com"
+    }
+  ],
+  "products_opening": {
+    "created_around_opening_window": 152,
+    "sale_ok": 152,
+    "purchase_ok": 0,
+    "types": {
+      "consu": 133,
+      "service": 19
+    }
+  },
+  "qweb": 58,
+  "ecf": false,
+  "enterprise": {
+    "web_enterprise": "installed",
+    "web_enterprise_version": "19.0.1.0",
+    "alexander_reports": "19.0.3.8.5",
+    "db_uuid": "4368f2f6-a253-11f1-9f8c-a7d8786898ca",
+    "expiration": "2026-10-06 14:54:41"
+  },
+  "mail": {
+    "sent_or_outgoing_since_opening": 0,
+    "mail_server_count": 0,
+    "mail_servers": []
+  },
+  "b1300000016": {
+    "id": 141,
+    "name": "INV/2026/00021",
+    "company": "INVERSIONES DORALEX,S.RL.",
+    "total": 44800.0,
+    "residual": 44800.0,
+    "pdf_count": 0,
+    "SOURCE_DOCUMENT_STATUS": "MISSING_PDF",
+    "narration": "<p>ALEXANDER_OPENING_2026-09-04 SOURCE_FILE=None SOURCE_PAGE=None SOURCE_DOCUMENT_STATUS=MISSING_PDF</p>"
+  }
+}
