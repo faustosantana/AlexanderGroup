@@ -1,6 +1,6 @@
 {
     "name": "Doralex UX — menús y catálogo",
-    "version": "19.0.1.2.0",
+    "version": "19.0.1.2.1",
     "category": "Hidden",
     "summary": "Launcher limpio, barra sin nombre de empresa y e-CF apagado por defecto",
     "description": "Overlay Doralex: menús fiscales agrupados, e-CF/DGII ocultos hasta activar el switch, administración/aprobaciones/auditoría bajo Ajustes. La barra superior no muestra el nombre de empresa ni la marca de app; el grid abre el tablero. El cambio de empresa queda en el menú del usuario. No desinstala módulos ni cambia nombres técnicos.",
@@ -31,6 +31,11 @@
     ],
     "assets": {
         "web.assets_backend": [
+            "justech_alexander_ux/static/src/navbar/navbar.scss",
+            "justech_alexander_ux/static/src/navbar/navbar.xml",
+            "justech_alexander_ux/static/src/navbar/user_companies.js",
+        ],
+        "web.assets_web": [
             "justech_alexander_ux/static/src/navbar/navbar.scss",
             "justech_alexander_ux/static/src/navbar/navbar.xml",
             "justech_alexander_ux/static/src/navbar/user_companies.js",

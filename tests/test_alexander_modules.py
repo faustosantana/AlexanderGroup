@@ -193,8 +193,9 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
-    assert "19.0.1.2.0" in manifest
+    assert "19.0.1.2.1" in manifest
     assert "web.assets_backend" in manifest
+    assert "web.assets_web" in manifest
     assert "navbar.scss" in manifest
     assert "user_companies.js" in manifest
     navbar_scss = (ux / "static/src/navbar/navbar.scss").read_text(encoding="utf-8")
