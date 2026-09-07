@@ -92,8 +92,12 @@ def _find_existing(env, row: dict):
         expected = _fold(row.get("CURRENT_ODOO_NAME") or "")
         if rec.exists() and (not expected or _fold(rec.name) == expected):
             return rec, "ID"
-    name = row.get("CANONICAL_NAME") or ""
-    if name:
+    for name in (
+        row.get("CANONICAL_NAME") or "",
+        row.get("CURRENT_ODOO_NAME") or "",
+    ):
+        if not name:
+            continue
         rec = Template.search([("name", "=ilike", name)], limit=2)
         if len(rec) == 1:
             return rec, "NAME"
