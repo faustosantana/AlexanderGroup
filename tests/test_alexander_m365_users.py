@@ -20,6 +20,7 @@ REQUIRED = {
     "02_odoo.md",
     "03_matrix.md",
     "04_rollback.md",
+    "05_delivery_readiness.md",
 }
 
 
@@ -71,6 +72,16 @@ def test_docs_exist_and_record_standard_trial_gate():
     assert "STANDARD_SKU = O365_BUSINESS_PREMIUM" in score
     assert "MAILBOXES_READY = 6" in score
     assert "FINAL_USER_PROVISIONING_STATUS = SUCCESS_WITH_STANDARD_TRIAL" in score
+    assert "DELIVERY_READY = YES" in score
+    assert "FAUSTO_ACTIVE = YES" in score
+    ready = (ROOT / "05_delivery_readiness.md").read_text(encoding="utf-8")
+    assert "DELIVERY_READY = YES" in ready
+    assert "fausto@justech.do" in ready
+    audit = Path("tools/alexander_m365_users/delivery_readiness_audit.py").read_text(
+        encoding="utf-8"
+    )
+    assert "ROLLBACK TO SAVEPOINT" in audit
+    assert "env.cr.rollback()" in audit
 
 
 def test_letter_is_justech_delivery_with_alexander_temp_password():
