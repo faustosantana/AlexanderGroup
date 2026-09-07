@@ -5,7 +5,7 @@ No se activaron los 30 bloqueados.
 
 Rangos **vivos** en prod hoy: 16 (`justech.do.ncf.range`, company != 1).
 
-## SAFE_ACTIVE (4)
+## SAFE_ACTIVE (7) — incluye activación 2026-09-07 desde planilla Pendientes
 
 | COMPANY | NCF_TYPE | AUTHORIZED_FROM | AUTHORIZED_TO | MAX_HISTORICAL | NEXT_CONFIGURED | ACTIVE | EVIDENCE | STATUS | REASON |
 |---|---|---|---|---|---|---|---|---|---|
@@ -13,6 +13,9 @@ Rangos **vivos** en prod hoy: 16 (`justech.do.ncf.range`, company != 1).
 | DORALEX | B01 | 52 | 87 | B0100000053 | B0100000054 | YES | auth 6005372487 + CxC | SAFE_ACTIVE | planilla B15 errónea ignorada; hist. 35-51 bajo rango |
 | EL MAYUMA | B15 | 109 | 118 | B1500000110 | B1500000111 | YES | auth 5004942280 + CxC | SAFE_ACTIVE | |
 | REMPART | B15 | 106 | 113 | B1500000110 | B1500000111 | YES | auth 5004942351 + CxC | SAFE_ACTIVE | |
+| PIÑARIA | B15 | 93 | 103 | (sin CxC) | B1500000093 | YES | auth 6005464536 planilla | SAFE_ACTIVE | last 092 bajo rango; next = inicio |
+| DOMINION | B15 | 140 | 163 | (sin CxC) | B1500000145 | YES | auth 5004909756 planilla | SAFE_ACTIVE | last 144 / next 145 |
+| BLUE ELITE | B01 | 1 | 15 | (sin CxC) | B0100000001 | YES | auth 6005109961 planilla | SAFE_ACTIVE | B15 de Blue Elite sigue bloqueado |
 
 ## QA cancelados (12) — no son DGII
 

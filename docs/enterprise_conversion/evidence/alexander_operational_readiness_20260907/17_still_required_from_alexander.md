@@ -4,7 +4,7 @@ Revisado antes de pedir: Levantamiento Excel, plantilla pendientes, PDFs de aper
 
 **No se vuelve a pedir:** RNC, direcciones, bancos, números de cuenta, representantes, cédulas, oficinas, actividad, moneda, logos ya cargados en `res.company`, clientes/productos/facturas de apertura.
 
-`STILL_REQUIRED_FROM_ALEXANDER_COUNT = 8`
+`STILL_REQUIRED_FROM_ALEXANDER_COUNT = 3`  (actualizado 2026-09-07 tarde; ver `18_decisions_applied.md`)
 
 | ITEM | COMPANY | SEVERITY | BLOCKS_GO_LIVE | WHO_MUST_RESOLVE | EXACT_INFORMATION_NEEDED |
 |---|---|---|---|---|---|
@@ -25,6 +25,16 @@ No pedido (ya existe o no aplica):
 - e-CF (proyecto aparte)
 - Rangos 9910 (cancelados; no son DGII)
 - Seis usuarios Alexander (modelo correcto: uno solo)
+
+## Pendiente real para iniciar (2026-09-07 tarde)
+
+No bloquean el arranque de Alexander en las 6 empresas:
+
+1. Blue Elite B15: si facturan B15 (no B01), enviar rango que cubra el 101+ o confirmar que el 1–20 nunca se usó.
+2. PDF original B1300000016 cuando lo tengan.
+3. Usuarios/roles extra cuando existan nombres (hoy basta Alexander).
+
+Banco 18.8M y B13 Doralex: aplazados a propósito.
 
 ## HIGH / MEDIUM / LOW (errores de esta fase)
 
