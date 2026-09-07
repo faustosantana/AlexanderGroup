@@ -1,0 +1,7062 @@
+[
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion1",
+    "rows": 28,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Factura1",
+    "rows": 27,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Analisis de Costo1",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "COST_ANALYSIS",
+    "has_product_lines": true,
+    "header_row": 7,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion2",
+    "rows": 31,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Factura 4",
+    "rows": 29,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Analisis de Costo2",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "COST_ANALYSIS",
+    "has_product_lines": true,
+    "header_row": 7,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion3",
+    "rows": 52,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Factura 2",
+    "rows": 50,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion4 ",
+    "rows": 29,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5",
+    "rows": 31,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Factura 3",
+    "rows": 30,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "EJEMPLO COT JORGE",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 9,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (4)",
+    "rows": 19,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (5)",
+    "rows": 16,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (6)",
+    "rows": 15,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (7)",
+    "rows": 17,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (8)",
+    "rows": 17,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (9)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (10)",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (11)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (12)",
+    "rows": 38,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (13)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (14)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1",
+    "rows": 50,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (2)",
+    "rows": 84,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (3)",
+    "rows": 57,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (15)",
+    "rows": 26,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (16)",
+    "rows": 15,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (4)",
+    "rows": 36,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (17)",
+    "rows": 25,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (18)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (19)",
+    "rows": 17,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (20)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (21)",
+    "rows": 15,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (5)",
+    "rows": 30,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (22)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (23)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (24)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (25)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (26)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (27)",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (28)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (6)",
+    "rows": 48,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (7)",
+    "rows": 48,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (8)",
+    "rows": 70,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 11,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion PROA",
+    "rows": 45,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (29)",
+    "rows": 25,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (30)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (ataud)",
+    "rows": 54,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE",
+    "rows": 150,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (9)",
+    "rows": 57,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE 9 (2)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE (3)",
+    "rows": 35,
+    "columns": 5,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 0,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (31)",
+    "rows": 17,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (10)",
+    "rows": 84,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (32)",
+    "rows": 17,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (33)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (34)",
+    "rows": 15,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (35)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (36)",
+    "rows": 56,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (37)",
+    "rows": 25,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (38)",
+    "rows": 17,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (39)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (40)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (41)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (42)",
+    "rows": 27,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (44)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (45)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (46)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (ataud) (2)",
+    "rows": 54,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (11)",
+    "rows": 70,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 11,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (ataud) (3)",
+    "rows": 54,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (47)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (43)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (48)",
+    "rows": 16,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (49)",
+    "rows": 33,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Hoja1",
+    "rows": 3,
+    "columns": 1,
+    "document_type": "UNKNOWN",
+    "has_product_lines": false,
+    "header_row": null,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (50)",
+    "rows": 40,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion ASDE1 (ataud) (4)",
+    "rows": 54,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (51)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (52)",
+    "rows": 17,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (53)",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (54)",
+    "rows": 34,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (55)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (56)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (57)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (58)",
+    "rows": 19,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (59)",
+    "rows": 15,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cot Reconocimiento de deuda ASD",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (61)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (62)",
+    "rows": 42,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (63)",
+    "rows": 25,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (64)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (65)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (66)",
+    "rows": 16,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (67)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (68)",
+    "rows": 16,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (69)",
+    "rows": 33,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (70)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (71)",
+    "rows": 19,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cot Reconocimiento de deuda (2)",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (60)",
+    "rows": 26,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (72)",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (73)",
+    "rows": 16,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (74)",
+    "rows": 22,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (75)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (76)",
+    "rows": 15,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion complementaria",
+    "rows": 14,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (77)",
+    "rows": 15,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (78)",
+    "rows": 22,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (79)",
+    "rows": 16,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (80)",
+    "rows": 15,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (81)",
+    "rows": 15,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion 5 (82)",
+    "rows": 17,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "Cotizacion complementaria (2)",
+    "rows": 15,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_0.2_b68c.xlsx",
+    "sheet": "COTIZACION nuevo formato",
+    "rows": 20,
+    "columns": 6,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion",
+    "rows": 51,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Hoja1",
+    "rows": 83,
+    "columns": 4,
+    "document_type": "PRODUCT_LIST",
+    "has_product_lines": true,
+    "header_row": 1,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Analisis de Costo.",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "COST_ANALYSIS",
+    "has_product_lines": true,
+    "header_row": 7,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Hoja2",
+    "rows": 44,
+    "columns": 8,
+    "document_type": "UNKNOWN",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (2)",
+    "rows": 21,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (3)",
+    "rows": 15,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (4)",
+    "rows": 25,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (5)",
+    "rows": 15,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (6)",
+    "rows": 18,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (7)",
+    "rows": 16,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (8)",
+    "rows": 29,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (9)",
+    "rows": 18,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (10)",
+    "rows": 12,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (12)",
+    "rows": 12,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (13)",
+    "rows": 17,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (14)",
+    "rows": 10,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (15)",
+    "rows": 16,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (16)",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (17)",
+    "rows": 20,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (18)",
+    "rows": 16,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (19)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (20)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (21)",
+    "rows": 37,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (22)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (23)",
+    "rows": 46,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (24)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (25)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (26)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (27)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (28)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (29)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (30)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cot Licitacion ASDE",
+    "rows": 58,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (31)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (32)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (33)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (34)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (35)",
+    "rows": 15,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (37)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (36)",
+    "rows": 14,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (38)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (39)",
+    "rows": 15,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion 40",
+    "rows": 65,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (40)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (42)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (41)",
+    "rows": 24,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (43)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (44)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (46)",
+    "rows": 53,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (47)",
+    "rows": 45,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (48)",
+    "rows": 39,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (45)",
+    "rows": 15,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (49)",
+    "rows": 15,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (51)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (52)",
+    "rows": 69,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (53)",
+    "rows": 69,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (54)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (55)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (56)",
+    "rows": 36,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cot Licitacion ASDE (2)",
+    "rows": 58,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (57)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (58)",
+    "rows": 16,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (59)",
+    "rows": 53,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (60)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (61).......",
+    "rows": 37,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (50)",
+    "rows": 36,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Hoja3",
+    "rows": 0,
+    "columns": 0,
+    "document_type": "EMPTY",
+    "has_product_lines": false,
+    "header_row": null,
+    "status": "EMPTY"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (62)",
+    "rows": 15,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (63)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (64)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (65)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (66)",
+    "rows": 8,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (67)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (68)",
+    "rows": 69,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (69)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (70)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (71)",
+    "rows": 14,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (72)",
+    "rows": 14,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (73)",
+    "rows": 21,
+    "columns": 16384,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (74)",
+    "rows": 45,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (76)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (75)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (77)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (61)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (78)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (79)",
+    "rows": 27,
+    "columns": 16384,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (80)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (81)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (82)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (83)",
+    "rows": 27,
+    "columns": 16384,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (84)",
+    "rows": 37,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (85)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (87)",
+    "rows": 27,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (86)",
+    "rows": 40,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (88)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (89)",
+    "rows": 14,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (90)",
+    "rows": 14,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (91)",
+    "rows": 14,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (92)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (94)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (93)",
+    "rows": 40,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (95)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "CALCULO ASDE (3)",
+    "rows": 6,
+    "columns": 15,
+    "document_type": "UNKNOWN",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (96)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "CALCULO ASDE (4)",
+    "rows": 16,
+    "columns": 18,
+    "document_type": "UNKNOWN",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "CALCULO ASDE (2)",
+    "rows": 16,
+    "columns": 18,
+    "document_type": "UNKNOWN",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (97)",
+    "rows": 15,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (98)",
+    "rows": 15,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (99)",
+    "rows": 14,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+    "sheet": "Cotizacion (100)",
+    "rows": 28,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion",
+    "rows": 51,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Hoja1",
+    "rows": 83,
+    "columns": 4,
+    "document_type": "PRODUCT_LIST",
+    "has_product_lines": true,
+    "header_row": 1,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Analisis de Costo.",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "COST_ANALYSIS",
+    "has_product_lines": true,
+    "header_row": 7,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Hoja2",
+    "rows": 44,
+    "columns": 8,
+    "document_type": "UNKNOWN",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (2)",
+    "rows": 21,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (3)",
+    "rows": 15,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (4)",
+    "rows": 25,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (5)",
+    "rows": 15,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (6)",
+    "rows": 18,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (7)",
+    "rows": 16,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (8)",
+    "rows": 29,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (9)",
+    "rows": 18,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (10)",
+    "rows": 12,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (11)",
+    "rows": 58,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (12)",
+    "rows": 12,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (13)",
+    "rows": 17,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (14)",
+    "rows": 10,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (15)",
+    "rows": 16,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (16)",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (17)",
+    "rows": 20,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (18)",
+    "rows": 16,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (19)",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (20)",
+    "rows": 26,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (21)",
+    "rows": 15,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (22)",
+    "rows": 49,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (23)",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (24)",
+    "rows": 15,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (25)",
+    "rows": 15,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 17,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (26)",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (27)",
+    "rows": 14,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (28)",
+    "rows": 16,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (29)",
+    "rows": 19,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (30)",
+    "rows": 35,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Cotizacion (31)",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "MANTENIMIENTO VEHICULOS",
+    "rows": 40,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": null,
+    "status": "PROCESSED_HEADERLESS"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL 2",
+    "rows": 15,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL 2 (2)",
+    "rows": 22,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL 2 (3)",
+    "rows": 34,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL 2 (4)",
+    "rows": 22,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL 2 (5)",
+    "rows": 22,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL 2 (6)",
+    "rows": 17,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL 2 (7)",
+    "rows": 23,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL 2 (8)",
+    "rows": 17,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "MARCELINO VELEZ",
+    "rows": 35,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL 2 (9)",
+    "rows": 13,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "MARCELINO VELEZ (2)",
+    "rows": 35,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "DESARROLLO FRONTERIZO",
+    "rows": 16,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "DESARROLLO FRONTERIZO (2)",
+    "rows": 18,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "LIGA MUNICIPAL 2 (10)",
+    "rows": 21,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "Hoja3",
+    "rows": 0,
+    "columns": 0,
+    "document_type": "EMPTY",
+    "has_product_lines": false,
+    "header_row": null,
+    "status": "EMPTY"
+  },
+  {
+    "file": "COTIZACIONES_DORALEX_f72a.xlsx",
+    "sheet": "MARCELINO VELEZ (3)",
+    "rows": 45,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO CON",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-1",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-2",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-3",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-4",
+    "rows": 11,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-5",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "FACTURA JULIO HOSPITAL MATERNO",
+    "rows": 26,
+    "columns": 28,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION 1 NOV 2022",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION 2 NOV 2022",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION 3 NOV 2022",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION 4 NOV 2022",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION 5 NOV 2022",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION 1 MARZO 2023",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION 2 MARZO 2023 ",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COTIZACION 3 MARZO 2023  ",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "BACILIO CARNES  (2)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "BACILIO CARNES ",
+    "rows": 27,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "BACILIO CARNES  (3)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "BACILIO CARNES  (4)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "BACILIO CARNES  (5)",
+    "rows": 27,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "BACILIO CARNES  (6)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COMPLEMENTARIA DESCHABLE",
+    "rows": 27,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": " CAICJB",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES POLLO HCJB (2)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES",
+    "rows": 28,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "PROGRAMACION",
+    "rows": 28,
+    "columns": 7,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VEGETALES ",
+    "rows": 36,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "PROGRAMACION ",
+    "rows": 36,
+    "columns": 7,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (2)",
+    "rows": 33,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VEGETALES  (2)",
+    "rows": 37,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (2)",
+    "rows": 29,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (2)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (3)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (3)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "PROGRAMACION (2)",
+    "rows": 19,
+    "columns": 7,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (4)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES CAICJB",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (6)",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (4)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VEGETALES  (3)",
+    "rows": 37,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (3)",
+    "rows": 28,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (7)",
+    "rows": 19,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (8)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (9)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (4)",
+    "rows": 28,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VEGETALES  (4)",
+    "rows": 38,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (10)",
+    "rows": 19,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (11)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (5)",
+    "rows": 24,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (6)",
+    "rows": 28,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CAFETERA",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (8)",
+    "rows": 27,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VEGETALES  (5)",
+    "rows": 38,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (5)",
+    "rows": 29,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (12)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (13)",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (14)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (15)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (16)",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (6)",
+    "rows": 29,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VEGETALES  (6)",
+    "rows": 37,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (7)",
+    "rows": 29,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "COCINA",
+    "rows": 61,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (17)",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (18)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (9)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (7)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VEGETALES  (7)",
+    "rows": 38,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (19)",
+    "rows": 19,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "MEDICINA)",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "EMBUSTIDO",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES CERDO",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES ",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "SILLA",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (8)",
+    "rows": 24,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "EMBUSTIDO (2)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (10)",
+    "rows": 27,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VEGETALES  (8)",
+    "rows": 38,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (2)",
+    "rows": 19,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (20)",
+    "rows": 22,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CONTENEDOR",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "SILLA (3)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "OFICINA",
+    "rows": 29,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (2)",
+    "rows": 25,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (21)",
+    "rows": 22,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (3)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VEGETALES  (9)",
+    "rows": 38,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (9)",
+    "rows": 24,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "EMBUSTIDO (3)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (11)",
+    "rows": 28,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (3)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VEGETALES  (10)",
+    "rows": 38,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "Hoja1",
+    "rows": 28,
+    "columns": 7,
+    "document_type": "UNKNOWN",
+    "has_product_lines": false,
+    "header_row": null,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESECHABLE (12)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (10)",
+    "rows": 24,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "EMBUSTIDO (4)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (5)",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (22)",
+    "rows": 22,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (4)",
+    "rows": 19,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CANASTILLAS",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (6)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES HCJB (23)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (6)",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (7)",
+    "rows": 22,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (11)",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "EMBUSTIDO (5)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "VIVERES (12)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (8)",
+    "rows": 22,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (7)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CANASTILLAS (2)",
+    "rows": 18,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CANASTILLAS (3)",
+    "rows": 18,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (8)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CANASTILLAS (4)",
+    "rows": 18,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES CEAASNA ",
+    "rows": 27,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESPENSA (2)",
+    "rows": 49,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESPENSA (3)",
+    "rows": 49,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESPENSA PROPEEP",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (9)",
+    "rows": 25,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "UTENCILIOS DE COCINA",
+    "rows": 27,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "UTENCILIOS DE COCINA (2)",
+    "rows": 40,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (10)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (9)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (10)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESPENSA PROPEEP (2)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (11)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (11)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (12)",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES CEAASNA  (2)",
+    "rows": 27,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESPENSA (4)",
+    "rows": 53,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESPENSA (5)",
+    "rows": 43,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "DESPENSA (6)",
+    "rows": 53,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (12)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (13)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (14)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (15)",
+    "rows": 18,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (16)",
+    "rows": 22,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (13)",
+    "rows": 25,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNE PLLO (17)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (14)",
+    "rows": 17,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (15)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (16)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (17)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (18)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (19)",
+    "rows": 20,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (20)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (21)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (22)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (23)",
+    "rows": 22,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (24)",
+    "rows": 30,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+    "sheet": "CARNES  (25)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO CON",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-1",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-2",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-3",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-4",
+    "rows": 11,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-5",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "FACTURA JULIO HOSPITAL MATERNO",
+    "rows": 26,
+    "columns": 28,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION 1 ",
+    "rows": 29,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION 1  (2)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION 1  (3)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION 2",
+    "rows": 32,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION 3",
+    "rows": 35,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "CONDUCE 1 PINTURA",
+    "rows": 18,
+    "columns": 6,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "CONDUCE 2 PINTURA ",
+    "rows": 23,
+    "columns": 6,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "CONDUCE 3 PINTURA  ",
+    "rows": 16,
+    "columns": 6,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION 4",
+    "rows": 45,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "CONDUCE1 COTIZACION 4 ",
+    "rows": 35,
+    "columns": 5,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "CONDUCE 2 COTIZACION 4  ",
+    "rows": 18,
+    "columns": 5,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTIZACION 5",
+    "rows": 26,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "FACTURA 1HMISLLM",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "FACTURA 2HMISLLM",
+    "rows": 34,
+    "columns": 8,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "FACTURA 3HMISLLM",
+    "rows": 31,
+    "columns": 8,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "FACTUR 4HMISLLM",
+    "rows": 44,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COTI 1 CEMADOJA",
+    "rows": 38,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT CHOCHE CRV",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT1 DIGECOG",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT DIGECOG 2",
+    "rows": 38,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT DIGECOG 2 (2)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (56)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT-ASDE1",
+    "rows": 42,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT-ASDE2",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT-ASDE3",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT DIGECOG 2 (7)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT DIGECOG 2 (8)",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (2)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (3)",
+    "rows": 28,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (4)",
+    "rows": 60,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "Hoja4",
+    "rows": 0,
+    "columns": 0,
+    "document_type": "EMPTY",
+    "has_product_lines": false,
+    "header_row": null,
+    "status": "EMPTY"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "FACTUR 4HMISLLM (2)",
+    "rows": 44,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (5)",
+    "rows": 49,
+    "columns": 13,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "FACTUR ASDE",
+    "rows": 48,
+    "columns": 8,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (6)",
+    "rows": 40,
+    "columns": 11,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (7)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "PRESUPUESTO",
+    "rows": 40,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "CONDUCE1 COTIZACION 4  (2)",
+    "rows": 43,
+    "columns": 6,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (8)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (9)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (10)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (11)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (12)",
+    "rows": 74,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (13)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "CONDUCE 2 COTIZACION 4   (2)",
+    "rows": 15,
+    "columns": 5,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (14)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (15)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "CONDUCE 2 COTIZACION 4   (3)",
+    "rows": 14,
+    "columns": 5,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "CONDUCE 2 COTIZACION 4   (4)",
+    "rows": 14,
+    "columns": 5,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "CONDUCE 2 COTIZACION 4   (5)",
+    "rows": 14,
+    "columns": 5,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (16)",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (17)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (19)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (18)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (20)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (21)",
+    "rows": 58,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (22)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (23)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (24)",
+    "rows": 24,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (25)",
+    "rows": 38,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (26)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (27)",
+    "rows": 39,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT RECONOCIMIENTO DE DEUDA ASD",
+    "rows": 46,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (29)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (30)",
+    "rows": 24,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (31)",
+    "rows": 26,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (32)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (33)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (34)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (35)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (36)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (37)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (38)",
+    "rows": 46,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (39)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (40)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (41)",
+    "rows": 43,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (42)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (43)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT RECONOCIMIENTO DE DEUDA (2)",
+    "rows": 26,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT RECONOCIMIENTO DE DEUDA (3)",
+    "rows": 39,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT RECONOCIMIENTO DE DEUDA (4)",
+    "rows": 26,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT RECONOCIMIENTO DE DEUDA (5)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (44)",
+    "rows": 19,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (45)",
+    "rows": 19,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (46)",
+    "rows": 42,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (47)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (48)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (49)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (50)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (51)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (52)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (53)",
+    "rows": 18,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (28)",
+    "rows": 52,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (54)",
+    "rows": 20,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (55)",
+    "rows": 19,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (57)",
+    "rows": 24,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "COT ASDE (58)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "RESTANTE",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "ELECTRICOS",
+    "rows": 26,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "PYWOOD",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "inodoro",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "valvula",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "ELECTRICOS (2)",
+    "rows": 26,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "toners",
+    "rows": 30,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+    "sheet": "IMOBILARIO(2)",
+    "rows": 25,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO CON",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-1",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-2",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-3",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-4",
+    "rows": 11,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION HOSPITAL MATERNO C-5",
+    "rows": 15,
+    "columns": 28,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "FACTURA JULIO HOSPITAL MATERNO",
+    "rows": 26,
+    "columns": 28,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 1. OCT 2022",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 2 OCT 2022",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 3 OCT 2022",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 4 OCT 2022",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 5 OCT 2022",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 6 OCT 2022",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 20,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 7 OCT 2022",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 8 OCT 2022",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COT EMBUTIDOS ",
+    "rows": 23,
+    "columns": 13,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "1 COT EMBUTIDOS",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "2 COT EMBUTIDOS ",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 26",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 27",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 28",
+    "rows": 27,
+    "columns": 8,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 29",
+    "rows": 26,
+    "columns": 8,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 30",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 31",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 32",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 33",
+    "rows": 27,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "PROGR COT 33",
+    "rows": 26,
+    "columns": 11,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 32 (2)",
+    "rows": 24,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 43",
+    "rows": 40,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "PROGR COT 43",
+    "rows": 40,
+    "columns": 11,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 39",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "PROGR COT 39",
+    "rows": 23,
+    "columns": 13,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 41 ",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "PROGR COT 41",
+    "rows": 20,
+    "columns": 11,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 44",
+    "rows": 39,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "PROGRAMACION44",
+    "rows": 37,
+    "columns": 10,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 45",
+    "rows": 30,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "PROGRAMACION 45",
+    "rows": 27,
+    "columns": 10,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 46",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 47",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 48",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "PROGRAMACION 48",
+    "rows": 20,
+    "columns": 10,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 49 A (2)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 50 ",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 51 ",
+    "rows": 39,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 52",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 53)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 54",
+    "rows": 24,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 55",
+    "rows": 26,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 56",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "PROGRAMACION ",
+    "rows": 30,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 57",
+    "rows": 39,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 58",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 59",
+    "rows": 22,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 55 (2)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 59 (2)",
+    "rows": 23,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 4",
+    "rows": 38,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A",
+    "rows": 26,
+    "columns": 15,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (2)",
+    "rows": 25,
+    "columns": 15,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (3)",
+    "rows": 21,
+    "columns": 15,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (2)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (4)",
+    "rows": 24,
+    "columns": 15,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (3)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (4)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (5)",
+    "rows": 26,
+    "columns": 15,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (5)",
+    "rows": 29,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (6)",
+    "rows": 25,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (7)",
+    "rows": 29,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (6)",
+    "rows": 25,
+    "columns": 15,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (8)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (9)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (10)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (11)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (7)",
+    "rows": 25,
+    "columns": 15,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (12)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (13)",
+    "rows": 20,
+    "columns": 11,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (14)",
+    "rows": 19,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (15)",
+    "rows": 19,
+    "columns": 11,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (16)",
+    "rows": 22,
+    "columns": 12,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (8)",
+    "rows": 26,
+    "columns": 15,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (17)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (9)",
+    "rows": 26,
+    "columns": 15,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (10)",
+    "rows": 26,
+    "columns": 15,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (18)",
+    "rows": 21,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (19)",
+    "rows": 24,
+    "columns": 12,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (11)",
+    "rows": 21,
+    "columns": 15,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (12)",
+    "rows": 20,
+    "columns": 15,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (13)",
+    "rows": 25,
+    "columns": 15,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (14)",
+    "rows": 25,
+    "columns": 15,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (15)",
+    "rows": 32,
+    "columns": 7,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (16)",
+    "rows": 26,
+    "columns": 15,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (20)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (21)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (17)",
+    "rows": 20,
+    "columns": 15,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (18)",
+    "rows": 20,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "Hoja1",
+    "rows": 7,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 4,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (19)",
+    "rows": 27,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (20)",
+    "rows": 25,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (21)",
+    "rows": 25,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (22)",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (22)",
+    "rows": 26,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (23)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (24)",
+    "rows": 20,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (23)",
+    "rows": 26,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (24)",
+    "rows": 28,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "RACIONES PROPEEP",
+    "rows": 32,
+    "columns": 11,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "Hoja2",
+    "rows": 32,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (25)",
+    "rows": 26,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (26)",
+    "rows": 26,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "KIT DE RACIONES",
+    "rows": 33,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "KIT DE RACIONES (2)",
+    "rows": 19,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "KIT DE RACIONES (3)",
+    "rows": 19,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64A (27)",
+    "rows": 26,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64a (28)",
+    "rows": 26,
+    "columns": 14,
+    "document_type": "DELIVERY",
+    "has_product_lines": true,
+    "header_row": 19,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "COTIZACION 64a (29)",
+    "rows": 23,
+    "columns": 15,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+    "sheet": "CEAASNA-0029",
+    "rows": 53,
+    "columns": 11,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Cotizacion1",
+    "rows": 28,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Factura1",
+    "rows": 27,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Analisis de Costo1",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "COST_ANALYSIS",
+    "has_product_lines": true,
+    "header_row": 7,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Cotizacion2",
+    "rows": 31,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Factura 4",
+    "rows": 29,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Analisis de Costo2",
+    "rows": 13,
+    "columns": 9,
+    "document_type": "COST_ANALYSIS",
+    "has_product_lines": true,
+    "header_row": 7,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Cotizacion3",
+    "rows": 52,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Factura 2",
+    "rows": 50,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Cotizacion4 ",
+    "rows": 29,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Cotizacion 5",
+    "rows": 31,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Factura 3",
+    "rows": 30,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "EJEMPLO COT JORGE",
+    "rows": 21,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 9,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "Factura 3 (2)",
+    "rows": 30,
+    "columns": 7,
+    "document_type": "INVOICE",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACIONES_b089.xlsx",
+    "sheet": "COTIZACION nuevo formato",
+    "rows": 23,
+    "columns": 6,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACION_-2026_MAYO_4932.xlsx",
+    "sheet": "LIMPIADORES (2)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACION_-2026_MAYO_4932.xlsx",
+    "sheet": "LIMPIADORES (3)",
+    "rows": 24,
+    "columns": 7,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COTIZACION_MATERIALES_FERRETERO1_7286.xlsx",
+    "sheet": "COTIZACION (21)",
+    "rows": 104,
+    "columns": 5,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 2,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "COT ASDE (37)",
+    "rows": 38,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "COT PROPEEP",
+    "rows": 35,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "COT ELECTRODOMESTICOS",
+    "rows": 27,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "LOTE 4 Y 5",
+    "rows": 27,
+    "columns": 12,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "LOTE 6",
+    "rows": 27,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "muestra",
+    "rows": 36,
+    "columns": 13,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "PROPEEP PINTURA",
+    "rows": 35,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 16,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "LOTE 4 Y 5 (2)",
+    "rows": 27,
+    "columns": 11,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "LOTE 6 (2)",
+    "rows": 27,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "LOTE 1 ELECTRODOMESTICOS",
+    "rows": 31,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "LOTE 2 ELECTRODOMESTICOS ",
+    "rows": 26,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "LOTE UNICO-NEUMATICOS",
+    "rows": 23,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "COT_95d1.xlsx",
+    "sheet": "LOTE 6 (3)",
+    "rows": 23,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 15,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "Cotizacion 5 (61)",
+    "rows": 31,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "Cotizacion 5 (62)",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "Cotizacion 5 (63)",
+    "rows": 31,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 14,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "Cotizacion Lote 4",
+    "rows": 23,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "Cotizacion Lote 6 ",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "Cotizacion PINTURA",
+    "rows": 29,
+    "columns": 10,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "Hoja2",
+    "rows": 14,
+    "columns": 6,
+    "document_type": "UNKNOWN",
+    "has_product_lines": false,
+    "header_row": null,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "Cotizacion Lote 6  (2)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "Cotizacion Lote 6  (3)",
+    "rows": 23,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "LOTE 1 ELECTRODOMESTICOS",
+    "rows": 27,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "LOTE 2 ELECTRODOMESTICOS",
+    "rows": 22,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "MOBILIARIOS MT",
+    "rows": 30,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "MOBILIARIOS MT (2)",
+    "rows": 17,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+    "sheet": "MOBILIARIOS MT (3)",
+    "rows": 16,
+    "columns": 8,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 13,
+    "status": "PROCESSED"
+  },
+  {
+    "file": "cotizacion_del_marcelino_9bd9.xlsx",
+    "sheet": "COMPLEMENTARIA 3 (27)",
+    "rows": 62,
+    "columns": 9,
+    "document_type": "QUOTATION",
+    "has_product_lines": true,
+    "header_row": 18,
+    "status": "PROCESSED"
+  }
+]

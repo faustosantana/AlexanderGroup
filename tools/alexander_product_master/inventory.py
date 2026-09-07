@@ -6,7 +6,7 @@ from pathlib import Path
 
 from openpyxl import load_workbook
 
-from .extract import SOURCE_DIR, detect_header, source_files, _as_text
+from .extract import SOURCE_DIR, detect_header, read_sheet_rows, source_files, _as_text
 from .classify import document_type
 
 
@@ -52,9 +52,7 @@ def sheet_inventory(directory: Path = SOURCE_DIR) -> list[dict]:
                 except Exception:
                     hidden = False
                 ws = wb[title]
-                rows = list(
-                    ws.iter_rows(max_row=min(ws.max_row or 0, 400), values_only=True)
-                )
+                rows = read_sheet_rows(ws)
                 nonempty = sum(1 for r in rows if any(_as_text(c) for c in r))
                 cols = max((len(r) for r in rows), default=0)
                 preview = " ".join(

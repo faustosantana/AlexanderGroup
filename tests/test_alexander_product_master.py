@@ -61,6 +61,10 @@ def test_food_excludes_paint_and_machine_oil():
     assert is_meat("CARNE DE RES DESHUESADA")
     assert is_meat("CHULETA DE CERDO")
     assert not is_meat("PASTA ACRÍLICA")
+    assert not is_meat("Contactores DE 30 AMP")
+    assert not is_meat("Sobres Manila Tamaño 9 X 12")
+    assert not is_meat("Mascarilla Respirador PARA Particulas")
+    assert not is_meat("JUEGO DE Destornilladores 8 EN 1")
 
 
 def test_service_excludes_valvula_de_servicio():
@@ -69,6 +73,12 @@ def test_service_excludes_valvula_de_servicio():
     assert is_service("Montaje de eventos artísticos")
     assert is_service("Instalación de puerta")
     assert is_service("Mano de obra")
+    assert is_service("Instalacion de valvula selenoide")
+    assert is_service("Demolicion")
+    assert is_service("Bote de material")
+    assert is_admin_text("SUB TOTAL - COSTOS Indirectos")
+    assert is_admin_text("GASTOS Administrativos")
+    assert is_admin_text("ITBIS (NORMA 07-2007)")
 
 
 def test_identity_does_not_overmerge_sizes():

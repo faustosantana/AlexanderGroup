@@ -37,7 +37,8 @@ MEAT_PHRASES = (
     "res deshuesada",
     "carne de cerdo",
     "chuleta",
-    "costilla",
+    "costilla de",
+    "costilla ",
     "pollo",
     "pechuga",
     "muslo",
@@ -46,9 +47,19 @@ MEAT_PHRASES = (
     "salami",
     "pescado",
     "bacalao",
-    "cerdo",
-    "res ",
-    " res",
+    "carne de cerdo",
+    "cerdo molid",
+    "cerdo deshues",
+)
+MEAT_WORDS = (
+    "chuleta",
+    "pechuga",
+    "muslo",
+    "jamon",
+    "jamón",
+    "salami",
+    "bacalao",
+    "costilla",
 )
 FOOD_PHRASES = (
     "arroz",
@@ -96,14 +107,20 @@ SERVICE_PHRASES = (
     "limpieza de",
     "instalacion de",
     "instalación de",
+    "instalacion ",
+    "instalación ",
     "reparacion de",
     "reparación de",
+    "reparacion ",
+    "reparación ",
     "mantenimiento de",
+    "mantenimiento ",
     "consultoria",
     "consultoría",
     "asesoria",
     "asesoría",
     "montaje de",
+    "montaje ",
     "mano de obra",
     "capacitacion",
     "capacitación",
@@ -114,18 +131,30 @@ SERVICE_PHRASES = (
     "sondeo de",
     "eventos artisticos",
     "eventos artísticos",
+    "cambio de",
+    "desinstal",
+    "desintal",
+    "demolicion",
+    "demolición",
+    "bote de material",
+    "brigada ",
+    "preparacion de terreno",
+    "preparación de terreno",
+    "vacio a sistema",
+    "vacío a sistema",
+    "verificacion y",
+    "verificación y",
+    "intalacion",
+    "desintacion",
+    "desintalacion",
 )
 SERVICE_EXCLUDE = (
-    "valvula",
-    "válvula",
-    "tubo",
-    "kit de",
-    "bomba",
-    "interruptor",
-    "cable",
-    "tablero",
-    "toma",
-    "llave",
+    "valvula de servicio",
+    "válvula de servicio",
+    "kit de servicio",
+    "tubo de servicio",
+    "llave de servicio",
+    "bomba de servicio",
 )
 COST_HINTS = (
     "analisis de costo",
@@ -162,7 +191,18 @@ def document_type(sheet_name: str, preview: str) -> str:
 
 def is_service(text: str) -> bool:
     n = collapse(text)
-    if any(x in n for x in SERVICE_EXCLUDE):
+    if any(x in n for x in SERVICE_EXCLUDE) and not any(
+        v in n
+        for v in (
+            "instalacion",
+            "instalación",
+            "reparacion",
+            "reparación",
+            "mantenimiento",
+            "limpieza",
+            "cambio de",
+        )
+    ):
         return False
     return any(x in n for x in SERVICE_PHRASES) or n in {
         "mano de obra",
@@ -173,6 +213,8 @@ def is_service(text: str) -> bool:
         "mantenimiento",
         "montaje",
         "limpieza",
+        "demolicion",
+        "demolición",
     }
 
 
@@ -180,7 +222,10 @@ def is_meat(text: str) -> bool:
     n = collapse(text)
     if any(x in n for x in FOOD_EXCLUDE):
         return False
-    return any(x in n for x in MEAT_PHRASES)
+    if any(x in n for x in MEAT_PHRASES):
+        return True
+    tokens = set(n.split())
+    return bool(tokens & set(MEAT_WORDS))
 
 
 def is_food(text: str) -> bool:

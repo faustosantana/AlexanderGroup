@@ -1,0 +1,32 @@
+{
+  "count": 7424,
+  "stats": {
+    "files_received": 16,
+    "unique_files": 12,
+    "duplicate_files": 4,
+    "skipped_files": [
+      "COTIZACIONES__DOMINION_BUSINESS_2_e7f1.xlsx",
+      "COTIZACIONES__REMPART_GROUP_8ad7.xlsx",
+      "COTIZACIONES___2023-2024_PIN_ARIAS_9be5.xlsx",
+      "FORMATO_DE_COTIZACION_3b5f.xlsx"
+    ],
+    "unique_file_names": [
+      "COTIZACIONES_0.2_b68c.xlsx",
+      "COTIZACIONES_DORALEX_SRL_bb53.xlsx",
+      "COTIZACIONES_DORALEX_f72a.xlsx",
+      "COTIZACIONES__DOMINION_BUSINESS_18aa.xlsx",
+      "COTIZACIONES__REMPART_GROUP_2_3578.xlsx",
+      "COTIZACIONES___2023-2024_PIN_ARIAS_2_fddc.xlsx",
+      "COTIZACIONES_b089.xlsx",
+      "COTIZACION_-2026_MAYO_4932.xlsx",
+      "COTIZACION_MATERIALES_FERRETERO1_7286.xlsx",
+      "COT_95d1.xlsx",
+      "FORMATO_DE_COTIZACION_2_21f4.xlsx",
+      "cotizacion_del_marcelino_9bd9.xlsx"
+    ],
+    "raw_rows_scanned": 17850,
+    "raw_product_candidates": 7424,
+    "administrative_rows_ignored": 860,
+    "service_rows": 220
+  }
+}

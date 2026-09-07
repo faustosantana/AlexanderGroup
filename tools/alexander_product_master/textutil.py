@@ -4,6 +4,13 @@ import re
 import unicodedata
 
 ADMIN_EXACT = {
+    "sub total",
+    "costos indirectos",
+    "gastos administrativos",
+    "gastos generales",
+    "costo indirecto",
+    "itbis norma 07-2007",
+    "norma 07-2007",
     "subtotal",
     "sub total",
     "total",
@@ -41,8 +48,13 @@ ADMIN_EXACT = {
 
 ADMIN_PREFIX = (
     "subtotal",
+    "sub total",
     "total general",
     "importe",
+    "gastos admin",
+    "costos indirect",
+    "itbis (",
+    "itbis norma",
     "forma de pago",
     "condicion",
     "validez",
@@ -103,6 +115,8 @@ def is_admin_text(text: str) -> bool:
     if any(n.startswith(p) for p in ADMIN_PREFIX):
         return True
     if n in {"cod", "item", "descripcion", "cantidad", "precio", "valor"}:
+        return True
+    if n.startswith("itbis"):
         return True
     return False
 

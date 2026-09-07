@@ -22,7 +22,7 @@ from tools.alexander_product_master.group_match import (
     group_rows,
     match_odoo,
 )
-from tools.alexander_product_master.inventory import hash_inventory, sheet_inventory
+from tools.alexander_product_master.inventory import hash_inventory
 
 EVIDENCE = (
     ROOT / "docs/enterprise_conversion/evidence/alexander_product_master_20260907"
@@ -232,13 +232,49 @@ def main() -> int:
     ev = Path(args.evidence)
     ev.mkdir(parents=True, exist_ok=True)
 
+    print("HASH inventory", flush=True)
     hashes = hash_inventory()
-    sheets = sheet_inventory()
     write_csv(ev / "01_source_inventory.csv", hashes)
     write_csv(ev / "02_file_hashes.csv", hashes)
-    write_csv(ev / "03_sheet_inventory.csv", sheets)
 
+    print("EXTRACT workbooks", flush=True)
     extract_sheets, raw, stats = extract_all()
+    sheets = []
+    for s in extract_sheets:
+        status = "EMPTY" if s["status"] == "EMPTY" else "PROCESS"
+        if s["status"] == "PROCESSED_HEADERLESS":
+            status = "PROCESS"
+        sheets.append(
+            {
+                "FILE": s["file"],
+                "SHEET": s["sheet"],
+                "VISIBLE": "VISIBLE",
+                "ROWS": s["rows"],
+                "COLUMNS": s["columns"],
+                "DOCUMENT_TYPE": s["document_type"],
+                "HAS_PRODUCT_LINES": s["has_product_lines"],
+                "HEADER_ROW": (
+                    s.get("header_row") if s.get("header_row") is not None else ""
+                ),
+                "STATUS": status,
+            }
+        )
+    for h in hashes:
+        if h["STATUS"] == "EXACT_DUPLICATE_FILE_SKIPPED":
+            sheets.append(
+                {
+                    "FILE": h["FILE"],
+                    "SHEET": "*",
+                    "VISIBLE": "VISIBLE",
+                    "ROWS": 0,
+                    "COLUMNS": 0,
+                    "DOCUMENT_TYPE": "EXACT_DUPLICATE",
+                    "HAS_PRODUCT_LINES": False,
+                    "HEADER_ROW": "",
+                    "STATUS": "SKIP_DUPLICATE_FILE",
+                }
+            )
+    write_csv(ev / "03_sheet_inventory.csv", sheets)
     enriched = [enrich(c) for c in raw]
     stats["service_rows"] = sum(1 for c in enriched if c["is_service"])
     write_json(ev / "04_candidate_rows.json", {"count": len(enriched), "stats": stats})

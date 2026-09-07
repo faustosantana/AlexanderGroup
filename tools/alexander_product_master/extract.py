@@ -9,6 +9,8 @@ from .classify import document_type
 from .textutil import collapse, is_admin_text  # collapse used by detect_currency
 
 SOURCE_DIR = Path("/home/ubuntu/.cursor/projects/workspace/uploads")
+MAX_SHEET_ROWS = 1500
+EMPTY_STREAK_STOP = 40
 
 HEADER_ALIASES = {
     "desc": (
@@ -167,6 +169,29 @@ def detect_header(rows: list[list]) -> tuple[int | None, dict]:
     return None, {}
 
 
+def read_sheet_rows(ws) -> list[list]:
+    """Read a worksheet but stop on empty streaks / a hard cap.
+
+    Some historical workbooks report huge max_row values. Loading every
+    empty Excel row makes the dry-run hang for minutes per file.
+    """
+    rows: list[list] = []
+    empty = 0
+    for i, row in enumerate(ws.iter_rows(values_only=True), start=1):
+        values = list(row)
+        if any(_as_text(c) for c in values):
+            empty = 0
+            rows.append(values)
+        else:
+            empty += 1
+            rows.append(values)
+            if empty >= EMPTY_STREAK_STOP and i > 20:
+                break
+        if i >= MAX_SHEET_ROWS:
+            break
+    return rows
+
+
 def extract_workbook(
     path: Path, display_name: str
 ) -> tuple[list[dict], list[dict], int]:
@@ -176,9 +201,7 @@ def extract_workbook(
     admin_ignored = 0
     for sheet_name in wb.sheetnames:
         ws = wb[sheet_name]
-        rows = []
-        for row in ws.iter_rows(values_only=True):
-            rows.append(list(row))
+        rows = read_sheet_rows(ws)
         nonempty = sum(1 for r in rows if any(_as_text(c) for c in r))
         preview = " ".join(
             _as_text(c) for r in rows[:20] for c in r[:8] if _as_text(c)
@@ -295,6 +318,7 @@ def extract_all(directory: Path = SOURCE_DIR) -> tuple[list[dict], list[dict], d
     admin_ignored = 0
     raw_scanned = 0
     for rec in unique:
+        print(f"EXTRACT {rec['name']}", flush=True)
         sheets, cands, ignored = extract_workbook(Path(rec["path"]), rec["name"])
         all_sheets.extend(sheets)
         all_cands.extend(cands)
