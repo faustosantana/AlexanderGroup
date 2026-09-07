@@ -315,6 +315,11 @@ def _apply_approval_company_config(env):
                 "justech_approval_invoice_enabled": True,
             }
         )
+    icp = env["ir.config_parameter"].sudo()
+    current = icp.get_param("justech.approval.public.base.url") or ""
+    web = icp.get_param("web.base.url") or ""
+    if (not current or current.startswith("http://")) and web.startswith("https://"):
+        icp.set_param("justech.approval.public.base.url", web)
     alexander = (
         env["res.users"]
         .sudo()
