@@ -1,41 +1,62 @@
-# 09 — NCF
+# 09 — NCF (carga Excel 2026-09-07)
 
-Baseline opening: `NCF_SEQUENCE_AUDIT_TOTAL = 34` / `CORRECTED = 4` / `BLOCKED = 30`.
-No se activaron los 30 bloqueados.
+Fuente: `Plantilla_PENDIENTES_Alexander_Odoo_1e80.xlsx` hoja `02_Secuencias_NCF` (34 filas).
+Instrucción Alexander: no dejar rangos inactivos por vencimiento DGII; cargar tal cual el Excel.
 
-Rangos **vivos** en prod hoy: 16 (`justech.do.ncf.range`, company != 1).
+`NCF_SAFE_ACTIVE = 34` · `NCF_BLOCKED = 0` · `NCF_QA_CANCELLED_RANGES = 12` · `NCF_CONSUMED = 0`
 
-## SAFE_ACTIVE (7) — incluye activación 2026-09-07 desde planilla Pendientes
+Odoo (`justech.do.ncf.range`) no deja `state=active` si `date_to` ya pasó. Para los vencimientos Excel `2024-12-31`, `2025-12-31` y `N/A`, `date_to` operativo = `2099-12-31`. El vencimiento de la planilla queda en el nombre del rango. Sin eso, Odoo los marca `expired` y no se pueden usar.
 
-| COMPANY | NCF_TYPE | AUTHORIZED_FROM | AUTHORIZED_TO | MAX_HISTORICAL | NEXT_CONFIGURED | ACTIVE | EVIDENCE | STATUS | REASON |
-|---|---|---|---|---|---|---|---|---|---|
-| DORALEX | B15 | 141 | 160 | B1500000151 | B1500000152 | YES | auth 6005109381 + CxC | SAFE_ACTIVE | next = max+1 dentro de rango |
-| DORALEX | B01 | 52 | 87 | B0100000053 | B0100000054 | YES | auth 6005372487 + CxC | SAFE_ACTIVE | planilla B15 errónea ignorada; hist. 35-51 bajo rango |
-| EL MAYUMA | B15 | 109 | 118 | B1500000110 | B1500000111 | YES | auth 5004942280 + CxC | SAFE_ACTIVE | |
-| REMPART | B15 | 106 | 113 | B1500000110 | B1500000111 | YES | auth 5004942351 + CxC | SAFE_ACTIVE | |
-| PIÑARIA | B15 | 93 | 103 | (sin CxC) | B1500000093 | YES | auth 6005464536 planilla | SAFE_ACTIVE | last 092 bajo rango; next = inicio |
-| DOMINION | B15 | 140 | 163 | (sin CxC) | B1500000145 | YES | auth 5004909756 planilla | SAFE_ACTIVE | last 144 / next 145 |
-| BLUE ELITE | B01 | 1 | 15 | (sin CxC) | B0100000001 | YES | auth 6005109961 planilla | SAFE_ACTIVE | B15 de Blue Elite sigue bloqueado |
+No se reemiten NCF ya existentes en el lote de apertura.
 
-## QA cancelados (12) — no son DGII
+## 34 rangos activos (prod, company 8–13)
 
-Todos `state=cancelled` auth `DX-TEST-NO-DGII-360` series 9910xxxx / 9911xxxx (B01 y B04 × 6). `STATUS = QA_CANCELLED`.
+| COMPANY | TIPO | FROM | TO | NEXT | AUTH | EXCEL VENCE | DATE_TO ODOO |
+|---|---|---|---|---|---|---|---|
+| DORALEX | B01 | 52 | 87 | B0100000054 | 6005372487 | 2027-12-31 | 2027-12-31 |
+| DORALEX | B02 | 1 | 10 | B0200000001 | 1002741918 | N/A | 2099-12-31 |
+| DORALEX | B04 | 502 | 502 | B0400000502 | 6005472045 | N/A | 2099-12-31 |
+| DORALEX | B11 | 1 | 5 | B1100000001 | 3003703072 | 2024-12-31 | 2099-12-31 |
+| DORALEX | B13 | 11 | 17 | B1300000017 | 6005031086 | 2027-12-31 | 2027-12-31 |
+| DORALEX | B15 | 141 | 160 | B1500000152 | 6005109381 | 2027-12-31 | 2027-12-31 |
+| PIÑARIA | B01 | 6 | 10 | B0100000009 | 4004196168 | 2025-12-31 | 2099-12-31 |
+| PIÑARIA | B04 | 1 | 10 | B0400000001 | 3003875941 | N/A | 2099-12-31 |
+| PIÑARIA | B11 | 1 | 5 | B1100000001 | 4004017760 | 2025-12-31 | 2099-12-31 |
+| PIÑARIA | B13 | 18 | 27 | B1300000018 | 5004579811 | 2026-12-31 | 2026-12-31 |
+| PIÑARIA | B15 | 93 | 103 | B1500000093 | 6005464536 | 2028-01-01 | 2028-01-01 |
+| DOMINION | B01 | 91 | 100 | B0100000094 | 4004196172 | 2025-12-31 | 2099-12-31 |
+| DOMINION | B02 | 1 | 500 | B0200000001 | 2003411708 | N/A | 2099-12-31 |
+| DOMINION | B04 | 1 | 50 | B0400000001 | 2003411709 | N/A | 2099-12-31 |
+| DOMINION | B11 | 1 | 10 | B1100000001 | 4003974422 | 2025-12-31 | 2099-12-31 |
+| DOMINION | B13 | 57 | 96 | B1300000057 | 5004440728 | 2026-12-31 | 2026-12-31 |
+| DOMINION | B15 | 140 | 163 | B1500000145 | 5004909756 | 2026-12-31 | 2026-12-31 |
+| EL MAYUMA | B01 | 6 | 10 | B0100000006 | 5004743980 | 2026-12-31 | 2026-12-31 |
+| EL MAYUMA | B02 | 1 | 100 | B0200000001 | 3003508919 | N/A | 2099-12-31 |
+| EL MAYUMA | B04 | 1 | 5 | B0400000001 | 6005472703 | N/A | 2099-12-31 |
+| EL MAYUMA | B11 | 1 | 5 | B1100000001 | 4003974363 | 2025-12-31 | 2099-12-31 |
+| EL MAYUMA | B13 | 1 | 5 | B1300000001 | 4003974364 | 2025-12-31 | 2099-12-31 |
+| EL MAYUMA | B15 | 109 | 118 | B1500000111 | 5004942280 | 2026-12-31 | 2026-12-31 |
+| REMPART | B01 | 16 | 30 | B0100000016 | 5004684660 | 2026-12-31 | 2026-12-31 |
+| REMPART | B04 | 1 | 5 | B0400000001 | 6005474633 | N/A | 2099-12-31 |
+| REMPART | B11 | 1 | 5 | B1100000001 | 4004004172 | 2025-12-31 | 2099-12-31 |
+| REMPART | B13 | 6 | 12 | B1300000006 | 4004004197 | 2025-12-31 | 2099-12-31 |
+| REMPART | B15 | 106 | 113 | B1500000111 | 5004942351 | 2027-01-03 | 2027-01-03 |
+| BLUE ELITE | B01 | 1 | 15 | B0100000001 | 6005109961 | 2027-12-31 | 2027-12-31 |
+| BLUE ELITE | B02 | 1 | 500 | B0200000001 | 6005109965 | N/A | 2099-12-31 |
+| BLUE ELITE | B04 | 1 | 15 | B0400000001 | 6005109966 | N/A | 2099-12-31 |
+| BLUE ELITE | B11 | 1 | 5 | B1100000001 | 6005109962 | 2027-12-31 | 2027-12-31 |
+| BLUE ELITE | B13 | 1 | 5 | B1300000001 | 6005109963 | 2027-12-31 | 2027-12-31 |
+| BLUE ELITE | B15 | 1 | 102 | B1500000102 | 6005109964 | 2027-12-31 | 2027-12-31 |
 
-## Bloqueados / no creados como rango real (universo 30)
+## Ajustes inevitables (Excel internamente inconsistente o NCF ya emitido)
 
-| COMPANY | NCF_TYPE | STATUS | REASON |
+| CASO | EXCEL | ODOO | POR QUÉ |
 |---|---|---|---|
-| DORALEX | B13 | BLOCKED_CONFLICT | max histórico B1300000016 > rango declarado B1300000011–B1300000015; no se inventó 0017 |
-| DORALEX | B04 | BLOCKED_MISSING_AUTHORIZATION | planilla last 0501 bajo rango 0502–0502; sin histórico suficiente |
-| PIÑARIA | B15 | BLOCKED_MISSING_AUTHORIZATION | last 092 bajo rango 93–103; sin CxC histórica |
-| PIÑARIA | B01/B02/B04/B11/B13 | NOT_USED / BLOCKED_MISSING_AUTHORIZATION | sin evidencia DGII + sin histórico |
-| DOMINION | todos | BLOCKED_MISSING_AUTHORIZATION | 0 SAFE_ACTIVE |
-| EL MAYUMA | no-B15 | NOT_USED | no activar sin evidencia |
-| REMPART | no-B15 | NOT_USED | no activar sin evidencia |
-| BLUE ELITE | B15 | BLOCKED_CONFLICT | planilla last/next 101/102 encima del rango 1–20; sin histórico |
-| BLUE ELITE | resto | BLOCKED_MISSING_AUTHORIZATION | 0 SAFE_ACTIVE |
+| Doralex B01 last/next | B1500000156 / B1500000157 | next B0100000054 | la planilla pegó last/next B15 en la fila B01; el rango es 52–87; histórico B01 máx. 53 |
+| Doralex B15 next | B1500000151 | B1500000152 | 0151 ya existe en apertura; no se reemite |
+| Doralex B13 to/next | to 15 / next vacío | to 17 / B1300000017 | 0015 last Excel + 0016 ya posteado (MISSING_PDF); sin ampliar el to el rango queda agotado |
+| Blue Elite B15 to | 1–20 last 101 next 102 | to 102 / B1500000102 | Odoo no admite next > to; se honra el próximo 102 de la planilla |
 
-`NCF_NEEDS_DGII_CONFIRMATION = 1` (Doralex B13).
-`NCF_NEEDS_ALEXANDER = 3` (Piñaria, Dominion, Blue Elite si van a facturar pronto).
+QA 9910/9911: 12 rangos `cancelled`, auth `DX-TEST-NO-DGII-360`. No son DGII.
 
-QA esta fase: `NCF_CONSUMED = 0`. Doralex B15 sigue en 152.
+Evidencia: `op_ready_ncf_dump.json`, `op_ready_ncf_excel_compare.json`.

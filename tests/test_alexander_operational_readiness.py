@@ -36,6 +36,51 @@ def test_excel_banks_match_companies_and_invalid_date_is_preserved():
     assert all(b["balance_date"] == "05//08/2026" for b in EXCEL_BANKS)
 
 
+def test_ncf_excel_plan_has_34_rows_and_ignores_doralex_b01_b15_typo():
+    from tools.alexander_operational_readiness.ncf_excel_plan import (
+        EXCEL_NCF_ROWS,
+        plan_range,
+    )
+
+    assert len(EXCEL_NCF_ROWS) == 34
+    b01 = next(
+        r
+        for r in EXCEL_NCF_ROWS
+        if r["company"].startswith("INVERSIONES DORALEX")
+        and r["declared_type"] == "B01"
+    )
+    planned = plan_range(b01, max_historical_seq=53)
+    assert planned["start"] == 52
+    assert planned["end"] == 87
+    assert planned["next"] == 54
+    assert any("EXCEL_NEXT_PREFIX_IGNORED" in n for n in planned["notes"])
+
+
+def test_ncf_excel_plan_expired_stays_operable_and_blu_b15_uses_excel_next():
+    from tools.alexander_operational_readiness.ncf_excel_plan import (
+        EXCEL_NCF_ROWS,
+        plan_range,
+    )
+
+    pin_b01 = next(
+        r
+        for r in EXCEL_NCF_ROWS
+        if "PIÑARIA" in r["company"] and r["declared_type"] == "B01"
+    )
+    planned = plan_range(pin_b01)
+    assert planned["next"] == 9
+    assert planned["date_to"] == "2099-12-31"
+    blu = next(
+        r
+        for r in EXCEL_NCF_ROWS
+        if r["company"].startswith("BLUE ELITE") and r["declared_type"] == "B15"
+    )
+    planned = plan_range(blu)
+    assert planned["next"] == 102
+    assert planned["end"] == 102
+    assert planned["excel_end"] == 20
+
+
 def test_opening_baseline_constants_unchanged():
     assert BATCH == "ALEXANDER_OPENING_2026-09-04"
     assert EXPECTED_AR == "27240211.80"
