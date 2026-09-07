@@ -19,7 +19,8 @@
     <record id="res_config_settings_view_form_approval_branding" model="ir.ui.view">
         <field name="name">res.config.settings.view.form.approval.branding</field>
         <field name="model">res.config.settings</field>
-        <field name="inherit_id" ref="justech_approval_flow.res_config_settings_view_form_justech_approval"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="priority" eval="99"/>
         <field name="arch" type="xml">
             <xpath expr="//app[@name='justech_approval_flow']" position="attributes">
                 <attribute name="data-string">Flujo de Aprobaciones</attribute>

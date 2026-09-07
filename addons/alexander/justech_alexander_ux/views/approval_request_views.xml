@@ -11,6 +11,21 @@
             <xpath expr="//field[@name='request_type']" position="before">
                 <field name="company_id" string="Empresa"/>
             </xpath>
+            <xpath expr="//field[@name='request_type']" position="attributes">
+                <attribute name="string">Tipo</attribute>
+            </xpath>
+            <xpath expr="//field[@name='requester_id']" position="attributes">
+                <attribute name="string">Solicitante</attribute>
+            </xpath>
+            <xpath expr="//field[@name='requested_at']" position="attributes">
+                <attribute name="string">Fecha</attribute>
+            </xpath>
+            <xpath expr="//field[@name='amount_total']" position="attributes">
+                <attribute name="string">Monto</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="attributes">
+                <attribute name="string">Estado</attribute>
+            </xpath>
             <xpath expr="//field[@name='requester_id']" position="after">
                 <field name="approver_id" string="Aprobador"/>
             </xpath>
