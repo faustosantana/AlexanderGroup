@@ -58,15 +58,18 @@ def _is_pinaria_leftover_draft(move):
 def _is_empty_draft(move):
     return (
         move.state == "draft"
-        and move.move_type in ("out_invoice", "out_refund")
+        and move.move_type
+        in ("out_invoice", "out_refund", "in_invoice", "in_refund")
         and not move.partner_id
         and not move.invoice_line_ids
         and not move.amount_total
     )
 
 
+INVOICE_TYPES = ("out_invoice", "out_refund", "in_invoice", "in_refund")
+
 candidates = Move.browse()
-for move in Move.search([("move_type", "in", ["out_invoice", "out_refund"])]):
+for move in Move.search([("move_type", "in", list(INVOICE_TYPES))]):
     if _is_test_partner(move.partner_id) or _is_pinaria_leftover_draft(move) or _is_empty_draft(
         move
     ):
@@ -101,6 +104,7 @@ if APPLY:
             "id": move.id,
             "name": move.name,
             "state": move.state,
+            "type": move.move_type,
             "partner": move.partner_id.display_name,
             "company": move.company_id.name,
         }
@@ -123,10 +127,18 @@ if APPLY:
 report["posted_after"] = Move.search_count(
     [("move_type", "=", "out_invoice"), ("state", "=", "posted")]
 )
-report["remaining_test"] = Move.search_count(
-    [
-        ("move_type", "in", ["out_invoice", "out_refund"]),
-        ("partner_id.name", "ilike", "NO FISCAL REAL"),
-    ]
-)
+left = [
+    {
+        "id": m.id,
+        "type": m.move_type,
+        "state": m.state,
+        "partner": m.partner_id.display_name,
+        "company": m.company_id.name,
+    }
+    for m in Move.search([("move_type", "in", list(INVOICE_TYPES))])
+    if _is_test_partner(m.partner_id)
+]
+report["remaining_test"] = len(left)
+report["remaining_rows"] = left
+report["companies_scanned"] = companies.mapped("name")
 print(json.dumps(report, indent=2, default=str, ensure_ascii=False))
