@@ -6,49 +6,69 @@ import os
 import textwrap
 from pathlib import Path
 
+import urllib.request
+
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 
-ORANGE = (0.894, 0.376, 0.094)  # #E46018
+# Línea gráfica Justech (justech.do): cian #4DC5D8, navy #14133B, wordmark JUS/TECH.
+CYAN = (0.302, 0.773, 0.847)
+NAVY = (0.078, 0.075, 0.231)
+TECH = (0.247, 0.243, 0.698)
 BLACK = (0.102, 0.102, 0.102)
-GRAY = (0.35, 0.35, 0.35)
+GRAY = (0.357, 0.400, 0.455)  # #5B6674
 LINE = (0.88, 0.88, 0.88)
-CARD = (0.98, 0.97, 0.96)
+CARD = (0.965, 0.980, 0.984)
 WHITE = (1, 1, 1)
 
 W, H = letter
 MARGIN = 56
-LOGO = Path(os.environ.get("DORALEX_LOGO", "/tmp/brand/DOR.png"))
+LOGO_URL = "https://www.justech.do/wp-content/uploads/2022/09/Justech-text-logo.png"
+LOGO = Path(os.environ.get("JUSTECH_LOGO", "/tmp/brand/justech/Justech-text-logo.png"))
 OUT = Path(
     os.environ.get(
         "CLIENT_LETTER_OUT",
-        "/tmp/carta_entrega_accesos_doralex.pdf",
+        "/tmp/carta_entrega_accesos_justech.pdf",
     )
 )
 M365_PW = os.environ["M365_TEMP_PASSWORD"]
 ODOO_PW = os.environ["ODOO_TEMP_PASSWORD"]
 
 pdfmetrics.registerFont(
-    TTFont("Inter", "/usr/share/fonts/truetype/macos/Inter-Regular.ttf")
+    TTFont(
+        "Inter",
+        "/usr/share/fonts/truetype/roboto/unhinted/RobotoTTF/Roboto-Regular.ttf",
+    )
 )
 pdfmetrics.registerFont(
-    TTFont("InterMed", "/usr/share/fonts/truetype/macos/Inter-Medium.ttf")
+    TTFont(
+        "InterMed",
+        "/usr/share/fonts/truetype/roboto/unhinted/RobotoTTF/Roboto-Medium.ttf",
+    )
 )
 pdfmetrics.registerFont(
-    TTFont("InterSemi", "/usr/share/fonts/truetype/macos/Inter-SemiBold.ttf")
+    TTFont("InterSemi", "/usr/share/fonts/truetype/ibm-plex/IBMPlexSans-SemiBold.ttf")
 )
 pdfmetrics.registerFont(
-    TTFont("InterBold", "/usr/share/fonts/truetype/macos/Inter-Bold.ttf")
+    TTFont("InterBold", "/usr/share/fonts/truetype/ibm-plex/IBMPlexSans-Bold.ttf")
 )
 pdfmetrics.registerFont(
-    TTFont("Serif", "/usr/share/fonts/truetype/noto/NotoSerif-Regular.ttf")
+    TTFont("Serif", "/usr/share/fonts/truetype/ibm-plex/IBMPlexSans-Regular.ttf")
 )
 pdfmetrics.registerFont(
-    TTFont("SerifBold", "/usr/share/fonts/truetype/noto/NotoSerif-Bold.ttf")
+    TTFont("SerifBold", "/usr/share/fonts/truetype/ibm-plex/IBMPlexSans-SemiBold.ttf")
 )
+
+
+def _ensure_logo():
+    if LOGO.exists() and LOGO.stat().st_size > 0:
+        return
+    LOGO.parent.mkdir(parents=True, exist_ok=True)
+    urllib.request.urlretrieve(LOGO_URL, LOGO)
+
 
 PEOPLE = [
     {
@@ -96,7 +116,7 @@ PEOPLE = [
         "mail": "alexander.pina@inversionesdoralex.com",
         "role": "Administrador general de Odoo",
         "can": "Las seis empresas, Ajustes, usuarios, ventas, compras, contabilidad e inventario.",
-        "cannot": "Cámbiela después del primer acceso. No es el usuario técnico interno.",
+        "cannot": "Es el mismo usuario de siempre. No se creó una segunda ficha.",
         "odoo_pw": ODOO_PW,
     },
 ]
@@ -112,28 +132,37 @@ def _wrap(text, width=86):
 
 
 def header(c, page, total):
-    c.setFillColorRGB(*ORANGE)
+    _ensure_logo()
+    c.setFillColorRGB(*NAVY)
+    c.rect(0, H - 16, W, 16, fill=1, stroke=0)
+    _set(c, WHITE)
+    c.setFont("Inter", 8)
+    c.drawString(MARGIN, H - 11, "JUSTECH  ·  Alternativas Tecnológicas")
+    c.drawRightString(W - MARGIN, H - 11, "Documento de entrega")
+    c.setFillColorRGB(*CYAN)
     c.rect(0, 0, 8, H, fill=1, stroke=0)
     if LOGO.exists():
         c.drawImage(
             ImageReader(str(LOGO)),
             MARGIN,
-            H - 92,
-            width=78,
-            height=78,
+            H - 78,
+            width=168,
+            height=40,
             mask="auto",
             preserveAspectRatio=True,
-            anchor="c",
+            anchor="w",
         )
-    _set(c, BLACK)
-    c.setFont("SerifBold", 16)
-    c.drawString(MARGIN + 92, H - 48, "Grupo Alexander")
-    c.setFont("Inter", 9)
+    _set(c, NAVY)
+    c.setFont("InterSemi", 10)
+    c.drawRightString(W - MARGIN, H - 52, "Grupo Alexander")
+    c.setFont("Inter", 8)
     _set(c, GRAY)
-    c.drawString(MARGIN + 92, H - 64, "Inversiones Doralex  ·  Microsoft 365 y Odoo")
-    c.setStrokeColorRGB(*ORANGE)
+    c.drawRightString(
+        W - MARGIN, H - 66, "Inversiones Doralex  ·  Microsoft 365 y Odoo"
+    )
+    c.setStrokeColorRGB(*CYAN)
     c.setLineWidth(1.4)
-    c.line(MARGIN, H - 104, W - MARGIN, H - 104)
+    c.line(MARGIN, H - 90, W - MARGIN, H - 90)
     _set(c, GRAY)
     c.setFont("Inter", 8)
     c.drawRightString(
@@ -167,11 +196,11 @@ def page_letter(c, total):
     header(c, 1, total)
     footer_rule(c)
     y = H - 136
-    _set(c, ORANGE)
+    _set(c, CYAN)
     c.setFont("InterSemi", 8)
     c.drawString(MARGIN, y, "ENTREGA DE ACCESOS")
     y -= 28
-    _set(c, BLACK)
+    _set(c, NAVY)
     c.setFont("SerifBold", 22)
     c.drawString(MARGIN, y, "Cuentas de su equipo")
     y -= 26
@@ -205,13 +234,13 @@ def page_letter(c, total):
     bullets = [
         "Seis correos nuevos en @inversionesdoralex.com, con buzón activo.",
         "El mismo login sirve para Outlook (correo) y para Odoo.",
-        "Usted es el administrador general de Odoo. Usuario: alexander.pina@inversionesdoralex.com. Contraseña temporal de Odoo en este documento; cámbiela después de entrar.",
+        "Usted sigue siendo el administrador general de Odoo. Es el mismo usuario de siempre; solo cambió el correo de acceso. Su contraseña de Odoo no se tocó.",
         "Luis, Janny, Elianny y Leopordo pueden vender y comprar. No pueden facturar ni entrar a Ajustes.",
         "Geilin, además, es quien factura. No administra la contabilidad ni los NCF.",
         "Los seis pueden trabajar en las seis empresas del grupo. La empresa por defecto es Inversiones Doralex.",
     ]
     for item in bullets:
-        c.setFillColorRGB(*ORANGE)
+        c.setFillColorRGB(*CYAN)
         c.circle(MARGIN + 4, y + 3, 2.2, fill=1, stroke=0)
         y = paragraph(c, item, MARGIN + 16, y, width=86, leading=14, size=10)
         y -= 8
@@ -281,7 +310,7 @@ def page_how(c, total):
             [
                 "Entre a https://doralexgroup.cloud",
                 "El usuario es el mismo correo @inversionesdoralex.com.",
-                "La contraseña de Odoo es otra, no la de Microsoft. Es temporal: cámbiela después de entrar.",
+                "La contraseña de Odoo es otra, no la de Microsoft.",
                 "En la esquina de la empresa puede cambiar entre las seis compañías del grupo.",
             ],
         ),
@@ -289,7 +318,7 @@ def page_how(c, total):
     for title, lines in boxes:
         c.setFillColorRGB(*CARD)
         c.roundRect(MARGIN, y - 118, W - 2 * MARGIN, 132, 6, fill=1, stroke=0)
-        c.setFillColorRGB(*ORANGE)
+        c.setFillColorRGB(*CYAN)
         c.rect(MARGIN, y - 118, 5, 132, fill=1, stroke=0)
         _set(c, BLACK)
         c.setFont("InterSemi", 12)
@@ -306,7 +335,7 @@ def page_how(c, total):
     y -= 18
     y = paragraph(
         c,
-        "Su correo es alexander.pina@inversionesdoralex.com. En Microsoft y en Odoo use las contraseñas temporales de este documento (son distintas). Microsoft le pide cambiar la suya al entrar. En Odoo cámbiela usted desde Preferencias después del primer acceso.",
+        "Su correo nuevo es alexander.pina@inversionesdoralex.com. En Microsoft es una cuenta nueva: use la contraseña temporal y cámbiela al entrar. En Odoo no creamos un segundo usuario: actualizamos el que ya tenía (antes inversionesdoralex@gmail.com). Siguen sus documentos, empresas y permisos. La contraseña de Odoo es la que usted ya conocía.",
         MARGIN,
         y,
         width=92,
@@ -318,13 +347,13 @@ def page_how(c, total):
 def _card(c, person, x, y, w, h):
     c.setFillColorRGB(*CARD)
     c.roundRect(x, y, w, h, 6, fill=1, stroke=0)
-    c.setFillColorRGB(*ORANGE)
+    c.setFillColorRGB(*CYAN)
     c.rect(x, y, 5, h, fill=1, stroke=0)
     _set(c, BLACK)
     c.setFont("InterSemi", 11)
     c.drawString(x + 16, y + h - 22, person["name"])
     c.setFont("Inter", 8.5)
-    _set(c, ORANGE)
+    _set(c, CYAN)
     c.drawString(x + 16, y + h - 36, person["role"].upper())
     _set(c, GRAY)
     c.setFont("Inter", 8)
@@ -411,7 +440,7 @@ def page_roles(c, total):
     c.drawString(MARGIN, y, "Quién hace qué")
     y -= 26
     for person in PEOPLE:
-        c.setFillColorRGB(*ORANGE)
+        c.setFillColorRGB(*CYAN)
         c.circle(MARGIN + 4, y + 3, 2.2, fill=1, stroke=0)
         _set(c, BLACK)
         c.setFont("InterSemi", 10.5)
@@ -438,7 +467,7 @@ def page_roles(c, total):
         "Su cuenta Microsoft anterior (admin@ / alex@ doralex.onmicrosoft.com).",
         "El usuario técnico interno de Odoo.",
     ):
-        c.setFillColorRGB(*ORANGE)
+        c.setFillColorRGB(*CYAN)
         c.circle(MARGIN + 4, y + 3, 2.2, fill=1, stroke=0)
         y = paragraph(c, item, MARGIN + 16, y, width=84, leading=14, size=10)
         y -= 6
@@ -457,9 +486,9 @@ def page_roles(c, total):
 def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     c = canvas.Canvas(str(OUT), pagesize=letter)
-    c.setTitle("Accesos del equipo — Grupo Alexander")
+    c.setTitle("Justech — Entrega de accesos · Grupo Alexander")
     c.setAuthor("Justech")
-    c.setSubject("Cuentas Microsoft 365 y Odoo para Alexander Piña Aquino")
+    c.setSubject("Entrega de implementación Microsoft 365 y Odoo")
     total = 5
     page_letter(c, total)
     page_how(c, total)

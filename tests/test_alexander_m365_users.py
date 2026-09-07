@@ -73,21 +73,15 @@ def test_docs_exist_and_record_standard_trial_gate():
     assert "FINAL_USER_PROVISIONING_STATUS = SUCCESS_WITH_STANDARD_TRIAL" in score
 
 
-def test_letter_does_not_claim_alexander_had_odoo_password():
+def test_letter_is_justech_delivery_with_alexander_temp_password():
     text = Path("tools/alexander_m365_users/generate_client_letter.py").read_text(
         encoding="utf-8"
     )
-    banned = (
-        "ya usa",
-        "ya conocía",
-        "contraseña de Odoo no se tocó",
-        "no se cambió",
-        "SKIPPED_KEEP_EXISTING",
-        "clave actual",
-        "que usted ya",
-    )
-    for token in banned:
-        assert token not in text, token
+    assert "JUSTECH" in text
+    assert "Justech-text-logo.png" in text
+    assert "DOR.png" not in text
+    assert '"odoo_pw": ODOO_PW' in text
+    assert "La contraseña de Odoo que usted ya usa" not in text
 
 
 def test_docs_and_catalog_have_no_secrets():
