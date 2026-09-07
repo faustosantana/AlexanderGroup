@@ -166,6 +166,10 @@ def test_spanish_ui_overlay_does_not_edit_crm_core() -> None:
     assert 'lang="es_DO"' in overlay or "lang='es_DO'" in overlay
     assert 'name="Tablero"' in warranty_menu
     assert "Estado de aprobación Justech" in sale
+    assert "Estado de aprobación" in overlay
+    assert (
+        "Estado de aprobación Justech" not in overlay.split("field_description", 2)[-1]
+    )
 
 
 def test_ux_overlay_hides_technical_apps() -> None:
@@ -193,11 +197,21 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
-    assert "19.0.1.2.3" in manifest
+    assert "19.0.1.3.0" in manifest
+    assert "apply_approval_overlay" in hooks
+    assert "ALEXANDER_APPROVAL_LOGIN" in hooks
+    assert "approval_visibility.xml" in manifest
+    assert "approval_request_views.xml" in manifest
     assert "justech_approval_flow" in hooks.split("VISIBLE_APPS", 1)[1][:400]
-    assert 'menu_justech_approval_root" model="ir.ui.menu">' in menus or "menu_justech_approval_root" in menus
-    assert 'justech_approval_flow.menu_justech_approval_root' in menus
-    assert 'parent_id" eval="False"' in menus.split("justech_approval_flow.menu_justech_approval_root", 1)[1][:250]
+    assert (
+        'menu_justech_approval_root" model="ir.ui.menu">' in menus
+        or "menu_justech_approval_root" in menus
+    )
+    assert "justech_approval_flow.menu_justech_approval_root" in menus
+    assert (
+        'parent_id" eval="False"'
+        in menus.split("justech_approval_flow.menu_justech_approval_root", 1)[1][:250]
+    )
     assert '("justech_approval_flow", "Aprobaciones", True)' in hooks
     assert "web.assets_backend" in manifest
     assert "web.assets_web" in manifest
@@ -209,7 +223,10 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "o_switch_company_menu" in navbar_css
     assert "o_menu_brand" in navbar_css
     assert "hm.toggle(true)" in navbar_xml
-    assert 'hasclass(\'o_menu_brand\')' in navbar_xml or 'hasclass("o_menu_brand")' in navbar_xml
+    assert (
+        "hasclass('o_menu_brand')" in navbar_xml
+        or 'hasclass("o_menu_brand")' in navbar_xml
+    )
     assert "SwitchCompanyMenu" in companies
     assert "systray.remove" in companies
     assert "activateCompanies" in companies
