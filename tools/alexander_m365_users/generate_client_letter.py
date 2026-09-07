@@ -25,7 +25,7 @@ LOGO = Path(os.environ.get("DORALEX_LOGO", "/tmp/brand/DOR.png"))
 OUT = Path(
     os.environ.get(
         "CLIENT_LETTER_OUT",
-        "/opt/cursor/artifacts/Accesos_Equipo_Alexander_Group.pdf",
+        "/tmp/carta_entrega_accesos_doralex.pdf",
     )
 )
 M365_PW = os.environ["M365_TEMP_PASSWORD"]
