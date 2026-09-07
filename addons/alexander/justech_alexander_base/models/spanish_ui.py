@@ -27,16 +27,16 @@ class IrUiMenu(models.Model):
             menu = self.env.ref(xmlid, raise_if_not_found=False)
             if menu:
                 menu.with_context(lang="es_DO").name = "Iniciativas"
-        fields = self.env["ir.model.fields"].sudo().search(
-            [
-                ("name", "=", "justech_approval_state"),
-                ("model", "in", list(APPROVAL_STATE_MODELS)),
-            ]
+        fields = (
+            self.env["ir.model.fields"]
+            .sudo()
+            .search(
+                [
+                    ("name", "=", "justech_approval_state"),
+                    ("model", "in", list(APPROVAL_STATE_MODELS)),
+                ]
+            )
         )
         for field in fields:
-            field.with_context(lang="es_DO").field_description = (
-                "Estado de aprobación Justech"
-            )
-            field.with_context(lang="en_US").field_description = (
-                "Estado de aprobación Justech"
-            )
+            field.with_context(lang="es_DO").field_description = "Estado de aprobación"
+            field.with_context(lang="en_US").field_description = "Estado de aprobación"

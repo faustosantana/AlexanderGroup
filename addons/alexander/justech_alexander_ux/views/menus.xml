@@ -189,7 +189,7 @@
         <field name="name">Comprobantes electrónicos</field>
     </record>
 
-    <!-- Home: admin / aprobaciones / auditoría bajo Ajustes. -->
+    <!-- Home: admin / auditoría bajo Ajustes. Aprobaciones es app propia. -->
     <record id="justech_alexander_admin.menu_doralex_root" model="ir.ui.menu">
         <field name="parent_id" ref="base.menu_administration"/>
         <field name="name">Administración Doralex</field>
@@ -197,10 +197,10 @@
         <field name="web_icon" eval="False"/>
     </record>
     <record id="justech_approval_flow.menu_justech_approval_root" model="ir.ui.menu">
-        <field name="parent_id" ref="base.menu_administration"/>
-        <field name="name">Aprobaciones Justech</field>
-        <field name="sequence">4</field>
-        <field name="web_icon" eval="False"/>
+        <field name="parent_id" eval="False"/>
+        <field name="name">Aprobaciones</field>
+        <field name="sequence">45</field>
+        <field name="web_icon">justech_alexander_ux,static/description/approvals.png</field>
     </record>
     <record id="justech_global_audit_log.menu_justech_global_audit_root" model="ir.ui.menu">
         <field name="parent_id" ref="base.menu_administration"/>

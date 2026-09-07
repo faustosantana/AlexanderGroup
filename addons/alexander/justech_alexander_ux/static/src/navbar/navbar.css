@@ -1,0 +1,15 @@
+/* Hide the current-app brand. Keep the native multi-company switcher
+   with checkboxes in the header (same behavior as justgroup). */
+
+.o_main_navbar .o_menu_brand,
+.o_main_navbar .o_menu_brand_icon,
+.o_navbar .o_menu_brand,
+.o_navbar .o_menu_brand_icon,
+.o_menu_toggle .o_menu_brand,
+.o_menu_toggle .o_menu_brand_icon {
+    display: none !important;
+}
+
+.o_main_navbar .o_menu_toggle.hasImage {
+    padding-inline-start: 0.75rem !important;
+}

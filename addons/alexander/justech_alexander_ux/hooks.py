@@ -25,7 +25,7 @@ CATALOG = (
     ("justech_warranty", "Garantías", True),
     ("justech_purchase_sale_margin_control", "Costos y Márgenes", True),
     ("justech_managed_services", "Servicios Administrados", True),
-    ("justech_approval_flow", "Aprobaciones Justech", False),
+    ("justech_approval_flow", "Aprobaciones", True),
     ("justech_global_audit_log", "Auditoría", False),
     ("justech_fiscal_admin", "Administración Fiscal", False),
     ("l10n_do_ecf_connector", "Conector e-CF DGII", False),
@@ -76,7 +76,26 @@ VISIBLE_APPS = {
     "justech_warranty",
     "justech_purchase_sale_margin_control",
     "justech_managed_services",
+    "justech_approval_flow",
 }
+
+ALEXANDER_APPROVAL_LOGIN = "alexander.pina@inversionesdoralex.com"
+OPERATIONAL_APPROVAL_LOGINS = (
+    "luis.aquino@inversionesdoralex.com",
+    "janny.montero@inversionesdoralex.com",
+    "elianny.sanchez@inversionesdoralex.com",
+    "leopordo.jimenez@inversionesdoralex.com",
+    "geilin.rosario@inversionesdoralex.com",
+)
+_OPERATIONAL_COMPANY_TOKENS = (
+    "BLUE ELITE",
+    "PINARIA",
+    "PIÑARIA",
+    "DOMINION",
+    "DORALEX",
+    "MAYUMA",
+    "REMPART",
+)
 
 
 def apply_ecf_operational_state(env, enabled=None):
@@ -101,22 +120,24 @@ def apply_ecf_operational_state(env, enabled=None):
             cron.active = bool(enabled)
 
 
+def _set_translated(records, field_name, value):
+    if not records:
+        return
+    records[field_name] = value
+    records.with_context(lang="en_US")[field_name] = value
+    for lang in records.env["res.lang"].sudo().search([]):
+        records.with_context(lang=lang.code)[field_name] = value
+
+
 def _apply_catalog(env):
     Module = env["ir.module.module"].sudo()
     for technical, display, application in CATALOG:
         rec = Module.search([("name", "=", technical)], limit=1)
         if not rec:
             continue
-        vals = {}
         if rec.application != application:
-            vals["application"] = application
-        current = rec.with_context(lang="en_US").shortdesc or ""
-        if current != display:
-            vals["shortdesc"] = display
-        if vals:
-            rec.write(vals)
-        rec.with_context(lang="es_DO").shortdesc = display
-        rec.with_context(lang="en_US").shortdesc = display
+            rec.application = application
+        _set_translated(rec, "shortdesc", display)
         if "summary" in rec._fields:
             rec.summary = display
 
@@ -136,15 +157,15 @@ def _apply_menu_names(env):
         "justech_admin_center.menu_justech_admin_center_root": "Administración técnica",
         "justech_alexander_admin.menu_doralex_modules": "Módulos",
         "justech_alexander_admin.menu_doralex_root": "Administración Doralex",
-        "justech_approval_flow.menu_justech_approval_root": "Aprobaciones Justech",
+        "justech_approval_flow.menu_justech_approval_root": "Aprobaciones",
+        "justech_approval_flow.menu_justech_approval_all": "Histórico",
         "justech_global_audit_log.menu_justech_global_audit_root": "Auditoría",
     }
     for xmlid, name in renames.items():
         menu = env.ref(xmlid, raise_if_not_found=False)
         if not menu:
             continue
-        menu.with_context(lang="en_US").name = name
-        menu.with_context(lang="es_DO").name = name
+        _set_translated(menu, "name", name)
 
 
 def _hide_fiscal_leftovers(env):
@@ -172,8 +193,171 @@ def _hide_fiscal_leftovers(env):
             menu.write({"active": False, "web_icon": False})
 
 
+def _operational_companies(env):
+    companies = env["res.company"].sudo().search([])
+    keep = env["res.company"]
+    for company in companies:
+        name = (company.name or "").upper()
+        if "PLANTILLA" in name:
+            continue
+        if any(token in name for token in _OPERATIONAL_COMPANY_TOKENS):
+            keep |= company
+    return keep
+
+
+def _hide_duplicate_approval_apps(env):
+    keep = env.ref(
+        "justech_approval_flow.menu_justech_approval_root",
+        raise_if_not_found=False,
+    )
+    if not keep:
+        return
+    roots = env["ir.ui.menu"].sudo().search([("parent_id", "=", False)])
+    for menu in roots:
+        if menu.id == keep.id:
+            continue
+        xmlid = menu.get_external_id().get(menu.id) or ""
+        name = (menu.name or "").lower()
+        if xmlid.startswith("approvals.") or "aprobacion" in name or "approval" in name:
+            menu.write({"active": False, "web_icon": False})
+    keep.write(
+        {
+            "active": True,
+            "parent_id": False,
+            "name": "Aprobaciones",
+        }
+    )
+
+
+def _apply_approval_identity(env):
+    privilege = env.ref(
+        "justech_approval_flow.res_groups_privilege_justech_approval",
+        raise_if_not_found=False,
+    )
+    if privilege:
+        _set_translated(privilege, "name", "Aprobaciones")
+    activity = env.ref(
+        "justech_approval_flow.mail_activity_approval",
+        raise_if_not_found=False,
+    )
+    if activity:
+        _set_translated(activity, "name", "Revisar aprobación")
+    for xmlid, name in (
+        (
+            "justech_approval_flow.mail_template_approval_request",
+            "Solicitud de aprobación",
+        ),
+        (
+            "justech_approval_flow.mail_template_approval_result",
+            "Resultado de aprobación",
+        ),
+    ):
+        tmpl = env.ref(xmlid, raise_if_not_found=False)
+        if tmpl:
+            _set_translated(tmpl, "name", name)
+    fields = (
+        env["ir.model.fields"]
+        .sudo()
+        .search(
+            [
+                ("name", "=", "justech_approval_state"),
+                (
+                    "model",
+                    "in",
+                    ["sale.order", "purchase.order", "account.move"],
+                ),
+            ]
+        )
+    )
+    for field in fields:
+        _set_translated(field, "field_description", "Estado de aprobación")
+
+
+def _apply_approval_users(env):
+    manager = env.ref("justech_approval_flow.group_manager", raise_if_not_found=False)
+    approver = env.ref("justech_approval_flow.group_approver", raise_if_not_found=False)
+    self_approve = env.ref(
+        "justech_approval_flow.group_self_approve", raise_if_not_found=False
+    )
+    if not manager or not approver or not self_approve:
+        return
+    Users = env["res.users"].sudo()
+    alexander = Users.search([("login", "=", ALEXANDER_APPROVAL_LOGIN)], limit=1)
+    if alexander:
+        alexander.write({"group_ids": [(4, manager.id), (4, approver.id)]})
+        if self_approve in alexander.group_ids:
+            alexander.write({"group_ids": [(3, self_approve.id)]})
+    for login in OPERATIONAL_APPROVAL_LOGINS:
+        user = Users.search([("login", "=", login)], limit=1)
+        if not user:
+            continue
+        user.write(
+            {
+                "group_ids": [
+                    (3, manager.id),
+                    (3, approver.id),
+                    (3, self_approve.id),
+                ]
+            }
+        )
+
+
+def _apply_approval_company_config(env):
+    companies = _operational_companies(env)
+    if companies:
+        companies.write(
+            {
+                "justech_approval_purchase_enabled": True,
+                "justech_approval_sale_enabled": True,
+                "justech_approval_invoice_enabled": True,
+            }
+        )
+    icp = env["ir.config_parameter"].sudo()
+    current = icp.get_param("justech.approval.public.base.url") or ""
+    web = icp.get_param("web.base.url") or ""
+    if (not current or current.startswith("http://")) and web.startswith("https://"):
+        icp.set_param("justech.approval.public.base.url", web)
+    alexander = (
+        env["res.users"]
+        .sudo()
+        .search([("login", "=", ALEXANDER_APPROVAL_LOGIN)], limit=1)
+    )
+    if not alexander or not companies:
+        return
+    Rule = env["justech.approval.user.rule"].sudo()
+    for company in companies:
+        rule = Rule.search(
+            [
+                ("user_id", "=", alexander.id),
+                ("company_id", "=", company.id),
+            ],
+            limit=1,
+        )
+        vals = {
+            "user_id": alexander.id,
+            "company_id": company.id,
+            "active": True,
+            "approve_sale": True,
+            "approve_purchase": True,
+            "approve_invoice": True,
+            "allow_self_approval": False,
+        }
+        if rule:
+            rule.write(vals)
+        else:
+            Rule.create(vals)
+
+
+def apply_approval_overlay(env):
+    _hide_duplicate_approval_apps(env)
+    _apply_approval_identity(env)
+    _apply_approval_users(env)
+    _apply_approval_company_config(env)
+
+
 def post_init_hook(env):
     _apply_catalog(env)
     _apply_menu_names(env)
     apply_ecf_operational_state(env, enabled=False)
     _hide_fiscal_leftovers(env)
+    apply_approval_overlay(env)

@@ -1,9 +1,9 @@
 {
     "name": "Doralex UX — menús y catálogo",
-    "version": "19.0.1.1.1",
+    "version": "19.0.1.4.0",
     "category": "Hidden",
-    "summary": "Launcher limpio, Fiscal Dominicana agrupada y e-CF apagado por defecto",
-    "description": "Overlay Doralex: menús fiscales agrupados, e-CF/DGII ocultos hasta activar el switch, administración/aprobaciones/auditoría bajo Ajustes. No desinstala módulos ni cambia nombres técnicos.",
+    "summary": "Launcher limpio, Aprobaciones como app propia y e-CF apagado por defecto",
+    "description": "Overlay Doralex: menús fiscales agrupados, e-CF/DGII ocultos hasta activar el switch, administración y auditoría bajo Ajustes. Aprobaciones es una app propia del tablero (bandeja operativa fuera de Settings). La barra superior no muestra la marca de app; el grid abre el tablero. El selector nativo de empresas (casillas, varias a la vez) permanece en el header. No desinstala módulos ni cambia nombres técnicos.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",
     "license": "LGPL-3",
@@ -26,9 +26,24 @@
     ],
     "data": [
         "data/ir_config_parameter.xml",
+        "security/approval_visibility.xml",
         "views/menus.xml",
+        "views/approval_request_views.xml",
+        "views/approval_branding.xml",
         "views/res_config_settings_views.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "justech_alexander_ux/static/src/navbar/navbar.css",
+            "justech_alexander_ux/static/src/navbar/navbar.xml",
+            "justech_alexander_ux/static/src/navbar/user_companies.js",
+        ],
+        "web.assets_web": [
+            "justech_alexander_ux/static/src/navbar/navbar.css",
+            "justech_alexander_ux/static/src/navbar/navbar.xml",
+            "justech_alexander_ux/static/src/navbar/user_companies.js",
+        ],
+    },
     "post_init_hook": "post_init_hook",
     "installable": True,
     "application": False,
