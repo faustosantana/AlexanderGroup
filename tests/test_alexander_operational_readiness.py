@@ -89,6 +89,15 @@ def test_ncf_excel_plan_expired_keeps_excel_date_and_blu_b15_uses_excel_next():
     assert planned["excel_end"] == 20
 
 
+def test_ncf_assignment_expired_message_is_explicit():
+    from pathlib import Path
+
+    src = Path("addons/alexander/justech_alexander_base/models/ncf_assignment.py")
+    text = src.read_text(encoding="utf-8")
+    assert "está vencido" in text
+    assert "No se puede facturar hasta validarlo" in text
+
+
 def test_opening_baseline_constants_unchanged():
     assert BATCH == "ALEXANDER_OPENING_2026-09-04"
     assert EXPECTED_AR == "27240211.80"

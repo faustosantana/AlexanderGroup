@@ -138,7 +138,7 @@ def test_ncf_guard_blocks_fiscal_post_without_real_range() -> None:
         ALEXANDER / "justech_alexander_base" / "models" / "ncf_assignment.py"
     ).read_text(encoding="utf-8")
     assert "justech_l10n_do_ncf" in manifest
-    assert "19.0.1.0.4" in manifest
+    assert "19.0.1.0.5" in manifest
     assert "justech.do.ncf.assignment.service" in guard
     assert "No crea rangos" in guard
     assert (
