@@ -112,20 +112,19 @@ def run(env):
                     vals["sequence_end"] = keep_next
                 existing.write({k: v for k, v in vals.items() if k != "company_id"})
                 if existing.state == "draft":
-                    existing.action_activate()
-                if existing.state != "active":
-                    existing.write({"date_to": "2099-12-31", "state": "active"})
-                    existing._recompute_operational_state()
-                    if existing.state != "active":
-                        existing.sudo().write({"date_to": "2099-12-31"})
-                        Range.browse(existing.id).sudo().write({"state": "active"})
+                    try:
+                        existing.action_activate()
+                    except Exception as exc:  # noqa: BLE001
+                        plan["notes"].append(f"ACTIVATE_SKIPPED={exc}")
+                        existing._recompute_operational_state()
                 rng = existing
             else:
                 rng = Range.create(vals)
-                rng.action_activate()
-                if rng.state != "active":
-                    rng.write({"date_to": "2099-12-31", "state": "draft"})
+                try:
                     rng.action_activate()
+                except Exception as exc:  # noqa: BLE001
+                    plan["notes"].append(f"ACTIVATE_SKIPPED={exc}")
+                    rng._recompute_operational_state()
             rec.update(
                 {
                     "id": rng.id,

@@ -1,8 +1,9 @@
 """Plan de rangos NCF tal como la planilla Pendientes.
 
-Carga las 34 filas. No deja rangos inactivos por vencimiento Excel
-(2024-12-31 / 2025-12-31 / N/A): Odoo exige date_to futuro para state=active,
-así que esos casos usan 2099-12-31. No reemite NCF ya posteados.
+Carga las 34 filas. El vencimiento Excel se guarda tal cual: si ya pasó,
+Odoo marca el rango expired y al facturar lanza error de NCF vencido
+para que lo validen. N/A no tiene fecha: queda 2099-12-31. No reemite
+NCF ya posteados.
 """
 
 from datetime import date
@@ -398,10 +399,9 @@ def _date_to(expiration):
         return OPERATIVE_DATE_TO, notes
     if parsed < TODAY:
         notes.append(
-            f"EXCEL_EXPIRATION={exp} ya pasó; Odoo bloquea vencidos. "
-            "Vigencia operativa 2099-12-31 (instrucción: no dejar inactivo)"
+            f"EXCEL_EXPIRATION={exp} ya pasó; se guarda tal cual. "
+            "Al facturar Odoo debe error de NCF vencido para validar"
         )
-        return OPERATIVE_DATE_TO, notes
     return exp, notes
 
 

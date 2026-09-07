@@ -56,7 +56,7 @@ def test_ncf_excel_plan_has_34_rows_and_ignores_doralex_b01_b15_typo():
     assert any("EXCEL_NEXT_PREFIX_IGNORED" in n for n in planned["notes"])
 
 
-def test_ncf_excel_plan_expired_stays_operable_and_blu_b15_uses_excel_next():
+def test_ncf_excel_plan_expired_keeps_excel_date_and_blu_b15_uses_excel_next():
     from tools.alexander_operational_readiness.ncf_excel_plan import (
         EXCEL_NCF_ROWS,
         plan_range,
@@ -69,7 +69,15 @@ def test_ncf_excel_plan_expired_stays_operable_and_blu_b15_uses_excel_next():
     )
     planned = plan_range(pin_b01)
     assert planned["next"] == 9
-    assert planned["date_to"] == "2099-12-31"
+    assert planned["date_to"] == "2025-12-31"
+    assert any("ya pasó" in n for n in planned["notes"])
+    na_row = next(
+        r
+        for r in EXCEL_NCF_ROWS
+        if r["company"].startswith("INVERSIONES DORALEX")
+        and r["declared_type"] == "B02"
+    )
+    assert plan_range(na_row)["date_to"] == "2099-12-31"
     blu = next(
         r
         for r in EXCEL_NCF_ROWS
