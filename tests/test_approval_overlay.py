@@ -15,6 +15,7 @@ def test_approval_overlay_uses_real_actions() -> None:
     assert "Rechazadas" in views
     assert "Histórico" in views
     assert "Pendientes de mi aprobación" in views
+    assert 'name="my_approval"' not in views
     assert "company_id" in views
     assert "requester_id" in views
     assert "Flujo de Aprobaciones" in branding

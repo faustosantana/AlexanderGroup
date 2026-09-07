@@ -57,11 +57,12 @@
                 <field name="request_type" string="Tipo documento"/>
                 <field name="state" string="Estado"/>
             </xpath>
+            <xpath expr="//filter[@name='my_pending']" position="attributes">
+                <attribute name="string">Pendientes de mi aprobación</attribute>
+            </xpath>
             <xpath expr="//filter[@name='my_pending']" position="after">
                 <filter string="Mis solicitudes" name="my_requests"
                         domain="[('requester_id', '=', uid)]"/>
-                <filter string="Pendientes de mi aprobación" name="my_approval"
-                        domain="[('state', '=', 'pending'), ('approver_ids', 'in', uid)]"/>
                 <separator/>
                 <filter string="Fecha" name="filter_requested_at" date="requested_at"/>
             </xpath>
