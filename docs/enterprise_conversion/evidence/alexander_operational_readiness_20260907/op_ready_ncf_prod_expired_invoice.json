@@ -1,0 +1,12 @@
+{
+  "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+  "range_state": "expired",
+  "date_to": "2025-12-31",
+  "posted": false,
+  "ncf_consumed": false,
+  "error": "El rango NCF B01 de COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L. está vencido (vence 2025-12-31). No se puede facturar hasta validarlo.",
+  "error_says_vencido": true,
+  "next_unchanged": true,
+  "opening_invoices": 27,
+  "leftover_qa_moves": []
+}

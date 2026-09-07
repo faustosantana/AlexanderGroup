@@ -7,7 +7,7 @@
 | Fecha + asiento 18.8M Banreservas | Queda pendiente | No se posteó |
 | Pedir autorización B13 Doralex | No es necesario | B13 quedó **activo** con next `B1300000017` (0016 ya existe) |
 | PIN / DOM / BLU van a facturar | Sí | Los 34 NCF de la planilla están activos |
-| Rangos vencidos (2024/2025) | DGII no es problema; no dejar inactivo | Activos; `date_to` operativo 2099 para que Odoo no los marque expired |
+| Rangos vencidos (2024/2025) | Fecha Excel tal cual; al facturar error de vencido | 9 rangos `expired`; posteo bloqueado para validar |
 | From = administracion@ dominio empresa | Sí | Ya estaba así; no se tocó Gmail/Hotmail |
 | Stock de apertura | No hay stock | Existencias operativas = 0; QA DX-TEST-STK archivado |
 | Limpiar QA | Autorizado | Ejecutado |

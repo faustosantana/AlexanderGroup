@@ -1,0 +1,604 @@
+{
+  "updated": [
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "prefix": "B01",
+      "before": {
+        "id": 25,
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B0100000054",
+        "auth": "6005372487"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B0100000054",
+        "auth": "6005372487",
+        "name": "B01 INVERSIONES DORALEX,S.RL. auth 6005372487 (Excel vence 2027-12-31)"
+      },
+      "excel_expiration": "2027-12-31",
+      "notes": [
+        "EXCEL_NEXT_PREFIX_IGNORED=B1500000157",
+        "EXCEL_LAST_PREFIX_IGNORED=B1500000156",
+        "NEXT_FROM_RANGE_START=52"
+      ]
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "prefix": "B11",
+      "before": {
+        "id": 34,
+        "state": "active",
+        "date_to": "2099-12-31",
+        "next": "B1100000001",
+        "auth": "3003703072"
+      },
+      "after": {
+        "state": "expired",
+        "date_to": "2024-12-31",
+        "next": "B1100000001",
+        "auth": "3003703072",
+        "name": "B11 INVERSIONES DORALEX,S.RL. auth 3003703072 (Excel vence 2024-12-31)"
+      },
+      "excel_expiration": "2024-12-31",
+      "notes": [
+        "EXCEL_EXPIRATION=2024-12-31 ya pasó; se guarda tal cual. Al facturar Odoo debe error de NCF vencido para validar"
+      ]
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "prefix": "B13",
+      "before": {
+        "id": 35,
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B1300000017",
+        "auth": "6005031086"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B1300000017",
+        "auth": "6005031086",
+        "name": "B13 INVERSIONES DORALEX,S.RL. auth 6005031086 (Excel vence 2027-12-31)"
+      },
+      "excel_expiration": "2027-12-31",
+      "notes": [
+        "NEXT_FROM_LAST+1=16",
+        "END_EXTENDED_TO_NEXT excel_end=15 end=16"
+      ]
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "prefix": "B15",
+      "before": {
+        "id": 26,
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B1500000152",
+        "auth": "6005109381"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B1500000152",
+        "auth": "6005109381",
+        "name": "B15 INVERSIONES DORALEX,S.RL. auth 6005109381 (Excel vence 2027-12-31)"
+      },
+      "excel_expiration": "2027-12-31",
+      "notes": []
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "prefix": "B01",
+      "before": {
+        "id": 36,
+        "state": "active",
+        "date_to": "2099-12-31",
+        "next": "B0100000009",
+        "auth": "4004196168"
+      },
+      "after": {
+        "state": "expired",
+        "date_to": "2025-12-31",
+        "next": "B0100000009",
+        "auth": "4004196168",
+        "name": "B01 COMERCIALIZADORA DE ALIMENTO auth 4004196168 (Excel vence 2025-12-31)"
+      },
+      "excel_expiration": "2025-12-31",
+      "notes": [
+        "NEXT_FROM_LAST+1=9",
+        "EXCEL_EXPIRATION=2025-12-31 ya pasó; se guarda tal cual. Al facturar Odoo debe error de NCF vencido para validar"
+      ]
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "prefix": "B11",
+      "before": {
+        "id": 38,
+        "state": "active",
+        "date_to": "2099-12-31",
+        "next": "B1100000001",
+        "auth": "4004017760"
+      },
+      "after": {
+        "state": "expired",
+        "date_to": "2025-12-31",
+        "next": "B1100000001",
+        "auth": "4004017760",
+        "name": "B11 COMERCIALIZADORA DE ALIMENTO auth 4004017760 (Excel vence 2025-12-31)"
+      },
+      "excel_expiration": "2025-12-31",
+      "notes": [
+        "EXCEL_EXPIRATION=2025-12-31 ya pasó; se guarda tal cual. Al facturar Odoo debe error de NCF vencido para validar"
+      ]
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "prefix": "B13",
+      "before": {
+        "id": 39,
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B1300000018",
+        "auth": "5004579811"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B1300000018",
+        "auth": "5004579811",
+        "name": "B13 COMERCIALIZADORA DE ALIMENTO auth 5004579811 (Excel vence 2026-12-31)"
+      },
+      "excel_expiration": "2026-12-31",
+      "notes": []
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "prefix": "B15",
+      "before": {
+        "id": 29,
+        "state": "active",
+        "date_to": "2028-01-01",
+        "next": "B1500000093",
+        "auth": "6005464536"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2028-01-01",
+        "next": "B1500000093",
+        "auth": "6005464536",
+        "name": "B15 COMERCIALIZADORA DE ALIMENTO auth 6005464536 (Excel vence 2028-01-01)"
+      },
+      "excel_expiration": "2028-01-01",
+      "notes": []
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "prefix": "B01",
+      "before": {
+        "id": 40,
+        "state": "active",
+        "date_to": "2099-12-31",
+        "next": "B0100000094",
+        "auth": "4004196172"
+      },
+      "after": {
+        "state": "expired",
+        "date_to": "2025-12-31",
+        "next": "B0100000094",
+        "auth": "4004196172",
+        "name": "B01 DOMINION BUSINESS,S.R.L. auth 4004196172 (Excel vence 2025-12-31)"
+      },
+      "excel_expiration": "2025-12-31",
+      "notes": [
+        "NEXT_FROM_LAST+1=94",
+        "EXCEL_EXPIRATION=2025-12-31 ya pasó; se guarda tal cual. Al facturar Odoo debe error de NCF vencido para validar"
+      ]
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "prefix": "B11",
+      "before": {
+        "id": 43,
+        "state": "active",
+        "date_to": "2099-12-31",
+        "next": "B1100000001",
+        "auth": "4003974422"
+      },
+      "after": {
+        "state": "expired",
+        "date_to": "2025-12-31",
+        "next": "B1100000001",
+        "auth": "4003974422",
+        "name": "B11 DOMINION BUSINESS,S.R.L. auth 4003974422 (Excel vence 2025-12-31)"
+      },
+      "excel_expiration": "2025-12-31",
+      "notes": [
+        "EXCEL_EXPIRATION=2025-12-31 ya pasó; se guarda tal cual. Al facturar Odoo debe error de NCF vencido para validar"
+      ]
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "prefix": "B13",
+      "before": {
+        "id": 44,
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B1300000057",
+        "auth": "5004440728"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B1300000057",
+        "auth": "5004440728",
+        "name": "B13 DOMINION BUSINESS,S.R.L. auth 5004440728 (Excel vence 2026-12-31)"
+      },
+      "excel_expiration": "2026-12-31",
+      "notes": []
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "prefix": "B15",
+      "before": {
+        "id": 30,
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B1500000145",
+        "auth": "5004909756"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B1500000145",
+        "auth": "5004909756",
+        "name": "B15 DOMINION BUSINESS,S.R.L. auth 5004909756 (Excel vence 2026-12-31)"
+      },
+      "excel_expiration": "2026-12-31",
+      "notes": []
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "prefix": "B01",
+      "before": {
+        "id": 45,
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B0100000006",
+        "auth": "5004743980"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B0100000006",
+        "auth": "5004743980",
+        "name": "B01 INVERSIONES EL MAYUMA, S.R.L auth 5004743980 (Excel vence 2026-12-31)"
+      },
+      "excel_expiration": "2026-12-31",
+      "notes": [
+        "NEXT_FROM_RANGE_START=6"
+      ]
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "prefix": "B11",
+      "before": {
+        "id": 48,
+        "state": "active",
+        "date_to": "2099-12-31",
+        "next": "B1100000001",
+        "auth": "4003974363"
+      },
+      "after": {
+        "state": "expired",
+        "date_to": "2025-12-31",
+        "next": "B1100000001",
+        "auth": "4003974363",
+        "name": "B11 INVERSIONES EL MAYUMA, S.R.L auth 4003974363 (Excel vence 2025-12-31)"
+      },
+      "excel_expiration": "2025-12-31",
+      "notes": [
+        "NEXT_FROM_RANGE_START=1",
+        "EXCEL_EXPIRATION=2025-12-31 ya pasó; se guarda tal cual. Al facturar Odoo debe error de NCF vencido para validar"
+      ]
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "prefix": "B13",
+      "before": {
+        "id": 49,
+        "state": "active",
+        "date_to": "2099-12-31",
+        "next": "B1300000001",
+        "auth": "4003974364"
+      },
+      "after": {
+        "state": "expired",
+        "date_to": "2025-12-31",
+        "next": "B1300000001",
+        "auth": "4003974364",
+        "name": "B13 INVERSIONES EL MAYUMA, S.R.L auth 4003974364 (Excel vence 2025-12-31)"
+      },
+      "excel_expiration": "2025-12-31",
+      "notes": [
+        "NEXT_FROM_RANGE_START=1",
+        "EXCEL_EXPIRATION=2025-12-31 ya pasó; se guarda tal cual. Al facturar Odoo debe error de NCF vencido para validar"
+      ]
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "prefix": "B15",
+      "before": {
+        "id": 27,
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B1500000111",
+        "auth": "5004942280"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B1500000111",
+        "auth": "5004942280",
+        "name": "B15 INVERSIONES EL MAYUMA, S.R.L auth 5004942280 (Excel vence 2026-12-31)"
+      },
+      "excel_expiration": "2026-12-31",
+      "notes": []
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "prefix": "B01",
+      "before": {
+        "id": 50,
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B0100000016",
+        "auth": "5004684660"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2026-12-31",
+        "next": "B0100000016",
+        "auth": "5004684660",
+        "name": "B01 REMPART GROUP S.R.L. auth 5004684660 (Excel vence 2026-12-31)"
+      },
+      "excel_expiration": "2026-12-31",
+      "notes": [
+        "NEXT_FROM_RANGE_START=16"
+      ]
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "prefix": "B11",
+      "before": {
+        "id": 52,
+        "state": "active",
+        "date_to": "2099-12-31",
+        "next": "B1100000001",
+        "auth": "4004004172"
+      },
+      "after": {
+        "state": "expired",
+        "date_to": "2025-12-31",
+        "next": "B1100000001",
+        "auth": "4004004172",
+        "name": "B11 REMPART GROUP S.R.L. auth 4004004172 (Excel vence 2025-12-31)"
+      },
+      "excel_expiration": "2025-12-31",
+      "notes": [
+        "NEXT_FROM_RANGE_START=1",
+        "EXCEL_EXPIRATION=2025-12-31 ya pasó; se guarda tal cual. Al facturar Odoo debe error de NCF vencido para validar"
+      ]
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "prefix": "B13",
+      "before": {
+        "id": 53,
+        "state": "active",
+        "date_to": "2099-12-31",
+        "next": "B1300000006",
+        "auth": "4004004197"
+      },
+      "after": {
+        "state": "expired",
+        "date_to": "2025-12-31",
+        "next": "B1300000006",
+        "auth": "4004004197",
+        "name": "B13 REMPART GROUP S.R.L. auth 4004004197 (Excel vence 2025-12-31)"
+      },
+      "excel_expiration": "2025-12-31",
+      "notes": [
+        "NEXT_FROM_RANGE_START=6",
+        "EXCEL_EXPIRATION=2025-12-31 ya pasó; se guarda tal cual. Al facturar Odoo debe error de NCF vencido para validar"
+      ]
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "prefix": "B15",
+      "before": {
+        "id": 28,
+        "state": "active",
+        "date_to": "2027-01-03",
+        "next": "B1500000111",
+        "auth": "5004942351"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2027-01-03",
+        "next": "B1500000111",
+        "auth": "5004942351",
+        "name": "B15 REMPART GROUP S.R.L. auth 5004942351 (Excel vence 2027-01-03)"
+      },
+      "excel_expiration": "2027-01-03",
+      "notes": []
+    },
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "prefix": "B01",
+      "before": {
+        "id": 31,
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B0100000001",
+        "auth": "6005109961"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B0100000001",
+        "auth": "6005109961",
+        "name": "B01 BLUE ELITE, S.R.L. auth 6005109961 (Excel vence 2027-12-31)"
+      },
+      "excel_expiration": "2027-12-31",
+      "notes": []
+    },
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "prefix": "B11",
+      "before": {
+        "id": 56,
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B1100000001",
+        "auth": "6005109962"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B1100000001",
+        "auth": "6005109962",
+        "name": "B11 BLUE ELITE, S.R.L. auth 6005109962 (Excel vence 2027-12-31)"
+      },
+      "excel_expiration": "2027-12-31",
+      "notes": []
+    },
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "prefix": "B13",
+      "before": {
+        "id": 57,
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B1300000001",
+        "auth": "6005109963"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B1300000001",
+        "auth": "6005109963",
+        "name": "B13 BLUE ELITE, S.R.L. auth 6005109963 (Excel vence 2027-12-31)"
+      },
+      "excel_expiration": "2027-12-31",
+      "notes": []
+    },
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "prefix": "B15",
+      "before": {
+        "id": 58,
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B1500000102",
+        "auth": "6005109964"
+      },
+      "after": {
+        "state": "active",
+        "date_to": "2027-12-31",
+        "next": "B1500000102",
+        "auth": "6005109964",
+        "name": "B15 BLUE ELITE, S.R.L. auth 6005109964 (Excel vence 2027-12-31)"
+      },
+      "excel_expiration": "2027-12-31",
+      "notes": [
+        "END_EXTENDED_TO_NEXT excel_end=20 end=102"
+      ]
+    }
+  ],
+  "unchanged": [
+    {
+      "id": 32,
+      "state": "active",
+      "date_to": "2099-12-31",
+      "next": "B0200000001",
+      "auth": "1002741918",
+      "prefix": "B02"
+    },
+    {
+      "id": 33,
+      "state": "active",
+      "date_to": "2099-12-31",
+      "next": "B0400000502",
+      "auth": "6005472045",
+      "prefix": "B04"
+    },
+    {
+      "id": 37,
+      "state": "active",
+      "date_to": "2099-12-31",
+      "next": "B0400000001",
+      "auth": "3003875941",
+      "prefix": "B04"
+    },
+    {
+      "id": 41,
+      "state": "active",
+      "date_to": "2099-12-31",
+      "next": "B0200000001",
+      "auth": "2003411708",
+      "prefix": "B02"
+    },
+    {
+      "id": 42,
+      "state": "active",
+      "date_to": "2099-12-31",
+      "next": "B0400000001",
+      "auth": "2003411709",
+      "prefix": "B04"
+    },
+    {
+      "id": 46,
+      "state": "active",
+      "date_to": "2099-12-31",
+      "next": "B0200000001",
+      "auth": "3003508919",
+      "prefix": "B02"
+    },
+    {
+      "id": 47,
+      "state": "active",
+      "date_to": "2099-12-31",
+      "next": "B0400000001",
+      "auth": "6005472703",
+      "prefix": "B04"
+    },
+    {
+      "id": 51,
+      "state": "active",
+      "date_to": "2099-12-31",
+      "next": "B0400000001",
+      "auth": "6005474633",
+      "prefix": "B04"
+    },
+    {
+      "id": 54,
+      "state": "active",
+      "date_to": "2099-12-31",
+      "next": "B0200000001",
+      "auth": "6005109965",
+      "prefix": "B02"
+    },
+    {
+      "id": 55,
+      "state": "active",
+      "date_to": "2099-12-31",
+      "next": "B0400000001",
+      "auth": "6005109966",
+      "prefix": "B04"
+    }
+  ],
+  "errors": []
+}

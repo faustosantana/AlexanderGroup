@@ -34,13 +34,15 @@ MISSING_PDF_INVOICES = 1
   B1300000016
 
 NCF_TOTAL = 34
-NCF_SAFE_ACTIVE = 34
+NCF_SAFE_ACTIVE = 25
+NCF_EXPIRED_EXCEL = 9
 NCF_BLOCKED = 0
 NCF_QA_CANCELLED_RANGES = 12
 NCF_NEEDS_ALEXANDER = 0
 NCF_NEEDS_DGII_CONFIRMATION = 0
-  34/34 de la planilla Pendientes activos. Vencidos 2024/2025 y N/A
-  quedan operativos (date_to 2099) porque Odoo no activa date_to pasado.
+  Vencimientos Excel 2024-12-31 / 2025-12-31 se guardan tal cual (state=expired).
+  Al facturar: "está vencido … No se puede facturar hasta validarlo."
+  N/A sigue date_to 2099 (sin vencimiento en la planilla).
 
 DORALEX_B15_MAX_REAL = B1500000151
 DORALEX_B15_NEXT = B1500000152
