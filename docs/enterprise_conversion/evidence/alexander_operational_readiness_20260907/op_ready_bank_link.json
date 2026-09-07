@@ -1,0 +1,41 @@
+{
+  "linked": [
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "journal": "Banco Banreservas · BLU",
+      "acc": "9608670542",
+      "bank": "BANRESERVAS"
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "journal": "Banco Banreservas · PIN",
+      "acc": "9604097492",
+      "bank": "BANRESERVAS"
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "journal": "Banco Banreservas · DOM",
+      "acc": "9605588726",
+      "bank": "BANRESERVAS"
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "journal": "Banco Banreservas · DOR",
+      "acc": "9604436830",
+      "bank": "BANRESERVAS"
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "journal": "Banco Banreservas · MAY",
+      "acc": "9605543104",
+      "bank": "BANRESERVAS"
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "journal": "Banco Banreservas · REM",
+      "acc": "9608739498",
+      "bank": "BANRESERVAS"
+    }
+  ],
+  "skipped": []
+}

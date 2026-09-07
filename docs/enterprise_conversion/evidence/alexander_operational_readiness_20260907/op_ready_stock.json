@@ -1,0 +1,76 @@
+{
+  "by_company": [
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "nonzero_quants": 1,
+      "qty_sum": 1.0,
+      "sample": [
+        {
+          "product": "[DX-TEST-STK] DX TEST PRODUCTO INVENTARIABLE — NO FISCAL REAL",
+          "location": "BLU/Existencias",
+          "qty": 1.0
+        }
+      ]
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "nonzero_quants": 1,
+      "qty_sum": 1.0,
+      "sample": [
+        {
+          "product": "[DX-TEST-STK] DX TEST PRODUCTO INVENTARIABLE — NO FISCAL REAL",
+          "location": "PIN/Existencias",
+          "qty": 1.0
+        }
+      ]
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "nonzero_quants": 1,
+      "qty_sum": 1.0,
+      "sample": [
+        {
+          "product": "[DX-TEST-STK] DX TEST PRODUCTO INVENTARIABLE — NO FISCAL REAL",
+          "location": "DOM/Existencias",
+          "qty": 1.0
+        }
+      ]
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "nonzero_quants": 1,
+      "qty_sum": -23.0,
+      "sample": [
+        {
+          "product": "[DX-TEST-STK] DX TEST PRODUCTO INVENTARIABLE — NO FISCAL REAL",
+          "location": "DOR/Existencias",
+          "qty": -23.0
+        }
+      ]
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "nonzero_quants": 1,
+      "qty_sum": 1.0,
+      "sample": [
+        {
+          "product": "[DX-TEST-STK] DX TEST PRODUCTO INVENTARIABLE — NO FISCAL REAL",
+          "location": "MAY/Existencias",
+          "qty": 1.0
+        }
+      ]
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "nonzero_quants": 1,
+      "qty_sum": 1.0,
+      "sample": [
+        {
+          "product": "[DX-TEST-STK] DX TEST PRODUCTO INVENTARIABLE — NO FISCAL REAL",
+          "location": "REM/Existencias",
+          "qty": 1.0
+        }
+      ]
+    }
+  ]
+}

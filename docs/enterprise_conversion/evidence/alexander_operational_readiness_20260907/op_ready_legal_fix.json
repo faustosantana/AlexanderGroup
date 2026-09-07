@@ -1,0 +1,233 @@
+{
+  "writes": [
+    {
+      "company": "BLUE ELITE, S.R.L.",
+      "vat": "133371261",
+      "company_vals": {
+        "l10n_do_dgii_start_date": "2025-04-04"
+      },
+      "partner_vals": {
+        "state_id": "Santo Domingo"
+      },
+      "applied": true
+    },
+    {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "vat": "132271068",
+      "company_vals": {
+        "l10n_do_dgii_start_date": "2021-03-01"
+      },
+      "partner_vals": {
+        "state_id": "Santo Domingo"
+      },
+      "applied": true
+    },
+    {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "vat": "132721502",
+      "company_vals": {
+        "l10n_do_dgii_start_date": "2022-11-09"
+      },
+      "partner_vals": {
+        "state_id": "Distrito Nacional"
+      },
+      "applied": true
+    },
+    {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "vat": "132220112",
+      "company_vals": {
+        "l10n_do_dgii_start_date": "2020-11-02"
+      },
+      "partner_vals": {
+        "state_id": "Santo Domingo"
+      },
+      "applied": true
+    },
+    {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "vat": "132710152",
+      "company_vals": {
+        "l10n_do_dgii_start_date": "2022-09-14"
+      },
+      "partner_vals": {
+        "state_id": "Santo Domingo"
+      },
+      "applied": true
+    },
+    {
+      "company": "REMPART GROUP S.R.L.",
+      "vat": "132769155",
+      "company_vals": {
+        "l10n_do_dgii_start_date": "2023-01-19"
+      },
+      "partner_vals": {
+        "state_id": "Santo Domingo"
+      },
+      "applied": true
+    }
+  ],
+  "skipped": [],
+  "states_available": [
+    {
+      "id": 1090,
+      "name": "Azua",
+      "code": "AZU"
+    },
+    {
+      "id": 1091,
+      "name": "Bahoruco",
+      "code": "BAH"
+    },
+    {
+      "id": 1092,
+      "name": "Barahona",
+      "code": "BAR"
+    },
+    {
+      "id": 1093,
+      "name": "Dajabón",
+      "code": "DAJ"
+    },
+    {
+      "id": 1089,
+      "name": "Distrito Nacional",
+      "code": "DN"
+    },
+    {
+      "id": 1094,
+      "name": "Duarte",
+      "code": "DUA"
+    },
+    {
+      "id": 1095,
+      "name": "Elías Piña",
+      "code": "ELP"
+    },
+    {
+      "id": 1096,
+      "name": "El Seibo",
+      "code": "ELS"
+    },
+    {
+      "id": 1097,
+      "name": "Espaillat",
+      "code": "ESP"
+    },
+    {
+      "id": 1118,
+      "name": "Hato Mayor",
+      "code": "HAM"
+    },
+    {
+      "id": 1107,
+      "name": "Hermanas Mirabal",
+      "code": "HEM"
+    },
+    {
+      "id": 1098,
+      "name": "Independencia",
+      "code": "IND"
+    },
+    {
+      "id": 1099,
+      "name": "La Altagracia",
+      "code": "LA"
+    },
+    {
+      "id": 1100,
+      "name": "La Romana",
+      "code": "LR"
+    },
+    {
+      "id": 1101,
+      "name": "La Vega",
+      "code": "LV"
+    },
+    {
+      "id": 1103,
+      "name": "Monte Cristi",
+      "code": "MC"
+    },
+    {
+      "id": 1116,
+      "name": "Monseñor Nouel",
+      "code": "MON"
+    },
+    {
+      "id": 1117,
+      "name": "Monte Plata",
+      "code": "MP"
+    },
+    {
+      "id": 1102,
+      "name": "María Trinidad Sánchez",
+      "code": "MTS"
+    },
+    {
+      "id": 1104,
+      "name": "Pedernales",
+      "code": "PED"
+    },
+    {
+      "id": 1105,
+      "name": "Peravia",
+      "code": "PER"
+    },
+    {
+      "id": 1106,
+      "name": "Puerto Plata",
+      "code": "PP"
+    },
+    {
+      "id": 1108,
+      "name": "Samaná",
+      "code": "SAM"
+    },
+    {
+      "id": 1109,
+      "name": "San Cristóbal",
+      "code": "SC"
+    },
+    {
+      "id": 1120,
+      "name": "Santo Domingo",
+      "code": "SD"
+    },
+    {
+      "id": 1110,
+      "name": "San Juan",
+      "code": "SJ"
+    },
+    {
+      "id": 1119,
+      "name": "San José de Ocoa",
+      "code": "SJO"
+    },
+    {
+      "id": 1111,
+      "name": "San Pedro de Macorís",
+      "code": "SPM"
+    },
+    {
+      "id": 1112,
+      "name": "Sánchez Ramírez",
+      "code": "SRA"
+    },
+    {
+      "id": 1114,
+      "name": "Santiago Rodríguez",
+      "code": "SRO"
+    },
+    {
+      "id": 1113,
+      "name": "Santiago",
+      "code": "STGO"
+    },
+    {
+      "id": 1115,
+      "name": "Valverde",
+      "code": "VAL"
+    }
+  ]
+}
