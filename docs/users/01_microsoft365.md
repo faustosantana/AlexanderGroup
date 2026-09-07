@@ -24,9 +24,10 @@ Los UPN finales son `@inversionesdoralex.com`. No se creó ningún UPN
 | O365DOMAINSTANDARD | 6a62c9a4-21f1-4b50-bdbb-9281101d307a | 2 | 0 | 2 | no |
 
 `EXCHANGEDESKLESS` (Exchange Online Kiosk) **no está en el tenant**.
-No se inventó un SKU. No se asignó Business Premium (incluye Word, Excel,
-PowerPoint y Teams). No se quitó la licencia `O365_BUSINESS` de
-`alex@doralex.onmicrosoft.com`.
+Por instrucción posterior se asignó la Standard actual del tenant
+(`O365_BUSINESS_PREMIUM` / Microsoft 365 Business Standard) a los 6 UPN
+nuevos. Cuando venza esa prueba se cambiará a Kiosk u otra. No se quitó
+la licencia `O365_BUSINESS` de `alex@doralex.onmicrosoft.com`.
 
 ## Cuentas que no se tocaron
 

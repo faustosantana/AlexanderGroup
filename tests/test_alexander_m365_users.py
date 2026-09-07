@@ -55,7 +55,7 @@ def test_least_privilege_groups():
     assert "justech_approval_flow.group_self_approve" not in ALEXANDER_ADMIN_GROUPS
 
 
-def test_docs_exist_and_record_partial_gate():
+def test_docs_exist_and_record_standard_trial_gate():
     names = {p.name for p in ROOT.iterdir() if p.is_file()}
     assert REQUIRED <= names
     score = (ROOT / "00_scorecard.txt").read_text(encoding="utf-8")
@@ -64,7 +64,9 @@ def test_docs_exist_and_record_partial_gate():
     assert "ODOO_DUPLICATES_CREATED = 0" in score
     assert "ALEXANDER_USER_ID = 5" in score
     assert "KIOSK_SKU = NOT_IN_TENANT" in score
-    assert "FINAL_USER_PROVISIONING_STATUS = PARTIAL" in score
+    assert "STANDARD_SKU = O365_BUSINESS_PREMIUM" in score
+    assert "MAILBOXES_READY = 6" in score
+    assert "FINAL_USER_PROVISIONING_STATUS = SUCCESS_WITH_STANDARD_TRIAL" in score
 
 
 def test_docs_and_catalog_have_no_secrets():
