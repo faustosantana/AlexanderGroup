@@ -193,7 +193,12 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
-    assert "19.0.1.2.2" in manifest
+    assert "19.0.1.2.3" in manifest
+    assert "justech_approval_flow" in hooks.split("VISIBLE_APPS", 1)[1][:400]
+    assert 'menu_justech_approval_root" model="ir.ui.menu">' in menus or "menu_justech_approval_root" in menus
+    assert 'justech_approval_flow.menu_justech_approval_root' in menus
+    assert 'parent_id" eval="False"' in menus.split("justech_approval_flow.menu_justech_approval_root", 1)[1][:250]
+    assert '("justech_approval_flow", "Aprobaciones", True)' in hooks
     assert "web.assets_backend" in manifest
     assert "web.assets_web" in manifest
     assert "navbar.css" in manifest

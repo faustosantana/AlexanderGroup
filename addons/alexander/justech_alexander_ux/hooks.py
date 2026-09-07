@@ -25,7 +25,7 @@ CATALOG = (
     ("justech_warranty", "Garantías", True),
     ("justech_purchase_sale_margin_control", "Costos y Márgenes", True),
     ("justech_managed_services", "Servicios Administrados", True),
-    ("justech_approval_flow", "Aprobaciones Justech", False),
+    ("justech_approval_flow", "Aprobaciones", True),
     ("justech_global_audit_log", "Auditoría", False),
     ("justech_fiscal_admin", "Administración Fiscal", False),
     ("l10n_do_ecf_connector", "Conector e-CF DGII", False),
@@ -76,6 +76,7 @@ VISIBLE_APPS = {
     "justech_warranty",
     "justech_purchase_sale_margin_control",
     "justech_managed_services",
+    "justech_approval_flow",
 }
 
 
@@ -136,7 +137,7 @@ def _apply_menu_names(env):
         "justech_admin_center.menu_justech_admin_center_root": "Administración técnica",
         "justech_alexander_admin.menu_doralex_modules": "Módulos",
         "justech_alexander_admin.menu_doralex_root": "Administración Doralex",
-        "justech_approval_flow.menu_justech_approval_root": "Aprobaciones Justech",
+        "justech_approval_flow.menu_justech_approval_root": "Aprobaciones",
         "justech_global_audit_log.menu_justech_global_audit_root": "Auditoría",
     }
     for xmlid, name in renames.items():
