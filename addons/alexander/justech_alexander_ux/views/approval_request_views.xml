@@ -5,29 +5,32 @@
         <field name="model">justech.approval.request</field>
         <field name="inherit_id" ref="justech_approval_flow.view_justech_approval_request_list"/>
         <field name="arch" type="xml">
-            <xpath expr="//list" position="attributes">
-                <attribute name="string">Aprobaciones</attribute>
-            </xpath>
-            <xpath expr="//field[@name='request_type']" position="before">
-                <field name="company_id" string="Empresa"/>
-            </xpath>
-            <xpath expr="//field[@name='request_type']" position="attributes">
-                <attribute name="string">Tipo</attribute>
-            </xpath>
-            <xpath expr="//field[@name='requester_id']" position="attributes">
-                <attribute name="string">Solicitante</attribute>
-            </xpath>
-            <xpath expr="//field[@name='requested_at']" position="attributes">
-                <attribute name="string">Fecha</attribute>
-            </xpath>
-            <xpath expr="//field[@name='amount_total']" position="attributes">
-                <attribute name="string">Monto</attribute>
-            </xpath>
-            <xpath expr="//field[@name='state']" position="attributes">
-                <attribute name="string">Estado</attribute>
-            </xpath>
-            <xpath expr="//field[@name='requester_id']" position="after">
-                <field name="approver_id" string="Aprobador"/>
+            <xpath expr="//list" position="replace">
+                <list string="Aprobaciones" create="false" delete="false">
+                    <field name="document_name" string="Documento"/>
+                    <field name="request_type" string="Tipo"/>
+                    <field name="company_id" string="Empresa"/>
+                    <field name="requester_id" string="Solicitante"/>
+                    <field name="amount_total" string="Monto"/>
+                    <field name="requested_at" string="Fecha"/>
+                    <field name="state" widget="badge" string="Estado"
+                           decoration-warning="state == 'pending'"
+                           decoration-success="state == 'approved'"
+                           decoration-danger="state in ('rejected', 'invalidated')"
+                           decoration-muted="state == 'cancelled'"/>
+                    <field name="approver_id" string="Aprobador"/>
+                    <field name="partner_id" string="Cliente/Proveedor" optional="hide"/>
+                    <field name="currency_id" optional="hide"/>
+                    <button name="action_open_document" type="object" string="Abrir" icon="fa-external-link"/>
+                    <button name="action_open_approve_wizard" type="object" string="Aprobar"
+                            class="btn-primary" icon="fa-check"
+                            invisible="state != 'pending'"
+                            groups="justech_approval_flow.group_approver"/>
+                    <button name="action_open_reject_wizard" type="object"
+                            string="Rechazar" icon="fa-times"
+                            invisible="state != 'pending'"
+                            groups="justech_approval_flow.group_approver"/>
+                </list>
             </xpath>
         </field>
     </record>
@@ -49,6 +52,11 @@
         <field name="model">justech.approval.request</field>
         <field name="inherit_id" ref="justech_approval_flow.view_justech_approval_request_search"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='requester_id']" position="after">
+                <field name="company_id" string="Empresa"/>
+                <field name="request_type" string="Tipo documento"/>
+                <field name="state" string="Estado"/>
+            </xpath>
             <xpath expr="//filter[@name='my_pending']" position="after">
                 <filter string="Mis solicitudes" name="my_requests"
                         domain="[('requester_id', '=', uid)]"/>
@@ -92,6 +100,9 @@
     <record id="justech_approval_flow.menu_justech_approval_all" model="ir.ui.menu">
         <field name="name">Histórico</field>
         <field name="sequence">50</field>
+    </record>
+    <record id="justech_approval_flow.menu_justech_approval_config" model="ir.ui.menu">
+        <field name="sequence">40</field>
     </record>
     <record id="justech_approval_flow.menu_justech_approval_root" model="ir.ui.menu">
         <field name="action" ref="justech_approval_flow.action_justech_approval_pending"/>

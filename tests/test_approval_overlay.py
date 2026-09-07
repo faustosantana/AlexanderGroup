@@ -19,6 +19,9 @@ def test_approval_overlay_uses_real_actions() -> None:
     assert "requester_id" in views
     assert "Flujo de Aprobaciones" in branding
     assert "Aprobaciones Justech" not in branding
+    assert "justech.do" not in branding
+    assert "justgroup.app" not in branding
+    assert "https://doralexgroup.cloud" in branding
     assert "rule_approval_request_own" in security
     assert "apply_approval_overlay" in hooks
     assert "alexander.pina@inversionesdoralex.com" in hooks

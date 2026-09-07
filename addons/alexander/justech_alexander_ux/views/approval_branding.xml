@@ -16,6 +16,25 @@
         <field name="name">Resultado de aprobación</field>
     </record>
 
+    <record id="res_config_settings_view_form_approval_vendor" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.approval.vendor</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="justech_approval_flow.res_config_settings_view_form_justech_approval"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='justech_approval_flow']" position="attributes">
+                <attribute name="data-string">Flujo de Aprobaciones</attribute>
+                <attribute name="string">Flujo de Aprobaciones</attribute>
+            </xpath>
+            <xpath expr="//setting[@id='justech_approval_public_url']" position="attributes">
+                <attribute name="string">URL pública del entorno</attribute>
+                <attribute name="help">URL HTTPS de este ERP (Alexander Group). Se usa solo para enlaces internos del flujo.</attribute>
+            </xpath>
+            <xpath expr="//setting[@id='justech_approval_public_url']/field[@name='justech_approval_public_base_url']" position="attributes">
+                <attribute name="placeholder">https://doralexgroup.cloud</attribute>
+            </xpath>
+        </field>
+    </record>
+
     <record id="res_config_settings_view_form_approval_branding" model="ir.ui.view">
         <field name="name">res.config.settings.view.form.approval.branding</field>
         <field name="model">res.config.settings</field>
@@ -25,6 +44,13 @@
             <xpath expr="//app[@name='justech_approval_flow']" position="attributes">
                 <attribute name="data-string">Flujo de Aprobaciones</attribute>
                 <attribute name="string">Flujo de Aprobaciones</attribute>
+            </xpath>
+            <xpath expr="//setting[@id='justech_approval_public_url']" position="attributes">
+                <attribute name="string">URL pública del entorno</attribute>
+                <attribute name="help">URL HTTPS de este ERP (Alexander Group). Se usa solo para enlaces internos del flujo.</attribute>
+            </xpath>
+            <xpath expr="//setting[@id='justech_approval_public_url']/field[@name='justech_approval_public_base_url']" position="attributes">
+                <attribute name="placeholder">https://doralexgroup.cloud</attribute>
             </xpath>
         </field>
     </record>

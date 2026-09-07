@@ -120,22 +120,24 @@ def apply_ecf_operational_state(env, enabled=None):
             cron.active = bool(enabled)
 
 
+def _set_translated(records, field_name, value):
+    if not records:
+        return
+    records[field_name] = value
+    records.with_context(lang="en_US")[field_name] = value
+    for lang in records.env["res.lang"].sudo().search([]):
+        records.with_context(lang=lang.code)[field_name] = value
+
+
 def _apply_catalog(env):
     Module = env["ir.module.module"].sudo()
     for technical, display, application in CATALOG:
         rec = Module.search([("name", "=", technical)], limit=1)
         if not rec:
             continue
-        vals = {}
         if rec.application != application:
-            vals["application"] = application
-        current = rec.with_context(lang="en_US").shortdesc or ""
-        if current != display:
-            vals["shortdesc"] = display
-        if vals:
-            rec.write(vals)
-        rec.with_context(lang="es_DO").shortdesc = display
-        rec.with_context(lang="en_US").shortdesc = display
+            rec.application = application
+        _set_translated(rec, "shortdesc", display)
         if "summary" in rec._fields:
             rec.summary = display
 
@@ -163,8 +165,7 @@ def _apply_menu_names(env):
         menu = env.ref(xmlid, raise_if_not_found=False)
         if not menu:
             continue
-        menu.with_context(lang="en_US").name = name
-        menu.with_context(lang="es_DO").name = name
+        _set_translated(menu, "name", name)
 
 
 def _hide_fiscal_leftovers(env):
@@ -234,15 +235,13 @@ def _apply_approval_identity(env):
         raise_if_not_found=False,
     )
     if privilege:
-        privilege.with_context(lang="en_US").name = "Aprobaciones"
-        privilege.with_context(lang="es_DO").name = "Aprobaciones"
+        _set_translated(privilege, "name", "Aprobaciones")
     activity = env.ref(
         "justech_approval_flow.mail_activity_approval",
         raise_if_not_found=False,
     )
     if activity:
-        activity.with_context(lang="en_US").name = "Revisar aprobación"
-        activity.with_context(lang="es_DO").name = "Revisar aprobación"
+        _set_translated(activity, "name", "Revisar aprobación")
     for xmlid, name in (
         (
             "justech_approval_flow.mail_template_approval_request",
@@ -255,8 +254,7 @@ def _apply_approval_identity(env):
     ):
         tmpl = env.ref(xmlid, raise_if_not_found=False)
         if tmpl:
-            tmpl.with_context(lang="en_US").name = name
-            tmpl.with_context(lang="es_DO").name = name
+            _set_translated(tmpl, "name", name)
     fields = (
         env["ir.model.fields"]
         .sudo()
@@ -272,8 +270,7 @@ def _apply_approval_identity(env):
         )
     )
     for field in fields:
-        field.with_context(lang="en_US").field_description = "Estado de aprobación"
-        field.with_context(lang="es_DO").field_description = "Estado de aprobación"
+        _set_translated(field, "field_description", "Estado de aprobación")
 
 
 def _apply_approval_users(env):
