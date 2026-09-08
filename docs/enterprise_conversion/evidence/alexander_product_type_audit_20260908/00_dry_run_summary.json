@@ -1,0 +1,102 @@
+{
+  "PRODUCTS_AUDITED": 1601,
+  "PHYSICAL_AS_SERVICE_FOUND": 6,
+  "PHYSICAL_AS_SERVICE_WRITABLE": 5,
+  "SERVICE_AS_PHYSICAL_FOUND": 2,
+  "PHYSICAL_PURCHASE_OK_FALSE_FOUND": 136,
+  "PHYSICAL_PURCHASE_OK_WRITABLE": 136,
+  "ACTIONS": {
+    "KEEP": 1460,
+    "FIX_PURCHASE_OK": 132,
+    "FIX_TYPE_AND_FLAGS": 5,
+    "KEEP_ARCHIVED": 1,
+    "MANUAL_REVIEW": 1,
+    "FIX_TYPE": 2
+  },
+  "WRITABLE_COUNT": 139,
+  "AMBIGUOUS_PRODUCT_TYPES": [
+    {
+      "TEMPLATE_ID": 167,
+      "NAME": "Apertura histórica B1300000016 (sin desglose PDF)",
+      "REASON": "Opening placeholder / non-SKU; do not auto-correct"
+    }
+  ],
+  "WRITABLE_TYPE_FIXES": [
+    {
+      "TEMPLATE_ID": 20,
+      "NAME": "AGREGADO FINO (ARENA LAVADA)",
+      "CURRENT_TYPE": "service",
+      "PROPOSED_TYPE": "consu",
+      "ACTION": "FIX_TYPE_AND_FLAGS"
+    },
+    {
+      "TEMPLATE_ID": 139,
+      "NAME": "(AGREGADO FINO) ARENA LAVADA AZUL",
+      "CURRENT_TYPE": "service",
+      "PROPOSED_TYPE": "consu",
+      "ACTION": "FIX_TYPE_AND_FLAGS"
+    },
+    {
+      "TEMPLATE_ID": 21,
+      "NAME": "Agregado grueso (grava) 3/4",
+      "CURRENT_TYPE": "service",
+      "PROPOSED_TYPE": "consu",
+      "ACTION": "FIX_TYPE_AND_FLAGS"
+    },
+    {
+      "TEMPLATE_ID": 1324,
+      "NAME": "BOTE Material Desechable Y Escombro",
+      "CURRENT_TYPE": "consu",
+      "PROPOSED_TYPE": "service",
+      "ACTION": "FIX_TYPE"
+    },
+    {
+      "TEMPLATE_ID": 976,
+      "NAME": "Bote Material Inservible",
+      "CURRENT_TYPE": "consu",
+      "PROPOSED_TYPE": "service",
+      "ACTION": "FIX_TYPE"
+    },
+    {
+      "TEMPLATE_ID": 134,
+      "NAME": "DISCO DE CORTE 9\" METABO 7/8",
+      "CURRENT_TYPE": "service",
+      "PROPOSED_TYPE": "consu",
+      "ACTION": "FIX_TYPE_AND_FLAGS"
+    },
+    {
+      "TEMPLATE_ID": 121,
+      "NAME": "PINZA DE CORTE PUNTA LARGA 8\" 84-102 STANLEY",
+      "CURRENT_TYPE": "service",
+      "PROPOSED_TYPE": "consu",
+      "ACTION": "FIX_TYPE_AND_FLAGS"
+    }
+  ],
+  "PRODUCT_TYPE_FIELDS": {
+    "type": {
+      "selection": [
+        [
+          "consu",
+          "Goods"
+        ],
+        [
+          "service",
+          "Service"
+        ],
+        [
+          "combo",
+          "Combo"
+        ]
+      ],
+      "string": "Product Type",
+      "help": "Goods are tangible materials and merchandise you provide.\nA service is a non-material product you provide."
+    },
+    "is_storable": {
+      "string": "Track Inventory",
+      "help": "A storable product is a product for which you manage stock.",
+      "present": true
+    }
+  },
+  "CURRENT_GOODS_IMPLEMENTATION": "type='consu' (Goods), is_storable=False unless inventory is tracked",
+  "CURRENT_SERVICE_IMPLEMENTATION": "type='service' (Service), is_storable is ignored/False"
+}

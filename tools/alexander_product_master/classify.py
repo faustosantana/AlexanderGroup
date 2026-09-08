@@ -152,6 +152,8 @@ SERVICE_EXCLUDE = (
     "valvula de servicio",
     "válvula de servicio",
     "kit de servicio",
+    "kit de instalacion",
+    "kit de instalación",
     "tubo de servicio",
     "llave de servicio",
     "bomba de servicio",
@@ -191,6 +193,24 @@ def document_type(sheet_name: str, preview: str) -> str:
 
 def is_service(text: str) -> bool:
     n = collapse(text)
+    if any(
+        x in n
+        for x in (
+            "kit de instalacion",
+            "kit de instalación",
+            "kit de servicio",
+        )
+    ) and not any(
+        v in n
+        for v in (
+            "reparacion",
+            "reparación",
+            "mantenimiento",
+            "limpieza",
+            "mano de obra",
+        )
+    ):
+        return False
     if any(x in n for x in SERVICE_EXCLUDE) and not any(
         v in n
         for v in (
