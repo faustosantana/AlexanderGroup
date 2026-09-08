@@ -9,9 +9,12 @@ set -euo pipefail
 NAME="$1"
 ROOT="/opt/odoo-backups/${NAME}"
 mkdir -p "$ROOT"/{db,filestore,addons,config}
-docker exec doralex-production-db pg_dump -U odoo -Fc doralex_prod > "$ROOT/db/doralex_prod.dump"
-docker exec doralex-production-db pg_restore -l /dev/stdin < "$ROOT/db/doralex_prod.dump" > "$ROOT/db/pg_restore.list"
+docker exec -u postgres doralex-production-db bash -lc 'pg_dump -U doralex_prod -d doralex_prod -Fc -f /var/lib/postgresql/doralex_prod.dump'
+docker cp doralex-production-db:/var/lib/postgresql/doralex_prod.dump "$ROOT/db/doralex_prod.dump"
+docker exec -u postgres doralex-production-db pg_restore -l /var/lib/postgresql/doralex_prod.dump > "$ROOT/db/pg_restore.list"
+docker exec -u postgres doralex-production-db rm -f /var/lib/postgresql/doralex_prod.dump
 test -s "$ROOT/db/pg_restore.list"
+test -s "$ROOT/db/doralex_prod.dump"
 echo "PRE_PRODUCT_TYPE_BACKUP=PASS"
 echo "ROOT=$ROOT"
 wc -l "$ROOT/db/pg_restore.list"
