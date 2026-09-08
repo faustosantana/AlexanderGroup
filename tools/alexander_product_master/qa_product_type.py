@@ -9,6 +9,7 @@ ctx = {
 }
 T = env["product.template"].sudo().with_context(**ctx)
 
+
 def _one(name):
     recs = T.search([("name", "=", name)])
     if len(recs) != 1:
@@ -51,7 +52,13 @@ physical_as_service = physical_as_service.filtered(
 )
 
 pinaria = T.search(
-    ["|", ("company_id.name", "ilike", "pinaria"), ("company_id.name", "ilike", "piñaria")]
+    [
+        "|",
+        ("company_id.name", "ilike", "pinaria"),
+        ("company_id.name", "ilike", "piñaria"),
+        ("name", "not ilike", "DXQA"),
+        ("name", "not ilike", "DX TEST"),
+    ]
 )
 pinaria_as_service = pinaria.filtered(lambda r: r.type == "service")
 catalog = T.search([("name", "not ilike", "DXQA"), ("name", "not ilike", "DX TEST")])
@@ -64,13 +71,17 @@ purchase_false_physical = purchase_false_physical.filtered(
     lambda r: "apertura" not in (r.name or "").lower()
 )
 
-posted = env["account.move"].sudo().search_count(
-    [("move_type", "=", "out_invoice"), ("state", "=", "posted")]
+posted = (
+    env["account.move"]
+    .sudo()
+    .search_count([("move_type", "=", "out_invoice"), ("state", "=", "posted")])
 )
 grava_inv = 0
 if grava:
-    grava_inv = env["account.move.line"].sudo().search_count(
-        [("product_id", "in", grava.product_variant_ids.ids)]
+    grava_inv = (
+        env["account.move.line"]
+        .sudo()
+        .search_count([("product_id", "in", grava.product_variant_ids.ids)])
     )
 
 errors = []
@@ -112,9 +123,9 @@ report = {
     "GRAVA_FINAL_TYPE": grava.type if grava else None,
     "GRAVA_FINAL_SALE_OK": bool(grava.sale_ok) if grava else None,
     "GRAVA_FINAL_PURCHASE_OK": bool(grava.purchase_ok) if grava else None,
-    "GRAVA_IS_STORABLE": bool(grava.is_storable)
-    if grava and "is_storable" in grava._fields
-    else None,
+    "GRAVA_IS_STORABLE": (
+        bool(grava.is_storable) if grava and "is_storable" in grava._fields else None
+    ),
     "GRAVA_INVOICE_LINES": grava_inv,
     "DUPLICATE_138_ACTIVE": bool(dup.filtered("active")) if dup else False,
     "SERVICIOS_PROFESIONALES_TYPE": svc.type if svc else None,
@@ -122,9 +133,7 @@ report = {
     "PINARIA_PRODUCTS_AUDITED": len(pinaria),
     "PIÑARIA_PHYSICAL_PRODUCTS_AS_SERVICE": len(pinaria_as_service),
     "PHYSICAL_AS_SERVICE_REMAINING": [r.name for r in physical_as_service],
-    "PHYSICAL_PURCHASE_OK_FALSE_REMAINING": [
-        r.name for r in purchase_false_physical
-    ],
+    "PHYSICAL_PURCHASE_OK_FALSE_REMAINING": [r.name for r in purchase_false_physical],
     "POSTED_INVOICES": posted,
     "CRITICAL_ERRORS": len(errors),
     "HIGH_ERRORS": 0,
