@@ -19,11 +19,11 @@ for t in recs:
     vid = t.product_variant_id.id if t.product_variant_id else None
     if vid:
         variant_ids.append(vid)
-    currency = (
-        t.company_id.currency_id.name
-        if t.company_id and t.company_id.currency_id
-        else (env.company.currency_id.name if env.company.currency_id else "DOP")
-    )
+    if t.company_id and t.company_id.currency_id:
+        currency = t.company_id.currency_id.name
+    else:
+        dop = env["res.currency"].sudo().search([("name", "=", "DOP")], limit=1)
+        currency = dop.name if dop else "DOP"
     products.append(
         {
             "product_tmpl_id": t.id,
@@ -52,7 +52,8 @@ def _collect(model, domain, extra_fields):
     Rec = env[model].sudo()
     domain = list(domain) + [("product_id", "in", variant_ids)]
     if "display_type" in env[model]._fields:
-        domain.append(("display_type", "in", [False, ""]))
+        # Odoo 19 invoice/sale product lines use display_type='product'.
+        domain.append(("display_type", "in", [False, "", "product"]))
     fields = ["product_id", "price_unit", "discount", "price_subtotal", "create_date"] + extra_fields
     # chunk to stay safe
     out = defaultdict(list)

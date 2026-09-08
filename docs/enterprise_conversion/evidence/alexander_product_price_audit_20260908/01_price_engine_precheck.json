@@ -1,0 +1,344 @@
+{
+  "DATABASE": "doralex_prod",
+  "ODOO_VERSION": "19.0+e-20260324",
+  "COMPANIES": [
+    {
+      "id": 8,
+      "name": "BLUE ELITE, S.R.L.",
+      "currency": "DOP"
+    },
+    {
+      "id": 9,
+      "name": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "currency": "DOP"
+    },
+    {
+      "id": 10,
+      "name": "DOMINION BUSINESS,S.R.L.",
+      "currency": "DOP"
+    },
+    {
+      "id": 11,
+      "name": "INVERSIONES DORALEX,S.RL.",
+      "currency": "DOP"
+    },
+    {
+      "id": 12,
+      "name": "INVERSIONES EL MAYUMA, S.R.L.",
+      "currency": "DOP"
+    },
+    {
+      "id": 13,
+      "name": "REMPART GROUP S.R.L.",
+      "currency": "DOP"
+    },
+    {
+      "id": 1,
+      "name": "Plantilla técnica (no operativa)",
+      "currency": "USD"
+    }
+  ],
+  "SALE_PRICE_FIELD": "product.template.list_price",
+  "SALE_PRICE_FIELD_META": {
+    "type": "float",
+    "string": "Sales Price",
+    "readonly": false,
+    "store": true,
+    "related": null,
+    "compute": null
+  },
+  "PRICE_UNIT_FIELD_META": {
+    "type": "float",
+    "string": "Unit Price",
+    "readonly": false,
+    "store": true,
+    "related": null,
+    "compute": null,
+    "inverse": null,
+    "depends": [
+      "order_id.plan_id",
+      "parent_line_id",
+      "event_ticket_id",
+      "product_id",
+      "product_uom_id",
+      "product_uom_qty"
+    ]
+  },
+  "PRICE_UNIT_METHODS": {
+    "_compute_price_unit": "odoo.addons.sale_subscription.models.sale_order_line.SaleOrderLine._compute_price_unit",
+    "_get_display_price": "odoo.addons.event_sale.models.sale_order_line.SaleOrderLine._get_display_price",
+    "_get_pricelist_price": "odoo.addons.sale_subscription.models.sale_order_line.SaleOrderLine._get_pricelist_price",
+    "_onchange_product_id": "odoo.addons.sale.models.sale_order_line.SaleOrderLine._onchange_product_id",
+    "_compute_pricelist_item_id": "odoo.addons.sale_subscription.models.sale_order_line.SaleOrderLine._compute_pricelist_item_id"
+  },
+  "CUSTOM_PRICE_OVERRIDES_FOUND": [],
+  "ACTIVE_PRICELISTS": [
+    {
+      "id": 8,
+      "name": "Default",
+      "company": "BLUE ELITE, S.R.L.",
+      "currency": "DOP",
+      "selectable": true,
+      "item_count": 0
+    },
+    {
+      "id": 9,
+      "name": "Default",
+      "company": "Plantilla técnica (no operativa)",
+      "currency": "USD",
+      "selectable": true,
+      "item_count": 0
+    },
+    {
+      "id": 10,
+      "name": "Default",
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "currency": "DOP",
+      "selectable": true,
+      "item_count": 0
+    },
+    {
+      "id": 11,
+      "name": "Default",
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "currency": "DOP",
+      "selectable": true,
+      "item_count": 0
+    },
+    {
+      "id": 12,
+      "name": "Default",
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "currency": "DOP",
+      "selectable": true,
+      "item_count": 0
+    },
+    {
+      "id": 13,
+      "name": "Default",
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "currency": "DOP",
+      "selectable": true,
+      "item_count": 0
+    },
+    {
+      "id": 14,
+      "name": "Default",
+      "company": "REMPART GROUP S.R.L.",
+      "currency": "DOP",
+      "selectable": true,
+      "item_count": 0
+    }
+  ],
+  "INSTALLED_PRICE_RELATED_MODULES": [
+    {
+      "name": "justech_approval_flow",
+      "shortdesc": "Aprobaciones"
+    },
+    {
+      "name": "justech_managed_services",
+      "shortdesc": "Servicios Administrados"
+    },
+    {
+      "name": "justech_purchase_sale_margin_control",
+      "shortdesc": "Costos y Márgenes"
+    },
+    {
+      "name": "justech_warranty",
+      "shortdesc": "Garantías"
+    },
+    {
+      "name": "justech_accounting_recovery",
+      "shortdesc": "Recuperación contable"
+    },
+    {
+      "name": "justech_admin_center",
+      "shortdesc": "Centro de administración técnica"
+    },
+    {
+      "name": "justech_alexander_admin",
+      "shortdesc": "Administración Doralex"
+    },
+    {
+      "name": "justech_alexander_base",
+      "shortdesc": "Identidad Doralex"
+    },
+    {
+      "name": "justech_alexander_microsoft_mail",
+      "shortdesc": "Correo Microsoft"
+    },
+    {
+      "name": "justech_alexander_reports",
+      "shortdesc": "Diseño de reportes Doralex"
+    },
+    {
+      "name": "justech_alexander_ux",
+      "shortdesc": "Experiencia Doralex (menús)"
+    },
+    {
+      "name": "justech_alexander_website",
+      "shortdesc": "Sitio web institucional"
+    },
+    {
+      "name": "justech_core",
+      "shortdesc": "Utilidades internas"
+    },
+    {
+      "name": "justech_dgcp_bridge",
+      "shortdesc": "Puente DGCP"
+    },
+    {
+      "name": "justech_ecf_admin",
+      "shortdesc": "Administración e-CF"
+    },
+    {
+      "name": "justech_ecf_core",
+      "shortdesc": "e-CF"
+    },
+    {
+      "name": "justech_ecf_dgii",
+      "shortdesc": "e-CF DGII"
+    },
+    {
+      "name": "justech_ecf_queue",
+      "shortdesc": "e-CF cola"
+    },
+    {
+      "name": "justech_ecf_signature",
+      "shortdesc": "e-CF firma"
+    },
+    {
+      "name": "justech_ecf_xml",
+      "shortdesc": "e-CF XML"
+    },
+    {
+      "name": "justech_fiscal_admin",
+      "shortdesc": "Administración Fiscal"
+    },
+    {
+      "name": "justech_global_audit_log",
+      "shortdesc": "Auditoría"
+    },
+    {
+      "name": "justech_l10n_do_adel_freeze",
+      "shortdesc": "Candado de motor fiscal"
+    },
+    {
+      "name": "justech_l10n_do_base",
+      "shortdesc": "Base fiscal dominicana"
+    },
+    {
+      "name": "justech_l10n_do_hr_payroll",
+      "shortdesc": "Nómina"
+    },
+    {
+      "name": "justech_l10n_do_hr_payroll_account",
+      "shortdesc": "Nómina — contabilidad"
+    },
+    {
+      "name": "justech_l10n_do_hr_payroll_attendance",
+      "shortdesc": "Nómina — asistencia"
+    },
+    {
+      "name": "justech_l10n_do_hr_payroll_bank",
+      "shortdesc": "Nómina — pagos bancarios"
+    },
+    {
+      "name": "justech_l10n_do_hr_payroll_holidays",
+      "shortdesc": "Nómina — ausencias"
+    },
+    {
+      "name": "justech_l10n_do_hr_payroll_reports",
+      "shortdesc": "Nómina — TSS/DGII"
+    },
+    {
+      "name": "justech_l10n_do_hr_payroll_subsidies",
+      "shortdesc": "Nómina — subsidios"
+    },
+    {
+      "name": "justech_l10n_do_ncf",
+      "shortdesc": "NCF"
+    },
+    {
+      "name": "justech_l10n_do_payments_withholding",
+      "shortdesc": "Pagos y retenciones"
+    },
+    {
+      "name": "justech_l10n_do_reports",
+      "shortdesc": "Reportes fiscales"
+    },
+    {
+      "name": "justech_l10n_do_treasury",
+      "shortdesc": "Tesorería"
+    },
+    {
+      "name": "justech_mail_outgoing_policy",
+      "shortdesc": "Política de correo saliente"
+    },
+    {
+      "name": "justech_modules",
+      "shortdesc": "Registro de módulos"
+    },
+    {
+      "name": "justech_quotation_client_dedup",
+      "shortdesc": "Evitar clientes duplicados en cotización"
+    },
+    {
+      "name": "justech_recurring_fee",
+      "shortdesc": "Fees recurrentes"
+    },
+    {
+      "name": "justech_report_identity_guard",
+      "shortdesc": "Identidad de reportes"
+    },
+    {
+      "name": "justech_sale_purchase_trace",
+      "shortdesc": "Trazabilidad ventas/compras"
+    },
+    {
+      "name": "justech_sale_terms_guard",
+      "shortdesc": "Términos de venta por compañía"
+    },
+    {
+      "name": "justech_security_ux",
+      "shortdesc": "Permisos y seguridad"
+    },
+    {
+      "name": "justech_vendor_bill_po_control",
+      "shortdesc": "Control de facturas proveedor / OC"
+    }
+  ],
+  "AUDIT_RULES": [
+    {
+      "name": "Plantillas de producto",
+      "model": "product.template",
+      "active": true,
+      "audit_write": true,
+      "audit_create": true
+    },
+    {
+      "name": "Pedidos de venta",
+      "model": "sale.order",
+      "active": true,
+      "audit_write": true,
+      "audit_create": true
+    }
+  ],
+  "SOL_PRICE_FIELDS": [
+    "collapse_prices",
+    "company_price_include",
+    "delivered_price_subtotal",
+    "delivered_price_tax",
+    "delivered_price_total",
+    "discount",
+    "price_reduce_taxexcl",
+    "price_reduce_taxinc",
+    "price_subtotal",
+    "price_tax",
+    "price_total",
+    "price_unit",
+    "pricelist_id",
+    "pricelist_item_id",
+    "technical_price_unit"
+  ]
+}

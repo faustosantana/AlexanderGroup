@@ -1,0 +1,18 @@
+{
+  "SALE_USER": "fausto@justech.do",
+  "PRODUCT_PRICE_LOADS_IN_QUOTATION": "PASS",
+  "SALE_USER_CAN_EDIT_UNIT_PRICE": "PASS",
+  "EDITED_PRICE_PERSISTS_IN_QUOTATION": "PASS",
+  "EDITING_QUOTATION_PRICE_DOES_NOT_CHANGE_PRODUCT_MASTER": "PASS",
+  "NEW_QUOTATION_RELOADS_SYSTEM_PRICE": "PASS",
+  "PRICE_CHANGE_AUDIT_AVAILABLE": "YES",
+  "AUDIT_MODEL": "justech.audit.log + mail.tracking.value",
+  "AUDIT_FIELDS": "sale.order and product.template writes; chatter tracking on quotation; sale.order.line has no dedicated justech.audit.rule",
+  "GRAVA_MASTER": 2054.91,
+  "GRAVA_FIRST_LOADED": 2054.91,
+  "GRAVA_MANUAL": 2178.36,
+  "GRAVA_SECOND_LOADED": 2054.91,
+  "STOCK_MOVES_CREATED": 0,
+  "POSTED_INVOICES": 27,
+  "STATUS": "PASS"
+}

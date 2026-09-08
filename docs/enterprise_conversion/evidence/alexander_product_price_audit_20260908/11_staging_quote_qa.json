@@ -1,0 +1,52 @@
+{
+  "SALE_USER": "fausto@justech.do",
+  "CASES": {
+    "PRODUCT_PRICE_LOADS_IN_QUOTATION": "PASS",
+    "SALE_USER_CAN_EDIT_UNIT_PRICE": "PASS",
+    "EDITED_PRICE_PERSISTS_IN_QUOTATION": "PASS",
+    "EDITING_QUOTATION_PRICE_DOES_NOT_CHANGE_PRODUCT_MASTER": "PASS",
+    "NEW_QUOTATION_RELOADS_SYSTEM_PRICE": "PASS",
+    "grava": {
+      "master": 2054.91,
+      "system": 2054.91,
+      "first_loaded": 2054.91,
+      "manual": 2178.36,
+      "persisted": 2178.36,
+      "second_loaded": 2054.91,
+      "so1": "BLU/SO/00032",
+      "so2": "BLU/SO/00033"
+    },
+    "DISCOUNT_LINE": {
+      "price_unit": 2054.91,
+      "discount": 10.0,
+      "subtotal": 1849.42
+    },
+    "ZERO_PRICE_PRODUCT": {
+      "name": "Servicios profesionales",
+      "master": 0.0,
+      "loaded": 0.0
+    },
+    "PRICED_SERVICE": {
+      "name": "BOTE Material Desechable Y Escombro",
+      "master": 47000.0,
+      "loaded": 47000.0
+    },
+    "PRICE_CHANGE_AUDIT": {
+      "available": true,
+      "model": "justech.audit.log",
+      "count": 0,
+      "sample": []
+    },
+    "MAIL_TRACKING_SEEN": false
+  },
+  "STOCK_MOVES_CREATED": 0,
+  "POSTED_INVOICES": 27,
+  "ERRORS": [],
+  "PRODUCT_PRICE_LOADS_IN_QUOTATION": "PASS",
+  "SALE_USER_CAN_EDIT_UNIT_PRICE": "PASS",
+  "EDITED_PRICE_PERSISTS_IN_QUOTATION": "PASS",
+  "EDITING_QUOTATION_PRICE_DOES_NOT_CHANGE_PRODUCT_MASTER": "PASS",
+  "NEW_QUOTATION_RELOADS_SYSTEM_PRICE": "PASS",
+  "PRICE_CHANGE_AUDIT_AVAILABLE": "YES",
+  "STATUS": "PASS"
+}
