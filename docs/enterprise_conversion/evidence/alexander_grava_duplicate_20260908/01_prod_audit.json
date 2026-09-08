@@ -1,0 +1,293 @@
+{
+  "product_count": 4,
+  "products": [
+    {
+      "template_id": 138,
+      "variant_ids": [
+        138
+      ],
+      "name": "(AGREGADO GRUESO) GRAVA 3/4",
+      "default_code": "",
+      "barcode": "",
+      "type": "service",
+      "uom": "Units",
+      "uom_id": 1,
+      "category": "",
+      "list_price": 2054.91,
+      "standard_price": 0.0,
+      "company_id": false,
+      "company_name": "",
+      "active": true,
+      "sale_ok": true,
+      "purchase_ok": false,
+      "create_date": "2026-09-05 18:06:53.700153",
+      "write_date": "2026-09-05 18:06:53.700153",
+      "create_uid": "OdooBot",
+      "description_sale": "",
+      "reference_total": 1,
+      "references": {
+        "sale.order.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "purchase.order.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "account.move.line": {
+          "exists": true,
+          "count": 1,
+          "posted": 1,
+          "sample": [
+            {
+              "id": 501,
+              "move": "INV/2026/00003",
+              "state": "posted"
+            }
+          ]
+        },
+        "stock.move": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "stock.move.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "stock.quant": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "mrp.bom.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        }
+      }
+    },
+    {
+      "template_id": 21,
+      "variant_ids": [
+        21
+      ],
+      "name": "AGREGADO GRUESO (GRAVA) 3/4",
+      "default_code": "",
+      "barcode": "",
+      "type": "service",
+      "uom": "Units",
+      "uom_id": 1,
+      "category": "",
+      "list_price": 1217.7,
+      "standard_price": 0.0,
+      "company_id": false,
+      "company_name": "",
+      "active": true,
+      "sale_ok": true,
+      "purchase_ok": false,
+      "create_date": "2026-09-05 18:06:40.648936",
+      "write_date": "2026-09-05 18:06:40.648936",
+      "create_uid": "OdooBot",
+      "description_sale": "",
+      "reference_total": 1,
+      "references": {
+        "sale.order.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "purchase.order.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "account.move.line": {
+          "exists": true,
+          "count": 1,
+          "posted": 1,
+          "sample": [
+            {
+              "id": 349,
+              "move": "INV/2026/00005",
+              "state": "posted"
+            }
+          ]
+        },
+        "stock.move": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "stock.move.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "stock.quant": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "mrp.bom.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        }
+      }
+    },
+    {
+      "template_id": 321,
+      "variant_ids": [
+        321
+      ],
+      "name": "GRAVA 3/4",
+      "default_code": "",
+      "barcode": "",
+      "type": "consu",
+      "uom": "Units",
+      "uom_id": 1,
+      "category": "Construcción",
+      "list_price": 3530.0,
+      "standard_price": 0.0,
+      "company_id": false,
+      "company_name": "",
+      "active": true,
+      "sale_ok": true,
+      "purchase_ok": true,
+      "create_date": "2026-09-07 22:19:58.037623",
+      "write_date": "2026-09-07 22:19:58.037623",
+      "create_uid": "OdooBot",
+      "description_sale": "GRAVA 3/4",
+      "reference_total": 0,
+      "references": {
+        "sale.order.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "purchase.order.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "account.move.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "stock.move": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "stock.move.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "stock.quant": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "mrp.bom.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        }
+      }
+    },
+    {
+      "template_id": 910,
+      "variant_ids": [
+        910
+      ],
+      "name": "GRAVA 3/4 A 1/2",
+      "default_code": "",
+      "barcode": "",
+      "type": "consu",
+      "uom": "Units",
+      "uom_id": 1,
+      "category": "Construcción",
+      "list_price": 1300.0,
+      "standard_price": 0.0,
+      "company_id": false,
+      "company_name": "",
+      "active": true,
+      "sale_ok": true,
+      "purchase_ok": true,
+      "create_date": "2026-09-07 22:19:58.037623",
+      "write_date": "2026-09-07 22:19:58.037623",
+      "create_uid": "OdooBot",
+      "description_sale": "GRAVA 3/4 A 1/2",
+      "reference_total": 0,
+      "references": {
+        "sale.order.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "purchase.order.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "account.move.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "stock.move": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "stock.move.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "stock.quant": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        },
+        "mrp.bom.line": {
+          "exists": true,
+          "count": 0,
+          "posted": 0,
+          "sample": []
+        }
+      }
+    }
+  ]
+}
