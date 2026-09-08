@@ -1,0 +1,22 @@
+{
+  "PRODUCT_A_ID": 138,
+  "PRODUCT_A_NAME": "(AGREGADO GRUESO) GRAVA 3/4",
+  "PRODUCT_B_ID": 21,
+  "PRODUCT_B_NAME": "AGREGADO GRUESO (GRAVA) 3/4",
+  "CONFIRMED_SAME_PRODUCT": "YES",
+  "REASON": "Same collapsed name, same 3/4, same UoM, same shared company, same type. Price difference is historical sale price, not a different spec.",
+  "PRODUCT_A_REFERENCES": 1,
+  "PRODUCT_B_REFERENCES": 1,
+  "CANONICAL_PRODUCT_ID": 21,
+  "DUPLICATE_PRODUCT_ID": 138,
+  "CANONICAL_RULE": "Tie on opening refs (1 posted invoice each); older create_date wins (21 at 18:06:40 vs 138 at 18:06:53).",
+  "FINAL_LIST_PRICE": 2054.91,
+  "LIST_PRICE_SOURCE": "MAX(1217.70, 2054.91) from current list_price / posted Rempart invoice",
+  "DO_NOT_APPLY_REVIEW_3330": "3330 stayed in MANUAL_REVIEW due to ambiguous match; not applied here",
+  "LEAVE_UNTOUCHED": [
+    "GRAVA 3/4 id 321",
+    "GRAVA 3/4 A 1/2 id 910",
+    "Grava Caliza",
+    "Khoury/Alterra"
+  ]
+}

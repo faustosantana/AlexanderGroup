@@ -394,6 +394,9 @@ def _split_num_unit(text: str) -> str:
 
 
 def identity_key(text: str) -> str:
+    """Stable identity. Parenthetical aliases are stripped by collapse(), so
+    '(AGREGADO GRUESO) GRAVA 3/4' and 'AGREGADO GRUESO (GRAVA) 3/4' match.
+    """
     n = _split_num_unit(collapse(text))
     specs = extract_specs(_split_num_unit(text))
     tokens = [
