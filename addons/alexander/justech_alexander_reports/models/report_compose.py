@@ -902,10 +902,15 @@ class StockPickingCompose(models.Model):
         moves = self.move_ids if "move_ids" in self._fields else self.move_lines
         for move in moves:
             product = move.product_id
+            move_desc = ""
+            if "description_picking" in move._fields:
+                move_desc = move.description_picking or ""
+            elif "description" in move._fields:
+                move_desc = move.description or ""
             product_label, description = propet_display_texts(
                 product.name if product else "",
                 product.display_name if product else "",
-                move.name or "",
+                move_desc,
             )
             uom = ""
             if "product_uom" in move._fields and move.product_uom:

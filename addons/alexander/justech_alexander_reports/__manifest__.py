@@ -1,6 +1,6 @@
 {
     "name": "Diseño de reportes Doralex",
-    "version": "19.0.3.10.0",
+    "version": "19.0.3.10.1",
     "category": "Reporting",
     "summary": "V5.5: Formato Propet, proforma nativa y conduce visible",
     "description": "Formato Propet opcional en cotización y factura, Factura Proforma nativa, OC/PO del cliente y Conduce imprimible desde pedido o entrega.",
