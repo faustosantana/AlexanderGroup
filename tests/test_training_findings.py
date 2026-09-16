@@ -77,6 +77,8 @@ def test_propet_report_is_optional_not_default():
     assert "FACTURA PROFORMA" in compose
     assert "CONDUCE" in compose
     assert "OC / PO del cliente" in compose
+    assert 'name="context"' not in xml
+    assert "group_ids" in xml
 
 
 def test_description_isolation_does_not_copy_sibling_lines():

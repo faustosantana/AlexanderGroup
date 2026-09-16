@@ -29,13 +29,16 @@
         <field name="paperformat_id" ref="justech_alexander_reports.paperformat_doralex_a4"/>
     </record>
 
-    <!-- Native proforma: Spanish label, never the default quotation. -->
+    <!-- Native proforma: Spanish label. ir.actions.report has no context field
+         in Odoo 19; sale.report_saleorder_pro_forma already does
+         docs.with_context(proforma=True). Clear group_ids so an empty
+         sale.group_proforma_sales does not hide the print. -->
     <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">
         <field name="name">Factura Proforma</field>
         <field name="print_report_name">'Proforma_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'SO').replace('/', ''))</field>
         <field name="paperformat_id" ref="justech_alexander_reports.paperformat_doralex_a4"/>
         <field name="binding_model_id" ref="sale.model_sale_order"/>
         <field name="binding_type">report</field>
-        <field name="context">{'proforma': True, 'dx_proforma': True}</field>
+        <field name="group_ids" eval="[(5, 0, 0)]"/>
     </record>
 </odoo>
