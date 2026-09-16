@@ -4,6 +4,19 @@ from odoo import api, models
 class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
+    def _register_hook(self):
+        super()._register_hook()
+        leftover = self.sudo().search(
+            [
+                (
+                    "report_name",
+                    "=",
+                    "justech_alexander_reports.report_saleorder_conduce",
+                )
+            ]
+        )
+        leftover.unlink()
+
     def _dx_company_from_records(self, report_ref, res_ids):
         if not res_ids:
             return self.env["res.company"]

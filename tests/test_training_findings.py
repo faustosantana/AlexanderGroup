@@ -81,16 +81,22 @@ def test_propet_report_is_optional_not_default():
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     xml = (REPORTS / "reports" / "propet_proforma.xml").read_text(encoding="utf-8")
     compose = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
+    buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
     assert "propet_proforma.xml" in manifest
     assert "action_report_saleorder_propet" in xml
     assert "Formato Propet" in xml
     assert "FORMULARIO PROPET" not in xml
+    assert "Formulario Propet" not in xml
     assert "action_report_invoice_propet" in xml
-    assert "action_report_saleorder_conduce" in xml
-    buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
-    assert "Formato Propet" in buttons
-    assert "Proforma" in buttons
-    assert "Conduce" in buttons
+    assert "action_report_saleorder_conduce" not in xml
+    assert "Este pedido aún no tiene una entrega" not in xml
+    assert 'binding_type">report' in xml
+    assert "action_dx_open_conduce" in buttons
+    assert "Crear Conduce" in buttons
+    assert 'string="Formato Propet"' not in buttons
+    assert 'string="Proforma"' not in buttons
+    assert "action_report_saleorder_propet" not in buttons
+    assert "action_report_pro_forma_invoice" not in buttons
     assert (
         "sale.action_report_saleorder"
         not in xml.split("action_report_saleorder_propet")[0]
@@ -101,7 +107,8 @@ def test_propet_report_is_optional_not_default():
     )
     assert "FACTURA PROFORMA" in compose
     assert "CONDUCE" in compose
-    assert "Número de Orden de Compra del Cliente" in compose
+    assert '"OC / PO"' in compose
+    assert "Número de Orden de Compra del Cliente" not in compose
     assert "FORMATO PROPET" in compose
     assert "propet_display_texts" in (REPORTS / "models" / "propet_math.py").read_text(
         encoding="utf-8"
@@ -137,7 +144,8 @@ def test_tracking_keeps_native_lot_group():
 
 def test_trace_columns_hidden_by_purchase_group_not_deleted():
     views = (UX / "views" / "sale_order_views.xml").read_text(encoding="utf-8")
-    assert "Número de Orden de Compra del Cliente" in views
+    assert 'string="OC / PO"' in views
+    assert "Número de Orden de Compra del Cliente" not in views
     assert "justech_supply" in views
     assert "justech_qty_purchased" in views
     assert "purchase.group_purchase_user" in views
@@ -164,6 +172,73 @@ def test_company_signature_cannot_use_other_company_fields():
     assert "_dx_mail_signature_html" in company
     assert "_dx_document_company" in compose
     assert "company._dx_mail_signature_html()" in compose
+
+
+def test_conduce_is_delivery_flow_not_sale_print():
+    sale = (BASE / "models" / "sale_order.py").read_text(encoding="utf-8")
+    buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
+    compose = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
+    components = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    picking_qty = (REPORTS / "models" / "picking_qty.py").read_text(encoding="utf-8")
+    assert "def action_dx_open_conduce" in sale
+    assert "_action_launch_stock_rule" in sale
+    assert "stock.picking" in sale
+    assert 'self.state not in ("sale", "done")' in sale
+    assert "action_dx_open_conduce" in buttons
+    assert "Crear Conduce" in buttons
+    assert "action_report_delivery" not in buttons
+    assert "client_ref_label" in compose
+    assert '"OC / PO"' in compose
+    assert "Cantidad pedida" in components
+    assert "Cantidad entregada" in components
+    picking_block = components.split('id="dx_picking_lines"')[1].split("</template>")[0]
+    assert "ITBIS" not in picking_block
+    assert "Precio" not in picking_block
+    assert "Subtotal" not in picking_block
+    assert "picking_line_qtys" in picking_qty
+    assert "sale_line_id" in picking_qty
+
+
+def test_picking_line_qtys_use_sale_order_not_move_demand():
+    qty = _load(REPORTS / "models" / "picking_qty.py", "dx_picking_qty")
+
+    class SaleLine:
+        product_uom_qty = 10
+
+    class Move:
+        product_uom_qty = 6
+        quantity = 6
+        sale_line_id = SaleLine()
+
+    ordered, done = qty.picking_line_qtys(Move())
+    assert ordered == 10
+    assert done == 6
+
+    class Orphan:
+        product_uom_qty = 4
+        quantity_done = 2
+        sale_line_id = False
+
+    ordered, done = qty.picking_line_qtys(Orphan())
+    assert ordered == 4
+    assert done == 2
+
+
+def test_oc_po_short_label_everywhere():
+    sale_views = (UX / "views" / "sale_order_views.xml").read_text(encoding="utf-8")
+    move_views = (UX / "views" / "account_move_views.xml").read_text(encoding="utf-8")
+    compose = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
+    components = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    assert 'string="OC / PO"' in sale_views
+    assert ">OC / PO</attribute>" in move_views
+    assert "Número de Orden de Compra del Cliente" not in sale_views
+    assert "Número de Orden de Compra del Cliente" not in move_views
+    assert "Número de Orden de Compra del Cliente" not in compose
+    assert "or 'OC / PO'" in components
+    assert "dx_oc_po" in components
+    assert "_prepare_invoice" in (BASE / "models" / "sale_order.py").read_text(
+        encoding="utf-8"
+    )
 
 
 def test_no_hardcoded_company_or_tax_ids_in_overlay():

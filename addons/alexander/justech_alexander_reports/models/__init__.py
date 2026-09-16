@@ -4,5 +4,6 @@ from . import statement_math
 from . import report_layout
 from . import res_partner
 from . import propet_math
+from . import picking_qty
 from . import report_compose
 from . import preview

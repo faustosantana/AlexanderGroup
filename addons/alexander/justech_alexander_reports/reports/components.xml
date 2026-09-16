@@ -7,6 +7,7 @@
         <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
         <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
         <div t-if="dx['partner'].get('phone')" t-out="dx['partner']['phone']"/>
+        <div t-if="dx['partner'].get('email')" t-out="dx['partner']['email']"/>
     </template>
 
     <template id="dx_commercial_meta">
@@ -68,11 +69,20 @@
                     <div class="dx-meta-v" t-out="dx['origin']"/>
                 </td>
                 <td t-if="dx.get('client_ref')">
-                    <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO del cliente'"/>
+                    <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO'"/>
                     <div class="dx-meta-v" t-out="dx['client_ref']"/>
                 </td>
             </tr>
         </table>
+    </template>
+
+    <template id="dx_oc_po">
+        <t t-if="dx.get('client_ref')">
+            <div class="dx-oc-po">
+                <span class="dx-meta-k">OC / PO</span>
+                <span class="dx-meta-v">: <t t-out="dx['client_ref']"/></span>
+            </div>
+        </t>
     </template>
 
     <template id="dx_line_table">
@@ -176,8 +186,8 @@
                 <tr t-else="">
                     <th class="dx-col-product">Producto</th>
                     <th class="dx-col-desc">Descripción</th>
-                    <th class="dx-col-qty">Solicitada</th>
-                    <th class="dx-col-qty">Entregada</th>
+                    <th class="dx-col-qty">Cantidad pedida</th>
+                    <th class="dx-col-qty">Cantidad entregada</th>
                     <th class="dx-col-uom">Ud.</th>
                 </tr>
             </thead>
@@ -344,6 +354,7 @@
                     <t t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
                     <t t-if="dx['partner'].get('phone')"> · <t t-out="dx['partner']['phone']"/></t>
                 </div>
+                <t t-call="justech_alexander_reports.dx_oc_po"/>
             </div>
             <t t-call="justech_alexander_reports.dx_line_table"/>
             <div class="dx-end-clear dx-dor-end">
@@ -392,6 +403,7 @@
                 <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
                 <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
                 <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
+                <t t-call="justech_alexander_reports.dx_oc_po"/>
             </div>
             <t t-call="justech_alexander_reports.dx_line_table"/>
             <div class="dx-pin-terms-full">
@@ -426,6 +438,7 @@
                     <div class="dx-card-name" t-out="dx['partner']['name']"/>
                     <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
                     <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                    <t t-call="justech_alexander_reports.dx_oc_po"/>
                 </div>
                 <div class="dx-dom-meta">
                     <div class="dx-meta-item">
@@ -465,6 +478,7 @@
                 <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
                 <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
                 <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
+                <t t-call="justech_alexander_reports.dx_oc_po"/>
             </div>
             <div class="dx-may-meta">
                 <div class="dx-may-meta-col">
@@ -505,6 +519,7 @@
                     <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
                     <div t-if="dx['partner'].get('city')" t-out="dx['partner']['city']"/>
                     <div t-if="dx['partner'].get('phone')" t-out="dx['partner']['phone']"/>
+                    <t t-call="justech_alexander_reports.dx_oc_po"/>
                 </div>
                 <div class="dx-rem-meta">
                     <div class="dx-meta-item">
@@ -546,6 +561,7 @@
                     <div class="dx-card-name" t-out="dx['partner']['name']"/>
                     <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
                     <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
+                    <t t-call="justech_alexander_reports.dx_oc_po"/>
                 </div>
                 <div class="dx-blu-meta">
                     <div class="dx-blu-pair">
@@ -646,7 +662,7 @@
                         <div class="dx-meta-v" t-out="dx['payment_term']"/>
                     </div>
                     <div class="dx-inv-meta-col" t-if="dx.get('client_ref')">
-                        <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO del cliente'"/>
+                        <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO'"/>
                         <div class="dx-meta-v" t-out="dx['client_ref']"/>
                     </div>
                 </div>
@@ -797,7 +813,7 @@
                         <div class="dx-meta-v" t-out="dx['salesperson']"/>
                     </div>
                     <div class="dx-inv-meta-col" t-if="dx.get('client_ref')">
-                        <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO del cliente'"/>
+                        <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO'"/>
                         <div class="dx-meta-v" t-out="dx['client_ref']"/>
                     </div>
                     <div class="dx-inv-meta-col">
@@ -841,6 +857,10 @@
                     <div class="dx-inv-meta-col" t-if="dx.get('sale_order') or dx.get('origin')">
                         <div class="dx-meta-k">Pedido de venta</div>
                         <div class="dx-meta-v" t-out="dx.get('sale_order') or dx['origin']"/>
+                    </div>
+                    <div class="dx-inv-meta-col" t-if="dx.get('client_ref')">
+                        <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO'"/>
+                        <div class="dx-meta-v" t-out="dx['client_ref']"/>
                     </div>
                     <div class="dx-inv-meta-col" t-if="dx.get('delivery_street')">
                         <div class="dx-meta-k">Dirección de entrega</div>

@@ -1,9 +1,9 @@
 {
     "name": "Diseño de reportes Doralex",
-    "version": "19.0.3.10.2",
+    "version": "19.0.3.11.0",
     "category": "Reporting",
-    "summary": "V5.5: Formato Propet, proforma nativa y conduce visible",
-    "description": "Formato Propet opcional en cotización y factura, Factura Proforma nativa, OC/PO del cliente y Conduce imprimible desde pedido o entrega.",
+    "summary": "V5.6: Formato Propet y Proforma solo en Imprimir; Conduce es entrega",
+    "description": "Formato Propet y Factura Proforma son formatos de impresión del documento actual. El Conduce es el flujo de entrega (stock.picking). OC / PO corto y visible.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",
     "license": "LGPL-3",

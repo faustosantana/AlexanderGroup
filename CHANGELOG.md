@@ -6,6 +6,12 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 ## Unreleased
 
 ### Changed
+- UX logística Doralex: Formato Propet y Factura Proforma quedan solo en
+  Imprimir (sin botones de cabecera). El Conduce deja de ser un PDF vacío
+  desde el pedido y abre la entrega nativa (`stock.picking`). Label corto
+  **OC / PO** en pantalla e impresiones.
+
+### Changed
 - Cierre STAGING Alexander: flujo de aprobaciones y padrón DGII
   desactivados (módulos instalados, histórico intacto). Cancelar/eliminar
   facturas en borrador vuelve a permisos nativos de Facturación.

@@ -1,6 +1,7 @@
 from odoo import models
 from odoo.tools.misc import format_amount, format_date
 
+from .picking_qty import picking_line_qtys
 from .propet_math import propet_display_texts, propet_line_amounts
 from .report_layout import count_body_lines, spacer_mm, white_png_data_uri
 
@@ -265,7 +266,7 @@ class SaleOrderCompose(models.Model):
             "payment_term": self.payment_term_id.name if self.payment_term_id else "—",
             "currency": currency.name if currency else "",
             "client_ref": self.client_order_ref or "",
-            "client_ref_label": "Número de Orden de Compra del Cliente",
+            "client_ref_label": "OC / PO",
             "lines": lines,
             "totals": totals,
             "note": self.note or "",
@@ -341,11 +342,6 @@ class SaleOrderCompose(models.Model):
             },
         ]
         return payload
-
-    def _dx_outgoing_pickings(self):
-        self.ensure_one()
-        pickings = self.picking_ids
-        return pickings.filtered(lambda p: p.picking_type_code == "outgoing")
 
 
 class AccountMoveCompose(models.Model):
@@ -493,7 +489,7 @@ class AccountMoveCompose(models.Model):
             "origin_move": origin_move,
             "origin": self.invoice_origin or "",
             "client_ref": self.ref or "",
-            "client_ref_label": "Número de Orden de Compra del Cliente",
+            "client_ref_label": "OC / PO",
             "reason": reason,
             "payment_term": (
                 self.invoice_payment_term_id.name
@@ -857,6 +853,7 @@ class PurchaseOrderCompose(models.Model):
             ),
             "currency": currency.name if currency else "",
             "client_ref": self.partner_ref or "",
+            "client_ref_label": "Referencia",
             "origin": dest,
             "lines": lines,
             "totals": totals,
@@ -917,13 +914,14 @@ class StockPickingCompose(models.Model):
                 uom = move.product_uom.display_name
             elif "product_uom_id" in move._fields and move.product_uom_id:
                 uom = move.product_uom_id.display_name
+            ordered_qty, done_qty = picking_line_qtys(move)
             lines.append(
                 {
                     "kind": "line",
                     "product": product_label,
                     "name": description or product_label,
-                    "qty": _dx_qty(move.product_uom_qty),
-                    "done": _dx_qty(self._dx_move_done_qty(move)),
+                    "qty": _dx_qty(ordered_qty),
+                    "done": _dx_qty(done_qty),
                     "uom": uom,
                 }
             )
@@ -933,6 +931,9 @@ class StockPickingCompose(models.Model):
         else:
             sign_left, sign_right = "Entregado por", "Recibido por"
             party_title = "Cliente"
+        client_ref = ""
+        if "sale_id" in self._fields and self.sale_id:
+            client_ref = self.sale_id.client_order_ref or ""
         return {
             "ident": self._dx_doc_identity(),
             "layout": _dx_layout(company),
@@ -950,6 +951,8 @@ class StockPickingCompose(models.Model):
                 if "sale_id" in self._fields and self.sale_id
                 else (self.origin or "")
             ),
+            "client_ref": client_ref,
+            "client_ref_label": "OC / PO",
             "delivery_street": (
                 ", ".join(
                     p

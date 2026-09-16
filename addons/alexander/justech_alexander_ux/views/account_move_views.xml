@@ -7,7 +7,7 @@
         <field name="priority">80</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='ref']" position="attributes">
-                <attribute name="string">Número de Orden de Compra del Cliente</attribute>
+                <attribute name="string">OC / PO</attribute>
             </xpath>
         </field>
     </record>
