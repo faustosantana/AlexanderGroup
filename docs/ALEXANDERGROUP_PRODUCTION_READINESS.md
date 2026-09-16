@@ -122,6 +122,19 @@ Backup: `/opt/doralex/backups/enterprise-staging/pre_alexander_staging_uat_20260
 `-u justech_alexander_reports` EXIT 0 (recibo). Nunca `-u all`.
 PROD `doralex-production-odoo` Up 8 days — no escrito.
 
+## PRODUCTION PRE-FLIGHT (2026-09-16)
+
+Pre-flight READ-ONLY entregado en
+[`docs/ALEXANDERGROUP_PRODUCTION_PREFLIGHT.md`](ALEXANDERGROUP_PRODUCTION_PREFLIGHT.md).
+
+PROD DB `doralex_prod` · contenedor `doralex-production-odoo` ·
+CURRENT COMMIT N/A (sin `.git` en host) · TARGET `1599d13`.
+CURRENT modules 19.0.1.0.5 / 19.0.1.4.0 / 19.0.3.8.5.
+TARGET 19.0.1.0.7 / 19.0.1.6.0 / 19.0.3.9.1.
+
+**READY TO EXECUTE DEPLOYMENT: NO.** PROD TOUCHED: NO.
+No backup fresco. No `-u`. No sync. No restart.
+
 ## PRODUCTION DEPLOYMENT PLAN
 
 **NO AUTORIZADO. NO EJECUTAR. DETENERSE.**

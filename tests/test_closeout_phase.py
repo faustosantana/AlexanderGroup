@@ -144,6 +144,27 @@ def test_closeout_docs_exist():
     assert "ROLLBACK TESTED | YES" in uat or "ROLLBACK TESTED: YES" in ready
 
 
+def test_production_preflight_doc_blocks_execution():
+    pre = (REPO / "docs" / "ALEXANDERGROUP_PRODUCTION_PREFLIGHT.md").read_text(
+        encoding="utf-8"
+    )
+    assert "PROD TOUCHED: NO" in pre
+    assert "READY TO EXECUTE DEPLOYMENT: **NO**" in pre
+    assert "doralex_prod" in pre
+    assert "doralex-production-odoo" in pre
+    assert "1599d132ce019a7d3c47e6c722acbc9139c80759" in pre
+    assert (
+        "-u justech_alexander_base,justech_alexander_ux,justech_alexander_reports"
+        in pre
+    )
+    assert "Nunca `-u all`" in pre or "nunca `-u all`" in pre.lower()
+    assert "MISSING ACCOUNT: **ninguna**" in pre or "MISSING ACCOUNT: 0" in pre
+    assert "APPROVAL FLOW = OFF" in pre
+    assert "PADRON" in pre and "OFF" in pre
+    assert "pre_alexander_release_" in pre
+    assert "CONFIRM=yes ALLOW_PROD=yes" in pre
+
+
 def test_manifest_versions_bumped():
     base = (BASE / "__manifest__.py").read_text(encoding="utf-8")
     ux = (UX / "__manifest__.py").read_text(encoding="utf-8")
