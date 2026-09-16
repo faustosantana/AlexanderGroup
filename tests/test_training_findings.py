@@ -119,9 +119,9 @@ def test_navbar_home_has_no_hardcoded_domain():
         encoding="utf-8"
     )
     assert 'title">Inicio' in navbar or 'title="Inicio"' in navbar
-    assert "home_menu" in navbar
-    assert "homeMenu.toggle(true)" in navbar
-    assert "this.hm" in navbar
+    assert "t-on-click" not in navbar
+    assert "?." not in navbar
+    assert "this.hm" not in navbar
     assert "doralexgroup.cloud" not in navbar
     assert "https://" not in navbar
 

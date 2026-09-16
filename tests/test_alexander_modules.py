@@ -197,7 +197,7 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
-    assert "19.0.1.6.1" in manifest
+    assert "19.0.1.6.2" in manifest
     assert "apply_approval_overlay" in hooks
     assert "ALEXANDER_APPROVAL_LOGIN" in hooks
     assert "approval_visibility.xml" in manifest
@@ -223,8 +223,8 @@ def test_ux_overlay_hides_technical_apps() -> None:
     companies = (ux / "static/src/navbar/user_companies.js").read_text(encoding="utf-8")
     assert "o_switch_company_menu" not in navbar_css
     assert "o_menu_brand" in navbar_css
-    assert "home_menu" in navbar_xml
-    assert "this.hm" in navbar_xml
+    assert "t-on-click" not in navbar_xml
+    assert "?." not in navbar_xml
     assert "Inicio" in navbar_xml
     assert "o_menu_toggle" in navbar_xml
     assert "SwitchCompanyMenu" in companies

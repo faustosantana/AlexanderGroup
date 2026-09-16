@@ -190,7 +190,7 @@ def test_manifest_versions_bumped():
     assert "19.0.1.0.7" in base
     assert "justech_accounting_recovery" in base
     assert "res_partner_views.xml" in base
-    assert "19.0.1.6.1" in ux
+    assert "19.0.1.6.2" in ux
     assert "login_views.xml" in ux
     assert "show_login_form.js" in ux
     assert "withholding_catalog_views.xml" in ux
@@ -256,4 +256,6 @@ def test_ux_login_form_not_hidden():
     assert "showLoginForm" in js
     assert "d-none" in js
     assert "o_menu_brand_icon" not in navbar
-    assert "home_menu" in navbar
+    assert "t-on-click" not in navbar
+    assert "?." not in navbar
+    assert "Inicio" in navbar

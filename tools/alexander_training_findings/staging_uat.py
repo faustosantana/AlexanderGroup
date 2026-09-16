@@ -1715,7 +1715,7 @@ try:
     ).read()
     report["findings"]["H17"] = {
         "has_inicio": "Inicio" in navbar,
-        "has_home_menu": "home_menu" in navbar and "homeMenu.toggle(true)" in navbar,
+        "no_click_override": "t-on-click" not in navbar,
         "hardcoded_domain": "doralexgroup.cloud" in navbar or "https://" in navbar,
         "uses_this_hm": "this.hm" in navbar,
     }
@@ -1724,6 +1724,7 @@ try:
         (
             "PASS"
             if report["findings"]["H17"]["has_inicio"]
+            and report["findings"]["H17"]["no_click_override"]
             and not report["findings"]["H17"]["hardcoded_domain"]
             else "FAIL"
         ),
