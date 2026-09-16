@@ -190,12 +190,13 @@ def test_manifest_versions_bumped():
     assert "19.0.1.0.8" in base
     assert "justech_accounting_recovery" in base
     assert "res_partner_views.xml" in base
-    assert "19.0.1.6.3" in ux
+    assert "19.0.1.6.4" in ux
     assert "account_move_views.xml" in ux
     assert "login_views.xml" in ux
     assert "show_login_form.js" in ux
     assert "withholding_catalog_views.xml" in ux
-    assert "19.0.3.10.1" in reports
+    assert "19.0.3.10.2" in reports
+    assert "print_buttons.xml" in reports
 
 
 def test_payment_receipt_shows_vendor_withholding_breakdown():

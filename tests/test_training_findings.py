@@ -87,6 +87,10 @@ def test_propet_report_is_optional_not_default():
     assert "FORMULARIO PROPET" not in xml
     assert "action_report_invoice_propet" in xml
     assert "action_report_saleorder_conduce" in xml
+    buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
+    assert "Formato Propet" in buttons
+    assert "Proforma" in buttons
+    assert "Conduce" in buttons
     assert (
         "sale.action_report_saleorder"
         not in xml.split("action_report_saleorder_propet")[0]
@@ -134,6 +138,7 @@ def test_tracking_keeps_native_lot_group():
 def test_trace_columns_hidden_by_purchase_group_not_deleted():
     views = (UX / "views" / "sale_order_views.xml").read_text(encoding="utf-8")
     assert "Número de Orden de Compra del Cliente" in views
+    assert "justech_supply" in views
     assert "justech_qty_purchased" in views
     assert "purchase.group_purchase_user" in views
     assert 'optional">hide' in views or 'optional="hide"' in views

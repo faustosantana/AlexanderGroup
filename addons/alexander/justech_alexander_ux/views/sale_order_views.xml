@@ -80,6 +80,15 @@
                 <attribute name="optional">hide</attribute>
                 <attribute name="groups">purchase.group_purchase_user</attribute>
             </xpath>
+            <xpath expr="//page[@name='justech_supply']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_justech_open_purchases']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_justech_open_purchase_coverage']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
