@@ -8,7 +8,7 @@ Entorno: **PRODUCCIÓN** (`doralex_prod` / `doralex-production-odoo`).
 
 Hotfix posterior (mismo día): pantalla blanca en `/odoo` — ver
 [`ALEXANDERGROUP_PRODUCTION_WHITESCREEN.md`](ALEXANDERGROUP_PRODUCTION_WHITESCREEN.md).
-UX quedó en **19.0.1.6.1**. Login restaurado. Sin rollback.
+Login 19.0.1.6.1 + OWL EnterpriseNavBar 19.0.1.6.2. Sin rollback.
 
 ---
 

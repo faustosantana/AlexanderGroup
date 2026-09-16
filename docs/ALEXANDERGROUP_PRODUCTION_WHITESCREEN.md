@@ -4,74 +4,94 @@ Fecha: 2026-09-16.
 Entorno: **PRODUCCIÓN** `doralexgroup.cloud`.
 **PROD STATUS: FIXED.**
 
+Hubo dos capas:
+
+1. Login anónimo (`/web/login`) oculto por `d-none` + `web.user_switch`
+   sin montar — corregido en **19.0.1.6.1**.
+2. Webclient autenticado (`/odoo`) en blanco porque OWL no compilaba
+   `web_enterprise.EnterpriseNavBar` — corregido en **19.0.1.6.2**.
+
 ---
 
 ```
 ODOO WHITE SCREEN INCIDENT
 
 ROOT CAUSE:
-  /odoo (sin sesión) redirige a /web/login envuelto por website.
-  web.login pinta form.oe_login_form con d-none hasta que monte
-  <owl-component name="web.user_switch">.
-  Tras el -u del overlay, las interacciones OWL públicas no montaron
-  el switcher. El form siguió oculto → centro de página en blanco
-  (header/footer del website sí se veían).
+  justech_alexander_ux 19.0.1.6.0/1.6.1 heredaba web_enterprise.EnterpriseNavBar
+  y sobreescribía t-on-click.prevent con JS que OWL 19 no compile:
+  optional chaining ?. y paréntesis extra
+  (this.hm || this.env.services.home_menu)?.toggle(true)
+  → Uncaught Error: Failed to compile template
+    'web_enterprise.EnterpriseNavBar'. Unexpected token '('
+  → Owl destruye el root component → pantalla blanca.
+  El login 1.6.1 (form sin d-none) era correcto; el webclient seguía roto.
 
 AFFECTED COMPONENT:
-  web.login + web.user_switch (frontend website).
-  justech_alexander_ux 19.0.1.6.0 no creó el d-none (es core Odoo 19),
-  pero el rebuild de assets/registry dejó el login dependiente de un
-  mount OWL que no ocurrió. H17 navbar no era la causa del blanco
-  anónimo.
+  justech_alexander_ux H17 navbar.xml (OWL inherit EnterpriseNavBar)
+  Bundle compilado web.assets_web.min.js (hash viejo 3d6f3d9)
 
 HTTP:
-  /odoo → 303 → /web/login 200
-  /web 303 → /web/login 200
+  /odoo → 303 → /web/login 200 (anónimo)
+  /odoo autenticado 200 · body.o_web_client · session_info
+  /web/login 200 · form.oe_login_form sin d-none
   /web/health 200 {"status":"pass"}
-  /web/session/authenticate 200 (sesión interna)
+  /web/session/get_session_info 200 uid=18
+  /web/webclient/load_menus 200 87k
 
 WEB ASSETS:
-  frontend CSS/JS 200 (tras hotfix hashes nuevos
-  assets_frontend_minimal 56635c5, lazy 5db2bc6)
-  web.assets_web.min.js 200 (10.5M)
-  web.assets_web.min.css 200 (1.5M)
-  debug=assets: form visible (sin d-none)
+  Tras rebuild: /web/assets/4d3d5ed/web.assets_web.min.js 200 JS 10.5M
+  /web/assets/e6465b3/web.assets_web.min.css 200 CSS 1.5M
+  debug=assets: web.assets_web.js 200 15.9M (no min)
+  Template 1.6.2 en el bundle: solo title/aria-label Inicio
+  Sin (this.hm || this.env.services.home_menu)
+  Sin 404/500 de assets
 
 JS CONSOLE:
-  sin traceback en logs Odoo. El síntoma era DOM: form d-none +
-  owl-component vacío.
+  Sin Failed to compile template web_enterprise.EnterpriseNavBar
+  Sin Unexpected token '('
+  Sin Owl destroying root
+  Warning residual (no bloquea): studio_hotfix TableUIPlugin
 
 ODOO LOGS:
-  sin ERROR/CRITICAL/ParseError post-hotfix 20:44Z.
+  Sin ERROR/CRITICAL/Traceback/ParseError/KeyError nuevos
+  post -u 1.6.2 + restart + rebuild.
 
 FIX APPLIED:
-  justech_alexander_ux 19.0.1.6.1
-  - inherit web.login: t-attf-class="oe_login_form" (sin d-none)
-  - JS mínimo en web.assets_frontend_minimal
-  - navbar H17: sin xpath replace de brand (CSS ya oculta);
-    click handler en una línea con home_menu opcional
+  justech_alexander_ux 19.0.1.6.2
+  - navbar.xml: quitar override t-on-click (queda handler nativo)
+  - conservar title/aria-label Inicio + CSS hide brand
+  - login 1.6.1 intacto
+  - DELETE solo ir.attachment /web/assets web.assets_web*
+    y web.assets_backend* (regenerables)
+  - restart doralex-production-odoo
 
-MODULE UPDATED: justech_alexander_ux only (19.0.1.6.1)
-ASSETS REBUILT: YES (frontend_minimal + frontend_lazy)
+MODULE UPDATED: justech_alexander_ux only (19.0.1.6.2)
+ASSETS REBUILT: YES (web.assets_web 4d3d5ed + backend a23aec0)
 ODOO RESTARTED: YES (solo doralex-production-odoo)
 
-BROWSER /ODOO: PASS (formulario correo/contraseña/Iniciar sesión visible)
-NAVBAR: PASS (webclient body.o_web_client + assets_web 200)
-APPS: PASS (load_menus: Sales, Contacts, Invoices, Quotations, …)
-SALES: PASS (sale.menu_sale_quotations / sale.sale_order_menu)
-ACCOUNTING: PASS (account invoices/bills menus)
-MULTICOMPANY: PASS (sesión con compañías 8 y 11)
+BROWSER /ODOO: PASS (apps grid + navbar, no blanco)
+NAVBAR: PASS
+APPS: PASS (19 apps, hamburguesa/Inicio nativo)
+SALES: PASS (/odoo/sales Quotations)
+ACCOUNTING: PASS (/odoo/customer-invoices con grupo RO temporal)
+MULTICOMPANY: PASS (Doralex 11 ↔ Blue Elite 8)
 
 POST-FIX SMOKE:
-  approval OFF 8–13
-  padrón OFF
-  ITBIS 16 SALE count=6
-  login visible normal y ?debug=assets
-  probe user desactivado
+  approval OFF compañías 8–13
+  padrón OFF · cron inactivo
+  ITBIS 16 SALE ids 461–466
+  DX catalog justech.do.withholding.catalog count=19
+  Propet / Proforma / Quotation report actions presentes
+  draft cancel helper presente
+  frozen: payments 19.0.1.7.2 · multi pay 19.0.1.5.4
+          margins 19.0.8.29.38 · trace 19.0.1.2.11
+  probe user 18 desactivado de nuevo
+  sin operaciones fiscales creadas
 
 ERRORS REMAINING:
-  web.user_switch sigue sin montar en login anónimo (ya no bloquea:
-  el form es visible). No es fallo de acceso.
+  studio_hotfix TableUIPlugin warning (preexistente, no bloquea)
+  web.user_switch sigue sin montar en login anónimo
+  (el form ya es visible sin d-none)
 
 ROLLBACK REQUIRED: NO
 ROLLBACK EXECUTED: NO
