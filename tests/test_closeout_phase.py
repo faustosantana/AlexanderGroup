@@ -190,7 +190,9 @@ def test_manifest_versions_bumped():
     assert "19.0.1.0.7" in base
     assert "justech_accounting_recovery" in base
     assert "res_partner_views.xml" in base
-    assert "19.0.1.6.0" in ux
+    assert "19.0.1.6.1" in ux
+    assert "login_views.xml" in ux
+    assert "show_login_form.js" in ux
     assert "withholding_catalog_views.xml" in ux
     assert "19.0.3.9.1" in reports
 
@@ -239,3 +241,19 @@ def test_production_deploy_report_success():
     assert "PROD TOUCHED: YES" in deploy
     assert "doralex_prod" in deploy
     assert "doralex-production-odoo" in deploy
+
+
+def test_ux_login_form_not_hidden():
+    login = (UX / "views" / "login_views.xml").read_text(encoding="utf-8")
+    js = (UX / "static" / "src" / "login" / "show_login_form.js").read_text(
+        encoding="utf-8"
+    )
+    navbar = (UX / "static" / "src" / "navbar" / "navbar.xml").read_text(
+        encoding="utf-8"
+    )
+    assert 'inherit_id="web.login"' in login
+    assert "oe_login_form" in login
+    assert "showLoginForm" in js
+    assert "d-none" in js
+    assert "o_menu_brand_icon" not in navbar
+    assert "home_menu" in navbar

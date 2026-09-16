@@ -4,18 +4,7 @@
         <xpath expr="//a[hasclass('o_menu_toggle')]" position="attributes">
             <attribute name="title">Inicio</attribute>
             <attribute name="aria-label">Inicio</attribute>
-            <attribute name="t-on-click.prevent">() => {
-                if (this.env.isSmall) {
-                    this._openAppMenuSidebar();
-                    return;
-                }
-                const homeMenu = this.hm || (this.env.services &amp;&amp; this.env.services.home_menu);
-                if (homeMenu &amp;&amp; homeMenu.toggle) {
-                    homeMenu.toggle(true);
-                }
-            }</attribute>
+            <attribute name="t-on-click.prevent">() => { if (this.env.isSmall) { this._openAppMenuSidebar(); } else { (this.hm || this.env.services.home_menu)?.toggle(true); } }</attribute>
         </xpath>
-        <xpath expr="//img[hasclass('o_menu_brand_icon')]" position="replace"/>
-        <xpath expr="//span[hasclass('o_menu_brand')]" position="replace"/>
     </t>
 </templates>

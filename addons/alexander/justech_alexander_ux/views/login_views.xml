@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Odoo 19 hides oe_login_form with d-none until web.user_switch mounts.
+         If public OWL interactions do not start, /odoo and /web/login stay blank.
+         Always render the form visible. user_switch can still hide it if it mounts. -->
+    <template id="dx_login_form_visible" inherit_id="web.login" name="Doralex: login visible">
+        <xpath expr="//form[contains(@t-attf-class, 'oe_login_form')]" position="attributes">
+            <attribute name="t-attf-class">oe_login_form</attribute>
+        </xpath>
+    </template>
+</odoo>
