@@ -5,6 +5,12 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 
 ## Unreleased
 
+### Added
+- Hallazgos reunión Doralex (DEV/STAGING): precheck READ-ONLY, Formulario
+  Propet opcional, Factura Proforma nativa etiquetada, OC/PO del cliente,
+  conduce por empresa, firma de correo por compañía, CRM etapas en español
+  y columnas de traza ocultas para solo-ventas. PROD no se toca.
+
 ### Changed
 - Recibo multi-factura (`multi_invoice_manual_payment_prod` 19.0.1.5.5): un
   solo PDF por `account.payment` con tabla completa (NCF, saldos, pie). No

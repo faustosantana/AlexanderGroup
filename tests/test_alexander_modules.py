@@ -138,7 +138,7 @@ def test_ncf_guard_blocks_fiscal_post_without_real_range() -> None:
         ALEXANDER / "justech_alexander_base" / "models" / "ncf_assignment.py"
     ).read_text(encoding="utf-8")
     assert "justech_l10n_do_ncf" in manifest
-    assert "19.0.1.0.5" in manifest
+    assert "19.0.1.0.6" in manifest
     assert "justech.do.ncf.assignment.service" in guard
     assert "No crea rangos" in guard
     assert (
@@ -197,7 +197,7 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
-    assert "19.0.1.4.0" in manifest
+    assert "19.0.1.5.0" in manifest
     assert "apply_approval_overlay" in hooks
     assert "ALEXANDER_APPROVAL_LOGIN" in hooks
     assert "approval_visibility.xml" in manifest
@@ -222,7 +222,8 @@ def test_ux_overlay_hides_technical_apps() -> None:
     companies = (ux / "static/src/navbar/user_companies.js").read_text(encoding="utf-8")
     assert "o_switch_company_menu" not in navbar_css
     assert "o_menu_brand" in navbar_css
-    assert "hm.toggle(true)" in navbar_xml
+    assert "homeMenu.toggle(true)" in navbar_xml
+    assert "this.hm" in navbar_xml
     assert (
         "hasclass('o_menu_brand')" in navbar_xml
         or 'hasclass("o_menu_brand")' in navbar_xml
