@@ -221,3 +221,21 @@ def test_payment_receipt_shows_vendor_withholding_breakdown():
     assert "Otras retenciones" in xml
     assert "Neto pagado" in xml
     assert "Total aplicado" in xml
+
+
+def test_production_deploy_report_success():
+    deploy = (REPO / "docs" / "ALEXANDERGROUP_PRODUCTION_DEPLOY.md").read_text(
+        encoding="utf-8"
+    )
+    assert "FINAL STATUS: SUCCESS" in deploy
+    assert "BACKUP VERIFIED: YES" in deploy
+    assert "1599d132ce019a7d3c47e6c722acbc9139c80759" in deploy
+    assert "19.0.1.0.7" in deploy
+    assert "19.0.1.6.0" in deploy
+    assert "19.0.3.9.1" in deploy
+    assert "ITBIS 16 SALE: PASS" in deploy
+    assert "APPROVAL FLOW: OFF" in deploy
+    assert "ROLLBACK EXECUTED: NO" in deploy
+    assert "PROD TOUCHED: YES" in deploy
+    assert "doralex_prod" in deploy
+    assert "doralex-production-odoo" in deploy

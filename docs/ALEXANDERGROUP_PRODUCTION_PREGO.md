@@ -1,8 +1,11 @@
 # Alexander Group / Doralex — PRE-GO FINAL
 
+> **SUPERSEDED 2026-09-16.** El deploy autorizado se ejecutó. Informe único:
+> [`ALEXANDERGROUP_PRODUCTION_DEPLOY.md`](ALEXANDERGROUP_PRODUCTION_DEPLOY.md)
+> — **FINAL STATUS: SUCCESS**. Este PRE-GO queda como evidencia previa (PROD no tocado *entonces*).
+
 Fecha: 2026-09-16.
-**PROD TOUCHED: NO.**
-Sin backup, sin sync, sin `-u`, sin restart, sin crear impuestos ni rangos.
+**PROD TOUCHED: NO** (este documento). Post-deploy: ver informe SUCCESS.
 
 ---
 
