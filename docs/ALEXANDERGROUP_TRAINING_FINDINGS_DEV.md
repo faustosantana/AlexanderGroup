@@ -12,26 +12,29 @@ localización dominicana y overlay Alexander. Varios hallazgos son
 correcciones solo en módulos `justech_alexander_*`. No se editaron módulos
 congelados ni el vendor. No hay cambios contables históricos ni NCF.
 
-## 2. Estado de los 17 hallazgos
+## 2. Estado de los 17 hallazgos (reclasificado tras UAT STAGING)
 
-| ID | Estado | Causa raíz |
+Un hallazgo solo es **IMPLEMENTADO Y VALIDADO** si se probó en Odoo STAGING.
+Detalle y evidencia: `docs/ALEXANDERGROUP_STAGING_UAT.md`.
+
+| ID | Estado | Causa raíz / UAT |
 | --- | --- | --- |
-| 01 ITBIS 16% | CORREGIDO (STAGING) | Existía 16% solo en compras. Creado 16% **venta** por empresa (ids 461–466), clon del 18% venta. No asignado a productos. |
-| 02 Descripciones | CORREGIDO (código) | `sale.order.line.name` no estaba aislado al cambiar `product_id`. No hay override Justech que mezcle líneas; se refuerza por producto. |
-| 03 Formulario Propet | CORREGIDO | No existía reporte extra. Nuevo print opcional con importes nativos. |
-| 04 Columnas cotización | CORREGIDO | `justech_sale_purchase_trace` las muestra a ventas. Overlay las limita a compras. |
-| 05 Rastrear inventario | CORREGIDO / CONFIGURACIÓN | `tracking` nativo exige `stock.group_production_lot`. Overlay lo muestra si `is_storable`. |
-| 06 CRM español | CORREGIDO (STAGING + código) | Etapas/equipos demo en inglés; renombrados a Nuevo/Calificado/Propuesta/Ganado y Ventas/… |
-| 07/10 Cancelar / recovery | REQUIERE DECISIÓN | Grupo Recuperación Contable **sin usuarios**. SoD bloquea también borradores. |
-| 08 Proforma | CORREGIDO | Nativo `sale.action_report_pro_forma_invoice` existía, grupo vacío, título EN. |
-| 09 Padrón DGII | BLOQUEADO / CONFIGURACIÓN | Cron inactivo, **0 filas**, sin config. No se descarga DGII. |
-| 11 Aprobaciones | DOCUMENTADO | Fingerprint invalida si cambia partner/líneas/precio/tax. Sin cambio de flujo. |
-| 12 OC/PO cliente | CORREGIDO | Reutilizado `client_order_ref`. |
-| 13 Retenciones / recibo | CORREGIDO (lectura) | Recibo nativo ya lista facturas; se añaden retenciones/neto si existen. |
-| 14 Conduces | CORREGIDO | Delivery Slip nativo; título **CONDUCE** + branding por `company_id`. |
-| 15 Correo | CONFIGURACIÓN | STAGING SMTP neutralizado; 16 mails en exception. Sin bridge nuevo. |
-| 16 Firmas | CORREGIDO | Firma de usuario global; ahora firma = usuario + HTML de la empresa del documento. |
-| 17 Dashboard | CORREGIDO | Hamburguesa → Home Menu nativo, etiqueta «Inicio». Sin URL de dominio. |
+| 01 ITBIS 16% | IMPLEMENTADO Y VALIDADO | 461–466 venta 16%. Tags 18%→16%. Factura persistida 1 000/160/1 160. No masivo a productos. |
+| 02 Descripciones | IMPLEMENTADO Y VALIDADO | Aislado a `product_id`. UAT 3 líneas sin cruce. |
+| 03 Formulario Propet | IMPLEMENTADO Y VALIDADO | Print extra. Identidades 18/16/exento/dto OK. Estándar intacto. |
+| 04 Columnas cotización | IMPLEMENTADO PENDIENTE UAT | Overlay + `column_invisible` nativo/traza. No hay usuario solo Ventas. |
+| 05 Rastrear inventario | IMPLEMENTADO Y VALIDADO | **Sin** override de `groups`. Setting nativo + flujo lote/serie persistido. |
+| 06 CRM español | IMPLEMENTADO Y VALIDADO | Nuevo/Calificado/Propuesta/Ganado. Sin etapas demo EN. |
+| 07/10 Cancelar / recovery | REQUIERE DECISIÓN | Recovery pisa **borradores**. Grupo vacío. Propuesta mínima no implementada. |
+| 08 Proforma | IMPLEMENTADO Y VALIDADO | Sin asiento/NCF. `group_ids` limpios; no hace falta el grupo nativo. |
+| 09 Padrón DGII | BLOQUEADO | 0 filas, cron OFF, 0 config. Sin descarga. |
+| 11 Aprobaciones | IMPLEMENTADO PENDIENTE UAT | Fingerprint no cubre nota/término/desc. Post-confirm no invalida. Sin cambio de código. |
+| 12 OC/PO cliente | IMPLEMENTADO Y VALIDADO | `client_order_ref` PO-TEST-001 en SO/búsqueda/PDF. |
+| 13 Retenciones / recibo | IMPLEMENTADO PENDIENTE UAT | Pago 3 facturas VALIDADO. Retención BLOQUEADA (catálogo 0). |
+| 14 Conduces | IMPLEMENTADO Y VALIDADO | 2 compañías, CONDUCE, sin branding cruzado. |
+| 15 Correo | CONFIGURACIÓN | 16 exception = SMTP `invalid` + Graph sin credenciales. |
+| 16 Firmas | IMPLEMENTADO Y VALIDADO | `document.company_id` ≠ `env.company`. From/firma A≠B. |
+| 17 Dashboard | IMPLEMENTADO Y VALIDADO | Inicio / Home Menu nativo. Sin dominio hardcodeado. |
 
 ## 3. Archivos / módulos modificados
 
@@ -96,8 +99,8 @@ de módulos en STAGING** (código en repo; no desplegado a contenedor).
 
 - Upgrade de `justech_alexander_ux` hereda vistas de traza: si el xpath de
   columnas no existe en otra base, fallaría el `-u`. STAGING sí tiene traza.
-- Mostrar `tracking` sin grupo lote permite configurar serie a más usuarios
-  (intencional). El inventario lote sigue exigiendo operaciones stock.
+- `tracking` queda nativo (`stock.group_production_lot`). No se evade el
+  grupo. El setting Lots & Serial Numbers se activó en STAGING.
 - Crear 16% venta no asigna productos: hay que elegir artículos.
 - SMTP STAGING sigue neutralizado: no probar correo real ahí.
 
@@ -146,17 +149,22 @@ Post-deploy: imprimir cotización estándar y Propet; verificar logos por
 empresa; no fuga de firmas; ITBIS 16% solo en productos asignados;
 padrón no tocar; NCF intactos.
 
-## STATUS DEV
+## STATUS DEV + STAGING UAT
 
 - PRECHECK: HECHO (`docs/ALEXANDERGROUP_PRECHECK.md`)
-- HALLAZGOS CORREGIDOS: 01 (STAGING), 02, 03, 04, 05 (vista), 06 (STAGING+código), 08, 12, 13 (recibo), 14, 16, 17
-- HALLAZGOS PENDIENTES: 07/10 (decisión), 09 (padrón vacío), 11 (solo doc), 15 (SMTP staging)
-- TESTS: estructurales + identidades Propet
-- REGRESIONES: ninguna en pytest
-- MULTIEMPRESA: compose/firma/reportes siguen `document.company_id`
-- CONTABILIDAD: sin asientos históricos
+- STAGING UAT: HECHO (`docs/ALEXANDERGROUP_STAGING_UAT.md`)
+- HALLAZGOS IMPLEMENTADO Y VALIDADO: 01, 02, 03, 05, 06, 08, 12, 14, 16, 17
+- HALLAZGOS IMPLEMENTADO PENDIENTE UAT: 04 (sin usuario solo-ventas), 11 (fingerprint post-confirm), 13 (retención)
+- HALLAZGOS REQUIERE DECISIÓN: 07/10 recovery vs borrador
+- HALLAZGOS BLOQUEADO / CONFIGURACIÓN: 09 padrón, 15 SMTP
+- MODULE UPDATE STAGING: 19.0.1.0.6 / 19.0.3.9.0 / 19.0.1.5.0 / 19.0.1.0.5
+- STAGING BACKUP: `/opt/doralex/backups/enterprise-staging/pre_alexander_staging_uat_20260916_183140`
+- TESTS: estructurales + UAT Odoo STAGING
+- REGRESIONES: primer `-u` falló por `context` en `ir.actions.report`; corregido
+- MULTIEMPRESA: compose/firma/conduce por `document.company_id`
+- CONTABILIDAD UAT: ITBIS 16 + pago triple persistidos en STAGING (no históricos reales de negocio)
 - DGII: padrón 0; no descargado
-- EMAIL: firma por empresa en código; SMTP STAGING inválido
-- ROLLBACK: revertir PR / bajar versiones overlay
+- EMAIL: SMTP/Graph STAGING inválidos
+- ROLLBACK: dump validado; restore destructivo no ejecutado
 - PROD TOUCHED: NO
 - READY FOR PROD: NO
