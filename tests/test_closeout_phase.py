@@ -127,6 +127,23 @@ def test_no_hardcoded_ids_in_closeout_overlay():
             }
 
 
+def test_closeout_docs_exist():
+    uat = (REPO / "docs" / "ALEXANDERGROUP_STAGING_UAT.md").read_text(encoding="utf-8")
+    ready = (REPO / "docs" / "ALEXANDERGROUP_PRODUCTION_READINESS.md").read_text(
+        encoding="utf-8"
+    )
+    wh = (REPO / "docs" / "ALEXANDERGROUP_RD_WITHHOLDINGS.md").read_text(
+        encoding="utf-8"
+    )
+    assert "APPROVAL FLOW: DISABLED" in ready
+    assert "DGII PADRON: DISABLED" in ready
+    assert "READY FOR PROD: **NO**" in ready
+    assert "PROD TOUCHED: NO" in ready
+    assert "DX-ISR-PROF-PF-15" in wh
+    assert "Ley 30-26" in wh
+    assert "ROLLBACK TESTED | YES" in uat or "ROLLBACK TESTED: YES" in ready
+
+
 def test_manifest_versions_bumped():
     base = (BASE / "__manifest__.py").read_text(encoding="utf-8")
     ux = (UX / "__manifest__.py").read_text(encoding="utf-8")

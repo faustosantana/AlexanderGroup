@@ -250,6 +250,24 @@ resuelve `document.company_id`, no solo `env.company`.
 | WITHHOLDING | BLOCKED |
 | EMAIL | SMTP/Graph inválidos, no código |
 | MULTICOMPANY | firmas/from/conduce OK |
-| ROLLBACK TESTED | NO (dump validado) |
+| ROLLBACK TESTED | YES (temp `doralex_restore_test_20260916`, drop OK) |
 | PROD TOUCHED | NO |
 | READY FOR PROD | **NO** |
+
+## 14. Cierre 2026-09-16 (aprobaciones/padrón OFF + retenciones)
+
+Ver `docs/ALEXANDERGROUP_PRODUCTION_READINESS.md` y
+`docs/ALEXANDERGROUP_RD_WITHHOLDINGS.md`.
+
+| ID | ESTADO | EVIDENCIA |
+| --- | --- | --- |
+| H11 | DISABLED | `DOR/SO/00093` confirmado `approval=none`. Flags False en 8–13. |
+| H09 | DISABLED | Cron 31 OFF. `INV/2026/00074` con partner `pending_new`. Botón Validar oculto. |
+| H07/H10 | PASS | Usuario Facturación cancela/elimina borrador. Posted exige Recovery. |
+| H13 | PARTIAL | Catálogo DX-* 19 reglas. 15%/3%/5%/30%/100% OK. Pago publicado BLOCKED (sin B11). |
+| H01 NC | PASS* | Draft 1000/160/1160. Post: B04 cancelado. |
+| H04 | PASS | Usuario solo Ventas `DOR/SO/00095`; desactivado. |
+| RESTORE | YES | TOC 33983; 1761 tablas; 754 files; drop solo temp. |
+
+Overlay STAGING: base **19.0.1.0.7**, ux **19.0.1.6.0**.
+Backup pre-cierre: `pre_alexander_closeout_20260916_185959`.
