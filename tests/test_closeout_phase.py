@@ -144,6 +144,22 @@ def test_closeout_docs_exist():
     assert "ROLLBACK TESTED | YES" in uat or "ROLLBACK TESTED: YES" in ready
 
 
+def test_production_prego_closes_blockers_without_go():
+    prego = (REPO / "docs" / "ALEXANDERGROUP_PRODUCTION_PREGO.md").read_text(
+        encoding="utf-8"
+    )
+    assert "READY FOR HUMAN GO: **NO**" in prego
+    assert "ITBIS 16 SALE PROD: **MISSING**" in prego
+    assert "SAFE TO LEAVE FROZEN" in prego
+    assert "DXMAP_FAILS 0" in prego or "114/114" in prego
+    assert "POST-DEPLOY FISCAL OPERABILITY" in prego
+    assert "HOST=db" in prego
+    assert "USER=doralex_prod" in prego
+    assert "PROD TOUCHED: **NO**" in prego
+    assert "docker stop doralex-production-odoo" in prego
+    assert "pg_stat_activity" in prego
+
+
 def test_production_preflight_doc_blocks_execution():
     pre = (REPO / "docs" / "ALEXANDERGROUP_PRODUCTION_PREFLIGHT.md").read_text(
         encoding="utf-8"

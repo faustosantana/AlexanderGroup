@@ -585,22 +585,17 @@ Estado **ahora** (pre-autorización): **NO-GO para ejecutar.**
 
 ## 14. ROLLBACK (contra el backup fresco — NO EJECUTAR salvo fallo real)
 
-`restore.sh` restaura DB + filestore. **No** restaura custom-addons; hay que extraer el tar del mismo backup.
+`/opt/doralex/scripts/restore.sh` **no** es el procedimiento aprobado de este release:
+verifica el backup con Odoo arriba, no drena backends `odoo-*`, y extrae
+filestore con `docker exec` sobre el contenedor ya `stopped`.
 
-```bash
-BACKUP=/opt/doralex/backups/prod/pre_alexander_release_YYYYMMDD_HHMMSS
-# 1) Verificar que sigue siendo el primary
-bash /opt/doralex/scripts/verify_backup.sh "${BACKUP}"
+Orden aprobado (detalle en `docs/ALEXANDERGROUP_PRODUCTION_PREGO.md`):
+mantenimiento → `docker stop` → cero conexiones Odoo a `doralex_prod` →
+verificar backup → `pg_restore` → filestore → custom-addons → start → logs → smoke.
 
-# 2) Restore DB + filestore (destructivo; doble barrera)
-CONFIRM=yes ALLOW_PROD=yes bash /opt/doralex/scripts/restore.sh production "${BACKUP}"
-
-# 3) Restore overlay/addons al estado pre-deploy
-docker stop doralex-production-odoo
-tar xzf "${BACKUP}/custom-addons.tar.gz" -C /opt/doralex/production
-docker start doralex-production-odoo
-bash /opt/doralex/scripts/healthcheck.sh production
-```
+No usar: restore DB mientras Odoo sigue conectado.
+`restore.sh` sigue exigiendo `CONFIRM=yes ALLOW_PROD=yes` si alguien lo invoca;
+este release no lo usa como procedimiento aprobado.
 
 Tras rollback esperado: base 19.0.1.0.5, ux 19.0.1.4.0, reports 19.0.3.8.5.
 No usar el backup 2026-08-27 como primary de este release.
