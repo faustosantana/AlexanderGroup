@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- H05: no inherit. Native stock.view_template_property_form already
+         gates tracking with stock.group_production_lot and
+         invisible="not is_storable". Clearing groups would evade Lots &
+         Serial Numbers. Keep this file as documentation only; it is not
+         loaded by the manifest. -->
+</odoo>

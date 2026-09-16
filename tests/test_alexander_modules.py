@@ -138,7 +138,7 @@ def test_ncf_guard_blocks_fiscal_post_without_real_range() -> None:
         ALEXANDER / "justech_alexander_base" / "models" / "ncf_assignment.py"
     ).read_text(encoding="utf-8")
     assert "justech_l10n_do_ncf" in manifest
-    assert "19.0.1.0.5" in manifest
+    assert "19.0.1.0.9" in manifest
     assert "justech.do.ncf.assignment.service" in guard
     assert "No crea rangos" in guard
     assert (
@@ -197,22 +197,23 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
-    assert "19.0.1.4.0" in manifest
+    assert "19.0.1.6.6" in manifest
     assert "apply_approval_overlay" in hooks
     assert "ALEXANDER_APPROVAL_LOGIN" in hooks
     assert "approval_visibility.xml" in manifest
     assert "approval_request_views.xml" in manifest
-    assert "justech_approval_flow" in hooks.split("VISIBLE_APPS", 1)[1][:400]
+    assert "justech_approval_flow" not in hooks.split("VISIBLE_APPS", 1)[1][:400]
     assert (
         'menu_justech_approval_root" model="ir.ui.menu">' in menus
         or "menu_justech_approval_root" in menus
     )
     assert "justech_approval_flow.menu_justech_approval_root" in menus
+    assert "Aprobaciones (histórico)" in menus
     assert (
-        'parent_id" eval="False"'
-        in menus.split("justech_approval_flow.menu_justech_approval_root", 1)[1][:250]
+        "justech_alexander_admin.menu_doralex_root"
+        in menus.split("justech_approval_flow.menu_justech_approval_root", 1)[1][:350]
     )
-    assert '("justech_approval_flow", "Aprobaciones", True)' in hooks
+    assert '("justech_approval_flow", "Aprobaciones (histórico)", False)' in hooks
     assert "web.assets_backend" in manifest
     assert "web.assets_web" in manifest
     assert "navbar.css" in manifest
@@ -222,11 +223,10 @@ def test_ux_overlay_hides_technical_apps() -> None:
     companies = (ux / "static/src/navbar/user_companies.js").read_text(encoding="utf-8")
     assert "o_switch_company_menu" not in navbar_css
     assert "o_menu_brand" in navbar_css
-    assert "hm.toggle(true)" in navbar_xml
-    assert (
-        "hasclass('o_menu_brand')" in navbar_xml
-        or 'hasclass("o_menu_brand")' in navbar_xml
-    )
+    assert "t-on-click" not in navbar_xml
+    assert "?." not in navbar_xml
+    assert "Inicio" in navbar_xml
+    assert "o_menu_toggle" in navbar_xml
     assert "SwitchCompanyMenu" in companies
     assert "systray.remove" not in companies
     assert "computeVisibleCompanies" in companies

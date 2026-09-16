@@ -13,6 +13,9 @@
                         <field name="alias_domain_id"/>
                         <field name="email"/>
                     </group>
+                    <group string="Firma de correo">
+                        <field name="dx_mail_signature" colspan="2"/>
+                    </group>
                     <group string="Aliases">
                         <field name="dx_mail_alias_admin"/>
                         <field name="dx_mail_alias_sales"/>

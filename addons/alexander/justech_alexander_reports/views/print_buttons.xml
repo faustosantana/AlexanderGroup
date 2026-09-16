@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form_dx_print_buttons" model="ir.ui.view">
+        <field name="name">sale.order.form.dx.print.buttons</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">85</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(justech_alexander_reports.action_report_saleorder_propet)d" type="action" string="Formato Propet" class="btn-secondary" display="always"/>
+                <button name="%(sale.action_report_pro_forma_invoice)d" type="action" string="Proforma" class="btn-secondary" display="always"/>
+                <button name="%(justech_alexander_reports.action_report_saleorder_conduce)d" type="action" string="Conduce" class="btn-secondary" display="always"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_form_dx_print_propet" model="ir.ui.view">
+        <field name="name">account.move.form.dx.print.propet</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="priority">85</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(justech_alexander_reports.action_report_invoice_propet)d" type="action" string="Formato Propet" class="btn-secondary" display="always" invisible="move_type not in ('out_invoice', 'out_refund')"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_form_dx_print_conduce" model="ir.ui.view">
+        <field name="name">stock.picking.form.dx.print.conduce</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="priority">85</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(stock.action_report_delivery)d" type="action" string="Conduce" class="btn-secondary" display="always" invisible="picking_type_code != 'outgoing'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

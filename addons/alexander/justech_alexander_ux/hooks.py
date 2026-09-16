@@ -1,6 +1,10 @@
 """Catálogo, menús y switch e-CF. No desinstala ni cambia nombres técnicos."""
 
 ECF_PARAM = "justech_alexander.ecf_operational_enabled"
+APPROVAL_PARAM = "justech_alexander.approval_flow_enabled"
+PADRON_PARAM = "justech_alexander.dgii_padron_enabled"
+
+PADRON_CRON_XMLIDS = ("justech_l10n_do_base.ir_cron_justech_rnc_padron_auto_update",)
 
 ECF_MENU_XMLIDS = (
     "justech_ecf_core.menu_justech_ecf_root",
@@ -25,7 +29,7 @@ CATALOG = (
     ("justech_warranty", "Garantías", True),
     ("justech_purchase_sale_margin_control", "Costos y Márgenes", True),
     ("justech_managed_services", "Servicios Administrados", True),
-    ("justech_approval_flow", "Aprobaciones", True),
+    ("justech_approval_flow", "Aprobaciones (histórico)", False),
     ("justech_global_audit_log", "Auditoría", False),
     ("justech_fiscal_admin", "Administración Fiscal", False),
     ("l10n_do_ecf_connector", "Conector e-CF DGII", False),
@@ -76,7 +80,6 @@ VISIBLE_APPS = {
     "justech_warranty",
     "justech_purchase_sale_margin_control",
     "justech_managed_services",
-    "justech_approval_flow",
 }
 
 ALEXANDER_APPROVAL_LOGIN = "alexander.pina@inversionesdoralex.com"
@@ -157,7 +160,7 @@ def _apply_menu_names(env):
         "justech_admin_center.menu_justech_admin_center_root": "Administración técnica",
         "justech_alexander_admin.menu_doralex_modules": "Módulos",
         "justech_alexander_admin.menu_doralex_root": "Administración Doralex",
-        "justech_approval_flow.menu_justech_approval_root": "Aprobaciones",
+        "justech_approval_flow.menu_justech_approval_root": "Aprobaciones (histórico)",
         "justech_approval_flow.menu_justech_approval_all": "Histórico",
         "justech_global_audit_log.menu_justech_global_audit_root": "Auditoría",
     }
@@ -210,23 +213,24 @@ def _hide_duplicate_approval_apps(env):
         "justech_approval_flow.menu_justech_approval_root",
         raise_if_not_found=False,
     )
-    if not keep:
-        return
     roots = env["ir.ui.menu"].sudo().search([("parent_id", "=", False)])
     for menu in roots:
-        if menu.id == keep.id:
-            continue
         xmlid = menu.get_external_id().get(menu.id) or ""
         name = (menu.name or "").lower()
         if xmlid.startswith("approvals.") or "aprobacion" in name or "approval" in name:
             menu.write({"active": False, "web_icon": False})
-    keep.write(
-        {
-            "active": True,
-            "parent_id": False,
-            "name": "Aprobaciones",
-        }
-    )
+    if keep:
+        admin = env.ref(
+            "justech_alexander_admin.menu_doralex_root", raise_if_not_found=False
+        )
+        keep.write(
+            {
+                "active": True,
+                "parent_id": admin.id if admin else False,
+                "web_icon": False,
+                "name": "Aprobaciones (histórico)",
+            }
+        )
 
 
 def _apply_approval_identity(env):
@@ -307,52 +311,38 @@ def _apply_approval_company_config(env):
     if companies:
         companies.write(
             {
-                "justech_approval_purchase_enabled": True,
-                "justech_approval_sale_enabled": True,
-                "justech_approval_invoice_enabled": True,
+                "justech_approval_purchase_enabled": False,
+                "justech_approval_sale_enabled": False,
+                "justech_approval_invoice_enabled": False,
             }
         )
     icp = env["ir.config_parameter"].sudo()
+    icp.set_param(APPROVAL_PARAM, "")
     current = icp.get_param("justech.approval.public.base.url") or ""
     web = icp.get_param("web.base.url") or ""
     if (not current or current.startswith("http://")) and web.startswith("https://"):
         icp.set_param("justech.approval.public.base.url", web)
-    alexander = (
-        env["res.users"]
-        .sudo()
-        .search([("login", "=", ALEXANDER_APPROVAL_LOGIN)], limit=1)
-    )
-    if not alexander or not companies:
-        return
-    Rule = env["justech.approval.user.rule"].sudo()
-    for company in companies:
-        rule = Rule.search(
-            [
-                ("user_id", "=", alexander.id),
-                ("company_id", "=", company.id),
-            ],
-            limit=1,
-        )
-        vals = {
-            "user_id": alexander.id,
-            "company_id": company.id,
-            "active": True,
-            "approve_sale": True,
-            "approve_purchase": True,
-            "approve_invoice": True,
-            "allow_self_approval": False,
-        }
-        if rule:
-            rule.write(vals)
-        else:
-            Rule.create(vals)
 
 
 def apply_approval_overlay(env):
     _hide_duplicate_approval_apps(env)
     _apply_approval_identity(env)
-    _apply_approval_users(env)
     _apply_approval_company_config(env)
+
+
+def apply_padron_disabled(env):
+    icp = env["ir.config_parameter"].sudo()
+    icp.set_param(PADRON_PARAM, "")
+    for xmlid in PADRON_CRON_XMLIDS:
+        cron = env.ref(xmlid, raise_if_not_found=False)
+        if cron:
+            cron.active = False
+
+
+def apply_withholding_catalog(env):
+    if "justech.do.withholding.catalog" not in env:
+        return
+    env["justech.do.withholding.catalog"].dx_sync_2026_catalog()
 
 
 def post_init_hook(env):
@@ -361,3 +351,5 @@ def post_init_hook(env):
     apply_ecf_operational_state(env, enabled=False)
     _hide_fiscal_leftovers(env)
     apply_approval_overlay(env)
+    apply_padron_disabled(env)
+    apply_withholding_catalog(env)

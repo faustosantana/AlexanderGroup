@@ -2,4 +2,9 @@ from . import catalog
 from . import res_company
 from . import res_partner
 from . import ncf_assignment
+from . import ncf_business_rules
+from . import account_move_draft
+from . import withholding_math
 from . import spanish_ui
+from . import sale_order_line
+from . import sale_order

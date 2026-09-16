@@ -38,6 +38,10 @@ class MailComposeMessage(models.TransientModel):
             addr = composer._dx_outgoing_address()
             if addr:
                 composer.email_from = addr
+            company = composer._dx_document_company()
+            if company and "signature" in composer._fields:
+                user_block = "<div>%s</div>" % (composer.env.user.name or "")
+                composer.signature = user_block + company._dx_mail_signature_html()
 
     @api.depends(
         "composition_mode",

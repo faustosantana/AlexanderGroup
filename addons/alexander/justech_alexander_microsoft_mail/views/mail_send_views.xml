@@ -6,9 +6,9 @@
         <field name="inherit_id" ref="account.account_move_send_wizard_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='subject']" position="after">
-                <field name="dx_email_from" readonly="1"/>
-                <field name="dx_reply_to" readonly="1"/>
-                <field name="company_id" readonly="1"/>
+                <field name="dx_email_from" string="Correo remitente (From)" readonly="1"/>
+                <field name="dx_reply_to" string="Responder a (Reply-To)" readonly="1"/>
+                <field name="company_id" string="Empresa del documento" readonly="1"/>
             </xpath>
         </field>
     </record>

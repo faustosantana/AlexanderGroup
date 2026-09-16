@@ -4,4 +4,12 @@
         <field name="key">justech_alexander.ecf_operational_enabled</field>
         <field name="value"></field>
     </record>
+    <record id="ir_config_approval_flow_enabled" model="ir.config_parameter">
+        <field name="key">justech_alexander.approval_flow_enabled</field>
+        <field name="value"></field>
+    </record>
+    <record id="ir_config_dgii_padron_enabled" model="ir.config_parameter">
+        <field name="key">justech_alexander.dgii_padron_enabled</field>
+        <field name="value"></field>
+    </record>
 </odoo>

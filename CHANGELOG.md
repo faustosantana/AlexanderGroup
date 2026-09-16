@@ -6,6 +6,19 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 ## Unreleased
 
 ### Changed
+- Cierre STAGING Alexander: flujo de aprobaciones y padrón DGII
+  desactivados (módulos instalados, histórico intacto). Cancelar/eliminar
+  facturas en borrador vuelve a permisos nativos de Facturación.
+  Catálogo de retenciones RD 2026 (Ley 30-26) por selección manual, sin
+  pisar impuestos legacy 10%/2%/27%. PROD no se toca.
+
+### Added
+- Hallazgos reunión Doralex (DEV/STAGING): precheck READ-ONLY, Formulario
+  Propet opcional, Factura Proforma nativa etiquetada, OC/PO del cliente,
+  conduce por empresa, firma de correo por compañía, CRM etapas en español
+  y columnas de traza ocultas para solo-ventas. PROD no se toca.
+
+### Changed
 - Recibo multi-factura (`multi_invoice_manual_payment_prod` 19.0.1.5.5): un
   solo PDF por `account.payment` con tabla completa (NCF, saldos, pie). No
   modifica `justech_alexander_reports` (QWeb 58). Solo staging Doralex.

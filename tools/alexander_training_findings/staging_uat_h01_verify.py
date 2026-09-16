@@ -1,0 +1,8 @@
+Move = env["account.move"].sudo()
+SO = env["sale.order"].sudo()
+print("so78", SO.search([("name", "ilike", "SO/00078")]).mapped(lambda s: (s.id, s.name, s.company_id.id, s.amount_tax, s.invoice_ids.ids)))
+print("so77", SO.search([("name", "ilike", "SO/00077")]).mapped(lambda s: (s.id, s.name, s.amount_tax)))
+print("itbis16 products", env["product.product"].sudo().search([("default_code", "ilike", "ITBIS16")]).mapped(lambda p: (p.id, p.default_code, p.type)))
+invs = Move.search([("invoice_line_ids.product_id.default_code", "=", "DXUAT-ITBIS16-SVC")])
+print("invs", [(i.id, i.name, i.state, i.amount_tax, i.amount_total, getattr(i, "justech_do_ncf", None)) for i in invs])
+print("pay 572", env["account.payment"].sudo().browse(572).exists() and env["account.payment"].sudo().browse(572).read(["name", "amount", "state"]))

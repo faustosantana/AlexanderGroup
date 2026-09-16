@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form_dx_client_po" model="ir.ui.view">
+        <field name="name">sale.order.form.dx.client.po</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">80</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="client_order_ref" string="Número de Orden de Compra del Cliente" placeholder="Ej. PO-CLIENTE-2026-001"/>
+            </xpath>
+            <xpath expr="//field[@name='client_order_ref']" position="attributes">
+                <attribute name="string">Número de Orden de Compra del Cliente</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_sale_order_tree_dx_client_po" model="ir.ui.view">
+        <field name="name">sale.order.list.dx.client.po</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="priority">80</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="client_order_ref" string="OC / PO del cliente" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_sale_order_search_dx_client_po" model="ir.ui.view">
+        <field name="name">sale.order.search.dx.client.po</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="client_order_ref" string="OC / PO del cliente"/>
+            </xpath>
+            <xpath expr="//search" position="inside">
+                <filter string="Con OC / PO del cliente" name="dx_has_client_po" domain="[('client_order_ref', '!=', False)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Hide purchase/trace columns for sales-only users. Fields stay on the model. -->
+    <record id="view_sale_order_form_dx_hide_trace_cols" model="ir.ui.view">
+        <field name="name">sale.order.form.dx.hide.trace.cols</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="justech_sale_purchase_trace.view_sale_order_form_justech_trace"/>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/list/field[@name='justech_qty_purchased']" position="attributes">
+                <attribute name="optional">hide</attribute>
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='justech_qty_pending_purchase']" position="attributes">
+                <attribute name="optional">hide</attribute>
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='justech_qty_pending_receive']" position="attributes">
+                <attribute name="optional">hide</attribute>
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='justech_supply_state']" position="attributes">
+                <attribute name="optional">hide</attribute>
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='justech_qty_stock_covered']" position="attributes">
+                <attribute name="optional">hide</attribute>
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='justech_qty_received']" position="attributes">
+                <attribute name="optional">hide</attribute>
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='justech_qty_pending_deliver']" position="attributes">
+                <attribute name="optional">hide</attribute>
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='justech_coverage_state']" position="attributes">
+                <attribute name="optional">hide</attribute>
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//page[@name='justech_supply']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_justech_open_purchases']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_justech_open_purchase_coverage']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_user</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

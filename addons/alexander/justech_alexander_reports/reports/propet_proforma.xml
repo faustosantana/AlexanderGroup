@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_propet">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="o" t-value="doc"/>
+                <t t-set="dx_header_identity" t-value="doc.with_context(dx_propet=True)._dx_doc_identity()"/>
+                <t t-call="web.external_layout">
+                    <div class="page dx-page dx-v2">
+                        <div class="dx-composition-wrap">
+                            <t t-set="dx" t-value="doc._dx_sale_propet_compose()"/>
+                            <t t-call="justech_alexander_reports.dx_sale_propet_composition"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_saleorder_propet" model="ir.actions.report">
+        <field name="name">Formato Propet</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">justech_alexander_reports.report_saleorder_propet</field>
+        <field name="report_file">justech_alexander_reports.report_saleorder_propet</field>
+        <field name="print_report_name">'Formato_Propet_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'SO').replace('/', ''))</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="justech_alexander_reports.paperformat_doralex_a4"/>
+    </record>
+
+    <template id="report_invoice_propet">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="o" t-value="doc"/>
+                <t t-set="dx_header_identity" t-value="doc.with_context(dx_propet=True)._dx_doc_identity()"/>
+                <t t-call="web.external_layout">
+                    <div class="page dx-page dx-v2">
+                        <div class="dx-composition-wrap">
+                            <t t-set="dx" t-value="doc._dx_invoice_propet_compose()"/>
+                            <t t-call="justech_alexander_reports.dx_sale_propet_composition"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_invoice_propet" model="ir.actions.report">
+        <field name="name">Formato Propet</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">justech_alexander_reports.report_invoice_propet</field>
+        <field name="report_file">justech_alexander_reports.report_invoice_propet</field>
+        <field name="print_report_name">'Formato_Propet_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'INV').replace('/', ''))</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="justech_alexander_reports.paperformat_doralex_a4"/>
+    </record>
+
+    <template id="report_saleorder_conduce">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="order">
+                <t t-set="pickings" t-value="order._dx_outgoing_pickings()"/>
+                <t t-if="not pickings">
+                    <t t-call="web.external_layout">
+                        <div class="page dx-page dx-v2">
+                            <div class="dx-composition-wrap">
+                                <div class="dx-composition">
+                                    <div class="dx-head-title">CONDUCE</div>
+                                    <p>Este pedido aún no tiene una entrega. El Conduce se imprime cuando exista una transferencia de salida en Inventario.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+                <t t-foreach="pickings" t-as="doc">
+                    <t t-set="o" t-value="doc"/>
+                    <t t-set="dx_header_identity" t-value="doc._dx_doc_identity()"/>
+                    <t t-call="web.external_layout">
+                        <div class="page dx-page dx-v2">
+                            <div class="dx-composition-wrap">
+                                <t t-set="dx" t-value="doc._dx_picking_compose()"/>
+                                <t t-call="justech_alexander_reports.dx_picking_composition"/>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_saleorder_conduce" model="ir.actions.report">
+        <field name="name">Conduce</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">justech_alexander_reports.report_saleorder_conduce</field>
+        <field name="report_file">justech_alexander_reports.report_saleorder_conduce</field>
+        <field name="print_report_name">'Conduce_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'SO').replace('/', ''))</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="justech_alexander_reports.paperformat_doralex_a4"/>
+    </record>
+
+    <!-- Native proforma: Spanish label. ir.actions.report has no context field
+         in Odoo 19; sale.report_saleorder_pro_forma already does
+         docs.with_context(proforma=True). Clear group_ids so an empty
+         sale.group_proforma_sales does not hide the print. -->
+    <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">
+        <field name="name">Factura Proforma</field>
+        <field name="print_report_name">'Proforma_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'SO').replace('/', ''))</field>
+        <field name="paperformat_id" ref="justech_alexander_reports.paperformat_doralex_a4"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="group_ids" eval="[(5, 0, 0)]"/>
+    </record>
+</odoo>

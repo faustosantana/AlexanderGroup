@@ -1,6 +1,7 @@
 from odoo import models
 from odoo.tools.misc import format_amount, format_date
 
+from .propet_math import propet_display_texts, propet_line_amounts
 from .report_layout import count_body_lines, spacer_mm, white_png_data_uri
 
 
@@ -161,8 +162,28 @@ _DX_PICKING_BADGE = {
 class SaleOrderCompose(models.Model):
     _inherit = "sale.order"
 
+    def _dx_is_proforma(self):
+        ctx = self.env.context
+        return bool(
+            ctx.get("proforma") or ctx.get("proforma_invoice") or ctx.get("dx_proforma")
+        )
+
     def _dx_doc_identity(self):
         self.ensure_one()
+        if self.env.context.get("dx_propet"):
+            return {
+                "title": "FORMATO PROPET",
+                "number": self.name or "—",
+                "badge": "",
+                "kicker": self.company_id.dx_trade_name or self.company_id.name,
+            }
+        if self._dx_is_proforma():
+            return {
+                "title": "FACTURA PROFORMA",
+                "number": self.name or "—",
+                "badge": "PROFORMA",
+                "kicker": self.company_id.dx_trade_name or self.company_id.name,
+            }
         quote = self.state in ("draft", "sent")
         return {
             "title": "COTIZACIÓN" if quote else "PEDIDO DE VENTA",
@@ -244,6 +265,7 @@ class SaleOrderCompose(models.Model):
             "payment_term": self.payment_term_id.name if self.payment_term_id else "—",
             "currency": currency.name if currency else "",
             "client_ref": self.client_order_ref or "",
+            "client_ref_label": "Número de Orden de Compra del Cliente",
             "lines": lines,
             "totals": totals,
             "note": self.note or "",
@@ -256,12 +278,92 @@ class SaleOrderCompose(models.Model):
             **_dx_sign_space(lines),
         }
 
+    def _dx_sale_propet_compose(self):
+        """Formato Propet: columnas fiscales con importes nativos de Odoo."""
+        payload = self._dx_sale_compose()
+        payload["ident"] = dict(payload["ident"])
+        if not self._dx_is_proforma():
+            payload["ident"]["title"] = "FORMATO PROPET"
+        currency = self.currency_id
+        propet_lines = []
+        for line in self.order_line:
+            if line.display_type == "line_section":
+                propet_lines.append({"kind": "section", "name": line.name or ""})
+                continue
+            if line.display_type == "line_note":
+                propet_lines.append({"kind": "note", "name": line.name or ""})
+                continue
+            if line.display_type:
+                continue
+            amounts = propet_line_amounts(line)
+            product = line.product_id
+            product_label, description = propet_display_texts(
+                product.name if product else "",
+                product.display_name if product else "",
+                line.name or "",
+            )
+            propet_lines.append(
+                {
+                    "kind": "line",
+                    "product": product_label,
+                    "name": description,
+                    "qty": _dx_qty(amounts["qty"]),
+                    "discount": (
+                        ("%g%%" % amounts["discount"])
+                        if amounts.get("discount")
+                        else "—"
+                    ),
+                    "unit_excl": _dx_money(self.env, amounts["unit_excl"], currency),
+                    "tax": _dx_money(self.env, amounts["tax"], currency),
+                    "unit_incl": _dx_money(self.env, amounts["unit_incl"], currency),
+                    "subtotal": _dx_money(self.env, amounts["subtotal"], currency),
+                    "total": _dx_money(self.env, amounts["total"], currency),
+                    "raw": amounts,
+                }
+            )
+        payload["propet_lines"] = propet_lines
+        payload["lines"] = propet_lines
+        payload["totals"] = [
+            {
+                "label": "Subtotal sin impuesto",
+                "value": _dx_money(self.env, self.amount_untaxed, currency),
+                "grand": False,
+            },
+            {
+                "label": "ITBIS",
+                "value": _dx_money(self.env, self.amount_tax, currency),
+                "grand": False,
+            },
+            {
+                "label": "Total general",
+                "value": _dx_money(self.env, self.amount_total, currency),
+                "grand": True,
+            },
+        ]
+        return payload
+
+    def _dx_outgoing_pickings(self):
+        self.ensure_one()
+        pickings = self.picking_ids
+        return pickings.filtered(lambda p: p.picking_type_code == "outgoing")
+
 
 class AccountMoveCompose(models.Model):
     _inherit = "account.move"
 
     def _dx_doc_identity(self):
         self.ensure_one()
+        if self.env.context.get("dx_propet"):
+            return {
+                "title": "FORMATO PROPET",
+                "number": (
+                    self.name
+                    if self.state == "posted" and self.name and self.name != "/"
+                    else (self.name or "Pendiente")
+                ),
+                "badge": "BORRADOR" if self.state == "draft" else "",
+                "kicker": self.company_id.dx_trade_name or self.company_id.name,
+            }
         refund = self.move_type in ("out_refund", "in_refund")
         dtype = ""
         if (
@@ -390,6 +492,8 @@ class AccountMoveCompose(models.Model):
             "origin_ncf": origin_ncf,
             "origin_move": origin_move,
             "origin": self.invoice_origin or "",
+            "client_ref": self.ref or "",
+            "client_ref_label": "Número de Orden de Compra del Cliente",
             "reason": reason,
             "payment_term": (
                 self.invoice_payment_term_id.name
@@ -415,6 +519,67 @@ class AccountMoveCompose(models.Model):
             **_dx_sign_space(lines, extra_mm=18 if refund else 0),
         }
 
+    def _dx_invoice_propet_compose(self):
+        payload = self._dx_invoice_compose()
+        payload["ident"] = dict(payload["ident"])
+        payload["ident"]["title"] = "FORMATO PROPET"
+        currency = self.currency_id
+        propet_lines = []
+        invoice_lines = self.invoice_line_ids.filtered(
+            lambda l: l.display_type in (False, "product")
+        )
+        for line in invoice_lines:
+            amounts = propet_line_amounts(line)
+            product = line.product_id
+            product_label, description = propet_display_texts(
+                product.name if product else "",
+                product.display_name if product else "",
+                line.name or "",
+            )
+            propet_lines.append(
+                {
+                    "kind": "line",
+                    "product": product_label,
+                    "name": description,
+                    "qty": _dx_qty(amounts["qty"]),
+                    "discount": (
+                        ("%g%%" % amounts["discount"])
+                        if amounts.get("discount")
+                        else "—"
+                    ),
+                    "unit_excl": _dx_money(self.env, amounts["unit_excl"], currency),
+                    "tax": _dx_money(self.env, amounts["tax"], currency),
+                    "unit_incl": _dx_money(self.env, amounts["unit_incl"], currency),
+                    "subtotal": _dx_money(self.env, amounts["subtotal"], currency),
+                    "total": _dx_money(self.env, amounts["total"], currency),
+                    "raw": amounts,
+                }
+            )
+        for line in self.invoice_line_ids.filtered(
+            lambda l: l.display_type == "line_section"
+        ):
+            propet_lines.insert(0, {"kind": "section", "name": line.name or ""})
+        payload["propet_lines"] = propet_lines
+        payload["lines"] = propet_lines
+        payload["totals"] = [
+            {
+                "label": "Subtotal sin impuesto",
+                "value": _dx_money(self.env, self.amount_untaxed, currency),
+                "grand": False,
+            },
+            {
+                "label": "ITBIS",
+                "value": _dx_money(self.env, self.amount_tax, currency),
+                "grand": False,
+            },
+            {
+                "label": "Total general",
+                "value": _dx_money(self.env, self.amount_total, currency),
+                "grand": True,
+            },
+        ]
+        return payload
+
 
 class AccountPaymentCompose(models.Model):
     _inherit = "account.payment"
@@ -426,23 +591,35 @@ class AccountPaymentCompose(models.Model):
         if not move:
             return rows
         pay_lines = move.line_ids.filtered(
-            lambda l: l.account_id.account_type == "asset_receivable"
+            lambda l: l.account_id.account_type
+            in ("asset_receivable", "liability_payable")
         )
         seen = set()
         for line in pay_lines:
-            for partial in line.matched_debit_ids:
-                inv_line = partial.debit_move_id
+            partials = line.matched_debit_ids | line.matched_credit_ids
+            for partial in partials:
+                inv_line = (
+                    partial.debit_move_id
+                    if partial.debit_move_id.move_id != move
+                    else partial.credit_move_id
+                )
                 inv = inv_line.move_id
-                if not inv or inv.id in seen:
+                if not inv or inv.id in seen or inv == move:
                     continue
                 seen.add(inv.id)
                 applied_amt = abs(partial.amount or 0.0)
-                if (
-                    line.currency_id
-                    and "credit_amount_currency" in partial._fields
-                    and partial.credit_amount_currency
-                ):
-                    applied_amt = abs(partial.credit_amount_currency)
+                if line.currency_id:
+                    if (
+                        partial.credit_move_id == line
+                        and "debit_amount_currency" in partial._fields
+                        and partial.debit_amount_currency
+                    ):
+                        applied_amt = abs(partial.debit_amount_currency)
+                    elif (
+                        "credit_amount_currency" in partial._fields
+                        and partial.credit_amount_currency
+                    ):
+                        applied_amt = abs(partial.credit_amount_currency)
                 ncf = ""
                 if "justech_do_ncf" in inv._fields:
                     ncf = inv.justech_do_ncf or ""
@@ -466,6 +643,40 @@ class AccountPaymentCompose(models.Model):
                     }
                 )
         return rows
+
+    def _dx_payment_withholding_breakdown(self):
+        """ISR / ITBIS / otras desde líneas reales del pago. No recalcula."""
+        self.ensure_one()
+        currency = self.currency_id
+        rows = []
+        isr = itbis = other = 0.0
+        if "justech_withholding_line_ids" not in self._fields:
+            return rows, isr, itbis, other
+        for wh in self.justech_withholding_line_ids:
+            amount = float(wh.amount or 0.0)
+            wtype = (wh.withholding_type or "").lower()
+            if wtype == "isr":
+                isr += amount
+                kind = "ISR retenido"
+            elif wtype == "itbis":
+                itbis += amount
+                kind = "ITBIS retenido"
+            else:
+                other += amount
+                kind = "Otras retenciones"
+            rows.append(
+                {
+                    "kind": kind,
+                    "label": wh.label or wh.withholding_code or kind,
+                    "code": wh.withholding_code or "",
+                    "base_label": wh.base_label or "",
+                    "base": _dx_money(self.env, wh.base_amount, currency),
+                    "rate": wh.rate,
+                    "amount": _dx_money(self.env, amount, currency),
+                    "amount_num": amount,
+                }
+            )
+        return rows, isr, itbis, other
 
     def _dx_doc_identity(self):
         self.ensure_one()
@@ -497,11 +708,28 @@ class AccountPaymentCompose(models.Model):
                 self.partner_bank_id.bank_id.name or bank,
                 self.partner_bank_id.acc_number or "",
             )
+        vendor = self.partner_type == "supplier"
+        wh_rows, isr_amt, itbis_amt, other_amt = (
+            self._dx_payment_withholding_breakdown()
+        )
+        wh_total = float(
+            self.justech_withholding_total
+            if "justech_withholding_total" in self._fields
+            and self.justech_withholding_total
+            else (isr_amt + itbis_amt + other_amt)
+        )
+        net_num = float(
+            self.justech_net_transfer
+            if "justech_net_transfer" in self._fields and self.justech_net_transfer
+            else (float(self.amount or 0.0) - wh_total)
+        )
+        gross_num = float(self.amount or 0.0)
+        if vendor and wh_total and abs(gross_num - net_num) < 0.01:
+            gross_num = net_num + wh_total
         amount_words = ""
         try:
-            amount_words = currency.with_context(lang="es_DO").amount_to_text(
-                self.amount
-            )
+            spoken = net_num if vendor else float(self.amount or 0.0)
+            amount_words = currency.with_context(lang="es_DO").amount_to_text(spoken)
         except Exception:
             amount_words = ""
         return {
@@ -509,7 +737,7 @@ class AccountPaymentCompose(models.Model):
             "layout": _dx_layout(company),
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.date),
-            "amount": _dx_money(self.env, self.amount, currency),
+            "amount": _dx_money(self.env, net_num if vendor else self.amount, currency),
             "amount_words": amount_words,
             "currency": currency.name if currency else "",
             "method": method or "—",
@@ -517,12 +745,30 @@ class AccountPaymentCompose(models.Model):
             "reference": self.memo or "",
             "applied": applied,
             "unapplied": not bool(applied),
+            "withholding": _dx_money(self.env, wh_total, currency) if wh_total else "",
+            "withholding_rows": wh_rows,
+            "isr_withheld": _dx_money(self.env, isr_amt, currency) if isr_amt else "",
+            "itbis_withheld": (
+                _dx_money(self.env, itbis_amt, currency) if itbis_amt else ""
+            ),
+            "other_withheld": (
+                _dx_money(self.env, other_amt, currency) if other_amt else ""
+            ),
+            "gross_amount": _dx_money(self.env, gross_num, currency),
+            "net_paid": _dx_money(self.env, net_num, currency),
+            "total_applied": _dx_money(self.env, gross_num, currency),
+            "net_received": _dx_money(self.env, net_num, currency) if net_num else "",
+            "is_vendor": vendor,
+            "amount_label": "Neto pagado" if vendor else "Monto recibido",
             "banks": _dx_banks(company) if company.dx_report_show_bank else [],
             "terms": (
-                "Este documento es un comprobante de ingreso. "
+                "Este documento es un comprobante de pago. "
+                "No sustituye factura con NCF."
+                if vendor
+                else "Este documento es un comprobante de ingreso. "
                 "No sustituye factura con NCF."
             ),
-            "party_title": "Recibido de",
+            "party_title": "Pagado a" if vendor else "Recibido de",
             "show_signature": bool(company.dx_report_show_signature),
             "sign_left": "Recibido por",
             "sign_right": "Entregado por",
@@ -634,7 +880,7 @@ class StockPickingCompose(models.Model):
         self.ensure_one()
         incoming = self.picking_type_code == "incoming"
         return {
-            "title": "RECEPCIÓN" if incoming else "ENTREGA",
+            "title": "RECEPCIÓN" if incoming else "CONDUCE",
             "number": self.name or "—",
             "badge": _DX_PICKING_BADGE.get(self.state or "", ""),
             "kicker": self.company_id.dx_trade_name or self.company_id.name,
@@ -655,8 +901,16 @@ class StockPickingCompose(models.Model):
         lines = []
         moves = self.move_ids if "move_ids" in self._fields else self.move_lines
         for move in moves:
-            name = (
-                move.product_id.display_name if move.product_id else (move.name or "")
+            product = move.product_id
+            move_desc = ""
+            if "description_picking" in move._fields:
+                move_desc = move.description_picking or ""
+            elif "description" in move._fields:
+                move_desc = move.description or ""
+            product_label, description = propet_display_texts(
+                product.name if product else "",
+                product.display_name if product else "",
+                move_desc,
             )
             uom = ""
             if "product_uom" in move._fields and move.product_uom:
@@ -666,7 +920,8 @@ class StockPickingCompose(models.Model):
             lines.append(
                 {
                     "kind": "line",
-                    "name": name,
+                    "product": product_label,
+                    "name": description or product_label,
                     "qty": _dx_qty(move.product_uom_qty),
                     "done": _dx_qty(self._dx_move_done_qty(move)),
                     "uom": uom,
@@ -688,8 +943,31 @@ class StockPickingCompose(models.Model):
             "company_phone": company.phone or "",
             "partner": _dx_partner_lines(partner) if partner else {"name": "—"},
             "party_title": party_title,
-            "date": _dx_date(self.env, self.scheduled_date or self.date_done),
+            "date": _dx_date(self.env, self.date_done or self.scheduled_date),
             "origin": self.origin or "",
+            "sale_order": (
+                self.sale_id.name
+                if "sale_id" in self._fields and self.sale_id
+                else (self.origin or "")
+            ),
+            "delivery_street": (
+                ", ".join(
+                    p
+                    for p in [
+                        partner.street,
+                        partner.street2,
+                        partner.city,
+                    ]
+                    if partner and p
+                )
+                if partner
+                else ""
+            ),
+            "carrier": (
+                self.carrier_id.display_name
+                if "carrier_id" in self._fields and self.carrier_id
+                else ""
+            ),
             "lines": lines,
             "note": self.note or "",
             "terms": "",
