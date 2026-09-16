@@ -656,13 +656,13 @@
         <div t-attf-class="dx-composition dx-comp-payment dx-comp-{{ dx.get('layout') or 'dor' }} dx-page-stack">
             <t t-call="justech_alexander_reports.dx_pin_doc_title"/>
             <div class="dx-amount-hero-wrap">
-                <div class="dx-amount-label">Monto recibido</div>
+                <div class="dx-amount-label" t-out="dx.get('amount_label') or 'Monto recibido'"/>
                 <div class="dx-amount-hero" t-out="dx['amount']"/>
                 <div t-if="dx.get('amount_words')" class="dx-amount-words">Son: <t t-out="dx['amount_words']"/></div>
             </div>
             <div class="dx-pay-detail">
                 <div class="dx-pay-who">
-                    <div class="dx-card-title">Recibido de</div>
+                    <div class="dx-card-title" t-out="dx.get('party_title') or 'Recibido de'"/>
                     <div class="dx-card-name" t-out="dx['partner']['name']"/>
                     <div t-if="dx['partner'].get('vat')">RNC <t t-out="dx['partner']['vat']"/></div>
                     <div t-if="dx['partner'].get('street')" t-out="dx['partner']['street']"/>
@@ -688,16 +688,55 @@
                         <div class="dx-meta-k">Referencia</div>
                         <div class="dx-meta-v" t-out="dx['reference']"/>
                     </div>
-                    <div class="dx-pay-meta-col" t-if="dx.get('withholding')">
-                        <div class="dx-meta-k">Retenciones</div>
-                        <div class="dx-meta-v" t-out="dx['withholding']"/>
+                    <div class="dx-pay-meta-col" t-if="dx.get('gross_amount')">
+                        <div class="dx-meta-k">Monto bruto</div>
+                        <div class="dx-meta-v" t-out="dx['gross_amount']"/>
                     </div>
-                    <div class="dx-pay-meta-col" t-if="dx.get('net_received')">
-                        <div class="dx-meta-k">Pago recibido</div>
-                        <div class="dx-meta-v" t-out="dx['net_received']"/>
+                    <div class="dx-pay-meta-col" t-if="dx.get('isr_withheld')">
+                        <div class="dx-meta-k">ISR retenido</div>
+                        <div class="dx-meta-v" t-out="dx['isr_withheld']"/>
+                    </div>
+                    <div class="dx-pay-meta-col" t-if="dx.get('itbis_withheld')">
+                        <div class="dx-meta-k">ITBIS retenido</div>
+                        <div class="dx-meta-v" t-out="dx['itbis_withheld']"/>
+                    </div>
+                    <div class="dx-pay-meta-col" t-if="dx.get('other_withheld')">
+                        <div class="dx-meta-k">Otras retenciones</div>
+                        <div class="dx-meta-v" t-out="dx['other_withheld']"/>
+                    </div>
+                    <div class="dx-pay-meta-col" t-if="dx.get('net_paid')">
+                        <div class="dx-meta-k">Neto pagado</div>
+                        <div class="dx-meta-v" t-out="dx['net_paid']"/>
+                    </div>
+                    <div class="dx-pay-meta-col" t-if="dx.get('total_applied')">
+                        <div class="dx-meta-k">Total aplicado</div>
+                        <div class="dx-meta-v" t-out="dx['total_applied']"/>
                     </div>
                 </div>
             </div>
+            <t t-if="dx.get('withholding_rows')">
+                <div class="dx-block-title">Retenciones</div>
+                <table t-attf-class="dx-lines dx-applied dx-table-{{ dx.get('layout') or 'dor' }}" border="0" cellpadding="0" cellspacing="0" frame="void" rules="none">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Regla</th>
+                            <th>Base</th>
+                            <th class="dx-col-amt">Tasa</th>
+                            <th class="dx-col-amt">Retención</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="dx['withholding_rows']" t-as="wh">
+                            <td t-out="wh['kind']"/>
+                            <td><t t-out="wh['code']"/> <t t-out="wh['label']"/></td>
+                            <td><t t-out="wh['base_label']"/> <t t-out="wh['base']"/></td>
+                            <td class="dx-money" t-out="wh['rate']"/>
+                            <td class="dx-money" t-out="wh['amount']"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </t>
             <t t-if="dx.get('unapplied')">
                 <div class="dx-unapplied">PAGO NO APLICADO / ANTICIPO</div>
                 <p class="dx-unapplied-help">Este cobro no está aplicado a facturas. Queda como anticipo a favor del cliente.</p>

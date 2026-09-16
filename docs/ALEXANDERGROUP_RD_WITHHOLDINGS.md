@@ -109,9 +109,104 @@ Wizard `justech.payment.partner.wizard`: el usuario marca facturas y
 **elige** `withholding_catalog_ids`. `apply` default False. Muestra
 base, tasa y monto. No se retiene por ser PF/PJ.
 
-## 7. Límite STAGING
+## 7. Circuito contable STAGING (2026-09-16)
 
-Publicar factura de proveedor exige tipo 606 + NCF proveedor + comprobante
-**B11/B13/B17 emitido por la empresa**. En Doralex (id 11) solo hay rangos
-activos B01 y B15. **No se creó rango B11.** Por eso el pago real con
-asiento de retención quedó BLOCKED; el cálculo del catálogo sí se validó.
+Empresa UAT: **INVERSIONES DORALEX,S.RL.** (id 11). **PROD no tocado.**
+
+Arquitectura Justech: compras **recibidas** (NCF del proveedor, LATAM B01)
+no consumen rango de la empresa. Compras **emitidas** (informal PF) consumen
+**B11** de la empresa. B13 (gastos menores) y B17 (exterior) **no** se
+crearon: no aplican a estos casos.
+
+| Escenario | Tipo NCF | Documento | Pago | Retención | Residual |
+| --- | --- | --- | --- | --- | --- |
+| PF profesional + ITBIS 100 | B11 emitido `B1199111001` | `BILL/2026/09/0001` 118 000 | `PBNK1/2026/00082` banco 85 000 | ISR 15 000 + ITBIS 18 000 | 0 |
+| PF técnico 15%×20% | B11 emitido `B1199111002` | `BILL/2026/09/0002` 118 000 | `PBNK1/2026/00083` banco 115 000 | ISR 3 000 | 0 |
+| Estado 5% | B01 recibido `B0188000011` | `BILL/2026/09/0003` 118 000 | banco 113 000 | ISR 5 000 | 0 |
+| ITBIS 30% PJ | B01 recibido `B0188000012` | `BILL/2026/09/0004` 118 000 | banco 112 600 | ITBIS 5 400 (nunca 30 000) | 0 |
+| Multi A/B/C + WH | B11 `B1199111003–005` | 118 000 / 59 000 / 29 500 | `PBNK1/2026/00086` 148 750 | 57 750 | 0/0/0 |
+| Parcial ITBIS 30 | B01 recibido | `BILL/2026/09/0008` | 56 300 + 56 300 | 2 700 + 2 700 | 0 |
+
+### Técnico — desglose visible
+
+Catálogo `DX-ISR-TEC-PF-15` (`dx_presumed_income_pct=20`, `rate=15`):
+
+| Campo | Valor |
+| --- | --- |
+| BASE ORIGINAL | 100 000 |
+| BASE SUJETA/PRESUNTA | 20 000 (20% del bruto) |
+| TASA | 15% |
+| RETENCIÓN | 3 000 |
+| `base_label` | Base presunta (20% del bruto) |
+
+El usuario no ve solo «3%»: ve base presunta 20 000 × 15%.
+
+### Asientos de pago (COMPANY / RULE / ACCOUNT / DEBIT / CREDIT / BALANCE)
+
+INVERSIONES DORALEX — `PBNK1/2026/00082` (PF + ITBIS 100):
+
+| RULE | ACCOUNT CODE | ACCOUNT NAME | DEBIT | CREDIT | BALANCE |
+| --- | --- | --- | --- | --- | --- |
+| Banco / outstanding BNK1 | 11010204 | Outstanding Payments | 0 | 85 000 | −85 000 |
+| CxP proveedor | 21010200 | Accounts Payable to Local Suppliers | 118 000 | 0 | 118 000 |
+| ISR profesional | 21030308 | Other Withholdings (N07-07) | 0 | 15 000 | −15 000 |
+| ITBIS 100 PF | 21030202 | ITBIS Withheld from Individuals (R293-11) | 0 | 18 000 | −18 000 |
+
+ITBIS 30 PJ — cuenta **21030201** ITBIS Withheld from Legal Entity (N02-05),
+haber 5 400. Técnico/Estado — misma 21030308, haber 3 000 / 5 000.
+Factura de compra: 51010100 Cost of Goods 100 000 / 11080101 ITBIS Paid on
+Purchases 18 000 / 21010200 CxP 118 000.
+
+Odoo 19 deja el banco en **Outstanding Payments** del diario BNK1
+(`payment_state=in_process`) hasta extracto. No es write-off ni asiento
+manual. Conciliación: `account.partial.reconcile` sobre CxP; residual 0.
+
+### Pago parcial — cómo Odoo prorratea
+
+Fórmula del módulo: retención × (`amount_to_pay` / `amount_total`).
+Factura 118 000, ITBIS 30% = 5 400.
+
+| Pago | Aplicado | Retención reconocida | Banco | Residual |
+| --- | --- | --- | --- | --- |
+| 1 | 59 000 | 2 700 | 56 300 | 59 000 |
+| 2 | 59 000 | 2 700 | 56 300 | 0 |
+| Total | 118 000 | 5 400 | 112 600 | 0 |
+
+El wizard puede mostrar base ITBIS 18 000 en ambos tramos; el **monto**
+retenido sí es la mitad. No se modificó el motor.
+
+### Recibo
+
+`justech_alexander_reports` **19.0.3.9.1** (bug UAT: el compose solo leía
+CxC y marcaba pagos a proveedor como no aplicados). Ahora el PDF muestra
+factura, bruto, ISR, ITBIS, otras, neto y total aplicado.
+Evidencia: `PBNK1/2026/00082` HTML/PDF; multi `PBNK1/2026/00086` 3 facturas.
+
+### Impuestos legacy (−10% / −2% / −27%)
+
+Siguen activos. **No se modificaron.** En facturas UAT nuevas solo se
+asignó `18% ITBIS`. No son default. No interfieren con DX-*.
+
+Recomendación futura (NO ejecutar):
+
+| Impuesto | Recomendación |
+| --- | --- |
+| −10% ISR Fee / Rent. | ARCHIVE (histórico) → MIGRATE a DX-ISR-PROF / ALQ |
+| −2% ISR (N07-07) | ARCHIVE → MIGRATE a DX-ISR-TEC-PF-15 |
+| −27% ISR (L253-12) | KEEP para residual Art. 305; no default |
+| −30% ITBIS (−5.4) | ARCHIVE → usar DX-ITBIS-30-PJ (base ITBIS) |
+
+## 8. Rangos NCF STAGING/UAT (solo empresa 11)
+
+Históricos **no** reactivados. B01 Excel 52–87 y B15 141–160 intactos.
+
+| COMPANY | TIPO | USO | RANGO ACTUAL | ESTADO | UAT | INICIAL | FINAL | RIESGO |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| DOR 11 | B04 | NC ventas H01 | RNG 14 99110001–050 | cancelled | RNG 34 99114001–050 auth STAGING-UAT-NO-DGII-20260916 | 99114001 | 99114050 | Bajo |
+| DOR 11 | B11 | Compras informal PF | ninguno | no existía | RNG 35 99111001–150 misma auth | 99111001 | 99111150 | Medio (use_ncf en BILL) |
+| DOR 11 | B13 | Gastos menores | — | no crear | — | — | — | No aplica |
+| DOR 11 | B17 | Exterior | — | no crear | — | — | — | Catálogo solo |
+| DOR 11 | B01 recibido | PJ / Estado | N/A | N/A | NCF proveedor UAT `B01880000xx` | — | — | No consume rango empresa |
+
+**NO copiar estos rangos a PROD.** PROD debe auditar secuencias reales
+DGII por empresa antes del GO.

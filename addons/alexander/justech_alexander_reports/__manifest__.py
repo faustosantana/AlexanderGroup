@@ -1,6 +1,6 @@
 {
     "name": "Diseño de reportes Doralex",
-    "version": "19.0.3.9.0",
+    "version": "19.0.3.9.1",
     "category": "Reporting",
     "summary": "V5.4: Formulario Propet, proforma nativa y conduce por empresa",
     "description": "Formulario Propet opcional, Factura Proforma nativa etiquetada, OC/PO del cliente y conduce. No cambia fiscalidad ni el PDF estándar por defecto.",

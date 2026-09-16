@@ -504,23 +504,35 @@ class AccountPaymentCompose(models.Model):
         if not move:
             return rows
         pay_lines = move.line_ids.filtered(
-            lambda l: l.account_id.account_type == "asset_receivable"
+            lambda l: l.account_id.account_type
+            in ("asset_receivable", "liability_payable")
         )
         seen = set()
         for line in pay_lines:
-            for partial in line.matched_debit_ids:
-                inv_line = partial.debit_move_id
+            partials = line.matched_debit_ids | line.matched_credit_ids
+            for partial in partials:
+                inv_line = (
+                    partial.debit_move_id
+                    if partial.debit_move_id.move_id != move
+                    else partial.credit_move_id
+                )
                 inv = inv_line.move_id
-                if not inv or inv.id in seen:
+                if not inv or inv.id in seen or inv == move:
                     continue
                 seen.add(inv.id)
                 applied_amt = abs(partial.amount or 0.0)
-                if (
-                    line.currency_id
-                    and "credit_amount_currency" in partial._fields
-                    and partial.credit_amount_currency
-                ):
-                    applied_amt = abs(partial.credit_amount_currency)
+                if line.currency_id:
+                    if (
+                        partial.credit_move_id == line
+                        and "debit_amount_currency" in partial._fields
+                        and partial.debit_amount_currency
+                    ):
+                        applied_amt = abs(partial.debit_amount_currency)
+                    elif (
+                        "credit_amount_currency" in partial._fields
+                        and partial.credit_amount_currency
+                    ):
+                        applied_amt = abs(partial.credit_amount_currency)
                 ncf = ""
                 if "justech_do_ncf" in inv._fields:
                     ncf = inv.justech_do_ncf or ""
@@ -544,6 +556,40 @@ class AccountPaymentCompose(models.Model):
                     }
                 )
         return rows
+
+    def _dx_payment_withholding_breakdown(self):
+        """ISR / ITBIS / otras desde líneas reales del pago. No recalcula."""
+        self.ensure_one()
+        currency = self.currency_id
+        rows = []
+        isr = itbis = other = 0.0
+        if "justech_withholding_line_ids" not in self._fields:
+            return rows, isr, itbis, other
+        for wh in self.justech_withholding_line_ids:
+            amount = float(wh.amount or 0.0)
+            wtype = (wh.withholding_type or "").lower()
+            if wtype == "isr":
+                isr += amount
+                kind = "ISR retenido"
+            elif wtype == "itbis":
+                itbis += amount
+                kind = "ITBIS retenido"
+            else:
+                other += amount
+                kind = "Otras retenciones"
+            rows.append(
+                {
+                    "kind": kind,
+                    "label": wh.label or wh.withholding_code or kind,
+                    "code": wh.withholding_code or "",
+                    "base_label": wh.base_label or "",
+                    "base": _dx_money(self.env, wh.base_amount, currency),
+                    "rate": wh.rate,
+                    "amount": _dx_money(self.env, amount, currency),
+                    "amount_num": amount,
+                }
+            )
+        return rows, isr, itbis, other
 
     def _dx_doc_identity(self):
         self.ensure_one()
@@ -575,11 +621,28 @@ class AccountPaymentCompose(models.Model):
                 self.partner_bank_id.bank_id.name or bank,
                 self.partner_bank_id.acc_number or "",
             )
+        vendor = self.partner_type == "supplier"
+        wh_rows, isr_amt, itbis_amt, other_amt = (
+            self._dx_payment_withholding_breakdown()
+        )
+        wh_total = float(
+            self.justech_withholding_total
+            if "justech_withholding_total" in self._fields
+            and self.justech_withholding_total
+            else (isr_amt + itbis_amt + other_amt)
+        )
+        net_num = float(
+            self.justech_net_transfer
+            if "justech_net_transfer" in self._fields and self.justech_net_transfer
+            else (float(self.amount or 0.0) - wh_total)
+        )
+        gross_num = float(self.amount or 0.0)
+        if vendor and wh_total and abs(gross_num - net_num) < 0.01:
+            gross_num = net_num + wh_total
         amount_words = ""
         try:
-            amount_words = currency.with_context(lang="es_DO").amount_to_text(
-                self.amount
-            )
+            spoken = net_num if vendor else float(self.amount or 0.0)
+            amount_words = currency.with_context(lang="es_DO").amount_to_text(spoken)
         except Exception:
             amount_words = ""
         return {
@@ -587,7 +650,7 @@ class AccountPaymentCompose(models.Model):
             "layout": _dx_layout(company),
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.date),
-            "amount": _dx_money(self.env, self.amount, currency),
+            "amount": _dx_money(self.env, net_num if vendor else self.amount, currency),
             "amount_words": amount_words,
             "currency": currency.name if currency else "",
             "method": method or "—",
@@ -595,23 +658,30 @@ class AccountPaymentCompose(models.Model):
             "reference": self.memo or "",
             "applied": applied,
             "unapplied": not bool(applied),
-            "withholding": (
-                _dx_money(self.env, self.justech_withholding_total, currency)
-                if "justech_withholding_total" in self._fields
-                and self.justech_withholding_total
-                else ""
+            "withholding": _dx_money(self.env, wh_total, currency) if wh_total else "",
+            "withholding_rows": wh_rows,
+            "isr_withheld": _dx_money(self.env, isr_amt, currency) if isr_amt else "",
+            "itbis_withheld": (
+                _dx_money(self.env, itbis_amt, currency) if itbis_amt else ""
             ),
-            "net_received": (
-                _dx_money(self.env, self.justech_net_transfer, currency)
-                if "justech_net_transfer" in self._fields and self.justech_net_transfer
-                else ""
+            "other_withheld": (
+                _dx_money(self.env, other_amt, currency) if other_amt else ""
             ),
+            "gross_amount": _dx_money(self.env, gross_num, currency),
+            "net_paid": _dx_money(self.env, net_num, currency),
+            "total_applied": _dx_money(self.env, gross_num, currency),
+            "net_received": _dx_money(self.env, net_num, currency) if net_num else "",
+            "is_vendor": vendor,
+            "amount_label": "Neto pagado" if vendor else "Monto recibido",
             "banks": _dx_banks(company) if company.dx_report_show_bank else [],
             "terms": (
-                "Este documento es un comprobante de ingreso. "
+                "Este documento es un comprobante de pago. "
+                "No sustituye factura con NCF."
+                if vendor
+                else "Este documento es un comprobante de ingreso. "
                 "No sustituye factura con NCF."
             ),
-            "party_title": "Recibido de",
+            "party_title": "Pagado a" if vendor else "Recibido de",
             "show_signature": bool(company.dx_report_show_signature),
             "sign_left": "Recibido por",
             "sign_right": "Entregado por",

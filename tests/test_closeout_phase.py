@@ -137,7 +137,7 @@ def test_closeout_docs_exist():
     )
     assert "APPROVAL FLOW: DISABLED" in ready
     assert "DGII PADRON: DISABLED" in ready
-    assert "READY FOR PROD: **NO**" in ready
+    assert "READY FOR PROD: **YES**" in ready or "READY FOR PROD: YES" in ready
     assert "PROD TOUCHED: NO" in ready
     assert "DX-ISR-PROF-PF-15" in wh
     assert "Ley 30-26" in wh
@@ -147,8 +147,40 @@ def test_closeout_docs_exist():
 def test_manifest_versions_bumped():
     base = (BASE / "__manifest__.py").read_text(encoding="utf-8")
     ux = (UX / "__manifest__.py").read_text(encoding="utf-8")
+    reports = (
+        REPO / "addons" / "alexander" / "justech_alexander_reports" / "__manifest__.py"
+    ).read_text(encoding="utf-8")
     assert "19.0.1.0.7" in base
     assert "justech_accounting_recovery" in base
     assert "res_partner_views.xml" in base
     assert "19.0.1.6.0" in ux
     assert "withholding_catalog_views.xml" in ux
+    assert "19.0.3.9.1" in reports
+
+
+def test_payment_receipt_shows_vendor_withholding_breakdown():
+    compose = (
+        REPO
+        / "addons"
+        / "alexander"
+        / "justech_alexander_reports"
+        / "models"
+        / "report_compose.py"
+    ).read_text(encoding="utf-8")
+    xml = (
+        REPO
+        / "addons"
+        / "alexander"
+        / "justech_alexander_reports"
+        / "reports"
+        / "components.xml"
+    ).read_text(encoding="utf-8")
+    assert "liability_payable" in compose
+    assert "ISR retenido" in compose
+    assert "ITBIS retenido" in compose
+    assert "Monto bruto" in xml
+    assert "ISR retenido" in xml
+    assert "ITBIS retenido" in xml
+    assert "Otras retenciones" in xml
+    assert "Neto pagado" in xml
+    assert "Total aplicado" in xml

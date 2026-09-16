@@ -252,7 +252,7 @@ resuelve `document.company_id`, no solo `env.company`.
 | MULTICOMPANY | firmas/from/conduce OK |
 | ROLLBACK TESTED | YES (temp `doralex_restore_test_20260916`, drop OK) |
 | PROD TOUCHED | NO |
-| READY FOR PROD | **NO** |
+| READY FOR PROD | **YES** (código + UAT fiscal STAGING; no desplegar) |
 
 ## 14. Cierre 2026-09-16 (aprobaciones/padrón OFF + retenciones)
 
@@ -265,9 +265,60 @@ Ver `docs/ALEXANDERGROUP_PRODUCTION_READINESS.md` y
 | H09 | DISABLED | Cron 31 OFF. `INV/2026/00074` con partner `pending_new`. Botón Validar oculto. |
 | H07/H10 | PASS | Usuario Facturación cancela/elimina borrador. Posted exige Recovery. |
 | H13 | PARTIAL | Catálogo DX-* 19 reglas. 15%/3%/5%/30%/100% OK. Pago publicado BLOCKED (sin B11). |
-| H01 NC | PASS* | Draft 1000/160/1160. Post: B04 cancelado. |
+| H01 NC | PARTIAL — CALCULATION PASS / POSTING BLOCKED | Draft 1000/160/1160. Post: B04 cancelado (antes del rango UAT). |
 | H04 | PASS | Usuario solo Ventas `DOR/SO/00095`; desactivado. |
 | RESTORE | YES | TOC 33983; 1761 tablas; 754 files; drop solo temp. |
 
-Overlay STAGING: base **19.0.1.0.7**, ux **19.0.1.6.0**.
+Overlay STAGING: base **19.0.1.0.7**, ux **19.0.1.6.0**, reports **19.0.3.9.1**.
 Backup pre-cierre: `pre_alexander_closeout_20260916_185959`.
+
+## 15. Cierre fiscal final STAGING (2026-09-16)
+
+Solo config NCF UAT + circuito contable. Sin desarrollo funcional salvo
+bug de recibo (compose CxC-only) demostrado al renderizar el pago
+proveedor.
+
+### Rangos creados (STAGING/UAT, empresa 11)
+
+| COMPANY | TIPO | USO | ACTUAL | ESTADO | PROPUESTO | INI | FIN | RIESGO |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| INVERSIONES DORALEX | B04 | NC H01 | RNG 14 99110001–050 | cancelled | RNG 34 99114001–050 | 99114001 | 99114050 | Bajo |
+| INVERSIONES DORALEX | B11 | Informal PF | ninguno | — | RNG 35 99111001–150 | 99111001 | 99111150 | Medio |
+| — | B13 / B17 | — | — | no crear | — | — | — | No aplica |
+
+Auth: `STAGING-UAT-NO-DGII-20260916`. Históricos 13/14/29/30 intactos.
+Diario BILL `justech_do_use_ncf=True` para emisión B11. B13/B17 emission
+config = `no_range`.
+
+### Matriz TEST / RESULT / DOCUMENT / ENTRY / PAYMENT / RETENTION / RESIDUAL
+
+| TEST | RESULT | DOCUMENT | ENTRY | PAYMENT | RETENTION | RESIDUAL | EVIDENCE |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| H01 CREDIT NOTE POSTED | PASS | `RINV/2026/00001` B0499114001 origin B0100000054 | 41010100 1000 D / 21030102 160 D / 11030201 1160 C | concilia INV/2026/00067 | n/a | 0 / 0 | e2e H01_* |
+| ISR PROF CALC | PASS | wizard | — | — | 15 000 | — | WIZLINE |
+| ISR PROF E2E | PASS | `BILL/2026/09/0001` B11 | pago 11010204 85k / CxP 118k / 21030308 15k / 21030202 18k | `PBNK1/2026/00082` | 33 000 | 0 | AML PF_* |
+| ISR TEC CALC | PASS | wizard base presunta 20 000 × 15% | — | — | 3 000 | — | base_label |
+| ISR TEC E2E | PASS | `BILL/2026/09/0002` B11 | 21030308 3 000 | `PBNK1/2026/00083` | 3 000 | 0 | TEC_* |
+| GOV 5 CALC | PASS | wizard | — | — | 5 000 | — | |
+| GOV 5 E2E | PASS | `BILL/2026/09/0003` B01 recibido | 21030308 5 000 | banco 113 000 | 5 000 | 0 | |
+| ITBIS 30 CALC | PASS | 18 000 × 30% = 5 400 | — | — | 5 400 | — | no 30 000 |
+| ITBIS 30 E2E | PASS | `BILL/2026/09/0004` B01 recibido | 21030201 5 400 | banco 112 600 | 5 400 | 0 | |
+| ITBIS 100 CALC/E2E | PASS | mismo PF | 21030202 18 000 | con ISR | 18 000 | 0 | |
+| MULTI WH | PASS | A/B/C B11 | un asiento 148 750 + 57 750 | `PBNK1/2026/00086` | 57 750 | 0/0/0 | |
+| RECEIPT | PASS | PDF 34 560 B | — | 82 y 86 | ISR+ITBIS visibles | — | reports 19.0.3.9.1 |
+| PARTIAL | PASS | `BILL/2026/09/0008` | 2 700 + 2 700 | 56 300 × 2 | 5 400 | 0 | prorrateo |
+| ACCOUNT MAP | PASS | l10n_do existentes | ver retenciones doc | — | — | — | |
+| LEGACY | PASS | −10/−2/−27 activos | no auto | — | no DX | — | KEEP/ARCHIVE/MIGRATE |
+| EMAIL APP | PASS | SMTP invalid / Graph empty | — | — | — | — | código |
+| EMAIL LIVE | PROD CONFIG REQUIRED | — | — | — | — | — | no secretos |
+| TESTS | PASS | pytest | — | — | — | — | 205+ |
+| RESTORE | PASS | no repetido | — | — | — | — | temp 20260916 |
+| PROD | UNTOUCHED | — | — | — | — | — | container 8 days |
+
+H01 CREDIT NOTE ACCOUNTING: motor Odoo (no importes hardcode). Original
+1 000/160/1 160; NC debe 1 000 ventas + 160 ITBIS, haber CxC 1 160;
+`payment_state` reversed/paid; partner `DXUAT CLIENTE PAGOS`; tags
+`base.16%` / `tax.16%`.
+
+EMAIL APPLICATION LOGIC: PASS.
+EMAIL LIVE DELIVERY: PROD CONFIGURATION REQUIRED.
