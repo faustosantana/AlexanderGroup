@@ -14,6 +14,16 @@
                                  help="Off por defecto. No desinstala e-CF ni DGII; solo oculta menús y detiene colas.">
                             <field name="justech_ecf_operational_enabled"/>
                         </setting>
+                        <setting id="justech_approval_flow_setting"
+                                 string="Flujo de aprobaciones Alexander"
+                                 help="Off. Cotización → editar → confirmar usa Ventas nativo. Histórico conservado.">
+                            <field name="justech_approval_flow_enabled"/>
+                        </setting>
+                        <setting id="justech_dgii_padron_setting"
+                                 string="Padrón DGII"
+                                 help="Off. Cron detenido. No valida RNC contra padrón ni bloquea contactos/facturas.">
+                            <field name="justech_dgii_padron_enabled"/>
+                        </setting>
                     </block>
                 </app>
             </xpath>

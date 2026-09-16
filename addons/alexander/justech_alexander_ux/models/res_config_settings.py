@@ -1,6 +1,12 @@
 from odoo import fields, models
 
-from ..hooks import ECF_PARAM, apply_ecf_operational_state
+from ..hooks import (
+    APPROVAL_PARAM,
+    ECF_PARAM,
+    PADRON_PARAM,
+    apply_ecf_operational_state,
+    apply_padron_disabled,
+)
 
 
 class ResConfigSettings(models.TransientModel):
@@ -15,12 +21,35 @@ class ResConfigSettings(models.TransientModel):
             "normal y se detienen las colas/crons. Los módulos siguen instalados."
         ),
     )
+    justech_approval_flow_enabled = fields.Boolean(
+        string="Flujo de aprobaciones Alexander",
+        default=False,
+        readonly=True,
+        help="Desactivado por decisión de negocio. El módulo permanece instalado.",
+    )
+    justech_dgii_padron_enabled = fields.Boolean(
+        string="Padrón DGII",
+        default=False,
+        readonly=True,
+        help="Desactivado. No descarga, no importa, no sincroniza.",
+    )
 
     def get_values(self):
         res = super().get_values()
-        raw = self.env["ir.config_parameter"].sudo().get_param(ECF_PARAM, "")
+        icp = self.env["ir.config_parameter"].sudo()
+        raw = icp.get_param(ECF_PARAM, "")
         # Odoo 19 converts config_parameter booleans with bool("False") → True.
         res["justech_ecf_operational_enabled"] = raw in ("True", "true", "1")
+        res["justech_approval_flow_enabled"] = icp.get_param(APPROVAL_PARAM, "") in (
+            "True",
+            "true",
+            "1",
+        )
+        res["justech_dgii_padron_enabled"] = icp.get_param(PADRON_PARAM, "") in (
+            "True",
+            "true",
+            "1",
+        )
         return res
 
     def set_values(self):
@@ -28,3 +57,4 @@ class ResConfigSettings(models.TransientModel):
         apply_ecf_operational_state(
             self.env, enabled=bool(self.justech_ecf_operational_enabled)
         )
+        apply_padron_disabled(self.env)

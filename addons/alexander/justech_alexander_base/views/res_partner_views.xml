@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_dx_hide_padron" model="ir.ui.view">
+        <field name="name">res.partner.form.dx.hide.padron</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="justech_l10n_do_base.view_partner_form_justech_do"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_justech_validate_rnc']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="string">Validar DGII (desactivado)</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

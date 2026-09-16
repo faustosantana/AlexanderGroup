@@ -1,9 +1,9 @@
 {
     "name": "Doralex UX — menús y catálogo",
-    "version": "19.0.1.5.0",
+    "version": "19.0.1.6.0",
     "category": "Hidden",
-    "summary": "Launcher limpio, Aprobaciones como app propia y e-CF apagado por defecto",
-    "description": "Overlay Doralex: menús fiscales agrupados, e-CF/DGII ocultos hasta activar el switch, administración y auditoría bajo Ajustes. Aprobaciones es una app propia del tablero (bandeja operativa fuera de Settings). La barra superior no muestra la marca de app; el grid abre el tablero. El selector nativo de empresas (casillas, varias a la vez) permanece en el header. No desinstala módulos ni cambia nombres técnicos.",
+    "summary": "Launcher limpio, aprobaciones y padrón OFF, retenciones RD 2026",
+    "description": "Overlay Doralex: menús fiscales agrupados, e-CF/DGII/padrón/aprobaciones desactivados de forma segura. Catálogo de retenciones Ley 30-26 por selección manual. Histórico de aprobaciones conservado bajo Administración. No desinstala módulos ni cambia nombres técnicos.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",
     "license": "LGPL-3",
@@ -35,6 +35,7 @@
         "views/approval_branding.xml",
         "views/res_config_settings_views.xml",
         "views/sale_order_views.xml",
+        "views/withholding_catalog_views.xml",
     ],
     "assets": {
         "web.assets_backend": [

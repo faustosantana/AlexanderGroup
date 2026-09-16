@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_withholding_catalog_form_dx" model="ir.ui.view">
+        <field name="name">justech.do.withholding.catalog.form.dx</field>
+        <field name="model">justech.do.withholding.catalog</field>
+        <field name="inherit_id" ref="justech_l10n_do_payments_withholding.view_justech_withholding_catalog_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='rate']" position="after">
+                <field name="dx_presumed_income_pct"/>
+                <field name="dx_category"/>
+            </xpath>
+            <xpath expr="//field[@name='notes']" position="before">
+                <group string="Aplicabilidad Alexander (selección manual)">
+                    <field name="dx_legal_source"/>
+                    <field name="dx_condition"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_justech_withholding_catalog_search_dx" model="ir.ui.view">
+        <field name="name">justech.do.withholding.catalog.search.dx</field>
+        <field name="model">justech.do.withholding.catalog</field>
+        <field name="inherit_id" ref="justech_l10n_do_payments_withholding.view_justech_withholding_catalog_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <filter string="ISR profesional" name="dx_isr_prof" domain="[('dx_category', '=', 'isr_profesional')]"/>
+                <filter string="ISR técnico" name="dx_isr_tec" domain="[('dx_category', '=', 'isr_tecnico')]"/>
+                <filter string="ITBIS" name="dx_itbis" domain="[('dx_category', 'in', ('itbis_30', 'itbis_100'))]"/>
+                <filter string="Exterior" name="dx_ext" domain="[('dx_category', '=', 'exterior')]"/>
+                <filter string="IR-17 / otras" name="dx_ir17" domain="[('dx_category', '=', 'ir17_otras')]"/>
+                <separator/>
+                <filter string="Categoría" name="group_dx_category" context="{'group_by': 'dx_category'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

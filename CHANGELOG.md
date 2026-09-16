@@ -5,6 +5,13 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 
 ## Unreleased
 
+### Changed
+- Cierre STAGING Alexander: flujo de aprobaciones y padrón DGII
+  desactivados (módulos instalados, histórico intacto). Cancelar/eliminar
+  facturas en borrador vuelve a permisos nativos de Facturación.
+  Catálogo de retenciones RD 2026 (Ley 30-26) por selección manual, sin
+  pisar impuestos legacy 10%/2%/27%. PROD no se toca.
+
 ### Added
 - Hallazgos reunión Doralex (DEV/STAGING): precheck READ-ONLY, Formulario
   Propet opcional, Factura Proforma nativa etiquetada, OC/PO del cliente,
