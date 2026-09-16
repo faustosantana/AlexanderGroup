@@ -1,6 +1,7 @@
 from odoo import models
 from odoo.tools.misc import format_amount, format_date
 
+from .propet_math import propet_line_amounts
 from .report_layout import count_body_lines, spacer_mm, white_png_data_uri
 
 
@@ -161,8 +162,28 @@ _DX_PICKING_BADGE = {
 class SaleOrderCompose(models.Model):
     _inherit = "sale.order"
 
+    def _dx_is_proforma(self):
+        ctx = self.env.context
+        return bool(
+            ctx.get("proforma") or ctx.get("proforma_invoice") or ctx.get("dx_proforma")
+        )
+
     def _dx_doc_identity(self):
         self.ensure_one()
+        if self.env.context.get("dx_propet"):
+            return {
+                "title": "FORMULARIO PROPET",
+                "number": self.name or "—",
+                "badge": "",
+                "kicker": self.company_id.dx_trade_name or self.company_id.name,
+            }
+        if self._dx_is_proforma():
+            return {
+                "title": "FACTURA PROFORMA",
+                "number": self.name or "—",
+                "badge": "PROFORMA",
+                "kicker": self.company_id.dx_trade_name or self.company_id.name,
+            }
         quote = self.state in ("draft", "sent")
         return {
             "title": "COTIZACIÓN" if quote else "PEDIDO DE VENTA",
@@ -244,6 +265,7 @@ class SaleOrderCompose(models.Model):
             "payment_term": self.payment_term_id.name if self.payment_term_id else "—",
             "currency": currency.name if currency else "",
             "client_ref": self.client_order_ref or "",
+            "client_ref_label": "OC / PO del cliente",
             "lines": lines,
             "totals": totals,
             "note": self.note or "",
@@ -255,6 +277,60 @@ class SaleOrderCompose(models.Model):
             "sign_right": ("Aceptado por el cliente" if quote else "Aprobado por"),
             **_dx_sign_space(lines),
         }
+
+    def _dx_sale_propet_compose(self):
+        """Formulario Propet: columnas fiscales con importes nativos de Odoo."""
+        payload = self._dx_sale_compose()
+        payload["ident"] = dict(payload["ident"])
+        if not self._dx_is_proforma():
+            payload["ident"]["title"] = "FORMULARIO PROPET"
+        currency = self.currency_id
+        propet_lines = []
+        for line in self.order_line:
+            if line.display_type == "line_section":
+                propet_lines.append({"kind": "section", "name": line.name or ""})
+                continue
+            if line.display_type == "line_note":
+                propet_lines.append({"kind": "note", "name": line.name or ""})
+                continue
+            if line.display_type:
+                continue
+            amounts = propet_line_amounts(line)
+            product = line.product_id
+            propet_lines.append(
+                {
+                    "kind": "line",
+                    "product": product.display_name if product else "",
+                    "name": line.name or (product.display_name if product else ""),
+                    "qty": _dx_qty(amounts["qty"]),
+                    "unit_excl": _dx_money(self.env, amounts["unit_excl"], currency),
+                    "tax": _dx_money(self.env, amounts["tax"], currency),
+                    "unit_incl": _dx_money(self.env, amounts["unit_incl"], currency),
+                    "subtotal": _dx_money(self.env, amounts["subtotal"], currency),
+                    "total": _dx_money(self.env, amounts["total"], currency),
+                    "raw": amounts,
+                }
+            )
+        payload["propet_lines"] = propet_lines
+        payload["lines"] = propet_lines
+        payload["totals"] = [
+            {
+                "label": "Subtotal sin impuesto",
+                "value": _dx_money(self.env, self.amount_untaxed, currency),
+                "grand": False,
+            },
+            {
+                "label": "ITBIS",
+                "value": _dx_money(self.env, self.amount_tax, currency),
+                "grand": False,
+            },
+            {
+                "label": "Total general",
+                "value": _dx_money(self.env, self.amount_total, currency),
+                "grand": True,
+            },
+        ]
+        return payload
 
 
 class AccountMoveCompose(models.Model):
@@ -390,6 +466,8 @@ class AccountMoveCompose(models.Model):
             "origin_ncf": origin_ncf,
             "origin_move": origin_move,
             "origin": self.invoice_origin or "",
+            "client_ref": self.ref or "",
+            "client_ref_label": "OC / PO del cliente",
             "reason": reason,
             "payment_term": (
                 self.invoice_payment_term_id.name
@@ -517,6 +595,17 @@ class AccountPaymentCompose(models.Model):
             "reference": self.memo or "",
             "applied": applied,
             "unapplied": not bool(applied),
+            "withholding": (
+                _dx_money(self.env, self.justech_withholding_total, currency)
+                if "justech_withholding_total" in self._fields
+                and self.justech_withholding_total
+                else ""
+            ),
+            "net_received": (
+                _dx_money(self.env, self.justech_net_transfer, currency)
+                if "justech_net_transfer" in self._fields and self.justech_net_transfer
+                else ""
+            ),
             "banks": _dx_banks(company) if company.dx_report_show_bank else [],
             "terms": (
                 "Este documento es un comprobante de ingreso. "
@@ -634,7 +723,7 @@ class StockPickingCompose(models.Model):
         self.ensure_one()
         incoming = self.picking_type_code == "incoming"
         return {
-            "title": "RECEPCIÓN" if incoming else "ENTREGA",
+            "title": "RECEPCIÓN" if incoming else "CONDUCE",
             "number": self.name or "—",
             "badge": _DX_PICKING_BADGE.get(self.state or "", ""),
             "kicker": self.company_id.dx_trade_name or self.company_id.name,

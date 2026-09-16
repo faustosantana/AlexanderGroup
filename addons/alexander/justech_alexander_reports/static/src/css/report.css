@@ -635,3 +635,11 @@ div.footer td {
 .dx-theme-MAY .dx-h-continue { border-bottom-color: #54B4A8; }
 .dx-theme-REM .dx-h-continue { border-bottom-color: #3048A8; }
 .dx-theme-BLU .dx-h-continue { border-bottom-color: #18B4F0; }
+
+.dx-propet th,
+.dx-propet td {
+  font-size: 8pt;
+}
+.dx-propet .dx-col-price {
+  white-space: nowrap;
+}

@@ -27,6 +27,20 @@ class ResCompany(models.Model):
     dx_mail_alias_invoice = fields.Char(string="Alias facturación")
     dx_mail_alias_accounting = fields.Char(string="Alias contabilidad")
     dx_mail_alias_info = fields.Char(string="Alias info")
+    dx_mail_signature = fields.Html(string="Firma de correo de la empresa")
+
+    def _dx_mail_signature_html(self):
+        self.ensure_one()
+        if self.dx_mail_signature:
+            return self.dx_mail_signature
+        lines = [self.dx_trade_name or self.name or ""]
+        if self.phone:
+            lines.append(self.phone)
+        if self.email:
+            lines.append(self.email)
+        if self.website:
+            lines.append(self.website)
+        return "<div>%s</div>" % "<br/>".join(p for p in lines if p)
 
     def _dx_mail_profile(self):
         self.ensure_one()
