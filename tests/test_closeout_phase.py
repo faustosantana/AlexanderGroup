@@ -187,7 +187,8 @@ def test_manifest_versions_bumped():
     reports = (
         REPO / "addons" / "alexander" / "justech_alexander_reports" / "__manifest__.py"
     ).read_text(encoding="utf-8")
-    assert "19.0.1.0.8" in base
+    assert "19.0.1.0.9" in base
+    assert "account_move_views.xml" in base
     assert "justech_accounting_recovery" in base
     assert "res_partner_views.xml" in base
     assert "19.0.1.6.4" in ux
