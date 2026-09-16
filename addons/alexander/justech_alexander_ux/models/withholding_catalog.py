@@ -409,6 +409,60 @@ class JustechDoWithholdingCatalog(models.Model):
     )
     dx_legal_source = fields.Char(string="Fuente normativa")
     dx_condition = fields.Text(string="Condición de aplicación")
+    dx_calc_help = fields.Text(
+        string="Cómo se calcula",
+        compute="_compute_dx_calc_help",
+    )
+
+    @api.depends(
+        "name",
+        "code",
+        "rate",
+        "base_type",
+        "dx_presumed_income_pct",
+        "withholding_type",
+    )
+    def _compute_display_name(self):
+        for rec in self:
+            rec.display_name = rec.name or rec.code or ""
+
+    @api.depends("rate", "base_type", "dx_presumed_income_pct", "withholding_type")
+    def _compute_dx_calc_help(self):
+        for rec in self:
+            rate = rec.rate or 0.0
+            if rec.dx_presumed_income_pct:
+                presumed = 100000.0 * rec.dx_presumed_income_pct / 100.0
+                withheld = presumed * rate / 100.0
+                rec.dx_calc_help = (
+                    "Ejemplo con bruto RD$100,000:\n"
+                    "Base original: RD$100,000\n"
+                    "Base presunta: RD$%s (%s%% del bruto)\n"
+                    "Tasa ISR: %s%%\n"
+                    "Retención: RD$%s\n"
+                    "No aplicar la tasa sobre el subtotal completo."
+                    % (
+                        "{:,.0f}".format(presumed),
+                        int(rec.dx_presumed_income_pct),
+                        rate,
+                        "{:,.0f}".format(withheld),
+                    )
+                )
+            elif rec.withholding_type == "itbis" or rec.base_type == "itbis":
+                example_itbis = 18000.0
+                withheld = example_itbis * rate / 100.0
+                rec.dx_calc_help = (
+                    "La retención es %s%% del ITBIS facturado, no del subtotal.\n"
+                    "Ejemplo: ITBIS facturado RD$18,000 × %s%% = RD$%s."
+                    % (rate, rate, "{:,.0f}".format(withheld))
+                )
+            else:
+                withheld = 100000.0 * rate / 100.0
+                rec.dx_calc_help = (
+                    "Base: monto gravable del documento.\n"
+                    "Tasa: %s%%\n"
+                    "Ejemplo: base RD$100,000 × %s%% = RD$%s retenidos."
+                    % (rate, rate, "{:,.0f}".format(withheld))
+                )
 
     def _base_label(self):
         self.ensure_one()

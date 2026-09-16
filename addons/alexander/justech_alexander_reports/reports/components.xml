@@ -112,12 +112,13 @@
         <table t-attf-class="dx-lines dx-propet dx-table-{{ dx.get('layout') or 'dor' }}" border="0" cellpadding="0" cellspacing="0" frame="void" rules="none">
             <thead>
                 <tr>
-                    <th class="dx-col-desc">Producto</th>
+                    <th class="dx-col-product">Producto</th>
                     <th class="dx-col-desc">Descripción</th>
                     <th class="dx-col-qty">Cant.</th>
                     <th class="dx-col-price">P. unit. sin ITBIS</th>
                     <th class="dx-col-price">ITBIS</th>
                     <th class="dx-col-price">P. unit. con ITBIS</th>
+                    <th class="dx-col-qty">Dto.</th>
                     <th class="dx-col-amt">Subtotal</th>
                     <th class="dx-col-amt">Total línea</th>
                 </tr>
@@ -125,18 +126,19 @@
             <tbody>
                 <t t-foreach="dx.get('propet_lines') or dx['lines']" t-as="line">
                     <tr t-if="line['kind'] == 'section'" class="dx-line-section">
-                        <td colspan="8" t-out="line['name']"/>
+                        <td colspan="9" t-out="line['name']"/>
                     </tr>
                     <tr t-elif="line['kind'] == 'note'" class="dx-line-note">
-                        <td colspan="8" t-out="line['name']"/>
+                        <td colspan="9" t-out="line['name']"/>
                     </tr>
                     <tr t-else="">
-                        <td class="dx-col-desc" t-out="line.get('product') or ''"/>
+                        <td class="dx-col-product" t-out="line.get('product') or ''"/>
                         <td class="dx-col-desc" t-out="line['name']"/>
                         <td class="dx-col-qty" t-out="line['qty']"/>
                         <td class="dx-col-price dx-money" t-out="line.get('unit_excl')"/>
                         <td class="dx-col-price dx-money" t-out="line.get('tax')"/>
                         <td class="dx-col-price dx-money" t-out="line.get('unit_incl')"/>
+                        <td class="dx-col-qty" t-out="line.get('discount') or '—'"/>
                         <td class="dx-col-amt dx-money" t-out="line.get('subtotal')"/>
                         <td class="dx-col-amt dx-money" t-out="line.get('total')"/>
                     </tr>
@@ -172,16 +174,19 @@
                     <th class="dx-col-uom">Ud.</th>
                 </tr>
                 <tr t-else="">
-                    <th class="dx-col-desc">Producto</th>
-                    <th class="dx-col-qty">Cantidad</th>
+                    <th class="dx-col-product">Producto</th>
+                    <th class="dx-col-desc">Descripción</th>
+                    <th class="dx-col-qty">Solicitada</th>
+                    <th class="dx-col-qty">Entregada</th>
                     <th class="dx-col-uom">Ud.</th>
                 </tr>
             </thead>
             <tbody>
                 <tr t-foreach="dx['lines']" t-as="line">
-                    <td class="dx-col-desc" t-out="line['name']"/>
+                    <td class="dx-col-product" t-out="line.get('product') or line['name']"/>
+                    <td t-if="not dx.get('incoming')" class="dx-col-desc" t-out="line['name']"/>
                     <td class="dx-col-qty" t-out="line['qty']"/>
-                    <td t-if="dx.get('incoming')" class="dx-col-qty" t-out="line.get('done')"/>
+                    <td class="dx-col-qty" t-out="line.get('done')"/>
                     <td class="dx-col-uom" t-out="line['uom']"/>
                 </tr>
             </tbody>
@@ -833,9 +838,17 @@
                         <div class="dx-meta-k">Fecha</div>
                         <div class="dx-meta-v" t-out="dx['date']"/>
                     </div>
-                    <div class="dx-inv-meta-col" t-if="dx.get('origin')">
-                        <div class="dx-meta-k">Pedido</div>
-                        <div class="dx-meta-v" t-out="dx['origin']"/>
+                    <div class="dx-inv-meta-col" t-if="dx.get('sale_order') or dx.get('origin')">
+                        <div class="dx-meta-k">Pedido de venta</div>
+                        <div class="dx-meta-v" t-out="dx.get('sale_order') or dx['origin']"/>
+                    </div>
+                    <div class="dx-inv-meta-col" t-if="dx.get('delivery_street')">
+                        <div class="dx-meta-k">Dirección de entrega</div>
+                        <div class="dx-meta-v" t-out="dx['delivery_street']"/>
+                    </div>
+                    <div class="dx-inv-meta-col" t-if="dx.get('carrier')">
+                        <div class="dx-meta-k">Transportista</div>
+                        <div class="dx-meta-v" t-out="dx['carrier']"/>
                     </div>
                 </div>
             </div>

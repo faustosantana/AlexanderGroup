@@ -187,14 +187,15 @@ def test_manifest_versions_bumped():
     reports = (
         REPO / "addons" / "alexander" / "justech_alexander_reports" / "__manifest__.py"
     ).read_text(encoding="utf-8")
-    assert "19.0.1.0.7" in base
+    assert "19.0.1.0.8" in base
     assert "justech_accounting_recovery" in base
     assert "res_partner_views.xml" in base
-    assert "19.0.1.6.2" in ux
+    assert "19.0.1.6.3" in ux
+    assert "account_move_views.xml" in ux
     assert "login_views.xml" in ux
     assert "show_login_form.js" in ux
     assert "withholding_catalog_views.xml" in ux
-    assert "19.0.3.9.1" in reports
+    assert "19.0.3.10.0" in reports
 
 
 def test_payment_receipt_shows_vendor_withholding_breakdown():

@@ -640,6 +640,22 @@ div.footer td {
 .dx-propet td {
   font-size: 8pt;
 }
+.dx-propet .dx-col-product {
+  width: 16%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.dx-propet .dx-col-desc {
+  width: 26%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.dx-propet .dx-col-qty { width: 6%; }
 .dx-propet .dx-col-price {
+  width: 10%;
   white-space: nowrap;
 }
+.dx-propet .dx-col-amt { width: 10%; }
+.dx-propet tbody tr { page-break-inside: auto; }

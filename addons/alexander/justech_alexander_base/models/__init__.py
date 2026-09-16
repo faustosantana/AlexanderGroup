@@ -7,3 +7,4 @@ from . import account_move_draft
 from . import withholding_math
 from . import spanish_ui
 from . import sale_order_line
+from . import sale_order

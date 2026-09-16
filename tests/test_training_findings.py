@@ -59,13 +59,34 @@ def test_propet_discount_and_exempt():
     assert math.propet_identities_ok(math.propet_line_amounts(Exempt()))
 
 
+def test_propet_display_texts_strip_repeated_product():
+    math = _load(REPORTS / "models" / "propet_math.py", "dx_propet_math")
+    product, desc = math.propet_display_texts(
+        "CAJA DE CLAVOS F-20 (1)",
+        "CAJA DE CLAVOS F-20 (1)",
+        "CAJA DE CLAVOS F-20 (1) CAJA DE CLAVOS F-20 (1)",
+    )
+    assert product == "CAJA DE CLAVOS F-20 (1)"
+    assert "CAJA DE CLAVOS F-20 (1) CAJA DE CLAVOS F-20 (1)" not in desc
+    product, desc = math.propet_display_texts(
+        "Tornillo",
+        "[T-01] Tornillo",
+        "[T-01] Tornillo\nTornillo de acero inoxidable 3 pulgadas",
+    )
+    assert "acero inoxidable" in desc
+    assert not desc.startswith("[T-01]")
+
+
 def test_propet_report_is_optional_not_default():
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     xml = (REPORTS / "reports" / "propet_proforma.xml").read_text(encoding="utf-8")
     compose = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
     assert "propet_proforma.xml" in manifest
     assert "action_report_saleorder_propet" in xml
-    assert "Formulario Propet" in xml
+    assert "Formato Propet" in xml
+    assert "FORMULARIO PROPET" not in xml
+    assert "action_report_invoice_propet" in xml
+    assert "action_report_saleorder_conduce" in xml
     assert (
         "sale.action_report_saleorder"
         not in xml.split("action_report_saleorder_propet")[0]
@@ -76,7 +97,11 @@ def test_propet_report_is_optional_not_default():
     )
     assert "FACTURA PROFORMA" in compose
     assert "CONDUCE" in compose
-    assert "OC / PO del cliente" in compose
+    assert "Número de Orden de Compra del Cliente" in compose
+    assert "FORMATO PROPET" in compose
+    assert "propet_display_texts" in (REPORTS / "models" / "propet_math.py").read_text(
+        encoding="utf-8"
+    )
     assert 'name="context"' not in xml
     assert "group_ids" in xml
 
@@ -108,6 +133,7 @@ def test_tracking_keeps_native_lot_group():
 
 def test_trace_columns_hidden_by_purchase_group_not_deleted():
     views = (UX / "views" / "sale_order_views.xml").read_text(encoding="utf-8")
+    assert "Número de Orden de Compra del Cliente" in views
     assert "justech_qty_purchased" in views
     assert "purchase.group_purchase_user" in views
     assert 'optional">hide' in views or 'optional="hide"' in views

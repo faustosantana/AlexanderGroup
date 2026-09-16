@@ -6,8 +6,11 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="priority">80</field>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="client_order_ref" string="Número de Orden de Compra del Cliente" placeholder="Ej. PO-CLIENTE-2026-001"/>
+            </xpath>
             <xpath expr="//field[@name='client_order_ref']" position="attributes">
-                <attribute name="string">OC / PO del cliente</attribute>
+                <attribute name="string">Número de Orden de Compra del Cliente</attribute>
             </xpath>
         </field>
     </record>
