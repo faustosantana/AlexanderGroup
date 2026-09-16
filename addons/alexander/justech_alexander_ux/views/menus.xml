@@ -136,6 +136,7 @@
         <field name="parent_id" ref="menu_fiscal_withholding"/>
         <field name="name">Administrar retenciones</field>
         <field name="sequence">10</field>
+        <field name="group_ids" eval="[(6, 0, [ref('account.group_account_manager')])]"/>
     </record>
     <record id="justech_l10n_do_payments_withholding.menu_justech_wh_company_config" model="ir.ui.menu">
         <field name="parent_id" ref="menu_fiscal_withholding"/>
