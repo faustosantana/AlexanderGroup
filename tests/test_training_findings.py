@@ -94,6 +94,16 @@ def test_crm_renames_only_default_english_labels():
     assert "crm.lead" not in source.split("CRM_STAGE_RENAMES")[1][:400]
 
 
+def test_tracking_keeps_native_lot_group():
+    manifest = (UX / "__manifest__.py").read_text(encoding="utf-8")
+    assert "product_views.xml" not in manifest
+    views = UX / "views" / "product_views.xml"
+    if views.exists():
+        text = views.read_text(encoding="utf-8")
+        assert 'name="groups"/>' not in text
+        assert '<attribute name="groups"/>' not in text
+
+
 def test_trace_columns_hidden_by_purchase_group_not_deleted():
     views = (UX / "views" / "sale_order_views.xml").read_text(encoding="utf-8")
     assert "justech_qty_purchased" in views
