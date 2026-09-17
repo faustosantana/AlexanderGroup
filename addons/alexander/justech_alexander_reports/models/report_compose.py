@@ -171,13 +171,6 @@ class SaleOrderCompose(models.Model):
 
     def _dx_doc_identity(self):
         self.ensure_one()
-        if self.env.context.get("dx_propet"):
-            return {
-                "title": "FORMATO PROPET",
-                "number": self.name or "—",
-                "badge": "",
-                "kicker": self.company_id.dx_trade_name or self.company_id.name,
-            }
         if self._dx_is_proforma():
             return {
                 "title": "FACTURA PROFORMA",
@@ -283,8 +276,6 @@ class SaleOrderCompose(models.Model):
         """Formato Propet: columnas fiscales con importes nativos de Odoo."""
         payload = self._dx_sale_compose()
         payload["ident"] = dict(payload["ident"])
-        if not self._dx_is_proforma():
-            payload["ident"]["title"] = "FORMATO PROPET"
         currency = self.currency_id
         propet_lines = []
         for line in self.order_line:
@@ -349,17 +340,6 @@ class AccountMoveCompose(models.Model):
 
     def _dx_doc_identity(self):
         self.ensure_one()
-        if self.env.context.get("dx_propet"):
-            return {
-                "title": "FORMATO PROPET",
-                "number": (
-                    self.name
-                    if self.state == "posted" and self.name and self.name != "/"
-                    else (self.name or "Pendiente")
-                ),
-                "badge": "BORRADOR" if self.state == "draft" else "",
-                "kicker": self.company_id.dx_trade_name or self.company_id.name,
-            }
         refund = self.move_type in ("out_refund", "in_refund")
         dtype = ""
         if (
@@ -518,7 +498,6 @@ class AccountMoveCompose(models.Model):
     def _dx_invoice_propet_compose(self):
         payload = self._dx_invoice_compose()
         payload["ident"] = dict(payload["ident"])
-        payload["ident"]["title"] = "FORMATO PROPET"
         currency = self.currency_id
         propet_lines = []
         invoice_lines = self.invoice_line_ids.filtered(

@@ -111,7 +111,9 @@ def test_propet_report_is_optional_not_default():
     assert "CONDUCE" in compose
     assert '"OC / PO"' in compose
     assert "Número de Orden de Compra del Cliente" not in compose
-    assert "FORMATO PROPET" in compose
+    assert "FORMATO PROPET" not in compose
+    assert '"COTIZACIÓN" if quote else "PEDIDO DE VENTA"' in compose
+    assert 'title = "FACTURA"' in compose
     assert "propet_display_texts" in (REPORTS / "models" / "propet_math.py").read_text(
         encoding="utf-8"
     )

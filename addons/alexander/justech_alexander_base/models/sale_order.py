@@ -66,20 +66,23 @@ class SaleOrder(models.Model):
                     "albarán desconectado del pedido."
                 )
             )
-        action = {
-            "type": "ir.actions.act_window",
-            "name": _("Conduce"),
-            "res_model": "stock.picking",
-            "target": "current",
-            "context": {"default_company_id": self.company_id.id},
+        xmlid = "stock.action_picking_tree_outgoing"
+        if not self.env.ref(xmlid, raise_if_not_found=False):
+            xmlid = "stock.act_stock_picking_out"
+        if not self.env.ref(xmlid, raise_if_not_found=False):
+            xmlid = "stock.action_picking_tree_all"
+        action = dict(self.env["ir.actions.act_window"]._for_xml_id(xmlid))
+        action["name"] = _("Conduce")
+        action["target"] = "current"
+        action["context"] = {
+            "default_company_id": self.company_id.id,
+            "default_origin": self.name,
         }
+        action["domain"] = [("id", "in", pickings.ids)]
         if len(pickings) == 1:
-            action.update({"view_mode": "form", "res_id": pickings.id})
-            return action
-        action.update(
-            {
-                "view_mode": "list,form",
-                "domain": [("id", "in", pickings.ids)],
-            }
-        )
+            form = self.env.ref("stock.view_picking_form")
+            action["res_id"] = pickings.id
+            action["view_mode"] = "form"
+            action["views"] = [(form.id, "form")]
+            action.pop("domain", None)
         return action
