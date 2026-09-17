@@ -1,6 +1,8 @@
 from odoo import models
 from odoo.tools.misc import format_amount, format_date
 
+from .ncf_label import dx_ncf_affected_label, dx_ncf_kind, dx_ncf_label
+from .picking_qty import picking_line_qtys
 from .propet_math import propet_display_texts, propet_line_amounts
 from .report_layout import count_body_lines, spacer_mm, white_png_data_uri
 
@@ -149,14 +151,16 @@ def _dx_layout(company):
     return company._dx_report_theme().get("layout") or "dor"
 
 
-_DX_PICKING_BADGE = {
-    "draft": "BORRADOR",
-    "waiting": "ESPERANDO",
-    "confirmed": "CONFIRMADO",
-    "assigned": "LISTO",
-    "done": "",
-    "cancel": "ANULADA",
-}
+def _dx_norm_doc(value):
+    return "".join((value or "").split()).upper().replace("-", "")
+
+
+def _dx_looks_like_ncf(value):
+    """Dominican NCF / e-CF tokens. Never treat those as a customer OC/PO."""
+    text = _dx_norm_doc(value)
+    if len(text) < 11 or not text[0].isalpha():
+        return False
+    return text[1:].isdigit()
 
 
 class SaleOrderCompose(models.Model):
@@ -170,13 +174,6 @@ class SaleOrderCompose(models.Model):
 
     def _dx_doc_identity(self):
         self.ensure_one()
-        if self.env.context.get("dx_propet"):
-            return {
-                "title": "FORMATO PROPET",
-                "number": self.name or "—",
-                "badge": "",
-                "kicker": self.company_id.dx_trade_name or self.company_id.name,
-            }
         if self._dx_is_proforma():
             return {
                 "title": "FACTURA PROFORMA",
@@ -184,9 +181,8 @@ class SaleOrderCompose(models.Model):
                 "badge": "PROFORMA",
                 "kicker": self.company_id.dx_trade_name or self.company_id.name,
             }
-        quote = self.state in ("draft", "sent")
         return {
-            "title": "COTIZACIÓN" if quote else "PEDIDO DE VENTA",
+            "title": "COTIZACIÓN",
             "number": self.name or "—",
             "badge": "BORRADOR" if self.state == "draft" else "",
             "kicker": self.company_id.dx_trade_name or self.company_id.name,
@@ -257,6 +253,7 @@ class SaleOrderCompose(models.Model):
         )
         return {
             "ident": ident,
+            "company": company,
             "layout": _dx_layout(company),
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.date_order),
@@ -265,7 +262,7 @@ class SaleOrderCompose(models.Model):
             "payment_term": self.payment_term_id.name if self.payment_term_id else "—",
             "currency": currency.name if currency else "",
             "client_ref": self.client_order_ref or "",
-            "client_ref_label": "Número de Orden de Compra del Cliente",
+            "client_ref_label": "OC / PO",
             "lines": lines,
             "totals": totals,
             "note": self.note or "",
@@ -282,8 +279,6 @@ class SaleOrderCompose(models.Model):
         """Formato Propet: columnas fiscales con importes nativos de Odoo."""
         payload = self._dx_sale_compose()
         payload["ident"] = dict(payload["ident"])
-        if not self._dx_is_proforma():
-            payload["ident"]["title"] = "FORMATO PROPET"
         currency = self.currency_id
         propet_lines = []
         for line in self.order_line:
@@ -342,28 +337,12 @@ class SaleOrderCompose(models.Model):
         ]
         return payload
 
-    def _dx_outgoing_pickings(self):
-        self.ensure_one()
-        pickings = self.picking_ids
-        return pickings.filtered(lambda p: p.picking_type_code == "outgoing")
-
 
 class AccountMoveCompose(models.Model):
     _inherit = "account.move"
 
     def _dx_doc_identity(self):
         self.ensure_one()
-        if self.env.context.get("dx_propet"):
-            return {
-                "title": "FORMATO PROPET",
-                "number": (
-                    self.name
-                    if self.state == "posted" and self.name and self.name != "/"
-                    else (self.name or "Pendiente")
-                ),
-                "badge": "BORRADOR" if self.state == "draft" else "",
-                "kicker": self.company_id.dx_trade_name or self.company_id.name,
-            }
         refund = self.move_type in ("out_refund", "in_refund")
         dtype = ""
         if (
@@ -381,7 +360,7 @@ class AccountMoveCompose(models.Model):
             title = "FACTURA DE CRÉDITO"
         else:
             title = "FACTURA"
-        if self.state == "posted" and self.name and self.name != "/":
+        if self.name and self.name != "/":
             number = self.name
         else:
             number = "Pendiente"
@@ -397,16 +376,104 @@ class AccountMoveCompose(models.Model):
             "kicker": self.company_id.dx_trade_name or self.company_id.name,
         }
 
+    def _dx_invoice_ncf(self):
+        self.ensure_one()
+        if "justech_do_ncf" in self._fields and self.justech_do_ncf:
+            return self.justech_do_ncf
+        if (
+            "l10n_latam_document_number" in self._fields
+            and self.l10n_latam_document_number
+        ):
+            return self.l10n_latam_document_number
+        return ""
+
+    def _dx_invoice_ncf_kind(self, ncf=None):
+        self.ensure_one()
+        ncf_type = ""
+        type_name = ""
+        prefix = ""
+        dtype = False
+        if (
+            "l10n_latam_document_type_id" in self._fields
+            and self.l10n_latam_document_type_id
+        ):
+            dtype = self.l10n_latam_document_type_id
+        jtype = False
+        if (
+            "justech_do_document_type_id" in self._fields
+            and self.justech_do_document_type_id
+        ):
+            jtype = self.justech_do_document_type_id
+        if dtype:
+            if "l10n_do_ncf_type" in dtype._fields:
+                ncf_type = dtype.l10n_do_ncf_type or ""
+            type_name = dtype.report_name or dtype.name or ""
+            if "doc_code_prefix" in dtype._fields:
+                prefix = dtype.doc_code_prefix or ""
+        if jtype:
+            type_name = type_name or jtype.name or ""
+            prefix = prefix or getattr(jtype, "prefix", "") or ""
+            if not ncf_type and getattr(jtype, "code", ""):
+                ncf_type = jtype.code
+        if (
+            "fiscal_document_type_display" in self._fields
+            and self.fiscal_document_type_display
+        ):
+            type_name = type_name or self.fiscal_document_type_display
+        ncf_value = self._dx_invoice_ncf() if ncf is None else ncf
+        return dx_ncf_kind(
+            ncf=ncf_value or prefix,
+            ncf_type=ncf_type,
+            type_name=type_name,
+        )
+
+    def _dx_invoice_ncf_label(self, ncf=None):
+        self.ensure_one()
+        number = self._dx_invoice_ncf() if ncf is None else ncf
+        kind = self._dx_invoice_ncf_kind(number)
+        return dx_ncf_label(kind, pending=not bool(number))
+
+    def _dx_related_sale_orders(self):
+        self.ensure_one()
+        sales = self.env["sale.order"]
+        lines = self.invoice_line_ids
+        if "sale_line_ids" in lines._fields:
+            sales |= lines.mapped("sale_line_ids.order_id")
+        if "sale_id" in self._fields and self.sale_id:
+            sales |= self.sale_id
+        return sales
+
+    def _dx_invoice_client_po(self, ncf=""):
+        """Customer OC/PO only. Never the invoice NCF or a fiscal token."""
+        self.ensure_one()
+        ncf_norm = _dx_norm_doc(ncf or self._dx_invoice_ncf())
+        candidates = [
+            sale.client_order_ref
+            for sale in self._dx_related_sale_orders()
+            if sale.client_order_ref
+        ]
+        if self.ref:
+            candidates.append(self.ref)
+        seen = set()
+        for candidate in candidates:
+            raw = (candidate or "").strip()
+            key = _dx_norm_doc(raw)
+            if not raw or key in seen:
+                continue
+            seen.add(key)
+            if ncf_norm and key == ncf_norm:
+                continue
+            if _dx_looks_like_ncf(raw):
+                continue
+            return raw
+        return ""
+
     def _dx_invoice_compose(self):
         self.ensure_one()
         company = self.company_id
         currency = self.currency_id
         ident = self._dx_doc_identity()
-        ncf = ""
-        if "justech_do_ncf" in self._fields:
-            ncf = self.justech_do_ncf or ""
-        if not ncf and "l10n_latam_document_number" in self._fields:
-            ncf = self.l10n_latam_document_number or ""
+        ncf = self._dx_invoice_ncf()
         origin_ncf = ""
         if "justech_do_origin_ncf" in self._fields:
             origin_ncf = self.justech_do_origin_ncf or ""
@@ -465,6 +532,12 @@ class AccountMoveCompose(models.Model):
             }
         )
         refund = self.move_type in ("out_refund", "in_refund")
+        kind = self._dx_invoice_ncf_kind(ncf)
+        ncf_label = dx_ncf_label(kind, pending=False)
+        ncf_pending_label = dx_ncf_label(kind, pending=True)
+        origin_ncf_label = (
+            dx_ncf_affected_label(dx_ncf_kind(ncf=origin_ncf)) if origin_ncf else ""
+        )
         fallback = (
             "Documento fiscal. Conserve este comprobante. ITBIS de acuerdo a la "
             "legislación dominicana vigente."
@@ -487,13 +560,17 @@ class AccountMoveCompose(models.Model):
                 company,
             ),
             "ncf": ncf,
+            "ncf_kind": kind,
+            "ncf_label": ncf_label,
+            "ncf_pending_label": ncf_pending_label,
             "ncf_missing": not bool(ncf),
             "ncf_pending": not bool(ncf),
             "origin_ncf": origin_ncf,
+            "origin_ncf_label": origin_ncf_label,
             "origin_move": origin_move,
             "origin": self.invoice_origin or "",
-            "client_ref": self.ref or "",
-            "client_ref_label": "Número de Orden de Compra del Cliente",
+            "client_ref": self._dx_invoice_client_po(ncf),
+            "client_ref_label": "OC / PO",
             "reason": reason,
             "payment_term": (
                 self.invoice_payment_term_id.name
@@ -522,7 +599,6 @@ class AccountMoveCompose(models.Model):
     def _dx_invoice_propet_compose(self):
         payload = self._dx_invoice_compose()
         payload["ident"] = dict(payload["ident"])
-        payload["ident"]["title"] = "FORMATO PROPET"
         currency = self.currency_id
         propet_lines = []
         invoice_lines = self.invoice_line_ids.filtered(
@@ -632,6 +708,7 @@ class AccountPaymentCompose(models.Model):
                     {
                         "document": label,
                         "ncf": ncf or "—",
+                        "ncf_label": dx_ncf_label(dx_ncf_kind(ncf=ncf)),
                         "date": _dx_date(self.env, inv.invoice_date or inv.date),
                         "invoice_amount": _dx_money(
                             self.env, inv.amount_total, inv.currency_id
@@ -763,10 +840,10 @@ class AccountPaymentCompose(models.Model):
             "banks": _dx_banks(company) if company.dx_report_show_bank else [],
             "terms": (
                 "Este documento es un comprobante de pago. "
-                "No sustituye factura con NCF."
+                "No sustituye factura con comprobante fiscal."
                 if vendor
                 else "Este documento es un comprobante de ingreso. "
-                "No sustituye factura con NCF."
+                "No sustituye factura con comprobante fiscal."
             ),
             "party_title": "Pagado a" if vendor else "Recibido de",
             "show_signature": bool(company.dx_report_show_signature),
@@ -857,6 +934,7 @@ class PurchaseOrderCompose(models.Model):
             ),
             "currency": currency.name if currency else "",
             "client_ref": self.partner_ref or "",
+            "client_ref_label": "Referencia",
             "origin": dest,
             "lines": lines,
             "totals": totals,
@@ -876,13 +954,25 @@ class PurchaseOrderCompose(models.Model):
 class StockPickingCompose(models.Model):
     _inherit = "stock.picking"
 
+    def do_print_picking(self):
+        """Header Print on a ready outgoing picking must open Conduce, not Operaciones."""
+        self.write({"printed": True})
+        outgoing = self.filtered(lambda pick: pick.picking_type_code == "outgoing")
+        if outgoing:
+            return self.env.ref("stock.action_report_delivery").report_action(
+                outgoing, config=False
+            )
+        return self.env.ref("stock.action_report_picking").report_action(
+            self, config=False
+        )
+
     def _dx_doc_identity(self):
         self.ensure_one()
         incoming = self.picking_type_code == "incoming"
         return {
             "title": "RECEPCIÓN" if incoming else "CONDUCE",
             "number": self.name or "—",
-            "badge": _DX_PICKING_BADGE.get(self.state or "", ""),
+            "badge": "" if self.state != "cancel" else "ANULADA",
             "kicker": self.company_id.dx_trade_name or self.company_id.name,
         }
 
@@ -917,64 +1007,66 @@ class StockPickingCompose(models.Model):
                 uom = move.product_uom.display_name
             elif "product_uom_id" in move._fields and move.product_uom_id:
                 uom = move.product_uom_id.display_name
+            ordered_qty, done_qty = picking_line_qtys(move)
             lines.append(
                 {
                     "kind": "line",
                     "product": product_label,
-                    "name": description or product_label,
-                    "qty": _dx_qty(move.product_uom_qty),
-                    "done": _dx_qty(self._dx_move_done_qty(move)),
+                    "name": description,
+                    "qty": _dx_qty(ordered_qty),
+                    "done": _dx_qty(done_qty),
                     "uom": uom,
                 }
             )
+        sale = self.sale_id if "sale_id" in self._fields and self.sale_id else False
         if incoming:
             sign_left, sign_right = "Entregado por proveedor", "Recibido por"
             party_title = "Proveedor"
         else:
             sign_left, sign_right = "Entregado por", "Recibido por"
             party_title = "Cliente"
+        salesperson = ""
+        if sale and sale.user_id:
+            salesperson = (sale.user_id.name or "").strip()
+            if salesperson in (
+                "OdooBot",
+                "Administrator",
+                "Public user",
+                "Public User",
+            ):
+                salesperson = ""
+        sale_order = sale.name if sale else (self.origin or "")
         return {
             "ident": self._dx_doc_identity(),
+            "company": company,
             "layout": _dx_layout(company),
-            "embed_masthead": incoming,
-            "company_name": company._dx_legal_display(),
-            "company_vat": company.vat or "",
-            "company_mail": company.email or "",
-            "company_phone": company.phone or "",
+            "logistic": True,
+            "embed_masthead": False,
             "partner": _dx_partner_lines(partner) if partner else {"name": "—"},
             "party_title": party_title,
-            "date": _dx_date(self.env, self.date_done or self.scheduled_date),
+            "date": _dx_date(self.env, self.scheduled_date or self.date_done),
+            "validity": sale_order,
+            "date2_label": "Pedido de venta",
+            "salesperson": salesperson,
+            "payment_term": "",
+            "currency": "",
+            "received_date": _dx_date(self.env, self.date_done),
             "origin": self.origin or "",
-            "sale_order": (
-                self.sale_id.name
-                if "sale_id" in self._fields and self.sale_id
-                else (self.origin or "")
-            ),
-            "delivery_street": (
-                ", ".join(
-                    p
-                    for p in [
-                        partner.street,
-                        partner.street2,
-                        partner.city,
-                    ]
-                    if partner and p
-                )
-                if partner
-                else ""
-            ),
+            "sale_order": sale_order,
+            "client_ref": (sale.client_order_ref or "") if sale else "",
+            "client_ref_label": "OC / PO",
             "carrier": (
                 self.carrier_id.display_name
                 if "carrier_id" in self._fields and self.carrier_id
                 else ""
             ),
             "lines": lines,
+            "totals": [],
             "note": self.note or "",
             "terms": "",
             "banks": [],
-            "show_signature": bool(company.dx_report_show_signature),
+            "show_signature": False,
             "sign_left": sign_left,
             "sign_right": sign_right,
             "incoming": incoming,
-            **_dx_sign_space(lines),
         }

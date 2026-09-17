@@ -31,15 +31,21 @@
         <field name="print_report_name">'Recibo_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'Pendiente').replace('/', ''))</field>
     </record>
     <record id="sale.action_report_saleorder" model="ir.actions.report">
+        <field name="name">Cotización en PDF</field>
         <field name="print_report_name">'Cotizacion_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'SO').replace('/', ''))</field>
+        <field name="paperformat_id" ref="paperformat_doralex_a4"/>
     </record>
     <record id="account.account_invoices" model="ir.actions.report">
+        <field name="name">Factura en PDF</field>
         <field name="print_report_name">'%s_%s_%s' % (('Nota_Credito' if object.move_type in ('out_refund', 'in_refund') else 'Factura'), object.company_id.dx_short_code or 'DX', (object.name or 'Pendiente').replace('/', ''))</field>
+        <field name="paperformat_id" ref="paperformat_doralex_a4"/>
     </record>
     <record id="purchase.action_report_purchase_order" model="ir.actions.report">
         <field name="print_report_name">'Orden_Compra_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'PO').replace('/', ''))</field>
     </record>
     <record id="stock.action_report_picking" model="ir.actions.report">
+        <field name="name">Operaciones</field>
+        <field name="binding_model_id" eval="False"/>
         <field name="paperformat_id" ref="paperformat_doralex_a4"/>
         <field name="print_report_name">'Recepcion_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'IN').replace('/', ''))</field>
     </record>

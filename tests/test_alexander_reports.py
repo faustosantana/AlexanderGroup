@@ -97,7 +97,10 @@ def test_six_real_headers_and_sale_compositions():
     assert "dx-h-dor-vendor" in headers
     assert "dx_document_end" in comps
     assert "dx-ncf-hero" in comps
-    assert "Pendiente de NCF" in comps
+    assert "ncf_pending_label" in comps
+    assert "Número de Comprobante Fiscal" in comps
+    assert "Pendiente de NCF" not in comps
+    assert ">NCF</" not in comps
     assert "dx-sign-table" not in comps
     assert "dx-zone-bottom" not in comps
     assert "PAGO NO APLICADO / ANTICIPO" in comps
@@ -136,6 +139,11 @@ def test_invoice_edi_template_attaches_pdf():
     assert "_dx_attach_invoice_edi_pdf" in xml
     py = (REPORTS / "models" / "ir_actions_report.py").read_text(encoding="utf-8")
     assert "def _dx_attach_invoice_edi_pdf" in py
+    assert "def _dx_disable_broken_studio_composition" in py
+    assert "studio_customization." in py
+    assert "def _dx_restore_report_url" in py
+    assert "report.url" in py
+    assert 't-call="justech_alexander_reports.dx_sale_' in py
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     assert "data/mail_templates.xml" in manifest
 
@@ -147,7 +155,21 @@ def test_official_report_names_not_rebound():
     assert 'inherit_id="sale.report_saleorder"' not in inherits
     assert "_dx_sale_compose" in inherits
     assert "dx-composition-wrap" in inherits
-    assert 'position="replace"' not in inherits
+    sale_block = inherits.split("sale.report_saleorder_document")[1].split(
+        "</template>"
+    )[0]
+    invoice_block = inherits.split("account.report_invoice_document")[1].split(
+        "</template>"
+    )[0]
+    assert 'position="replace"' not in sale_block
+    assert "dx_sale_composition" in sale_block
+    assert 'position="replace"' not in invoice_block
+    delivery_block = inherits.split("stock.report_delivery_document")[1].split(
+        "</template>"
+    )[0]
+    assert 'position="inside"' in delivery_block
+    assert 'position="replace"' not in delivery_block
+    assert "dx_picking_composition" in delivery_block
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     assert "l10n_do_accounting" in manifest
     assert "headers.xml" in manifest
@@ -198,11 +220,20 @@ def test_invoice_title_is_factura_not_borrador():
     assert '"FACTURA"' in py
     assert '"NOTA DE CRÉDITO"' in py
     assert '"COTIZACIÓN"' in py
+    assert "PEDIDO DE VENTA" not in py
     assert '"Pendiente"' in py
     assert "Pendiente de NCF" not in py
     assert "ncf_pending" in py
+    assert "ncf_label" in py
+    assert "ncf_pending_label" in py
+    assert "def _dx_invoice_ncf_label" in py
     assert "_dx_layout" in py
     assert "justech_do_ncf" in py
+    assert "def _dx_invoice_ncf" in py
+    assert "def _dx_invoice_client_po" in py
+    assert "def _dx_looks_like_ncf" in py
+    assert '"client_ref": self._dx_invoice_client_po(ncf)' in py
+    assert '"client_ref": self.ref or ""' not in py
     assert "background:#ffffff" in py
     assert "#f7f7f7" not in py
     assert '"layout"' in py
@@ -234,10 +265,14 @@ def test_layout_forces_document_company_and_continue_header():
     assert "dx-h-full" in layout
     assert "dxApplyContinueHeader" in layout
     assert 'bits[0] === "page"' in layout
+    assert ".dx-page.dx-v2 > * { display: none !important; }" in layout
     css = (REPORTS / "static" / "src" / "css" / "report.css").read_text(
         encoding="utf-8"
     )
     assert ".dx-h-continue" in css
+    assert ".dx-page.dx-v2 > * { display: none !important; }" in css
+    assert ".dx-page.dx-v2 > .dx-composition-wrap { display: block !important; }" in css
+    assert "*:not(.dx-composition-wrap)" not in css
 
 
 def test_picking_uses_external_layout_and_unique_address():
@@ -245,14 +280,44 @@ def test_picking_uses_external_layout_and_unique_address():
     assert "stock.report_picking" in inherits
     comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
     pick = comps.split('id="dx_picking_composition"')[1].split("</template>")[0]
-    assert "embed_masthead" in pick
-    assert "dx-pick-ident-title" in pick
-    assert pick.count("dx['partner']['street']") == 0
+    assert "dx_sale_composition" in pick
+    close = comps.split('id="dx_conduce_close"')[1].split("</template>")[0]
+    assert "Entregado por" in close
+    assert "Fecha de recibido" in close
+    assert "Observaciones" in close
+    assert "dx-pick-ident-title" not in comps.split('id="dx_picking_composition"')[1]
     paper = (REPORTS / "reports" / "paperformat.xml").read_text(encoding="utf-8")
     assert "stock.action_report_picking" in paper
     assert "stock.action_report_delivery" in paper
+    assert "paperformat_doralex_a4" in paper
+    delivery_paper = paper.split("stock.action_report_delivery")[1]
+    assert "paperformat_doralex_a4" in delivery_paper
+    sale_paper = paper.split("sale.action_report_saleorder")[1].split("</record>")[0]
+    assert "paperformat_doralex_a4" in sale_paper
+    assert "paperformat_doralex_conduce" not in paper
     py = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
-    assert '"embed_masthead": incoming' in py
+    assert '"logistic": True' in py
+    assert '"embed_masthead": False' in py
+    assert "self.company_id" in py
+    assert "def do_print_picking" in py
+    assert "stock.action_report_delivery" in py
+    inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
+    assert "dx_picking_composition" in inherits
+    assert "dx_body_lines" in comps
+    assert "dx_sale_mayuma" in comps
+    sale_comp = comps.split('id="dx_sale_composition"')[1].split("</template>")[0]
+    assert "dx_layout_header" not in sale_comp
+    assert "dx_conduce_close" not in sale_comp
+    pick_comp = comps.split('id="dx_picking_composition"')[1].split("</template>")[0]
+    assert "dx_sale_composition" in pick_comp
+    assert "dx_conduce_close" in pick_comp
+    assert "t-if=\"not dx.get('incoming')\"" in pick_comp
+    assert "dx-comp-picking" in pick_comp
+    buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
+    picking_btn = buttons.split("view_picking_form_dx_conduce_print")[1]
+    assert 'string">Conduce' in picking_btn
+    assert "stock.action_report_delivery" in picking_btn
+    assert "do_print_picking" in picking_btn
 
 
 def test_statement_credit_balance_not_negative_total():
@@ -308,3 +373,87 @@ def test_mail_from_is_administracion_not_alias():
     ).read_text(encoding="utf-8")
     assert "sentitems" in client
     assert "sendMail" in client
+
+
+def test_each_company_keeps_its_own_quote_design():
+    comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    headers = (REPORTS / "reports" / "headers.xml").read_text(encoding="utf-8")
+    company = (REPORTS / "models" / "res_company.py").read_text(encoding="utf-8")
+    sale_comp = comps.split('id="dx_sale_composition"')[1].split("</template>")[0]
+    markers = {
+        "dor": "dx-dor-client",
+        "pin": "dx-pin-titlecell",
+        "dom": "dx-dom-float",
+        "may": "dx-may-meta",
+        "rem": "dx-rem-split",
+        "blu": "dx-blu-asym",
+    }
+    templates = {
+        "dor": "dx_sale_doralex",
+        "pin": "dx_sale_pinaria",
+        "dom": "dx_sale_dominion",
+        "may": "dx_sale_mayuma",
+        "rem": "dx_sale_rempart",
+        "blu": "dx_sale_blueelite",
+    }
+    for layout, marker in markers.items():
+        assert marker in comps
+        block = comps.split('id="%s"' % templates[layout])[1].split("</template>")[0]
+        assert marker in block
+        for other, other_marker in markers.items():
+            if other != layout:
+                assert other_marker not in block
+        if layout == "dor":
+            assert "dx_sale_doralex" in sale_comp
+        else:
+            assert "layout') == '%s'" % layout in sale_comp
+            assert templates[layout] in sale_comp
+        assert '"layout": "%s"' % layout in company
+    for name in (
+        "dx_header_doralex",
+        "dx_header_pinaria",
+        "dx_header_dominion",
+        "dx_header_mayuma",
+        "dx_header_rempart",
+        "dx_header_blueelite",
+    ):
+        assert name in headers
+
+
+def test_invoice_comprobante_caption_by_type():
+    import importlib.util
+
+    path = REPORTS / "models" / "ncf_label.py"
+    spec = importlib.util.spec_from_file_location("dx_ncf_label", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    assert module.dx_ncf_kind(ncf="B0100000001") == "fiscal"
+    assert module.dx_ncf_kind(ncf="B0200000001") == "fiscal"
+    assert module.dx_ncf_kind(ncf="B1500000110") == "governmental"
+    assert module.dx_ncf_kind(ncf="E4500000001") == "governmental"
+    assert module.dx_ncf_kind(ncf="B1400000001") == "special"
+    assert module.dx_ncf_kind(ncf="E4400000001") == "special"
+    assert module.dx_ncf_kind(ncf_type="e-governmental") == "governmental"
+    assert module.dx_ncf_kind(ncf_type="special") == "special"
+    assert module.dx_ncf_kind(type_name="Comprobante Gubernamental") == "governmental"
+    assert module.dx_ncf_kind(type_name="Comprobante de Régimen Especial") == "special"
+    assert module.dx_ncf_label("fiscal") == "Número de Comprobante Fiscal"
+    assert module.dx_ncf_label("governmental") == "Número de Comprobante Gubernamental"
+    assert module.dx_ncf_label("special") == "Número de Comprobante de Régimen Especial"
+    assert module.dx_ncf_label("fiscal", pending=True).startswith("Pendiente de ")
+    assert "ncf" not in module.dx_ncf_label("fiscal", pending=True).lower()
+    comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    invoice = comps.split('id="dx_invoice_composition"')[1].split("</template>")[0]
+    assert "ncf_label" in invoice
+    assert "ncf_pending_label" in invoice
+    assert "Número de Comprobante Fiscal" in invoice
+    assert ">NCF</" not in invoice
+    meta = comps.split('id="dx_commercial_meta"')[1].split("</template>")[0]
+    assert "ncf_label" in meta
+    assert ">NCF</" not in meta
+    py = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
+    assert '"ncf_label": ncf_label' in py
+    assert '"ncf_pending_label": ncf_pending_label' in py
+    stmt = (REPORTS / "reports" / "statement.xml").read_text(encoding="utf-8")
+    assert "<th>Comprobante</th>" in stmt
+    assert "<th>NCF</th>" not in stmt

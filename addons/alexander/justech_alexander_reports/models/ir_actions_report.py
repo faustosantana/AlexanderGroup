@@ -4,6 +4,92 @@ from odoo import api, models
 class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
+    def _register_hook(self):
+        super()._register_hook()
+        leftover = self.sudo().search(
+            [
+                (
+                    "report_name",
+                    "=",
+                    "justech_alexander_reports.report_saleorder_conduce",
+                )
+            ]
+        )
+        leftover.unlink()
+        ops = self.env.ref("stock.action_report_picking", raise_if_not_found=False)
+        if ops and ops.binding_model_id:
+            ops.sudo().write({"binding_model_id": False})
+        self._dx_disable_broken_studio_composition()
+        self._dx_restore_company_paperformats()
+        self._dx_restore_report_url()
+
+    @api.model
+    def _dx_disable_broken_studio_composition(self):
+        """Studio diffs emptied company headers and collapsed sale layouts."""
+        View = self.env["ir.ui.view"].sudo()
+        base = self.env.ref(
+            "justech_alexander_reports.dx_sale_composition",
+            raise_if_not_found=False,
+        )
+        if base:
+            views = View.search([("inherit_id", "=", base.id), ("active", "=", True)])
+            for view in views:
+                arch = view.arch or ""
+                if arch.count('t-call="justech_alexander_reports.dx_sale_') > 1:
+                    view.write({"active": False})
+        data = (
+            self.env["ir.model.data"]
+            .sudo()
+            .search(
+                [
+                    ("module", "=", "justech_alexander_reports"),
+                    ("model", "=", "ir.ui.view"),
+                ]
+            )
+        )
+        studio = View.search(
+            [("inherit_id", "in", data.mapped("res_id")), ("active", "=", True)]
+        )
+        for view in studio:
+            xmlid = view.xml_id or ""
+            name = (view.name or "").lower()
+            if xmlid.startswith("studio_customization.") or "studio" in name:
+                view.write({"active": False})
+
+    @api.model
+    def _dx_restore_company_paperformats(self):
+        """Quotes, invoices and Conduce share the designed A4 letterhead."""
+        paper = self.env.ref(
+            "justech_alexander_reports.paperformat_doralex_a4",
+            raise_if_not_found=False,
+        )
+        if not paper:
+            return
+        for xmlid in (
+            "sale.action_report_saleorder",
+            "account.account_invoices",
+            "stock.action_report_delivery",
+            "stock.action_report_picking",
+            "justech_alexander_reports.action_report_saleorder_propet",
+            "justech_alexander_reports.action_report_invoice_propet",
+        ):
+            report = self.env.ref(xmlid, raise_if_not_found=False)
+            if report and report.paperformat_id != paper:
+                report.sudo().write({"paperformat_id": paper.id})
+
+    @api.model
+    def _dx_restore_report_url(self):
+        """wkhtmltopdf must fetch report CSS from inside the container."""
+        icp = self.env["ir.config_parameter"].sudo()
+        current = (icp.get_param("report.url") or "").rstrip("/")
+        internal = "http://127.0.0.1:8069"
+        if current == internal:
+            return
+        web = (icp.get_param("web.base.url") or "").rstrip("/")
+        if current and current not in {web, "http://127.0.0.1:18069"}:
+            return
+        icp.set_param("report.url", internal)
+
     def _dx_company_from_records(self, report_ref, res_ids):
         if not res_ids:
             return self.env["res.company"]

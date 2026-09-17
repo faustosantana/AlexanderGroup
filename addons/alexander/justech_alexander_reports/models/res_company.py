@@ -168,8 +168,24 @@ class ResCompany(models.Model):
             meta["date2_label"] = "Entrega"
         elif record._name == "stock.picking":
             meta["date"] = _fmt(record.scheduled_date or record.date_done)
-            meta["date2_label"] = "Origen"
-            meta["validity"] = record.origin or "—"
+            sale = record.sale_id if "sale_id" in record._fields else False
+            meta["date2_label"] = "Pedido"
+            meta["validity"] = (sale.name if sale else record.origin) or "—"
+            meta["currency"] = ""
+            if sale and sale.user_id:
+                sale_name = (sale.user_id.name or "").strip()
+                if sale_name not in (
+                    "OdooBot",
+                    "Administrator",
+                    "Public user",
+                    "Public User",
+                    "",
+                ):
+                    meta["salesperson"] = sale_name
+                else:
+                    meta["salesperson"] = ""
+            else:
+                meta["salesperson"] = ""
         elif record._name == "account.payment":
             meta["date"] = _fmt(record.date)
             meta["validity"] = ""

@@ -18,3 +18,20 @@ def post_init_hook(env):
         if vals:
             company.write(vals)
     env["ir.actions.report"]._dx_attach_invoice_edi_pdf()
+    leftover = (
+        env["ir.actions.report"]
+        .sudo()
+        .search(
+            [
+                (
+                    "report_name",
+                    "=",
+                    "justech_alexander_reports.report_saleorder_conduce",
+                )
+            ]
+        )
+    )
+    leftover.unlink()
+    env["ir.actions.report"]._dx_disable_broken_studio_composition()
+    env["ir.actions.report"]._dx_restore_company_paperformats()
+    env["ir.actions.report"]._dx_restore_report_url()

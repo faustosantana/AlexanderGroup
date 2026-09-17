@@ -93,7 +93,9 @@ div.footer td {
 }
 
 .dx-page { margin: 0; padding: 0; }
-.dx-page.dx-v2 > *:not(.dx-composition-wrap) { display: none !important; }
+/* Qt4/wkhtmltopdf ignores :not(). Hide native siblings, then show ours. */
+.dx-page.dx-v2 > * { display: none !important; }
+.dx-page.dx-v2 > .dx-composition-wrap { display: block !important; }
 .dx-composition-wrap,
 .dx-composition { margin: 0; padding: 0; }
 
@@ -107,6 +109,13 @@ div.footer td {
   letter-spacing: 0.04em;
 }
 .dx-head-number { font-size: 11pt; margin-top: 3px; font-weight: 700; }
+.dx-doc-title-block {
+  margin: 0 0 10px 0;
+  padding: 0 0 8px 0;
+}
+.dx-doc-title-block .dx-head-title {
+  text-transform: uppercase;
+}
 .dx-badge {
   font-size: 7pt;
   font-weight: 500;
@@ -568,10 +577,12 @@ div.footer td {
 .dx-ncf-k {
   font-size: 7.5pt;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #6a6a6a;
   margin: 0 0 2px;
+  line-height: 1.25;
+  max-width: 100%;
 }
 .dx-ncf-v {
   font-size: 16pt;
@@ -611,10 +622,15 @@ div.footer td {
 .dx-pay-meta-col { display: inline-block; width: 48%; vertical-align: top; margin: 0 0 8px; }
 .dx-amount-hero-wrap { margin: 2px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #ddd; }
 .dx-pick-top { overflow: hidden; margin: 0 0 14px; }
-.dx-pick-ident { margin: 0 0 12px; padding: 0 0 8px; border-bottom: 2px solid #1a1a1a; }
-.dx-pick-ident-name { font-size: 12pt; font-weight: 700; letter-spacing: 0.02em; }
-.dx-pick-ident-title { font-size: 16pt; font-weight: 700; margin-top: 8px; letter-spacing: 0.04em; }
-.dx-pick-ident-num { font-size: 10pt; font-weight: 700; }
+.dx-pick-ident { width: 100%; margin: 0 0 14px; padding: 0 0 10px; border-bottom: 2px solid #1a1a1a; }
+.dx-pick-ident-brand { width: 62%; vertical-align: top; }
+.dx-pick-ident-doc { width: 38%; vertical-align: top; text-align: right; }
+.dx-pick-ident-name { font-size: 12pt; font-weight: 700; letter-spacing: 0.02em; margin-top: 4px; }
+.dx-pick-ident-title { font-size: 20pt; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.dx-pick-ident-k { font-size: 8pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #6a6a6a; margin-top: 6px; }
+.dx-pick-ident-num { font-size: 12pt; font-weight: 700; }
+.dx-pick-notes,
+.dx-pick-received { margin: 12px 0 0; }
 .dx-pick-party { display: inline-block; width: 56%; vertical-align: top; }
 .dx-pick-meta { display: inline-block; width: 40%; vertical-align: top; }
 .dx-warranty { margin: 8px 0; }

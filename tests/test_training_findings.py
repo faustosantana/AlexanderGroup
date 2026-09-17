@@ -81,16 +81,26 @@ def test_propet_report_is_optional_not_default():
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     xml = (REPORTS / "reports" / "propet_proforma.xml").read_text(encoding="utf-8")
     compose = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
+    buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
     assert "propet_proforma.xml" in manifest
     assert "action_report_saleorder_propet" in xml
     assert "Formato Propet" in xml
     assert "FORMULARIO PROPET" not in xml
+    assert "Formulario Propet" not in xml
     assert "action_report_invoice_propet" in xml
-    assert "action_report_saleorder_conduce" in xml
-    buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
-    assert "Formato Propet" in buttons
-    assert "Proforma" in buttons
-    assert "Conduce" in buttons
+    assert "action_report_saleorder_conduce" not in xml
+    assert "Este pedido aún no tiene una entrega" not in xml
+    assert 'binding_type">report' in xml
+    assert 'binding_model_id" ref="sale.model_sale_order"' in xml
+    assert 'binding_model_id" ref="account.model_account_move"' in xml
+    assert "action_dx_open_conduce" in buttons
+    assert "Crear Conduce" in buttons
+    assert "action_dx_print_formats" in buttons
+    assert 'string="Imprimir"' in buttons
+    assert 'string="Formato Propet"' not in buttons
+    assert 'string="Proforma"' not in buttons
+    assert "action_report_saleorder_propet" not in buttons
+    assert "action_report_pro_forma_invoice" not in buttons
     assert (
         "sale.action_report_saleorder"
         not in xml.split("action_report_saleorder_propet")[0]
@@ -101,13 +111,49 @@ def test_propet_report_is_optional_not_default():
     )
     assert "FACTURA PROFORMA" in compose
     assert "CONDUCE" in compose
-    assert "Número de Orden de Compra del Cliente" in compose
-    assert "FORMATO PROPET" in compose
+    assert '"OC / PO"' in compose
+    assert "def _dx_invoice_client_po" in compose
+    assert "_dx_looks_like_ncf" in compose
+    assert "Número de Orden de Compra del Cliente" not in compose
+    assert "FORMATO PROPET" not in compose
+    assert '"title": "COTIZACIÓN"' in compose
+    assert "PEDIDO DE VENTA" not in compose
+    assert 'title = "FACTURA"' in compose
     assert "propet_display_texts" in (REPORTS / "models" / "propet_math.py").read_text(
         encoding="utf-8"
     )
     assert 'name="context"' not in xml
     assert "group_ids" in xml
+    wizard_xml = (REPORTS / "views" / "sale_print_wizard.xml").read_text(
+        encoding="utf-8"
+    )
+    wizard_py = (REPORTS / "models" / "sale_print_wizard.py").read_text(
+        encoding="utf-8"
+    )
+    assert "def action_print_invoice" in wizard_py
+    assert "account.account_invoices" in wizard_py
+    assert "sale.action_report_saleorder" in wizard_py
+    assert wizard_py.index("account.account_invoices") < wizard_py.index(
+        "action_report_invoice_propet"
+    )
+    assert wizard_py.index("sale.action_report_saleorder") < wizard_py.index(
+        "action_report_saleorder_propet"
+    )
+    assert "Factura en PDF" in wizard_xml
+    assert 'string="Factura en PDF" class="btn-primary"' in wizard_xml
+    assert 'string="Cotización en PDF" class="btn-primary"' in wizard_xml
+    assert 'string="Formato Propet" class="btn-primary"' not in wizard_xml
+    inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
+    assert "dx_sale_propet_composition" not in inherits
+    assert "dx_sale_composition" in inherits
+    assert "dx_invoice_composition" in inherits
+    mail = (REPORTS / "data" / "mail_templates.xml").read_text(encoding="utf-8")
+    assert "account.account_invoices" in mail
+    assert "action_report_invoice_propet" not in mail
+    paper = (REPORTS / "reports" / "paperformat.xml").read_text(encoding="utf-8")
+    inv_paper = paper.split("account.account_invoices")[1].split("</record>")[0]
+    assert "Factura en PDF" in inv_paper
+    assert "paperformat_doralex_a4" in inv_paper
 
 
 def test_description_isolation_does_not_copy_sibling_lines():
@@ -137,7 +183,8 @@ def test_tracking_keeps_native_lot_group():
 
 def test_trace_columns_hidden_by_purchase_group_not_deleted():
     views = (UX / "views" / "sale_order_views.xml").read_text(encoding="utf-8")
-    assert "Número de Orden de Compra del Cliente" in views
+    assert 'string="OC / PO"' in views
+    assert "Número de Orden de Compra del Cliente" not in views
     assert "justech_supply" in views
     assert "justech_qty_purchased" in views
     assert "purchase.group_purchase_user" in views
@@ -164,6 +211,104 @@ def test_company_signature_cannot_use_other_company_fields():
     assert "_dx_mail_signature_html" in company
     assert "_dx_document_company" in compose
     assert "company._dx_mail_signature_html()" in compose
+
+
+def test_conduce_is_delivery_flow_not_sale_print():
+    sale = (BASE / "models" / "sale_order.py").read_text(encoding="utf-8")
+    buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
+    compose = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
+    components = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    picking_qty = (REPORTS / "models" / "picking_qty.py").read_text(encoding="utf-8")
+    assert "def action_dx_open_conduce" in sale
+    assert "_action_launch_stock_rule" in sale
+    assert "stock.picking" in sale
+    assert 'self.state not in ("sale", "done")' in sale
+    assert "action_dx_open_conduce" in buttons
+    assert "Crear Conduce" in buttons
+    assert "action_dx_print_formats" in buttons
+    sale_btns = buttons.split("view_sale_order_form_dx_print_buttons")[1].split(
+        "view_picking_form_dx_conduce_print"
+    )[0]
+    assert "action_report_delivery" not in sale_btns
+    assert "view_picking_form_dx_conduce_print" in buttons
+    assert "def do_print_picking" in compose
+    assert "client_ref_label" in compose
+    assert '"OC / PO"' in compose
+    assert "Cantidad pedida" in components
+    assert '"logistic": True' in compose
+    assert '"embed_masthead": False' in compose
+    assert "dx-doc-title-block" in components
+    assert "Cantidad entregada" in components
+    picking_block = components.split('id="dx_picking_lines"')[1].split("</template>")[0]
+    assert "ITBIS" not in picking_block
+    assert "Precio" not in picking_block
+    assert "Subtotal" not in picking_block
+    assert "picking_line_qtys" in picking_qty
+    assert "sale_line_id" in picking_qty
+
+
+def test_picking_line_qtys_use_sale_order_not_move_demand():
+    qty = _load(REPORTS / "models" / "picking_qty.py", "dx_picking_qty")
+
+    class SaleLine:
+        product_uom_qty = 10
+
+    class Move:
+        product_uom_qty = 6
+        quantity = 6
+        sale_line_id = SaleLine()
+
+    ordered, done = qty.picking_line_qtys(Move())
+    assert ordered == 10
+    assert done == 6
+
+    class Orphan:
+        product_uom_qty = 4
+        quantity_done = 2
+        sale_line_id = False
+
+    ordered, done = qty.picking_line_qtys(Orphan())
+    assert ordered == 4
+    assert done == 2
+
+
+def test_oc_po_short_label_everywhere():
+    sale_views = (UX / "views" / "sale_order_views.xml").read_text(encoding="utf-8")
+    move_views = (UX / "views" / "account_move_views.xml").read_text(encoding="utf-8")
+    compose = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
+    components = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    wizard = (REPORTS / "models" / "sale_print_wizard.py").read_text(encoding="utf-8")
+    wizard_xml = (REPORTS / "views" / "sale_print_wizard.xml").read_text(
+        encoding="utf-8"
+    )
+    assert "action_print_propet" in wizard
+    assert "def action_print_invoice" in wizard
+    assert "account.account_invoices" in wizard
+    assert "dx.invoice.print.wizard" in wizard
+    assert "Formato Propet" in wizard_xml
+    assert "Factura Proforma" in wizard_xml
+    assert "Cotización en PDF" in wizard_xml
+    assert "Factura en PDF" in wizard_xml
+    invoice_footer = wizard_xml.split("view_dx_invoice_print_wizard")[1].split(
+        "<footer>"
+    )[1]
+    sale_footer = wizard_xml.split("view_dx_sale_print_wizard")[1].split("<footer>")[1]
+    assert invoice_footer.find("Factura en PDF") < invoice_footer.find("Formato Propet")
+    assert sale_footer.find("Cotización en PDF") < sale_footer.find("Formato Propet")
+    assert 'string="Factura en PDF" class="btn-primary"' in invoice_footer
+    assert 'string="Formato Propet" class="btn-secondary"' in invoice_footer
+    assert 'string="Cotización en PDF" class="btn-primary"' in sale_footer
+    assert "dx.invoice.print.wizard" in wizard_xml
+    assert 'string="OC / PO"' in sale_views
+    assert ">OC / PO</attribute>" in move_views
+    assert "Número de Orden de Compra del Cliente" not in sale_views
+    assert "Número de Orden de Compra del Cliente" not in move_views
+    assert "Número de Orden de Compra del Cliente" not in compose
+    assert "or 'OC / PO'" in components
+    assert "dx_oc_po" in components
+    assert "_prepare_invoice" in (BASE / "models" / "sale_order.py").read_text(
+        encoding="utf-8"
+    )
 
 
 def test_no_hardcoded_company_or_tax_ids_in_overlay():

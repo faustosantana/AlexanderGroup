@@ -6,11 +6,11 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="priority">80</field>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="client_order_ref" string="Número de Orden de Compra del Cliente" placeholder="Ej. PO-CLIENTE-2026-001"/>
+            <xpath expr="//field[@name='date_order']" position="before">
+                <field name="client_order_ref" string="OC / PO" placeholder="Ej. PO-CLIENTE-2026-001"/>
             </xpath>
             <xpath expr="//field[@name='client_order_ref']" position="attributes">
-                <attribute name="string">Número de Orden de Compra del Cliente</attribute>
+                <attribute name="string">OC / PO</attribute>
             </xpath>
         </field>
     </record>
@@ -22,7 +22,7 @@
         <field name="priority">80</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <field name="client_order_ref" string="OC / PO del cliente" optional="show"/>
+                <field name="client_order_ref" string="OC / PO" optional="show"/>
             </xpath>
         </field>
     </record>
@@ -33,10 +33,10 @@
         <field name="inherit_id" ref="sale.view_sales_order_filter"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <field name="client_order_ref" string="OC / PO del cliente"/>
+                <field name="client_order_ref" string="OC / PO"/>
             </xpath>
             <xpath expr="//search" position="inside">
-                <filter string="Con OC / PO del cliente" name="dx_has_client_po" domain="[('client_order_ref', '!=', False)]"/>
+                <filter string="Con OC / PO" name="dx_has_client_po" domain="[('client_order_ref', '!=', False)]"/>
             </xpath>
         </field>
     </record>
