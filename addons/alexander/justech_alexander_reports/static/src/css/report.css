@@ -107,6 +107,13 @@ div.footer td {
   letter-spacing: 0.04em;
 }
 .dx-head-number { font-size: 11pt; margin-top: 3px; font-weight: 700; }
+.dx-doc-title-block {
+  margin: 0 0 10px 0;
+  padding: 0 0 8px 0;
+}
+.dx-doc-title-block .dx-head-title {
+  text-transform: uppercase;
+}
 .dx-badge {
   font-size: 7pt;
   font-weight: 500;

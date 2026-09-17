@@ -213,6 +213,15 @@
                 </div>
             </div>
         </t>
+        <t t-else="">
+            <div class="dx-doc-title-block">
+                <div class="dx-head-title" t-out="dx['ident'].get('title')"/>
+                <div class="dx-head-number">
+                    <span t-if="dx['ident'].get('badge')" class="dx-badge" t-out="dx['ident'].get('badge')"/>
+                    <span t-out="dx['ident'].get('number')"/>
+                </div>
+            </div>
+        </t>
     </template>
 
     <template id="dx_document_end">

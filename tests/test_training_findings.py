@@ -196,6 +196,7 @@ def test_conduce_is_delivery_flow_not_sale_print():
     assert "client_ref_label" in compose
     assert '"OC / PO"' in compose
     assert "Cantidad pedida" in components
+    assert "dx-doc-title-block" in components
     assert "Cantidad entregada" in components
     picking_block = components.split('id="dx_picking_lines"')[1].split("</template>")[0]
     assert "ITBIS" not in picking_block
