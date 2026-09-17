@@ -97,7 +97,10 @@ def test_six_real_headers_and_sale_compositions():
     assert "dx-h-dor-vendor" in headers
     assert "dx_document_end" in comps
     assert "dx-ncf-hero" in comps
-    assert "Pendiente de NCF" in comps
+    assert "ncf_pending_label" in comps
+    assert "Número de Comprobante Fiscal" in comps
+    assert "Pendiente de NCF" not in comps
+    assert ">NCF</" not in comps
     assert "dx-sign-table" not in comps
     assert "dx-zone-bottom" not in comps
     assert "PAGO NO APLICADO / ANTICIPO" in comps
@@ -219,6 +222,9 @@ def test_invoice_title_is_factura_not_borrador():
     assert '"Pendiente"' in py
     assert "Pendiente de NCF" not in py
     assert "ncf_pending" in py
+    assert "ncf_label" in py
+    assert "ncf_pending_label" in py
+    assert "def _dx_invoice_ncf_label" in py
     assert "_dx_layout" in py
     assert "justech_do_ncf" in py
     assert "def _dx_invoice_ncf" in py
@@ -365,3 +371,87 @@ def test_mail_from_is_administracion_not_alias():
     ).read_text(encoding="utf-8")
     assert "sentitems" in client
     assert "sendMail" in client
+
+
+def test_each_company_keeps_its_own_quote_design():
+    comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    headers = (REPORTS / "reports" / "headers.xml").read_text(encoding="utf-8")
+    company = (REPORTS / "models" / "res_company.py").read_text(encoding="utf-8")
+    sale_comp = comps.split('id="dx_sale_composition"')[1].split("</template>")[0]
+    markers = {
+        "dor": "dx-dor-client",
+        "pin": "dx-pin-titlecell",
+        "dom": "dx-dom-float",
+        "may": "dx-may-meta",
+        "rem": "dx-rem-split",
+        "blu": "dx-blu-asym",
+    }
+    templates = {
+        "dor": "dx_sale_doralex",
+        "pin": "dx_sale_pinaria",
+        "dom": "dx_sale_dominion",
+        "may": "dx_sale_mayuma",
+        "rem": "dx_sale_rempart",
+        "blu": "dx_sale_blueelite",
+    }
+    for layout, marker in markers.items():
+        assert marker in comps
+        block = comps.split('id="%s"' % templates[layout])[1].split("</template>")[0]
+        assert marker in block
+        for other, other_marker in markers.items():
+            if other != layout:
+                assert other_marker not in block
+        if layout == "dor":
+            assert "dx_sale_doralex" in sale_comp
+        else:
+            assert "layout') == '%s'" % layout in sale_comp
+            assert templates[layout] in sale_comp
+        assert '"layout": "%s"' % layout in company
+    for name in (
+        "dx_header_doralex",
+        "dx_header_pinaria",
+        "dx_header_dominion",
+        "dx_header_mayuma",
+        "dx_header_rempart",
+        "dx_header_blueelite",
+    ):
+        assert name in headers
+
+
+def test_invoice_comprobante_caption_by_type():
+    import importlib.util
+
+    path = REPORTS / "models" / "ncf_label.py"
+    spec = importlib.util.spec_from_file_location("dx_ncf_label", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    assert module.dx_ncf_kind(ncf="B0100000001") == "fiscal"
+    assert module.dx_ncf_kind(ncf="B0200000001") == "fiscal"
+    assert module.dx_ncf_kind(ncf="B1500000110") == "governmental"
+    assert module.dx_ncf_kind(ncf="E4500000001") == "governmental"
+    assert module.dx_ncf_kind(ncf="B1400000001") == "special"
+    assert module.dx_ncf_kind(ncf="E4400000001") == "special"
+    assert module.dx_ncf_kind(ncf_type="e-governmental") == "governmental"
+    assert module.dx_ncf_kind(ncf_type="special") == "special"
+    assert module.dx_ncf_kind(type_name="Comprobante Gubernamental") == "governmental"
+    assert module.dx_ncf_kind(type_name="Comprobante de Régimen Especial") == "special"
+    assert module.dx_ncf_label("fiscal") == "Número de Comprobante Fiscal"
+    assert module.dx_ncf_label("governmental") == "Número de Comprobante Gubernamental"
+    assert module.dx_ncf_label("special") == "Número de Comprobante de Régimen Especial"
+    assert module.dx_ncf_label("fiscal", pending=True).startswith("Pendiente de ")
+    assert "ncf" not in module.dx_ncf_label("fiscal", pending=True).lower()
+    comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    invoice = comps.split('id="dx_invoice_composition"')[1].split("</template>")[0]
+    assert "ncf_label" in invoice
+    assert "ncf_pending_label" in invoice
+    assert "Número de Comprobante Fiscal" in invoice
+    assert ">NCF</" not in invoice
+    meta = comps.split('id="dx_commercial_meta"')[1].split("</template>")[0]
+    assert "ncf_label" in meta
+    assert ">NCF</" not in meta
+    py = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
+    assert '"ncf_label": ncf_label' in py
+    assert '"ncf_pending_label": ncf_pending_label' in py
+    stmt = (REPORTS / "reports" / "statement.xml").read_text(encoding="utf-8")
+    assert "<th>Comprobante</th>" in stmt
+    assert "<th>NCF</th>" not in stmt

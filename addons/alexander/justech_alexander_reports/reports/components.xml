@@ -49,13 +49,13 @@
                     <div class="dx-meta-v" t-out="dx['currency']"/>
                 </td>
                 <td t-if="dx.get('ncf')">
-                    <div class="dx-meta-k">NCF</div>
+                    <div class="dx-meta-k" t-out="dx.get('ncf_label') or 'Número de Comprobante Fiscal'"/>
                     <div class="dx-meta-v" t-out="dx['ncf']"/>
                 </td>
             </tr>
             <tr t-if="dx.get('origin_ncf') or dx.get('origin_move')">
                 <td t-if="dx.get('origin_ncf')">
-                    <div class="dx-meta-k">NCF afectado</div>
+                    <div class="dx-meta-k" t-out="dx.get('origin_ncf_label') or 'Comprobante afectado'"/>
                     <div class="dx-meta-v" t-out="dx['origin_ncf']"/>
                 </td>
                 <td t-if="dx.get('origin_move')">
@@ -670,9 +670,9 @@
         <div t-attf-class="dx-composition dx-comp-invoice dx-comp-{{ dx.get('layout') or 'dor' }} dx-page-stack #{'dx-comp-refund' if dx.get('is_refund') else ''}">
             <t t-call="justech_alexander_reports.dx_pin_doc_title"/>
             <div class="dx-ncf-hero">
-                <div class="dx-ncf-k">NCF</div>
+                <div class="dx-ncf-k" t-out="dx.get('ncf_label') or 'Número de Comprobante Fiscal'"/>
                 <div t-if="dx.get('ncf')" class="dx-ncf-v" t-out="dx['ncf']"/>
-                <div t-else="" class="dx-ncf-pending">Pendiente de NCF</div>
+                <div t-else="" class="dx-ncf-pending" t-out="dx.get('ncf_pending_label') or 'Pendiente de número de comprobante fiscal'"/>
             </div>
             <div t-if="dx.get('is_refund')" class="dx-refund-open">
                 <div class="dx-refund-col">
@@ -681,7 +681,7 @@
                 </div>
                 <div class="dx-refund-col">
                     <div class="dx-block-title">Documento afectado</div>
-                    <div t-if="dx.get('origin_ncf')">NCF afectado · <t t-out="dx['origin_ncf']"/></div>
+                    <div t-if="dx.get('origin_ncf')"><t t-out="dx.get('origin_ncf_label') or 'Comprobante afectado'"/> · <t t-out="dx['origin_ncf']"/></div>
                     <div t-if="dx.get('origin_move')" t-out="dx['origin_move']"/>
                     <div t-if="dx.get('origin')">Factura · <t t-out="dx['origin']"/></div>
                 </div>
@@ -818,7 +818,7 @@
                     <thead>
                         <tr>
                             <th>Factura</th>
-                            <th>NCF</th>
+                            <th>Comprobante</th>
                             <th>Fecha</th>
                             <th class="dx-col-amt">Monto factura</th>
                             <th class="dx-col-amt">Monto aplicado</th>

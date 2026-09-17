@@ -1,9 +1,9 @@
 {
     "name": "Diseño de reportes Doralex",
-    "version": "19.0.3.13.3",
+    "version": "19.0.3.13.4",
     "category": "Reporting",
-    "summary": "V5.3 restaurado: solo Propet y Conduce; papelería Qt-safe",
-    "description": "Formato Propet y Factura Proforma son formatos de impresión del documento actual. El Conduce es el flujo de entrega (stock.picking). OC / PO corto y visible.",
+    "summary": "V5.3 restaurado: cotización por empresa; rótulo de comprobante",
+    "description": "Cada empresa conserva su cotización. El rótulo fiscal de factura es Número de Comprobante Fiscal / Gubernamental / de Régimen Especial. OC / PO no sustituye el comprobante.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",
     "license": "LGPL-3",

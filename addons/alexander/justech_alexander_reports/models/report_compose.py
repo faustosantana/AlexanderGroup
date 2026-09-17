@@ -1,6 +1,7 @@
 from odoo import models
 from odoo.tools.misc import format_amount, format_date
 
+from .ncf_label import dx_ncf_affected_label, dx_ncf_kind, dx_ncf_label
 from .picking_qty import picking_line_qtys
 from .propet_math import propet_display_texts, propet_line_amounts
 from .report_layout import count_body_lines, spacer_mm, white_png_data_uri
@@ -387,6 +388,52 @@ class AccountMoveCompose(models.Model):
             return self.l10n_latam_document_number
         return ""
 
+    def _dx_invoice_ncf_kind(self, ncf=None):
+        self.ensure_one()
+        ncf_type = ""
+        type_name = ""
+        prefix = ""
+        dtype = False
+        if (
+            "l10n_latam_document_type_id" in self._fields
+            and self.l10n_latam_document_type_id
+        ):
+            dtype = self.l10n_latam_document_type_id
+        jtype = False
+        if (
+            "justech_do_document_type_id" in self._fields
+            and self.justech_do_document_type_id
+        ):
+            jtype = self.justech_do_document_type_id
+        if dtype:
+            if "l10n_do_ncf_type" in dtype._fields:
+                ncf_type = dtype.l10n_do_ncf_type or ""
+            type_name = dtype.report_name or dtype.name or ""
+            if "doc_code_prefix" in dtype._fields:
+                prefix = dtype.doc_code_prefix or ""
+        if jtype:
+            type_name = type_name or jtype.name or ""
+            prefix = prefix or getattr(jtype, "prefix", "") or ""
+            if not ncf_type and getattr(jtype, "code", ""):
+                ncf_type = jtype.code
+        if (
+            "fiscal_document_type_display" in self._fields
+            and self.fiscal_document_type_display
+        ):
+            type_name = type_name or self.fiscal_document_type_display
+        ncf_value = self._dx_invoice_ncf() if ncf is None else ncf
+        return dx_ncf_kind(
+            ncf=ncf_value or prefix,
+            ncf_type=ncf_type,
+            type_name=type_name,
+        )
+
+    def _dx_invoice_ncf_label(self, ncf=None):
+        self.ensure_one()
+        number = self._dx_invoice_ncf() if ncf is None else ncf
+        kind = self._dx_invoice_ncf_kind(number)
+        return dx_ncf_label(kind, pending=not bool(number))
+
     def _dx_related_sale_orders(self):
         self.ensure_one()
         sales = self.env["sale.order"]
@@ -486,6 +533,12 @@ class AccountMoveCompose(models.Model):
             }
         )
         refund = self.move_type in ("out_refund", "in_refund")
+        kind = self._dx_invoice_ncf_kind(ncf)
+        ncf_label = dx_ncf_label(kind, pending=False)
+        ncf_pending_label = dx_ncf_label(kind, pending=True)
+        origin_ncf_label = (
+            dx_ncf_affected_label(dx_ncf_kind(ncf=origin_ncf)) if origin_ncf else ""
+        )
         fallback = (
             "Documento fiscal. Conserve este comprobante. ITBIS de acuerdo a la "
             "legislación dominicana vigente."
@@ -508,9 +561,13 @@ class AccountMoveCompose(models.Model):
                 company,
             ),
             "ncf": ncf,
+            "ncf_kind": kind,
+            "ncf_label": ncf_label,
+            "ncf_pending_label": ncf_pending_label,
             "ncf_missing": not bool(ncf),
             "ncf_pending": not bool(ncf),
             "origin_ncf": origin_ncf,
+            "origin_ncf_label": origin_ncf_label,
             "origin_move": origin_move,
             "origin": self.invoice_origin or "",
             "client_ref": self._dx_invoice_client_po(ncf),
@@ -652,6 +709,7 @@ class AccountPaymentCompose(models.Model):
                     {
                         "document": label,
                         "ncf": ncf or "—",
+                        "ncf_label": dx_ncf_label(dx_ncf_kind(ncf=ncf)),
                         "date": _dx_date(self.env, inv.invoice_date or inv.date),
                         "invoice_amount": _dx_money(
                             self.env, inv.amount_total, inv.currency_id
@@ -783,10 +841,10 @@ class AccountPaymentCompose(models.Model):
             "banks": _dx_banks(company) if company.dx_report_show_bank else [],
             "terms": (
                 "Este documento es un comprobante de pago. "
-                "No sustituye factura con NCF."
+                "No sustituye factura con comprobante fiscal."
                 if vendor
                 else "Este documento es un comprobante de ingreso. "
-                "No sustituye factura con NCF."
+                "No sustituye factura con comprobante fiscal."
             ),
             "party_title": "Pagado a" if vendor else "Recibido de",
             "show_signature": bool(company.dx_report_show_signature),
