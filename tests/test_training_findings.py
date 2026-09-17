@@ -91,6 +91,7 @@ def test_propet_report_is_optional_not_default():
     assert "action_report_saleorder_conduce" not in xml
     assert "Este pedido aún no tiene una entrega" not in xml
     assert 'binding_type">report' in xml
+    assert 'binding_model_id" eval="False"' in xml
     assert "action_dx_open_conduce" in buttons
     assert "Crear Conduce" in buttons
     assert "action_dx_print_formats" in buttons
@@ -239,9 +240,11 @@ def test_oc_po_short_label_everywhere():
         encoding="utf-8"
     )
     assert "action_print_propet" in wizard
+    assert "dx.invoice.print.wizard" in wizard
     assert "Formato Propet" in wizard_xml
     assert "Factura Proforma" in wizard_xml
     assert "Cotización en PDF" in wizard_xml
+    assert "dx.invoice.print.wizard" in wizard_xml
     assert 'string="OC / PO"' in sale_views
     assert ">OC / PO</attribute>" in move_views
     assert "Número de Orden de Compra del Cliente" not in sale_views

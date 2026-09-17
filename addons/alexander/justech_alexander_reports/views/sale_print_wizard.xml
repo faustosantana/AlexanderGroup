@@ -20,4 +20,23 @@
             </form>
         </field>
     </record>
+
+    <record id="view_dx_invoice_print_wizard" model="ir.ui.view">
+        <field name="name">dx.invoice.print.wizard.form</field>
+        <field name="model">dx.invoice.print.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Imprimir">
+                <group>
+                    <div class="text-muted">
+                        Formato de impresión del documento actual. No se crea otra factura.
+                    </div>
+                    <field name="move_id" readonly="1"/>
+                </group>
+                <footer>
+                    <button name="action_print_propet" type="object" string="Formato Propet" class="btn-primary"/>
+                    <button string="Cerrar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
 </odoo>

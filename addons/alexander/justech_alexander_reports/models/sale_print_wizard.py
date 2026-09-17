@@ -39,3 +39,33 @@ class SaleOrderPrintMenu(models.Model):
             "view_mode": "form",
             "target": "new",
         }
+
+
+class DxInvoicePrintWizard(models.TransientModel):
+    _name = "dx.invoice.print.wizard"
+    _description = "Imprimir factura"
+
+    move_id = fields.Many2one("account.move", required=True, ondelete="cascade")
+
+    def action_print_propet(self):
+        self.ensure_one()
+        return self.env.ref(
+            "justech_alexander_reports.action_report_invoice_propet"
+        ).report_action(self.move_id)
+
+
+class AccountMovePrintMenu(models.Model):
+    _inherit = "account.move"
+
+    def action_dx_print_formats(self):
+        """Invoice Imprimir only lists formats that apply to account.move."""
+        self.ensure_one()
+        wizard = self.env["dx.invoice.print.wizard"].create({"move_id": self.id})
+        return {
+            "type": "ir.actions.act_window",
+            "name": "Imprimir",
+            "res_model": "dx.invoice.print.wizard",
+            "res_id": wizard.id,
+            "view_mode": "form",
+            "target": "new",
+        }

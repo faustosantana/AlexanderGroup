@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_doralex_report_preview_system,doralex.report.preview system,model_doralex_report_preview,base.group_system,1,1,1,1
 access_dx_sale_print_wizard_sale,dx.sale.print.wizard sale,model_dx_sale_print_wizard,sales_team.group_sale_salesman,1,1,1,1
+access_dx_invoice_print_wizard_invoice,dx.invoice.print.wizard invoice,model_dx_invoice_print_wizard,account.group_account_invoice,1,1,1,1

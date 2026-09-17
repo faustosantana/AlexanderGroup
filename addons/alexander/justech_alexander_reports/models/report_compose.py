@@ -357,7 +357,7 @@ class AccountMoveCompose(models.Model):
             title = "FACTURA DE CRÉDITO"
         else:
             title = "FACTURA"
-        if self.state == "posted" and self.name and self.name != "/":
+        if self.name and self.name != "/":
             number = self.name
         else:
             number = "Pendiente"

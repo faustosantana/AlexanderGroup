@@ -16,6 +16,14 @@ class IrActionsReport(models.Model):
             ]
         )
         leftover.unlink()
+        for xmlid in (
+            "justech_alexander_reports.action_report_saleorder_propet",
+            "justech_alexander_reports.action_report_invoice_propet",
+            "sale.action_report_pro_forma_invoice",
+        ):
+            report = self.env.ref(xmlid, raise_if_not_found=False)
+            if report and report.binding_model_id:
+                report.sudo().write({"binding_model_id": False})
 
     def _dx_company_from_records(self, report_ref, res_ids):
         if not res_ids:

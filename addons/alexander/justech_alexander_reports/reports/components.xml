@@ -63,26 +63,24 @@
                     <div class="dx-meta-v" t-out="dx['origin_move']"/>
                 </td>
             </tr>
-            <tr t-if="dx.get('origin') or dx.get('client_ref')">
+            <tr>
                 <td t-if="dx.get('origin')">
                     <div class="dx-meta-k">Origen</div>
                     <div class="dx-meta-v" t-out="dx['origin']"/>
                 </td>
-                <td t-if="dx.get('client_ref')">
+                <td>
                     <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO'"/>
-                    <div class="dx-meta-v" t-out="dx['client_ref']"/>
+                    <div class="dx-meta-v" t-out="dx.get('client_ref') or '—'"/>
                 </td>
             </tr>
         </table>
     </template>
 
     <template id="dx_oc_po">
-        <t t-if="dx.get('client_ref')">
-            <div class="dx-oc-po">
-                <span class="dx-meta-k">OC / PO</span>
-                <span class="dx-meta-v">: <t t-out="dx['client_ref']"/></span>
-            </div>
-        </t>
+        <div class="dx-oc-po">
+            <span class="dx-meta-k">OC / PO</span>
+            <span class="dx-meta-v">: <t t-out="dx.get('client_ref') or '—'"/></span>
+        </div>
     </template>
 
     <template id="dx_line_table">
@@ -661,9 +659,9 @@
                         <div class="dx-meta-k">Condición</div>
                         <div class="dx-meta-v" t-out="dx['payment_term']"/>
                     </div>
-                    <div class="dx-inv-meta-col" t-if="dx.get('client_ref')">
+                    <div class="dx-inv-meta-col">
                         <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO'"/>
-                        <div class="dx-meta-v" t-out="dx['client_ref']"/>
+                        <div class="dx-meta-v" t-out="dx.get('client_ref') or '—'"/>
                     </div>
                 </div>
             </div>
@@ -812,9 +810,9 @@
                         <div class="dx-meta-k">Responsable</div>
                         <div class="dx-meta-v" t-out="dx['salesperson']"/>
                     </div>
-                    <div class="dx-inv-meta-col" t-if="dx.get('client_ref')">
+                    <div class="dx-inv-meta-col">
                         <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO'"/>
-                        <div class="dx-meta-v" t-out="dx['client_ref']"/>
+                        <div class="dx-meta-v" t-out="dx.get('client_ref') or '—'"/>
                     </div>
                     <div class="dx-inv-meta-col">
                         <div class="dx-meta-k">Moneda</div>
@@ -858,9 +856,9 @@
                         <div class="dx-meta-k">Pedido de venta</div>
                         <div class="dx-meta-v" t-out="dx.get('sale_order') or dx['origin']"/>
                     </div>
-                    <div class="dx-inv-meta-col" t-if="dx.get('client_ref')">
+                    <div class="dx-inv-meta-col">
                         <div class="dx-meta-k" t-out="dx.get('client_ref_label') or 'OC / PO'"/>
-                        <div class="dx-meta-v" t-out="dx['client_ref']"/>
+                        <div class="dx-meta-v" t-out="dx.get('client_ref') or '—'"/>
                     </div>
                     <div class="dx-inv-meta-col" t-if="dx.get('delivery_street')">
                         <div class="dx-meta-k">Dirección de entrega</div>
