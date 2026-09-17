@@ -49,6 +49,13 @@ class DxInvoicePrintWizard(models.TransientModel):
 
     move_id = fields.Many2one("account.move", required=True, ondelete="cascade")
 
+    def action_print_invoice(self):
+        """Official invoice / credit note. Never Formato Propet."""
+        self.ensure_one()
+        return self.env.ref("account.account_invoices").report_action(
+            self.move_id, config=False
+        )
+
     def action_print_propet(self):
         self.ensure_one()
         return self.env.ref(

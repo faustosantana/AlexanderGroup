@@ -36,7 +36,9 @@
         <field name="paperformat_id" ref="paperformat_doralex_a4"/>
     </record>
     <record id="account.account_invoices" model="ir.actions.report">
+        <field name="name">Factura en PDF</field>
         <field name="print_report_name">'%s_%s_%s' % (('Nota_Credito' if object.move_type in ('out_refund', 'in_refund') else 'Factura'), object.company_id.dx_short_code or 'DX', (object.name or 'Pendiente').replace('/', ''))</field>
+        <field name="paperformat_id" ref="paperformat_doralex_a4"/>
     </record>
     <record id="purchase.action_report_purchase_order" model="ir.actions.report">
         <field name="print_report_name">'Orden_Compra_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'PO').replace('/', ''))</field>

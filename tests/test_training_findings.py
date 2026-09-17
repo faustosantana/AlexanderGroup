@@ -124,6 +124,36 @@ def test_propet_report_is_optional_not_default():
     )
     assert 'name="context"' not in xml
     assert "group_ids" in xml
+    wizard_xml = (REPORTS / "views" / "sale_print_wizard.xml").read_text(
+        encoding="utf-8"
+    )
+    wizard_py = (REPORTS / "models" / "sale_print_wizard.py").read_text(
+        encoding="utf-8"
+    )
+    assert "def action_print_invoice" in wizard_py
+    assert "account.account_invoices" in wizard_py
+    assert "sale.action_report_saleorder" in wizard_py
+    assert wizard_py.index("account.account_invoices") < wizard_py.index(
+        "action_report_invoice_propet"
+    )
+    assert wizard_py.index("sale.action_report_saleorder") < wizard_py.index(
+        "action_report_saleorder_propet"
+    )
+    assert "Factura en PDF" in wizard_xml
+    assert 'string="Factura en PDF" class="btn-primary"' in wizard_xml
+    assert 'string="Cotización en PDF" class="btn-primary"' in wizard_xml
+    assert 'string="Formato Propet" class="btn-primary"' not in wizard_xml
+    inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
+    assert "dx_sale_propet_composition" not in inherits
+    assert "dx_sale_composition" in inherits
+    assert "dx_invoice_composition" in inherits
+    mail = (REPORTS / "data" / "mail_templates.xml").read_text(encoding="utf-8")
+    assert "account.account_invoices" in mail
+    assert "action_report_invoice_propet" not in mail
+    paper = (REPORTS / "reports" / "paperformat.xml").read_text(encoding="utf-8")
+    inv_paper = paper.split("account.account_invoices")[1].split("</record>")[0]
+    assert "Factura en PDF" in inv_paper
+    assert "paperformat_doralex_a4" in inv_paper
 
 
 def test_description_isolation_does_not_copy_sibling_lines():
@@ -252,10 +282,22 @@ def test_oc_po_short_label_everywhere():
         encoding="utf-8"
     )
     assert "action_print_propet" in wizard
+    assert "def action_print_invoice" in wizard
+    assert "account.account_invoices" in wizard
     assert "dx.invoice.print.wizard" in wizard
     assert "Formato Propet" in wizard_xml
     assert "Factura Proforma" in wizard_xml
     assert "Cotización en PDF" in wizard_xml
+    assert "Factura en PDF" in wizard_xml
+    invoice_footer = wizard_xml.split("view_dx_invoice_print_wizard")[1].split(
+        "<footer>"
+    )[1]
+    sale_footer = wizard_xml.split("view_dx_sale_print_wizard")[1].split("<footer>")[1]
+    assert invoice_footer.find("Factura en PDF") < invoice_footer.find("Formato Propet")
+    assert sale_footer.find("Cotización en PDF") < sale_footer.find("Formato Propet")
+    assert 'string="Factura en PDF" class="btn-primary"' in invoice_footer
+    assert 'string="Formato Propet" class="btn-secondary"' in invoice_footer
+    assert 'string="Cotización en PDF" class="btn-primary"' in sale_footer
     assert "dx.invoice.print.wizard" in wizard_xml
     assert 'string="OC / PO"' in sale_views
     assert ">OC / PO</attribute>" in move_views

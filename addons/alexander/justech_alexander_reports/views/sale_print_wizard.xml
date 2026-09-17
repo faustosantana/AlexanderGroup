@@ -7,7 +7,7 @@
             <form string="Imprimir">
                 <group>
                     <div class="text-muted">
-                        Formatos de impresión del documento actual. No se crea otro registro.
+                        La cotización oficial es el formato de la empresa. Factura Proforma y Formato Propet son opcionales.
                     </div>
                     <field name="order_id" readonly="1"/>
                 </group>
@@ -28,12 +28,13 @@
             <form string="Imprimir">
                 <group>
                     <div class="text-muted">
-                        Formato de impresión del documento actual. No se crea otra factura.
+                        La factura oficial es el formato de la empresa. Formato Propet es opcional y no sustituye el documento fiscal.
                     </div>
                     <field name="move_id" readonly="1"/>
                 </group>
                 <footer>
-                    <button name="action_print_propet" type="object" string="Formato Propet" class="btn-primary"/>
+                    <button name="action_print_invoice" type="object" string="Factura en PDF" class="btn-primary"/>
+                    <button name="action_print_propet" type="object" string="Formato Propet" class="btn-secondary"/>
                     <button string="Cerrar" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

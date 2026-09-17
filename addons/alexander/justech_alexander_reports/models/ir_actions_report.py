@@ -67,9 +67,11 @@ class IrActionsReport(models.Model):
             return
         for xmlid in (
             "sale.action_report_saleorder",
+            "account.account_invoices",
             "stock.action_report_delivery",
             "stock.action_report_picking",
             "justech_alexander_reports.action_report_saleorder_propet",
+            "justech_alexander_reports.action_report_invoice_propet",
         ):
             report = self.env.ref(xmlid, raise_if_not_found=False)
             if report and report.paperformat_id != paper:
