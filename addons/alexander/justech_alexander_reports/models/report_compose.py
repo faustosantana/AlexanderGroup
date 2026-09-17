@@ -857,8 +857,12 @@ class StockPickingCompose(models.Model):
         self.write({"printed": True})
         outgoing = self.filtered(lambda pick: pick.picking_type_code == "outgoing")
         if outgoing:
-            return self.env.ref("stock.action_report_delivery").report_action(outgoing)
-        return self.env.ref("stock.action_report_picking").report_action(self)
+            return self.env.ref("stock.action_report_delivery").report_action(
+                outgoing, config=False
+            )
+        return self.env.ref("stock.action_report_picking").report_action(
+            self, config=False
+        )
 
     def _dx_doc_identity(self):
         self.ensure_one()

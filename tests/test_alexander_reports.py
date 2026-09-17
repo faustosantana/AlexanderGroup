@@ -285,6 +285,7 @@ def test_picking_uses_external_layout_and_unique_address():
     buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
     picking_btn = buttons.split("view_picking_form_dx_conduce_print")[1]
     assert "string\">Conduce" in picking_btn
+    assert "stock.action_report_delivery" in picking_btn
     assert "do_print_picking" in picking_btn
 
 

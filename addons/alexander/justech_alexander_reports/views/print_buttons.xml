@@ -42,8 +42,19 @@
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="priority">85</field>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='do_print_picking']" position="attributes">
-                <attribute name="string">Conduce</attribute>
+            <xpath expr="//button[@name='do_print_picking']" position="replace">
+                <button name="%(stock.action_report_delivery)d"
+                        string="Conduce"
+                        type="action"
+                        groups="stock.group_stock_user"
+                        data-hotkey="o"
+                        invisible="state != 'assigned' or picking_type_code != 'outgoing'"/>
+                <button name="do_print_picking"
+                        string="Print"
+                        type="object"
+                        groups="stock.group_stock_user"
+                        data-hotkey="o"
+                        invisible="state != 'assigned' or picking_type_code == 'outgoing'"/>
             </xpath>
             <xpath expr="//button[@type='action'][@data-hotkey='o']" position="attributes">
                 <attribute name="string">Conduce</attribute>
