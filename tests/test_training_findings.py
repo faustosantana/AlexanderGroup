@@ -91,7 +91,8 @@ def test_propet_report_is_optional_not_default():
     assert "action_report_saleorder_conduce" not in xml
     assert "Este pedido aún no tiene una entrega" not in xml
     assert 'binding_type">report' in xml
-    assert 'binding_model_id" eval="False"' in xml
+    assert 'binding_model_id" ref="sale.model_sale_order"' in xml
+    assert 'binding_model_id" ref="account.model_account_move"' in xml
     assert "action_dx_open_conduce" in buttons
     assert "Crear Conduce" in buttons
     assert "action_dx_print_formats" in buttons
@@ -201,8 +202,8 @@ def test_conduce_is_delivery_flow_not_sale_print():
     assert "client_ref_label" in compose
     assert '"OC / PO"' in compose
     assert "Cantidad pedida" in components
-    assert "company_logo" in compose
-    assert '"embed_masthead": True' in compose
+    assert '"logistic": True' in compose
+    assert '"embed_masthead": False' in compose
     assert "dx-doc-title-block" in components
     assert "Cantidad entregada" in components
     picking_block = components.split('id="dx_picking_lines"')[1].split("</template>")[0]

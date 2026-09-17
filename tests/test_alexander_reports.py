@@ -258,25 +258,28 @@ def test_picking_uses_external_layout_and_unique_address():
     assert "stock.report_picking" in inherits
     comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
     pick = comps.split('id="dx_picking_composition"')[1].split("</template>")[0]
-    assert "company_logo" in pick
-    assert "dx-pick-ident-title" in pick
-    assert "company_logo" in pick
-    assert ">CONDUCE<" in pick
-    assert "Pedido de venta" in pick
-    assert "Observaciones" in pick
-    assert "Fecha de recibido" in pick
-    assert pick.count("dx['partner']['street']") == 0
+    assert "dx_sale_composition" in pick
+    close = comps.split('id="dx_conduce_close"')[1].split("</template>")[0]
+    assert "Entregado por" in close
+    assert "Fecha de recibido" in close
+    assert "Observaciones" in close
+    assert "dx-pick-ident-title" not in comps.split('id="dx_picking_composition"')[1]
     paper = (REPORTS / "reports" / "paperformat.xml").read_text(encoding="utf-8")
     assert "stock.action_report_picking" in paper
     assert "stock.action_report_delivery" in paper
-    assert "paperformat_doralex_conduce" in paper
+    assert "paperformat_doralex_a4" in paper
+    delivery_paper = paper.split("stock.action_report_delivery")[1]
+    assert "paperformat_doralex_a4" in delivery_paper
     py = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
-    assert '"embed_masthead": True' in py
+    assert '"logistic": True' in py
+    assert '"embed_masthead": False' in py
     assert "self.company_id" in py
     assert "def do_print_picking" in py
     assert "stock.action_report_delivery" in py
     inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
     assert "dx_picking_composition" in inherits
+    assert "dx_body_lines" in comps
+    assert "dx_sale_mayuma" in comps
     assert ".o_report_stockpicking_operations table.table" in inherits
     assert (
         ".o_report_stockpicking_operations table," not in inherits

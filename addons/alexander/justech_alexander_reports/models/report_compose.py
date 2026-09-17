@@ -150,16 +150,6 @@ def _dx_layout(company):
     return company._dx_report_theme().get("layout") or "dor"
 
 
-_DX_PICKING_BADGE = {
-    "draft": "BORRADOR",
-    "waiting": "ESPERANDO",
-    "confirmed": "CONFIRMADO",
-    "assigned": "LISTO",
-    "done": "",
-    "cancel": "ANULADA",
-}
-
-
 class SaleOrderCompose(models.Model):
     _inherit = "sale.order"
 
@@ -870,7 +860,7 @@ class StockPickingCompose(models.Model):
         return {
             "title": "RECEPCIÓN" if incoming else "CONDUCE",
             "number": self.name or "—",
-            "badge": _DX_PICKING_BADGE.get(self.state or "", ""),
+            "badge": "" if self.state != "cancel" else "ANULADA",
             "kicker": self.company_id.dx_trade_name or self.company_id.name,
         }
 
@@ -910,74 +900,60 @@ class StockPickingCompose(models.Model):
                 {
                     "kind": "line",
                     "product": product_label,
-                    "name": description or product_label,
+                    "name": description,
                     "qty": _dx_qty(ordered_qty),
                     "done": _dx_qty(done_qty),
                     "uom": uom,
                 }
             )
+        sale = self.sale_id if "sale_id" in self._fields and self.sale_id else False
         if incoming:
             sign_left, sign_right = "Entregado por proveedor", "Recibido por"
             party_title = "Proveedor"
         else:
             sign_left, sign_right = "Entregado por", "Recibido por"
             party_title = "Cliente"
-        client_ref = ""
-        if "sale_id" in self._fields and self.sale_id:
-            client_ref = self.sale_id.client_order_ref or ""
+        salesperson = ""
+        if sale and sale.user_id:
+            salesperson = (sale.user_id.name or "").strip()
+            if salesperson in (
+                "OdooBot",
+                "Administrator",
+                "Public user",
+                "Public User",
+            ):
+                salesperson = ""
+        sale_order = sale.name if sale else (self.origin or "")
         return {
             "ident": self._dx_doc_identity(),
             "layout": _dx_layout(company),
-            "embed_masthead": True,
-            "company_logo": (
-                company._dx_report_logo_src()
-                if company.dx_report_show_logo and company.logo
-                else ""
-            ),
-            "company_logo_style": company._dx_report_logo_style(),
-            "company_name": company._dx_legal_display(),
-            "company_vat": company._dx_vat_display() or company.vat or "",
-            "company_street": company._dx_street_display(),
-            "company_city": company._dx_city_display(),
-            "company_mail": company.email or "",
-            "company_phone": company.phone or "",
+            "logistic": True,
+            "embed_masthead": False,
             "partner": _dx_partner_lines(partner) if partner else {"name": "—"},
             "party_title": party_title,
             "date": _dx_date(self.env, self.scheduled_date or self.date_done),
+            "validity": sale_order,
+            "date2_label": "Pedido de venta",
+            "salesperson": salesperson,
+            "payment_term": "",
+            "currency": "",
             "received_date": _dx_date(self.env, self.date_done),
             "origin": self.origin or "",
-            "sale_order": (
-                self.sale_id.name
-                if "sale_id" in self._fields and self.sale_id
-                else (self.origin or "")
-            ),
-            "client_ref": client_ref,
+            "sale_order": sale_order,
+            "client_ref": (sale.client_order_ref or "") if sale else "",
             "client_ref_label": "OC / PO",
-            "delivery_street": (
-                ", ".join(
-                    p
-                    for p in [
-                        partner.street,
-                        partner.street2,
-                        partner.city,
-                    ]
-                    if partner and p
-                )
-                if partner
-                else ""
-            ),
             "carrier": (
                 self.carrier_id.display_name
                 if "carrier_id" in self._fields and self.carrier_id
                 else ""
             ),
             "lines": lines,
+            "totals": [],
             "note": self.note or "",
             "terms": "",
             "banks": [],
-            "show_signature": True,
+            "show_signature": False,
             "sign_left": sign_left,
             "sign_right": sign_right,
             "incoming": incoming,
-            **_dx_sign_space(lines),
         }
