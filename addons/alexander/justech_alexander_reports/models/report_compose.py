@@ -181,9 +181,8 @@ class SaleOrderCompose(models.Model):
                 "badge": "PROFORMA",
                 "kicker": self.company_id.dx_trade_name or self.company_id.name,
             }
-        quote = self.state in ("draft", "sent")
         return {
-            "title": "COTIZACIÓN" if quote else "PEDIDO DE VENTA",
+            "title": "COTIZACIÓN",
             "number": self.name or "—",
             "badge": "BORRADOR" if self.state == "draft" else "",
             "kicker": self.company_id.dx_trade_name or self.company_id.name,

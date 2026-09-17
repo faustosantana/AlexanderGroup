@@ -1,6 +1,6 @@
 {
     "name": "Diseño de reportes Doralex",
-    "version": "19.0.3.13.5",
+    "version": "19.0.3.13.6",
     "category": "Reporting",
     "summary": "V5.3 restaurado: cotización por empresa; rótulo de comprobante",
     "description": "Cada empresa conserva su cotización. El rótulo fiscal de factura es Número de Comprobante Fiscal / Gubernamental / de Régimen Especial. OC / PO no sustituye el comprobante.",

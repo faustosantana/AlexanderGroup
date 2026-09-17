@@ -220,6 +220,7 @@ def test_invoice_title_is_factura_not_borrador():
     assert '"FACTURA"' in py
     assert '"NOTA DE CRÉDITO"' in py
     assert '"COTIZACIÓN"' in py
+    assert "PEDIDO DE VENTA" not in py
     assert '"Pendiente"' in py
     assert "Pendiente de NCF" not in py
     assert "ncf_pending" in py
