@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="sale_document_dx" inherit_id="sale.report_saleorder_document">
-        <xpath expr="//div[hasclass('page')]" position="attributes">
-            <attribute name="class">page dx-page dx-v2</attribute>
-        </xpath>
-        <xpath expr="//div[hasclass('page')]" position="inside">
-            <div class="dx-composition-wrap">
-                <t t-set="dx" t-value="doc._dx_sale_compose()"/>
-                <t t-call="justech_alexander_reports.dx_sale_composition"/>
+    <template id="sale_document_dx" inherit_id="sale.report_saleorder_document" priority="99">
+        <xpath expr="//div[hasclass('page')]" position="replace">
+            <div class="page dx-page dx-v2">
+                <div class="dx-composition-wrap">
+                    <t t-set="dx" t-value="doc._dx_sale_compose()"/>
+                    <t t-call="justech_alexander_reports.dx_sale_composition"/>
+                </div>
             </div>
-        </xpath>
-        <xpath expr="//div[@id='informations']" position="attributes">
-            <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
-        </xpath>
-        <xpath expr="//table[hasclass('o_main_table')]" position="attributes">
-            <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
-        </xpath>
-        <xpath expr="//table[hasclass('o_total_table')]" position="attributes">
-            <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
-        </xpath>
-        <xpath expr="//div[hasclass('page')]/div[not(contains(@class, 'dx-composition-wrap'))]" position="attributes">
-            <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
         </xpath>
     </template>
 
@@ -60,32 +47,14 @@
         </xpath>
     </template>
 
-    <template id="delivery_document_dx" inherit_id="stock.report_delivery_document">
-        <xpath expr="//div[hasclass('page')]" position="attributes">
-            <attribute name="class">page dx-page dx-v2</attribute>
-        </xpath>
-        <xpath expr="//div[hasclass('page')]/h2" position="before">
-            <style>
-                .dx-page.dx-v2 table.table,
-                .dx-page.dx-v2 #informations,
-                .dx-page.dx-v2 h2 { display: none; }
-            </style>
-            <div class="dx-composition-wrap">
-                <t t-set="dx" t-value="o._dx_picking_compose()"/>
-                <t t-call="justech_alexander_reports.dx_picking_composition"/>
+    <template id="delivery_document_dx" inherit_id="stock.report_delivery_document" priority="99">
+        <xpath expr="//div[hasclass('page')]" position="replace">
+            <div class="page dx-page dx-v2">
+                <div class="dx-composition-wrap">
+                    <t t-set="dx" t-value="o._dx_picking_compose()"/>
+                    <t t-call="justech_alexander_reports.dx_picking_composition"/>
+                </div>
             </div>
-        </xpath>
-        <xpath expr="//div[hasclass('page')]/h2" position="attributes">
-            <attribute name="style">display:none;height:0;margin:0;padding:0;overflow:hidden;</attribute>
-        </xpath>
-        <xpath expr="//div[@id='informations']" position="attributes">
-            <attribute name="style">display:none;height:0;margin:0;padding:0;overflow:hidden;</attribute>
-        </xpath>
-        <xpath expr="//table[@name='stock_move_table']" position="attributes">
-            <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
-        </xpath>
-        <xpath expr="//table[@name='stock_move_line_table']" position="attributes">
-            <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
         </xpath>
     </template>
 

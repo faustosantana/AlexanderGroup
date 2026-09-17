@@ -153,15 +153,13 @@ def test_official_report_names_not_rebound():
     invoice_block = inherits.split("account.report_invoice_document")[1].split(
         "</template>"
     )[0]
-    assert 'position="replace"' not in sale_block
+    assert 'position="replace"' in sale_block
+    assert "dx_sale_composition" in sale_block
     assert 'position="replace"' not in invoice_block
     delivery_block = inherits.split("stock.report_delivery_document")[1].split(
         "</template>"
     )[0]
-    assert 'position="before"' in delivery_block
-    sale_hide = inherits.split("sale.report_saleorder_document")[1].split("</template>")[0]
-    assert "o_main_table" in sale_hide
-    assert 'position="replace"' not in delivery_block
+    assert 'position="replace"' in delivery_block
     assert "dx_picking_composition" in delivery_block
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     assert "l10n_do_accounting" in manifest
@@ -282,6 +280,14 @@ def test_picking_uses_external_layout_and_unique_address():
     assert "dx_picking_composition" in inherits
     assert "dx_body_lines" in comps
     assert "dx_sale_mayuma" in comps
+    assert 'inherit_id="stock.report_delivery_document" priority="99"' in inherits
+    assert 'inherit_id="sale.report_saleorder_document" priority="99"' in inherits
+    delivery_block = inherits.split('id="delivery_document_dx"')[1].split(
+        "</template>"
+    )[0]
+    sale_block = inherits.split('id="sale_document_dx"')[1].split("</template>")[0]
+    assert 'position="replace"' in delivery_block
+    assert 'position="replace"' in sale_block
     assert ".o_report_stockpicking_operations table.table" in inherits
     assert (
         ".o_report_stockpicking_operations table," not in inherits
@@ -289,7 +295,7 @@ def test_picking_uses_external_layout_and_unique_address():
     )
     buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
     picking_btn = buttons.split("view_picking_form_dx_conduce_print")[1]
-    assert "string\">Conduce" in picking_btn
+    assert 'string">Conduce' in picking_btn
     assert "stock.action_report_delivery" in picking_btn
     assert "do_print_picking" in picking_btn
 
