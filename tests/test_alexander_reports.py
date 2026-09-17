@@ -158,8 +158,9 @@ def test_official_report_names_not_rebound():
     delivery_block = inherits.split("stock.report_delivery_document")[1].split(
         "</template>"
     )[0]
-    assert 'position="inside"' in delivery_block
+    assert 'position="before"' in delivery_block
     assert 'position="replace"' not in delivery_block
+    assert "dx_picking_composition" in delivery_block
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     assert "l10n_do_accounting" in manifest
     assert "headers.xml" in manifest

@@ -16,6 +16,9 @@ class IrActionsReport(models.Model):
             ]
         )
         leftover.unlink()
+        ops = self.env.ref("stock.action_report_picking", raise_if_not_found=False)
+        if ops and ops.binding_model_id:
+            ops.sudo().write({"binding_model_id": False})
         for xmlid in (
             "justech_alexander_reports.action_report_saleorder_propet",
             "justech_alexander_reports.action_report_invoice_propet",
