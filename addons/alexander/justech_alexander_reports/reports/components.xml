@@ -615,7 +615,37 @@
         </div>
     </template>
 
+    <template id="dx_layout_header">
+        <t t-if="report_type == 'pdf' and company">
+            <t t-set="dx_theme" t-value="company._dx_report_theme()"/>
+            <t t-set="dx_ident" t-value="dx.get('ident') or {}"/>
+            <t t-set="dx_legal" t-value="company._dx_legal_display()"/>
+            <t t-set="dx_street" t-value="company._dx_street_display()"/>
+            <t t-set="dx_city" t-value="company._dx_city_display()"/>
+            <t t-set="dx_header_meta" t-value="company._dx_header_meta_for(o or doc)"/>
+            <t t-if="dx.get('layout') == 'pin'">
+                <t t-call="justech_alexander_reports.dx_header_pinaria"/>
+            </t>
+            <t t-elif="dx.get('layout') == 'dom'">
+                <t t-call="justech_alexander_reports.dx_header_dominion"/>
+            </t>
+            <t t-elif="dx.get('layout') == 'may'">
+                <t t-call="justech_alexander_reports.dx_header_mayuma"/>
+            </t>
+            <t t-elif="dx.get('layout') == 'rem'">
+                <t t-call="justech_alexander_reports.dx_header_rempart"/>
+            </t>
+            <t t-elif="dx.get('layout') == 'blu'">
+                <t t-call="justech_alexander_reports.dx_header_blueelite"/>
+            </t>
+            <t t-else="">
+                <t t-call="justech_alexander_reports.dx_header_doralex"/>
+            </t>
+        </t>
+    </template>
+
     <template id="dx_sale_composition">
+        <t t-call="justech_alexander_reports.dx_layout_header"/>
         <t t-if="dx.get('layout') == 'pin'">
             <t t-call="justech_alexander_reports.dx_sale_pinaria"/>
         </t>

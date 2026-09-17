@@ -159,6 +159,8 @@ def test_official_report_names_not_rebound():
         "</template>"
     )[0]
     assert 'position="before"' in delivery_block
+    sale_hide = inherits.split("sale.report_saleorder_document")[1].split("</template>")[0]
+    assert "o_main_table" in sale_hide
     assert 'position="replace"' not in delivery_block
     assert "dx_picking_composition" in delivery_block
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
@@ -269,7 +271,7 @@ def test_picking_uses_external_layout_and_unique_address():
     assert "stock.action_report_delivery" in paper
     assert "paperformat_doralex_a4" in paper
     delivery_paper = paper.split("stock.action_report_delivery")[1]
-    assert "paperformat_doralex_a4" in delivery_paper
+    assert "paperformat_doralex_conduce" in delivery_paper
     py = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
     assert '"logistic": True' in py
     assert '"embed_masthead": False' in py

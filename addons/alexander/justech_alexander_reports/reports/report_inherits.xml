@@ -10,6 +10,15 @@
                 <t t-call="justech_alexander_reports.dx_sale_composition"/>
             </div>
         </xpath>
+        <xpath expr="//div[@id='informations']" position="attributes">
+            <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
+        </xpath>
+        <xpath expr="//table[hasclass('o_main_table')]" position="attributes">
+            <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
+        </xpath>
+        <xpath expr="//table[hasclass('o_total_table')]" position="attributes">
+            <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
+        </xpath>
     </template>
 
     <template id="invoice_document_dx" inherit_id="account.report_invoice_document">

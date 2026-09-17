@@ -56,7 +56,7 @@
                         data-hotkey="o"
                         invisible="state != 'assigned' or picking_type_code == 'outgoing'"/>
             </xpath>
-            <xpath expr="//button[@type='action'][@data-hotkey='o']" position="attributes">
+            <xpath expr="//button[@type='action'][@data-hotkey='o'][@groups='base.group_user']" position="attributes">
                 <attribute name="string">Conduce</attribute>
             </xpath>
         </field>
