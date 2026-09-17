@@ -158,7 +158,8 @@ def test_official_report_names_not_rebound():
     delivery_block = inherits.split("stock.report_delivery_document")[1].split(
         "</template>"
     )[0]
-    assert 'position="replace"' in delivery_block
+    assert 'position="inside"' in delivery_block
+    assert 'position="replace"' not in delivery_block
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     assert "l10n_do_accounting" in manifest
     assert "headers.xml" in manifest
@@ -272,7 +273,7 @@ def test_picking_uses_external_layout_and_unique_address():
     assert '"embed_masthead": True' in py
     assert "self.company_id" in py
     inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
-    assert 'position="replace"' in inherits
+    assert "dx_picking_composition" in inherits
 
 
 def test_statement_credit_balance_not_negative_total():
