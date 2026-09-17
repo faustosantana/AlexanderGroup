@@ -916,14 +916,23 @@ class StockPickingCompose(models.Model):
         return {
             "ident": self._dx_doc_identity(),
             "layout": _dx_layout(company),
-            "embed_masthead": incoming,
+            "embed_masthead": True,
+            "company_logo": (
+                company._dx_report_logo_src()
+                if company.dx_report_show_logo and company.logo
+                else ""
+            ),
+            "company_logo_style": company._dx_report_logo_style(),
             "company_name": company._dx_legal_display(),
-            "company_vat": company.vat or "",
+            "company_vat": company._dx_vat_display() or company.vat or "",
+            "company_street": company._dx_street_display(),
+            "company_city": company._dx_city_display(),
             "company_mail": company.email or "",
             "company_phone": company.phone or "",
             "partner": _dx_partner_lines(partner) if partner else {"name": "—"},
             "party_title": party_title,
-            "date": _dx_date(self.env, self.date_done or self.scheduled_date),
+            "date": _dx_date(self.env, self.scheduled_date or self.date_done),
+            "received_date": _dx_date(self.env, self.date_done),
             "origin": self.origin or "",
             "sale_order": (
                 self.sale_id.name
@@ -954,7 +963,7 @@ class StockPickingCompose(models.Model):
             "note": self.note or "",
             "terms": "",
             "banks": [],
-            "show_signature": bool(company.dx_report_show_signature),
+            "show_signature": True,
             "sign_left": sign_left,
             "sign_right": sign_right,
             "incoming": incoming,

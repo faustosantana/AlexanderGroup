@@ -39,13 +39,26 @@
     <record id="purchase.action_report_purchase_order" model="ir.actions.report">
         <field name="print_report_name">'Orden_Compra_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'PO').replace('/', ''))</field>
     </record>
+    <record id="paperformat_doralex_conduce" model="report.paperformat">
+        <field name="name">Doralex Conduce</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">12</field>
+        <field name="margin_bottom">14</field>
+        <field name="margin_left">12</field>
+        <field name="margin_right">12</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">8</field>
+        <field name="dpi">96</field>
+    </record>
     <record id="stock.action_report_picking" model="ir.actions.report">
-        <field name="paperformat_id" ref="paperformat_doralex_a4"/>
+        <field name="name">Operaciones</field>
+        <field name="paperformat_id" ref="paperformat_doralex_conduce"/>
         <field name="print_report_name">'Recepcion_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'IN').replace('/', ''))</field>
     </record>
     <record id="stock.action_report_delivery" model="ir.actions.report">
         <field name="name">Conduce</field>
-        <field name="paperformat_id" ref="paperformat_doralex_a4"/>
+        <field name="paperformat_id" ref="paperformat_doralex_conduce"/>
         <field name="print_report_name">'Conduce_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'OUT').replace('/', ''))</field>
     </record>
 </odoo>

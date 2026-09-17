@@ -147,7 +147,18 @@ def test_official_report_names_not_rebound():
     assert 'inherit_id="sale.report_saleorder"' not in inherits
     assert "_dx_sale_compose" in inherits
     assert "dx-composition-wrap" in inherits
-    assert 'position="replace"' not in inherits
+    sale_block = inherits.split("sale.report_saleorder_document")[1].split(
+        "</template>"
+    )[0]
+    invoice_block = inherits.split("account.report_invoice_document")[1].split(
+        "</template>"
+    )[0]
+    assert 'position="replace"' not in sale_block
+    assert 'position="replace"' not in invoice_block
+    delivery_block = inherits.split("stock.report_delivery_document")[1].split(
+        "</template>"
+    )[0]
+    assert 'position="replace"' in delivery_block
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
     assert "l10n_do_accounting" in manifest
     assert "headers.xml" in manifest
@@ -245,14 +256,23 @@ def test_picking_uses_external_layout_and_unique_address():
     assert "stock.report_picking" in inherits
     comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
     pick = comps.split('id="dx_picking_composition"')[1].split("</template>")[0]
-    assert "embed_masthead" in pick
+    assert "company_logo" in pick
     assert "dx-pick-ident-title" in pick
+    assert "company_logo" in pick
+    assert ">CONDUCE<" in pick
+    assert "Pedido de venta" in pick
+    assert "Observaciones" in pick
+    assert "Fecha de recibido" in pick
     assert pick.count("dx['partner']['street']") == 0
     paper = (REPORTS / "reports" / "paperformat.xml").read_text(encoding="utf-8")
     assert "stock.action_report_picking" in paper
     assert "stock.action_report_delivery" in paper
+    assert "paperformat_doralex_conduce" in paper
     py = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
-    assert '"embed_masthead": incoming' in py
+    assert '"embed_masthead": True' in py
+    assert "self.company_id" in py
+    inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
+    assert 'position="replace"' in inherits
 
 
 def test_statement_credit_balance_not_negative_total():

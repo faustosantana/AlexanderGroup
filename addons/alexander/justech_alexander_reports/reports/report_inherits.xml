@@ -49,13 +49,12 @@
     </template>
 
     <template id="delivery_document_dx" inherit_id="stock.report_delivery_document">
-        <xpath expr="//div[hasclass('page')]" position="attributes">
-            <attribute name="class">page dx-page dx-v2</attribute>
-        </xpath>
-        <xpath expr="//div[hasclass('page')]" position="inside">
-            <div class="dx-composition-wrap">
-                <t t-set="dx" t-value="o._dx_picking_compose()"/>
-                <t t-call="justech_alexander_reports.dx_picking_composition"/>
+        <xpath expr="//div[hasclass('page')]" position="replace">
+            <div class="page dx-page dx-v2">
+                <div class="dx-composition-wrap">
+                    <t t-set="dx" t-value="o._dx_picking_compose()"/>
+                    <t t-call="justech_alexander_reports.dx_picking_composition"/>
+                </div>
             </div>
         </xpath>
     </template>
@@ -73,13 +72,12 @@
     </template>
 
     <template id="picking_document_dx" inherit_id="stock.report_picking">
-        <xpath expr="//div[hasclass('page')]" position="attributes">
-            <attribute name="class">page dx-page dx-v2</attribute>
-        </xpath>
-        <xpath expr="//div[hasclass('page')]" position="inside">
-            <div class="dx-composition-wrap">
-                <t t-set="dx" t-value="o._dx_picking_compose()"/>
-                <t t-call="justech_alexander_reports.dx_picking_composition"/>
+        <xpath expr="//div[hasclass('page')]" position="replace">
+            <div class="page dx-page dx-v2">
+                <div class="dx-composition-wrap">
+                    <t t-set="dx" t-value="o._dx_picking_compose()"/>
+                    <t t-call="justech_alexander_reports.dx_picking_composition"/>
+                </div>
             </div>
         </xpath>
     </template>
