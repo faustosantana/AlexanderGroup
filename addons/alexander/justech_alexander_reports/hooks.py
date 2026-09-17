@@ -34,3 +34,4 @@ def post_init_hook(env):
     leftover.unlink()
     env["ir.actions.report"]._dx_disable_broken_studio_composition()
     env["ir.actions.report"]._dx_restore_company_paperformats()
+    env["ir.actions.report"]._dx_restore_report_url()

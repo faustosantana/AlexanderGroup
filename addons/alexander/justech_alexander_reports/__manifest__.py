@@ -1,6 +1,6 @@
 {
     "name": "Diseño de reportes Doralex",
-    "version": "19.0.3.13.1",
+    "version": "19.0.3.13.2",
     "category": "Reporting",
     "summary": "V5.3 restaurado: solo Propet y Conduce; papelería Qt-safe",
     "description": "Formato Propet y Factura Proforma son formatos de impresión del documento actual. El Conduce es el flujo de entrega (stock.picking). OC / PO corto y visible.",

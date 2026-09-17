@@ -36,6 +36,10 @@
         <t t-set="dx_legal" t-value="company._dx_legal_display()"/>
         <t t-set="dx_street" t-value="company._dx_street_display()"/>
         <t t-set="dx_city" t-value="company._dx_city_display()"/>
+        <style type="text/css">
+            .dx-page.dx-v2 > * { display: none !important; }
+            .dx-page.dx-v2 > .dx-composition-wrap { display: block !important; }
+        </style>
         <div t-attf-class="header o_company_#{company.id}_layout dx-report-header dx-theme-#{dx_theme['code']} dx-layout-#{dx_theme.get('layout') or 'dor'}">
             <script>
                 function dxApplyContinueHeader() {

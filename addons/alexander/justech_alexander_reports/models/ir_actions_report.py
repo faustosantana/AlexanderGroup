@@ -21,6 +21,7 @@ class IrActionsReport(models.Model):
             ops.sudo().write({"binding_model_id": False})
         self._dx_disable_broken_studio_composition()
         self._dx_restore_company_paperformats()
+        self._dx_restore_report_url()
 
     @api.model
     def _dx_disable_broken_studio_composition(self):
@@ -59,6 +60,19 @@ class IrActionsReport(models.Model):
             report = self.env.ref(xmlid, raise_if_not_found=False)
             if report and report.paperformat_id != paper:
                 report.sudo().write({"paperformat_id": paper.id})
+
+    @api.model
+    def _dx_restore_report_url(self):
+        """wkhtmltopdf must fetch report CSS from inside the container."""
+        icp = self.env["ir.config_parameter"].sudo()
+        current = (icp.get_param("report.url") or "").rstrip("/")
+        internal = "http://127.0.0.1:8069"
+        if current == internal:
+            return
+        web = (icp.get_param("web.base.url") or "").rstrip("/")
+        if current and current not in {web, "http://127.0.0.1:18069"}:
+            return
+        icp.set_param("report.url", internal)
 
     def _dx_company_from_records(self, report_ref, res_ids):
         if not res_ids:
