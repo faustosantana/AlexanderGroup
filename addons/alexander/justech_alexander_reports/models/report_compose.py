@@ -150,6 +150,18 @@ def _dx_layout(company):
     return company._dx_report_theme().get("layout") or "dor"
 
 
+def _dx_norm_doc(value):
+    return "".join((value or "").split()).upper().replace("-", "")
+
+
+def _dx_looks_like_ncf(value):
+    """Dominican NCF / e-CF tokens. Never treat those as a customer OC/PO."""
+    text = _dx_norm_doc(value)
+    if len(text) < 11 or not text[0].isalpha():
+        return False
+    return text[1:].isdigit()
+
+
 class SaleOrderCompose(models.Model):
     _inherit = "sale.order"
 
@@ -364,16 +376,58 @@ class AccountMoveCompose(models.Model):
             "kicker": self.company_id.dx_trade_name or self.company_id.name,
         }
 
+    def _dx_invoice_ncf(self):
+        self.ensure_one()
+        if "justech_do_ncf" in self._fields and self.justech_do_ncf:
+            return self.justech_do_ncf
+        if (
+            "l10n_latam_document_number" in self._fields
+            and self.l10n_latam_document_number
+        ):
+            return self.l10n_latam_document_number
+        return ""
+
+    def _dx_related_sale_orders(self):
+        self.ensure_one()
+        sales = self.env["sale.order"]
+        lines = self.invoice_line_ids
+        if "sale_line_ids" in lines._fields:
+            sales |= lines.mapped("sale_line_ids.order_id")
+        if "sale_id" in self._fields and self.sale_id:
+            sales |= self.sale_id
+        return sales
+
+    def _dx_invoice_client_po(self, ncf=""):
+        """Customer OC/PO only. Never the invoice NCF or a fiscal token."""
+        self.ensure_one()
+        ncf_norm = _dx_norm_doc(ncf or self._dx_invoice_ncf())
+        candidates = [
+            sale.client_order_ref
+            for sale in self._dx_related_sale_orders()
+            if sale.client_order_ref
+        ]
+        if self.ref:
+            candidates.append(self.ref)
+        seen = set()
+        for candidate in candidates:
+            raw = (candidate or "").strip()
+            key = _dx_norm_doc(raw)
+            if not raw or key in seen:
+                continue
+            seen.add(key)
+            if ncf_norm and key == ncf_norm:
+                continue
+            if _dx_looks_like_ncf(raw):
+                continue
+            return raw
+        return ""
+
     def _dx_invoice_compose(self):
         self.ensure_one()
         company = self.company_id
         currency = self.currency_id
         ident = self._dx_doc_identity()
-        ncf = ""
-        if "justech_do_ncf" in self._fields:
-            ncf = self.justech_do_ncf or ""
-        if not ncf and "l10n_latam_document_number" in self._fields:
-            ncf = self.l10n_latam_document_number or ""
+        ncf = self._dx_invoice_ncf()
         origin_ncf = ""
         if "justech_do_origin_ncf" in self._fields:
             origin_ncf = self.justech_do_origin_ncf or ""
@@ -459,7 +513,7 @@ class AccountMoveCompose(models.Model):
             "origin_ncf": origin_ncf,
             "origin_move": origin_move,
             "origin": self.invoice_origin or "",
-            "client_ref": self.ref or "",
+            "client_ref": self._dx_invoice_client_po(ncf),
             "client_ref_label": "OC / PO",
             "reason": reason,
             "payment_term": (

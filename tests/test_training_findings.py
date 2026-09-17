@@ -112,6 +112,8 @@ def test_propet_report_is_optional_not_default():
     assert "FACTURA PROFORMA" in compose
     assert "CONDUCE" in compose
     assert '"OC / PO"' in compose
+    assert "def _dx_invoice_client_po" in compose
+    assert "_dx_looks_like_ncf" in compose
     assert "Número de Orden de Compra del Cliente" not in compose
     assert "FORMATO PROPET" not in compose
     assert '"COTIZACIÓN" if quote else "PEDIDO DE VENTA"' in compose

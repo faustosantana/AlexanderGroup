@@ -221,6 +221,11 @@ def test_invoice_title_is_factura_not_borrador():
     assert "ncf_pending" in py
     assert "_dx_layout" in py
     assert "justech_do_ncf" in py
+    assert "def _dx_invoice_ncf" in py
+    assert "def _dx_invoice_client_po" in py
+    assert "def _dx_looks_like_ncf" in py
+    assert '"client_ref": self._dx_invoice_client_po(ncf)' in py
+    assert '"client_ref": self.ref or ""' not in py
     assert "background:#ffffff" in py
     assert "#f7f7f7" not in py
     assert '"layout"' in py
