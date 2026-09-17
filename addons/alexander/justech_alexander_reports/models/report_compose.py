@@ -241,6 +241,7 @@ class SaleOrderCompose(models.Model):
         )
         return {
             "ident": ident,
+            "company": company,
             "layout": _dx_layout(company),
             "partner": _dx_partner_lines(self.partner_id),
             "date": _dx_date(self.env, self.date_order),
@@ -926,6 +927,7 @@ class StockPickingCompose(models.Model):
         sale_order = sale.name if sale else (self.origin or "")
         return {
             "ident": self._dx_doc_identity(),
+            "company": company,
             "layout": _dx_layout(company),
             "logistic": True,
             "embed_masthead": False,

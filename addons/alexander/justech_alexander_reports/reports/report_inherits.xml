@@ -19,6 +19,9 @@
         <xpath expr="//table[hasclass('o_total_table')]" position="attributes">
             <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
         </xpath>
+        <xpath expr="//div[hasclass('page')]/div[not(contains(@class, 'dx-composition-wrap'))]" position="attributes">
+            <attribute name="style">display:none;height:0;overflow:hidden;</attribute>
+        </xpath>
     </template>
 
     <template id="invoice_document_dx" inherit_id="account.report_invoice_document">

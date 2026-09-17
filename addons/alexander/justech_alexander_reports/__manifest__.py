@@ -1,6 +1,6 @@
 {
     "name": "Diseño de reportes Doralex",
-    "version": "19.0.3.12.2",
+    "version": "19.0.3.12.3",
     "category": "Reporting",
     "summary": "V5.7: Conduce reutiliza el layout de cotización por empresa",
     "description": "Formato Propet y Factura Proforma son formatos de impresión del documento actual. El Conduce es el flujo de entrega (stock.picking). OC / PO corto y visible.",

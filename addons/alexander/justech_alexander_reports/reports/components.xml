@@ -616,7 +616,8 @@
     </template>
 
     <template id="dx_layout_header">
-        <t t-if="report_type == 'pdf' and company">
+        <t t-set="company" t-value="dx.get('company') or company"/>
+        <t t-if="company">
             <t t-set="dx_theme" t-value="company._dx_report_theme()"/>
             <t t-set="dx_ident" t-value="dx.get('ident') or {}"/>
             <t t-set="dx_legal" t-value="company._dx_legal_display()"/>
