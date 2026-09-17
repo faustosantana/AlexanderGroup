@@ -912,9 +912,34 @@
     </template>
 
     <template id="dx_picking_composition">
-        <t t-call="justech_alexander_reports.dx_sale_composition"/>
-        <t t-if="dx.get('logistic')">
+        <t t-if="not dx.get('incoming')">
+            <t t-call="justech_alexander_reports.dx_sale_composition"/>
             <t t-call="justech_alexander_reports.dx_conduce_close"/>
+        </t>
+        <t t-else="">
+            <div t-attf-class="dx-composition dx-comp-picking dx-comp-{{ dx.get('layout') or 'dor' }} dx-page-stack">
+                <t t-call="justech_alexander_reports.dx_pin_doc_title"/>
+                <div class="dx-pick-top">
+                    <div t-attf-class="dx-pick-party dx-inv-party-{{ dx.get('layout') or 'dor' }}">
+                        <t t-call="justech_alexander_reports.dx_customer_card"/>
+                    </div>
+                    <div class="dx-pick-meta">
+                        <div class="dx-inv-meta-col">
+                            <div class="dx-meta-k">Fecha</div>
+                            <div class="dx-meta-v" t-out="dx['date']"/>
+                        </div>
+                        <div class="dx-inv-meta-col" t-if="dx.get('origin')">
+                            <div class="dx-meta-k">Origen</div>
+                            <div class="dx-meta-v" t-out="dx['origin']"/>
+                        </div>
+                    </div>
+                </div>
+                <t t-call="justech_alexander_reports.dx_picking_lines"/>
+                <t t-if="dx.get('note')">
+                    <div class="dx-terms" t-out="dx['note']"/>
+                </t>
+                <t t-call="justech_alexander_reports.dx_signature_panel"/>
+            </div>
         </t>
     </template>
 

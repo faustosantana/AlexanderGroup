@@ -254,6 +254,9 @@ def test_layout_forces_document_company_and_continue_header():
         encoding="utf-8"
     )
     assert ".dx-h-continue" in css
+    assert ".dx-page.dx-v2 > * { display: none !important; }" in css
+    assert ".dx-page.dx-v2 > .dx-composition-wrap { display: block !important; }" in css
+    assert "*:not(.dx-composition-wrap)" not in css
 
 
 def test_picking_uses_external_layout_and_unique_address():
@@ -292,6 +295,8 @@ def test_picking_uses_external_layout_and_unique_address():
     pick_comp = comps.split('id="dx_picking_composition"')[1].split("</template>")[0]
     assert "dx_sale_composition" in pick_comp
     assert "dx_conduce_close" in pick_comp
+    assert "t-if=\"not dx.get('incoming')\"" in pick_comp
+    assert "dx-comp-picking" in pick_comp
     buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
     picking_btn = buttons.split("view_picking_form_dx_conduce_print")[1]
     assert 'string">Conduce' in picking_btn

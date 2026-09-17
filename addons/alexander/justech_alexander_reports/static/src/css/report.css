@@ -93,7 +93,9 @@ div.footer td {
 }
 
 .dx-page { margin: 0; padding: 0; }
-.dx-page.dx-v2 > *:not(.dx-composition-wrap) { display: none !important; }
+/* Qt4/wkhtmltopdf ignores :not(). Hide native siblings, then show ours. */
+.dx-page.dx-v2 > * { display: none !important; }
+.dx-page.dx-v2 > .dx-composition-wrap { display: block !important; }
 .dx-composition-wrap,
 .dx-composition { margin: 0; padding: 0; }
 

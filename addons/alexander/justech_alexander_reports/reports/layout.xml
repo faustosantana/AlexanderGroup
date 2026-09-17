@@ -50,13 +50,6 @@
                             page = parseInt(decodeURIComponent(bits[1]), 10) || page;
                         }
                     }
-                    var marks = document.getElementsByClassName("page");
-                    for (i = 0; i &lt; marks.length; i++) {
-                        var txt = (marks[i].textContent || "").replace(/^\s+|\s+$/g, "");
-                        if (/^[0-9]+$/.test(txt)) {
-                            page = parseInt(txt, 10) || page;
-                        }
-                    }
                     if (page &gt; 1) {
                         var full = document.querySelector(".dx-h-full");
                         var cont = document.querySelector(".dx-h-continue");

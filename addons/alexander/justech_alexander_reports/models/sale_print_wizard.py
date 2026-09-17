@@ -9,19 +9,21 @@ class DxSalePrintWizard(models.TransientModel):
 
     def action_print_quotation(self):
         self.ensure_one()
-        return self.env.ref("sale.action_report_saleorder").report_action(self.order_id)
+        return self.env.ref("sale.action_report_saleorder").report_action(
+            self.order_id, config=False
+        )
 
     def action_print_proforma(self):
         self.ensure_one()
         return self.env.ref("sale.action_report_pro_forma_invoice").report_action(
-            self.order_id
+            self.order_id, config=False
         )
 
     def action_print_propet(self):
         self.ensure_one()
         return self.env.ref(
             "justech_alexander_reports.action_report_saleorder_propet"
-        ).report_action(self.order_id)
+        ).report_action(self.order_id, config=False)
 
 
 class SaleOrderPrintMenu(models.Model):
@@ -51,7 +53,7 @@ class DxInvoicePrintWizard(models.TransientModel):
         self.ensure_one()
         return self.env.ref(
             "justech_alexander_reports.action_report_invoice_propet"
-        ).report_action(self.move_id)
+        ).report_action(self.move_id, config=False)
 
 
 class AccountMovePrintMenu(models.Model):
