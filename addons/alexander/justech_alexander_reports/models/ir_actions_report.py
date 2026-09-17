@@ -20,6 +20,7 @@ class IrActionsReport(models.Model):
         if ops and ops.binding_model_id:
             ops.sudo().write({"binding_model_id": False})
         self._dx_disable_broken_studio_composition()
+        self._dx_restore_company_paperformats()
 
     @api.model
     def _dx_disable_broken_studio_composition(self):
@@ -39,6 +40,25 @@ class IrActionsReport(models.Model):
             arch = view.arch or ""
             if arch.count('t-call="justech_alexander_reports.dx_sale_') > 1:
                 view.write({"active": False})
+
+    @api.model
+    def _dx_restore_company_paperformats(self):
+        """Quotes, invoices and Conduce share the designed A4 letterhead."""
+        paper = self.env.ref(
+            "justech_alexander_reports.paperformat_doralex_a4",
+            raise_if_not_found=False,
+        )
+        if not paper:
+            return
+        for xmlid in (
+            "sale.action_report_saleorder",
+            "stock.action_report_delivery",
+            "stock.action_report_picking",
+            "justech_alexander_reports.action_report_saleorder_propet",
+        ):
+            report = self.env.ref(xmlid, raise_if_not_found=False)
+            if report and report.paperformat_id != paper:
+                report.sudo().write({"paperformat_id": paper.id})
 
     def _dx_company_from_records(self, report_ref, res_ids):
         if not res_ids:

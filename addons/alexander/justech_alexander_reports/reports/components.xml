@@ -646,7 +646,6 @@
     </template>
 
     <template id="dx_sale_composition">
-        <t t-call="justech_alexander_reports.dx_layout_header"/>
         <t t-if="dx.get('layout') == 'pin'">
             <t t-call="justech_alexander_reports.dx_sale_pinaria"/>
         </t>
@@ -664,9 +663,6 @@
         </t>
         <t t-else="">
             <t t-call="justech_alexander_reports.dx_sale_doralex"/>
-        </t>
-        <t t-if="dx.get('logistic')">
-            <t t-call="justech_alexander_reports.dx_conduce_close"/>
         </t>
     </template>
 
@@ -917,6 +913,9 @@
 
     <template id="dx_picking_composition">
         <t t-call="justech_alexander_reports.dx_sale_composition"/>
+        <t t-if="dx.get('logistic')">
+            <t t-call="justech_alexander_reports.dx_conduce_close"/>
+        </t>
     </template>
 
     <template id="dx_report_extras" name="Bloques extra Doralex">
