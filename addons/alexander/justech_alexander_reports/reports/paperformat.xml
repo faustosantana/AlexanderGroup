@@ -31,7 +31,9 @@
         <field name="print_report_name">'Recibo_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'Pendiente').replace('/', ''))</field>
     </record>
     <record id="sale.action_report_saleorder" model="ir.actions.report">
+        <field name="name">Cotización en PDF</field>
         <field name="print_report_name">'Cotizacion_%s_%s' % (object.company_id.dx_short_code or 'DX', (object.name or 'SO').replace('/', ''))</field>
+        <field name="paperformat_id" ref="paperformat_doralex_a4"/>
     </record>
     <record id="account.account_invoices" model="ir.actions.report">
         <field name="print_report_name">'%s_%s_%s' % (('Nota_Credito' if object.move_type in ('out_refund', 'in_refund') else 'Factura'), object.company_id.dx_short_code or 'DX', (object.name or 'Pendiente').replace('/', ''))</field>
