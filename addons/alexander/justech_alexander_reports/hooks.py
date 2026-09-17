@@ -32,3 +32,4 @@ def post_init_hook(env):
         )
     )
     leftover.unlink()
+    env["ir.actions.report"]._dx_disable_broken_studio_composition()

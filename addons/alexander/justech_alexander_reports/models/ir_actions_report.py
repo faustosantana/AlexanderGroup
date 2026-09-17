@@ -19,6 +19,26 @@ class IrActionsReport(models.Model):
         ops = self.env.ref("stock.action_report_picking", raise_if_not_found=False)
         if ops and ops.binding_model_id:
             ops.sudo().write({"binding_model_id": False})
+        self._dx_disable_broken_studio_composition()
+
+    @api.model
+    def _dx_disable_broken_studio_composition(self):
+        """Studio report editor collapsed every company layout into one t-if."""
+        base = self.env.ref(
+            "justech_alexander_reports.dx_sale_composition",
+            raise_if_not_found=False,
+        )
+        if not base:
+            return
+        views = (
+            self.env["ir.ui.view"]
+            .sudo()
+            .search([("inherit_id", "=", base.id), ("active", "=", True)])
+        )
+        for view in views:
+            arch = view.arch or ""
+            if arch.count('t-call="justech_alexander_reports.dx_sale_') > 1:
+                view.write({"active": False})
 
     def _dx_company_from_records(self, report_ref, res_ids):
         if not res_ids:
