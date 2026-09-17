@@ -852,6 +852,14 @@ class PurchaseOrderCompose(models.Model):
 class StockPickingCompose(models.Model):
     _inherit = "stock.picking"
 
+    def do_print_picking(self):
+        """Header Print on a ready outgoing picking must open Conduce, not Operaciones."""
+        self.write({"printed": True})
+        outgoing = self.filtered(lambda pick: pick.picking_type_code == "outgoing")
+        if outgoing:
+            return self.env.ref("stock.action_report_delivery").report_action(outgoing)
+        return self.env.ref("stock.action_report_picking").report_action(self)
+
     def _dx_doc_identity(self):
         self.ensure_one()
         incoming = self.picking_type_code == "incoming"

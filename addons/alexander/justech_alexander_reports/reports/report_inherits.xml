@@ -95,7 +95,7 @@
         </xpath>
         <xpath expr="//div[hasclass('o_report_stockpicking_operations')]/div[hasclass('row')][1]" position="before">
             <style>
-                .o_report_stockpicking_operations table,
+                .o_report_stockpicking_operations table.table,
                 .o_report_stockpicking_operations .oe_structure,
                 .o_report_stockpicking_operations .o_stock_report_header_row { display: none; }
             </style>

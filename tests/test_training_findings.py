@@ -192,7 +192,12 @@ def test_conduce_is_delivery_flow_not_sale_print():
     assert "action_dx_open_conduce" in buttons
     assert "Crear Conduce" in buttons
     assert "action_dx_print_formats" in buttons
-    assert "action_report_delivery" not in buttons
+    sale_btns = buttons.split("view_sale_order_form_dx_print_buttons")[1].split(
+        "view_picking_form_dx_conduce_print"
+    )[0]
+    assert "action_report_delivery" not in sale_btns
+    assert "view_picking_form_dx_conduce_print" in buttons
+    assert "def do_print_picking" in compose
     assert "client_ref_label" in compose
     assert '"OC / PO"' in compose
     assert "Cantidad pedida" in components

@@ -273,8 +273,19 @@ def test_picking_uses_external_layout_and_unique_address():
     py = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
     assert '"embed_masthead": True' in py
     assert "self.company_id" in py
+    assert "def do_print_picking" in py
+    assert "stock.action_report_delivery" in py
     inherits = (REPORTS / "reports" / "report_inherits.xml").read_text(encoding="utf-8")
     assert "dx_picking_composition" in inherits
+    assert ".o_report_stockpicking_operations table.table" in inherits
+    assert (
+        ".o_report_stockpicking_operations table," not in inherits
+        and ".o_report_stockpicking_operations table\n" not in inherits
+    )
+    buttons = (REPORTS / "views" / "print_buttons.xml").read_text(encoding="utf-8")
+    picking_btn = buttons.split("view_picking_form_dx_conduce_print")[1]
+    assert "string\">Conduce" in picking_btn
+    assert "do_print_picking" in picking_btn
 
 
 def test_statement_credit_balance_not_negative_total():
