@@ -140,6 +140,7 @@ def test_invoice_edi_template_attaches_pdf():
     py = (REPORTS / "models" / "ir_actions_report.py").read_text(encoding="utf-8")
     assert "def _dx_attach_invoice_edi_pdf" in py
     assert "def _dx_disable_broken_studio_composition" in py
+    assert "studio_customization." in py
     assert "def _dx_restore_report_url" in py
     assert "report.url" in py
     assert 't-call="justech_alexander_reports.dx_sale_' in py

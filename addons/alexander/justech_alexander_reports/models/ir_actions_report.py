@@ -25,21 +25,35 @@ class IrActionsReport(models.Model):
 
     @api.model
     def _dx_disable_broken_studio_composition(self):
-        """Studio report editor collapsed every company layout into one t-if."""
+        """Studio diffs emptied company headers and collapsed sale layouts."""
+        View = self.env["ir.ui.view"].sudo()
         base = self.env.ref(
             "justech_alexander_reports.dx_sale_composition",
             raise_if_not_found=False,
         )
-        if not base:
-            return
-        views = (
-            self.env["ir.ui.view"]
+        if base:
+            views = View.search([("inherit_id", "=", base.id), ("active", "=", True)])
+            for view in views:
+                arch = view.arch or ""
+                if arch.count('t-call="justech_alexander_reports.dx_sale_') > 1:
+                    view.write({"active": False})
+        data = (
+            self.env["ir.model.data"]
             .sudo()
-            .search([("inherit_id", "=", base.id), ("active", "=", True)])
+            .search(
+                [
+                    ("module", "=", "justech_alexander_reports"),
+                    ("model", "=", "ir.ui.view"),
+                ]
+            )
         )
-        for view in views:
-            arch = view.arch or ""
-            if arch.count('t-call="justech_alexander_reports.dx_sale_') > 1:
+        studio = View.search(
+            [("inherit_id", "in", data.mapped("res_id")), ("active", "=", True)]
+        )
+        for view in studio:
+            xmlid = view.xml_id or ""
+            name = (view.name or "").lower()
+            if xmlid.startswith("studio_customization.") or "studio" in name:
                 view.write({"active": False})
 
     @api.model
