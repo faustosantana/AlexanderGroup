@@ -191,12 +191,12 @@ def test_manifest_versions_bumped():
     assert "account_move_views.xml" in base
     assert "justech_accounting_recovery" in base
     assert "res_partner_views.xml" in base
-    assert "19.0.1.6.7" in ux
+    assert "19.0.1.6.8" in ux
     assert "account_move_views.xml" in ux
     assert "login_views.xml" in ux
     assert "show_login_form.js" in ux
     assert "withholding_catalog_views.xml" in ux
-    assert "19.0.3.11.0" in reports
+    assert "19.0.3.11.1" in reports
     assert "print_buttons.xml" in reports
 
 

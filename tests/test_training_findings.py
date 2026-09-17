@@ -93,6 +93,8 @@ def test_propet_report_is_optional_not_default():
     assert 'binding_type">report' in xml
     assert "action_dx_open_conduce" in buttons
     assert "Crear Conduce" in buttons
+    assert "action_dx_print_formats" in buttons
+    assert 'string="Imprimir"' in buttons
     assert 'string="Formato Propet"' not in buttons
     assert 'string="Proforma"' not in buttons
     assert "action_report_saleorder_propet" not in buttons
@@ -186,6 +188,7 @@ def test_conduce_is_delivery_flow_not_sale_print():
     assert 'self.state not in ("sale", "done")' in sale
     assert "action_dx_open_conduce" in buttons
     assert "Crear Conduce" in buttons
+    assert "action_dx_print_formats" in buttons
     assert "action_report_delivery" not in buttons
     assert "client_ref_label" in compose
     assert '"OC / PO"' in compose
@@ -229,6 +232,14 @@ def test_oc_po_short_label_everywhere():
     move_views = (UX / "views" / "account_move_views.xml").read_text(encoding="utf-8")
     compose = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
     components = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    wizard = (REPORTS / "models" / "sale_print_wizard.py").read_text(encoding="utf-8")
+    wizard_xml = (REPORTS / "views" / "sale_print_wizard.xml").read_text(
+        encoding="utf-8"
+    )
+    assert "action_print_propet" in wizard
+    assert "Formato Propet" in wizard_xml
+    assert "Factura Proforma" in wizard_xml
+    assert "Cotización en PDF" in wizard_xml
     assert 'string="OC / PO"' in sale_views
     assert ">OC / PO</attribute>" in move_views
     assert "Número de Orden de Compra del Cliente" not in sale_views

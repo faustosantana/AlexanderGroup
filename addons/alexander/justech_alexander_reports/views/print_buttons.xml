@@ -9,6 +9,11 @@
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <field name="dx_outgoing_picking_count" invisible="1"/>
+                <button name="action_dx_print_formats"
+                        type="object"
+                        string="Imprimir"
+                        class="btn-secondary"
+                        display="always"/>
                 <button name="action_dx_open_conduce"
                         type="object"
                         string="Crear Conduce"
