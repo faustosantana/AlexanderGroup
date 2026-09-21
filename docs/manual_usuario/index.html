@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Manual de usuario — Doralex Group | Justech</title>
+  <style>
+    :root {
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #e7e5e4;
+      --paper: #fffaf5;
+      --card: #ffffff;
+      --brand: #ea580c;
+      --brand-dark: #9a3412;
+      --ok: #166534;
+      --warn: #9a3412;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 32px 24px 80px; }
+    header.cover {
+      border-bottom: 4px solid var(--brand);
+      padding-bottom: 28px;
+      margin-bottom: 36px;
+    }
+    .kicker {
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--brand-dark);
+      font-weight: 700;
+    }
+    h1 { font-size: 34px; line-height: 1.15; margin: 8px 0 10px; }
+    h2 { font-size: 22px; margin: 40px 0 12px; color: var(--brand-dark); }
+    h3 { font-size: 17px; margin: 22px 0 8px; }
+    p, li { font-size: 15.5px; }
+    .lede { font-size: 18px; color: var(--muted); max-width: 40rem; }
+    .meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 24px;
+      margin-top: 22px;
+      padding: 16px 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    .meta strong { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+    nav.toc { background: var(--card); border: 1px solid var(--line); padding: 16px 20px; margin: 24px 0 8px; }
+    nav.toc ol { margin: 8px 0 0; padding-left: 20px; }
+    nav.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+    nav.toc a:hover { border-bottom-color: var(--brand); }
+    figure {
+      margin: 16px 0 28px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 10px 10px 14px;
+    }
+    figure img { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+    figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--card); }
+    th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: #fff7ed; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+    .note, .ok, .no {
+      padding: 12px 14px;
+      border-left: 4px solid var(--brand);
+      background: #fff7ed;
+      margin: 16px 0;
+    }
+    .ok { border-left-color: var(--ok); background: #f0fdf4; }
+    .no { border-left-color: #b91c1c; background: #fef2f2; }
+    .steps { padding-left: 20px; }
+    .steps li { margin: 6px 0; }
+    footer.sign {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 2px solid var(--ink);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .sign-name { font-size: 18px; font-weight: 700; }
+    .sign-org { color: var(--brand-dark); font-weight: 700; letter-spacing: .04em; }
+    .page-foot {
+      margin-top: 28px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+    @media print {
+      body { background: #fff; }
+      .wrap { max-width: none; padding: 0; }
+      figure { break-inside: avoid; }
+      h2 { break-after: avoid; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="cover">
+      <div class="kicker">Doralex Group · Odoo 19</div>
+      <h1>Manual de usuario</h1>
+      <p class="lede">Cómo entrar al sistema, cotizar, imprimir, facturar y entregar con el formato de cada empresa. Incluye el Formato Propet opcional y el Conduce.</p>
+      <div class="meta">
+        <div><strong>Sistema</strong> https://doralexgroup.cloud</div>
+        <div><strong>Fecha</strong> 21 de septiembre de 2026</div>
+        <div><strong>Empresas</strong> Blue Elite, Piñaria, Dominion, Doralex, El Mayuma, Rempart</div>
+        <div><strong>Realizado por</strong> Fausto Santana | Justech</div>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <strong>Contenido</strong>
+      <ol>
+        <li><a href="#entrar">Entrar al sistema</a></li>
+        <li><a href="#inicio">Pantalla de inicio y empresas</a></li>
+        <li><a href="#cotizacion">Cotizaciones</a></li>
+        <li><a href="#ocpo">Campo OC / PO del cliente</a></li>
+        <li><a href="#imprimir-venta">Imprimir una cotización</a></li>
+        <li><a href="#propet">Formato Propet (opcional)</a></li>
+        <li><a href="#conduce">Conduce de entrega</a></li>
+        <li><a href="#factura">Facturas y comprobantes</a></li>
+        <li><a href="#reglas">Reglas que no se pueden romper</a></li>
+        <li><a href="#ayuda">Ayuda y crédito</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="entrar">1. Entrar al sistema</h2>
+    <ol class="steps">
+      <li>Abra el navegador y entre a <strong>https://doralexgroup.cloud</strong>.</li>
+      <li>Escriba el correo que le asignaron (por ejemplo <em>nombre.apellido@inversionesdoralex.com</em>).</li>
+      <li>Escriba su contraseña y pulse <strong>Iniciar sesión</strong>.</li>
+      <li>Si es el primer acceso, el sistema puede pedirle que cambie la contraseña. Hágalo y no la comparta.</li>
+    </ol>
+    <figure>
+      <img src="imagenes/01_login.png" alt="Pantalla de inicio de sesión de Doralex Group"/>
+      <figcaption>Figura 1. Inicio de sesión en doralexgroup.cloud</figcaption>
+    </figure>
+    <div class="note">No pida ni envíe la contraseña por chat. Si la olvidó, avise a su supervisor o a Justech para restablecerla.</div>
+
+    <h2 id="inicio">2. Pantalla de inicio y empresas</h2>
+    <p>Después de entrar verá el menú de aplicaciones. Las que usará todos los días son <strong>Ventas</strong>, <strong>Compras</strong>, <strong>Inventario</strong> y, si tiene permiso, <strong>Contabilidad</strong>.</p>
+    <figure>
+      <img src="imagenes/02_inicio.png" alt="Menú de aplicaciones de Odoo Doralex"/>
+      <figcaption>Figura 2. Menú de aplicaciones. Arriba a la derecha aparece la empresa activa.</figcaption>
+    </figure>
+    <p>Doralex Group tiene seis empresas. Antes de crear o imprimir un documento, confirme la empresa en la esquina superior derecha:</p>
+    <table>
+      <thead><tr><th>Empresa</th><th>Código en documentos</th></tr></thead>
+      <tbody>
+        <tr><td>BLUE ELITE, S.R.L.</td><td>BLU</td></tr>
+        <tr><td>Comercializadora de Alimentos Piñaria, S.R.L.</td><td>PIN</td></tr>
+        <tr><td>Dominion Business, S.R.L.</td><td>DOM</td></tr>
+        <tr><td>Inversiones Doralex, S.R.L.</td><td>DOR</td></tr>
+        <tr><td>Inversiones El Mayuma, S.R.L.</td><td>MAY</td></tr>
+        <tr><td>Rempart Group S.R.L.</td><td>REM</td></tr>
+      </tbody>
+    </table>
+    <div class="ok">Cada empresa tiene su propia papelería (logo, colores y pie). Si cotiza en Mayuma, el PDF sale con diseño Mayuma. Si cotiza en Doralex, sale con diseño Doralex.</div>
+
+    <h2 id="cotizacion">3. Cotizaciones</h2>
+    <ol class="steps">
+      <li>Abra <strong>Ventas</strong> → <strong>Cotizaciones</strong> → <strong>Nuevo</strong>.</li>
+      <li>Elija el cliente, la lista de precios y las líneas (producto, cantidad, precio, impuesto).</li>
+      <li>Si el cliente le dio una orden de compra, escríbala en <strong>OC / PO</strong>.</li>
+      <li>Guarde. El número queda como <em>DOR/SO/00016</em>, <em>MAY/SO/00007</em>, etc.</li>
+    </ol>
+    <figure>
+      <img src="imagenes/03_cotizacion_cabecera.png" alt="Cabecera de una cotización con botones Imprimir y Conduce"/>
+      <figcaption>Figura 3. Cotización DOR/SO/00016. Botones de cabecera: Enviar, Imprimir y Conduce.</figcaption>
+    </figure>
+    <p>El PDF oficial de venta <strong>siempre se titula Cotización</strong>, aunque el pedido ya esté confirmado. No debe decir “Pedido de venta”.</p>
+    <figure>
+      <img src="imagenes/cotizacion_oficial.png" alt="PDF oficial de cotización Doralex"/>
+      <figcaption>Figura 4. Formato oficial de cotización (papelería de Inversiones Doralex).</figcaption>
+    </figure>
+
+    <h2 id="ocpo">4. Campo OC / PO del cliente</h2>
+    <p>OC / PO es el <strong>número de orden de compra que le dio el cliente</strong>. No es el NCF ni el número interno del pedido.</p>
+    <ul>
+      <li>En pantalla el campo se llama <strong>OC / PO</strong>.</li>
+      <li>Ejemplo válido: <code>PO-CLIENTE-2026-001</code>.</li>
+      <li>Si está vacío, no se inventa uno. El PDF no debe rellenar ese espacio con el NCF ni con <em>DOR/SO/…</em>.</li>
+    </ul>
+    <figure>
+      <img src="imagenes/05_cotizacion_oc_po.png" alt="Cotización con el campo OC / PO lleno"/>
+      <figcaption>Figura 5. DOR/SO/00013 con OC / PO = PO-CLIENTE-2026-001, junto a la fecha y el cliente.</figcaption>
+    </figure>
+    <figure>
+      <img src="imagenes/cotizacion_con_oc_po.png" alt="PDF de cotización mostrando OC / PO del cliente"/>
+      <figcaption>Figura 6. El mismo valor aparece en el PDF: OC / PO · PO-CLIENTE-2026-001. El comprobante fiscal no se toca.</figcaption>
+    </figure>
+    <div class="no">OC / PO <strong>nunca reemplaza</strong> el Número de Comprobante Fiscal, Gubernamental o de Régimen Especial de la factura.</div>
+
+    <h2 id="imprimir-venta">5. Imprimir una cotización</h2>
+    <p>En la cotización pulse <strong>Imprimir</strong>. Se abre un cuadro con tres formatos. El primero es el oficial.</p>
+    <figure>
+      <img src="imagenes/04_imprimir_cotizacion.png" alt="Cuadro Imprimir de cotización con Cotización en PDF, Proforma y Formato Propet"/>
+      <figcaption>Figura 7. Imprimir en venta: Cotización en PDF (oficial), Factura Proforma y Formato Propet (opcionales).</figcaption>
+    </figure>
+    <table>
+      <thead><tr><th>Botón</th><th>Qué es</th><th>Cuándo usarlo</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Cotización en PDF</strong></td>
+          <td>Formato oficial de la empresa. Título: COTIZACIÓN.</td>
+          <td>Siempre que envíe o imprima la cotización al cliente.</td>
+        </tr>
+        <tr>
+          <td><strong>Factura Proforma</strong></td>
+          <td>Mismo pedido, identificado como FACTURA PROFORMA. No crea asiento ni consume NCF.</td>
+          <td>Cuando el cliente pide una proforma. Es opcional.</td>
+        </tr>
+        <tr>
+          <td><strong>Formato Propet</strong></td>
+          <td>El mismo documento, con columnas fiscales extra (precio sin ITBIS, ITBIS, precio con ITBIS).</td>
+          <td>Solo si el cliente o el área comercial lo piden. Nunca es el documento oficial.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="ok">No hay botones sueltos de Propet o Proforma en la cabecera. Todo sale de <strong>Imprimir</strong>.</div>
+
+    <h2 id="propet">6. Formato Propet (opcional)</h2>
+    <p>Propet <strong>no es un documento nuevo</strong>. No crea otro número, no cambia la cotización ni la factura. Solo cambia cómo se ve el PDF.</p>
+    <ul>
+      <li>En una cotización el título del PDF sigue siendo <strong>COTIZACIÓN</strong> + el número real (MAY/SO/00007, DOR/SO/00016…).</li>
+      <li>En una factura el título sigue siendo <strong>FACTURA</strong> + el número real.</li>
+      <li>El PDF <strong>nunca</strong> debe decir “FORMATO PROPET” como título. Ese nombre es solo el de la opción de impresión.</li>
+    </ul>
+    <figure>
+      <img src="imagenes/formato_propet_cotizacion.png" alt="PDF Formato Propet de una cotización"/>
+      <figcaption>Figura 8. Formato Propet de DOR/SO/00016. Título COTIZACIÓN. Columnas fiscales extra.</figcaption>
+    </figure>
+    <figure>
+      <img src="imagenes/formato_propet_factura.png" alt="PDF Formato Propet de una factura"/>
+      <figcaption>Figura 9. Formato Propet de INV/2026/00020. Título FACTURA. El comprobante fiscal B0100000053 se mantiene.</figcaption>
+    </figure>
+
+    <h2 id="conduce">7. Conduce de entrega</h2>
+    <p>El Conduce <strong>no se imprime desde Imprimir de la cotización</strong>. Es el documento de la entrega.</p>
+    <ol class="steps">
+      <li>Confirme el pedido (pasa a orden de venta).</li>
+      <li>Pulse <strong>Crear Conduce</strong> o <strong>Conduce</strong> en la cabecera. Eso abre o crea la entrega (<em>DOR/OUT/00015</em>).</li>
+      <li>En la entrega, use el botón <strong>Conduce</strong> para imprimir el PDF.</li>
+    </ol>
+    <figure>
+      <img src="imagenes/08_entrega_conduce.png" alt="Entrega DOR/OUT/00015 con botón Conduce"/>
+      <figcaption>Figura 10. Entrega DOR/OUT/00015. El botón Conduce imprime el documento logístico.</figcaption>
+    </figure>
+    <figure>
+      <img src="imagenes/conduce.png" alt="PDF Conduce con papelería de Doralex"/>
+      <figcaption>Figura 11. PDF del Conduce: mismo diseño de cotización de la empresa, título CONDUCE, cantidades pedida y entregada, sin precios.</figcaption>
+    </figure>
+    <table>
+      <thead><tr><th>El Conduce sí muestra</th><th>El Conduce no muestra</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Logo y datos de la empresa de la entrega, cliente, pedido origen, OC / PO si existe, producto, descripción, cantidad pedida, cantidad entregada, unidad, firmas.</td>
+          <td>Precio, ITBIS, descuento, subtotal o total. No es una factura.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">Si entrega 6 de 10, el Conduce muestra 10 pedidas y 6 entregadas. El pendiente sigue en Odoo con el backorder normal. No se crea un segundo sistema de pendientes.</div>
+
+    <h2 id="factura">8. Facturas y comprobantes</h2>
+    <p>La factura oficial usa el diseño de la empresa. En <strong>Imprimir</strong> el primer botón es <strong>Factura en PDF</strong>. Formato Propet queda a la derecha, opcional.</p>
+    <figure>
+      <img src="imagenes/06_factura_cabecera.png" alt="Factura de cliente INV/2026/00020 con NCF B0100000053"/>
+      <figcaption>Figura 12. Factura INV/2026/00020. El comprobante B0100000053 está en su propio campo. No se pisa con OC / PO.</figcaption>
+    </figure>
+    <figure>
+      <img src="imagenes/07_imprimir_factura.png" alt="Cuadro Imprimir de factura: Factura en PDF y Formato Propet"/>
+      <figcaption>Figura 13. Imprimir en factura: Factura en PDF (oficial) y Formato Propet (opcional). El texto del cuadro lo dice: Propet no sustituye el documento fiscal.</figcaption>
+    </figure>
+    <figure>
+      <img src="imagenes/factura_oficial.png" alt="PDF oficial de factura Doralex con Número de Comprobante Fiscal"/>
+      <figcaption>Figura 14. Factura oficial. El rótulo es Número de Comprobante Fiscal, no la palabra “NCF”.</figcaption>
+    </figure>
+    <p>El nombre del comprobante depende del tipo:</p>
+    <table>
+      <thead><tr><th>Tipo</th><th>Prefijos habituales</th><th>Texto en el PDF</th></tr></thead>
+      <tbody>
+        <tr><td>Fiscal (crédito fiscal, consumidor, etc.)</td><td>B01, E31, B02, E32…</td><td>Número de Comprobante Fiscal</td></tr>
+        <tr><td>Gubernamental</td><td>B15, E45</td><td>Número de Comprobante Gubernamental</td></tr>
+        <tr><td>Régimen especial</td><td>B14, E44</td><td>Número de Comprobante de Régimen Especial</td></tr>
+      </tbody>
+    </table>
+    <div class="ok">Si la factura aún no tiene número, el PDF dice “Pendiente de número de comprobante…” del tipo que corresponda. No se imprime un NCF inventado.</div>
+
+    <h2 id="reglas">9. Reglas que no se pueden romper</h2>
+    <ol class="steps">
+      <li>El formato oficial de venta es la <strong>Cotización</strong> de la empresa. El de factura es la <strong>Factura en PDF</strong>.</li>
+      <li><strong>Formato Propet nunca es el oficial</strong> y no se manda como único adjunto fiscal.</li>
+      <li>No use el Conduce para cobrar. No use la factura para entregar mercancía.</li>
+      <li>OC / PO es del cliente. El comprobante fiscal es de DGII. Son campos distintos.</li>
+      <li>No cambie de empresa a mitad de un documento. Cree el documento en la empresa correcta.</li>
+      <li>No publique facturas ni asigne NCF “para probar”. Si necesita una prueba, pídala a Justech en DEV.</li>
+    </ol>
+
+    <h2 id="ayuda">10. Ayuda y crédito</h2>
+    <p>Si un PDF sale en blanco, con otra empresa o con el título incorrecto, tome captura de la pantalla <strong>y</strong> del PDF y envíelos a Justech. Incluya el número del documento (DOR/SO/…, INV/…, DOR/OUT/…).</p>
+    <p>Usuarios operativos de Doralex (correo = usuario de Odoo):</p>
+    <table>
+      <thead><tr><th>Persona</th><th>Correo / usuario</th><th>Uso principal</th></tr></thead>
+      <tbody>
+        <tr><td>Luis Joel Aquino Casado</td><td>luis.aquino@inversionesdoralex.com</td><td>Ventas y compras</td></tr>
+        <tr><td>Janny Chantal Montero</td><td>janny.montero@inversionesdoralex.com</td><td>Ventas y compras</td></tr>
+        <tr><td>Elianny Nicole Sanchez Javier</td><td>elianny.sanchez@inversionesdoralex.com</td><td>Ventas y compras</td></tr>
+        <tr><td>Leopordo Jimenez</td><td>leopordo.jimenez@inversionesdoralex.com</td><td>Ventas y compras</td></tr>
+        <tr><td>Geilin Rosario Suero</td><td>geilin.rosario@inversionesdoralex.com</td><td>Ventas, compras y facturación</td></tr>
+        <tr><td>Alexander Piña Aquino</td><td>alexander.pina@inversionesdoralex.com</td><td>Administración</td></tr>
+      </tbody>
+    </table>
+
+    <footer class="sign">
+      <div>
+        <div class="kicker">Realizado por</div>
+        <div class="sign-name">Fausto Santana</div>
+        <div class="sign-org">Justech</div>
+        <div>fausto@justech.do</div>
+      </div>
+      <div>
+        <div class="kicker">Para</div>
+        <div class="sign-name">Doralex Group</div>
+        <div>Odoo 19 · doralexgroup.cloud</div>
+        <div>21 de septiembre de 2026</div>
+      </div>
+    </footer>
+    <p class="page-foot">Manual de usuario Doralex Group · Realizado por Fausto Santana | Justech · Uso interno · No contiene contraseñas</p>
+  </div>
+</body>
+</html>
