@@ -138,7 +138,7 @@ def test_ncf_guard_blocks_fiscal_post_without_real_range() -> None:
         ALEXANDER / "justech_alexander_base" / "models" / "ncf_assignment.py"
     ).read_text(encoding="utf-8")
     assert "justech_l10n_do_ncf" in manifest
-    assert "19.0.1.0.12" in manifest
+    assert "19.0.1.0.13" in manifest
     assert "justech.do.ncf.assignment.service" in guard
     assert "No crea rangos" in guard
     assert (
@@ -157,11 +157,23 @@ def test_internal_users_can_create_products_without_admin() -> None:
         ALEXANDER / "justech_alexander_base" / "security" / "product_create.xml"
     ).read_text(encoding="utf-8")
     assert "security/product_create.xml" in manifest
+    assert "security/ir.model.access.csv" in manifest
     assert '"product"' in manifest
     assert "base.group_user" in xml
     assert "product.group_product_manager" in xml
     assert "base.group_system" not in xml
     assert "base.group_erp_manager" not in xml
+    hook = (
+        ALEXANDER / "justech_alexander_base" / "models" / "res_groups.py"
+    ).read_text(encoding="utf-8")
+    assert "def _dx_grant_internal_product_create" in hook
+    assert "implied_ids" in hook
+    acl = (
+        ALEXANDER / "justech_alexander_base" / "security" / "ir.model.access.csv"
+    ).read_text(encoding="utf-8")
+    assert "product.model_product_template" in acl
+    assert "product.model_product_product" in acl
+    assert "base.group_user" in acl
 
 
 def test_spanish_ui_overlay_does_not_edit_crm_core() -> None:
