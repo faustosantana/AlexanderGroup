@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Odoo 19 only grants product create/write to product.group_product_manager
+         ("Products / Create"). Sales, Purchase and Inventory User get read-only.
+         Doralex needs every internal user to create products without becoming
+         Settings / Administrator. -->
+    <record id="base.group_user" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('product.group_product_manager'))]"/>
+    </record>
+</odoo>
