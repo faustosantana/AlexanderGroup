@@ -138,7 +138,7 @@ def test_ncf_guard_blocks_fiscal_post_without_real_range() -> None:
         ALEXANDER / "justech_alexander_base" / "models" / "ncf_assignment.py"
     ).read_text(encoding="utf-8")
     assert "justech_l10n_do_ncf" in manifest
-    assert "19.0.1.0.13" in manifest
+    assert "19.0.1.0.14" in manifest
     assert "justech.do.ncf.assignment.service" in guard
     assert "No crea rangos" in guard
     assert (
@@ -166,6 +166,14 @@ def test_internal_users_can_create_products_without_admin() -> None:
     hook = (
         ALEXANDER / "justech_alexander_base" / "models" / "res_groups.py"
     ).read_text(encoding="utf-8")
+    users_py = (
+        ALEXANDER / "justech_alexander_base" / "models" / "res_users.py"
+    ).read_text(encoding="utf-8")
+    assert "def _dx_apply_spanish_ui_language" in users_py
+    assert 'DX_UI_LANG = "es_DO"' in users_py
+    assert 'vals["lang"] = DX_UI_LANG' in users_py
+    assert '("share", "=", False)' in users_py
+    assert "base.user_root" in users_py
     assert "def _dx_grant_internal_product_create" in hook
     assert "implied_ids" in hook
     acl = (
