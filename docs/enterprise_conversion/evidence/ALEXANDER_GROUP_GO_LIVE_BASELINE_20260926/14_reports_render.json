@@ -1,0 +1,138 @@
+{
+  "renders": [
+    {
+      "kind": "quotation",
+      "docs": [
+        {
+          "id": 236,
+          "name": "DOR/SO/00096",
+          "company": 11,
+          "bytes": 36536,
+          "ext": "pdf",
+          "ok": true
+        },
+        {
+          "id": 235,
+          "name": "DOR/SO/00095",
+          "company": 11,
+          "bytes": 36856,
+          "ext": "pdf",
+          "ok": true
+        },
+        {
+          "id": 234,
+          "name": "DOR/SO/00094",
+          "company": 11,
+          "bytes": 35602,
+          "ext": "pdf",
+          "ok": true
+        }
+      ],
+      "ok": 3,
+      "fail": 0
+    },
+    {
+      "kind": "purchase",
+      "docs": [
+        {
+          "id": 127,
+          "name": "REM/OC/00024 (DXQA-OPREADY-20260907)",
+          "company": 13,
+          "bytes": 39133,
+          "ext": "pdf",
+          "ok": true
+        },
+        {
+          "id": 126,
+          "name": "MAY/OC/00024 (DXQA-OPREADY-20260907)",
+          "company": 12,
+          "bytes": 45976,
+          "ext": "pdf",
+          "ok": true
+        },
+        {
+          "id": 125,
+          "name": "DOR/OC/00037 (DXQA-OPREADY-20260907)",
+          "company": 11,
+          "bytes": 36618,
+          "ext": "pdf",
+          "ok": true
+        }
+      ],
+      "ok": 3,
+      "fail": 0
+    },
+    {
+      "kind": "invoice",
+      "docs": [
+        {
+          "id": 1898,
+          "name": "Draft Invoice (PO-TEST-2026-001)",
+          "company": 11,
+          "bytes": 39271,
+          "ext": "pdf",
+          "ok": true
+        },
+        {
+          "id": 1873,
+          "name": "RINV/2026/00001 (Reversal of: INV/2026/00067, UAT H01 CN ITBIS 16)",
+          "company": 11,
+          "bytes": 40195,
+          "ext": "pdf",
+          "ok": true
+        },
+        {
+          "id": 1870,
+          "name": "INV/2026/00074 (DOR/SO/00094)",
+          "company": 11,
+          "bytes": 39138,
+          "ext": "pdf",
+          "ok": true
+        }
+      ],
+      "ok": 3,
+      "fail": 0
+    },
+    {
+      "kind": "conduce",
+      "docs": [
+        {
+          "id": 277,
+          "name": "DOR/OUT/00042",
+          "company": 11,
+          "bytes": 27693,
+          "ext": "pdf",
+          "ok": true
+        },
+        {
+          "id": 276,
+          "name": "BLU/OUT/00028",
+          "company": 8,
+          "bytes": 97281,
+          "ext": "pdf",
+          "ok": true
+        },
+        {
+          "id": 274,
+          "name": "BLU/OUT/00027",
+          "company": 8,
+          "bytes": 97276,
+          "ext": "pdf",
+          "ok": true
+        }
+      ],
+      "ok": 3,
+      "fail": 0
+    }
+  ],
+  "MAIL_SENT": 0,
+  "errors": [],
+  "actions": {
+    "quotation": "sale.action_report_saleorder",
+    "purchase": "purchase.action_report_purchase_order",
+    "invoice": "account.account_invoices",
+    "conduce": "stock.action_report_delivery"
+  },
+  "QWEB_TOTAL": 1562,
+  "REPORTS_RENDER_QA": "PASS"
+}
