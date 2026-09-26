@@ -5,6 +5,11 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 
 ## Unreleased
 
+### Fixed
+- Impuestos multiempresa Doralex: un producto compartido resuelve el
+  `account.tax` de la compañía del documento (Mayuma ≠ Rempart). No se
+  debilitan record rules ni se otorga Accounting Admin.
+
 ### Changed
 - UX logística Doralex: Formato Propet y Factura Proforma quedan en
   Imprimir (asistente, no botones sueltos). El Conduce abre la entrega
