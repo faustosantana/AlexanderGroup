@@ -1,0 +1,112 @@
+{
+  "db": "doralex_ent_staging",
+  "DRY": false,
+  "writes": [
+    {
+      "code": "DOR",
+      "id": 30,
+      "after": {
+        "sequence_start": 141,
+        "sequence_end": 160,
+        "next_sequence": 152,
+        "next_ncf": "B1500000152",
+        "date_to": "2027-12-31",
+        "authorization_number": "6005109381",
+        "state": "active",
+        "remaining": 9
+      }
+    },
+    {
+      "code": "MAY",
+      "id": 31,
+      "after": {
+        "sequence_start": 109,
+        "sequence_end": 118,
+        "next_sequence": 113,
+        "next_ncf": "B1500000113",
+        "date_to": "2026-12-31",
+        "authorization_number": "5004942280",
+        "state": "active",
+        "remaining": 6
+      }
+    },
+    {
+      "code": "REM",
+      "id": 32,
+      "after": {
+        "sequence_start": 106,
+        "sequence_end": 113,
+        "next_sequence": 112,
+        "next_ncf": "B1500000112",
+        "date_to": "2027-01-03",
+        "authorization_number": "5004942351",
+        "state": "active",
+        "remaining": 2
+      }
+    }
+  ],
+  "skipped": [],
+  "gates": {
+    "DOR": {
+      "errors": [],
+      "paper_or_external_gap": false,
+      "range_id": 30,
+      "company_id": 11,
+      "max_real": 151,
+      "next_exists": false,
+      "before": {
+        "sequence_start": 141,
+        "sequence_end": 160,
+        "next_sequence": 152,
+        "date_to": "2027-12-31",
+        "authorization_number": "6005109381",
+        "state": "active"
+      }
+    },
+    "MAY": {
+      "errors": [],
+      "paper_or_external_gap": true,
+      "range_id": 31,
+      "company_id": 12,
+      "max_real": 110,
+      "next_exists": false,
+      "before": {
+        "sequence_start": 109,
+        "sequence_end": 118,
+        "next_sequence": 111,
+        "date_to": "2026-12-31",
+        "authorization_number": "5004942280",
+        "state": "active"
+      }
+    },
+    "REM": {
+      "errors": [],
+      "paper_or_external_gap": true,
+      "range_id": 32,
+      "company_id": 13,
+      "max_real": 110,
+      "next_exists": false,
+      "before": {
+        "sequence_start": 106,
+        "sequence_end": 113,
+        "next_sequence": 111,
+        "date_to": "2027-01-03",
+        "authorization_number": "5004942351",
+        "state": "active"
+      }
+    }
+  },
+  "NCF_NUMBERS_CONSUMED_DURING_UPDATE": 0,
+  "HISTORICAL_NCF_CHANGED": 0,
+  "POSTED_MOVES_CHANGED": 0,
+  "NCF_DOCUMENTS_RENUMBERED": 0,
+  "STOP": [],
+  "doralex_b13_before": {
+    "missing": "RANGE_RESOLVE_DOR_B13_[]"
+  },
+  "doralex_b13_write": {
+    "already": "NO_RANGE",
+    "status": "BLOCKED_PENDING_AUTHORIZATION"
+  },
+  "PASS": true
+}
