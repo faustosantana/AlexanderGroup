@@ -271,6 +271,8 @@ def run(env):
             pass
     report["NCF_NUMBERS_CONSUMED_DURING_UPDATE"] = consumed
     report["PASS"] = not report["STOP"] and (bool(report["writes"]) or DRY)
+    if not DRY:
+        env.cr.commit()
     with open(OUT, "w", encoding="utf-8") as fh:
         json.dump(report, fh, ensure_ascii=False, default=str, indent=2)
     print(

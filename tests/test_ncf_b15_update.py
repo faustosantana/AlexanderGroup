@@ -95,6 +95,7 @@ def test_ncf_next_not_consumed_on_read():
     assert "next_by_id(" not in apply
     assert "next_by_code(" not in apply
     assert "consume_next(" not in apply
+    assert "env.cr.commit()" in apply
     assert "dx_preview_next_ncf" in preview
     assert "without consuming" in preview
     assert not gate_next_exists(AUTHORIZED_B15["DOR"], False)
