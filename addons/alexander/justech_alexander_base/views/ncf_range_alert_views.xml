@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_justech_do_ncf_range_tree_dx_balance" model="ir.ui.view">
+        <field name="name">justech.do.ncf.range.list.dx.balance</field>
+        <field name="model">justech.do.ncf.range</field>
+        <field name="inherit_id" ref="justech_l10n_do_ncf.view_justech_do_ncf_range_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='remaining_count']" position="after">
+                <field name="dx_ncf_last_used_display" string="Último" optional="show"/>
+                <field name="dx_ncf_balance_level" string="Alerta" widget="badge"
+                       decoration-success="dx_ncf_balance_level == 'NORMAL'"
+                       decoration-warning="dx_ncf_balance_level == 'WARNING'"
+                       decoration-danger="dx_ncf_balance_level in ('CRITICAL', 'EXHAUSTED', 'EXPIRED')"/>
+                <field name="authorization_number" string="Autorización" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

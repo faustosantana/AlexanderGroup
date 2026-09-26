@@ -23,7 +23,7 @@ REQUIRED_TESTS = (
 
 def test_manifest_version_and_files() -> None:
     manifest = (BASE / "__manifest__.py").read_text(encoding="utf-8")
-    assert "19.0.1.0.15" in manifest
+    assert "19.0.1.0.16" in manifest
     assert "purchase" in manifest
     for rel in (
         "models/account_tax.py",

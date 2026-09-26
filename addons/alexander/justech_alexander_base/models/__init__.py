@@ -5,6 +5,7 @@ from . import res_company
 from . import res_partner
 from . import ncf_assignment
 from . import ncf_business_rules
+from . import ncf_balance_alert
 from . import account_move_draft
 from . import withholding_math
 from . import spanish_ui

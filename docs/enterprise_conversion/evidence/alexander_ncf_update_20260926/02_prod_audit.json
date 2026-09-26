@@ -1,0 +1,918 @@
+{
+  "db": "doralex_prod",
+  "companies": {
+    "DOR": {
+      "code": "DOR",
+      "key": "DORALEX",
+      "company_id": 11,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "ranges": [
+        {
+          "id": 26,
+          "name": "B15 INVERSIONES DORALEX,S.RL. auth 6005109381 (Excel vence 2027-12-31)",
+          "company": "INVERSIONES DORALEX,S.RL.",
+          "company_id": 11,
+          "prefix": "B15",
+          "sequence_start": 141,
+          "sequence_end": 160,
+          "next_sequence": 152,
+          "last_used": 151,
+          "ncf_from": "B1500000141",
+          "ncf_to": "B1500000160",
+          "ncf_next": "B1500000152",
+          "ncf_last": "B1500000151",
+          "date_from": "2020-01-01",
+          "date_to": "2027-12-31",
+          "authorization_number": "6005109381",
+          "state": "active",
+          "remaining_count": 9,
+          "journal_ids": [
+            71
+          ]
+        }
+      ],
+      "MAX_REAL_B15": "B1500000151",
+      "MAX_REAL_NUM": 151,
+      "NEXT_NCF_ALREADY_EXISTS": false,
+      "next_exists_docs": [],
+      "max_sources": [
+        [
+          116,
+          "posted",
+          "B1500000150",
+          "justech_do_ncf"
+        ],
+        [
+          116,
+          "posted",
+          "B1500000150",
+          "l10n_latam_document_number"
+        ],
+        [
+          115,
+          "posted",
+          "B1500000149",
+          "justech_do_ncf"
+        ],
+        [
+          115,
+          "posted",
+          "B1500000149",
+          "l10n_latam_document_number"
+        ],
+        [
+          114,
+          "posted",
+          "B1500000148",
+          "justech_do_ncf"
+        ],
+        [
+          114,
+          "posted",
+          "B1500000148",
+          "l10n_latam_document_number"
+        ],
+        [
+          113,
+          "posted",
+          "B1500000147",
+          "justech_do_ncf"
+        ],
+        [
+          113,
+          "posted",
+          "B1500000147",
+          "l10n_latam_document_number"
+        ]
+      ],
+      "authorized": {
+        "from": "B1500000141",
+        "to": "B1500000160",
+        "last": "B1500000151",
+        "next": "B1500000152",
+        "date_to": "2027-12-31",
+        "authorization": "6005109381"
+      }
+    },
+    "MAY": {
+      "code": "MAY",
+      "key": "MAYUMA",
+      "company_id": 12,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "ranges": [
+        {
+          "id": 27,
+          "name": "B15 INVERSIONES EL MAYUMA, S.R.L auth 5004942280 (Excel vence 2026-12-31)",
+          "company": "INVERSIONES EL MAYUMA, S.R.L.",
+          "company_id": 12,
+          "prefix": "B15",
+          "sequence_start": 109,
+          "sequence_end": 118,
+          "next_sequence": 111,
+          "last_used": 110,
+          "ncf_from": "B1500000109",
+          "ncf_to": "B1500000118",
+          "ncf_next": "B1500000111",
+          "ncf_last": "B1500000110",
+          "date_from": "2020-01-01",
+          "date_to": "2026-12-31",
+          "authorization_number": "5004942280",
+          "state": "active",
+          "remaining_count": 8,
+          "journal_ids": [
+            78
+          ]
+        }
+      ],
+      "MAX_REAL_B15": "B1500000110",
+      "MAX_REAL_NUM": 110,
+      "NEXT_NCF_ALREADY_EXISTS": false,
+      "next_exists_docs": [],
+      "max_sources": [
+        [
+          135,
+          "posted",
+          "B1500000110",
+          "justech_do_ncf"
+        ],
+        [
+          135,
+          "posted",
+          "B1500000110",
+          "l10n_latam_document_number"
+        ],
+        [
+          133,
+          "posted",
+          "B1500000109",
+          "justech_do_ncf"
+        ],
+        [
+          133,
+          "posted",
+          "B1500000109",
+          "l10n_latam_document_number"
+        ]
+      ],
+      "authorized": {
+        "from": "B1500000109",
+        "to": "B1500000118",
+        "last": "B1500000112",
+        "next": "B1500000113",
+        "date_to": "2026-12-31",
+        "authorization": "5004942280"
+      }
+    },
+    "REM": {
+      "code": "REM",
+      "key": "REMPART",
+      "company_id": 13,
+      "company": "REMPART GROUP S.R.L.",
+      "ranges": [
+        {
+          "id": 28,
+          "name": "B15 REMPART GROUP S.R.L. auth 5004942351 (Excel vence 2027-01-03)",
+          "company": "REMPART GROUP S.R.L.",
+          "company_id": 13,
+          "prefix": "B15",
+          "sequence_start": 106,
+          "sequence_end": 113,
+          "next_sequence": 111,
+          "last_used": 110,
+          "ncf_from": "B1500000106",
+          "ncf_to": "B1500000113",
+          "ncf_next": "B1500000111",
+          "ncf_last": "B1500000110",
+          "date_from": "2020-01-01",
+          "date_to": "2027-01-03",
+          "authorization_number": "5004942351",
+          "state": "active",
+          "remaining_count": 3,
+          "journal_ids": [
+            85
+          ]
+        }
+      ],
+      "MAX_REAL_B15": "B1500000110",
+      "MAX_REAL_NUM": 110,
+      "NEXT_NCF_ALREADY_EXISTS": false,
+      "next_exists_docs": [],
+      "max_sources": [
+        [
+          139,
+          "posted",
+          "B1500000109",
+          "justech_do_ncf"
+        ],
+        [
+          139,
+          "posted",
+          "B1500000109",
+          "l10n_latam_document_number"
+        ],
+        [
+          138,
+          "posted",
+          "B1500000108",
+          "justech_do_ncf"
+        ],
+        [
+          138,
+          "posted",
+          "B1500000108",
+          "l10n_latam_document_number"
+        ],
+        [
+          137,
+          "posted",
+          "B1500000107",
+          "justech_do_ncf"
+        ],
+        [
+          137,
+          "posted",
+          "B1500000107",
+          "l10n_latam_document_number"
+        ],
+        [
+          136,
+          "posted",
+          "B1500000106",
+          "justech_do_ncf"
+        ],
+        [
+          136,
+          "posted",
+          "B1500000106",
+          "l10n_latam_document_number"
+        ]
+      ],
+      "authorized": {
+        "from": "B1500000106",
+        "to": "B1500000113",
+        "last": "B1500000111",
+        "next": "B1500000112",
+        "date_to": "2027-01-03",
+        "authorization": "5004942351"
+      }
+    }
+  },
+  "blue_elite_b15": [
+    {
+      "id": 58,
+      "name": "B15 BLUE ELITE, S.R.L. auth 6005109964 (Excel vence 2027-12-31)",
+      "company": "BLUE ELITE, S.R.L.",
+      "company_id": 8,
+      "prefix": "B15",
+      "sequence_start": 1,
+      "sequence_end": 102,
+      "next_sequence": 102,
+      "last_used": 101,
+      "ncf_from": "B1500000001",
+      "ncf_to": "B1500000102",
+      "ncf_next": "B1500000102",
+      "ncf_last": "B1500000101",
+      "date_from": "2020-01-01",
+      "date_to": "2027-12-31",
+      "authorization_number": "6005109964",
+      "state": "active",
+      "remaining_count": 1,
+      "journal_ids": [
+        50
+      ]
+    }
+  ],
+  "doralex_b13": {
+    "ranges": [
+      {
+        "id": 35,
+        "name": "B13 INVERSIONES DORALEX,S.RL. auth 6005031086 (Excel vence 2027-12-31)",
+        "company": "INVERSIONES DORALEX,S.RL.",
+        "company_id": 11,
+        "prefix": "B13",
+        "sequence_start": 11,
+        "sequence_end": 17,
+        "next_sequence": 17,
+        "last_used": 16,
+        "ncf_from": "B1300000011",
+        "ncf_to": "B1300000017",
+        "ncf_next": "B1300000017",
+        "ncf_last": "B1300000016",
+        "date_from": "2020-01-01",
+        "date_to": "2027-12-31",
+        "authorization_number": "6005031086",
+        "state": "active",
+        "remaining_count": 1,
+        "journal_ids": [
+          72
+        ]
+      }
+    ],
+    "MAX_REAL_B13": "B1300000016",
+    "MAX_REAL_NUM": 16,
+    "sources": [
+      [
+        141,
+        "posted",
+        "B1300000016",
+        "justech_do_ncf"
+      ],
+      [
+        141,
+        "posted",
+        "B1300000016",
+        "l10n_latam_document_number"
+      ],
+      [
+        128,
+        "posted",
+        "B1300000015",
+        "justech_do_ncf"
+      ],
+      [
+        128,
+        "posted",
+        "B1300000015",
+        "l10n_latam_document_number"
+      ],
+      [
+        127,
+        "posted",
+        "B1300000013",
+        "justech_do_ncf"
+      ],
+      [
+        127,
+        "posted",
+        "B1300000013",
+        "l10n_latam_document_number"
+      ],
+      [
+        124,
+        "posted",
+        "B1300000012",
+        "justech_do_ncf"
+      ],
+      [
+        124,
+        "posted",
+        "B1300000012",
+        "l10n_latam_document_number"
+      ]
+    ]
+  },
+  "all_ranges": [
+    {
+      "id": 34,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "code": "DOR",
+      "prefix": "B11",
+      "start": 1,
+      "end": 5,
+      "next": 1,
+      "state": "expired",
+      "auth": "3003703072",
+      "date_to": "2024-12-31"
+    },
+    {
+      "id": 36,
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "code": "PIN",
+      "prefix": "B01",
+      "start": 6,
+      "end": 10,
+      "next": 9,
+      "state": "expired",
+      "auth": "4004196168",
+      "date_to": "2025-12-31"
+    },
+    {
+      "id": 40,
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "code": "DOM",
+      "prefix": "B01",
+      "start": 91,
+      "end": 100,
+      "next": 94,
+      "state": "expired",
+      "auth": "4004196172",
+      "date_to": "2025-12-31"
+    },
+    {
+      "id": 38,
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "code": "PIN",
+      "prefix": "B11",
+      "start": 1,
+      "end": 5,
+      "next": 1,
+      "state": "expired",
+      "auth": "4004017760",
+      "date_to": "2025-12-31"
+    },
+    {
+      "id": 52,
+      "company": "REMPART GROUP S.R.L.",
+      "code": "REM",
+      "prefix": "B11",
+      "start": 1,
+      "end": 5,
+      "next": 1,
+      "state": "expired",
+      "auth": "4004004172",
+      "date_to": "2025-12-31"
+    },
+    {
+      "id": 48,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "code": "MAY",
+      "prefix": "B11",
+      "start": 1,
+      "end": 5,
+      "next": 1,
+      "state": "expired",
+      "auth": "4003974363",
+      "date_to": "2025-12-31"
+    },
+    {
+      "id": 43,
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "code": "DOM",
+      "prefix": "B11",
+      "start": 1,
+      "end": 10,
+      "next": 1,
+      "state": "expired",
+      "auth": "4003974422",
+      "date_to": "2025-12-31"
+    },
+    {
+      "id": 53,
+      "company": "REMPART GROUP S.R.L.",
+      "code": "REM",
+      "prefix": "B13",
+      "start": 6,
+      "end": 12,
+      "next": 6,
+      "state": "expired",
+      "auth": "4004004197",
+      "date_to": "2025-12-31"
+    },
+    {
+      "id": 49,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "code": "MAY",
+      "prefix": "B13",
+      "start": 1,
+      "end": 5,
+      "next": 1,
+      "state": "expired",
+      "auth": "4003974364",
+      "date_to": "2025-12-31"
+    },
+    {
+      "id": 21,
+      "company": "REMPART GROUP S.R.L.",
+      "code": "REM",
+      "prefix": "B01",
+      "start": 99100401,
+      "end": 99100450,
+      "next": 99100403,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 23,
+      "company": "BLUE ELITE, S.R.L.",
+      "code": "BLU",
+      "prefix": "B01",
+      "start": 99100501,
+      "end": 99100550,
+      "next": 99100503,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 15,
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "code": "PIN",
+      "prefix": "B01",
+      "start": 99100101,
+      "end": 99100150,
+      "next": 99100105,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 13,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "code": "DOR",
+      "prefix": "B01",
+      "start": 99100001,
+      "end": 99100050,
+      "next": 99100003,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 17,
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "code": "DOM",
+      "prefix": "B01",
+      "start": 99100201,
+      "end": 99100250,
+      "next": 99100203,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 19,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "code": "MAY",
+      "prefix": "B01",
+      "start": 99100301,
+      "end": 99100350,
+      "next": 99100303,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 24,
+      "company": "BLUE ELITE, S.R.L.",
+      "code": "BLU",
+      "prefix": "B04",
+      "start": 99110501,
+      "end": 99110550,
+      "next": 99110502,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 22,
+      "company": "REMPART GROUP S.R.L.",
+      "code": "REM",
+      "prefix": "B04",
+      "start": 99110401,
+      "end": 99110450,
+      "next": 99110402,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 16,
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "code": "PIN",
+      "prefix": "B04",
+      "start": 99110101,
+      "end": 99110150,
+      "next": 99110102,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 18,
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "code": "DOM",
+      "prefix": "B04",
+      "start": 99110201,
+      "end": 99110250,
+      "next": 99110202,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 14,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "code": "DOR",
+      "prefix": "B04",
+      "start": 99110001,
+      "end": 99110050,
+      "next": 99110002,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 20,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "code": "MAY",
+      "prefix": "B04",
+      "start": 99110301,
+      "end": 99110350,
+      "next": 99110302,
+      "state": "cancelled",
+      "auth": "DX-TEST-NO-DGII-360",
+      "date_to": "2026-12-27"
+    },
+    {
+      "id": 50,
+      "company": "REMPART GROUP S.R.L.",
+      "code": "REM",
+      "prefix": "B01",
+      "start": 16,
+      "end": 30,
+      "next": 16,
+      "state": "active",
+      "auth": "5004684660",
+      "date_to": "2026-12-31"
+    },
+    {
+      "id": 45,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "code": "MAY",
+      "prefix": "B01",
+      "start": 6,
+      "end": 10,
+      "next": 6,
+      "state": "active",
+      "auth": "5004743980",
+      "date_to": "2026-12-31"
+    },
+    {
+      "id": 44,
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "code": "DOM",
+      "prefix": "B13",
+      "start": 57,
+      "end": 96,
+      "next": 57,
+      "state": "active",
+      "auth": "5004440728",
+      "date_to": "2026-12-31"
+    },
+    {
+      "id": 39,
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "code": "PIN",
+      "prefix": "B13",
+      "start": 18,
+      "end": 27,
+      "next": 18,
+      "state": "active",
+      "auth": "5004579811",
+      "date_to": "2026-12-31"
+    },
+    {
+      "id": 27,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "code": "MAY",
+      "prefix": "B15",
+      "start": 109,
+      "end": 118,
+      "next": 111,
+      "state": "active",
+      "auth": "5004942280",
+      "date_to": "2026-12-31"
+    },
+    {
+      "id": 30,
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "code": "DOM",
+      "prefix": "B15",
+      "start": 140,
+      "end": 163,
+      "next": 145,
+      "state": "active",
+      "auth": "5004909756",
+      "date_to": "2026-12-31"
+    },
+    {
+      "id": 28,
+      "company": "REMPART GROUP S.R.L.",
+      "code": "REM",
+      "prefix": "B15",
+      "start": 106,
+      "end": 113,
+      "next": 111,
+      "state": "active",
+      "auth": "5004942351",
+      "date_to": "2027-01-03"
+    },
+    {
+      "id": 31,
+      "company": "BLUE ELITE, S.R.L.",
+      "code": "BLU",
+      "prefix": "B01",
+      "start": 1,
+      "end": 15,
+      "next": 1,
+      "state": "active",
+      "auth": "6005109961",
+      "date_to": "2027-12-31"
+    },
+    {
+      "id": 25,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "code": "DOR",
+      "prefix": "B01",
+      "start": 52,
+      "end": 87,
+      "next": 54,
+      "state": "active",
+      "auth": "6005372487",
+      "date_to": "2027-12-31"
+    },
+    {
+      "id": 56,
+      "company": "BLUE ELITE, S.R.L.",
+      "code": "BLU",
+      "prefix": "B11",
+      "start": 1,
+      "end": 5,
+      "next": 1,
+      "state": "active",
+      "auth": "6005109962",
+      "date_to": "2027-12-31"
+    },
+    {
+      "id": 35,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "code": "DOR",
+      "prefix": "B13",
+      "start": 11,
+      "end": 17,
+      "next": 17,
+      "state": "active",
+      "auth": "6005031086",
+      "date_to": "2027-12-31"
+    },
+    {
+      "id": 57,
+      "company": "BLUE ELITE, S.R.L.",
+      "code": "BLU",
+      "prefix": "B13",
+      "start": 1,
+      "end": 5,
+      "next": 1,
+      "state": "active",
+      "auth": "6005109963",
+      "date_to": "2027-12-31"
+    },
+    {
+      "id": 58,
+      "company": "BLUE ELITE, S.R.L.",
+      "code": "BLU",
+      "prefix": "B15",
+      "start": 1,
+      "end": 102,
+      "next": 102,
+      "state": "active",
+      "auth": "6005109964",
+      "date_to": "2027-12-31"
+    },
+    {
+      "id": 26,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "code": "DOR",
+      "prefix": "B15",
+      "start": 141,
+      "end": 160,
+      "next": 152,
+      "state": "active",
+      "auth": "6005109381",
+      "date_to": "2027-12-31"
+    },
+    {
+      "id": 29,
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "code": "PIN",
+      "prefix": "B15",
+      "start": 93,
+      "end": 103,
+      "next": 93,
+      "state": "active",
+      "auth": "6005464536",
+      "date_to": "2028-01-01"
+    },
+    {
+      "id": 32,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "code": "DOR",
+      "prefix": "B02",
+      "start": 1,
+      "end": 10,
+      "next": 1,
+      "state": "active",
+      "auth": "1002741918",
+      "date_to": "2099-12-31"
+    },
+    {
+      "id": 41,
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "code": "DOM",
+      "prefix": "B02",
+      "start": 1,
+      "end": 500,
+      "next": 1,
+      "state": "active",
+      "auth": "2003411708",
+      "date_to": "2099-12-31"
+    },
+    {
+      "id": 46,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "code": "MAY",
+      "prefix": "B02",
+      "start": 1,
+      "end": 100,
+      "next": 1,
+      "state": "active",
+      "auth": "3003508919",
+      "date_to": "2099-12-31"
+    },
+    {
+      "id": 54,
+      "company": "BLUE ELITE, S.R.L.",
+      "code": "BLU",
+      "prefix": "B02",
+      "start": 1,
+      "end": 500,
+      "next": 1,
+      "state": "active",
+      "auth": "6005109965",
+      "date_to": "2099-12-31"
+    },
+    {
+      "id": 55,
+      "company": "BLUE ELITE, S.R.L.",
+      "code": "BLU",
+      "prefix": "B04",
+      "start": 1,
+      "end": 15,
+      "next": 1,
+      "state": "active",
+      "auth": "6005109966",
+      "date_to": "2099-12-31"
+    },
+    {
+      "id": 51,
+      "company": "REMPART GROUP S.R.L.",
+      "code": "REM",
+      "prefix": "B04",
+      "start": 1,
+      "end": 5,
+      "next": 1,
+      "state": "active",
+      "auth": "6005474633",
+      "date_to": "2099-12-31"
+    },
+    {
+      "id": 47,
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "code": "MAY",
+      "prefix": "B04",
+      "start": 1,
+      "end": 5,
+      "next": 1,
+      "state": "active",
+      "auth": "6005472703",
+      "date_to": "2099-12-31"
+    },
+    {
+      "id": 42,
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "code": "DOM",
+      "prefix": "B04",
+      "start": 1,
+      "end": 50,
+      "next": 1,
+      "state": "active",
+      "auth": "2003411709",
+      "date_to": "2099-12-31"
+    },
+    {
+      "id": 37,
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "code": "PIN",
+      "prefix": "B04",
+      "start": 1,
+      "end": 10,
+      "next": 1,
+      "state": "active",
+      "auth": "3003875941",
+      "date_to": "2099-12-31"
+    },
+    {
+      "id": 33,
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "code": "DOR",
+      "prefix": "B04",
+      "start": 502,
+      "end": 502,
+      "next": 502,
+      "state": "active",
+      "auth": "6005472045",
+      "date_to": "2099-12-31"
+    }
+  ]
+}

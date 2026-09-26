@@ -5,6 +5,13 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 
 ## Unreleased
 
+### Changed
+- Secuencias NCF B15 autorizadas (Doralex 141–160 next 152, El Mayuma
+  109–118 next 113, Rempart 106–113 next 112). Doralex B13 queda
+  cerrado (`cancelled`) sin inventar rango. Diagnóstico de saldo
+  (NORMAL/WARNING/CRITICAL/EXHAUSTED/EXPIRED) en Rangos NCF, sin
+  email ni autorenovación. Overlay `justech_alexander_base` 19.0.1.0.16.
+
 ### Fixed
 - Impuestos multiempresa Doralex: un producto compartido resuelve el
   `account.tax` de la compañía del documento (Mayuma ≠ Rempart). No se

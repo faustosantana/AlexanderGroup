@@ -1,0 +1,60 @@
+{
+  "db": "doralex_ent_staging",
+  "companies": {
+    "DOR": {
+      "COMPANY": "INVERSIONES DORALEX,S.RL.",
+      "TYPE": "B15",
+      "RANGE_FROM": "B1500000141",
+      "RANGE_TO": "B1500000160",
+      "LAST_USED": "B1500000151",
+      "NEXT": "B1500000152",
+      "EXPIRATION": "2027-12-31",
+      "AUTHORIZATION": "6005109381",
+      "ACTIVE": true,
+      "STATE": "active",
+      "REMAINING": 9,
+      "NATIVE_REMAINING": 9,
+      "BALANCE": "WARNING"
+    },
+    "MAY": {
+      "COMPANY": "INVERSIONES EL MAYUMA, S.R.L.",
+      "TYPE": "B15",
+      "RANGE_FROM": "B1500000109",
+      "RANGE_TO": "B1500000118",
+      "LAST_USED": "B1500000112",
+      "NEXT": "B1500000113",
+      "EXPIRATION": "2026-12-31",
+      "AUTHORIZATION": "5004942280",
+      "ACTIVE": true,
+      "STATE": "active",
+      "REMAINING": 6,
+      "NATIVE_REMAINING": 6,
+      "BALANCE": "WARNING"
+    },
+    "REM": {
+      "COMPANY": "REMPART GROUP S.R.L.",
+      "TYPE": "B15",
+      "RANGE_FROM": "B1500000106",
+      "RANGE_TO": "B1500000113",
+      "LAST_USED": "B1500000111",
+      "NEXT": "B1500000112",
+      "EXPIRATION": "2027-01-03",
+      "AUTHORIZATION": "5004942351",
+      "ACTIVE": true,
+      "STATE": "active",
+      "REMAINING": 2,
+      "NATIVE_REMAINING": 2,
+      "BALANCE": "CRITICAL"
+    }
+  },
+  "errors": [],
+  "doralex_b13": {
+    "STATE": "NO_RANGE",
+    "NEXT": null,
+    "ACTIVE": false,
+    "STATUS": "BLOCKED_PENDING_AUTHORIZATION"
+  },
+  "blue_elite_b15": [],
+  "b17_count": 0,
+  "PASS": true
+}

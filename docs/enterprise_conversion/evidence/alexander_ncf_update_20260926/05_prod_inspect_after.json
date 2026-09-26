@@ -1,0 +1,544 @@
+{
+  "db": "doralex_prod",
+  "companies": {
+    "DOR": {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "company_id": 11,
+      "b15_moves": [
+        {
+          "id": 117,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000151",
+          "name": "INV/2026/00007"
+        },
+        {
+          "id": 117,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000151",
+          "name": "INV/2026/00007"
+        },
+        {
+          "id": 117,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000151",
+          "name": "INV/2026/00007"
+        },
+        {
+          "id": 117,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "payment_reference",
+          "value": "B1500000151",
+          "name": "INV/2026/00007"
+        },
+        {
+          "id": 116,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000150",
+          "name": "INV/2026/00006"
+        },
+        {
+          "id": 116,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000150",
+          "name": "INV/2026/00006"
+        },
+        {
+          "id": 116,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000150",
+          "name": "INV/2026/00006"
+        },
+        {
+          "id": 115,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000149",
+          "name": "INV/2026/00005"
+        },
+        {
+          "id": 115,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000149",
+          "name": "INV/2026/00005"
+        },
+        {
+          "id": 115,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000149",
+          "name": "INV/2026/00005"
+        },
+        {
+          "id": 114,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000148",
+          "name": "INV/2026/00004"
+        },
+        {
+          "id": 114,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000148",
+          "name": "INV/2026/00004"
+        },
+        {
+          "id": 114,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000148",
+          "name": "INV/2026/00004"
+        },
+        {
+          "id": 113,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000147",
+          "name": "INV/2026/00003"
+        },
+        {
+          "id": 113,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000147",
+          "name": "INV/2026/00003"
+        },
+        {
+          "id": 113,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000147",
+          "name": "INV/2026/00003"
+        },
+        {
+          "id": 113,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "payment_reference",
+          "value": "B1500000147",
+          "name": "INV/2026/00003"
+        }
+      ],
+      "b15_numbers": [
+        147,
+        148,
+        149,
+        150,
+        151
+      ],
+      "b15_max": 151,
+      "consumptions": [],
+      "target_hits": {
+        "B1500000151": {
+          "moves": [
+            {
+              "id": 117,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "justech_do_ncf",
+              "value": "B1500000151",
+              "name": "INV/2026/00007"
+            },
+            {
+              "id": 117,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "l10n_latam_document_number",
+              "value": "B1500000151",
+              "name": "INV/2026/00007"
+            },
+            {
+              "id": 117,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "ref",
+              "value": "B1500000151",
+              "name": "INV/2026/00007"
+            },
+            {
+              "id": 117,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "payment_reference",
+              "value": "B1500000151",
+              "name": "INV/2026/00007"
+            }
+          ],
+          "consumptions": [],
+          "exists": true
+        },
+        "B1500000152": {
+          "moves": [],
+          "consumptions": [],
+          "exists": false
+        },
+        "B1300000016": {
+          "moves": [
+            {
+              "id": 141,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "justech_do_ncf",
+              "value": "B1300000016",
+              "name": "INV/2026/00021"
+            },
+            {
+              "id": 141,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "l10n_latam_document_number",
+              "value": "B1300000016",
+              "name": "INV/2026/00021"
+            },
+            {
+              "id": 141,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "ref",
+              "value": "B1300000016",
+              "name": "INV/2026/00021"
+            },
+            {
+              "id": 141,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "payment_reference",
+              "value": "B1300000016",
+              "name": "INV/2026/00021"
+            }
+          ],
+          "consumptions": [],
+          "exists": true
+        },
+        "B1300000017": {
+          "moves": [],
+          "consumptions": [],
+          "exists": false
+        }
+      }
+    },
+    "MAY": {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "company_id": 12,
+      "b15_moves": [
+        {
+          "id": 135,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000110",
+          "name": "INV/2026/00003"
+        },
+        {
+          "id": 135,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000110",
+          "name": "INV/2026/00003"
+        },
+        {
+          "id": 135,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000110",
+          "name": "INV/2026/00003"
+        },
+        {
+          "id": 133,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000109",
+          "name": "INV/2025/00001"
+        },
+        {
+          "id": 133,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000109",
+          "name": "INV/2025/00001"
+        },
+        {
+          "id": 133,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000109",
+          "name": "INV/2025/00001"
+        },
+        {
+          "id": 133,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "payment_reference",
+          "value": "B1500000109",
+          "name": "INV/2025/00001"
+        }
+      ],
+      "b15_numbers": [
+        109,
+        110
+      ],
+      "b15_max": 110,
+      "consumptions": [],
+      "target_hits": {
+        "B1500000110": {
+          "moves": [
+            {
+              "id": 135,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "justech_do_ncf",
+              "value": "B1500000110",
+              "name": "INV/2026/00003"
+            },
+            {
+              "id": 135,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "l10n_latam_document_number",
+              "value": "B1500000110",
+              "name": "INV/2026/00003"
+            },
+            {
+              "id": 135,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "ref",
+              "value": "B1500000110",
+              "name": "INV/2026/00003"
+            }
+          ],
+          "consumptions": [],
+          "exists": true
+        },
+        "B1500000111": {
+          "moves": [],
+          "consumptions": [],
+          "exists": false
+        },
+        "B1500000112": {
+          "moves": [],
+          "consumptions": [],
+          "exists": false
+        },
+        "B1500000113": {
+          "moves": [],
+          "consumptions": [],
+          "exists": false
+        }
+      }
+    },
+    "REM": {
+      "company": "REMPART GROUP S.R.L.",
+      "company_id": 13,
+      "b15_moves": [
+        {
+          "id": 140,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000110",
+          "name": "INV/2026/00006"
+        },
+        {
+          "id": 140,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000110",
+          "name": "INV/2026/00006"
+        },
+        {
+          "id": 140,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000110",
+          "name": "INV/2026/00006"
+        },
+        {
+          "id": 139,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000109",
+          "name": "INV/2026/00005"
+        },
+        {
+          "id": 139,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000109",
+          "name": "INV/2026/00005"
+        },
+        {
+          "id": 139,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000109",
+          "name": "INV/2026/00005"
+        },
+        {
+          "id": 138,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000108",
+          "name": "INV/2026/00004"
+        },
+        {
+          "id": 138,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000108",
+          "name": "INV/2026/00004"
+        },
+        {
+          "id": 138,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000108",
+          "name": "INV/2026/00004"
+        },
+        {
+          "id": 137,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000107",
+          "name": "INV/2026/00003"
+        },
+        {
+          "id": 137,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000107",
+          "name": "INV/2026/00003"
+        },
+        {
+          "id": 137,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000107",
+          "name": "INV/2026/00003"
+        },
+        {
+          "id": 136,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "justech_do_ncf",
+          "value": "B1500000106",
+          "name": "INV/2025/00001"
+        },
+        {
+          "id": 136,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "l10n_latam_document_number",
+          "value": "B1500000106",
+          "name": "INV/2025/00001"
+        },
+        {
+          "id": 136,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "ref",
+          "value": "B1500000106",
+          "name": "INV/2025/00001"
+        },
+        {
+          "id": 136,
+          "state": "posted",
+          "move_type": "out_invoice",
+          "field": "payment_reference",
+          "value": "B1500000106",
+          "name": "INV/2025/00001"
+        }
+      ],
+      "b15_numbers": [
+        106,
+        107,
+        108,
+        109,
+        110
+      ],
+      "b15_max": 110,
+      "consumptions": [],
+      "target_hits": {
+        "B1500000110": {
+          "moves": [
+            {
+              "id": 140,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "justech_do_ncf",
+              "value": "B1500000110",
+              "name": "INV/2026/00006"
+            },
+            {
+              "id": 140,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "l10n_latam_document_number",
+              "value": "B1500000110",
+              "name": "INV/2026/00006"
+            },
+            {
+              "id": 140,
+              "state": "posted",
+              "move_type": "out_invoice",
+              "field": "ref",
+              "value": "B1500000110",
+              "name": "INV/2026/00006"
+            }
+          ],
+          "consumptions": [],
+          "exists": true
+        },
+        "B1500000111": {
+          "moves": [],
+          "consumptions": [],
+          "exists": false
+        },
+        "B1500000112": {
+          "moves": [],
+          "consumptions": [],
+          "exists": false
+        }
+      }
+    }
+  }
+}
