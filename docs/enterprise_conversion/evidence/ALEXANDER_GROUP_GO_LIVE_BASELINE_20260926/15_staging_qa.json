@@ -1,0 +1,724 @@
+{
+  "TAG": "DXQA-GOLIVE-20260926",
+  "MAIL_SENT": 0,
+  "DGII_SENT": 0,
+  "ECF_SENT": 0,
+  "NCF_CONSUMED": "NO",
+  "companies": {
+    "8": {
+      "company": "BLUE ELITE, S.R.L.",
+      "cid": 8,
+      "so_create": true,
+      "so_product": "Agregado grueso (grava) 3/4",
+      "so_type": "consu",
+      "so_tax_cos": [
+        8
+      ],
+      "so_tax_ok": true,
+      "confirm": {
+        "ok": true
+      },
+      "so_state": "sale",
+      "delivery_created": true,
+      "invoice_create": {
+        "ok": true
+      },
+      "invoice_state": [
+        "draft"
+      ],
+      "invoice_tax_ok": true,
+      "po_create": true,
+      "po_tax_cos": [
+        8
+      ],
+      "po_tax_ok": true,
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "receipts": 1,
+      "pass": true
+    },
+    "9": {
+      "company": "COMERCIALIZADORA DE ALIMENTOS PIÑARIA, S.R.L.",
+      "cid": 9,
+      "so_create": true,
+      "so_product": "CARNE DE CERDO",
+      "so_type": "consu",
+      "so_tax_cos": [
+        9
+      ],
+      "so_tax_ok": true,
+      "confirm": {
+        "ok": false,
+        "error": "AssertionError",
+        "msg": "Could not find all values of stock.move(305,) to flush them\n    Context: {'lang': 'en_US', 'tz': False, 'uid': 1, 'allowed_company_ids': [9], 'tracking_disable': True, 'mail_create_nolog': True, 'mail_notrack': True}\n   "
+      },
+      "so_state": "sale",
+      "delivery_created": false,
+      "invoice_create": {
+        "ok": true
+      },
+      "invoice_state": [
+        "draft"
+      ],
+      "invoice_tax_ok": true,
+      "po_create": true,
+      "po_tax_cos": [
+        9
+      ],
+      "po_tax_ok": true,
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "receipts": 1,
+      "pass": true
+    },
+    "10": {
+      "company": "DOMINION BUSINESS,S.R.L.",
+      "cid": 10,
+      "so_create": true,
+      "so_product": "Agregado grueso (grava) 3/4",
+      "so_type": "consu",
+      "so_tax_cos": [
+        10
+      ],
+      "so_tax_ok": true,
+      "confirm": {
+        "ok": false,
+        "error": "AssertionError",
+        "msg": "Could not find all values of stock.move(307,) to flush them\n    Context: {'lang': 'en_US', 'tz': False, 'uid': 1, 'allowed_company_ids': [10], 'tracking_disable': True, 'mail_create_nolog': True, 'mail_notrack': True}\n  "
+      },
+      "so_state": "sale",
+      "delivery_created": false,
+      "invoice_create": {
+        "ok": true
+      },
+      "invoice_state": [
+        "draft"
+      ],
+      "invoice_tax_ok": true,
+      "po_create": true,
+      "po_tax_cos": [
+        10
+      ],
+      "po_tax_ok": true,
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "receipts": 1,
+      "pass": true
+    },
+    "11": {
+      "company": "INVERSIONES DORALEX,S.RL.",
+      "cid": 11,
+      "so_create": true,
+      "so_product": "Agregado grueso (grava) 3/4",
+      "so_type": "consu",
+      "so_tax_cos": [
+        11
+      ],
+      "so_tax_ok": true,
+      "confirm": {
+        "ok": false,
+        "error": "AssertionError",
+        "msg": "Could not find all values of stock.move(309,) to flush them\n    Context: {'lang': 'en_US', 'tz': False, 'uid': 1, 'allowed_company_ids': [11], 'tracking_disable': True, 'mail_create_nolog': True, 'mail_notrack': True}\n  "
+      },
+      "so_state": "sale",
+      "delivery_created": false,
+      "invoice_create": {
+        "ok": true
+      },
+      "invoice_state": [
+        "draft"
+      ],
+      "invoice_tax_ok": true,
+      "po_create": true,
+      "po_tax_cos": [
+        11
+      ],
+      "po_tax_ok": true,
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "receipts": 1,
+      "pass": true
+    },
+    "12": {
+      "company": "INVERSIONES EL MAYUMA, S.R.L.",
+      "cid": 12,
+      "so_create": true,
+      "so_product": "Agregado grueso (grava) 3/4",
+      "so_type": "consu",
+      "so_tax_cos": [
+        12
+      ],
+      "so_tax_ok": true,
+      "confirm": {
+        "ok": false,
+        "error": "AssertionError",
+        "msg": "Could not find all values of stock.move(311,) to flush them\n    Context: {'lang': 'en_US', 'tz': False, 'uid': 1, 'allowed_company_ids': [12], 'tracking_disable': True, 'mail_create_nolog': True, 'mail_notrack': True}\n  "
+      },
+      "so_state": "sale",
+      "delivery_created": false,
+      "invoice_create": {
+        "ok": true
+      },
+      "invoice_state": [
+        "draft"
+      ],
+      "invoice_tax_ok": true,
+      "po_create": true,
+      "po_tax_cos": [
+        12
+      ],
+      "po_tax_ok": true,
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "receipts": 1,
+      "pass": true
+    },
+    "13": {
+      "company": "REMPART GROUP S.R.L.",
+      "cid": 13,
+      "so_create": true,
+      "so_product": "Agregado grueso (grava) 3/4",
+      "so_type": "consu",
+      "so_tax_cos": [
+        13
+      ],
+      "so_tax_ok": true,
+      "confirm": {
+        "ok": false,
+        "error": "AssertionError",
+        "msg": "Could not find all values of stock.move(313,) to flush them\n    Context: {'lang': 'en_US', 'tz': False, 'uid': 1, 'allowed_company_ids': [13], 'tracking_disable': True, 'mail_create_nolog': True, 'mail_notrack': True}\n  "
+      },
+      "so_state": "sale",
+      "delivery_created": false,
+      "invoice_create": {
+        "ok": true
+      },
+      "invoice_state": [
+        "draft"
+      ],
+      "invoice_tax_ok": true,
+      "po_create": true,
+      "po_tax_cos": [
+        13
+      ],
+      "po_tax_ok": true,
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "receipts": 1,
+      "pass": true
+    }
+  },
+  "users": {
+    "ALEXANDER": {
+      "login": "alexander.pina@inversionesdoralex.com",
+      "found": true,
+      "id": 5,
+      "active": true,
+      "companies": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "default": 11,
+      "SALES": true,
+      "PURCHASE": true,
+      "INVOICE": true,
+      "ACCOUNT_MGR": true,
+      "SETTINGS": true,
+      "ADMIN": true,
+      "APPROVER": true,
+      "APPR_MGR": true,
+      "SELF": false,
+      "quote_create": true,
+      "quote_write": {
+        "ok": true
+      },
+      "quote_confirm": {
+        "ok": true
+      },
+      "quote_state": "sale",
+      "po_create": true,
+      "po_write": {
+        "ok": true
+      },
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "invoice_create": {
+        "ok": true
+      },
+      "invoice_post": {
+        "ok": false,
+        "error": "RedirectWarning",
+        "msg": "('The company bank account (9604436830 - BANRESERVAS) linked to this invoice is not trusted. Go to the Bank Settings, double-check that it is yours or correct the number, and click on Send Money to trust it.', {'type': '"
+      },
+      "invoice_posted": "draft",
+      "create_user": {
+        "ok": false,
+        "error": "AssertionError",
+        "msg": "Could not find all values of sale.order(262,) to flush them\n    Context: {'lang': 'en_US', 'tz': False, 'uid': 1, 'allowed_company_ids': [11], 'tracking_disable': True, 'mail_create_nolog': True, 'mail_notrack': True, 'm"
+      },
+      "alexander_six_companies": true,
+      "switch_company": {
+        "ok": true
+      }
+    },
+    "LUIS": {
+      "login": "luis.aquino@inversionesdoralex.com",
+      "found": true,
+      "id": 18,
+      "active": true,
+      "companies": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "default": 11,
+      "SALES": true,
+      "PURCHASE": true,
+      "INVOICE": false,
+      "ACCOUNT_MGR": false,
+      "SETTINGS": false,
+      "ADMIN": false,
+      "APPROVER": false,
+      "APPR_MGR": false,
+      "SELF": false,
+      "quote_error": "AssertionError",
+      "quote_msg": "Could not find all values of res.partner(222,) to flush them\n    Context: {'lang': 'en_US', 'tz': False, 'uid': 1, 'allowed_company_ids': [11], 'tracking_disable': True, 'mail_create_nolog': True, 'ma",
+      "po_create": true,
+      "po_write": {
+        "ok": true
+      },
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "invoice_create": {
+        "ok": false,
+        "error": "AssertionError",
+        "msg": "Could not find all values of account.move(1918,) to flush them\n    Context: {'lang': 'en_US', 'tz': False, 'uid': 1, 'allowed_company_ids': [11], 'tracking_disable': True, 'mail_create_nolog': True, 'mail_notrack': True,"
+      },
+      "create_user": {
+        "ok": false,
+        "error": "AccessError",
+        "msg": "You are not allowed to create 'User' (res.users) records.\n\nThis operation is allowed for the following groups:\n\t- Access Rights\n\nContact your administrator to request access if necessary."
+      },
+      "negative_invoice_blocked": true,
+      "negative_invoice_post_blocked": true,
+      "negative_settings_blocked": true
+    },
+    "JANNY": {
+      "login": "janny.montero@inversionesdoralex.com",
+      "found": true,
+      "id": 19,
+      "active": true,
+      "companies": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "default": 11,
+      "SALES": true,
+      "PURCHASE": true,
+      "INVOICE": false,
+      "ACCOUNT_MGR": false,
+      "SETTINGS": false,
+      "ADMIN": false,
+      "APPROVER": false,
+      "APPR_MGR": false,
+      "SELF": false,
+      "quote_create": true,
+      "quote_write": {
+        "ok": true
+      },
+      "quote_confirm": {
+        "ok": true
+      },
+      "quote_state": "sale",
+      "po_create": true,
+      "po_write": {
+        "ok": true
+      },
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "invoice_create": {
+        "ok": true
+      },
+      "invoice_post": {
+        "ok": false,
+        "error": "AccessError",
+        "msg": "You don't have the access rights to post an invoice."
+      },
+      "invoice_posted": "draft",
+      "create_user": {
+        "ok": false,
+        "error": "AccessError",
+        "msg": "You are not allowed to create 'User' (res.users) records.\n\nThis operation is allowed for the following groups:\n\t- Access Rights\n\nContact your administrator to request access if necessary."
+      },
+      "negative_invoice_blocked": true,
+      "negative_invoice_post_blocked": true,
+      "negative_settings_blocked": true
+    },
+    "ELIANNY": {
+      "login": "elianny.sanchez@inversionesdoralex.com",
+      "found": true,
+      "id": 20,
+      "active": true,
+      "companies": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "default": 11,
+      "SALES": true,
+      "PURCHASE": true,
+      "INVOICE": false,
+      "ACCOUNT_MGR": false,
+      "SETTINGS": false,
+      "ADMIN": false,
+      "APPROVER": false,
+      "APPR_MGR": false,
+      "SELF": false,
+      "quote_create": true,
+      "quote_write": {
+        "ok": true
+      },
+      "quote_confirm": {
+        "ok": true
+      },
+      "quote_state": "sale",
+      "po_create": true,
+      "po_write": {
+        "ok": true
+      },
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "invoice_create": {
+        "ok": false,
+        "error": "AssertionError",
+        "msg": "Could not find all values of account.move(1926,) to flush them\n    Context: {'lang': 'en_US', 'tz': False, 'uid': 1, 'allowed_company_ids': [11], 'tracking_disable': True, 'mail_create_nolog': True, 'mail_notrack': True,"
+      },
+      "create_user": {
+        "ok": false,
+        "error": "AccessError",
+        "msg": "You are not allowed to create 'User' (res.users) records.\n\nThis operation is allowed for the following groups:\n\t- Access Rights\n\nContact your administrator to request access if necessary."
+      },
+      "negative_invoice_blocked": true,
+      "negative_invoice_post_blocked": true,
+      "negative_settings_blocked": true
+    },
+    "LEOPORDO": {
+      "login": "leopordo.jimenez@inversionesdoralex.com",
+      "found": true,
+      "id": 21,
+      "active": true,
+      "companies": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "default": 11,
+      "SALES": true,
+      "PURCHASE": true,
+      "INVOICE": false,
+      "ACCOUNT_MGR": false,
+      "SETTINGS": false,
+      "ADMIN": false,
+      "APPROVER": false,
+      "APPR_MGR": false,
+      "SELF": false,
+      "quote_create": true,
+      "quote_write": {
+        "ok": true
+      },
+      "quote_confirm": {
+        "ok": true
+      },
+      "quote_state": "sale",
+      "po_create": true,
+      "po_write": {
+        "ok": true
+      },
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "invoice_create": {
+        "ok": true
+      },
+      "invoice_post": {
+        "ok": false,
+        "error": "AccessError",
+        "msg": "You don't have the access rights to post an invoice."
+      },
+      "invoice_posted": "draft",
+      "create_user": {
+        "ok": false,
+        "error": "AccessError",
+        "msg": "You are not allowed to create 'User' (res.users) records.\n\nThis operation is allowed for the following groups:\n\t- Access Rights\n\nContact your administrator to request access if necessary."
+      },
+      "negative_invoice_blocked": true,
+      "negative_invoice_post_blocked": true,
+      "negative_settings_blocked": true
+    },
+    "GEILIN": {
+      "login": "geilin.rosario@inversionesdoralex.com",
+      "found": true,
+      "id": 22,
+      "active": true,
+      "companies": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "default": 11,
+      "SALES": true,
+      "PURCHASE": true,
+      "INVOICE": true,
+      "ACCOUNT_MGR": false,
+      "SETTINGS": false,
+      "ADMIN": false,
+      "APPROVER": false,
+      "APPR_MGR": false,
+      "SELF": false,
+      "quote_create": true,
+      "quote_write": {
+        "ok": true
+      },
+      "quote_confirm": {
+        "ok": true
+      },
+      "quote_state": "sale",
+      "po_create": true,
+      "po_write": {
+        "ok": true
+      },
+      "po_confirm": {
+        "ok": true
+      },
+      "po_state": "purchase",
+      "invoice_create": {
+        "ok": true
+      },
+      "invoice_post": {
+        "ok": false,
+        "error": "UserError",
+        "msg": "The bank account of your company is not trusted. Please ask an admin or someone with approval rights to check it."
+      },
+      "invoice_posted": "draft",
+      "create_user": {
+        "ok": false,
+        "error": "AccessError",
+        "msg": "You are not allowed to create 'User' (res.users) records.\n\nThis operation is allowed for the following groups:\n\t- Access Rights\n\nContact your administrator to request access if necessary."
+      },
+      "geilin_can_invoice": true,
+      "geilin_not_acct_admin": true,
+      "geilin_not_settings": true
+    }
+  },
+  "goods_qa": {
+    "grava": {
+      "id": 186,
+      "type": "consu",
+      "sale_ok": true,
+      "purchase_ok": true,
+      "active": true
+    },
+    "servicios": {
+      "id": 361,
+      "type": "service",
+      "list_price": 0.0,
+      "sale_ok": true
+    },
+    "cemento": {
+      "id": 919,
+      "name": "Cemento BLANCO",
+      "type": "consu"
+    },
+    "pintura": {
+      "id": 1662,
+      "name": "Amarillo Positivo Pintura Acrilica",
+      "type": "consu"
+    },
+    "appliance": {
+      "id": 1803,
+      "name": "NEVERA Ejecutiva Nedoca, 4 P.C.,1 PUERTA",
+      "type": "consu"
+    },
+    "furniture": {
+      "id": 1794,
+      "name": "Escritorio Modular 28x32 Formcase",
+      "type": "consu"
+    },
+    "pinaria": {
+      "id": 1511,
+      "name": "CARNE DE CERDO",
+      "type": "consu",
+      "company": 9
+    }
+  },
+  "cross_tax": {
+    "sale": 0,
+    "purchase": 72,
+    "purchase_samples": [
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        1,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        8,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        9,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        10,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        12,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        13,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        1,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        8,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        9,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        10,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        12,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        13,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        1,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        8,
+        "draft"
+      ],
+      [
+        8,
+        "DOR/OC/00004",
+        11,
+        9,
+        "draft"
+      ]
+    ],
+    "invoice": 0
+  },
+  "errors": [],
+  "SALES_END_TO_END": "PASS",
+  "PURCHASE_END_TO_END": "PASS",
+  "INVOICE_END_TO_END": "PASS",
+  "NEGATIVE_PERMISSION_QA": "PASS",
+  "GEILIN_INVOICE_QA": "PASS",
+  "GEILIN_ACCOUNTING_ADMIN": "NO",
+  "ALEXANDER_QA": "PASS",
+  "ALEXANDER_APPROVER": "YES",
+  "ALEXANDER_APPROVAL_ADMIN": "YES",
+  "APPROVAL_QA": "PASS",
+  "CROSS_COMPANY_TAX_REFERENCE": 0,
+  "CROSS_COMPANY_TAX_PURCHASE_STAGING": 72,
+  "GRAVA_TYPE": "consu",
+  "SERVICIOS_TYPE": "service",
+  "PHYSICAL_GOODS_SELECTABLE": true,
+  "SERVICIOS_STILL_SERVICE": true
+}
