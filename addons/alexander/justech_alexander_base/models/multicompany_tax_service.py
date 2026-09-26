@@ -23,142 +23,129 @@ class MulticompanyTaxService(models.AbstractModel):
 
     def _dx_cross_tax_rows(self, model, line_model, tax_field, company_from):
         rows = []
-        if line_model not in self.env:
-            return rows
-        Line = self.env[line_model].sudo()
-        domain = []
+        cr = self.env.cr
         if model == "sale.order":
-            domain = [("order_id.state", "in", OPERATING_STATES["sale.order"])]
-        elif model == "purchase.order":
-            domain = [("order_id.state", "in", OPERATING_STATES["purchase.order"])]
-        elif model == "account.move":
-            domain = [
-                ("move_id.state", "=", "draft"),
-                (
-                    "move_id.move_type",
-                    "in",
-                    ("out_invoice", "out_refund", "in_invoice", "in_refund"),
-                ),
-            ]
-        lines = Line.search(domain)
-        for line in lines:
-            if line.display_type:
-                continue
-            parent = line[company_from]
-            company = parent.company_id if company_from != "company_id" else parent
-            if company_from == "order_id":
-                company = line.order_id.company_id
-            elif company_from == "move_id":
-                company = line.move_id.company_id
-            else:
-                company = line.company_id
-            taxes = (
-                line[tax_field]
-                if tax_field in line._fields
-                else line.env["account.tax"]
+            cr.execute(
+                """
+                SELECT sol.id, so.name, so.company_id, sol.product_id,
+                       tax.id, tax.name, tax.company_id
+                FROM account_tax_sale_order_line_rel rel
+                JOIN sale_order_line sol ON sol.id = rel.sale_order_line_id
+                JOIN sale_order so ON so.id = sol.order_id
+                JOIN account_tax tax ON tax.id = rel.account_tax_id
+                WHERE so.state IN %s
+                  AND COALESCE(sol.display_type, '') = ''
+                  AND tax.company_id IS NOT NULL
+                  AND tax.company_id <> so.company_id
+                """,
+                (OPERATING_STATES["sale.order"],),
             )
-            for tax in taxes:
-                if tax.company_id and tax.company_id != company:
-                    rows.append(
-                        {
-                            "MODEL": line_model,
-                            "RECORD_ID": line.id,
-                            "DOCUMENT": (
-                                parent.name
-                                if company_from != "company_id"
-                                else line.display_name
-                            ),
-                            "DOCUMENT_COMPANY": company.name,
-                            "PRODUCT_ID": (
-                                line.product_id.id
-                                if "product_id" in line._fields
-                                else ""
-                            ),
-                            "PRODUCT": (
-                                line.product_id.display_name
-                                if "product_id" in line._fields
-                                else ""
-                            ),
-                            "CURRENT_TAX_ID": tax.id,
-                            "CURRENT_TAX": tax.name,
-                            "CURRENT_TAX_COMPANY": tax.company_id.name,
-                            "EXPECTED_TAX_ID": "",
-                            "EXPECTED_TAX": "",
-                            "EXPECTED_TAX_COMPANY": company.name,
-                            "ACTION": (
-                                "NO_CHANGE"
-                                if model == "account.move"
-                                and line.move_id.state == "posted"
-                                else "FIX_DRAFT_%s_TAX"
-                                % (
-                                    "SALE_LINE"
-                                    if model == "sale.order"
-                                    else (
-                                        "PURCHASE_LINE"
-                                        if model == "purchase.order"
-                                        else "INVOICE"
-                                    )
-                                )
-                            ),
-                            "REASON": "CROSS_COMPANY_TAX",
-                            "CONFIDENCE": "HIGH",
-                        }
-                    )
+            action = "FIX_DRAFT_SALE_LINE_TAX"
+        elif model == "purchase.order":
+            cr.execute(
+                """
+                SELECT pol.id, po.name, po.company_id, pol.product_id,
+                       tax.id, tax.name, tax.company_id
+                FROM account_tax_purchase_order_line_rel rel
+                JOIN purchase_order_line pol ON pol.id = rel.purchase_order_line_id
+                JOIN purchase_order po ON po.id = pol.order_id
+                JOIN account_tax tax ON tax.id = rel.account_tax_id
+                WHERE po.state IN %s
+                  AND COALESCE(pol.display_type, '') = ''
+                  AND tax.company_id IS NOT NULL
+                  AND tax.company_id <> po.company_id
+                """,
+                (OPERATING_STATES["purchase.order"],),
+            )
+            action = "FIX_DRAFT_PURCHASE_LINE_TAX"
+        elif model == "account.move":
+            cr.execute("""
+                SELECT aml.id, am.name, am.company_id, aml.product_id,
+                       tax.id, tax.name, tax.company_id
+                FROM account_move_line_account_tax_rel rel
+                JOIN account_move_line aml ON aml.id = rel.account_move_line_id
+                JOIN account_move am ON am.id = aml.move_id
+                JOIN account_tax tax ON tax.id = rel.account_tax_id
+                WHERE am.state = 'draft'
+                  AND am.move_type IN ('out_invoice','out_refund','in_invoice','in_refund')
+                  AND COALESCE(aml.display_type, '') = ''
+                  AND tax.company_id IS NOT NULL
+                  AND tax.company_id <> am.company_id
+                """)
+            action = "FIX_DRAFT_INVOICE_TAX"
+        else:
+            return rows
+        companies = {c.id: c.name for c in self.env["res.company"].sudo().search([])}
+        for lid, doc, coid, pid, tid, tname, tco in cr.fetchall():
+            rows.append(
+                {
+                    "MODEL": line_model,
+                    "RECORD_ID": lid,
+                    "DOCUMENT": doc,
+                    "DOCUMENT_COMPANY": companies.get(coid) or "",
+                    "PRODUCT_ID": pid or "",
+                    "PRODUCT": "",
+                    "CURRENT_TAX_ID": tid,
+                    "CURRENT_TAX": tname,
+                    "CURRENT_TAX_COMPANY": companies.get(tco) or "",
+                    "EXPECTED_TAX_ID": "",
+                    "EXPECTED_TAX": "",
+                    "EXPECTED_TAX_COMPANY": companies.get(coid) or "",
+                    "ACTION": action,
+                    "REASON": "CROSS_COMPANY_TAX",
+                    "CONFIDENCE": "HIGH",
+                }
+            )
         return rows
 
     def _dx_product_cleanup_rows(self):
         rows = []
-        operational = operational_companies(self.env)
-        templates = self.env["product.template"].sudo().search([("active", "=", True)])
-        for tmpl in templates:
-            for field_name in ("taxes_id", "supplier_taxes_id"):
-                taxes = tmpl[field_name]
-                for tax in taxes:
-                    if tax.company_id and tax.company_id not in operational:
-                        rows.append(
-                            {
-                                "MODEL": "product.template",
-                                "RECORD_ID": tmpl.id,
-                                "DOCUMENT": tmpl.display_name,
-                                "DOCUMENT_COMPANY": tmpl.company_id.name or "SHARED",
-                                "PRODUCT_ID": tmpl.id,
-                                "PRODUCT": tmpl.display_name,
-                                "CURRENT_TAX_ID": tax.id,
-                                "CURRENT_TAX": tax.name,
-                                "CURRENT_TAX_COMPANY": tax.company_id.name,
-                                "EXPECTED_TAX_ID": "",
-                                "EXPECTED_TAX": "",
-                                "EXPECTED_TAX_COMPANY": tmpl.company_id.name
-                                or "OPERATIONAL",
-                                "ACTION": "FIX_PRODUCT_COMPANY_TAX_CONTEXT",
-                                "REASON": "NON_OPERATIONAL_TAX",
-                                "CONFIDENCE": "HIGH",
-                            }
-                        )
-                    elif (
-                        tmpl.company_id
-                        and tax.company_id
-                        and tax.company_id != tmpl.company_id
-                    ):
-                        rows.append(
-                            {
-                                "MODEL": "product.template",
-                                "RECORD_ID": tmpl.id,
-                                "DOCUMENT": tmpl.display_name,
-                                "DOCUMENT_COMPANY": tmpl.company_id.name,
-                                "PRODUCT_ID": tmpl.id,
-                                "PRODUCT": tmpl.display_name,
-                                "CURRENT_TAX_ID": tax.id,
-                                "CURRENT_TAX": tax.name,
-                                "CURRENT_TAX_COMPANY": tax.company_id.name,
-                                "EXPECTED_TAX_ID": "",
-                                "EXPECTED_TAX": tmpl.company_id.name,
-                                "EXPECTED_TAX_COMPANY": tmpl.company_id.name,
-                                "ACTION": "FIX_PRODUCT_COMPANY_TAX_CONTEXT",
-                                "REASON": "COMPANY_SPECIFIC_PRODUCT_FOREIGN_TAX",
-                                "CONFIDENCE": "HIGH",
-                            }
-                        )
+        operational = tuple(self._dx_operational_company_ids()) or (0,)
+        cr = self.env.cr
+        cr.execute(
+            """
+            SELECT pt.id,
+                   COALESCE(pt.name->>'es_DO', pt.name->>'en_US', pt.id::text),
+                   pt.company_id,
+                   tax.id, tax.name, tax.company_id,
+                   CASE
+                     WHEN tax.company_id IS NOT NULL AND tax.company_id NOT IN %s
+                       THEN 'NON_OPERATIONAL_TAX'
+                     ELSE 'COMPANY_SPECIFIC_PRODUCT_FOREIGN_TAX'
+                   END
+            FROM product_template pt
+            JOIN product_taxes_rel rel ON rel.prod_id = pt.id
+            JOIN account_tax tax ON tax.id = rel.tax_id
+            WHERE pt.active
+              AND (
+                (tax.company_id IS NOT NULL AND tax.company_id NOT IN %s)
+                OR (pt.company_id IS NOT NULL AND tax.company_id IS NOT NULL
+                    AND tax.company_id <> pt.company_id)
+              )
+            """,
+            (operational, operational),
+        )
+        companies = {c.id: c.name for c in self.env["res.company"].sudo().search([])}
+        for pid, pname, pco, tid, tname, tco, reason in cr.fetchall():
+            rows.append(
+                {
+                    "MODEL": "product.template",
+                    "RECORD_ID": pid,
+                    "DOCUMENT": pname,
+                    "DOCUMENT_COMPANY": companies.get(pco) or "SHARED",
+                    "PRODUCT_ID": pid,
+                    "PRODUCT": pname,
+                    "CURRENT_TAX_ID": tid,
+                    "CURRENT_TAX": tname,
+                    "CURRENT_TAX_COMPANY": companies.get(tco) or "",
+                    "EXPECTED_TAX_ID": "",
+                    "EXPECTED_TAX": "",
+                    "EXPECTED_TAX_COMPANY": companies.get(pco) or "OPERATIONAL",
+                    "ACTION": "FIX_PRODUCT_COMPANY_TAX_CONTEXT",
+                    "REASON": reason,
+                    "CONFIDENCE": "HIGH",
+                }
+            )
         return rows
 
     def _dx_fiscal_position_rows(self):

@@ -143,18 +143,66 @@ class ProductTemplate(models.Model):
                 )
 
     def _dx_unlink_non_operational_product_taxes(self):
-        operational = operational_companies(self.env)
-        templates = self or self.search([])
-        for rec in templates:
-            for field_name in _TAX_M2M:
-                current = rec.sudo()[field_name]
-                keep = current.filtered(
-                    lambda tax: not tax.company_id or tax.company_id in operational
-                )
-                if rec.company_id:
-                    keep = keep.filtered(lambda tax: tax.company_id == rec.company_id)
-                if keep != current:
-                    rec.sudo()[field_name] = keep
+        """Drop template-company and foreign taxes from the native M2M tables."""
+        operational = tuple(operational_companies(self.env).ids) or (0,)
+        cr = self.env.cr
+        if self:
+            cr.execute(
+                """
+                DELETE FROM product_taxes_rel rel
+                USING product_template pt, account_tax tax
+                WHERE rel.prod_id = pt.id AND rel.tax_id = tax.id
+                  AND pt.id IN %s
+                  AND (
+                    (tax.company_id IS NOT NULL AND tax.company_id NOT IN %s)
+                    OR (pt.company_id IS NOT NULL AND tax.company_id IS NOT NULL
+                        AND tax.company_id <> pt.company_id)
+                  )
+                """,
+                (tuple(self.ids), operational),
+            )
+            cr.execute(
+                """
+                DELETE FROM product_supplier_taxes_rel rel
+                USING product_template pt, account_tax tax
+                WHERE rel.prod_id = pt.id AND rel.tax_id = tax.id
+                  AND pt.id IN %s
+                  AND (
+                    (tax.company_id IS NOT NULL AND tax.company_id NOT IN %s)
+                    OR (pt.company_id IS NOT NULL AND tax.company_id IS NOT NULL
+                        AND tax.company_id <> pt.company_id)
+                  )
+                """,
+                (tuple(self.ids), operational),
+            )
+        else:
+            cr.execute(
+                """
+                DELETE FROM product_taxes_rel rel
+                USING product_template pt, account_tax tax
+                WHERE rel.prod_id = pt.id AND rel.tax_id = tax.id
+                  AND (
+                    (tax.company_id IS NOT NULL AND tax.company_id NOT IN %s)
+                    OR (pt.company_id IS NOT NULL AND tax.company_id IS NOT NULL
+                        AND tax.company_id <> pt.company_id)
+                  )
+                """,
+                (operational,),
+            )
+            cr.execute(
+                """
+                DELETE FROM product_supplier_taxes_rel rel
+                USING product_template pt, account_tax tax
+                WHERE rel.prod_id = pt.id AND rel.tax_id = tax.id
+                  AND (
+                    (tax.company_id IS NOT NULL AND tax.company_id NOT IN %s)
+                    OR (pt.company_id IS NOT NULL AND tax.company_id IS NOT NULL
+                        AND tax.company_id <> pt.company_id)
+                  )
+                """,
+                (operational,),
+            )
+        self.invalidate_recordset(["taxes_id", "supplier_taxes_id"])
         return True
 
 
