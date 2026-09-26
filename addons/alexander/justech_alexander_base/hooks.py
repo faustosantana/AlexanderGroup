@@ -7,3 +7,6 @@ def post_init_hook(env):
 
     _dx_grant_internal_product_create(env)
     _dx_apply_spanish_ui_language(env)
+    env[
+        "justech.alexander.multicompany.tax.service"
+    ]._dx_apply_safe_product_tax_cleanup()

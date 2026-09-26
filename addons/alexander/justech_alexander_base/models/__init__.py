@@ -8,5 +8,11 @@ from . import ncf_business_rules
 from . import account_move_draft
 from . import withholding_math
 from . import spanish_ui
+from . import account_tax
+from . import product_template
 from . import sale_order_line
 from . import sale_order
+from . import purchase_order_line
+from . import account_move_line
+from . import account_fiscal_position
+from . import multicompany_tax_service

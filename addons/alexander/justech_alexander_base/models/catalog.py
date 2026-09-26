@@ -149,6 +149,12 @@ def profile_for_company(company):
     return None
 
 
+def operational_companies(env):
+    """The six Doralex operating companies. Never the technical template."""
+    companies = env["res.company"].sudo().search([])
+    return companies.filtered(lambda company: profile_for_company(company))
+
+
 def all_business_areas():
     seen = []
     for profile in COMPANY_PROFILES:
