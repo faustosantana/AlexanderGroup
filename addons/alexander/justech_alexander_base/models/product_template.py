@@ -57,6 +57,78 @@ class ProductTemplate(models.Model):
         taxes = self.sudo()[field_name]
         return taxes._filter_taxes_by_company(company)
 
+    def _dx_visible_product_taxes(self, field_name):
+        """Taxes the switcher may show. Sibling companies stay stored, not displayed."""
+        self.ensure_one()
+        allowed = self.env.companies
+        visible = self.sudo()[field_name].filtered(
+            lambda tax: not tax.company_id or tax.company_id in allowed
+        )
+        return self.env["account.tax"].browse(visible.ids)
+
+    def _dx_mask_tax_rows(self, rows):
+        if self.env.su or self.env.context.get(_GUARD_CTX):
+            return rows
+        if self.env.context.get("dx_tax_access_skip"):
+            return rows
+        by_id = {rec.id: rec for rec in self}
+        for row in rows:
+            rec = by_id.get(row.get("id"))
+            if not rec:
+                continue
+            for fname in _TAX_M2M:
+                if fname not in row:
+                    continue
+                row[fname] = rec._dx_visible_product_taxes(fname).ids
+        return rows
+
+    def read(self, fields=None, load="_classic_read"):
+        rows = super().read(fields=fields, load=load)
+        if fields is not None and not any(name in fields for name in _TAX_M2M):
+            return rows
+        return self._dx_mask_tax_rows(rows)
+
+    def web_read(self, specification):
+        rows = super().web_read(specification)
+        if self.env.su or self.env.context.get(_GUARD_CTX):
+            return rows
+        if not any(name in specification for name in _TAX_M2M):
+            return rows
+        by_id = {rec.id: rec for rec in self}
+        for row in rows:
+            rec = by_id.get(row.get("id"))
+            if not rec:
+                continue
+            for fname in _TAX_M2M:
+                if fname not in specification or fname not in row:
+                    continue
+                visible = rec._dx_visible_product_taxes(fname)
+                spec = specification.get(fname) or {}
+                child = spec.get("fields")
+                if child:
+                    row[fname] = visible.with_context(dx_tax_access_skip=True).web_read(
+                        child
+                    )
+                else:
+                    row[fname] = visible.ids
+        return rows
+
+    def search_read(
+        self, domain=None, fields=None, offset=0, limit=None, order=None, **kwargs
+    ):
+        rows = super().search_read(
+            domain=domain,
+            fields=fields,
+            offset=offset,
+            limit=limit,
+            order=order,
+            **kwargs,
+        )
+        if fields is not None and not any(name in fields for name in _TAX_M2M):
+            return rows
+        records = self.browse([row["id"] for row in rows if row.get("id")])
+        return records._dx_mask_tax_rows(rows)
+
     def _construct_tax_string(self, price):
         return super(
             ProductTemplate, self.sudo().with_company(self.env.company)
@@ -265,3 +337,69 @@ class ProductProduct(models.Model):
             return template._dx_taxes_for_company(company, field_name=field_name)
         taxes = self.sudo()[field_name]
         return taxes._filter_taxes_by_company(company or self.env.company)
+
+    def _dx_visible_product_taxes(self, field_name):
+        self.ensure_one()
+        return self.product_tmpl_id._dx_visible_product_taxes(field_name)
+
+    def _dx_mask_tax_rows(self, rows):
+        if self.env.su or self.env.context.get(_GUARD_CTX):
+            return rows
+        if self.env.context.get("dx_tax_access_skip"):
+            return rows
+        by_id = {rec.id: rec for rec in self}
+        for row in rows:
+            rec = by_id.get(row.get("id"))
+            if not rec:
+                continue
+            for fname in _TAX_M2M:
+                if fname not in row:
+                    continue
+                row[fname] = rec._dx_visible_product_taxes(fname).ids
+        return rows
+
+    def read(self, fields=None, load="_classic_read"):
+        rows = super().read(fields=fields, load=load)
+        if fields is not None and not any(name in fields for name in _TAX_M2M):
+            return rows
+        return self._dx_mask_tax_rows(rows)
+
+    def web_read(self, specification):
+        rows = super().web_read(specification)
+        if self.env.su or self.env.context.get(_GUARD_CTX):
+            return rows
+        if not any(name in specification for name in _TAX_M2M):
+            return rows
+        by_id = {rec.id: rec for rec in self}
+        for row in rows:
+            rec = by_id.get(row.get("id"))
+            if not rec:
+                continue
+            for fname in _TAX_M2M:
+                if fname not in specification or fname not in row:
+                    continue
+                visible = rec._dx_visible_product_taxes(fname)
+                spec = specification.get(fname) or {}
+                child = spec.get("fields")
+                if child:
+                    row[fname] = visible.with_context(dx_tax_access_skip=True).web_read(
+                        child
+                    )
+                else:
+                    row[fname] = visible.ids
+        return rows
+
+    def _dx_visible_product_taxes(self, field_name):
+        self.ensure_one()
+        return self.product_tmpl_id._dx_visible_product_taxes(field_name)
+
+    def read(self, fields=None, load="_classic_read"):
+        rows = super().read(fields=fields, load=load)
+        if fields is not None and not any(name in fields for name in _TAX_M2M):
+            return rows
+        return self._dx_mask_tax_rows(rows)
+
+    def web_read(self, specification):
+        return self.env["product.template"].web_read.__get__(self, type(self))(
+            specification
+        )
