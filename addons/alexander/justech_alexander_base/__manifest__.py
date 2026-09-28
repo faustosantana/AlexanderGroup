@@ -1,6 +1,6 @@
 {
     "name": "Identidad Doralex",
-    "version": "19.0.1.0.16",
+    "version": "19.0.1.0.17",
     "category": "Administration",
     "summary": "Identidad multiempresa, nomenclatura y datos públicos de Doralex Group",
     "description": "Organización profesional de las seis compañías Doralex: códigos cortos, almacenes, secuencias, diarios y ficha pública (sin datos confidenciales en el website).",

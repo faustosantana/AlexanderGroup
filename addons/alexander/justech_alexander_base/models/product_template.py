@@ -6,6 +6,7 @@ from .account_tax import _CROSS_COMPANY_TAX_MSG
 from .catalog import operational_companies
 
 _TAX_M2M = ("taxes_id", "supplier_taxes_id")
+_GUARD_CTX = "dx_skip_tax_company_guard"
 
 
 def _command_tax_ids(value):
@@ -35,6 +36,20 @@ def _command_tax_ids(value):
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
+    @api.model
+    def default_get(self, fields_list):
+        """Only the current company's ITBIS. Sibling taxes are mirrored on save."""
+        defaults = super().default_get(fields_list)
+        if "taxes_id" in fields_list:
+            defaults["taxes_id"] = [
+                Command.set(self.env.company.account_sale_tax_id.ids)
+            ]
+        if "supplier_taxes_id" in fields_list:
+            defaults["supplier_taxes_id"] = [
+                Command.set(self.env.company.account_purchase_tax_id.ids)
+            ]
+        return defaults
+
     def _dx_taxes_for_company(self, company, field_name="taxes_id"):
         """Native per-company taxes for a shared product. Never duplicates products."""
         self.ensure_one()
@@ -52,6 +67,17 @@ class ProductTemplate(models.Model):
             return self.env["account.tax"]
         if tax.company_id == target_company:
             return tax
+        default = self.env["account.tax"]
+        if tax.type_tax_use == "sale":
+            default = target_company.sudo().account_sale_tax_id
+        elif tax.type_tax_use == "purchase":
+            default = target_company.sudo().account_purchase_tax_id
+        if (
+            default
+            and default.amount_type == tax.amount_type
+            and default.amount == tax.amount
+        ):
+            return default
         matches = (
             self.env["account.tax"]
             .sudo()
@@ -67,6 +93,12 @@ class ProductTemplate(models.Model):
         )
         named = matches.filtered(lambda candidate: candidate.name == tax.name)
         return named[:1] or matches[:1]
+
+    def _dx_set_product_taxes(self, field_name, taxes):
+        """Write taxes without re-entering the company guard (mirror uses sudo)."""
+        self.sudo().with_context(**{_GUARD_CTX: True}).write(
+            {field_name: [Command.set(taxes.ids)]}
+        )
 
     def _dx_mirror_shared_product_taxes(self, field_name, incoming):
         """Keep one shared product; attach the equivalent tax of every operating company."""
@@ -89,8 +121,17 @@ class ProductTemplate(models.Model):
         allowed = self.env.companies
         incoming_ok = incoming.filtered(lambda tax: tax.company_id in allowed)
         incoming_bad = incoming - incoming_ok
-        if incoming_bad:
+        mapped = self.env["account.tax"]
+        unmapped = self.env["account.tax"]
+        for tax in incoming_bad:
+            equivalent = self._dx_equivalent_tax(tax, self.env.company)
+            if equivalent and equivalent.company_id in allowed:
+                mapped |= equivalent
+            else:
+                unmapped |= tax
+        if unmapped:
             raise ValidationError(_CROSS_COMPANY_TAX_MSG)
+        incoming_ok |= mapped
         for rec in self:
             existing = rec.sudo()[field_name]
             keep = existing.filtered(lambda tax: tax.company_id not in allowed)
@@ -100,7 +141,7 @@ class ProductTemplate(models.Model):
             elif rec.company_id:
                 merged = merged.filtered(lambda tax: tax.company_id == rec.company_id)
             if merged != existing:
-                rec.sudo()[field_name] = merged
+                rec._dx_set_product_taxes(field_name, merged)
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -118,6 +159,8 @@ class ProductTemplate(models.Model):
         return records
 
     def write(self, vals):
+        if self.env.context.get(_GUARD_CTX):
+            return super().write(vals)
         tax_vals = {name: vals.pop(name) for name in _TAX_M2M if name in vals}
         result = super().write(vals)
         for field_name, value in tax_vals.items():
@@ -136,10 +179,11 @@ class ProductTemplate(models.Model):
                 if not current:
                     defaults = operational.mapped(company_field)
                     if defaults:
-                        rec.sudo()[field_name] = defaults
+                        rec._dx_set_product_taxes(field_name, defaults)
                     continue
-                rec.sudo()[field_name] = rec._dx_mirror_shared_product_taxes(
-                    field_name, current
+                rec._dx_set_product_taxes(
+                    field_name,
+                    rec._dx_mirror_shared_product_taxes(field_name, current),
                 )
 
     def _dx_unlink_non_operational_product_taxes(self):

@@ -155,6 +155,15 @@ def operational_companies(env):
     return companies.filtered(lambda company: profile_for_company(company))
 
 
+def itbis_display_name(company, kind):
+    """Human label so sale/purchase ITBIS is not identical across companies."""
+    profile = profile_for_company(company)
+    trade = profile["trade_name"] if profile else (company.name or "empresa")
+    if kind == "purchase":
+        return "ITBIS compra %s" % trade
+    return "ITBIS venta %s" % trade
+
+
 def all_business_areas():
     seen = []
     for profile in COMPANY_PROFILES:
