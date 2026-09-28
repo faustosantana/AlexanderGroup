@@ -23,7 +23,7 @@ REQUIRED_TESTS = (
 
 def test_manifest_version_and_files() -> None:
     manifest = (BASE / "__manifest__.py").read_text(encoding="utf-8")
-    assert "19.0.1.0.19" in manifest
+    assert "19.0.1.0.20" in manifest
     assert "purchase" in manifest
     for rel in (
         "models/account_tax.py",
@@ -120,7 +120,10 @@ def test_product_tax_write_does_not_reenter_guard() -> None:
     assert "_force_default_tax" in product
     assert "_dx_visible_product_taxes" in product
     assert "_dx_mask_tax_rows" in product
-    assert 'web_read.__get__' not in product
+    assert "_web_read_visible_taxes" in product
+    assert "if key not in _TAX_M2M" in product
+    assert "tax.company_id.id in allowed_ids" in product
+    assert "web_read.__get__" not in product
 
 
 def test_itbis_display_names_are_per_company() -> None:
