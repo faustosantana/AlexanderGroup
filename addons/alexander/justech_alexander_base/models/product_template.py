@@ -388,18 +388,3 @@ class ProductProduct(models.Model):
                 else:
                     row[fname] = visible.ids
         return rows
-
-    def _dx_visible_product_taxes(self, field_name):
-        self.ensure_one()
-        return self.product_tmpl_id._dx_visible_product_taxes(field_name)
-
-    def read(self, fields=None, load="_classic_read"):
-        rows = super().read(fields=fields, load=load)
-        if fields is not None and not any(name in fields for name in _TAX_M2M):
-            return rows
-        return self._dx_mask_tax_rows(rows)
-
-    def web_read(self, specification):
-        return self.env["product.template"].web_read.__get__(self, type(self))(
-            specification
-        )
