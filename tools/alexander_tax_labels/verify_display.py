@@ -18,6 +18,17 @@ def run(env):
             .sudo()
             .search([("name", "ilike", "Windows Server")], limit=1)
         )
+    if not product:
+        product = (
+            env["product.template"]
+            .sudo()
+            .search(
+                [("company_id", "=", False), ("taxes_id", "!=", False)],
+                limit=1,
+            )
+        )
+    if not product:
+        raise SystemExit("PRODUCT_MISSING")
     print("PRODUCT", product.id, product.name)
     stored_sale = product.sudo().taxes_id
     print(
