@@ -102,6 +102,23 @@ def test_website_chrome_is_institutional() -> None:
     assert ">ERP<" in templates
     assert "+1 555" not in templates
     assert "yourcompany.example.com" not in templates
+    assert "website.company_id.sudo()" in templates
+    assert 't-value="website.company_id"' not in templates
+
+
+def test_website_frontend_keeps_assigned_companies() -> None:
+    http = (
+        ALEXANDER / "justech_alexander_website" / "models" / "ir_http.py"
+    ).read_text(encoding="utf-8")
+    manifest = (ALEXANDER / "justech_alexander_website" / "__manifest__.py").read_text(
+        encoding="utf-8"
+    )
+    assert "19.0.1.0.9" in manifest
+    assert "def _frontend_pre_dispatch" in http
+    assert "_get_company_ids" in http
+    assert "allowed_company_ids" in http
+    assert "domain_force" not in http
+    assert "group_account_manager" not in http
 
 
 def test_report_extras_receive_company() -> None:

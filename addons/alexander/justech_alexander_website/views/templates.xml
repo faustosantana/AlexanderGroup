@@ -126,7 +126,7 @@
         <xpath expr="//li" position="replace">
             <li t-attf-class="#{_item_class}">
                 <div t-attf-class="s_text_block #{_div_class}" data-name="Text">
-                    <t t-set="dx_c" t-value="website.company_id"/>
+                    <t t-set="dx_c" t-value="website.company_id.sudo()"/>
                     <a t-if="dx_c.phone" t-attf-href="tel:#{dx_c.phone}" class="nav-link o_nav-link_secondary">
                         <small>
                             <i class="fa fa-1x fa-fw fa-phone me-1"/>
@@ -165,7 +165,7 @@
                         </div>
                         <div class="col-md-4">
                             <h5>Contacto</h5>
-                            <t t-set="dx_c" t-value="website.company_id"/>
+                            <t t-set="dx_c" t-value="website.company_id.sudo()"/>
                             <ul class="list-unstyled mb-0">
                                 <li t-if="dx_c.phone">
                                     <a t-attf-href="tel:#{dx_c.phone}">
@@ -204,7 +204,7 @@
             <div class="col-lg-4 offset-lg-1 mt-4 mt-lg-0">
                 <h5>Doralex Group</h5>
                 <ul class="list-unstyled mb-0 ps-2">
-                    <t t-set="dx_c" t-value="website.company_id"/>
+                    <t t-set="dx_c" t-value="website.company_id.sudo()"/>
                     <li t-if="dx_c.city">
                         <i class="fa fa-map-marker fa-fw me-2"/>
                         <span><t t-out="dx_c.city"/>, República Dominicana</span>

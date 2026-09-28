@@ -1,6 +1,6 @@
 {
     "name": "Sitio web institucional",
-    "version": "19.0.1.0.8",
+    "version": "19.0.1.0.9",
     "category": "Website",
     "summary": "Sitio institucional público de Doralex Group",
     "description": "Home, empresas, áreas de negocio, valores y contacto. Solo información pública: nombre comercial, logo, sector y descripción breve.",
