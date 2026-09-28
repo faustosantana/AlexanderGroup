@@ -5,7 +5,18 @@ El formato sigue, de forma aproximada, [Keep a Changelog](https://keepachangelog
 
 ## Unreleased
 
+### Fixed
+- Ficha de producto: con una empresa en el switcher solo se muestra el
+  ITBIS de esa empresa. Los chips vacíos (X) eran impuestos de las
+  otras compañías, que siguen guardados para facturar en cada una.
+- Crear producto con una sola empresa ya no falla por el 18% ITBIS
+  automático: el espejo multiempresa no vuelve a validar impuestos
+  ajenos al switcher. Default de alta = ITBIS de la empresa actual.
+
 ### Changed
+- Impuestos 18% ITBIS por defecto renombrados a
+  `ITBIS venta {empresa}` / `ITBIS compra {empresa}`.
+  Overlay `justech_alexander_base` 19.0.1.0.17.
 - Secuencias NCF B15 autorizadas (Doralex 141–160 next 152, El Mayuma
   109–118 next 113, Rempart 106–113 next 112). Doralex B13 queda
   cerrado (`cancelled`) sin inventar rango. Diagnóstico de saldo

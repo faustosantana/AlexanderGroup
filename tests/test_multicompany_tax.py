@@ -23,7 +23,7 @@ REQUIRED_TESTS = (
 
 def test_manifest_version_and_files() -> None:
     manifest = (BASE / "__manifest__.py").read_text(encoding="utf-8")
-    assert "19.0.1.0.16" in manifest
+    assert "19.0.1.0.20" in manifest
     assert "purchase" in manifest
     for rel in (
         "models/account_tax.py",
@@ -107,6 +107,34 @@ def test_catalog_operational_companies() -> None:
     catalog = (BASE / "models" / "catalog.py").read_text(encoding="utf-8")
     assert "def operational_companies" in catalog
     assert "profile_for_company" in catalog
+
+
+def test_product_tax_write_does_not_reenter_guard() -> None:
+    product = (BASE / "models" / "product_template.py").read_text(encoding="utf-8")
+    assert "dx_skip_tax_company_guard" in product
+    assert "_dx_set_product_taxes" in product
+    assert "default_get" in product
+    assert "account_sale_tax_id.ids" in product
+    assert "account_purchase_tax_id.ids" in product
+    assert "not in operational" in product
+    assert "_force_default_tax" in product
+    assert "_dx_visible_product_taxes" in product
+    assert "_dx_mask_tax_rows" in product
+    assert "_web_read_visible_taxes" in product
+    assert "if key not in _TAX_M2M" in product
+    assert "tax.company_id.id in allowed_ids" in product
+    assert "web_read.__get__" not in product
+
+
+def test_itbis_display_names_are_per_company() -> None:
+    from tools.alexander_tax_labels.labels import EXPECTED_ITBIS_LABELS
+
+    assert EXPECTED_ITBIS_LABELS["DOR"]["sale"] == "ITBIS venta Doralex"
+    assert EXPECTED_ITBIS_LABELS["DOR"]["purchase"] == "ITBIS compra Doralex"
+    assert EXPECTED_ITBIS_LABELS["MAY"]["sale"] == "ITBIS venta El Mayuma"
+    assert EXPECTED_ITBIS_LABELS["REM"]["purchase"] == "ITBIS compra Rempart"
+    catalog = (BASE / "models" / "catalog.py").read_text(encoding="utf-8")
+    assert "def itbis_display_name" in catalog
 
 
 def test_init_imports_tax_models() -> None:
