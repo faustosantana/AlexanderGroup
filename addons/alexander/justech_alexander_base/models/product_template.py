@@ -121,9 +121,14 @@ class ProductTemplate(models.Model):
         allowed = self.env.companies
         incoming_ok = incoming.filtered(lambda tax: tax.company_id in allowed)
         incoming_bad = incoming - incoming_ok
+        operational = operational_companies(self.env)
         mapped = self.env["account.tax"]
         unmapped = self.env["account.tax"]
         for tax in incoming_bad:
+            # Native account._force_default_tax links every other company's
+            # default, including the technical template (15%). Drop those.
+            if tax.company_id and tax.company_id not in operational:
+                continue
             equivalent = self._dx_equivalent_tax(tax, self.env.company)
             if equivalent and equivalent.company_id in allowed:
                 mapped |= equivalent

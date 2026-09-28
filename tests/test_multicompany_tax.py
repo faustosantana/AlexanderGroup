@@ -116,6 +116,8 @@ def test_product_tax_write_does_not_reenter_guard() -> None:
     assert "default_get" in product
     assert "account_sale_tax_id.ids" in product
     assert "account_purchase_tax_id.ids" in product
+    assert "not in operational" in product
+    assert "_force_default_tax" in product
 
 
 def test_itbis_display_names_are_per_company() -> None:
