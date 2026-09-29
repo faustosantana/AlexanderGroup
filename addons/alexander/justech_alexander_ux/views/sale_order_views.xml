@@ -12,11 +12,11 @@
                     <label for="date_order" string="Fecha"/>
                 </div>
             </xpath>
+            <xpath expr="//field[@name='date_order'][@groups='base.group_no_one']" position="after">
+                <field name="client_order_ref" string="OC / PO" placeholder="Ej. PO-CLIENTE-2026-001"/>
+            </xpath>
             <xpath expr="//field[@name='date_order'][@groups='base.group_no_one']" position="attributes">
                 <attribute name="groups"/>
-            </xpath>
-            <xpath expr="//field[@name='date_order']" position="before">
-                <field name="client_order_ref" string="OC / PO" placeholder="Ej. PO-CLIENTE-2026-001"/>
             </xpath>
             <xpath expr="//field[@name='client_order_ref']" position="attributes">
                 <attribute name="string">OC / PO</attribute>
