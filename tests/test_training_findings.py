@@ -192,7 +192,8 @@ def test_trace_columns_hidden_by_purchase_group_not_deleted():
     assert "<delete" not in views
     assert "base.group_no_one" in views
     assert '<attribute name="groups"/>' in views
-    assert 'string">Fecha' in views
+    assert 'string="Fecha"' in views
+    assert "@string=" not in views
 
 
 def test_navbar_home_has_no_hardcoded_domain():
