@@ -6,8 +6,17 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="priority">80</field>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='date_order']" position="before">
+            <!-- Odoo 19 hides Quotation Date behind base.group_no_one. Show it. -->
+            <xpath expr="//div[@groups='base.group_no_one'][label[@for='date_order']]" position="replace">
+                <div class="o_td_label" invisible="state in ['sale', 'cancel']">
+                    <label for="date_order" string="Fecha"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='date_order'][@groups='base.group_no_one']" position="after">
                 <field name="client_order_ref" string="OC / PO" placeholder="Ej. PO-CLIENTE-2026-001"/>
+            </xpath>
+            <xpath expr="//field[@name='date_order'][@groups='base.group_no_one']" position="attributes">
+                <attribute name="groups"/>
             </xpath>
             <xpath expr="//field[@name='client_order_ref']" position="attributes">
                 <attribute name="string">OC / PO</attribute>
