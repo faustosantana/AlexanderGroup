@@ -1,6 +1,11 @@
 from odoo import api, models
 
 DX_UI_LANG = "es_DO"
+_GEILIN_LOGIN = "geilin.rosario@inversionesdoralex.com"
+_GEILIN_ACCOUNTING_XMLIDS = (
+    "account.group_account_manager",
+    "account.group_validate_bank_account",
+)
 
 
 def _dx_apply_spanish_ui_language(env):
@@ -33,6 +38,27 @@ def _dx_apply_spanish_ui_language(env):
         company_fix.sudo().write({"lang": DX_UI_LANG})
 
 
+def _dx_grant_geilin_full_accounting(env):
+    """Accounting Administrator for Geilin only. Not Settings / ERP Manager."""
+    user = (
+        env["res.users"]
+        .sudo()
+        .search([("login", "=", _GEILIN_LOGIN), ("share", "=", False)], limit=1)
+    )
+    if not user:
+        return
+    commands = []
+    for xmlid in _GEILIN_ACCOUNTING_XMLIDS:
+        group = env.ref(xmlid, raise_if_not_found=False)
+        if not group:
+            continue
+        if user.has_group(xmlid):
+            continue
+        commands.append((4, group.id))
+    if commands:
+        user.write({"group_ids": commands})
+
+
 class ResUsers(models.Model):
     _inherit = "res.users"
 
@@ -45,6 +71,7 @@ class ResUsers(models.Model):
     def _register_hook(self):
         super()._register_hook()
         _dx_apply_spanish_ui_language(self.env)
+        _dx_grant_geilin_full_accounting(self.env)
 
 
 class ResPartnerLangDefault(models.Model):

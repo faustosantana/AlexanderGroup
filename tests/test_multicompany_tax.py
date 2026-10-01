@@ -23,7 +23,7 @@ REQUIRED_TESTS = (
 
 def test_manifest_version_and_files() -> None:
     manifest = (BASE / "__manifest__.py").read_text(encoding="utf-8")
-    assert "19.0.1.0.22" in manifest
+    assert "19.0.1.0.23" in manifest
     assert "purchase" in manifest
     for rel in (
         "models/account_tax.py",
@@ -71,11 +71,20 @@ def test_no_record_rule_weakening() -> None:
 
 
 def test_no_accounting_admin_grant() -> None:
+    allowed = {
+        "res_company.py",
+        "res_users.py",
+        "end-grant_geilin_accounting.py",
+    }
     for path in BASE.rglob("*.py"):
         text = path.read_text(encoding="utf-8")
-        assert "group_account_manager" not in text or path.name == "res_company.py"
+        if "group_account_manager" in text:
+            assert path.name in allowed, path
     groups = (BASE / "models" / "res_groups.py").read_text(encoding="utf-8")
     assert "group_account_manager" not in groups
+    users = (BASE / "models" / "res_users.py").read_text(encoding="utf-8")
+    assert "geilin.rosario@inversionesdoralex.com" in users
+    assert "base.group_system" not in users
 
 
 def test_document_guards_use_record_company() -> None:
