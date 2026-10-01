@@ -249,7 +249,8 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
-    assert "19.0.1.6.9" in manifest
+    assert "19.0.1.6.10" in manifest
+    assert "stock_picking_views.xml" in manifest
     assert "apply_approval_overlay" in hooks
     assert "ALEXANDER_APPROVAL_LOGIN" in hooks
     assert "approval_visibility.xml" in manifest
