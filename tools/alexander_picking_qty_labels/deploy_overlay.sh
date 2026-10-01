@@ -25,4 +25,5 @@ tar -C "$SRC" -cf - \
 ssh doralex-server "docker exec -u 100:101 ${CT} bash -lc \
   'python3 /usr/bin/odoo -d ${DB} --db_host=\"\$HOST\" --db_user=\"\$USER\" --db_password=\"\$PASSWORD\" \
    -u justech_alexander_ux --stop-after-init --no-http'"
+ssh doralex-server "docker restart ${CT}"
 echo "OVERLAY_U=${TARGET}=PASS"
