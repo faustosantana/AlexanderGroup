@@ -133,7 +133,7 @@ def test_cross_company_authorized_sequences_are_isolated():
 
 def test_manifest_has_balance_view_and_version():
     manifest = (BASE / "__manifest__.py").read_text(encoding="utf-8")
-    assert "19.0.1.0.21" in manifest
+    assert "19.0.1.0.22" in manifest
     assert "views/ncf_range_alert_views.xml" in manifest
     xml = (BASE / "views" / "ncf_range_alert_views.xml").read_text(encoding="utf-8")
     assert "dx_ncf_balance_level" in xml
