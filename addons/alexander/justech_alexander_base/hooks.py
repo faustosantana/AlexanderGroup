@@ -10,3 +10,4 @@ def post_init_hook(env):
     env[
         "justech.alexander.multicompany.tax.service"
     ]._dx_apply_safe_product_tax_cleanup()
+    env["res.partner.bank"]._dx_trust_company_owned_banks()
