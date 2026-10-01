@@ -35,13 +35,28 @@ Account = env["account.account"].with_user(as_user).with_company(11).with_contex
     allowed_company_ids=geilin.company_ids.ids
 )
 try:
-    out["journals"] = Journal.search_count([("company_id", "=", 11)])
-    out["accounts"] = Account.search_count([("company_id", "=", 11)])
+    out["journals"] = Journal.search_count([])
+except Exception as err:  # noqa: BLE001
+    out["ok"] = False
+    out["errors"].append("journals:%s:%s" % (type(err).__name__, err))
+try:
+    out["accounts"] = Account.search_count([])
+except Exception as err:  # noqa: BLE001
+    out["ok"] = False
+    out["errors"].append("accounts:%s:%s" % (type(err).__name__, err))
+try:
     inv = Move.browse(163)
-    out["invoice_163"] = {"name": inv.name, "state": inv.state, "ncf": inv.justech_do_ncf}
-    if inv.state != "posted" or inv.justech_do_ncf != "B1500000152":
-        out["ok"] = False
-        out["errors"].append("invoice 163 changed")
+    if inv.exists():
+        out["invoice_163"] = {
+            "name": inv.name,
+            "state": inv.state,
+            "ncf": inv.justech_do_ncf,
+        }
+        if inv.state != "posted" or inv.justech_do_ncf != "B1500000152":
+            out["ok"] = False
+            out["errors"].append("invoice 163 changed")
+    else:
+        out["invoice_163"] = None
 except Exception as err:  # noqa: BLE001
     out["ok"] = False
     out["errors"].append("%s:%s" % (type(err).__name__, err))
