@@ -10,7 +10,7 @@ BASE = REPO / "addons" / "alexander" / "justech_alexander_base"
 
 def test_manifest_version_and_bank_trust_files() -> None:
     manifest = (BASE / "__manifest__.py").read_text(encoding="utf-8")
-    assert "19.0.1.0.22" in manifest
+    assert "19.0.1.0.23" in manifest
     for rel in (
         "models/res_partner_bank.py",
         "models/account_move_bank_trust.py",

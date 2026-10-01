@@ -12,7 +12,7 @@ def test_margin_readable_overlay_exists() -> None:
     manifest = (BASE / "__manifest__.py").read_text(encoding="utf-8")
     src = (BASE / "models" / "margin_readable.py").read_text(encoding="utf-8")
     init = (BASE / "models" / "__init__.py").read_text(encoding="utf-8")
-    assert "19.0.1.0.22" in manifest
+    assert "19.0.1.0.23" in manifest
     assert "margin_readable" in init
     assert "_dx_keep_readable_mtx" in src
     assert "_dx_web_read_without_forbidden_mtx" in src
