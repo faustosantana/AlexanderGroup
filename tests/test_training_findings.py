@@ -181,6 +181,20 @@ def test_tracking_keeps_native_lot_group():
         assert '<attribute name="groups"/>' not in text
 
 
+def test_picking_form_qty_labels_match_conduce():
+    views = (UX / "views" / "stock_picking_views.xml").read_text(encoding="utf-8")
+    manifest = (UX / "__manifest__.py").read_text(encoding="utf-8")
+    assert "stock_picking_views.xml" in manifest
+    assert "stock.view_picking_form" in views
+    assert "move_ids_without_package" not in views
+    assert "//field[@name='move_ids']/list/field[@name='product_uom_qty']" in views
+    assert "//field[@name='move_ids']/list/field[@name='quantity']" in views
+    assert 'string">Cantidad pedida' in views
+    assert 'string">Cantidad a entregar' in views
+    assert "Demanda" not in views
+    assert "<delete" not in views
+
+
 def test_trace_columns_hidden_by_purchase_group_not_deleted():
     views = (UX / "views" / "sale_order_views.xml").read_text(encoding="utf-8")
     assert 'string="OC / PO"' in views

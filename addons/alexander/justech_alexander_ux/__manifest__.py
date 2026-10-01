@@ -1,6 +1,6 @@
 {
     "name": "Doralex UX — menús y catálogo",
-    "version": "19.0.1.6.9",
+    "version": "19.0.1.6.10",
     "category": "Hidden",
     "summary": "Launcher limpio, aprobaciones y padrón OFF, retenciones RD 2026",
     "description": "Overlay Doralex: menús fiscales agrupados, e-CF/DGII/padrón/aprobaciones desactivados de forma segura. Catálogo de retenciones Ley 30-26 por selección manual. Histórico de aprobaciones conservado bajo Administración. No desinstala módulos ni cambia nombres técnicos.",
@@ -36,6 +36,7 @@
         "views/res_config_settings_views.xml",
         "views/sale_order_views.xml",
         "views/account_move_views.xml",
+        "views/stock_picking_views.xml",
         "views/withholding_catalog_views.xml",
         "views/login_views.xml",
     ],
