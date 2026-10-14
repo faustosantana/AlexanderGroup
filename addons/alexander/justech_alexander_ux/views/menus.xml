@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="justech_purchase_sale_margin_control.menu_purchase_sale_margin_root" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+        <field name="web_icon" eval="False"/>
+    </record>
+
     <record id="justech_l10n_do_base.menu_justech_do_fiscal_root" model="ir.ui.menu">
         <field name="parent_id" ref="accountant.menu_accounting"/>
         <field name="name">Fiscal Dominicana</field>
