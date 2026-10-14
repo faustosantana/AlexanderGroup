@@ -18,14 +18,18 @@ class AccountMove(models.Model):
         return RecoveryMove
 
     def button_draft(self):
-        """Restablecer a borrador. No exige Recuperación Contable."""
+        """Restablecer a borrador. No exige Recuperación Contable ni revisor."""
         if self:
-            return super(self._dx_skip_recovery_for_drafts(), self).button_draft()
+            return super(self._dx_skip_recovery_for_drafts(), self.sudo()).button_draft()
         return super().button_draft()
 
     def button_cancel(self):
         if not self._dx_all_drafts():
             self._dx_void_ncf_before_cancel()
+            # Native cancel drafts first; checked entries block non-reviewers.
+            return super(
+                self._dx_skip_recovery_for_drafts(), self.sudo()
+            ).button_cancel()
         return super(self._dx_skip_recovery_for_drafts(), self).button_cancel()
 
     def button_request_cancel(self):
