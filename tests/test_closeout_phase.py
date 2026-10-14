@@ -83,6 +83,7 @@ def test_draft_cancel_skips_recovery_only_for_drafts():
     assert "_dx_all_drafts" in source
     assert "justech_accounting_recovery.models.account_move" in source
     assert "button_cancel" in source
+    assert "_dx_void_ncf_before_cancel" in source
     assert "unlink" in source
     assert "button_draft" in source
     assert "_dx_skip_recovery_for_drafts" in source
@@ -188,13 +189,13 @@ def test_manifest_versions_bumped():
     reports = (
         REPO / "addons" / "alexander" / "justech_alexander_reports" / "__manifest__.py"
     ).read_text(encoding="utf-8")
-    assert "19.0.1.0.24" in base
+    assert "19.0.1.0.25" in base
     assert "security/product_create.xml" in base
     assert "security/ir.model.access.csv" in base
     assert "account_move_views.xml" in base
     assert "justech_accounting_recovery" in base
     assert "res_partner_views.xml" in base
-    assert "19.0.1.6.12" in ux
+    assert "19.0.1.6.13" in ux
     assert "stock_picking_views.xml" in ux
     assert "account_move_views.xml" in ux
     assert "login_views.xml" in ux

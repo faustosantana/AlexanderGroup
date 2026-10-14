@@ -17,16 +17,30 @@ class AccountMove(models.Model):
 
         return RecoveryMove
 
+    def _is_user_able_to_review(self):
+        """Anular / restablecer no debe exigir el grupo de revisor."""
+        if self.env.context.get("dx_posted_lifecycle"):
+            return True
+        return super()._is_user_able_to_review()
+
     def button_draft(self):
-        """Restablecer a borrador. No exige Recuperación Contable."""
+        """Restablecer a borrador. No exige Recuperación Contable ni revisor."""
         if self:
-            return super(self._dx_skip_recovery_for_drafts(), self).button_draft()
+            return super(
+                self._dx_skip_recovery_for_drafts(),
+                self.with_context(dx_posted_lifecycle=True),
+            ).button_draft()
         return super().button_draft()
 
     def button_cancel(self):
-        if self._dx_all_drafts():
-            return super(self._dx_skip_recovery_for_drafts(), self).button_cancel()
-        return super().button_cancel()
+        if not self._dx_all_drafts():
+            self._dx_void_ncf_before_cancel()
+            # Native cancel drafts first; checked entries block non-reviewers.
+            return super(
+                self._dx_skip_recovery_for_drafts(),
+                self.with_context(dx_posted_lifecycle=True),
+            ).button_cancel()
+        return super(self._dx_skip_recovery_for_drafts(), self).button_cancel()
 
     def button_request_cancel(self):
         if self._dx_all_drafts():

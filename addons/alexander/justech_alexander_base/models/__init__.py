@@ -7,6 +7,7 @@ from . import ncf_assignment
 from . import ncf_business_rules
 from . import ncf_balance_alert
 from . import account_move_draft
+from . import account_move_ncf_cancel
 from . import account_move_bank_trust
 from . import margin_readable
 from . import res_partner_bank
