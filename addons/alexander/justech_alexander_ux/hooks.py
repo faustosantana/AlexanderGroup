@@ -27,7 +27,7 @@ CATALOG = (
     ("justech_alexander_website", "Sitio web institucional", False),
     ("justech_alexander_ux", "Experiencia Doralex (menús)", False),
     ("justech_warranty", "Garantías", True),
-    ("justech_purchase_sale_margin_control", "Costos y Márgenes", True),
+    ("justech_purchase_sale_margin_control", "Costos y Márgenes", False),
     ("justech_managed_services", "Servicios Administrados", True),
     ("justech_approval_flow", "Aprobaciones (histórico)", False),
     ("justech_global_audit_log", "Auditoría", False),
@@ -78,9 +78,12 @@ CATALOG = (
 
 VISIBLE_APPS = {
     "justech_warranty",
-    "justech_purchase_sale_margin_control",
     "justech_managed_services",
 }
+
+MARGIN_MENU_XMLIDS = (
+    "justech_purchase_sale_margin_control.menu_purchase_sale_margin_root",
+)
 
 ALEXANDER_APPROVAL_LOGIN = "alexander.pina@inversionesdoralex.com"
 OPERATIONAL_APPROVAL_LOGINS = (
@@ -345,6 +348,22 @@ def apply_withholding_catalog(env):
     env["justech.do.withholding.catalog"].dx_sync_2026_catalog()
 
 
+def hide_margin_control(env):
+    """Doralex does not operate Costos y Márgenes. Keep the module installed."""
+    for xmlid in MARGIN_MENU_XMLIDS:
+        menu = env.ref(xmlid, raise_if_not_found=False)
+        if menu:
+            menu.write({"active": False, "web_icon": False})
+    roots = env["ir.ui.menu"].sudo().search([("parent_id", "=", False)])
+    for menu in roots:
+        xmlid = menu.get_external_id().get(menu.id) or ""
+        name = (menu.name or "").lower()
+        if xmlid.startswith("justech_purchase_sale_margin_control.") or (
+            "margen" in name and "costo" in name
+        ):
+            menu.write({"active": False, "web_icon": False})
+
+
 def post_init_hook(env):
     _apply_catalog(env)
     _apply_menu_names(env)
@@ -353,3 +372,4 @@ def post_init_hook(env):
     apply_approval_overlay(env)
     apply_padron_disabled(env)
     apply_withholding_catalog(env)
+    hide_margin_control(env)

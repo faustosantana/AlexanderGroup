@@ -100,4 +100,25 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_sale_order_form_dx_hide_margin" model="ir.ui.view">
+        <field name="name">sale.order.form.dx.hide.margin</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_margin_transactions']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_view_related_purchase_orders']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_manage_purchases']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group[@name='margin_control_compact']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>

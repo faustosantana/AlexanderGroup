@@ -15,7 +15,7 @@ def test_geilin_accounting_grant_is_scoped() -> None:
     mig = (
         BASE / "migrations" / "19.0.1.0.23" / "end-grant_geilin_accounting.py"
     ).read_text(encoding="utf-8")
-    assert "19.0.1.0.23" in manifest
+    assert "19.0.1.0.24" in manifest
     assert "_dx_grant_geilin_full_accounting" in users
     assert "geilin.rosario@inversionesdoralex.com" in users
     assert "account.group_account_manager" in users
