@@ -20,7 +20,9 @@ class AccountMove(models.Model):
     def button_draft(self):
         """Restablecer a borrador. No exige Recuperación Contable ni revisor."""
         if self:
-            return super(self._dx_skip_recovery_for_drafts(), self.sudo()).button_draft()
+            return super(
+                self._dx_skip_recovery_for_drafts(), self.sudo()
+            ).button_draft()
         return super().button_draft()
 
     def button_cancel(self):
