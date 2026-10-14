@@ -25,6 +25,7 @@ def test_cancel_posted_invoice_voids_ncf():
     assert "justech_do_ncf_voided" in source
     assert "justech.do.ncf.consumption" in source
     assert "_dx_void_ncf_before_cancel" in draft
-    assert "self.sudo()" in draft
+    assert "dx_posted_lifecycle" in draft
+    assert "_is_user_able_to_review" in draft
     assert 'string="Anular"' in views
     assert "invisible=\"state != 'posted'\"" in views
