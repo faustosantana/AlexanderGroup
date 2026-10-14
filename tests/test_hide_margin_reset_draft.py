@@ -24,7 +24,7 @@ def test_margin_app_is_not_visible():
     assert "menu_purchase_sale_margin_root" in menus
     assert 'name="active" eval="False"' in menus
     assert "justech_purchase_sale_margin_control" in manifest
-    assert "19.0.1.6.12" in manifest
+    assert "19.0.1.6.13" in manifest
     guard = (UX / "models" / "catalog_guard.py").read_text(encoding="utf-8")
     assert "_apply_catalog" in guard
     assert "hide_margin_control" in guard
@@ -49,4 +49,4 @@ def test_reset_to_draft_uses_invoicing_not_recovery():
     assert "justech_accounting_recovery.models.account_move" in source
     assert 'string="Restablecer a borrador"' in views
     assert 'name="button_draft"' in views
-    assert "19.0.1.0.24" in manifest
+    assert "19.0.1.0.25" in manifest

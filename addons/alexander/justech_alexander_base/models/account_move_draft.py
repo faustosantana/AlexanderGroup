@@ -24,9 +24,9 @@ class AccountMove(models.Model):
         return super().button_draft()
 
     def button_cancel(self):
-        if self._dx_all_drafts():
-            return super(self._dx_skip_recovery_for_drafts(), self).button_cancel()
-        return super().button_cancel()
+        if not self._dx_all_drafts():
+            self._dx_void_ncf_before_cancel()
+        return super(self._dx_skip_recovery_for_drafts(), self).button_cancel()
 
     def button_request_cancel(self):
         if self._dx_all_drafts():

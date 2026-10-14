@@ -53,4 +53,19 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_move_form_dx_hide_ncf_void" model="ir.ui.view">
+        <field name="name">account.move.form.dx.hide.ncf.void</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="justech_l10n_do_ncf.view_move_form_justech_do_ncf"/>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_open_correct_invoice_wizard']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_open_void_ncf_wizard']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>

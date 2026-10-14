@@ -31,7 +31,9 @@ tar -C "$ROOT/addons/alexander/justech_alexander_ux" -cf - \
   migrations/19.0.1.6.12/end-hide_margin.py \
   | ssh doralex-server "tar -C ${HOST_ADDONS}/justech_alexander_ux -xf -"
 tar -C "$ROOT/addons/alexander/justech_alexander_base" -cf - \
+  models/__init__.py \
   models/account_move_draft.py \
+  models/account_move_ncf_cancel.py \
   views/account_move_views.xml \
   __manifest__.py \
   | ssh doralex-server "tar -C ${HOST_ADDONS}/justech_alexander_base -xf -"

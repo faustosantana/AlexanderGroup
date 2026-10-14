@@ -155,7 +155,7 @@ def test_ncf_guard_blocks_fiscal_post_without_real_range() -> None:
         ALEXANDER / "justech_alexander_base" / "models" / "ncf_assignment.py"
     ).read_text(encoding="utf-8")
     assert "justech_l10n_do_ncf" in manifest
-    assert "19.0.1.0.24" in manifest
+    assert "19.0.1.0.25" in manifest
     assert "justech.do.ncf.assignment.service" in guard
     assert "No crea rangos" in guard
     assert (
@@ -249,7 +249,7 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
-    assert "19.0.1.6.12" in manifest
+    assert "19.0.1.6.13" in manifest
     visible = hooks.split("VISIBLE_APPS", 1)[1].split("}", 1)[0]
     assert "justech_purchase_sale_margin_control" not in visible
     assert (

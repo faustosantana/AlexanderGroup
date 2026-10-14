@@ -44,6 +44,17 @@ def run(env):
             "HAS_RESET",
             'name="button_draft"' in arch and "Restablecer a borrador" in arch,
         )
+        print("HAS_ANULAR", 'string="Anular"' in arch)
+        i_corr = arch.find("action_open_correct_invoice_wizard")
+        i_void = arch.find("action_open_void_ncf_wizard")
+        print(
+            "CORREGIR_HIDDEN",
+            i_corr < 0 or 'invisible="1"' in arch[i_corr : i_corr + 220],
+        )
+        print(
+            "ANULAR_NCF_HIDDEN",
+            i_void < 0 or 'invisible="1"' in arch[i_void : i_void + 220],
+        )
         print(
             "HAS_GESTIONAR_VISIBLE",
             "action_manage_purchases" in arch
@@ -99,11 +110,25 @@ def run(env):
         menu.active if menu else None,
     )
     print("UX_VERSION", ux.latest_version, "BASE_VERSION", base.latest_version)
+    arch_ok = (
+        env["account.move"]
+        .with_user(user or geilin)
+        .with_company(move.company_id)
+        .with_context(lang="es_DO", allowed_company_ids=[move.company_id.id])
+        .get_view(view_type="form")
+        .get("arch")
+        or ""
+    )
+    i_corr = arch_ok.find("action_open_correct_invoice_wizard")
+    i_void = arch_ok.find("action_open_void_ncf_wizard")
     ok = (
         not mod.application
         and menu
         and not menu.active
-        and ux.latest_version.endswith("1.6.12")
+        and ux.latest_version.endswith("1.6.13")
+        and 'string="Anular"' in arch_ok
+        and (i_corr < 0 or 'invisible="1"' in arch_ok[i_corr : i_corr + 220])
+        and (i_void < 0 or 'invisible="1"' in arch_ok[i_void : i_void + 220])
     )
     print("VERIFY", "PASS" if ok else "FAIL")
     return ok
