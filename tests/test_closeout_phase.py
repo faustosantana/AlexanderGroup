@@ -85,8 +85,7 @@ def test_draft_cancel_skips_recovery_only_for_drafts():
     assert "button_cancel" in source
     assert "unlink" in source
     assert "button_draft" in source
-    assert "_dx_user_can_reset_invoice" in source
-    assert "account.group_account_invoice" in source
+    assert "_dx_skip_recovery_for_drafts" in source
     assert 'state == "draft"' in source or "state == 'draft'" in source
 
 

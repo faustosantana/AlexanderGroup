@@ -17,12 +17,9 @@ class AccountMove(models.Model):
 
         return RecoveryMove
 
-    def _dx_user_can_reset_invoice(self):
-        return self.env.user.has_group("account.group_account_invoice")
-
     def button_draft(self):
-        """Restablecer a borrador con Facturación. No exige Recuperación Contable."""
-        if self and self._dx_user_can_reset_invoice():
+        """Restablecer a borrador. No exige Recuperación Contable."""
+        if self:
             return super(self._dx_skip_recovery_for_drafts(), self).button_draft()
         return super().button_draft()
 

@@ -43,7 +43,6 @@ def test_reset_to_draft_uses_invoicing_not_recovery():
     views = (BASE / "views" / "account_move_views.xml").read_text(encoding="utf-8")
     manifest = (BASE / "__manifest__.py").read_text(encoding="utf-8")
     assert "def button_draft" in source
-    assert "account.group_account_invoice" in source
     assert "justech_accounting_recovery.models.account_move" in source
     assert 'string="Restablecer a borrador"' in views
     assert 'name="button_draft"' in views
