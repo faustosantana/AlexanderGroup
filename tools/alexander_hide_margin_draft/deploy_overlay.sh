@@ -18,14 +18,17 @@ esac
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 ssh doralex-server "test -d ${HOST_ADDONS}/justech_alexander_ux"
 ssh doralex-server "test -d ${HOST_ADDONS}/justech_alexander_base"
-ssh doralex-server "mkdir -p ${HOST_ADDONS}/justech_alexander_ux/migrations/19.0.1.6.11"
+ssh doralex-server "mkdir -p ${HOST_ADDONS}/justech_alexander_ux/migrations/19.0.1.6.11 ${HOST_ADDONS}/justech_alexander_ux/migrations/19.0.1.6.12 ${HOST_ADDONS}/justech_alexander_ux/models"
 tar -C "$ROOT/addons/alexander/justech_alexander_ux" -cf - \
   hooks.py \
   __manifest__.py \
+  models/__init__.py \
+  models/catalog_guard.py \
   views/account_move_views.xml \
   views/sale_order_views.xml \
   views/menus.xml \
   migrations/19.0.1.6.11/end-hide_margin.py \
+  migrations/19.0.1.6.12/end-hide_margin.py \
   | ssh doralex-server "tar -C ${HOST_ADDONS}/justech_alexander_ux -xf -"
 tar -C "$ROOT/addons/alexander/justech_alexander_base" -cf - \
   models/account_move_draft.py \

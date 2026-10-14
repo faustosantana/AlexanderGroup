@@ -103,7 +103,7 @@ def run(env):
         not mod.application
         and menu
         and not menu.active
-        and ux.latest_version.endswith("1.6.11")
+        and ux.latest_version.endswith("1.6.12")
     )
     print("VERIFY", "PASS" if ok else "FAIL")
     return ok

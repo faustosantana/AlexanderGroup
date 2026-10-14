@@ -24,7 +24,10 @@ def test_margin_app_is_not_visible():
     assert "menu_purchase_sale_margin_root" in menus
     assert 'name="active" eval="False"' in menus
     assert "justech_purchase_sale_margin_control" in manifest
-    assert "19.0.1.6.11" in manifest
+    assert "19.0.1.6.12" in manifest
+    guard = (UX / "models" / "catalog_guard.py").read_text(encoding="utf-8")
+    assert "_apply_catalog" in guard
+    assert "hide_margin_control" in guard
 
 
 def test_invoice_and_sale_hide_margin_ui():

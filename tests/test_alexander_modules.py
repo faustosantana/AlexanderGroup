@@ -249,7 +249,7 @@ def test_ux_overlay_hides_technical_apps() -> None:
     assert "apply_ecf_operational_state" in hooks
     assert "_hide_fiscal_leftovers" in hooks
     assert "justech_alexander.ecf_operational_enabled" in hooks
-    assert "19.0.1.6.11" in manifest
+    assert "19.0.1.6.12" in manifest
     visible = hooks.split("VISIBLE_APPS", 1)[1].split("}", 1)[0]
     assert "justech_purchase_sale_margin_control" not in visible
     assert (
