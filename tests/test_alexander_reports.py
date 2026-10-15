@@ -32,6 +32,8 @@ def test_six_company_themes_in_css():
         assert f"dx-totals-{layout}" in css
     assert "dx-sign-wrap" in css
     assert "dx-sign-pin" in css
+    assert ".dx-comp-invoice .dx-sign-space { height: 48px; }" in css
+    assert ".dx-comp-invoice .dx-sign-wrap { margin-top: 14px; }" in css
     assert "dx-dom-totals-shift" in css
     assert "dx-pin-end" in css
     assert "dx-rem-totals-box" in css

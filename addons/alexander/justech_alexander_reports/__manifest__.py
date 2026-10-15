@@ -1,6 +1,6 @@
 {
     "name": "Diseño de reportes Doralex",
-    "version": "19.0.3.13.9",
+    "version": "19.0.3.13.10",
     "category": "Reporting",
     "summary": "V5.3: vigencia NCF y firmas Entrega/Recibido en factura",
     "description": "Cada empresa conserva su cotización. El rótulo fiscal de factura es Número de Comprobante Fiscal / Gubernamental / de Régimen Especial. La vigencia del NCF (Válida hasta) y las firmas Entrega / Recibido se imprimen en la factura.",
