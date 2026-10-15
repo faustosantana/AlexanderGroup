@@ -91,8 +91,8 @@ def _dx_money(env, amount, currency):
     return format_amount(env, amount or 0.0, currency)
 
 
-def _dx_sign_space(lines, paper="A4", extra_mm=0):
-    mm = spacer_mm(count_body_lines(lines), paper, extra_mm)
+def _dx_sign_space(lines, paper="A4", extra_mm=0, min_mm=0):
+    mm = max(spacer_mm(count_body_lines(lines), paper, extra_mm), int(min_mm or 0))
     px = max(0, int(round(mm * 96.0 / 25.4)))
     chunks = []
     remain = px
@@ -705,7 +705,11 @@ class AccountMoveCompose(models.Model):
             "sign_left": sign_left,
             "sign_right": sign_right,
             "is_refund": refund,
-            **_dx_sign_space(lines, extra_mm=18 if refund else 0),
+            **_dx_sign_space(
+                lines,
+                extra_mm=18 if refund else 0,
+                min_mm=16 if customer_invoice else 0,
+            ),
         }
 
     def _dx_invoice_propet_compose(self):
