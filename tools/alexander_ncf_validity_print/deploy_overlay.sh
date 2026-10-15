@@ -20,6 +20,7 @@ SRC="$ROOT/addons/alexander/justech_alexander_reports"
 ssh doralex-server "test -d ${HOST_ADDONS}/justech_alexander_reports"
 tar -C "$SRC" -cf - \
   __manifest__.py \
+  models/ncf_label.py \
   models/ncf_validity.py \
   models/report_compose.py \
   reports/components.xml \
