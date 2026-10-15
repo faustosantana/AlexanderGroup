@@ -98,6 +98,8 @@ def test_six_real_headers_and_sale_compositions():
     assert "dx_document_end" in comps
     assert "dx-ncf-hero" in comps
     assert "ncf_pending_label" in comps
+    assert "ncf_validity" in comps
+    assert "Válida hasta" in comps
     assert "Número de Comprobante Fiscal" in comps
     assert "Pendiente de NCF" not in comps
     assert ">NCF</" not in comps
@@ -226,6 +228,8 @@ def test_invoice_title_is_factura_not_borrador():
     assert "ncf_pending" in py
     assert "ncf_label" in py
     assert "ncf_pending_label" in py
+    assert "ncf_validity" in py
+    assert "def _dx_invoice_ncf_validity" in py
     assert "def _dx_invoice_ncf_label" in py
     assert "_dx_layout" in py
     assert "justech_do_ncf" in py

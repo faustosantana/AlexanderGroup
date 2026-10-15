@@ -53,6 +53,13 @@
                     <div class="dx-meta-v" t-out="dx['ncf']"/>
                 </td>
             </tr>
+            <tr t-if="dx.get('ncf_validity')">
+                <td>
+                    <div class="dx-meta-k" t-out="dx.get('ncf_validity_label') or 'Válida hasta'"/>
+                    <div class="dx-meta-v" t-out="dx['ncf_validity']"/>
+                </td>
+                <td/>
+            </tr>
             <tr t-if="dx.get('origin_ncf') or dx.get('origin_move')">
                 <td t-if="dx.get('origin_ncf')">
                     <div class="dx-meta-k" t-out="dx.get('origin_ncf_label') or 'Comprobante afectado'"/>
@@ -673,6 +680,10 @@
                 <div class="dx-ncf-k" t-out="dx.get('ncf_label') or 'Número de Comprobante Fiscal'"/>
                 <div t-if="dx.get('ncf')" class="dx-ncf-v" t-out="dx['ncf']"/>
                 <div t-else="" class="dx-ncf-pending" t-out="dx.get('ncf_pending_label') or 'Pendiente de número de comprobante fiscal'"/>
+                <div t-if="dx.get('ncf_validity')" class="dx-ncf-until">
+                    <span class="dx-ncf-until-k" t-out="dx.get('ncf_validity_label') or 'Válida hasta'"/>
+                    <span class="dx-ncf-until-v" t-out="dx['ncf_validity']"/>
+                </div>
             </div>
             <div t-if="dx.get('is_refund')" class="dx-refund-open">
                 <div class="dx-refund-col">
