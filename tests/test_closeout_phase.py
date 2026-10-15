@@ -201,7 +201,7 @@ def test_manifest_versions_bumped():
     assert "login_views.xml" in ux
     assert "show_login_form.js" in ux
     assert "withholding_catalog_views.xml" in ux
-    assert "19.0.3.13.8" in reports
+    assert "19.0.3.13.9" in reports
     assert "print_buttons.xml" in reports
 
 

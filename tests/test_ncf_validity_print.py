@@ -67,7 +67,7 @@ def test_invoice_template_prints_valida_hasta():
     assert "l10n_do_ncf_expiration_date" in py
     assert '"ncf_validity": ncf_validity' in py
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
-    assert "19.0.3.13.8" in manifest
+    assert "19.0.3.13.9" in manifest
 
 
 def test_does_not_reuse_quote_validity_as_ncf():
@@ -76,3 +76,17 @@ def test_does_not_reuse_quote_validity_as_ncf():
     compose = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
     assert '"due": _dx_date(self.env, self.invoice_date_due)' in compose
     assert "ncf_validity_label" in compose
+
+
+def test_invoice_prints_entrega_recibido_signatures():
+    compose = (REPORTS / "models" / "report_compose.py").read_text(encoding="utf-8")
+    invoice = compose.split("def _dx_invoice_compose")[1].split(
+        "def _dx_invoice_propet"
+    )[0]
+    assert 'sign_left, sign_right = "Entrega", "Recibido"' in invoice
+    assert "dx_report_show_signature" in invoice
+    assert "customer_invoice" in invoice
+    comps = (REPORTS / "reports" / "components.xml").read_text(encoding="utf-8")
+    hero = comps.split('id="dx_invoice_composition"')[1].split("</template>")[0]
+    assert "dx_signature_panel" in hero
+    assert "ncf_validity" in hero

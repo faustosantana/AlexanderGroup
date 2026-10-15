@@ -649,7 +649,10 @@ class AccountMoveCompose(models.Model):
         reason = ""
         if refund:
             reason = self.ref or self.narration or ""
-        if refund:
+        customer_invoice = self.move_type in ("out_invoice", "out_refund")
+        if customer_invoice:
+            sign_left, sign_right = "Entrega", "Recibido"
+        elif refund:
             sign_left, sign_right = "Preparado por", "Aprobado por"
         else:
             sign_left, sign_right = "Elaborado por", "Recibido conforme"
@@ -696,7 +699,9 @@ class AccountMoveCompose(models.Model):
             "credited": (
                 _dx_money(self.env, self.amount_total, currency) if refund else ""
             ),
-            "show_signature": False,
+            "show_signature": (
+                bool(company.dx_report_show_signature) if customer_invoice else False
+            ),
             "sign_left": sign_left,
             "sign_right": sign_right,
             "is_refund": refund,
