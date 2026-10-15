@@ -1,9 +1,9 @@
 {
     "name": "Diseño de reportes Doralex",
-    "version": "19.0.3.13.7",
+    "version": "19.0.3.13.8",
     "category": "Reporting",
-    "summary": "V5.3 restaurado: cotización por empresa; rótulo de comprobante",
-    "description": "Cada empresa conserva su cotización. El rótulo fiscal de factura es Número de Comprobante Fiscal / Gubernamental / de Régimen Especial. OC / PO no sustituye el comprobante.",
+    "summary": "V5.3 restaurado: cotización por empresa; vigencia NCF impresa",
+    "description": "Cada empresa conserva su cotización. El rótulo fiscal de factura es Número de Comprobante Fiscal / Gubernamental / de Régimen Especial. La vigencia del NCF (Válida hasta) se imprime junto al comprobante.",
     "author": "Justech",
     "website": "https://doralexgroup.cloud",
     "license": "LGPL-3",

@@ -2,6 +2,12 @@ from odoo import models
 from odoo.tools.misc import format_amount, format_date
 
 from .ncf_label import dx_ncf_affected_label, dx_ncf_kind, dx_ncf_label
+from .ncf_validity import (
+    dx_ecf_skips_ncf_validity,
+    dx_ncf_prefix_and_seq,
+    dx_ncf_validity_label,
+    dx_pick_ncf_validity_date,
+)
 from .picking_qty import picking_line_qtys
 from .propet_math import propet_display_texts, propet_line_amounts
 from .report_layout import count_body_lines, spacer_mm, white_png_data_uri
@@ -433,6 +439,104 @@ class AccountMoveCompose(models.Model):
         kind = self._dx_invoice_ncf_kind(number)
         return dx_ncf_label(kind, pending=not bool(number))
 
+    def _dx_invoice_is_ecf(self):
+        self.ensure_one()
+        return bool(getattr(self, "is_ecf_invoice", False))
+
+    def _dx_invoice_ecf_doc_prefix(self):
+        self.ensure_one()
+        dtype = False
+        if (
+            "l10n_latam_document_type_id" in self._fields
+            and self.l10n_latam_document_type_id
+        ):
+            dtype = self.l10n_latam_document_type_id
+        if dtype and "doc_code_prefix" in dtype._fields:
+            return dtype.doc_code_prefix or ""
+        return ""
+
+    def _dx_ncf_range_date_for_prefix(self, ncf=""):
+        """Read-only: vigencia of the range that issued this NCF, if unlinked."""
+        self.ensure_one()
+        if "justech.do.ncf.range" not in self.env:
+            return False
+        prefix, seq = dx_ncf_prefix_and_seq(ncf or self._dx_invoice_ncf())
+        if not prefix:
+            return False
+        Range = self.env["justech.do.ncf.range"].sudo()
+        domain = [
+            ("company_id", "=", self.company_id.id),
+            ("prefix", "=", prefix),
+            ("date_to", "!=", False),
+        ]
+        if seq:
+            numbered = Range.search(
+                domain
+                + [
+                    ("sequence_start", "<=", seq),
+                    ("sequence_end", ">=", seq),
+                ],
+                limit=1,
+                order="date_to desc",
+            )
+            if numbered:
+                return numbered.date_to
+        active = Range.search(
+            domain + [("state", "=", "active")], limit=1, order="date_to desc"
+        )
+        if active:
+            return active.date_to
+        any_range = Range.search(domain, limit=1, order="date_to desc")
+        return any_range.date_to if any_range else False
+
+    def _dx_invoice_ncf_validity_date(self):
+        """Same sources as justech_l10n_do_ncf QWeb hotfix, plus prefix lookup."""
+        self.ensure_one()
+        expiration = False
+        if "l10n_do_ncf_expiration_date" in self._fields:
+            expiration = self.l10n_do_ncf_expiration_date
+        range_date = False
+        if "justech_do_ncf_range_id" in self._fields and self.justech_do_ncf_range_id:
+            range_date = self.justech_do_ncf_range_id.date_to
+        sequence_date = False
+        if (
+            "l10n_do_fiscal_sequence_id" in self._fields
+            and self.l10n_do_fiscal_sequence_id
+        ):
+            sequence_date = getattr(
+                self.l10n_do_fiscal_sequence_id, "expiration_date", False
+            )
+        company_date = False
+        if "l10n_do_ncf_exp_date" in self.company_id._fields:
+            company_date = self.company_id.l10n_do_ncf_exp_date
+        prefix_date = False
+        if not (expiration or range_date or sequence_date):
+            prefix_date = self._dx_ncf_range_date_for_prefix()
+        return dx_pick_ncf_validity_date(
+            expiration,
+            range_date,
+            sequence_date,
+            prefix_date,
+            company_date,
+        )
+
+    def _dx_invoice_ncf_validity(self):
+        """Formatted 'Válida hasta' for the printed NCF. Empty if not applicable."""
+        self.ensure_one()
+        ncf = self._dx_invoice_ncf()
+        is_ecf = self._dx_invoice_is_ecf()
+        if not ncf or dx_ecf_skips_ncf_validity(
+            is_ecf, self._dx_invoice_ecf_doc_prefix(), ncf
+        ):
+            return "", ""
+        raw = self._dx_invoice_ncf_validity_date()
+        if not raw:
+            return "", ""
+        formatted = _dx_date(self.env, raw)
+        if not formatted or formatted == "—":
+            return "", ""
+        return formatted, dx_ncf_validity_label(is_ecf)
+
     def _dx_related_sale_orders(self):
         self.ensure_one()
         sales = self.env["sale.order"]
@@ -549,6 +653,7 @@ class AccountMoveCompose(models.Model):
             sign_left, sign_right = "Preparado por", "Aprobado por"
         else:
             sign_left, sign_right = "Elaborado por", "Recibido conforme"
+        ncf_validity, ncf_validity_label = self._dx_invoice_ncf_validity()
         return {
             "ident": ident,
             "partner": _dx_partner_lines(self.partner_id),
@@ -565,6 +670,8 @@ class AccountMoveCompose(models.Model):
             "ncf_pending_label": ncf_pending_label,
             "ncf_missing": not bool(ncf),
             "ncf_pending": not bool(ncf),
+            "ncf_validity": ncf_validity,
+            "ncf_validity_label": ncf_validity_label,
             "origin_ncf": origin_ncf,
             "origin_ncf_label": origin_ncf_label,
             "origin_move": origin_move,
