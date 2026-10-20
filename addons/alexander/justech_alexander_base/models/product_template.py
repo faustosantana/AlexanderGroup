@@ -125,9 +125,11 @@ class ProductTemplate(models.Model):
     def web_read(self, specification):
         return _web_read_visible_taxes(self, specification, super().web_read)
 
+    @api.model
     def search_read(
         self, domain=None, fields=None, offset=0, limit=None, order=None, **kwargs
     ):
+        """OWL sends kwargs-only; without @api.model, Odoo 19 call_kw IndexErrors."""
         rows = super().search_read(
             domain=domain,
             fields=fields,

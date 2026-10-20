@@ -49,4 +49,4 @@ def test_reset_to_draft_uses_invoicing_not_recovery():
     assert "justech_accounting_recovery.models.account_move" in source
     assert 'string="Restablecer a borrador"' in views
     assert 'name="button_draft"' in views
-    assert "19.0.1.0.25" in manifest
+    assert "19.0.1.0.26" in manifest
