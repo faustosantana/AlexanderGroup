@@ -52,22 +52,30 @@ def run(env):
             print("COMPANY_MISSING", code)
             failed += 1
             continue
-        ctx_company = env.with_company(company).with_context(
-            allowed_company_ids=company.ids, lang="en_US"
-        )
-        Move = ctx_company["account.move"].sudo()
-        Sale = ctx_company["sale.order"].sudo()
-        PO = ctx_company["purchase.order"].sudo()
-        Pick = ctx_company["stock.picking"].sudo()
-        Pay = ctx_company["account.payment"].sudo()
+        ctx = {"allowed_company_ids": company.ids, "lang": "en_US"}
+        Move = env["account.move"].sudo().with_company(company).with_context(**ctx)
+        Sale = env["sale.order"].sudo().with_company(company).with_context(**ctx)
+        PO = env["purchase.order"].sudo().with_company(company).with_context(**ctx)
+        Pick = env["stock.picking"].sudo().with_company(company).with_context(**ctx)
+        Pay = env["account.payment"].sudo().with_company(company).with_context(**ctx)
         inv = Move.search(
             [
                 ("company_id", "=", company.id),
                 ("move_type", "in", ("out_invoice", "in_invoice", "out_refund")),
+                ("state", "=", "posted"),
             ],
             order="id desc",
             limit=1,
         )
+        if not inv:
+            inv = Move.search(
+                [
+                    ("company_id", "=", company.id),
+                    ("move_type", "in", ("out_invoice", "in_invoice", "out_refund")),
+                ],
+                order="id desc",
+                limit=1,
+            )
         if inv:
             dx = inv._dx_invoice_compose()
             meta = company._dx_header_meta_for(inv)
