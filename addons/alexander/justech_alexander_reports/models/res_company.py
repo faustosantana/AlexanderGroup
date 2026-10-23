@@ -5,7 +5,8 @@ from io import BytesIO
 
 from odoo import api, models
 from odoo.tools.image import image_data_uri
-from odoo.tools.misc import format_date
+
+from .datefmt import dx_format_date
 
 _logger = logging.getLogger(__name__)
 
@@ -133,11 +134,7 @@ class ResCompany(models.Model):
             return meta
 
         def _fmt(value):
-            if not value:
-                return "—"
-            if hasattr(value, "date"):
-                value = value.date()
-            return format_date(self.env, value)
+            return dx_format_date(value)
 
         user = False
         if record._name == "account.move" and "invoice_user_id" in record._fields:

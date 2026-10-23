@@ -22,6 +22,7 @@ class IrActionsReport(models.Model):
         self._dx_disable_broken_studio_composition()
         self._dx_restore_company_paperformats()
         self._dx_restore_report_url()
+        self._dx_force_dmy_date_format()
 
     @api.model
     def _dx_disable_broken_studio_composition(self):
@@ -76,6 +77,14 @@ class IrActionsReport(models.Model):
             report = self.env.ref(xmlid, raise_if_not_found=False)
             if report and report.paperformat_id != paper:
                 report.sudo().write({"paperformat_id": paper.id})
+
+    @api.model
+    def _dx_force_dmy_date_format(self):
+        """All active languages print and show dates as day/month/year."""
+        langs = self.env["res.lang"].sudo().search([("active", "=", True)])
+        for lang in langs:
+            if lang.date_format != "%d/%m/%Y":
+                lang.sudo().write({"date_format": "%d/%m/%Y"})
 
     @api.model
     def _dx_restore_report_url(self):

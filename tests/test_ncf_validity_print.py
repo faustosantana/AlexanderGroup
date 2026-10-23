@@ -67,7 +67,7 @@ def test_invoice_template_prints_valida_hasta():
     assert "l10n_do_ncf_expiration_date" in py
     assert '"ncf_validity": ncf_validity' in py
     manifest = (REPORTS / "__manifest__.py").read_text(encoding="utf-8")
-    assert "19.0.3.13.10" in manifest
+    assert "19.0.3.13.11" in manifest
 
 
 def test_does_not_reuse_quote_validity_as_ncf():

@@ -1,6 +1,7 @@
 from odoo import models
-from odoo.tools.misc import format_amount, format_date
+from odoo.tools.misc import format_amount
 
+from .datefmt import dx_format_date
 from .ncf_label import dx_ncf_affected_label, dx_ncf_kind, dx_ncf_label
 from .ncf_validity import (
     dx_ecf_skips_ncf_validity,
@@ -122,11 +123,8 @@ def _dx_sign_space(lines, paper="A4", extra_mm=0, min_mm=0):
 
 
 def _dx_date(env, value):
-    if not value:
-        return "—"
-    if hasattr(value, "date"):
-        value = value.date()
-    return format_date(env, value)
+    """Always DD/MM/YYYY on printed documents. env is unused on purpose."""
+    return dx_format_date(value)
 
 
 def _dx_salesperson(user, company):
