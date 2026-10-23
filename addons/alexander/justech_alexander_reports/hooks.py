@@ -35,3 +35,4 @@ def post_init_hook(env):
     env["ir.actions.report"]._dx_disable_broken_studio_composition()
     env["ir.actions.report"]._dx_restore_company_paperformats()
     env["ir.actions.report"]._dx_restore_report_url()
+    env["ir.actions.report"]._dx_force_dmy_date_format()

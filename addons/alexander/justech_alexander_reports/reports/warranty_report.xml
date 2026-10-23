@@ -19,7 +19,10 @@
                             </div>
                             <div class="dx-warranty-row">
                                 <div class="dx-warranty-k">Inicio</div>
-                                <div class="dx-warranty-v"><span t-field="doc.date_start"/></div>
+                                <div class="dx-warranty-v">
+                                    <t t-if="doc.date_start" t-esc="doc.date_start.strftime('%d/%m/%Y')"/>
+                                    <t t-else="">—</t>
+                                </div>
                             </div>
                             <div class="dx-warranty-row">
                                 <div class="dx-warranty-k">Cobertura</div>

@@ -1,5 +1,7 @@
 from odoo import api, fields, models
 
+from .datefmt import dx_format_date
+
 DOC_TYPES = [
     ("quotation", "Cotización"),
     ("sale_order", "Orden de Venta"),
@@ -39,7 +41,7 @@ class DoralexReportPreview(models.TransientModel):
             "company": company,
             "title": title,
             "number": "%s/DEMO/00001" % (company.dx_short_code or "DX"),
-            "date": fields.Date.context_today(self),
+            "date": dx_format_date(fields.Date.context_today(self)),
             "partner_name": "Cliente de demostración",
             "partner_address": "Av. demostración 100, Santo Domingo",
             "lines": [

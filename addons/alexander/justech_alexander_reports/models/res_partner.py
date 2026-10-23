@@ -1,6 +1,7 @@
 from odoo import fields, models
 from odoo.tools.misc import format_amount
 
+from .datefmt import dx_format_date
 from .statement_math import (
     assert_receivable_invariants,
     classify_open_amount,
@@ -149,10 +150,10 @@ class ResPartner(models.Model):
                     balance_txt = self._dx_fmt_money(running, currency)
                 rows.append(
                     {
-                        "date": date.strftime("%d/%m/%Y") if date else "—",
+                        "date": dx_format_date(date),
                         "document": label,
                         "ncf": self._dx_move_ncf(move) or "—",
-                        "due": due.strftime("%d/%m/%Y") if due else "—",
+                        "due": dx_format_date(due),
                         "days": days_status_label(due, cutoff),
                         "debit": (self._dx_fmt_money(debit, currency) if debit else ""),
                         "credit": (
@@ -207,7 +208,7 @@ class ResPartner(models.Model):
                     "company": co,
                     "anchor": moves[0] if moves else self.env["account.move"],
                     "rows": rows,
-                    "cutoff": cutoff.strftime("%d/%m/%Y"),
+                    "cutoff": dx_format_date(cutoff),
                     "currency": currency.name,
                     "partner_name": commercial.name,
                     "partner_vat": commercial.vat or self.vat or "",
